@@ -75,8 +75,6 @@ extern volatile adc_buf_t adc_buffer[1];
 volatile int pos = 0;
 const int pwm_res = 64000000 / 2 / PWM_FREQ;
 
-int cur = 0;
-int milli_volt = 0;
 volatile int pwm = 0;
 uint8_t hall_to_pos[8] = {
   0,
@@ -91,7 +89,7 @@ uint8_t hall_to_pos[8] = {
 
 int last_pos = 0;
 int timer = 0;
-int max_time = PWM_FREQ / 5;
+int max_time = PWM_FREQ / 10;
 volatile int vel = 0;
 
 void DMA1_Channel1_IRQHandler(){
@@ -117,7 +115,7 @@ void DMA1_Channel1_IRQHandler(){
   }
 
   if(pos != last_pos){
-    vel = 1000 * PWM_FREQ / timer / P / 6;
+    vel = 1000 * PWM_FREQ / timer / P / 6 * 2;
 
     if((pos - last_pos + 6) % 6 > 2){
       vel = -vel;
@@ -174,13 +172,10 @@ void DMA1_Channel1_IRQHandler(){
   // DMA1->IFCR = 1;
     
       // }
-  if(adc_buffer[0].data1 > 1900){
-    HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
-  }
-  else{
-    HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
-  }
+
 }
+
+int milli_vel_error_sum = 0;
 
 int main(void)
 {
@@ -205,11 +200,23 @@ int main(void)
   while (1)
   {
   HAL_Delay(0);
-  cur = 3;
-  milli_volt = cur * MILLI_R;// + vel * MILLI_PSI * 141;
-  pwm = milli_volt * pwm_res / MILLI_V;
+  int milli_cur = 3000;
+  int milli_volt = milli_cur * MILLI_R / 1000;// + vel * MILLI_PSI * 141;
+  // pwm = milli_volt * pwm_res / MILLI_V;
 
-  
+  int milli_vel_cmd = 200;
+  int milli_vel_error = milli_vel_cmd - vel;
+  milli_vel_error_sum += milli_vel_error;
+  milli_vel_error_sum = CLAMP(milli_vel_error_sum, -200000, 200000);
+  pwm = CLAMP(milli_vel_cmd / 5 + milli_vel_error_sum / 200, -500, 500);
+
+
+  if(vel > milli_vel_cmd){
+    HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
+  }
+  else{
+    HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
+  }
 
   /* USER CODE BEGIN 3 */
 
