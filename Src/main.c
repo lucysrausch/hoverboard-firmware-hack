@@ -199,30 +199,25 @@ int main(void)
 
   while (1)
   {
-  HAL_Delay(0);
-  int milli_cur = 3000;
-  int milli_volt = milli_cur * MILLI_R / 1000;// + vel * MILLI_PSI * 141;
-  // pwm = milli_volt * pwm_res / MILLI_V;
+    HAL_Delay(0);
+    int milli_cur = 3000;
+    int milli_volt = milli_cur * MILLI_R / 1000;// + vel * MILLI_PSI * 141;
+    // pwm = milli_volt * pwm_res / MILLI_V;
 
-  int milli_vel_cmd = 200;
-  int milli_vel_error = milli_vel_cmd - vel;
-  milli_vel_error_sum += milli_vel_error;
-  milli_vel_error_sum = CLAMP(milli_vel_error_sum, -200000, 200000);
-  pwm = CLAMP(milli_vel_cmd / 5 + milli_vel_error_sum / 200, -500, 500);
+    int milli_vel_cmd = 200;
+    int milli_vel_error = milli_vel_cmd - vel;
+    milli_vel_error_sum += milli_vel_error;
+    milli_vel_error_sum = CLAMP(milli_vel_error_sum, -200000, 200000);
+    pwm = CLAMP(milli_vel_cmd / 5 + milli_vel_error_sum / 200, -500, 500);
 
 
-  if(vel > milli_vel_cmd){
-    HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
+    if(vel > milli_vel_cmd){
+      HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
+    }
+    else{
+      HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
+    }
   }
-  else{
-    HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
-  }
-
-  /* USER CODE BEGIN 3 */
-
-  }
-  /* USER CODE END 3 */
-
 }
 
 /** System Clock Configuration
