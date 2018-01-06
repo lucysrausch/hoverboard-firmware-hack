@@ -29,7 +29,7 @@ extern TIM_HandleTypeDef htim_left;
 extern TIM_HandleTypeDef htim_right;
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
-extern volatile adc_buf_t adc_buffer[3];
+extern volatile adc_buf_t adc_buffer;
 
 volatile int posl = 0;
 volatile int posr = 0;
@@ -93,9 +93,44 @@ int timer = 0;
 int max_time = PWM_FREQ / 10;
 volatile int vel = 0;
 
+volatile uint8_t uart_buf[10];
+
 void DMA1_Channel1_IRQHandler(){
   DMA1->IFCR = DMA_IFCR_CTCIF1;
-  HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
+  
+  /*
+  uart_buf[0] = 0xff;
+  uart_buf[1] = adc_buffer.r_dc1 - 1850 + 127;
+  uart_buf[2] = adc_buffer.l_dc2 - 1850 + 127;
+  uart_buf[3] = 127;//adc_buffer.rr1 - 2000 + 127;
+  uart_buf[4] = 127;//adc_buffer.rr2 - 2000 + 127;
+  uart_buf[5] = 127;//adc_buffer.rl1 - 2000 + 127;
+  uart_buf[6] = 127;//adc_buffer.rl2 - 2000 + 127;
+  uart_buf[7] = adc_buffer.batt1 - 1550 + 127;
+  uart_buf[8] = adc_buffer.bat1 - 1550 + 127;
+  uart_buf[9] = '\n';
+
+  if(DMA1_Channel2->CNDTR == 0){
+    DMA1_Channel2->CCR &= ~DMA_CCR_EN;
+    DMA1_Channel2->CNDTR = 10;
+    DMA1_Channel2->CMAR = (uint32_t)uart_buf;
+    DMA1_Channel2->CCR |= DMA_CCR_EN;
+  }
+  */
+
+  if(adc_buffer.l_dc2 > 1950){
+    LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;
+    HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
+  }else{
+    LEFT_TIM->BDTR |= TIM_BDTR_MOE;
+    HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
+  }
+
+  if(adc_buffer.r_dc1 > 1950){
+    RIGHT_TIM->BDTR &= ~TIM_BDTR_MOE;
+  }else{
+    RIGHT_TIM->BDTR |= TIM_BDTR_MOE;
+  }
 
   int ul = 0;
   int vl = 0;
@@ -152,8 +187,6 @@ void DMA1_Channel1_IRQHandler(){
   RIGHT_TIM->RIGHT_TIM_U = CLAMP(ur + pwm_res / 2, 0, pwm_res);
   RIGHT_TIM->RIGHT_TIM_V = CLAMP(vr + pwm_res / 2, 0, pwm_res);
   RIGHT_TIM->RIGHT_TIM_W = CLAMP(wr + pwm_res / 2, 0, pwm_res);
-
-HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
 }
 
 int milli_vel_error_sum = 0;
@@ -171,6 +204,7 @@ int main(void)
   MX_TIM_Init();
   MX_ADC1_Init();
   MX_ADC2_Init();
+  UART_Init();
 
   
   HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 1);
@@ -190,8 +224,8 @@ int main(void)
     // milli_vel_error_sum += milli_vel_error;
     // milli_vel_error_sum = CLAMP(milli_vel_error_sum, -200000, 200000);
     // pwm = CLAMP(milli_vel_cmd / 5 + milli_vel_error_sum / 200, -500, 500);
-    pwml = 100;
-    pwmr = 100;
+    pwml = 150;
+    pwmr = 150;
 
     // if(vel > milli_vel_cmd){
     //   HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);

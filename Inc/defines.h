@@ -71,9 +71,9 @@
 #define RIGHT_TIM_WL_PIN GPIO_PIN_15
 #define RIGHT_TIM_WL_PORT GPIOB
 
-#define LEFT_DC_CUR_ADC ADC1
-#define LEFT_U_CUR_ADC ADC1
-#define LEFT_V_CUR_ADC ADC1
+// #define LEFT_DC_CUR_ADC ADC1
+// #define LEFT_U_CUR_ADC ADC1
+// #define LEFT_V_CUR_ADC ADC1
 
 #define LEFT_DC_CUR_PIN GPIO_PIN_0
 #define LEFT_U_CUR_PIN GPIO_PIN_0
@@ -83,9 +83,9 @@
 #define LEFT_U_CUR_PORT GPIOA
 #define LEFT_V_CUR_PORT GPIOC
 
-#define RIGHT_DC_CUR_ADC ADC2
-#define RIGHT_U_CUR_ADC ADC2
-#define RIGHT_V_CUR_ADC ADC2
+// #define RIGHT_DC_CUR_ADC ADC2
+// #define RIGHT_U_CUR_ADC ADC2
+// #define RIGHT_V_CUR_ADC ADC2
 
 #define RIGHT_DC_CUR_PIN GPIO_PIN_1
 #define RIGHT_U_CUR_PIN GPIO_PIN_4
@@ -95,12 +95,12 @@
 #define RIGHT_U_CUR_PORT GPIOC
 #define RIGHT_V_CUR_PORT GPIOC
 
-#define DCLINK_ADC ADC3
-#define DCLINK_CHANNEL
+// #define DCLINK_ADC ADC3
+// #define DCLINK_CHANNEL
 #define DCLINK_PIN GPIO_PIN_2
 #define DCLINK_PORT GPIOC
-#define DCLINK_PULLUP 30000
-#define DCLINK_PULLDOWN 1000
+// #define DCLINK_PULLUP 30000
+// #define DCLINK_PULLDOWN 1000
 
 #define LED_PIN GPIO_PIN_2
 #define LED_PORT GPIOB
@@ -129,10 +129,6 @@
 #define MILLI_PSI (PSI * 1000)
 #define MILLI_V (V * 1000)
 
-
-
-
-
 #define NO 0
 #define YES 1
 #define ABS(a) (((a) < 0.0) ? -(a) : (a))
@@ -151,6 +147,14 @@
 #define MAX3(a, b, c) MAX(a, MAX(b, c))
 
 typedef struct {
-  uint16_t data1;
-  uint16_t data2;
+  uint16_t rr1;
+  uint16_t rr2;
+  uint16_t rl1;
+  uint16_t rl2;
+  uint16_t r_dc1;
+  uint16_t l_dc2;
+  uint16_t batt1;
+  uint16_t l_tx2;
+  uint16_t bat1;
+  uint16_t l_rx2;
 } adc_buf_t;
