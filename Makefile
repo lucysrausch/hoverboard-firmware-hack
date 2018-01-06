@@ -34,8 +34,7 @@ Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c \
 Src/system_stm32f1xx.c \
-Src/stm32f1xx_hal_msp.c \
-Src/gpio.c \
+Src/setup.c \
 Src/stm32f1xx_it.c \
 Src/main.c \
 
