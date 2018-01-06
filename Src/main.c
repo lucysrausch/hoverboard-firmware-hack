@@ -1,82 +1,44 @@
-/**
-  ******************************************************************************
-  * File Name          : main.c
-  * Description        : Main program body
-  ******************************************************************************
-  ** This notice applies to any and all portions of this file
-  * that are not between comment pairs USER CODE BEGIN and
-  * USER CODE END. Other portions of this file, whether 
-  * inserted by the user or by software development tools
-  * are owned by their respective copyright owners.
-  *
-  * COPYRIGHT(c) 2017 STMicroelectronics
-  *
-  * Redistribution and use in source and binary forms, with or without modification,
-  * are permitted provided that the following conditions are met:
-  *   1. Redistributions of source code must retain the above copyright notice,
-  *      this list of conditions and the following disclaimer.
-  *   2. Redistributions in binary form must reproduce the above copyright notice,
-  *      this list of conditions and the following disclaimer in the documentation
-  *      and/or other materials provided with the distribution.
-  *   3. Neither the name of STMicroelectronics nor the names of its contributors
-  *      may be used to endorse or promote products derived from this software
-  *      without specific prior written permission.
-  *
-  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  *
-  ******************************************************************************
-  */
+/*
+* This file is part of the stmbl project.
+*
+* Copyright (C) 2013-2018 Rene Hopf <renehopf@mac.com>
+* Copyright (C) 2013-2018 Nico Stute <crinq@crinq.de>
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
-/* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f1xx_hal.h"
 #include "defines.h"
 #include "gpio.h"
 
-
-/* USER CODE BEGIN Includes */
-
-/* USER CODE END Includes */
-
-/* Private variables ---------------------------------------------------------*/
-
-/* USER CODE BEGIN PV */
-/* Private variables ---------------------------------------------------------*/
-
-/* USER CODE END PV */
-
-/* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-
-/* USER CODE BEGIN PFP */
-/* Private function prototypes -----------------------------------------------*/
-
-/* USER CODE END PFP */
-
-/* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
 
 extern TIM_HandleTypeDef htim_left;
 extern TIM_HandleTypeDef htim_right;
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
-extern volatile adc_buf_t adc_buffer[1];
+extern volatile adc_buf_t adc_buffer[3];
 
-volatile int pos = 0;
+volatile int posl = 0;
+volatile int posr = 0;
+volatile int pwml = 0;
+volatile int pwmr = 0;
+
 const int pwm_res = 64000000 / 2 / PWM_FREQ;
 
-volatile int pwm = 0;
-uint8_t hall_to_pos[8] = {
+const uint8_t hall_to_pos[8] = {
   0,
   0,
   2,
@@ -87,6 +49,45 @@ uint8_t hall_to_pos[8] = {
   0,
 };
 
+inline void block(int pwm, int pos, int* u, int* v, int* w){
+    switch(pos){
+    case 0:
+      *u = 0;
+      *v = pwm;
+      *w = -pwm;
+      break;
+    case 1:
+      *u = -pwm;
+      *v = pwm;
+      *w = 0;
+      break;
+    case 2:
+      *u = -pwm;
+      *v = 0;
+      *w = pwm;
+      break;
+    case 3:
+      *u = 0;
+      *v = -pwm;
+      *w = pwm;
+      break;
+    case 4:
+      *u = pwm;
+      *v = -pwm;
+      *w = 0;
+      break;
+    case 5:
+      *u = pwm;
+      *v = 0;
+      *w = -pwm;
+      break;
+    default:
+      *u = 0;
+      *v = 0;
+      *w = 0;
+  }
+}
+
 int last_pos = 0;
 int timer = 0;
 int max_time = PWM_FREQ / 10;
@@ -94,85 +95,65 @@ volatile int vel = 0;
 
 void DMA1_Channel1_IRQHandler(){
   DMA1->IFCR = DMA_IFCR_CTCIF1;
-  int u = 0;
-  int v = 0;
-  int w = 0;
+  HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
 
-  uint8_t hall_u = HAL_GPIO_ReadPin(LEFT_HALL_U_PORT, LEFT_HALL_U_PIN);
-  uint8_t hall_v = HAL_GPIO_ReadPin(LEFT_HALL_V_PORT, LEFT_HALL_V_PIN);
-  uint8_t hall_w = HAL_GPIO_ReadPin(LEFT_HALL_W_PORT, LEFT_HALL_W_PIN);
+  int ul = 0;
+  int vl = 0;
+  int wl = 0;
 
-  uint8_t hall = hall_u * 1 + hall_v * 2 + hall_w * 4;
-  pos = hall_to_pos[hall];
-  pos += 2;
-  pos %= 6;
+  int ur = 0;
+  int vr = 0;
+  int wr = 0;
+
+  uint8_t hall_ul = HAL_GPIO_ReadPin(LEFT_HALL_U_PORT, LEFT_HALL_U_PIN);
+  uint8_t hall_vl = HAL_GPIO_ReadPin(LEFT_HALL_V_PORT, LEFT_HALL_V_PIN);
+  uint8_t hall_wl = HAL_GPIO_ReadPin(LEFT_HALL_W_PORT, LEFT_HALL_W_PIN);
+
+  uint8_t hall_ur = HAL_GPIO_ReadPin(RIGHT_HALL_U_PORT, RIGHT_HALL_U_PIN);
+  uint8_t hall_vr = HAL_GPIO_ReadPin(RIGHT_HALL_V_PORT, RIGHT_HALL_V_PIN);
+  uint8_t hall_wr = HAL_GPIO_ReadPin(RIGHT_HALL_W_PORT, RIGHT_HALL_W_PIN);
+
+  uint8_t halll = hall_ul * 1 + hall_vl * 2 + hall_wl * 4;
+  posl = hall_to_pos[halll];
+  posl += 2;
+  posl %= 6;
+
+  uint8_t hallr = hall_ur * 1 + hall_vr * 2 + hall_wr * 4;
+  posr = hall_to_pos[hallr];
+  posr += 2;
+  posr %= 6;
 
   timer++;
 
-  if(timer > max_time){
-    timer = max_time;
-    vel = 0;
-  }
-
-  if(pos != last_pos){
-    vel = 1000 * PWM_FREQ / timer / P / 6 * 2;
-
-    if((pos - last_pos + 6) % 6 > 2){
-      vel = -vel;
-    }
-
-    timer = 0;
-  }
-  last_pos = pos;
-
-  switch(pos){
-    case 0:
-      u = 0;
-      v = pwm;
-      w = -pwm;
-      break;
-    case 1:
-      u = -pwm;
-      v = pwm;
-      w = 0;
-      break;
-    case 2:
-      u = -pwm;
-      v = 0;
-      w = pwm;
-      break;
-    case 3:
-      u = 0;
-      v = -pwm;
-      w = pwm;
-      break;
-    case 4:
-      u = pwm;
-      v = -pwm;
-      w = 0;
-      break;
-    case 5:
-      u = pwm;
-      v = 0;
-      w = -pwm;
-      break;
-    default:
-      u = 0;
-      v = 0;
-      w = 0;
-  }
-
-  LEFT_TIM->LEFT_TIM_U = CLAMP(u + pwm_res / 2, 0, pwm_res);
-  LEFT_TIM->LEFT_TIM_V = CLAMP(v + pwm_res / 2, 0, pwm_res);
-  LEFT_TIM->LEFT_TIM_W = CLAMP(w + pwm_res / 2, 0, pwm_res);
-  // while(!(ADC1->SR & 2)){
-
+  // if(timer > max_time){
+  //   timer = max_time;
+  //   vel = 0;
   // }
-  // while(!(DMA1->ISR & 2)){}
-  // DMA1->IFCR = 1;
-    
-      // }
 
+  // if(pos != last_pos){
+  //   vel = 1000 * PWM_FREQ / timer / P / 6 * 2;
+
+  //   if((pos - last_pos + 6) % 6 > 2){
+  //     vel = -vel;
+  //   }
+
+  //   timer = 0;
+  // }
+  // last_pos = pos;
+  
+  block(pwml, posl, &ul, &vl, &wl);
+  block(pwmr, posr, &ur, &vr, &wr);
+
+
+  LEFT_TIM->LEFT_TIM_U = CLAMP(ul + pwm_res / 2, 0, pwm_res);
+  LEFT_TIM->LEFT_TIM_V = CLAMP(vl + pwm_res / 2, 0, pwm_res);
+  LEFT_TIM->LEFT_TIM_W = CLAMP(wl + pwm_res / 2, 0, pwm_res);
+
+  RIGHT_TIM->RIGHT_TIM_U = CLAMP(ur + pwm_res / 2, 0, pwm_res);
+  RIGHT_TIM->RIGHT_TIM_V = CLAMP(vr + pwm_res / 2, 0, pwm_res);
+  RIGHT_TIM->RIGHT_TIM_W = CLAMP(wr + pwm_res / 2, 0, pwm_res);
+
+HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
 }
 
 int milli_vel_error_sum = 0;
@@ -200,23 +181,24 @@ int main(void)
   while (1)
   {
     HAL_Delay(0);
-    int milli_cur = 3000;
-    int milli_volt = milli_cur * MILLI_R / 1000;// + vel * MILLI_PSI * 141;
-    // pwm = milli_volt * pwm_res / MILLI_V;
+    // int milli_cur = 3000;
+    // int milli_volt = milli_cur * MILLI_R / 1000;// + vel * MILLI_PSI * 141;
+    // // pwm = milli_volt * pwm_res / MILLI_V;
 
-    int milli_vel_cmd = 200;
-    int milli_vel_error = milli_vel_cmd - vel;
-    milli_vel_error_sum += milli_vel_error;
-    milli_vel_error_sum = CLAMP(milli_vel_error_sum, -200000, 200000);
-    pwm = CLAMP(milli_vel_cmd / 5 + milli_vel_error_sum / 200, -500, 500);
+    // int milli_vel_cmd = 200;
+    // int milli_vel_error = milli_vel_cmd - vel;
+    // milli_vel_error_sum += milli_vel_error;
+    // milli_vel_error_sum = CLAMP(milli_vel_error_sum, -200000, 200000);
+    // pwm = CLAMP(milli_vel_cmd / 5 + milli_vel_error_sum / 200, -500, 500);
+    pwml = 100;
+    pwmr = 100;
 
-
-    if(vel > milli_vel_cmd){
-      HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
-    }
-    else{
-      HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
-    }
+    // if(vel > milli_vel_cmd){
+    //   HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
+    // }
+    // else{
+    //   HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
+    // }
   }
 }
 
@@ -313,13 +295,3 @@ void assert_failed(uint8_t* file, uint32_t line)
 }
 
 #endif
-
-/**
-  * @}
-  */ 
-
-/**
-  * @}
-*/ 
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -1,43 +1,23 @@
-/**
-  ******************************************************************************
-  * File Name          : gpio.c
-  * Description        : This file provides code for the configuration
-  *                      of all used GPIO pins.
-  ******************************************************************************
-  ** This notice applies to any and all portions of this file
-  * that are not between comment pairs USER CODE BEGIN and
-  * USER CODE END. Other portions of this file, whether 
-  * inserted by the user or by software development tools
-  * are owned by their respective copyright owners.
-  *
-  * COPYRIGHT(c) 2017 STMicroelectronics
-  *
-  * Redistribution and use in source and binary forms, with or without modification,
-  * are permitted provided that the following conditions are met:
-  *   1. Redistributions of source code must retain the above copyright notice,
-  *      this list of conditions and the following disclaimer.
-  *   2. Redistributions in binary form must reproduce the above copyright notice,
-  *      this list of conditions and the following disclaimer in the documentation
-  *      and/or other materials provided with the distribution.
-  *   3. Neither the name of STMicroelectronics nor the names of its contributors
-  *      may be used to endorse or promote products derived from this software
-  *      without specific prior written permission.
-  *
-  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  *
-  ******************************************************************************
-  */
+/*
+* This file is part of the stmbl project.
+*
+* Copyright (C) 2013-2018 Rene Hopf <renehopf@mac.com>
+* Copyright (C) 2013-2018 Nico Stute <crinq@crinq.de>
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
-/* Includes ------------------------------------------------------------------*/
 #include "defines.h"
 
 void MX_GPIO_Init(void)
@@ -132,23 +112,23 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pin = LEFT_TIM_WL_PIN;
   HAL_GPIO_Init(LEFT_TIM_WL_PORT, &GPIO_InitStruct);
 
-  // GPIO_InitStruct.Pin = RIGHT_TIM_UH_PIN;
-  // HAL_GPIO_Init(RIGHT_TIM_UH_PORT, &GPIO_InitStruct);
+  GPIO_InitStruct.Pin = RIGHT_TIM_UH_PIN;
+  HAL_GPIO_Init(RIGHT_TIM_UH_PORT, &GPIO_InitStruct);
 
-  // GPIO_InitStruct.Pin = RIGHT_TIM_VH_PIN;
-  // HAL_GPIO_Init(RIGHT_TIM_VH_PORT, &GPIO_InitStruct);
+  GPIO_InitStruct.Pin = RIGHT_TIM_VH_PIN;
+  HAL_GPIO_Init(RIGHT_TIM_VH_PORT, &GPIO_InitStruct);
 
-  // GPIO_InitStruct.Pin = RIGHT_TIM_WH_PIN;
-  // HAL_GPIO_Init(RIGHT_TIM_WH_PORT, &GPIO_InitStruct);
+  GPIO_InitStruct.Pin = RIGHT_TIM_WH_PIN;
+  HAL_GPIO_Init(RIGHT_TIM_WH_PORT, &GPIO_InitStruct);
 
-  // GPIO_InitStruct.Pin = RIGHT_TIM_UL_PIN;
-  // HAL_GPIO_Init(RIGHT_TIM_UL_PORT, &GPIO_InitStruct);
+  GPIO_InitStruct.Pin = RIGHT_TIM_UL_PIN;
+  HAL_GPIO_Init(RIGHT_TIM_UL_PORT, &GPIO_InitStruct);
 
-  // GPIO_InitStruct.Pin = RIGHT_TIM_VL_PIN;
-  // HAL_GPIO_Init(RIGHT_TIM_VL_PORT, &GPIO_InitStruct);
+  GPIO_InitStruct.Pin = RIGHT_TIM_VL_PIN;
+  HAL_GPIO_Init(RIGHT_TIM_VL_PORT, &GPIO_InitStruct);
 
-  // GPIO_InitStruct.Pin = RIGHT_TIM_WL_PIN;
-  // HAL_GPIO_Init(RIGHT_TIM_WL_PORT, &GPIO_InitStruct);
+  GPIO_InitStruct.Pin = RIGHT_TIM_WL_PIN;
+  HAL_GPIO_Init(RIGHT_TIM_WL_PORT, &GPIO_InitStruct);
 }
 
 TIM_HandleTypeDef htim_right;
@@ -216,10 +196,6 @@ void MX_TIM_Init(void){
     _Error_Handler(__FILE__, __LINE__);
   }
 
-
-
-
-
   htim_left.Instance = LEFT_TIM;
   htim_left.Init.Prescaler = 0;
   htim_left.Init.CounterMode = TIM_COUNTERMODE_CENTERALIGNED1;
@@ -284,29 +260,27 @@ void MX_TIM_Init(void){
   HAL_TIMEx_PWMN_Start(&htim_left, TIM_CHANNEL_2);
   HAL_TIMEx_PWMN_Start(&htim_left, TIM_CHANNEL_3);
 
-  // HAL_TIM_PWM_Start(&htim_right, TIM_CHANNEL_1);
-  // HAL_TIM_PWM_Start(&htim_right, TIM_CHANNEL_2);
-  // HAL_TIM_PWM_Start(&htim_right, TIM_CHANNEL_3);
-  // HAL_TIMEx_PWMN_Start(&htim_right, TIM_CHANNEL_1);
-  // HAL_TIMEx_PWMN_Start(&htim_right, TIM_CHANNEL_2);
-  // HAL_TIMEx_PWMN_Start(&htim_right, TIM_CHANNEL_3);
+  HAL_TIM_PWM_Start(&htim_right, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim_right, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim_right, TIM_CHANNEL_3);
+  HAL_TIMEx_PWMN_Start(&htim_right, TIM_CHANNEL_1);
+  HAL_TIMEx_PWMN_Start(&htim_right, TIM_CHANNEL_2);
+  HAL_TIMEx_PWMN_Start(&htim_right, TIM_CHANNEL_3);
+
+  htim_left.Instance->RCR = 1;
 
   __HAL_TIM_ENABLE(&htim_right);
 }
 
-
-
 ADC_HandleTypeDef hadc1;
 ADC_HandleTypeDef hadc2;
 
-
-volatile adc_buf_t adc_buffer[1];
+volatile adc_buf_t adc_buffer[3];
 
 void MX_ADC1_Init(void)
 {
   ADC_MultiModeTypeDef multimode;
   ADC_ChannelConfTypeDef sConfig;
-
 
   __HAL_RCC_ADC1_CLK_ENABLE();
 
@@ -315,12 +289,12 @@ void MX_ADC1_Init(void)
     /**Common config 
     */
   hadc1.Instance = ADC1;
-  hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;//ADC_SCAN_ENABLE;
+  hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
   hadc1.Init.ContinuousConvMode = DISABLE;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T8_TRGO;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion = 1;
+  hadc1.Init.NbrOfConversion = 3;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
@@ -333,11 +307,11 @@ void MX_ADC1_Init(void)
 
     /**Configure the ADC multi-mode 
     */
-  // multimode.Mode = ADC_DUALMODE_REGSIMULT;
-  // if (HAL_ADCEx_MultiModeConfigChannel(&hadc1, &multimode) != HAL_OK)
-  // {
-  //   _Error_Handler(__FILE__, __LINE__);
-  // }
+  multimode.Mode = ADC_DUALMODE_REGSIMULT;
+  if (HAL_ADCEx_MultiModeConfigChannel(&hadc1, &multimode) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
 
     /**Configure Regular Channel 
     */
@@ -381,7 +355,7 @@ void MX_ADC1_Init(void)
   __HAL_RCC_DMA1_CLK_ENABLE();
 
   DMA1_Channel1->CCR  = 0;
-  DMA1_Channel1->CNDTR = 1;
+  DMA1_Channel1->CNDTR = 3;
   DMA1_Channel1->CPAR = (uint32_t)&(ADC1->DR);
   DMA1_Channel1->CMAR = (uint32_t)adc_buffer;
   DMA1_Channel1->CCR = DMA_CCR_MSIZE_1 | DMA_CCR_PSIZE_1 | DMA_CCR_MINC | DMA_CCR_CIRC | DMA_CCR_TCIE;
@@ -408,7 +382,7 @@ void MX_ADC2_Init(void)
   hadc2.Init.DiscontinuousConvMode = DISABLE;
   hadc2.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc2.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc2.Init.NbrOfConversion = 1;
+  hadc2.Init.NbrOfConversion = 3;
   if (HAL_ADC_Init(&hadc2) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
