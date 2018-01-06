@@ -38,18 +38,18 @@ volatile int pwmr = 0;
 const int pwm_res = 64000000 / 2 / PWM_FREQ;
 
 const uint8_t hall_to_pos[8] = {
-  0,
-  0,
-  2,
-  1,
-  4,
-  5,
-  3,
-  0,
+    0,
+    0,
+    2,
+    1,
+    4,
+    5,
+    3,
+    0,
 };
 
-inline void block(int pwm, int pos, int* u, int* v, int* w){
-    switch(pos){
+inline void block(int pwm, int pos, int *u, int *v, int *w) {
+  switch(pos) {
     case 0:
       *u = 0;
       *v = pwm;
@@ -87,16 +87,16 @@ inline void block(int pwm, int pos, int* u, int* v, int* w){
   }
 }
 
-int last_pos = 0;
-int timer = 0;
-int max_time = PWM_FREQ / 10;
+int last_pos     = 0;
+int timer        = 0;
+int max_time     = PWM_FREQ / 10;
 volatile int vel = 0;
 
 volatile uint8_t uart_buf[10];
 
-void DMA1_Channel1_IRQHandler(){
+void DMA1_Channel1_IRQHandler() {
   DMA1->IFCR = DMA_IFCR_CTCIF1;
-  
+  HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
   /*
   uart_buf[0] = 0xff;
   uart_buf[1] = adc_buffer.r_dc1 - 1850 + 127;
@@ -117,17 +117,15 @@ void DMA1_Channel1_IRQHandler(){
   }
   */
 
-  if(adc_buffer.l_dc2 > 1950){
+  if(adc_buffer.l_dc2 > 1950) {
     LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;
-    HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
-  }else{
+  } else {
     LEFT_TIM->BDTR |= TIM_BDTR_MOE;
-    HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
   }
 
-  if(adc_buffer.r_dc1 > 1950){
+  if(adc_buffer.r_dc1 > 1950) {
     RIGHT_TIM->BDTR &= ~TIM_BDTR_MOE;
-  }else{
+  } else {
     RIGHT_TIM->BDTR |= TIM_BDTR_MOE;
   }
 
@@ -139,21 +137,21 @@ void DMA1_Channel1_IRQHandler(){
   int vr = 0;
   int wr = 0;
 
-  uint8_t hall_ul = HAL_GPIO_ReadPin(LEFT_HALL_U_PORT, LEFT_HALL_U_PIN);
-  uint8_t hall_vl = HAL_GPIO_ReadPin(LEFT_HALL_V_PORT, LEFT_HALL_V_PIN);
-  uint8_t hall_wl = HAL_GPIO_ReadPin(LEFT_HALL_W_PORT, LEFT_HALL_W_PIN);
+  uint8_t hall_ul = !(LEFT_HALL_U_PORT->IDR & LEFT_HALL_U_PIN);
+  uint8_t hall_vl = !(LEFT_HALL_V_PORT->IDR & LEFT_HALL_V_PIN);
+  uint8_t hall_wl = !(LEFT_HALL_W_PORT->IDR & LEFT_HALL_W_PIN);
 
-  uint8_t hall_ur = HAL_GPIO_ReadPin(RIGHT_HALL_U_PORT, RIGHT_HALL_U_PIN);
-  uint8_t hall_vr = HAL_GPIO_ReadPin(RIGHT_HALL_V_PORT, RIGHT_HALL_V_PIN);
-  uint8_t hall_wr = HAL_GPIO_ReadPin(RIGHT_HALL_W_PORT, RIGHT_HALL_W_PIN);
+  uint8_t hall_ur = !(RIGHT_HALL_U_PORT->IDR & RIGHT_HALL_U_PIN);
+  uint8_t hall_vr = !(RIGHT_HALL_V_PORT->IDR & RIGHT_HALL_V_PIN);
+  uint8_t hall_wr = !(RIGHT_HALL_W_PORT->IDR & RIGHT_HALL_W_PIN);
 
   uint8_t halll = hall_ul * 1 + hall_vl * 2 + hall_wl * 4;
-  posl = hall_to_pos[halll];
+  posl          = hall_to_pos[halll];
   posl += 2;
   posl %= 6;
 
   uint8_t hallr = hall_ur * 1 + hall_vr * 2 + hall_wr * 4;
-  posr = hall_to_pos[hallr];
+  posr          = hall_to_pos[hallr];
   posr += 2;
   posr %= 6;
 
@@ -174,10 +172,9 @@ void DMA1_Channel1_IRQHandler(){
   //   timer = 0;
   // }
   // last_pos = pos;
-  
+
   block(pwml, posl, &ul, &vl, &wl);
   block(pwmr, posr, &ur, &vr, &wr);
-
 
   LEFT_TIM->LEFT_TIM_U = CLAMP(ul + pwm_res / 2, 0, pwm_res);
   LEFT_TIM->LEFT_TIM_V = CLAMP(vl + pwm_res / 2, 0, pwm_res);
@@ -186,13 +183,12 @@ void DMA1_Channel1_IRQHandler(){
   RIGHT_TIM->RIGHT_TIM_U = CLAMP(ur + pwm_res / 2, 0, pwm_res);
   RIGHT_TIM->RIGHT_TIM_V = CLAMP(vr + pwm_res / 2, 0, pwm_res);
   RIGHT_TIM->RIGHT_TIM_W = CLAMP(wr + pwm_res / 2, 0, pwm_res);
+  HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
 }
 
 int milli_vel_error_sum = 0;
 
-int main(void)
-{
-
+int main(void) {
   HAL_Init();
   __HAL_RCC_AFIO_CLK_ENABLE();
   HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
@@ -222,12 +218,11 @@ int main(void)
   UART_Init();
 
   HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 1);
-  
+
   HAL_ADC_Start(&hadc1);
   HAL_ADC_Start(&hadc2);
 
-  while (1)
-  {
+  while(1) {
     HAL_Delay(0);
     // int milli_cur = 3000;
     // int milli_volt = milli_cur * MILLI_R / 1000;// + vel * MILLI_PSI * 141;
@@ -252,43 +247,40 @@ int main(void)
 
 /** System Clock Configuration
 */
-void SystemClock_Config(void)
-{
-
+void SystemClock_Config(void) {
   RCC_OscInitTypeDef RCC_OscInitStruct;
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
   RCC_PeriphCLKInitTypeDef PeriphClkInit;
 
-    /**Initializes the CPU, AHB and APB busses clocks 
+  /**Initializes the CPU, AHB and APB busses clocks 
     */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.OscillatorType      = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.HSIState            = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = 16;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI_DIV2;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL16;
+  RCC_OscInitStruct.PLL.PLLState        = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource       = RCC_PLLSOURCE_HSI_DIV2;
+  RCC_OscInitStruct.PLL.PLLMUL          = RCC_PLL_MUL16;
   HAL_RCC_OscConfig(&RCC_OscInitStruct);
 
-    /**Initializes the CPU, AHB and APB busses clocks 
+  /**Initializes the CPU, AHB and APB busses clocks 
     */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.ClockType      = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.SYSCLKSource   = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.AHBCLKDivider  = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
   HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2);
 
   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
-  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV8;
+  PeriphClkInit.AdcClockSelection    = RCC_ADCPCLK2_DIV8;
   HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit);
 
-    /**Configure the Systick interrupt time 
+  /**Configure the Systick interrupt time 
     */
-  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
+  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq() / 1000);
 
-    /**Configure the Systick 
+  /**Configure the Systick 
     */
   HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
 

@@ -149,6 +149,8 @@ $(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 $(BUILD_DIR):
 	mkdir $@		
 
+format:
+	find Src/ Inc/ -iname '*.h' -o -iname '*.c' | xargs clang-format -i
 #######################################
 # clean up
 #######################################

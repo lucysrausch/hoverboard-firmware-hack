@@ -68,8 +68,8 @@
 
 /** @addtogroup stm32f1xx_system
   * @{
-  */  
-  
+  */
+
 /** @addtogroup STM32F1xx_System_Private_Includes
   * @{
   */
@@ -92,26 +92,26 @@
   * @{
   */
 
-#if !defined  (HSE_VALUE) 
-  #define HSE_VALUE               8000000U /*!< Default value of the External oscillator in Hz.
-                                                This value can be provided and adapted by the user application. */
+#if !defined(HSE_VALUE)
+#define HSE_VALUE 8000000U /*!< Default value of the External oscillator in Hz. \
+                                This value can be provided and adapted by the user application. */
 #endif /* HSE_VALUE */
 
-#if !defined  (HSI_VALUE)
-  #define HSI_VALUE               8000000U /*!< Default value of the Internal oscillator in Hz.
-                                                This value can be provided and adapted by the user application. */
+#if !defined(HSI_VALUE)
+#define HSI_VALUE 8000000U /*!< Default value of the Internal oscillator in Hz. \
+                                This value can be provided and adapted by the user application. */
 #endif /* HSI_VALUE */
 
-/*!< Uncomment the following line if you need to use external SRAM  */ 
+/*!< Uncomment the following line if you need to use external SRAM  */
 #if defined(STM32F100xE) || defined(STM32F101xE) || defined(STM32F101xG) || defined(STM32F103xE) || defined(STM32F103xG)
 /* #define DATA_IN_ExtSRAM */
 #endif /* STM32F100xE || STM32F101xE || STM32F101xG || STM32F103xE || STM32F103xG */
 
 /*!< Uncomment the following line if you need to relocate your vector Table in
-     Internal SRAM. */ 
+     Internal SRAM. */
 /* #define VECT_TAB_SRAM */
-#define VECT_TAB_OFFSET  0x00000000U /*!< Vector Table base offset field. 
-                                  This value must be a multiple of 0x200. */
+#define VECT_TAB_OFFSET 0x00000000U /*!< Vector Table base offset field. \
+                                 This value must be a multiple of 0x200. */
 
 
 /**
@@ -133,14 +133,14 @@
 /*******************************************************************************
 *  Clock Definitions
 *******************************************************************************/
-#if defined(STM32F100xB) ||defined(STM32F100xE)
-  uint32_t SystemCoreClock         = 24000000U;        /*!< System Clock Frequency (Core Clock) */
+#if defined(STM32F100xB) || defined(STM32F100xE)
+uint32_t SystemCoreClock = 24000000U; /*!< System Clock Frequency (Core Clock) */
 #else /*!< HSI Selected as System Clock source */
-  uint32_t SystemCoreClock         = 72000000U;        /*!< System Clock Frequency (Core Clock) */
+uint32_t SystemCoreClock = 72000000U; /*!< System Clock Frequency (Core Clock) */
 #endif
 
 const uint8_t AHBPrescTable[16U] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
-const uint8_t APBPrescTable[8U] =  {0, 0, 0, 0, 1, 2, 3, 4};
+const uint8_t APBPrescTable[8U]  = {0, 0, 0, 0, 1, 2, 3, 4};
 
 /**
   * @}
@@ -152,7 +152,7 @@ const uint8_t APBPrescTable[8U] =  {0, 0, 0, 0, 1, 2, 3, 4};
 
 #if defined(STM32F100xE) || defined(STM32F101xE) || defined(STM32F101xG) || defined(STM32F103xE) || defined(STM32F103xG)
 #ifdef DATA_IN_ExtSRAM
-  static void SystemInit_ExtMemCtl(void); 
+static void SystemInit_ExtMemCtl(void);
 #endif /* DATA_IN_ExtSRAM */
 #endif /* STM32F100xE || STM32F101xE || STM32F101xG || STM32F103xE || STM32F103xG */
 
@@ -172,19 +172,18 @@ const uint8_t APBPrescTable[8U] =  {0, 0, 0, 0, 1, 2, 3, 4};
   * @param  None
   * @retval None
   */
-void SystemInit (void)
-{
+void SystemInit(void) {
   /* Reset the RCC clock configuration to the default reset state(for debug purpose) */
   /* Set HSION bit */
   RCC->CR |= 0x00000001U;
 
-  /* Reset SW, HPRE, PPRE1, PPRE2, ADCPRE and MCO bits */
+/* Reset SW, HPRE, PPRE1, PPRE2, ADCPRE and MCO bits */
 #if !defined(STM32F105xC) && !defined(STM32F107xC)
   RCC->CFGR &= 0xF8FF0000U;
 #else
   RCC->CFGR &= 0xF0FF0000U;
-#endif /* STM32F105xC */   
-  
+#endif /* STM32F105xC */
+
   /* Reset HSEON, CSSON and PLLON bits */
   RCC->CR &= 0xFEF6FFFFU;
 
@@ -208,23 +207,23 @@ void SystemInit (void)
   RCC->CIR = 0x009F0000U;
 
   /* Reset CFGR2 register */
-  RCC->CFGR2 = 0x00000000U;      
+  RCC->CFGR2 = 0x00000000U;
 #else
   /* Disable all interrupts and clear pending bits  */
   RCC->CIR = 0x009F0000U;
 #endif /* STM32F105xC */
-    
+
 #if defined(STM32F100xE) || defined(STM32F101xE) || defined(STM32F101xG) || defined(STM32F103xE) || defined(STM32F103xG)
-  #ifdef DATA_IN_ExtSRAM
-    SystemInit_ExtMemCtl(); 
-  #endif /* DATA_IN_ExtSRAM */
-#endif 
+#ifdef DATA_IN_ExtSRAM
+  SystemInit_ExtMemCtl();
+#endif /* DATA_IN_ExtSRAM */
+#endif
 
 #ifdef VECT_TAB_SRAM
   SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM. */
 #else
-  SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH. */
-#endif 
+  SCB->VTOR  = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH. */
+#endif
 }
 
 /**
@@ -262,8 +261,7 @@ void SystemInit (void)
   * @param  None
   * @retval None
   */
-void SystemCoreClockUpdate (void)
-{
+void SystemCoreClockUpdate(void) {
   uint32_t tmp = 0U, pllmull = 0U, pllsource = 0U;
 
 #if defined(STM32F105xC) || defined(STM32F107xC)
@@ -273,101 +271,85 @@ void SystemCoreClockUpdate (void)
 #if defined(STM32F100xB) || defined(STM32F100xE)
   uint32_t prediv1factor = 0U;
 #endif /* STM32F100xB or STM32F100xE */
-    
+
   /* Get SYSCLK source -------------------------------------------------------*/
   tmp = RCC->CFGR & RCC_CFGR_SWS;
-  
-  switch (tmp)
-  {
-    case 0x00U:  /* HSI used as system clock */
+
+  switch(tmp) {
+    case 0x00U: /* HSI used as system clock */
       SystemCoreClock = HSI_VALUE;
       break;
-    case 0x04U:  /* HSE used as system clock */
+    case 0x04U: /* HSE used as system clock */
       SystemCoreClock = HSE_VALUE;
       break;
-    case 0x08U:  /* PLL used as system clock */
+    case 0x08U: /* PLL used as system clock */
 
       /* Get PLL clock source and multiplication factor ----------------------*/
-      pllmull = RCC->CFGR & RCC_CFGR_PLLMULL;
+      pllmull   = RCC->CFGR & RCC_CFGR_PLLMULL;
       pllsource = RCC->CFGR & RCC_CFGR_PLLSRC;
-      
-#if !defined(STM32F105xC) && !defined(STM32F107xC)      
-      pllmull = ( pllmull >> 18U) + 2U;
-      
-      if (pllsource == 0x00U)
-      {
+
+#if !defined(STM32F105xC) && !defined(STM32F107xC)
+      pllmull = (pllmull >> 18U) + 2U;
+
+      if(pllsource == 0x00U) {
         /* HSI oscillator clock divided by 2 selected as PLL clock entry */
         SystemCoreClock = (HSI_VALUE >> 1U) * pllmull;
-      }
-      else
-      {
- #if defined(STM32F100xB) || defined(STM32F100xE)
-       prediv1factor = (RCC->CFGR2 & RCC_CFGR2_PREDIV1) + 1U;
-       /* HSE oscillator clock selected as PREDIV1 clock entry */
-       SystemCoreClock = (HSE_VALUE / prediv1factor) * pllmull; 
- #else
+      } else {
+#if defined(STM32F100xB) || defined(STM32F100xE)
+        prediv1factor = (RCC->CFGR2 & RCC_CFGR2_PREDIV1) + 1U;
+        /* HSE oscillator clock selected as PREDIV1 clock entry */
+        SystemCoreClock = (HSE_VALUE / prediv1factor) * pllmull;
+#else
         /* HSE selected as PLL clock entry */
-        if ((RCC->CFGR & RCC_CFGR_PLLXTPRE) != (uint32_t)RESET)
-        {/* HSE oscillator clock divided by 2 */
+        if((RCC->CFGR & RCC_CFGR_PLLXTPRE) != (uint32_t)RESET) { /* HSE oscillator clock divided by 2 */
           SystemCoreClock = (HSE_VALUE >> 1U) * pllmull;
-        }
-        else
-        {
+        } else {
           SystemCoreClock = HSE_VALUE * pllmull;
         }
- #endif
+#endif
       }
 #else
       pllmull = pllmull >> 18U;
-      
-      if (pllmull != 0x0DU)
-      {
-         pllmull += 2U;
+
+      if(pllmull != 0x0DU) {
+        pllmull += 2U;
+      } else { /* PLL multiplication factor = PLL input clock * 6.5 */
+        pllmull = 13U / 2U;
       }
-      else
-      { /* PLL multiplication factor = PLL input clock * 6.5 */
-        pllmull = 13U / 2U; 
-      }
-            
-      if (pllsource == 0x00U)
-      {
+
+      if(pllsource == 0x00U) {
         /* HSI oscillator clock divided by 2 selected as PLL clock entry */
         SystemCoreClock = (HSI_VALUE >> 1U) * pllmull;
-      }
-      else
-      {/* PREDIV1 selected as PLL clock entry */
-        
+      } else { /* PREDIV1 selected as PLL clock entry */
+
         /* Get PREDIV1 clock source and division factor */
         prediv1source = RCC->CFGR2 & RCC_CFGR2_PREDIV1SRC;
         prediv1factor = (RCC->CFGR2 & RCC_CFGR2_PREDIV1) + 1U;
-        
-        if (prediv1source == 0U)
-        { 
+
+        if(prediv1source == 0U) {
           /* HSE oscillator clock selected as PREDIV1 clock entry */
-          SystemCoreClock = (HSE_VALUE / prediv1factor) * pllmull;          
-        }
-        else
-        {/* PLL2 clock selected as PREDIV1 clock entry */
-          
+          SystemCoreClock = (HSE_VALUE / prediv1factor) * pllmull;
+        } else { /* PLL2 clock selected as PREDIV1 clock entry */
+
           /* Get PREDIV2 division factor and PLL2 multiplication factor */
-          prediv2factor = ((RCC->CFGR2 & RCC_CFGR2_PREDIV2) >> 4U) + 1U;
-          pll2mull = ((RCC->CFGR2 & RCC_CFGR2_PLL2MUL) >> 8U) + 2U; 
-          SystemCoreClock = (((HSE_VALUE / prediv2factor) * pll2mull) / prediv1factor) * pllmull;                         
+          prediv2factor   = ((RCC->CFGR2 & RCC_CFGR2_PREDIV2) >> 4U) + 1U;
+          pll2mull        = ((RCC->CFGR2 & RCC_CFGR2_PLL2MUL) >> 8U) + 2U;
+          SystemCoreClock = (((HSE_VALUE / prediv2factor) * pll2mull) / prediv1factor) * pllmull;
         }
       }
-#endif /* STM32F105xC */ 
+#endif /* STM32F105xC */
       break;
 
     default:
       SystemCoreClock = HSI_VALUE;
       break;
   }
-  
+
   /* Compute HCLK clock frequency ----------------*/
   /* Get HCLK prescaler */
   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4U)];
   /* HCLK clock frequency */
-  SystemCoreClock >>= tmp;  
+  SystemCoreClock >>= tmp;
 }
 
 #if defined(STM32F100xE) || defined(STM32F101xE) || defined(STM32F101xG) || defined(STM32F103xE) || defined(STM32F103xG)
@@ -376,7 +358,7 @@ void SystemCoreClockUpdate (void)
   *          before jump to __main
   * @param  None
   * @retval None
-  */ 
+  */
 #ifdef DATA_IN_ExtSRAM
 /**
   * @brief  Setup the external memory controller. 
@@ -386,9 +368,8 @@ void SystemCoreClockUpdate (void)
   *         data memory (including heap and stack).
   * @param  None
   * @retval None
-  */ 
-void SystemInit_ExtMemCtl(void) 
-{
+  */
+void SystemInit_ExtMemCtl(void) {
   __IO uint32_t tmpreg;
   /*!< FSMC Bank1 NOR/SRAM3 is used for the STM3210E-EVAL, if another Bank is 
     required, then adjust the Register Addresses */
@@ -398,36 +379,36 @@ void SystemInit_ExtMemCtl(void)
 
   /* Delay after an RCC peripheral clock enabling */
   tmpreg = READ_BIT(RCC->AHBENR, RCC_AHBENR_FSMCEN);
-  
+
   /* Enable GPIOD, GPIOE, GPIOF and GPIOG clocks */
   RCC->APB2ENR = 0x000001E0U;
-  
+
   /* Delay after an RCC peripheral clock enabling */
   tmpreg = READ_BIT(RCC->APB2ENR, RCC_APB2ENR_IOPDEN);
 
   (void)(tmpreg);
-  
-/* ---------------  SRAM Data lines, NOE and NWE configuration ---------------*/
-/*----------------  SRAM Address lines configuration -------------------------*/
-/*----------------  NOE and NWE configuration --------------------------------*/  
-/*----------------  NE3 configuration ----------------------------------------*/
-/*----------------  NBL0, NBL1 configuration ---------------------------------*/
-  
-  GPIOD->CRL = 0x44BB44BBU;  
+
+  /* ---------------  SRAM Data lines, NOE and NWE configuration ---------------*/
+  /*----------------  SRAM Address lines configuration -------------------------*/
+  /*----------------  NOE and NWE configuration --------------------------------*/
+  /*----------------  NE3 configuration ----------------------------------------*/
+  /*----------------  NBL0, NBL1 configuration ---------------------------------*/
+
+  GPIOD->CRL = 0x44BB44BBU;
   GPIOD->CRH = 0xBBBBBBBBU;
 
-  GPIOE->CRL = 0xB44444BBU;  
+  GPIOE->CRL = 0xB44444BBU;
   GPIOE->CRH = 0xBBBBBBBBU;
 
-  GPIOF->CRL = 0x44BBBBBBU;  
+  GPIOF->CRL = 0x44BBBBBBU;
   GPIOF->CRH = 0xBBBB4444U;
 
-  GPIOG->CRL = 0x44BBBBBBU;  
+  GPIOG->CRL = 0x44BBBBBBU;
   GPIOG->CRH = 0x444B4B44U;
-   
-/*----------------  FSMC Configuration ---------------------------------------*/  
-/*----------------  Enable FSMC Bank1_SRAM Bank ------------------------------*/
-  
+
+  /*----------------  FSMC Configuration ---------------------------------------*/
+  /*----------------  Enable FSMC Bank1_SRAM Bank ------------------------------*/
+
   FSMC_Bank1->BTCR[4U] = 0x00001091U;
   FSMC_Bank1->BTCR[5U] = 0x00110212U;
 }
@@ -441,8 +422,8 @@ void SystemInit_ExtMemCtl(void)
 /**
   * @}
   */
-  
+
 /**
   * @}
-  */    
+  */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
