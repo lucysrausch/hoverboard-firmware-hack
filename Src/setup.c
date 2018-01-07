@@ -73,6 +73,38 @@ void UART_Init() {
   DMA1->IFCR           = DMA_IFCR_CTCIF2 | DMA_IFCR_CHTIF2 | DMA_IFCR_CGIF2;
 }
 
+/*
+void UART_Init() {
+  __HAL_RCC_USART2_CLK_ENABLE();
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  UART_HandleTypeDef huart2;
+  huart2.Instance          = USART2;
+  huart2.Init.BaudRate     = 115200;
+  huart2.Init.WordLength   = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits     = UART_STOPBITS_1;
+  huart2.Init.Parity       = UART_PARITY_NONE;
+  huart2.Init.Mode         = UART_MODE_TX;
+  huart2.Init.HwFlowCtl    = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  HAL_UART_Init(&huart2);
+
+  USART2->CR3 |= USART_CR3_DMAT;  // | USART_CR3_DMAR | USART_CR3_OVRDIS;
+
+  GPIO_InitTypeDef GPIO_InitStruct;
+  GPIO_InitStruct.Pin   = GPIO_PIN_2;
+  GPIO_InitStruct.Pull  = GPIO_PULLUP;
+  GPIO_InitStruct.Mode  = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  DMA1_Channel7->CCR   = 0;
+  DMA1_Channel7->CPAR  = (uint32_t) & (USART3->DR);
+  DMA1_Channel7->CNDTR = 0;
+  DMA1_Channel7->CCR   = DMA_CCR_MINC | DMA_CCR_DIR;
+  DMA1->IFCR           = DMA_IFCR_CTCIF7 | DMA_IFCR_CHTIF7 | DMA_IFCR_CGIF7;
+}
+*/
 
 void MX_GPIO_Init(void) {
   GPIO_InitTypeDef GPIO_InitStruct;
@@ -261,6 +293,9 @@ void MX_TIM_Init(void) {
   sBreakDeadTimeConfig.AutomaticOutput  = TIM_AUTOMATICOUTPUT_DISABLE;
   HAL_TIMEx_ConfigBreakDeadTime(&htim_left, &sBreakDeadTimeConfig);
 
+  LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;
+  RIGHT_TIM->BDTR &= ~TIM_BDTR_MOE;
+
   HAL_TIM_PWM_Start(&htim_left, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim_left, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim_left, TIM_CHANNEL_3);
@@ -304,15 +339,17 @@ void MX_ADC1_Init(void) {
   multimode.Mode = ADC_DUALMODE_REGSIMULT;
   HAL_ADCEx_MultiModeConfigChannel(&hadc1, &multimode);
 
-  sConfig.SamplingTime = ADC_SAMPLETIME_13CYCLES_5;
+  sConfig.SamplingTime = ADC_SAMPLETIME_7CYCLES_5;
 
   sConfig.Channel = ADC_CHANNEL_14;
   sConfig.Rank    = 1;
   HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 
-  sConfig.Channel = ADC_CHANNEL_1;
+  sConfig.Channel = ADC_CHANNEL_0;
   sConfig.Rank    = 2;
   HAL_ADC_ConfigChannel(&hadc1, &sConfig);
+
+  sConfig.SamplingTime = ADC_SAMPLETIME_13CYCLES_5;
 
   sConfig.Channel = ADC_CHANNEL_11;
   sConfig.Rank    = 3;
@@ -362,7 +399,7 @@ void MX_ADC2_Init(void) {
   hadc2.Init.NbrOfConversion       = 5;
   HAL_ADC_Init(&hadc2);
 
-  sConfig.SamplingTime = ADC_SAMPLETIME_13CYCLES_5;
+  sConfig.SamplingTime = ADC_SAMPLETIME_7CYCLES_5;
 
   sConfig.Channel = ADC_CHANNEL_15;
   sConfig.Rank    = 1;
@@ -371,6 +408,8 @@ void MX_ADC2_Init(void) {
   sConfig.Channel = ADC_CHANNEL_13;
   sConfig.Rank    = 2;
   HAL_ADC_ConfigChannel(&hadc2, &sConfig);
+
+  sConfig.SamplingTime = ADC_SAMPLETIME_13CYCLES_5;
 
   sConfig.Channel = ADC_CHANNEL_10;
   sConfig.Rank    = 3;

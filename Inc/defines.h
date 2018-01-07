@@ -118,7 +118,7 @@
 #define CHARGER_PORT GPIOA
 
 #define PWM_FREQ 16000
-#define DEAD_TIME 50
+#define DEAD_TIME 32
 
 #define R 0.27
 #define P 15
@@ -151,8 +151,8 @@ typedef struct {
   uint16_t rr2;
   uint16_t rl1;
   uint16_t rl2;
-  uint16_t r_dc1;
-  uint16_t l_dc2;
+  uint16_t dcr;
+  uint16_t dcl;
   uint16_t batt1;
   uint16_t l_tx2;
   uint16_t bat1;
