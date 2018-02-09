@@ -180,7 +180,9 @@ void DMA1_Channel1_IRQHandler() {
 
   blockPhaseCurrent(posl, adc_buffer.rl1 - offsetrl1, adc_buffer.rl2 - offsetrl2, &curl);
 
-  consoleScope(0, 0, (adc_buffer.rl1 - offsetrl1) / 8, (adc_buffer.rl2 - offsetrl1) / 8, 0, 0, 0, 0);
+  setScopeChannel(2, (adc_buffer.rl1 - offsetrl1) / 8);
+  setScopeChannel(3, (adc_buffer.rl2 - offsetrl2) / 8);
+  consoleScope();
 
   timer++;
 

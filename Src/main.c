@@ -103,6 +103,8 @@ int main(void) {
     }
     lastSpeedL = speedL;
     lastSpeedR = speedR;
+    setScopeChannel(0, speedR);
+    setScopeChannel(1, speedL);
 
     // if(vel > milli_vel_cmd){
     //   HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
