@@ -30,6 +30,7 @@ extern TIM_HandleTypeDef htim_right;
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
 extern volatile adc_buf_t adc_buffer;
+extern volatile uint16_t ppm_captured_value[PPM_NUM_CHANNELS+1];
 
 extern volatile int pwml;
 extern volatile int pwmr;
@@ -66,10 +67,17 @@ int main(void) {
   MX_ADC2_Init();
   UART_Init();
 
+  #ifdef CONTROL_PPM
+    PPM_Init();
+  #endif
+
   HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 1);
 
   HAL_ADC_Start(&hadc1);
   HAL_ADC_Start(&hadc2);
+
+  int lastSpeedL = 0, lastSpeedR = 0;
+  int speedL = 0, speedR = 0;
 
   while(1) {
     HAL_Delay(0);
@@ -83,8 +91,18 @@ int main(void) {
     // milli_vel_error_sum = CLAMP(milli_vel_error_sum, -200000, 200000);
     // pwm = CLAMP(milli_vel_cmd / 5 + milli_vel_error_sum / 200, -500, 500);
     // cmdl = 70;
-    pwml = 150;
-    pwmr = 150;
+
+    #ifdef CONTROL_PPM
+      speedR = -(CLAMP((((ppm_captured_value[1]-500)-(ppm_captured_value[0]-500)/2.0)*(ppm_captured_value[2]/500.0)), -800, 800));
+      speedL = -(CLAMP((((ppm_captured_value[1]-500)+(ppm_captured_value[0]-500)/2.0)*(ppm_captured_value[2]/500.0)), -800, 800));
+    #endif
+
+    if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50)) {
+      pwmr = speedR;
+      pwml = speedL;
+    }
+    lastSpeedL = speedL;
+    lastSpeedR = speedR;
 
     // if(vel > milli_vel_cmd){
     //   HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
