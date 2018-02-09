@@ -117,13 +117,8 @@
 #define CHARGER_PIN GPIO_PIN_12
 #define CHARGER_PORT GPIOA
 
-#define PWM_FREQ 16000
-#define DEAD_TIME 32
-
-#define R 0.27
-#define P 15
-#define PSI 0.02
-#define V 23
+#define MOTOR_AMP_CONV_DC_AMP 0.02
+#define ADC_BATTERY_VOLT      0.02647435897435897435897435897436
 
 #define MILLI_R (R * 1000)
 #define MILLI_PSI (PSI * 1000)

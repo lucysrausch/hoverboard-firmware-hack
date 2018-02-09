@@ -35,6 +35,7 @@ pb10 usart3 dma1 channel2/3
 */
 
 #include "defines.h"
+#include "config.h"
 
 TIM_HandleTypeDef htim_right;
 TIM_HandleTypeDef htim_left;
@@ -48,7 +49,7 @@ void UART_Init() {
 
   UART_HandleTypeDef huart3;
   huart3.Instance          = USART3;
-  huart3.Init.BaudRate     = 115200;
+  huart3.Init.BaudRate     = DEBUG_BAUD;
   huart3.Init.WordLength   = UART_WORDLENGTH_8B;
   huart3.Init.StopBits     = UART_STOPBITS_1;
   huart3.Init.Parity       = UART_PARITY_NONE;
@@ -330,11 +331,11 @@ void MX_ADC1_Init(void) {
   hadc1.Init.NbrOfConversion       = 5;
   HAL_ADC_Init(&hadc1);
   /**Enable or disable the remapping of ADC1_ETRGREG:
-    * ADC1 External Event regular conversion is connected to TIM8 TRG0 
+    * ADC1 External Event regular conversion is connected to TIM8 TRG0
     */
   __HAL_AFIO_REMAP_ADC1_ETRGREG_ENABLE();
 
-  /**Configure the ADC multi-mode 
+  /**Configure the ADC multi-mode
     */
   multimode.Mode = ADC_DUALMODE_REGSIMULT;
   HAL_ADCEx_MultiModeConfigChannel(&hadc1, &multimode);
@@ -388,7 +389,7 @@ void MX_ADC2_Init(void) {
 
   // HAL_ADC_DeInit(&hadc2);
   // hadc2.Instance->CR2 = 0;
-  /**Common config 
+  /**Common config
     */
   hadc2.Instance                   = ADC2;
   hadc2.Init.ScanConvMode          = ADC_SCAN_ENABLE;
