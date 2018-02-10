@@ -7,7 +7,7 @@
 
 UART_HandleTypeDef huart2;
 
-volatile uint8_t uart_buf[300];
+volatile uint8_t uart_buf[100];
 volatile int16_t ch_buf[8];
 //volatile char char_buf[300];
 
@@ -37,8 +37,8 @@ void consoleScope() {
   #endif
 
   #ifdef DEBUG_SERIAL_ASCII
-    memset(&uart_buf, 0, sizeof(uart_buf));
-    sprintf(uart_buf, "%i;%i;%i;%i;%i;%i;%i;%i\n\r", ch_buf[0], ch_buf[1], ch_buf[2], ch_buf[3], ch_buf[4], ch_buf[5], ch_buf[6], ch_buf[7]);
+    memset(uart_buf, 0, sizeof(uart_buf));
+    sprintf(uart_buf, "%i;%i;%i;%i\n\r", ch_buf[0], ch_buf[1], ch_buf[2], ch_buf[3]);//, ch_buf[4], ch_buf[5], ch_buf[6], ch_buf[7]);
 
     if(DMA1_Channel2->CNDTR == 0) {
       DMA1_Channel2->CCR &= ~DMA_CCR_EN;

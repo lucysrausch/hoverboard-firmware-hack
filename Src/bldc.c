@@ -12,6 +12,13 @@ volatile int pwmr = 0;
 
 extern volatile adc_buf_t adc_buffer;
 
+extern volatile uint32_t timeout;
+
+uint8_t buzzerFreq = 0;
+uint8_t buzzerPattern = 0;
+
+uint8_t enable = 0;
+
 const int pwm_res = 64000000 / 2 / PWM_FREQ; // = 2000
 
 const uint8_t hall_to_pos[8] = {
@@ -112,6 +119,7 @@ inline void blockPhaseCurrent(int pos, int u, int v, int *q) {
 
 int last_pos     = 0;
 int timer        = 0;
+uint16_t buzzerTimer        = 0;
 int max_time     = PWM_FREQ / 10;
 volatile int vel = 0;
 
@@ -122,6 +130,8 @@ int offsetrr1   = 2000;
 int offsetrr2   = 2000;
 int offsetdcl   = 2000;
 int offsetdcr   = 2000;
+
+float batteryVoltage;
 
 int curl = 0;
 // int errorl = 0;
@@ -143,7 +153,9 @@ void DMA1_Channel1_IRQHandler() {
     return;
   }
 
-  if((adc_buffer.dcl - offsetdcl) * MOTOR_AMP_CONV_DC_AMP > DC_CUR_LIMIT) {
+  batteryVoltage = batteryVoltage * 0.99 + ((float)adc_buffer.batt1 * ADC_BATTERY_VOLT) * 0.01;
+
+  if((adc_buffer.dcl - offsetdcl) * MOTOR_AMP_CONV_DC_AMP > DC_CUR_LIMIT || timeout > 50 || enable == 0) {
     LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;
     //HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
   } else {
@@ -151,7 +163,7 @@ void DMA1_Channel1_IRQHandler() {
     //HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
   }
 
-  if((adc_buffer.dcr - offsetdcr) * MOTOR_AMP_CONV_DC_AMP  > DC_CUR_LIMIT) {
+  if((adc_buffer.dcr - offsetdcr) * MOTOR_AMP_CONV_DC_AMP  > DC_CUR_LIMIT || timeout > 50 || enable == 0) {
     RIGHT_TIM->BDTR &= ~TIM_BDTR_MOE;
   } else {
     RIGHT_TIM->BDTR |= TIM_BDTR_MOE;
@@ -182,9 +194,19 @@ void DMA1_Channel1_IRQHandler() {
 
   setScopeChannel(2, (adc_buffer.rl1 - offsetrl1) / 8);
   setScopeChannel(3, (adc_buffer.rl2 - offsetrl2) / 8);
-  consoleScope();
 
   timer++;
+  buzzerTimer++;
+
+
+  if (buzzerFreq != 0 && (buzzerTimer / 1500) % (buzzerPattern + 1) == 0) {
+    if (buzzerTimer % buzzerFreq == 0) {
+      HAL_GPIO_TogglePin(BUZZER_PORT, BUZZER_PIN);
+    }
+  } else {
+      HAL_GPIO_WritePin(BUZZER_PORT, BUZZER_PIN, 0);
+  }
+
 
   // if(timer > max_time){
   //   timer = max_time;

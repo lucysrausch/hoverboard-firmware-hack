@@ -140,6 +140,9 @@ void MX_GPIO_Init(void) {
   GPIO_InitStruct.Pin = CHARGER_PIN;
   HAL_GPIO_Init(CHARGER_PORT, &GPIO_InitStruct);
 
+  GPIO_InitStruct.Pin = BUTTON_PIN;
+  HAL_GPIO_Init(BUTTON_PORT, &GPIO_InitStruct);
+
 
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 

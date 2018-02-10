@@ -35,6 +35,15 @@ extern volatile uint16_t ppm_captured_value[PPM_NUM_CHANNELS+1];
 extern volatile int pwml;
 extern volatile int pwmr;
 
+extern uint8_t buzzerFreq;
+extern uint8_t buzzerPattern;
+
+extern uint8_t enable;
+
+extern volatile uint32_t timeout;
+
+extern float batteryVoltage;
+
 
 int milli_vel_error_sum = 0;
 
@@ -67,20 +76,30 @@ int main(void) {
   MX_ADC2_Init();
   UART_Init();
 
-  #ifdef CONTROL_PPM
-    PPM_Init();
-  #endif
-
   HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 1);
 
   HAL_ADC_Start(&hadc1);
   HAL_ADC_Start(&hadc2);
 
+  for (int i = 8; i >= 0; i--) {
+    buzzerFreq = i;
+    HAL_Delay(100);
+  }
+  buzzerFreq = 0;
+
+  HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
+
   int lastSpeedL = 0, lastSpeedR = 0;
   int speedL = 0, speedR = 0;
 
+  #ifdef CONTROL_PPM
+    PPM_Init();
+  #endif
+
+  enable = 1;
+
   while(1) {
-    HAL_Delay(0);
+    HAL_Delay(10);
     // int milli_cur = 3000;
     // int milli_volt = milli_cur * MILLI_R / 1000;// + vel * MILLI_PSI * 141;
     // // pwm = milli_volt * pwm_res / MILLI_V;
@@ -93,18 +112,54 @@ int main(void) {
     // cmdl = 70;
 
     #ifdef CONTROL_PPM
-      speedR = -(CLAMP((((ppm_captured_value[1]-500)-(ppm_captured_value[0]-500)/2.0)*(ppm_captured_value[2]/500.0)), -800, 800));
       speedL = -(CLAMP((((ppm_captured_value[1]-500)+(ppm_captured_value[0]-500)/2.0)*(ppm_captured_value[2]/500.0)), -800, 800));
+      speedR = (CLAMP((((ppm_captured_value[1]-500)-(ppm_captured_value[0]-500)/2.0)*(ppm_captured_value[2]/500.0)), -800, 800));
     #endif
 
-    if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50)) {
+    if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < 50) {
       pwmr = speedR;
       pwml = speedL;
     }
+
     lastSpeedL = speedL;
     lastSpeedR = speedR;
     setScopeChannel(0, speedR);
     setScopeChannel(1, speedL);
+
+    consoleScope();
+
+    timeout++;
+
+    if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
+      enable = 0;
+      for (int i = 0; i < 8; i++) {
+        buzzerFreq = i;
+        HAL_Delay(100);
+      }
+      HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0);
+      while(1) {}
+    }
+
+    if (batteryVoltage < 36.0 && batteryVoltage > 33.0) {
+      buzzerFreq = 5;
+      buzzerPattern = 8;
+    } else if  (batteryVoltage < 33.0 && batteryVoltage > 30.0) {
+      buzzerFreq = 5;
+      buzzerPattern = 1;
+    } else if  (batteryVoltage < 30.0) {
+      buzzerPattern = 0;
+      enable = 0;
+      for (int i = 0; i < 8; i++) {
+        buzzerFreq = i;
+        HAL_Delay(100);
+      }
+      HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0);
+      while(1) {}
+    } else {
+      buzzerFreq = 0;
+      buzzerPattern = 0;
+    }
+
 
     // if(vel > milli_vel_cmd){
     //   HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
