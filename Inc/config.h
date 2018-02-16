@@ -13,7 +13,7 @@
 #define PWM_FREQ         16000     // PWM frequency in Hz
 #define DEAD_TIME        32        // PWM deadtime
 
-#define DC_CUR_LIMIT     32         // Motor DC current limit in amps
+#define DC_CUR_LIMIT     34         // Motor DC current limit in amps
 
 //#define DEBUG_SERIAL_SERVOTERM
 #define DEBUG_SERIAL_ASCII

@@ -153,9 +153,9 @@ void DMA1_Channel1_IRQHandler() {
     return;
   }
 
-  batteryVoltage = batteryVoltage * 0.99 + ((float)adc_buffer.batt1 * ADC_BATTERY_VOLT) * 0.01;
+  batteryVoltage = batteryVoltage * 0.999 + ((float)adc_buffer.batt1 * ADC_BATTERY_VOLT) * 0.001;
 
-  if((adc_buffer.dcl - offsetdcl) * MOTOR_AMP_CONV_DC_AMP > DC_CUR_LIMIT || timeout > 50 || enable == 0) {
+  if(ABS((adc_buffer.dcl - offsetdcl) * MOTOR_AMP_CONV_DC_AMP) > DC_CUR_LIMIT || timeout > 50 || enable == 0) {
     LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;
     //HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
   } else {
@@ -163,7 +163,7 @@ void DMA1_Channel1_IRQHandler() {
     //HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
   }
 
-  if((adc_buffer.dcr - offsetdcr) * MOTOR_AMP_CONV_DC_AMP  > DC_CUR_LIMIT || timeout > 50 || enable == 0) {
+  if(ABS((adc_buffer.dcr - offsetdcr) * MOTOR_AMP_CONV_DC_AMP)  > DC_CUR_LIMIT || timeout > 50 || enable == 0) {
     RIGHT_TIM->BDTR &= ~TIM_BDTR_MOE;
   } else {
     RIGHT_TIM->BDTR |= TIM_BDTR_MOE;
