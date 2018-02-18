@@ -128,7 +128,7 @@ int main(void) {
 
     consoleScope();
 
-    timeout++;
+    timeout=0;
 
     if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
       enable = 0;

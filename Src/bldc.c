@@ -9,6 +9,7 @@ volatile int posl = 0;
 volatile int posr = 0;
 volatile int pwml = 0;
 volatile int pwmr = 0;
+float pwmrl = 0;
 
 extern volatile adc_buf_t adc_buffer;
 
@@ -117,11 +118,7 @@ inline void blockPhaseCurrent(int pos, int u, int v, int *q) {
   }
 }
 
-int last_pos     = 0;
-int timer        = 0;
 uint16_t buzzerTimer        = 0;
-int max_time     = PWM_FREQ / 10;
-volatile int vel = 0;
 
 int offsetcount = 0;
 int offsetrl1   = 2000;
@@ -132,11 +129,18 @@ int offsetdcl   = 2000;
 int offsetdcr   = 2000;
 
 float batteryVoltage;
+float adccmd1;
+float adccmd2;
 
 int curl = 0;
 // int errorl = 0;
 // int kp = 5;
 // volatile int cmdl = 0;
+
+int last_pos = 0;
+int timer = 0;
+const int max_time = PWM_FREQ / 10;
+volatile int vel = 0;
 
 void DMA1_Channel1_IRQHandler() {
   DMA1->IFCR = DMA_IFCR_CTCIF1;
@@ -154,6 +158,21 @@ void DMA1_Channel1_IRQHandler() {
   }
 
   batteryVoltage = batteryVoltage * 0.999 + ((float)adc_buffer.batt1 * ADC_BATTERY_VOLT) * 0.001;
+  adccmd1 = adccmd1 * 0.999 + (float)adc_buffer.l_rx2 * 0.001;
+  adccmd2 = adccmd2 * 0.999 + (float)adc_buffer.l_tx2 * 0.001;
+
+  //0-4096
+  //+-2000
+  
+  pwmrl = 0;
+  if(adccmd1 - 700 > 0){
+    pwmrl += adccmd1 - 700;
+  }
+  if(adccmd2 - 700 > 0){
+    pwmrl -= adccmd2 - 700;
+  }
+  pwml = -pwmrl/4;
+  pwmr = pwmrl/4;
 
   if(ABS((adc_buffer.dcl - offsetdcl) * MOTOR_AMP_CONV_DC_AMP) > DC_CUR_LIMIT || timeout > 50 || enable == 0) {
     LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;
@@ -195,9 +214,7 @@ void DMA1_Channel1_IRQHandler() {
   setScopeChannel(2, (adc_buffer.rl1 - offsetrl1) / 8);
   setScopeChannel(3, (adc_buffer.rl2 - offsetrl2) / 8);
 
-  timer++;
   buzzerTimer++;
-
 
   if (buzzerFreq != 0 && (buzzerTimer / 1500) % (buzzerPattern + 1) == 0) {
     if (buzzerTimer % buzzerFreq == 0) {
@@ -207,22 +224,23 @@ void DMA1_Channel1_IRQHandler() {
       HAL_GPIO_WritePin(BUZZER_PORT, BUZZER_PIN, 0);
   }
 
-
+  // //measure vel
+  // timer++;
   // if(timer > max_time){
   //   timer = max_time;
   //   vel = 0;
   // }
 
-  // if(pos != last_pos){
+  // if(posl != last_pos){
   //   vel = 1000 * PWM_FREQ / timer / P / 6 * 2;
 
-  //   if((pos - last_pos + 6) % 6 > 2){
+  //   if((posl - last_pos + 6) % 6 > 2){
   //     vel = -vel;
   //   }
 
   //   timer = 0;
   // }
-  // last_pos = pos;
+  // last_pos = posl;
 
   //YOLOTEST
   // errorl = cmdl - curl;
