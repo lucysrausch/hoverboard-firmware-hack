@@ -132,6 +132,7 @@ int main(void) {
 
     if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
       enable = 0;
+      while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {}
       for (int i = 0; i < 8; i++) {
         buzzerFreq = i;
         HAL_Delay(100);

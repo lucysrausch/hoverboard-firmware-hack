@@ -163,7 +163,7 @@ void DMA1_Channel1_IRQHandler() {
 
   //0-4096
   //+-2000
-  
+
   pwmrl = 0;
   if(adccmd1 - 700 > 0){
     pwmrl += adccmd1 - 700;
@@ -171,8 +171,12 @@ void DMA1_Channel1_IRQHandler() {
   if(adccmd2 - 700 > 0){
     pwmrl -= adccmd2 - 700;
   }
-  pwml = -pwmrl/4;
-  pwmr = pwmrl/4;
+
+  pwmrl = powf((pwmrl/4), 3) / 614125;
+  pwml = -pwmrl;
+  pwmr = pwmrl;
+
+
 
   if(ABS((adc_buffer.dcl - offsetdcl) * MOTOR_AMP_CONV_DC_AMP) > DC_CUR_LIMIT || timeout > 50 || enable == 0) {
     LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;
