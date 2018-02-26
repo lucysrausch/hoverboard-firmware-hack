@@ -9,7 +9,7 @@ volatile int posl = 0;
 volatile int posr = 0;
 volatile int pwml = 0;
 volatile int pwmr = 0;
-float pwmrl = 0;
+int16_t pwmrl = 0;
 
 extern volatile adc_buf_t adc_buffer;
 
@@ -166,13 +166,21 @@ void DMA1_Channel1_IRQHandler() {
 
   pwmrl = 0;
   if(adccmd1 - 700 > 0){
-    pwmrl += adccmd1 - 700;
+    pwmrl -= adccmd1 - 700;
   }
   if(adccmd2 - 700 > 0){
-    pwmrl -= adccmd2 - 700;
+    pwmrl += adccmd2 - 700;
   }
 
-  pwmrl = powf((pwmrl/4), 3) / 614125;
+  if (pwmrl < -100 && enable == 1) {
+    buzzerFreq = 5;
+    buzzerPattern = 1;
+  } else if (enable == 1) {
+    buzzerFreq = 0;
+    buzzerPattern = 1;
+  }
+
+  pwmrl = powf((pwmrl/4), 3) / 255885;
   pwml = -pwmrl;
   pwmr = pwmrl;
 
@@ -220,7 +228,7 @@ void DMA1_Channel1_IRQHandler() {
 
   buzzerTimer++;
 
-  if (buzzerFreq != 0 && (buzzerTimer / 1500) % (buzzerPattern + 1) == 0) {
+  if (buzzerFreq != 0 && (buzzerTimer / 5000) % (buzzerPattern + 1) == 0) {
     if (buzzerTimer % buzzerFreq == 0) {
       HAL_GPIO_TogglePin(BUZZER_PORT, BUZZER_PIN);
     }
