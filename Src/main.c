@@ -119,8 +119,10 @@ int main(void) {
 
     #ifdef CONTROL_NUNCHUCK
       Nunchuck_Read();
-      setScopeChannel(0, (int)nunchuck_data[0]);
-      setScopeChannel(1, (int)nunchuck_data[1]);
+      adccmd1 = adccmd1 * 0.9 + (float)nunchuck_data[0] * 0.1;
+      adccmd2 = adccmd2 * 0.9 + (float)nunchuck_data[1] * 0.1;
+      setScopeChannel(0, adccmd1);
+      setScopeChannel(1, adccmd2);
       setScopeChannel(2, (int)nunchuck_data[5] & 1);
       setScopeChannel(3, ((int)nunchuck_data[5] >> 1) & 1);
     #endif
