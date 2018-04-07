@@ -9,7 +9,10 @@ volatile int posl = 0;
 volatile int posr = 0;
 volatile int pwml = 0;
 volatile int pwmr = 0;
-int16_t pwmrl = 0;
+volatile int weakl = 0;
+volatile int weakr = 0;
+
+extern volatile int pwmrl;
 
 extern volatile adc_buf_t adc_buffer;
 
@@ -128,7 +131,7 @@ int offsetrr2   = 2000;
 int offsetdcl   = 2000;
 int offsetdcr   = 2000;
 
-float batteryVoltage;
+float batteryVoltage = 40.0;
 float adccmd1;
 float adccmd2;
 
@@ -157,32 +160,20 @@ void DMA1_Channel1_IRQHandler() {
     return;
   }
 
-  batteryVoltage = batteryVoltage * 0.999 + ((float)adc_buffer.batt1 * ADC_BATTERY_VOLT) * 0.001;
-  adccmd1 = adccmd1 * 0.999 + (float)adc_buffer.l_rx2 * 0.001;
-  adccmd2 = adccmd2 * 0.999 + (float)adc_buffer.l_tx2 * 0.001;
-
-  //0-4096
-  //+-2000
-
-  pwmrl = 0;
-  if(adccmd1 - 700 > 0){
-    pwmrl -= adccmd1 - 700;
-  }
-  if(adccmd2 - 700 > 0){
-    pwmrl += adccmd2 - 700;
+  if (buzzerTimer % 100 == 0) {
+    batteryVoltage = batteryVoltage * 0.999 + ((float)adc_buffer.batt1 * ADC_BATTERY_VOLT) * 0.001;
   }
 
-  if (pwmrl < -100 && enable == 1) {
-    buzzerFreq = 5;
-    buzzerPattern = 1;
-  } else if (enable == 1) {
-    buzzerFreq = 0;
-    buzzerPattern = 1;
-  }
 
-  pwmrl = powf((pwmrl/4), 3) / 255885;
-  pwml = -pwmrl;
-  pwmr = pwmrl;
+  #ifdef BEEPS_BACKWARD
+    if (pwmrl < -50 && enable == 1) {
+      buzzerFreq = 5;
+      buzzerPattern = 1;
+    } else if (enable == 1) {
+      buzzerFreq = 0;
+      buzzerPattern = 1;
+    }
+  #endif
 
 
 
@@ -258,8 +249,31 @@ void DMA1_Channel1_IRQHandler() {
   // errorl = cmdl - curl;
   // pwml = kp * errorl;
 
+
   blockPWM(pwml, posl, &ul, &vl, &wl);
   blockPWM(pwmr, posr, &ur, &vr, &wr);
+
+
+  int weakul, weakvl, weakwl;
+  if (pwml > 0) {
+    blockPWM(weakl, (posl+5) % 6, &weakul, &weakvl, &weakwl);
+  } else {
+    blockPWM(-weakl, (posl+1) % 6, &weakul, &weakvl, &weakwl);
+  }
+  ul += weakul;
+  vl += weakvl;
+  wl += weakwl;
+
+  int weakur, weakvr, weakwr;
+  if (pwmr > 0) {
+    blockPWM(weakr, (posr+5) % 6, &weakur, &weakvr, &weakwr);
+  } else {
+    blockPWM(-weakr, (posr+1) % 6, &weakur, &weakvr, &weakwr);
+  }
+  ur += weakur;
+  vr += weakvr;
+  wr += weakwr;
+//  blockPWM(pwmr, posr, &ur, &vr, &wr);
 
   LEFT_TIM->LEFT_TIM_U = CLAMP(ul + pwm_res / 2, 10, pwm_res-10);
   LEFT_TIM->LEFT_TIM_V = CLAMP(vl + pwm_res / 2, 10, pwm_res-10);

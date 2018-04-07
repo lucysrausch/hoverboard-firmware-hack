@@ -45,7 +45,7 @@ extern "C" {
 
 /* ########################## Module Selection ############################## */
 /**
-  * @brief This is the list of modules to be used in the HAL driver 
+  * @brief This is the list of modules to be used in the HAL driver
   */
 
 #define HAL_MODULE_ENABLED
@@ -60,7 +60,7 @@ extern "C" {
 /*#define HAL_ETH_MODULE_ENABLED   */
 /*#define HAL_FLASH_MODULE_ENABLED   */
 #define HAL_GPIO_MODULE_ENABLED
-/*#define HAL_I2C_MODULE_ENABLED   */
+#define HAL_I2C_MODULE_ENABLED
 /*#define HAL_I2S_MODULE_ENABLED   */
 /*#define HAL_IRDA_MODULE_ENABLED   */
 /*#define HAL_IWDG_MODULE_ENABLED   */
@@ -94,7 +94,7 @@ extern "C" {
 /**
   * @brief Adjust the value of External High Speed oscillator (HSE) used in your application.
   *        This value is used by the RCC HAL module to compute the system frequency
-  *        (when HSE is used as system clock source, directly or through the PLL).  
+  *        (when HSE is used as system clock source, directly or through the PLL).
   */
 #if !defined(HSE_VALUE)
 #define HSE_VALUE ((uint32_t)8000000) /*!< Value of the External oscillator in Hz */
@@ -107,7 +107,7 @@ extern "C" {
 /**
   * @brief Internal High Speed oscillator (HSI) value.
   *        This value is used by the RCC HAL module to compute the system frequency
-  *        (when HSI is used as system clock source, directly or through the PLL). 
+  *        (when HSI is used as system clock source, directly or through the PLL).
   */
 #if !defined(HSI_VALUE)
 #define HSI_VALUE ((uint32_t)8000000) /*!< Value of the Internal oscillator in Hz*/
@@ -148,7 +148,7 @@ extern "C" {
 
 /* ########################## Assert Selection ############################## */
 /**
-  * @brief Uncomment the line below to expanse the "assert_param" macro in the 
+  * @brief Uncomment the line below to expanse the "assert_param" macro in the
   *        HAL drivers code
   */
 /* #define USE_FULL_ASSERT    1U */
@@ -211,7 +211,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 /**
-  * @brief Include module's header file 
+  * @brief Include module's header file
   */
 
 #ifdef HAL_RCC_MODULE_ENABLED
@@ -345,7 +345,7 @@ extern "C" {
   * @brief  The assert_param macro is used for function's parameters check.
   * @param  expr: If expr is false, it calls assert_failed function
   *         which reports the name of the source file and the source
-  *         line number of the call that failed. 
+  *         line number of the call that failed.
   *         If expr is true, it returns no value.
   * @retval None
   */

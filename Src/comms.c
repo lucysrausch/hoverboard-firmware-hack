@@ -7,6 +7,15 @@
 
 UART_HandleTypeDef huart2;
 
+#ifdef DEBUG_SERIAL_USART3
+#define UART_DMA_CHANNEL DMA1_Channel2
+#endif
+
+#ifdef DEBUG_SERIAL_USART2
+#define UART_DMA_CHANNEL DMA1_Channel7
+#endif
+
+
 volatile uint8_t uart_buf[100];
 volatile int16_t ch_buf[8];
 //volatile char char_buf[300];
@@ -28,11 +37,11 @@ void consoleScope() {
     uart_buf[8] = CLAMP(ch_buf[7]+127, 0, 255);
     uart_buf[9] = '\n';
 
-    if(DMA1_Channel2->CNDTR == 0) {
-      DMA1_Channel2->CCR &= ~DMA_CCR_EN;
-      DMA1_Channel2->CNDTR = 10;
-      DMA1_Channel2->CMAR  = (uint32_t)uart_buf;
-      DMA1_Channel2->CCR |= DMA_CCR_EN;
+    if(UART_DMA_CHANNEL->CNDTR == 0) {
+      UART_DMA_CHANNEL->CCR &= ~DMA_CCR_EN;
+      UART_DMA_CHANNEL->CNDTR = 10;
+      UART_DMA_CHANNEL->CMAR  = (uint32_t)uart_buf;
+      UART_DMA_CHANNEL->CCR |= DMA_CCR_EN;
     }
   #endif
 
@@ -40,11 +49,11 @@ void consoleScope() {
     memset(uart_buf, 0, sizeof(uart_buf));
     sprintf(uart_buf, "%i;%i;%i;%i\n\r", ch_buf[0], ch_buf[1], ch_buf[2], ch_buf[3]);//, ch_buf[4], ch_buf[5], ch_buf[6], ch_buf[7]);
 
-    if(DMA1_Channel2->CNDTR == 0) {
-      DMA1_Channel2->CCR &= ~DMA_CCR_EN;
-      DMA1_Channel2->CNDTR = strlen(uart_buf);
-      DMA1_Channel2->CMAR  = (uint32_t)uart_buf;
-      DMA1_Channel2->CCR |= DMA_CCR_EN;
+    if(UART_DMA_CHANNEL->CNDTR == 0) {
+      UART_DMA_CHANNEL->CCR &= ~DMA_CCR_EN;
+      UART_DMA_CHANNEL->CNDTR = strlen(uart_buf);
+      UART_DMA_CHANNEL->CMAR  = (uint32_t)uart_buf;
+      UART_DMA_CHANNEL->CCR |= DMA_CCR_EN;
     }
   #endif
 }

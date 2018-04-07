@@ -25,6 +25,9 @@
 
 void SystemClock_Config(void);
 
+extern float adccmd1;
+extern float adccmd2;
+
 extern TIM_HandleTypeDef htim_left;
 extern TIM_HandleTypeDef htim_right;
 extern ADC_HandleTypeDef hadc1;
@@ -34,6 +37,10 @@ extern volatile uint16_t ppm_captured_value[PPM_NUM_CHANNELS+1];
 
 extern volatile int pwml;
 extern volatile int pwmr;
+extern volatile int weakl;
+extern volatile int weakr;
+
+volatile int pwmrl = 0;
 
 extern uint8_t buzzerFreq;
 extern uint8_t buzzerPattern;
@@ -43,6 +50,7 @@ extern uint8_t enable;
 extern volatile uint32_t timeout;
 
 extern float batteryVoltage;
+extern uint8_t nunchuck_data[6];
 
 
 int milli_vel_error_sum = 0;
@@ -91,40 +99,79 @@ int main(void) {
 
   int lastSpeedL = 0, lastSpeedR = 0;
   int speedL = 0, speedR = 0;
+  float direction = 1;
 
   #ifdef CONTROL_PPM
     PPM_Init();
   #endif
 
+  #ifdef CONTROL_NUNCHUCK
+    I2C_Init();
+    Nunchuck_Init();
+  #endif
+
+
+
   enable = 1;
 
   while(1) {
-    HAL_Delay(10);
-    // int milli_cur = 3000;
-    // int milli_volt = milli_cur * MILLI_R / 1000;// + vel * MILLI_PSI * 141;
-    // // pwm = milli_volt * pwm_res / MILLI_V;
+    HAL_Delay(2);
 
-    // int milli_vel_cmd = 200;
-    // int milli_vel_error = milli_vel_cmd - vel;
-    // milli_vel_error_sum += milli_vel_error;
-    // milli_vel_error_sum = CLAMP(milli_vel_error_sum, -200000, 200000);
-    // pwm = CLAMP(milli_vel_cmd / 5 + milli_vel_error_sum / 200, -500, 500);
-    // cmdl = 70;
+    #ifdef CONTROL_NUNCHUCK
+      Nunchuck_Read();
+      setScopeChannel(0, (int)nunchuck_data[0]);
+      setScopeChannel(1, (int)nunchuck_data[1]);
+      setScopeChannel(2, (int)nunchuck_data[5] & 1);
+      setScopeChannel(3, ((int)nunchuck_data[5] >> 1) & 1);
+    #endif
+
 
     #ifdef CONTROL_PPM
       speedL = -(CLAMP((((ppm_captured_value[1]-500)+(ppm_captured_value[0]-500)/2.0)*(ppm_captured_value[2]/500.0)), -800, 800));
       speedR = (CLAMP((((ppm_captured_value[1]-500)-(ppm_captured_value[0]-500)/2.0)*(ppm_captured_value[2]/500.0)), -800, 800));
+      if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < 50) {
+        //pwmr = speedR;
+        //pwml = speedL;
+      }
+
+      lastSpeedL = speedL;
+      lastSpeedR = speedR;
+      //setScopeChannel(0, (int)pwmrl);
+      //setScopeChannel(1, (int)speedL);
     #endif
 
-    if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < 50) {
-      pwmr = speedR;
-      pwml = speedL;
-    }
+    #ifdef CONTROL_ADC
+      //adccmd1 = adccmd1 * 0.9 + (float)adc_buffer.l_rx2 * 0.1; // throttle
+      adccmd2 = adccmd2 * 0.9 + (float)adc_buffer.l_tx2 * 0.1; // button
 
-    lastSpeedL = speedL;
-    lastSpeedR = speedR;
-    setScopeChannel(0, speedR);
-    setScopeChannel(1, speedL);
+      pwmrl = pwmrl * 0.9 + (CLAMP(adc_buffer.l_rx2 - 700, 0, 2350) / 2.35) * 0.1 * direction;
+      // pwmrl has to be 0-1000 (or negative when driving backwards)
+
+      setScopeChannel(0, (int)adccmd1);
+      setScopeChannel(1, (int)adccmd2);
+
+      // adccmd2 = button, ranges 0 in idle and 4096 when pressed
+      if (adccmd2 > 2000 && pwmrl < 300) { // driving backwards at low speeds
+        direction = -0.2;
+      } else {
+        direction = 1;
+      }
+
+      if (adccmd2 > 2000 && pwmrl > 700) { // field weakening at high speeds
+        weakl = pwmrl - 600; // weak should never exceed 400 or 450 MAX!!
+        weakr = pwmrl - 600;
+      } else {
+        weakl = 0;
+        weakr = 0;
+      }
+
+      if (pwml < 1000) {
+        pwml +=1;
+      }
+
+      pwml = pwmrl;
+      pwmr = -pwmrl;
+    #endif
 
     consoleScope();
 
@@ -162,14 +209,6 @@ int main(void) {
       buzzerFreq = 0;
       buzzerPattern = 0;
     }
-
-
-    // if(vel > milli_vel_cmd){
-    //   HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
-    // }
-    // else{
-    //   HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
-    // }
   }
 }
 
