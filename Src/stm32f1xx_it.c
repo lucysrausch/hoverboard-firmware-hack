@@ -168,7 +168,7 @@ void SysTick_Handler(void) {
   /* USER CODE END SysTick_IRQn 1 */
 }
 
-
+#ifdef CONTROL_NUNCHUCK
 extern I2C_HandleTypeDef hi2c2;
 void I2C1_EV_IRQHandler(void)
 {
@@ -207,14 +207,15 @@ void DMA1_Channel5_IRQHandler(void)
 
   /* USER CODE END DMA1_Channel5_IRQn 1 */
 }
+#endif
 
-
-
+#ifdef CONTROL_PPM
 void EXTI3_IRQHandler(void)
 {
     PPM_ISR_Callback();
     __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_3);
 }
+#endif
 
 /******************************************************************************/
 /* STM32F1xx Peripheral Interrupt Handlers                                    */

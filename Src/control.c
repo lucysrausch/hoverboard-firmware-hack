@@ -5,7 +5,6 @@
 #include "config.h"
 
 TIM_HandleTypeDef TimHandle;
-uint16_t ppm_captured_value[PPM_NUM_CHANNELS+1] = {0};
 uint8_t ppm_count = 0;
 uint32_t timeout = 100;
 uint8_t nunchuck_data[6] = {0};
@@ -15,6 +14,9 @@ uint8_t ai2cBuffer[6];
 extern I2C_HandleTypeDef hi2c2;
 DMA_HandleTypeDef hdma_i2c2_rx;
 DMA_HandleTypeDef hdma_i2c2_tx;
+
+#ifdef CONTROL_PPM
+uint16_t ppm_captured_value[PPM_NUM_CHANNELS+1] = {0};
 
 void PPM_ISR_Callback() {
   // Dummy loop with 16 bit count wrap around
@@ -54,7 +56,7 @@ void PPM_Init() {
   HAL_NVIC_EnableIRQ(EXTI3_IRQn);
   HAL_TIM_Base_Start(&TimHandle);
 }
-
+#endif
 
 void Nunchuck_Init() {
     //-- START -- init WiiNunchuck

@@ -25,15 +25,21 @@
 
 void SystemClock_Config(void);
 
-extern float adccmd1;
-extern float adccmd2;
+int cmd1;
+int cmd2;
+int cmd3;
+
+int steer;
+int speed;
 
 extern TIM_HandleTypeDef htim_left;
 extern TIM_HandleTypeDef htim_right;
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
 extern volatile adc_buf_t adc_buffer;
+#ifdef CONTROL_PPM
 extern volatile uint16_t ppm_captured_value[PPM_NUM_CHANNELS+1];
+#endif
 
 extern volatile int pwml;
 extern volatile int pwmr;
@@ -110,8 +116,6 @@ int main(void) {
     Nunchuck_Init();
   #endif
 
-
-
   enable = 1;
 
   while(1) {
@@ -119,62 +123,51 @@ int main(void) {
 
     #ifdef CONTROL_NUNCHUCK
       Nunchuck_Read();
-      adccmd1 = adccmd1 * 0.9 + (float)nunchuck_data[0] * 0.1;
-      adccmd2 = adccmd2 * 0.9 + (float)nunchuck_data[1] * 0.1;
-      setScopeChannel(0, adccmd1);
-      setScopeChannel(1, adccmd2);
-      setScopeChannel(2, (int)nunchuck_data[5] & 1);
-      setScopeChannel(3, ((int)nunchuck_data[5] >> 1) & 1);
+      cmd1 = CLAMP((nunchuck_data[0] - 127) * 10, -1000, 1000);
+      cmd2 = CLAMP((nunchuck_data[1] - 127) * 10, -1000, 1000);
+
+      //uint8_t button1 = (uint8_t)nunchuck_data[5] & 1;
+      //uint8_t button2 = (uint8_t)(nunchuck_data[5] >> 1) & 1;
+
+      timeout = 0;
     #endif
 
-
     #ifdef CONTROL_PPM
-      speedL = -(CLAMP((((ppm_captured_value[1]-500)+(ppm_captured_value[0]-500)/2.0)*(ppm_captured_value[2]/500.0)), -800, 800));
-      speedR = (CLAMP((((ppm_captured_value[1]-500)-(ppm_captured_value[0]-500)/2.0)*(ppm_captured_value[2]/500.0)), -800, 800));
-      if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < 50) {
-        //pwmr = speedR;
-        //pwml = speedL;
-      }
-
-      lastSpeedL = speedL;
-      lastSpeedR = speedR;
-      //setScopeChannel(0, (int)pwmrl);
-      //setScopeChannel(1, (int)speedL);
+      cmd1 = CLAMP((ppm_captured_value[0] - 500) * 2, -1000, 1000);
+      cmd2 = CLAMP((ppm_captured_value[1] - 500) * 2, -1000, 1000);
     #endif
 
     #ifdef CONTROL_ADC
-      //adccmd1 = adccmd1 * 0.9 + (float)adc_buffer.l_rx2 * 0.1; // throttle
-      adccmd2 = adccmd2 * 0.9 + (float)adc_buffer.l_tx2 * 0.1; // button
+      cmd1 = CLAMP(adc_buffer.l_rx2 - 700, 0, 2350) / 2.35;
+      //uint8_t button1 = (uint8_t)(adc_buffer.l_tx2 > 2000);
 
-      pwmrl = pwmrl * 0.9 + (CLAMP(adc_buffer.l_rx2 - 700, 0, 2350) / 2.35) * 0.1 * direction;
-      // pwmrl has to be 0-1000 (or negative when driving backwards)
-
-      setScopeChannel(0, (int)adccmd1);
-      setScopeChannel(1, (int)adccmd2);
-
-      // adccmd2 = button, ranges 0 in idle and 4096 when pressed
-      if (adccmd2 > 2000 && pwmrl < 300) { // driving backwards at low speeds
-        direction = -0.2;
-      } else {
-        direction = 1;
-      }
-
-      if (adccmd2 > 2000 && pwmrl > 700) { // field weakening at high speeds
-        weakl = pwmrl - 600; // weak should never exceed 400 or 450 MAX!!
-        weakr = pwmrl - 600;
-      } else {
-        weakl = 0;
-        weakr = 0;
-      }
-
-      if (pwml < 1000) {
-        pwml +=1;
-      }
-
-      pwml = pwmrl;
-      pwmr = -pwmrl;
+      timeout = 0;
     #endif
 
+    // ####### LOW-PASS FILTER #######
+    speed = speed * (1.0 - FILTER) + cmd1 * FILTER;
+    steer = steer * (1.0 - FILTER) + cmd2 * FILTER;
+
+    setScopeChannel(0, (int)speed);
+    setScopeChannel(1, (int)steer);
+
+    // ####### MIXER #######
+    speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
+    speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
+
+    setScopeChannel(2, (int)speedR);
+    setScopeChannel(3, (int)speedL);
+
+    // ####### SET OUTPUTS #######
+    if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < 50) {
+      pwmr = speedR;
+      pwml = speedL;
+    }
+
+    lastSpeedL = speedL;
+    lastSpeedR = speedR;
+
+    // ####### LOG TO CONSOLE #######
     consoleScope();
 
     timeout=0;

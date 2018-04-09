@@ -12,7 +12,7 @@ volatile int pwmr = 0;
 volatile int weakl = 0;
 volatile int weakr = 0;
 
-extern volatile int pwmrl;
+extern volatile int speed;
 
 extern volatile adc_buf_t adc_buffer;
 
@@ -132,8 +132,6 @@ int offsetdcl   = 2000;
 int offsetdcr   = 2000;
 
 float batteryVoltage = 40.0;
-float adccmd1;
-float adccmd2;
 
 int curl = 0;
 // int errorl = 0;
@@ -166,7 +164,7 @@ void DMA1_Channel1_IRQHandler() {
 
 
   #ifdef BEEPS_BACKWARD
-    if (pwmrl < -50 && enable == 1) {
+    if (speed < -50 && enable == 1) {
       buzzerFreq = 5;
       buzzerPattern = 1;
     } else if (enable == 1) {
@@ -214,8 +212,8 @@ void DMA1_Channel1_IRQHandler() {
 
   blockPhaseCurrent(posl, adc_buffer.rl1 - offsetrl1, adc_buffer.rl2 - offsetrl2, &curl);
 
-  setScopeChannel(2, (adc_buffer.rl1 - offsetrl1) / 8);
-  setScopeChannel(3, (adc_buffer.rl2 - offsetrl2) / 8);
+  //setScopeChannel(2, (adc_buffer.rl1 - offsetrl1) / 8);
+  //setScopeChannel(3, (adc_buffer.rl2 - offsetrl2) / 8);
 
   buzzerTimer++;
 
