@@ -12,16 +12,20 @@
 
 // ################################################################################
 
-#define PWM_FREQ         16000     // PWM frequency in Hz
-#define DEAD_TIME        32        // PWM deadtime
+#define PWM_FREQ         16000      // PWM frequency in Hz
+#define DEAD_TIME        32         // PWM deadtime
 
 #define DC_CUR_LIMIT     35         // Motor DC current limit in amps
+
+#define BAT_LOW_LVL1     36.0       // gently beeps at this voltage level
+#define BAT_LOW_LVL2     33.0       // your battery is almost empty. Charge now!
+#define BAT_LOW_DEAD     30.0       // undervoltage lockout
 
 // ################################################################################
 
 #define DEBUG_SERIAL_USART2
 //#define DEBUG_SERIAL_USART3
-#define DEBUG_BAUD       115200    // UART baud rate
+#define DEBUG_BAUD       115200     // UART baud rate
 //#define DEBUG_SERIAL_SERVOTERM
 #define DEBUG_SERIAL_ASCII
 //#define DEBUG_I2C_LCD
@@ -47,12 +51,12 @@
 
 // ###### BOBBYCAR ######
 // #define FILTER              0.1
-// #define SPEED_COEFFICIENT   1
+// #define SPEED_COEFFICIENT   -1
 // #define STEER_COEFFICIENT   0
 
 // ###### ARMCHAIR ######
 // #define FILTER              0.05
 // #define SPEED_COEFFICIENT   0.5
-// #define STEER_COEFFICIENT   0.2
+// #define STEER_COEFFICIENT   -0.2
 
 // #define BEEPS_BACKWARD

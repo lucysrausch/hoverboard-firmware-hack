@@ -123,8 +123,8 @@ int main(void) {
 
     #ifdef CONTROL_NUNCHUCK
       Nunchuck_Read();
-      cmd1 = CLAMP((nunchuck_data[0] - 127) * 10, -1000, 1000);
-      cmd2 = CLAMP((nunchuck_data[1] - 127) * 10, -1000, 1000);
+      cmd1 = CLAMP((nunchuck_data[0] - 127) * 10, -1000, 1000); // y - axis. Nunchuck joystick readings range 30 - 230
+      cmd2 = CLAMP((nunchuck_data[1] - 127) * 10, -1000, 1000); // x - axis
 
       //uint8_t button1 = (uint8_t)nunchuck_data[5] & 1;
       //uint8_t button2 = (uint8_t)(nunchuck_data[5] >> 1) & 1;
@@ -138,7 +138,7 @@ int main(void) {
     #endif
 
     #ifdef CONTROL_ADC
-      cmd1 = CLAMP(adc_buffer.l_rx2 - 700, 0, 2350) / 2.35;
+      cmd1 = CLAMP(adc_buffer.l_rx2 - 700, 0, 2350) / 2.35; // ADC values range 0-4095, however full range of our poti only covers 650 - 3050
       //uint8_t button1 = (uint8_t)(adc_buffer.l_tx2 > 2000);
 
       timeout = 0;
@@ -185,13 +185,13 @@ int main(void) {
       while(1) {}
     }
 
-    if (batteryVoltage < 36.0 && batteryVoltage > 33.0) {
+    if (batteryVoltage < BAT_LOW_LVL1 && batteryVoltage > BAT_LOW_LVL2) {
       buzzerFreq = 5;
       buzzerPattern = 8;
-    } else if  (batteryVoltage < 33.0 && batteryVoltage > 30.0) {
+    } else if  (batteryVoltage < BAT_LOW_LVL2 && batteryVoltage > BAT_LOW_DEAD) {
       buzzerFreq = 5;
       buzzerPattern = 1;
-    } else if  (batteryVoltage < 30.0) {
+    } else if  (batteryVoltage < BAT_LOW_DEAD) {
       buzzerPattern = 0;
       enable = 0;
       for (int i = 0; i < 8; i++) {
