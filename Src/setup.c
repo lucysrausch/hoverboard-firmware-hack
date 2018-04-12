@@ -17,23 +17,6 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
-/*
-tim1 master, enable -> trgo
-tim8, gated slave mode, trgo by tim1 trgo. overflow -> trgo
-adc1,adc2 triggered by tim8 trgo
-adc 1,2 dual mode
-
-ADC1             ADC2
-R_Blau PC4 CH14  R_Gelb PC5 CH15
-L_Grün PA0 CH01  L_Blau PC3 CH13
-R_DC PC1 CH11    L_DC PC0 CH10
-BAT   PC2 CH12   L_TX PA2 CH02
-BAT   PC2 CH12   L_RX PA3 CH03
-
-pb10 usart3 dma1 channel2/3
-*/
-
 #include "defines.h"
 #include "config.h"
 
@@ -43,70 +26,6 @@ ADC_HandleTypeDef hadc1;
 ADC_HandleTypeDef hadc2;
 volatile adc_buf_t adc_buffer;
 
-void UART_Init() {
-  __HAL_RCC_USART3_CLK_ENABLE();
-  __HAL_RCC_DMA1_CLK_ENABLE();
-
-  UART_HandleTypeDef huart3;
-  huart3.Instance          = USART3;
-  huart3.Init.BaudRate     = DEBUG_BAUD;
-  huart3.Init.WordLength   = UART_WORDLENGTH_8B;
-  huart3.Init.StopBits     = UART_STOPBITS_1;
-  huart3.Init.Parity       = UART_PARITY_NONE;
-  huart3.Init.Mode         = UART_MODE_TX;
-  huart3.Init.HwFlowCtl    = UART_HWCONTROL_NONE;
-  huart3.Init.OverSampling = UART_OVERSAMPLING_16;
-  HAL_UART_Init(&huart3);
-
-  USART3->CR3 |= USART_CR3_DMAT;  // | USART_CR3_DMAR | USART_CR3_OVRDIS;
-
-  GPIO_InitTypeDef GPIO_InitStruct;
-  GPIO_InitStruct.Pin   = GPIO_PIN_10;
-  GPIO_InitStruct.Pull  = GPIO_PULLUP;
-  GPIO_InitStruct.Mode  = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  DMA1_Channel2->CCR   = 0;
-  DMA1_Channel2->CPAR  = (uint32_t) & (USART3->DR);
-  DMA1_Channel2->CNDTR = 0;
-  DMA1_Channel2->CCR   = DMA_CCR_MINC | DMA_CCR_DIR;
-  DMA1->IFCR           = DMA_IFCR_CTCIF2 | DMA_IFCR_CHTIF2 | DMA_IFCR_CGIF2;
-}
-
-/*
-void UART_Init() {
-  __HAL_RCC_USART2_CLK_ENABLE();
-  __HAL_RCC_DMA1_CLK_ENABLE();
-
-  UART_HandleTypeDef huart2;
-  huart2.Instance          = USART2;
-  huart2.Init.BaudRate     = 115200;
-  huart2.Init.WordLength   = UART_WORDLENGTH_8B;
-  huart2.Init.StopBits     = UART_STOPBITS_1;
-  huart2.Init.Parity       = UART_PARITY_NONE;
-  huart2.Init.Mode         = UART_MODE_TX;
-  huart2.Init.HwFlowCtl    = UART_HWCONTROL_NONE;
-  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
-  HAL_UART_Init(&huart2);
-
-  USART2->CR3 |= USART_CR3_DMAT;  // | USART_CR3_DMAR | USART_CR3_OVRDIS;
-
-  GPIO_InitTypeDef GPIO_InitStruct;
-  GPIO_InitStruct.Pin   = GPIO_PIN_2;
-  GPIO_InitStruct.Pull  = GPIO_PULLUP;
-  GPIO_InitStruct.Mode  = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  DMA1_Channel7->CCR   = 0;
-  DMA1_Channel7->CPAR  = (uint32_t) & (USART3->DR);
-  DMA1_Channel7->CNDTR = 0;
-  DMA1_Channel7->CCR   = DMA_CCR_MINC | DMA_CCR_DIR;
-  DMA1->IFCR           = DMA_IFCR_CTCIF7 | DMA_IFCR_CHTIF7 | DMA_IFCR_CGIF7;
-}
-*/
-
 void MX_GPIO_Init(void) {
   GPIO_InitTypeDef GPIO_InitStruct;
 
@@ -115,27 +34,30 @@ void MX_GPIO_Init(void) {
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOC_CLK_ENABLE();
 
-  GPIO_InitStruct.Mode  = GPIO_MODE_INPUT;
+  //general GPIO struct init
   GPIO_InitStruct.Pull  = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
 
+  //Digital Input pins
+  GPIO_InitStruct.Mode  = GPIO_MODE_INPUT;
+
   GPIO_InitStruct.Pin = LEFT_HALL_U_PIN;
-  HAL_GPIO_Init(LEFT_HALL_U_PORT, &GPIO_InitStruct);
+  HAL_GPIO_Init(LEFT_HALL_PORT, &GPIO_InitStruct);
 
   GPIO_InitStruct.Pin = LEFT_HALL_V_PIN;
-  HAL_GPIO_Init(LEFT_HALL_V_PORT, &GPIO_InitStruct);
+  HAL_GPIO_Init(LEFT_HALL_PORT, &GPIO_InitStruct);
 
   GPIO_InitStruct.Pin = LEFT_HALL_W_PIN;
-  HAL_GPIO_Init(LEFT_HALL_W_PORT, &GPIO_InitStruct);
+  HAL_GPIO_Init(LEFT_HALL_PORT, &GPIO_InitStruct);
 
   GPIO_InitStruct.Pin = RIGHT_HALL_U_PIN;
-  HAL_GPIO_Init(RIGHT_HALL_U_PORT, &GPIO_InitStruct);
+  HAL_GPIO_Init(RIGHT_HALL_PORT, &GPIO_InitStruct);
 
   GPIO_InitStruct.Pin = RIGHT_HALL_V_PIN;
-  HAL_GPIO_Init(RIGHT_HALL_V_PORT, &GPIO_InitStruct);
+  HAL_GPIO_Init(RIGHT_HALL_PORT, &GPIO_InitStruct);
 
   GPIO_InitStruct.Pin = RIGHT_HALL_W_PIN;
-  HAL_GPIO_Init(RIGHT_HALL_W_PORT, &GPIO_InitStruct);
+  HAL_GPIO_Init(RIGHT_HALL_PORT, &GPIO_InitStruct);
 
   GPIO_InitStruct.Pin = CHARGER_PIN;
   HAL_GPIO_Init(CHARGER_PORT, &GPIO_InitStruct);
@@ -144,6 +66,7 @@ void MX_GPIO_Init(void) {
   HAL_GPIO_Init(BUTTON_PORT, &GPIO_InitStruct);
 
 
+  //output push-pull pins
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 
   GPIO_InitStruct.Pin = LED_PIN;
@@ -156,8 +79,10 @@ void MX_GPIO_Init(void) {
   HAL_GPIO_Init(OFF_PORT, &GPIO_InitStruct);
 
 
+  //analog IO pins
   GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
 
+  //Current / Phase sense and battery measurements
   GPIO_InitStruct.Pin = LEFT_DC_CUR_PIN;
   HAL_GPIO_Init(LEFT_DC_CUR_PORT, &GPIO_InitStruct);
 
@@ -179,14 +104,11 @@ void MX_GPIO_Init(void) {
   GPIO_InitStruct.Pin = DCLINK_PIN;
   HAL_GPIO_Init(DCLINK_PORT, &GPIO_InitStruct);
 
-  //Analog in
-  GPIO_InitStruct.Pin = GPIO_PIN_3;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-  GPIO_InitStruct.Pin = GPIO_PIN_2;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+  //alternate function push-pull
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
 
+  //left MTR timer HI pins
   GPIO_InitStruct.Pin = LEFT_TIM_UH_PIN;
   HAL_GPIO_Init(LEFT_TIM_UH_PORT, &GPIO_InitStruct);
 
@@ -196,6 +118,7 @@ void MX_GPIO_Init(void) {
   GPIO_InitStruct.Pin = LEFT_TIM_WH_PIN;
   HAL_GPIO_Init(LEFT_TIM_WH_PORT, &GPIO_InitStruct);
 
+  //left MTR timer LO pins
   GPIO_InitStruct.Pin = LEFT_TIM_UL_PIN;
   HAL_GPIO_Init(LEFT_TIM_UL_PORT, &GPIO_InitStruct);
 
@@ -205,6 +128,7 @@ void MX_GPIO_Init(void) {
   GPIO_InitStruct.Pin = LEFT_TIM_WL_PIN;
   HAL_GPIO_Init(LEFT_TIM_WL_PORT, &GPIO_InitStruct);
 
+  //right MTR timer HI pins
   GPIO_InitStruct.Pin = RIGHT_TIM_UH_PIN;
   HAL_GPIO_Init(RIGHT_TIM_UH_PORT, &GPIO_InitStruct);
 
@@ -214,6 +138,7 @@ void MX_GPIO_Init(void) {
   GPIO_InitStruct.Pin = RIGHT_TIM_WH_PIN;
   HAL_GPIO_Init(RIGHT_TIM_WH_PORT, &GPIO_InitStruct);
 
+  //right MTR timer LO pins
   GPIO_InitStruct.Pin = RIGHT_TIM_UL_PIN;
   HAL_GPIO_Init(RIGHT_TIM_UL_PORT, &GPIO_InitStruct);
 
@@ -223,6 +148,7 @@ void MX_GPIO_Init(void) {
   GPIO_InitStruct.Pin = RIGHT_TIM_WL_PIN;
   HAL_GPIO_Init(RIGHT_TIM_WL_PORT, &GPIO_InitStruct);
 }
+
 
 void MX_TIM_Init(void) {
   __HAL_RCC_TIM1_CLK_ENABLE();
@@ -325,6 +251,8 @@ void MX_TIM_Init(void) {
   __HAL_TIM_ENABLE(&htim_right);
 }
 
+
+/* ADC1 init function */
 void MX_ADC1_Init(void) {
   ADC_MultiModeTypeDef multimode;
   ADC_ChannelConfTypeDef sConfig;
@@ -337,40 +265,36 @@ void MX_ADC1_Init(void) {
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConv      = ADC_EXTERNALTRIGCONV_T8_TRGO;
   hadc1.Init.DataAlign             = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion       = 5;
+  hadc1.Init.NbrOfConversion       = 4;
   HAL_ADC_Init(&hadc1);
+
   /**Enable or disable the remapping of ADC1_ETRGREG:
     * ADC1 External Event regular conversion is connected to TIM8 TRG0
     */
   __HAL_AFIO_REMAP_ADC1_ETRGREG_ENABLE();
 
-  /**Configure the ADC multi-mode
-    */
+  //Configure the ADC multi-mode
   multimode.Mode = ADC_DUALMODE_REGSIMULT;
   HAL_ADCEx_MultiModeConfigChannel(&hadc1, &multimode);
 
   sConfig.SamplingTime = ADC_SAMPLETIME_7CYCLES_5;
 
-  sConfig.Channel = ADC_CHANNEL_14;
+  sConfig.Channel = ADC_CHANNEL_14; //right motor phase B sense
   sConfig.Rank    = 1;
   HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 
-  sConfig.Channel = ADC_CHANNEL_0;
+  sConfig.Channel = ADC_CHANNEL_0; //left motor phase A sense
   sConfig.Rank    = 2;
   HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 
   sConfig.SamplingTime = ADC_SAMPLETIME_13CYCLES_5;
 
-  sConfig.Channel = ADC_CHANNEL_11;
+  sConfig.Channel = ADC_CHANNEL_11; //right motor shunt current
   sConfig.Rank    = 3;
   HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 
-  sConfig.Channel = ADC_CHANNEL_12;
+  sConfig.Channel = ADC_CHANNEL_12; //v-battery
   sConfig.Rank    = 4;
-  HAL_ADC_ConfigChannel(&hadc1, &sConfig);
-
-  sConfig.Channel = ADC_CHANNEL_12;
-  sConfig.Rank    = 5;
   HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 
   hadc1.Instance->CR2 |= ADC_CR2_DMA;
@@ -380,8 +304,8 @@ void MX_ADC1_Init(void) {
   __HAL_RCC_DMA1_CLK_ENABLE();
 
   DMA1_Channel1->CCR   = 0;
-  DMA1_Channel1->CNDTR = 5;
-  DMA1_Channel1->CPAR  = (uint32_t) & (ADC1->DR);
+  DMA1_Channel1->CNDTR = 4;
+  DMA1_Channel1->CPAR  = (uint32_t)&(ADC1->DR);
   DMA1_Channel1->CMAR  = (uint32_t)&adc_buffer;
   DMA1_Channel1->CCR   = DMA_CCR_MSIZE_1 | DMA_CCR_PSIZE_1 | DMA_CCR_MINC | DMA_CCR_CIRC | DMA_CCR_TCIE;
   DMA1_Channel1->CCR |= DMA_CCR_EN;
@@ -390,47 +314,40 @@ void MX_ADC1_Init(void) {
   HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
 }
 
+
 /* ADC2 init function */
 void MX_ADC2_Init(void) {
   ADC_ChannelConfTypeDef sConfig;
 
   __HAL_RCC_ADC2_CLK_ENABLE();
 
-  // HAL_ADC_DeInit(&hadc2);
-  // hadc2.Instance->CR2 = 0;
-  /**Common config
-    */
   hadc2.Instance                   = ADC2;
   hadc2.Init.ScanConvMode          = ADC_SCAN_ENABLE;
   hadc2.Init.ContinuousConvMode    = DISABLE;
   hadc2.Init.DiscontinuousConvMode = DISABLE;
   hadc2.Init.ExternalTrigConv      = ADC_SOFTWARE_START;
   hadc2.Init.DataAlign             = ADC_DATAALIGN_RIGHT;
-  hadc2.Init.NbrOfConversion       = 5;
+  hadc2.Init.NbrOfConversion       = 4;
   HAL_ADC_Init(&hadc2);
 
   sConfig.SamplingTime = ADC_SAMPLETIME_7CYCLES_5;
 
-  sConfig.Channel = ADC_CHANNEL_15;
+  sConfig.Channel = ADC_CHANNEL_15; //right motor phace C sense
   sConfig.Rank    = 1;
   HAL_ADC_ConfigChannel(&hadc2, &sConfig);
 
-  sConfig.Channel = ADC_CHANNEL_13;
+  sConfig.Channel = ADC_CHANNEL_13; //left motor phace B sense
   sConfig.Rank    = 2;
   HAL_ADC_ConfigChannel(&hadc2, &sConfig);
 
   sConfig.SamplingTime = ADC_SAMPLETIME_13CYCLES_5;
 
-  sConfig.Channel = ADC_CHANNEL_10;
+  sConfig.Channel = ADC_CHANNEL_10; //left motor shunt current
   sConfig.Rank    = 3;
   HAL_ADC_ConfigChannel(&hadc2, &sConfig);
 
-  sConfig.Channel = ADC_CHANNEL_2;
+  sConfig.Channel = ADC_CHANNEL_TEMPSENSOR; //internal temperature
   sConfig.Rank    = 4;
-  HAL_ADC_ConfigChannel(&hadc2, &sConfig);
-
-  sConfig.Channel = ADC_CHANNEL_3;
-  sConfig.Rank    = 5;
   HAL_ADC_ConfigChannel(&hadc2, &sConfig);
 
   hadc2.Instance->CR2 |= ADC_CR2_DMA;

@@ -1,36 +1,34 @@
 
 #include "stm32f1xx_hal.h"
+#include <math.h>
 #include "defines.h"
 #include "setup.h"
 #include "config.h"
-
 
 volatile int posl = 0;
 volatile int posr = 0;
 volatile int pwml = 0;
 volatile int pwmr = 0;
-int16_t pwmrl = 0;
 
 extern volatile adc_buf_t adc_buffer;
 
-extern volatile uint32_t timeout;
-
-uint8_t buzzerFreq = 0;
-uint8_t buzzerPattern = 0;
-
 uint8_t enable = 0;
+
+uint32_t offsetcount = 0;
+adc_offsets_t offsets = {0};
 
 const int pwm_res = 64000000 / 2 / PWM_FREQ; // = 2000
 
+//(hall_to_pos + 2) % 6
 const uint8_t hall_to_pos[8] = {
-    0,
-    0,
-    2,
-    1,
-    4,
-    5,
-    3,
-    0,
+   2,
+   5,
+   1,
+   0,
+   3,
+   4,
+   2,
+   2,
 };
 
 inline void blockPWM(int pwm, int pos, int *u, int *v, int *w) {
@@ -72,191 +70,60 @@ inline void blockPWM(int pwm, int pos, int *u, int *v, int *w) {
   }
 }
 
-inline void blockPhaseCurrent(int pos, int u, int v, int *q) {
-  switch(pos) {
-    case 0:
-      *q = u - v;
-      // *u = 0;
-      // *v = pwm;
-      // *w = -pwm;
-      break;
-    case 1:
-      *q = u;
-      // *u = -pwm;
-      // *v = pwm;
-      // *w = 0;
-      break;
-    case 2:
-      *q = u;
-      // *u = -pwm;
-      // *v = 0;
-      // *w = pwm;
-      break;
-    case 3:
-      *q = v;
-      // *u = 0;
-      // *v = -pwm;
-      // *w = pwm;
-      break;
-    case 4:
-      *q = v;
-      // *u = pwm;
-      // *v = -pwm;
-      // *w = 0;
-      break;
-    case 5:
-      *q = -(u - v);
-      // *u = pwm;
-      // *v = 0;
-      // *w = -pwm;
-      break;
-    default:
-      *q = 0;
-      // *u = 0;
-      // *v = 0;
-      // *w = 0;
-  }
-}
 
-uint16_t buzzerTimer        = 0;
-
-int offsetcount = 0;
-int offsetrl1   = 2000;
-int offsetrl2   = 2000;
-int offsetrr1   = 2000;
-int offsetrr2   = 2000;
-int offsetdcl   = 2000;
-int offsetdcr   = 2000;
-
-float batteryVoltage;
-float adccmd1;
-float adccmd2;
-
-int curl = 0;
-// int errorl = 0;
-// int kp = 5;
-// volatile int cmdl = 0;
-
-int last_pos = 0;
-int timer = 0;
-const int max_time = PWM_FREQ / 10;
-volatile int vel = 0;
-
+//scan 8 channels with 2ADCs @ 20 clk cycles per sample
+//meaning ~80 ADC clock cycles @ 8MHz until new DMA interrupt =~ 100KHz
+//=640 cpu cycles
 void DMA1_Channel1_IRQHandler() {
   DMA1->IFCR = DMA_IFCR_CTCIF1;
-  // HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
 
-  if(offsetcount < 1000) {  // calibrate ADC offsets
+  // callibrate ADC offset before startup by averaging 1024 samples.
+  if(offsetcount < 1024) {
     offsetcount++;
-    offsetrl1 = (adc_buffer.rl1 + offsetrl1) / 2;
-    offsetrl2 = (adc_buffer.rl2 + offsetrl2) / 2;
-    offsetrr1 = (adc_buffer.rr1 + offsetrr1) / 2;
-    offsetrr2 = (adc_buffer.rr2 + offsetrr2) / 2;
-    offsetdcl = (adc_buffer.dcl + offsetdcl) / 2;
-    offsetdcr = (adc_buffer.dcr + offsetdcr) / 2;
+    offsets.rl1 += adc_buffer.rl1;
+    offsets.rl2 += adc_buffer.rl2;
+    offsets.rr1 += adc_buffer.rr1;
+    offsets.rr2 += adc_buffer.rr2;
+    offsets.dcl += adc_buffer.dcl;
+    offsets.dcr += adc_buffer.dcr;
+    offsets.temp += adc_buffer.temp;
+    offsets.vbat += adc_buffer.vbat;
     return;
+  } else if (offsetcount == 1024) {
+	offsetcount++;
+    offsets.rl1 /= 1024;
+    offsets.rl2 /= 1024;
+    offsets.rr1 /= 1024;
+    offsets.rr2 /= 1024;
+    offsets.dcl /= 1024;
+    offsets.dcr /= 1024;
+    offsets.temp /= 1024;
+    offsets.vbat /= 1024;
   }
 
-  batteryVoltage = batteryVoltage * 0.999 + ((float)adc_buffer.batt1 * ADC_BATTERY_VOLT) * 0.001;
-  adccmd1 = adccmd1 * 0.999 + (float)adc_buffer.l_rx2 * 0.001;
-  adccmd2 = adccmd2 * 0.999 + (float)adc_buffer.l_tx2 * 0.001;
-
-  //0-4096
-  //+-2000
-
-  pwmrl = 0;
-  if(adccmd1 - 700 > 0){
-    pwmrl -= adccmd1 - 700;
-  }
-  if(adccmd2 - 700 > 0){
-    pwmrl += adccmd2 - 700;
-  }
-
-  if (pwmrl < -100 && enable == 1) {
-    buzzerFreq = 5;
-    buzzerPattern = 1;
-  } else if (enable == 1) {
-    buzzerFreq = 0;
-    buzzerPattern = 1;
-  }
-
-  pwmrl = powf((pwmrl/4), 3) / 255885;
-  pwml = -pwmrl;
-  pwmr = pwmrl;
-
-
-
-  if(ABS((adc_buffer.dcl - offsetdcl) * MOTOR_AMP_CONV_DC_AMP) > DC_CUR_LIMIT || timeout > 50 || enable == 0) {
+  //disable PWM when current limit is reached (current chopping)
+  if(ABS(adc_buffer.dcl - offsets.dcl) > DC_CUR_THRESHOLD || enable == 0) {
     LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;
-    //HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
   } else {
     LEFT_TIM->BDTR |= TIM_BDTR_MOE;
-    //HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
   }
 
-  if(ABS((adc_buffer.dcr - offsetdcr) * MOTOR_AMP_CONV_DC_AMP)  > DC_CUR_LIMIT || timeout > 50 || enable == 0) {
+  if(ABS(adc_buffer.dcr - offsets.dcr) > DC_CUR_THRESHOLD || enable == 0) {
     RIGHT_TIM->BDTR &= ~TIM_BDTR_MOE;
   } else {
     RIGHT_TIM->BDTR |= TIM_BDTR_MOE;
   }
 
+  //determine next position based on hall sensors
+  uint8_t hall_l =  (LEFT_HALL_PORT->IDR >> LEFT_HALL_LSB_PIN) & 0b111;
+  uint8_t hall_r =  (RIGHT_HALL_PORT->IDR >> RIGHT_HALL_LSB_PIN) & 0b111;
+
+  uint8_t posl = hall_to_pos[hall_l];
+  uint8_t posr = hall_to_pos[hall_r];
+
+  //update PWM channels based on position
   int ul, vl, wl;
   int ur, vr, wr;
-
-  uint8_t hall_ul = !(LEFT_HALL_U_PORT->IDR & LEFT_HALL_U_PIN);
-  uint8_t hall_vl = !(LEFT_HALL_V_PORT->IDR & LEFT_HALL_V_PIN);
-  uint8_t hall_wl = !(LEFT_HALL_W_PORT->IDR & LEFT_HALL_W_PIN);
-
-  uint8_t hall_ur = !(RIGHT_HALL_U_PORT->IDR & RIGHT_HALL_U_PIN);
-  uint8_t hall_vr = !(RIGHT_HALL_V_PORT->IDR & RIGHT_HALL_V_PIN);
-  uint8_t hall_wr = !(RIGHT_HALL_W_PORT->IDR & RIGHT_HALL_W_PIN);
-
-  uint8_t halll = hall_ul * 1 + hall_vl * 2 + hall_wl * 4;
-  posl          = hall_to_pos[halll];
-  posl += 2;
-  posl %= 6;
-
-  uint8_t hallr = hall_ur * 1 + hall_vr * 2 + hall_wr * 4;
-  posr          = hall_to_pos[hallr];
-  posr += 2;
-  posr %= 6;
-
-  blockPhaseCurrent(posl, adc_buffer.rl1 - offsetrl1, adc_buffer.rl2 - offsetrl2, &curl);
-
-  setScopeChannel(2, (adc_buffer.rl1 - offsetrl1) / 8);
-  setScopeChannel(3, (adc_buffer.rl2 - offsetrl2) / 8);
-
-  buzzerTimer++;
-
-  if (buzzerFreq != 0 && (buzzerTimer / 5000) % (buzzerPattern + 1) == 0) {
-    if (buzzerTimer % buzzerFreq == 0) {
-      HAL_GPIO_TogglePin(BUZZER_PORT, BUZZER_PIN);
-    }
-  } else {
-      HAL_GPIO_WritePin(BUZZER_PORT, BUZZER_PIN, 0);
-  }
-
-  // //measure vel
-  // timer++;
-  // if(timer > max_time){
-  //   timer = max_time;
-  //   vel = 0;
-  // }
-
-  // if(posl != last_pos){
-  //   vel = 1000 * PWM_FREQ / timer / P / 6 * 2;
-
-  //   if((posl - last_pos + 6) % 6 > 2){
-  //     vel = -vel;
-  //   }
-
-  //   timer = 0;
-  // }
-  // last_pos = posl;
-
-  //YOLOTEST
-  // errorl = cmdl - curl;
-  // pwml = kp * errorl;
 
   blockPWM(pwml, posl, &ul, &vl, &wl);
   blockPWM(pwmr, posr, &ur, &vr, &wr);
@@ -268,5 +135,4 @@ void DMA1_Channel1_IRQHandler() {
   RIGHT_TIM->RIGHT_TIM_U = CLAMP(ur + pwm_res / 2, 10, pwm_res-10);
   RIGHT_TIM->RIGHT_TIM_V = CLAMP(vr + pwm_res / 2, 10, pwm_res-10);
   RIGHT_TIM->RIGHT_TIM_W = CLAMP(wr + pwm_res / 2, 10, pwm_res-10);
-  // HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);blockPhaseCurrent
 }

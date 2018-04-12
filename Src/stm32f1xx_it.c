@@ -165,11 +165,6 @@ void SysTick_Handler(void) {
 }
 
 
-void EXTI3_IRQHandler(void)
-{
-    PPM_ISR_Callback();
-    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_3);
-}
 
 /******************************************************************************/
 /* STM32F1xx Peripheral Interrupt Handlers                                    */

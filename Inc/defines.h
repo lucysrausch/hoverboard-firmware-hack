@@ -21,21 +21,17 @@
 #pragma once
 #include "stm32f1xx_hal.h"
 
+#define LEFT_HALL_PORT      GPIOB
+#define LEFT_HALL_LSB_PIN   5
 #define LEFT_HALL_U_PIN GPIO_PIN_5
 #define LEFT_HALL_V_PIN GPIO_PIN_6
 #define LEFT_HALL_W_PIN GPIO_PIN_7
 
-#define LEFT_HALL_U_PORT GPIOB
-#define LEFT_HALL_V_PORT GPIOB
-#define LEFT_HALL_W_PORT GPIOB
-
+#define RIGHT_HALL_PORT     GPIOC
+#define RIGHT_HALL_LSB_PIN  10
 #define RIGHT_HALL_U_PIN GPIO_PIN_10
 #define RIGHT_HALL_V_PIN GPIO_PIN_11
 #define RIGHT_HALL_W_PIN GPIO_PIN_12
-
-#define RIGHT_HALL_U_PORT GPIOC
-#define RIGHT_HALL_V_PORT GPIOC
-#define RIGHT_HALL_W_PORT GPIOC
 
 #define LEFT_TIM TIM8
 #define LEFT_TIM_U CCR1
@@ -71,10 +67,6 @@
 #define RIGHT_TIM_WL_PIN GPIO_PIN_15
 #define RIGHT_TIM_WL_PORT GPIOB
 
-// #define LEFT_DC_CUR_ADC ADC1
-// #define LEFT_U_CUR_ADC ADC1
-// #define LEFT_V_CUR_ADC ADC1
-
 #define LEFT_DC_CUR_PIN GPIO_PIN_0
 #define LEFT_U_CUR_PIN GPIO_PIN_0
 #define LEFT_V_CUR_PIN GPIO_PIN_3
@@ -82,10 +74,6 @@
 #define LEFT_DC_CUR_PORT GPIOC
 #define LEFT_U_CUR_PORT GPIOA
 #define LEFT_V_CUR_PORT GPIOC
-
-// #define RIGHT_DC_CUR_ADC ADC2
-// #define RIGHT_U_CUR_ADC ADC2
-// #define RIGHT_V_CUR_ADC ADC2
 
 #define RIGHT_DC_CUR_PIN GPIO_PIN_1
 #define RIGHT_U_CUR_PIN GPIO_PIN_4
@@ -95,12 +83,8 @@
 #define RIGHT_U_CUR_PORT GPIOC
 #define RIGHT_V_CUR_PORT GPIOC
 
-// #define DCLINK_ADC ADC3
-// #define DCLINK_CHANNEL
 #define DCLINK_PIN GPIO_PIN_2
 #define DCLINK_PORT GPIOC
-// #define DCLINK_PULLUP 30000
-// #define DCLINK_PULLDOWN 1000
 
 #define LED_PIN GPIO_PIN_2
 #define LED_PORT GPIOB
@@ -120,17 +104,6 @@
 #define CHARGER_PIN GPIO_PIN_12
 #define CHARGER_PORT GPIOA
 
-#define DELAY_TIM_FREQUENCY_US 1000000
-
-#define MOTOR_AMP_CONV_DC_AMP 0.02
-#define ADC_BATTERY_VOLT      0.02647435897435897435897435897436
-
-#define MILLI_R (R * 1000)
-#define MILLI_PSI (PSI * 1000)
-#define MILLI_V (V * 1000)
-
-#define NO 0
-#define YES 1
 #define ABS(a) (((a) < 0.0) ? -(a) : (a))
 #define LIMIT(x, lowhigh) (((x) > (lowhigh)) ? (lowhigh) : (((x) < (-lowhigh)) ? (-lowhigh) : (x)))
 #define SAT(x, lowhigh) (((x) > (lowhigh)) ? (1.0) : (((x) < (-lowhigh)) ? (-1.0) : (0.0)))
@@ -153,8 +126,18 @@ typedef struct {
   uint16_t rl2;
   uint16_t dcr;
   uint16_t dcl;
-  uint16_t batt1;
-  uint16_t l_tx2;
-  uint16_t bat1;
-  uint16_t l_rx2;
+  uint16_t vbat;
+  uint16_t temp;
 } adc_buf_t;
+
+//adc startup offsets
+typedef struct {
+  int32_t rr1;
+  int32_t rr2;
+  int32_t rl1;
+  int32_t rl2;
+  int32_t dcr;
+  int32_t dcl;
+  int32_t vbat;
+  int32_t temp;
+} adc_offsets_t;
