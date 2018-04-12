@@ -22,12 +22,18 @@
 #include "defines.h"
 #include "setup.h"
 #include "config.h"
+#include "uart.h"
 
 void SystemClock_Config(void);
 
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
 extern uint8_t enable;
+
+extern volatile uint8_t uart2_rx[UART2_RX_FIFO_SIZE];
+extern uint8_t uart2_tx[UART2_TX_FIFO_SIZE];
+extern volatile uint8_t uart3_rx[UART3_RX_FIFO_SIZE];
+extern uint8_t uart3_tx[UART3_TX_FIFO_SIZE];
 
 int main(void) {
   HAL_Init();
@@ -56,6 +62,7 @@ int main(void) {
   MX_TIM_Init();
   MX_ADC1_Init();
   MX_ADC2_Init();
+  UART_Init();
 
   HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 1);
 
@@ -68,18 +75,25 @@ int main(void) {
   uint32_t led_cnt = 0;
   uint32_t led_state = 1;
 
-  while(1) {
+  UARTRxEnable(UARTCh2, 1);
 
-	HAL_Delay(10);
+  while(1)
+  {
+
+    HAL_Delay(100);
 
     //show user board is alive
     led_cnt++;
-    if(led_cnt > 30){
+    if(led_cnt > 3)
+    {
       led_cnt=0;
       led_state = (led_state) ? 0 : 1;
-	  HAL_GPIO_WritePin(LED_PORT, LED_PIN, led_state);
-	}
+      HAL_GPIO_WritePin(LED_PORT, LED_PIN, led_state);
+    }
 
+    //test uart by sending number of received characters
+    sprintf((char *)uart2_tx, "Received:%d\n\r", (int)UARTAvailable(UARTCh2));
+    UARTSendStr(UARTCh2, (char *)uart2_tx);
 
   }
 }

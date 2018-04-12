@@ -307,7 +307,16 @@ void MX_ADC1_Init(void) {
   DMA1_Channel1->CNDTR = 4;
   DMA1_Channel1->CPAR  = (uint32_t)&(ADC1->DR);
   DMA1_Channel1->CMAR  = (uint32_t)&adc_buffer;
-  DMA1_Channel1->CCR   = DMA_CCR_MSIZE_1 | DMA_CCR_PSIZE_1 | DMA_CCR_MINC | DMA_CCR_CIRC | DMA_CCR_TCIE;
+
+  //ADC DMA settings:
+  //Mem size 32-bit,
+  //Peripheral size 32-bit, I
+  //Increment memory address,
+  //Circular operation,
+  //Peripheral-to-memory
+  //Transfer complete interrupt
+  //Priority level high
+  DMA1_Channel1->CCR   = DMA_CCR_MSIZE_1 | DMA_CCR_PSIZE_1 | DMA_CCR_MINC | DMA_CCR_CIRC | DMA_CCR_TCIE | DMA_CCR_PL_1;
   DMA1_Channel1->CCR |= DMA_CCR_EN;
 
   HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 0, 0);
