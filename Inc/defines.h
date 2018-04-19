@@ -21,6 +21,12 @@
 #pragma once
 #include "stm32f1xx_hal.h"
 
+typedef enum
+{
+  false = 0,
+  true = !false
+} bool;
+
 #define LEFT_HALL_PORT      GPIOB
 #define LEFT_HALL_LSB_PIN   5
 #define LEFT_HALL_U_PIN GPIO_PIN_5
@@ -118,6 +124,7 @@
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
 #define MIN3(a, b, c) MIN(a, MIN(b, c))
 #define MAX3(a, b, c) MAX(a, MAX(b, c))
+
 
 typedef struct {
   uint16_t rr1;

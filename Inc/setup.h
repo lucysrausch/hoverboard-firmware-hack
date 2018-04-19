@@ -26,3 +26,5 @@ void MX_GPIO_Init(void);
 void MX_TIM_Init(void);
 void MX_ADC1_Init(void);
 void MX_ADC2_Init(void);
+
+extern volatile adc_buf_t adc_buffer;

@@ -8,16 +8,6 @@
 #define VBAT_ADC_TO_UV (25532)  //25532 uV per ADC count
 #define ADC_BATTERY_VOLT   0.026474
 
-#define UART2_BAUD 115200
-#define UART2_RX_FIFO_SIZE 64
-#define UART2_TX_FIFO_SIZE 64
-
-#define UART3_BAUD 115200
-#define UART3_RX_FIFO_SIZE 64
-#define UART3_TX_FIFO_SIZE 64
-
-
-
 //do not change, deducted from other settings
 #define DC_CUR_THRESHOLD  (DC_CUR_LIMIT*50) // x50 = /0.02 (old MOTOR_AMP_CONV_DC_AMP)
 

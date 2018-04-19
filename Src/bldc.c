@@ -10,8 +10,6 @@ volatile int posr = 0;
 volatile int pwml = 0;
 volatile int pwmr = 0;
 
-extern volatile adc_buf_t adc_buffer;
-
 uint8_t enable = 0;
 
 uint32_t offsetcount = 0;

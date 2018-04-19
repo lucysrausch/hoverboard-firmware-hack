@@ -23,6 +23,7 @@
 #include "setup.h"
 #include "config.h"
 #include "uart.h"
+#include "cfgbus.h"
 
 void SystemClock_Config(void);
 
@@ -77,23 +78,42 @@ int main(void) {
 
   UARTRxEnable(UARTCh2, 1);
 
+  uint32_t pwmVal = 0;
+  uint32_t lastPwmVal = 0;
+
+
+  UARTSendStr(UARTCh2, "Hover-Controller Online!\n");
+  cfg_init();
+
   while(1)
   {
 
-    HAL_Delay(100);
+    HAL_Delay(10);
 
     //show user board is alive
     led_cnt++;
-    if(led_cnt > 3)
+    if(led_cnt > 30)
     {
       led_cnt=0;
       led_state = (led_state) ? 0 : 1;
       HAL_GPIO_WritePin(LED_PORT, LED_PIN, led_state);
     }
 
-    //test uart by sending number of received characters
-    sprintf((char *)uart2_tx, "Received:%d\n\r", (int)UARTAvailable(UARTCh2));
-    UARTSendStr(UARTCh2, (char *)uart2_tx);
+    cfg_update();
+    //read character if available, and update pwmVal
+//    uint8_t tmp = 0;
+//    if(UARTRead(UARTCh2,&tmp,1))
+//      pwmVal = tmp;
+//
+//    if(lastPwmVal != pwmVal)
+//    {
+//      //test uart by sending number of received characters
+//      sprintf((char *)uart2_tx, "New PWM Value! [0x%2X]\n", (int)pwmVal);
+//      UARTSendStr(UARTCh2, (char *)uart2_tx);
+//
+//      lastPwmVal = pwmVal;
+//    }
+
 
   }
 }

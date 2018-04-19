@@ -38,6 +38,8 @@ Src/setup.c \
 Src/uart.c \
 Src/main.c \
 Src/bldc.c \
+Src/crc8.c \
+Src/cfgbus.c \
 Src/stm32f1xx_it.c \
 
 # ASM sources
