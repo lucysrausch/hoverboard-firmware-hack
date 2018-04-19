@@ -1,2 +1,6 @@
 build/*
 !build/hover.hex
+/.settings/language.settings.xml
+/.settings/org.eclipse.cdt.codan.core.prefs
+/build/hover.hex
+/openocd.txt
