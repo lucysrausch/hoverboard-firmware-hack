@@ -31,14 +31,25 @@ extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
 extern uint8_t enable;
 
-extern volatile uint8_t uart2_rx[UART2_RX_FIFO_SIZE];
-extern uint8_t uart2_tx[UART2_TX_FIFO_SIZE];
-extern volatile uint8_t uart3_rx[UART3_RX_FIFO_SIZE];
-extern uint8_t uart3_tx[UART3_TX_FIFO_SIZE];
+#define LED_PERIOD (300)  //ms
+uint32_t lastLedTick=0;
+uint8_t ledState=0;
+
+void led_update(void)
+{
+  if(HAL_GetTick() - lastLedTick > LED_PERIOD)
+  {
+    ledState = (ledState) ? 0 : 1;
+    HAL_GPIO_WritePin(LED_PORT, LED_PIN, ledState);
+  }
+}
+
 
 int main(void) {
+
   HAL_Init();
   __HAL_RCC_AFIO_CLK_ENABLE();
+
   HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
   /* System interrupt init*/
   /* MemoryManagement_IRQn interrupt configuration */
@@ -59,6 +70,7 @@ int main(void) {
   SystemClock_Config();
 
   __HAL_RCC_DMA1_CLK_DISABLE();
+
   MX_GPIO_Init();
   MX_TIM_Init();
   MX_ADC1_Init();
@@ -73,47 +85,19 @@ int main(void) {
   HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
 
   enable = 1;
-  uint32_t led_cnt = 0;
-  uint32_t led_state = 1;
 
   UARTRxEnable(UARTCh2, 1);
-
-  uint32_t pwmVal = 0;
-  uint32_t lastPwmVal = 0;
-
-
   UARTSendStr(UARTCh2, "Hover-Controller Online!\n");
+
   cfg_init();
 
   while(1)
   {
-
-    HAL_Delay(10);
-
     //show user board is alive
-    led_cnt++;
-    if(led_cnt > 30)
-    {
-      led_cnt=0;
-      led_state = (led_state) ? 0 : 1;
-      HAL_GPIO_WritePin(LED_PORT, LED_PIN, led_state);
-    }
+    led_update();
 
+    //update cfg_bus communication
     cfg_update();
-    //read character if available, and update pwmVal
-//    uint8_t tmp = 0;
-//    if(UARTRead(UARTCh2,&tmp,1))
-//      pwmVal = tmp;
-//
-//    if(lastPwmVal != pwmVal)
-//    {
-//      //test uart by sending number of received characters
-//      sprintf((char *)uart2_tx, "New PWM Value! [0x%2X]\n", (int)pwmVal);
-//      UARTSendStr(UARTCh2, (char *)uart2_tx);
-//
-//      lastPwmVal = pwmVal;
-//    }
-
 
   }
 }
