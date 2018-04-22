@@ -15,7 +15,7 @@
 
 const uint8_t _slaveID = 16;
 
-#define _MODBUS_RTU_SLAVE              0
+#define _MODBUS_RTU_slaveID              0
 #define _MODBUS_RTU_FUNCTION           1
 #define _MODBUS_RTU_PRESET_REQ_LENGTH  6
 #define _MODBUS_RTU_PRESET_RSP_LENGTH  2
@@ -32,6 +32,8 @@ const uint8_t _slaveID = 16;
 enum {
   _STEP_FUNCTION = 0x01, _STEP_META, _STEP_DATA
 };
+
+uint8_t _rcvBuff[_MODBUSINO_RTU_MAX_ADU_LENGTH] = {0};
 
 static uint16_t crc16(uint8_t *req, uint8_t req_length) {
   uint8_t j;
@@ -106,7 +108,7 @@ static void flush(void) {
   }
 }
 
-static int receive(uint8_t *req, uint8_t _slave) {
+static int receive() {
   uint8_t length_to_read;
   uint8_t req_index;
   uint8_t step;
@@ -132,7 +134,7 @@ static int receive(uint8_t *req, uint8_t _slave) {
     if (!CfgAvailable())
       return -1;
 
-    CfgRead(&req[req_index], 1);
+    CfgRead(&_rcvBuff[req_index], 1);
 
     /* Moves the pointer to receive other data */
     req_index++;
@@ -144,7 +146,7 @@ static int receive(uint8_t *req, uint8_t _slave) {
       switch (step) {
       case _STEP_FUNCTION:
         /* Function code position */
-        function = req[_MODBUS_RTU_FUNCTION];
+        function = _rcvBuff[_MODBUS_RTU_FUNCTION];
         if (function == _FC_READ_HOLDING_REGISTERS) {
           length_to_read = 4;
         } else if (function == _FC_WRITE_MULTIPLE_REGISTERS) {
@@ -152,12 +154,12 @@ static int receive(uint8_t *req, uint8_t _slave) {
         } else {
           /* Wait a moment to receive the remaining garbage */
           flush();
-          if (req[_MODBUS_RTU_SLAVE] == _slave||
-          req[_MODBUS_RTU_SLAVE] == MODBUS_BROADCAST_ADDRESS) {
+          if (_rcvBuff[_MODBUS_RTU_SLAVE] == _slaveID||
+          _rcvBuff[_MODBUS_RTU_SLAVE] == MODBUS_BROADCAST_ADDRESS) {
             /* It's for me so send an exception (reuse req) */
-            uint8_t rsp_length = response_exception(_slave, function,
-            MODBUS_EXCEPTION_ILLEGAL_FUNCTION, req);
-            send_msg(req, rsp_length);
+            uint8_t rsp_length = response_exception(_slaveID, function,
+            MODBUS_EXCEPTION_ILLEGAL_FUNCTION, _rcvBuff);
+            send_msg(_rcvBuff, rsp_length);
             return -1 - MODBUS_EXCEPTION_ILLEGAL_FUNCTION;
           }
 
@@ -169,16 +171,16 @@ static int receive(uint8_t *req, uint8_t _slave) {
         length_to_read = _MODBUS_RTU_CHECKSUM_LENGTH;
 
         if (function == _FC_WRITE_MULTIPLE_REGISTERS)
-          length_to_read += req[_MODBUS_RTU_FUNCTION + 5];
+          length_to_read += _rcvBuff[_MODBUS_RTU_FUNCTION + 5];
 
         if ((req_index + length_to_read) > _MODBUSINO_RTU_MAX_ADU_LENGTH) {
           flush();
-          if (req[_MODBUS_RTU_SLAVE] == _slave||
-          req[_MODBUS_RTU_SLAVE] == MODBUS_BROADCAST_ADDRESS) {
+          if (_rcvBuff[_MODBUS_RTU_SLAVE] == _slaveID||
+          _rcvBuff[_MODBUS_RTU_SLAVE] == MODBUS_BROADCAST_ADDRESS) {
             /* It's for me so send an exception (reuse req) */
-            uint8_t rsp_length = response_exception(_slave, function,
-            MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE, req);
-            send_msg(req, rsp_length);
+            uint8_t rsp_length = response_exception(_slaveID, function,
+            MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE, _rcvBuff);
+            send_msg(_rcvBuff, rsp_length);
             return -1 - MODBUS_EXCEPTION_ILLEGAL_FUNCTION;
           }
           return -1;
@@ -194,18 +196,18 @@ static int receive(uint8_t *req, uint8_t _slave) {
   return check_integrity(req, req_index);
 }
 
-static void reply(uint16_t *tab_reg, uint16_t nb_reg, uint8_t *req,
-    uint8_t req_length, uint8_t _slave) {
-  uint8_t slave = req[_MODBUS_RTU_SLAVE];
-  uint8_t function = req[_MODBUS_RTU_FUNCTION];
-  uint16_t address = (req[_MODBUS_RTU_FUNCTION + 1] << 8)
-      + req[_MODBUS_RTU_FUNCTION + 2];
-  uint16_t nb = (req[_MODBUS_RTU_FUNCTION + 3] << 8)
-      + req[_MODBUS_RTU_FUNCTION + 4];
+static void reply(uint8_t req_length)
+{
+  uint8_t slave = _rcvBuff[_MODBUS_RTU_SLAVE];
+  uint8_t function = _rcvBuff[_MODBUS_RTU_FUNCTION];
+  uint16_t address = (_rcvBuff[_MODBUS_RTU_FUNCTION + 1] << 8)
+      + _rcvBuff[_MODBUS_RTU_FUNCTION + 2];
+  uint16_t nb = (_rcvBuff[_MODBUS_RTU_FUNCTION + 3] << 8)
+      + _rcvBuff[_MODBUS_RTU_FUNCTION + 4];
   uint8_t rsp[_MODBUSINO_RTU_MAX_ADU_LENGTH];
   uint8_t rsp_length = 0;
 
-  if (slave != _slave && slave != MODBUS_BROADCAST_ADDRESS) {
+  if (slave != _slaveID && slave != MODBUS_BROADCAST_ADDRESS) {
     return;
   }
 
@@ -229,13 +231,13 @@ static void reply(uint16_t *tab_reg, uint16_t nb_reg, uint8_t *req,
 
       for (i = address, j = 6; i < address + nb; i++, j += 2) {
         /* 6 and 7 = first value */
-        tab_reg[i] = (req[_MODBUS_RTU_FUNCTION + j] << 8)
-            + req[_MODBUS_RTU_FUNCTION + j + 1];
+        tab_reg[i] = (_rcvBuff[_MODBUS_RTU_FUNCTION + j] << 8)
+            + _rcvBuff[_MODBUS_RTU_FUNCTION + j + 1];
       }
 
       rsp_length = build_response_basis(slave, function, rsp);
       /* 4 to copy the address (2) and the no. of registers */
-      memcpy(rsp + rsp_length, req + rsp_length, 4);
+      memcpy(rsp + rsp_length, _rcvBuff + rsp_length, 4);
       rsp_length += 4;
     }
   }
@@ -245,12 +247,11 @@ static void reply(uint16_t *tab_reg, uint16_t nb_reg, uint8_t *req,
 
 int modbusUpdate(uint16_t* tab_reg, uint16_t nb_reg) {
   int rc = 0;
-  uint8_t req[_MODBUSINO_RTU_MAX_ADU_LENGTH];
 
   if (CfgAvailable()) {
-    rc = receive(req, _slaveID);
+    rc = receive();
     if (rc > 0) {
-      reply(tab_reg, nb_reg, req, rc, _slaveID);
+      reply(rc);
     }
   }
 
