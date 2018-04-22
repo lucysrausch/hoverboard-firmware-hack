@@ -52,7 +52,7 @@ const cfg_entry_t cfg_entries[CFG_NUM_ENTRIES] = {
     {&cfg.dev_name  , sizeof(cfg.dev_name)  , t_str , true  , "Device Name"     },
     {&cfg.pwm_l     , sizeof(cfg.pwm_l)     , t_u32 , true  , "L-Mtr PWM"       },
     {&cfg.pwm_r     , sizeof(cfg.pwm_r)     , t_u32 , true  , "R-Mtr PWM"       },
-    {&cfg.vbat      , sizeof(cfg.vbat)      , t_flt , false , "Battery Voltage" },
+    {&cfg.vbat      , sizeof(cfg.vbat)      , t_flt , false , "Battery Voltage" }
 };
 
 //===========================================
@@ -115,11 +115,11 @@ static inline cfg_ret_t process(cfg_cmd_t cmd, uint8_t entryId, uint8_t *data, u
 
   //check if writeable
   if(entry.writeable == 0)
-    return cfg_err_illegal_write;
+    return cfg_illegal_write;
 
   //check data length
   if(entry.size != len-1)
-    return cfg_err_write_len_mismatch;
+    return cfg_len_mismatch;
 
   //check crc
   uint8_t resp = cmd | entryId;

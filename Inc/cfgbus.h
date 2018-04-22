@@ -73,9 +73,9 @@ typedef enum
   cfg_tx_error        = 6,
   cfg_invalid_entry   = 7,
   cfg_invalid_cmd     = 8,
-  cfg_err_write_len_mismatch = 9,
+  cfg_len_mismatch    = 9,
   cfg_crc_err         = 10,
-  cfg_err_illegal_write = 11,
+  cfg_illegal_write   = 11,
 } cfg_ret_t;
 
 typedef enum
@@ -106,7 +106,7 @@ typedef enum
 
 
 //should match the amound of entries in the cfg_t struct.
-#define CFG_NUM_ENTRIES (5)
+#define CFG_NUM_ENTRIES (6)
 
 typedef struct
 {
