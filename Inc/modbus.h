@@ -21,4 +21,4 @@
 #define MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS 2
 #define MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE   3
 
-int modbusUpdate(uint16_t *regs, uint16_t size);
+int modbusUpdate();

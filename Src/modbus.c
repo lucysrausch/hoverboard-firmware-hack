@@ -15,7 +15,7 @@
 
 const uint8_t _slaveID = 16;
 
-#define _MODBUS_RTU_slaveID              0
+#define _MODBUS_RTU_SLAVE              0
 #define _MODBUS_RTU_FUNCTION           1
 #define _MODBUS_RTU_PRESET_REQ_LENGTH  6
 #define _MODBUS_RTU_PRESET_RSP_LENGTH  2
@@ -193,7 +193,7 @@ static int receive() {
     }
   }
 
-  return check_integrity(req, req_index);
+  return check_integrity(_rcvBuff, req_index);
 }
 
 static void reply(uint8_t req_length)
@@ -245,7 +245,7 @@ static void reply(uint8_t req_length)
   send_msg(rsp, rsp_length);
 }
 
-int modbusUpdate(uint16_t* tab_reg, uint16_t nb_reg) {
+int modbusUpdate() {
   int rc = 0;
 
   if (CfgAvailable()) {
