@@ -23,7 +23,8 @@
 #include "setup.h"
 #include "config.h"
 #include "uart.h"
-#include "cfgbus.h"
+//#include "cfgbus.h"
+#include "modbus.h"
 
 void SystemClock_Config(void);
 
@@ -35,12 +36,16 @@ extern uint8_t enable;
 uint32_t lastLedTick=0;
 uint8_t ledState=0;
 
+uint16_t regs[16] = {0};
+
 void led_update(void)
 {
   if(HAL_GetTick() - lastLedTick > LED_PERIOD)
   {
     ledState = (ledState) ? 0 : 1;
     HAL_GPIO_WritePin(LED_PORT, LED_PIN, ledState);
+    lastLedTick = HAL_GetTick();
+    regs[0]++;
   }
 }
 
@@ -89,7 +94,8 @@ int main(void) {
   UARTRxEnable(UARTCh2, 1);
   UARTSendStr(UARTCh2, "Hover-Controller Online!\n");
 
-  cfg_init();
+  //cfg_init();
+  lastLedTick = HAL_GetTick();
 
   while(1)
   {
@@ -97,7 +103,7 @@ int main(void) {
     led_update();
 
     //update cfg_bus communication
-    cfg_update();
+    modbusUpdate(regs,16);
 
   }
 }

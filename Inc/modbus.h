@@ -8,16 +8,11 @@
  *
  */
 
-#ifndef Modbusino_h
-#define Modbusino_h
+#pragma once
 
-#include <inttypes.h>
-#if defined(ARDUINO) && ARDUINO >= 100
-  #include "Arduino.h"
-#else
-  #include "WProgram.h"
-  #include <pins_arduino.h>
-#endif
+
+
+#include <stdint.h>
 
 #define MODBUS_BROADCAST_ADDRESS 0
 
@@ -26,13 +21,4 @@
 #define MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS 2
 #define MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE   3
 
-class ModbusinoSlave {
-public:
-    ModbusinoSlave(uint8_t slave);
-    void setup(long baud);
-    int loop(uint16_t *tab_reg, uint16_t nb_reg);
-private:
-    int _slave;
-};
-
-#endif
+int modbusUpdate(uint16_t *regs, uint16_t size);

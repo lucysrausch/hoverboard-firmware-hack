@@ -9,14 +9,11 @@
  */
 
 #include <inttypes.h>
+#include "modbus.h"
+#include "cfgbus.h"
+#include <string.h>
 
-#if defined(ARDUINO) && ARDUINO >= 100
-  #include "Arduino.h"
-#else
-  #include "WProgram.h"
-  #include <pins_arduino.h>
-#endif
-#include "Modbusino.h"
+const uint8_t _slaveID = 16;
 
 #define _MODBUS_RTU_SLAVE              0
 #define _MODBUS_RTU_FUNCTION           1
@@ -30,6 +27,7 @@
 /* Supported function codes */
 #define _FC_READ_HOLDING_REGISTERS    0x03
 #define _FC_WRITE_MULTIPLE_REGISTERS  0x10
+#define _FC_UKNOWN                    0xFF
 
 enum {
     _STEP_FUNCTION = 0x01,
@@ -56,15 +54,6 @@ static uint16_t crc16(uint8_t *req, uint8_t req_length)
     return (crc << 8  | crc >> 8);
 }
 
-ModbusinoSlave::ModbusinoSlave(uint8_t slave) {
-    if (slave >= 0 & slave <= 247) {
-  _slave = slave;
-    }
-}
-
-void ModbusinoSlave::setup(long baud) {
-    Serial.begin(baud);
-}
 
 static int check_integrity(uint8_t *msg, uint8_t msg_length)
 {
@@ -101,7 +90,7 @@ static void send_msg(uint8_t *msg, uint8_t msg_length)
     msg[msg_length++] = crc >> 8;
     msg[msg_length++] = crc & 0x00FF;
 
-    Serial.write(msg, msg_length);
+    CfgWrite(msg, msg_length);
 }
 
 static uint8_t response_exception(uint8_t slave, uint8_t function,
@@ -120,23 +109,21 @@ static uint8_t response_exception(uint8_t slave, uint8_t function,
 
 static void flush(void)
 {
-    uint8_t i = 0;
-
     /* Wait a moment to receive the remaining garbage but avoid getting stuck
      * because the line is saturated */
-    while (Serial.available() && i++ < 10) {
-  Serial.flush();
-  delay(3);
+    uint32_t start = CfgTick();
+    while(CfgAvailable() && CfgTick()-start < 20)
+    {
+      CfgFlushRx();
     }
 }
 
 static int receive(uint8_t *req, uint8_t _slave)
 {
-    uint8_t i;
     uint8_t length_to_read;
     uint8_t req_index;
     uint8_t step;
-    uint8_t function;
+    uint8_t function = _FC_UKNOWN;
 
     /* We need to analyse the message step by step.  At the first step, we want
      * to reach the function code because all packets contain this
@@ -150,18 +137,16 @@ static int receive(uint8_t *req, uint8_t _slave)
   /* The timeout is defined to ~10 ms between each bytes.  Precision is
      not that important so I rather to avoid millis() to apply the KISS
      principle (millis overflows after 50 days, etc) */
-        if (!Serial.available()) {
-      i = 0;
-      while (!Serial.available()) {
-    delay(1);
-    if (++i == 10) {
-        /* Too late, bye */
-        return -1;
-    }
+      uint32_t start = CfgTick();
+      while(!CfgAvailable() && CfgTick()-start < 10)
+      {
+        //do nothing
       }
-        }
 
-  req[req_index] = Serial.read();
+      if(!CfgAvailable())
+        return -1;
+
+  CfgRead(&req[req_index],1);
 
         /* Moves the pointer to receive other data */
   req_index++;
@@ -280,15 +265,15 @@ static void reply(uint16_t *tab_reg, uint16_t nb_reg,
     send_msg(rsp, rsp_length);
 }
 
-int ModbusinoSlave::loop(uint16_t* tab_reg, uint16_t nb_reg)
+int modbusUpdate(uint16_t* tab_reg, uint16_t nb_reg)
 {
     int rc = 0;
     uint8_t req[_MODBUSINO_RTU_MAX_ADU_LENGTH];
 
-    if (Serial.available()) {
-  rc = receive(req, _slave);
+    if (CfgAvailable()) {
+  rc = receive(req, _slaveID);
   if (rc > 0) {
-      reply(tab_reg, nb_reg, req, rc, _slave);
+      reply(tab_reg, nb_reg, req, rc, _slaveID);
   }
     }
 
