@@ -15,6 +15,16 @@
 
 const uint8_t _slaveID = 16;
 
+//header indices
+enum
+{
+  _idx_slave    = 0,
+  _idx_func     = 1,
+  _idx_addr     = 2,
+  _idx_reg_cnt  = 4,
+  _idx_data_len = 6
+};
+
 #define _MODBUS_RTU_SLAVE              0
 #define _MODBUS_RTU_FUNCTION           1
 #define _MODBUS_RTU_PRESET_REQ_LENGTH  6
@@ -198,12 +208,13 @@ static int receive() {
 
 static void reply(uint8_t req_length)
 {
-  uint8_t slave = _rcvBuff[_MODBUS_RTU_SLAVE];
-  uint8_t function = _rcvBuff[_MODBUS_RTU_FUNCTION];
-  uint16_t address = (_rcvBuff[_MODBUS_RTU_FUNCTION + 1] << 8)
-      + _rcvBuff[_MODBUS_RTU_FUNCTION + 2];
-  uint16_t nb = (_rcvBuff[_MODBUS_RTU_FUNCTION + 3] << 8)
-      + _rcvBuff[_MODBUS_RTU_FUNCTION + 4];
+
+  //decode request header
+  uint8_t  slave    = _rcvBuff[_idx_slave];
+  uint8_t  function = _rcvBuff[_idx_func];
+  uint16_t address  = (uint16_t)(_rcvBuff[_idx_addr]) << 8 + _rcvBuff[_idx_addr+1];
+  uint16_t nrRegs   = (uint16_t)(_rcvBuff[_idx_reg_cnt]) << 8 + _rcvBuff[_idx_reg_cnt+1];
+
   uint8_t rsp[_MODBUSINO_RTU_MAX_ADU_LENGTH];
   uint8_t rsp_length = 0;
 
@@ -211,7 +222,7 @@ static void reply(uint8_t req_length)
     return;
   }
 
-  if (address + nb > nb_reg) {
+  if (address + nrRegs > nb_reg) {
     rsp_length = response_exception(slave, function,
     MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS, rsp);
   } else {
@@ -221,15 +232,15 @@ static void reply(uint8_t req_length)
       uint16_t i;
 
       rsp_length = build_response_basis(slave, function, rsp);
-      rsp[rsp_length++] = nb << 1;
-      for (i = address; i < address + nb; i++) {
+      rsp[rsp_length++] = nrRegs << 1;
+      for (i = address; i < address + nrRegs; i++) {
         rsp[rsp_length++] = tab_reg[i] >> 8;
         rsp[rsp_length++] = tab_reg[i] & 0xFF;
       }
     } else {
       uint16_t i, j;
 
-      for (i = address, j = 6; i < address + nb; i++, j += 2) {
+      for (i = address, j = 6; i < address + nrRegs; i++, j += 2) {
         /* 6 and 7 = first value */
         tab_reg[i] = (_rcvBuff[_MODBUS_RTU_FUNCTION + j] << 8)
             + _rcvBuff[_MODBUS_RTU_FUNCTION + j + 1];
