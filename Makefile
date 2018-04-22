@@ -39,7 +39,7 @@ Src/uart.c \
 Src/main.c \
 Src/bldc.c \
 Src/crc8.c \
-Src/cfgbus.c \
+Src/simple_modbus.c \
 Src/stm32f1xx_it.c \
 
 # ASM sources
