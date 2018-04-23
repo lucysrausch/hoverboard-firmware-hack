@@ -11,12 +11,12 @@
 #include "config.h"
 
 #define UART2_BAUD 115200
-#define UART2_RX_FIFO_SIZE 64
-#define UART2_TX_FIFO_SIZE 64
+#define UART2_RX_FIFO_SIZE 128
+#define UART2_TX_FIFO_SIZE 32
 
 #define UART3_BAUD 115200
-#define UART3_RX_FIFO_SIZE 64
-#define UART3_TX_FIFO_SIZE 64
+#define UART3_RX_FIFO_SIZE 32
+#define UART3_TX_FIFO_SIZE 32
 
 typedef enum
 {

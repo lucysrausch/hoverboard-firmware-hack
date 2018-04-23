@@ -25,4 +25,4 @@ typedef enum
 
 } mb_exception_t;
 
-int modbusUpdate();
+void modbusUpdate();
