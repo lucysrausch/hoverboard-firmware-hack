@@ -27,7 +27,9 @@ typedef enum
 
 void UART_Init();
 void UARTRxEnable(UART_ch_t uartCh, uint8_t enable);
-uint32_t UARTAvailable(UART_ch_t uartCh);
+void UARTTxEnable(UART_ch_t uartCh, uint8_t enable);
+uint32_t UARTRxAvailable(UART_ch_t uartCh);
+uint32_t UARTTxAvailable(UART_ch_t uartCh);
 int UARTSend(UART_ch_t uartCh, const uint8_t *buff, uint32_t len);
 int UARTSendStr(UART_ch_t uartCh, const char *msg);
 int UARTRead(UART_ch_t uartCh, uint8_t* buff, uint32_t len);

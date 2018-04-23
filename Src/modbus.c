@@ -147,7 +147,7 @@ static void flush(void) {
 
 int valid_range(uint16_t first, uint16_t cnt)
 {
-  if(first+cnt > CFG_NUM_ENTRIES)
+  if(first+cnt > sizeof(tab_reg)/2)
     return -1;
   else
     return 0;

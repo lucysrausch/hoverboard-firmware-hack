@@ -19,7 +19,7 @@ uint32_t CfgTick()
 
 uint32_t CfgAvailable(void)
 {
-  return UARTAvailable(UARTCh2);
+  return UARTRxAvailable(UARTCh2);
 }
 
 int CfgRead(uint8_t *out, uint32_t cnt)

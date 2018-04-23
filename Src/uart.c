@@ -23,10 +23,12 @@ UART_HandleTypeDef huart3;
 #define UART3_RX_DMA (DMA1_Channel3)
 #define UART3_TX_DMA (DMA1_Channel2)
 
-uint32_t pReadUart2 = 0;
-uint32_t pReadUart3 = 0;
-uint32_t pWriteUart2 = 0;
-uint32_t pWriteUart3 = 0;
+uint32_t pRxUart2 = 0;
+uint32_t pRxUart3 = 0;
+uint32_t pTxUart2 = 0;
+uint32_t pTxUart3 = 0;
+uint32_t uart2_tx_size = 0;
+uint32_t uart3_tx_size = 0;
 
 void UART_Init()
 {
@@ -108,21 +110,30 @@ void UART_Init()
 
   //Setup UART2/UART3 TX DMA as follows:
     //Mem size 8-bit, Peripheral size 8-bit, Increment memory address,
-    //Non-circular operation, Memory-to-peripheral, No Transfer complete interrupt
+    //Non-circular operation, Memory-to-peripheral, transfer complete interrupt
     //Priority level low
   UART2_TX_DMA->CCR   = 0;
   UART2_TX_DMA->CNDTR = 0;
   UART2_TX_DMA->CPAR  = (uint32_t)&(USART2->DR);
   UART2_TX_DMA->CMAR  = (uint32_t)uart2_tx;
-  UART2_TX_DMA->CCR   = DMA_CCR_MINC | DMA_CCR_DIR;
+  UART2_TX_DMA->CCR   = DMA_CCR_MINC | DMA_CCR_DIR | DMA_CCR_TCIE;
   DMA1->IFCR          = DMA_IFCR_CTCIF4 | DMA_IFCR_CHTIF4 | DMA_IFCR_CGIF4;
 
   UART3_TX_DMA->CCR   = 0;
   UART3_TX_DMA->CNDTR = 0;
   UART3_TX_DMA->CPAR  = (uint32_t)&(USART3->DR);
   UART3_TX_DMA->CMAR  = (uint32_t)uart3_tx;
-  UART3_TX_DMA->CCR   = DMA_CCR_MINC | DMA_CCR_DIR;
+  UART3_TX_DMA->CCR   = DMA_CCR_MINC | DMA_CCR_DIR | DMA_CCR_TCIE;
   DMA1->IFCR          = DMA_IFCR_CTCIF5 | DMA_IFCR_CHTIF5 | DMA_IFCR_CGIF5;
+
+  //clear pending DMA interrupt flags
+  DMA1->IFCR = DMA_IFCR_CGIF7;
+  DMA1->IFCR = DMA_IFCR_CGIF2;
+
+  HAL_NVIC_SetPriority(DMA1_Channel7_IRQn, 6, 6);
+  HAL_NVIC_EnableIRQ(DMA1_Channel7_IRQn);
+  HAL_NVIC_SetPriority(DMA1_Channel2_IRQn, 6, 6);
+  HAL_NVIC_EnableIRQ(DMA1_Channel2_IRQn);
 
 }
 
@@ -150,16 +161,16 @@ void UARTRxEnable(UART_ch_t uartCh, uint8_t enable)
 int UARTRead(UART_ch_t uartCh, uint8_t* buff, uint32_t len)
 {
   int result = -1;
-  uint32_t readCnt = MIN(len,UARTAvailable(uartCh));
+  uint32_t readCnt = MIN(len,UARTRxAvailable(uartCh));
 
   switch(uartCh)
   {
     case UARTCh2:
       for(int i =0; i<readCnt; i++)
       {
-        buff[i]=uart2_rx[pReadUart2];
-        pReadUart2 ++;
-        pReadUart2 %= UART2_RX_FIFO_SIZE;
+        buff[i]=uart2_rx[pRxUart2];
+        pRxUart2 ++;
+        pRxUart2 %= UART2_RX_FIFO_SIZE;
       }
       result = readCnt;
       break;
@@ -167,9 +178,9 @@ int UARTRead(UART_ch_t uartCh, uint8_t* buff, uint32_t len)
     case UARTCh3:
       for(int i =0; i<readCnt; i++)
       {
-        buff[i]=uart3_rx[pReadUart3];
-        pReadUart3 ++;
-        pReadUart3 %= UART3_RX_FIFO_SIZE;
+        buff[i]=uart3_rx[pRxUart3];
+        pRxUart3 ++;
+        pRxUart3 %= UART3_RX_FIFO_SIZE;
       }
       result = readCnt;
       break;
@@ -179,68 +190,41 @@ int UARTRead(UART_ch_t uartCh, uint8_t* buff, uint32_t len)
 }
 
 
-//int UARTRead(UART_ch_t uartCh)
-//{
-//  int result = -1;
-//  switch(uartCh)
-//  {
-//    case UARTCh2:
-//      if (UARTAvailable(uartCh) > 0)
-//      {
-//        result = uart2_rx[pReadUart2];
-//        //we know serial data is available so increment of read pointer by 1 is safe
-//        pReadUart2 ++;
-//        pReadUart2 %= UART2_RX_FIFO_SIZE; //wrap around buffer
-//      }
-//      break;
-//    case UARTCh3:
-//      if (UARTAvailable(uartCh) > 0)
-//      {
-//        result = uart3_rx[pReadUart3];
-//        //we know serial data is available so increment of read pointer by 1 is safe
-//        pReadUart3 ++;
-//        pReadUart3 %= UART3_RX_FIFO_SIZE; //wrap around buffer
-//      }
-//      break;
-//  }
-//
-//  return result;
-//}
-
-uint32_t UARTAvailable(UART_ch_t uartCh)
+uint32_t UARTRxAvailable(UART_ch_t uartCh)
 {
   uint32_t result = 0;
+  uint32_t pDMA = 0;
 
   switch(uartCh)
   {
     case UARTCh2:
       //write position of DMA
-      pWriteUart2 = UART2_RX_FIFO_SIZE - UART2_RX_DMA->CNDTR;
+      pDMA = UART2_RX_FIFO_SIZE - UART2_RX_DMA->CNDTR;
 
-      if(pReadUart2 > pWriteUart2) //if write position has come around
+      if(pRxUart2 > pDMA) //if write position has come around
       {
-        result = UART2_RX_FIFO_SIZE - pReadUart2; //items readPos until end
-        result += pWriteUart2;                    //+items 0-writePos
+        result = UART2_RX_FIFO_SIZE - pRxUart2; //items readPos until end
+        result += pDMA;                    //+items 0-writePos
       }
-      else if ( pReadUart2 < pWriteUart2) //if writePos is leading readPos
+      else if ( pRxUart2 < pDMA) //if writePos is leading readPos
       {
-        result = pWriteUart2 - pReadUart2; //items between read and write pos
+        result = pDMA - pRxUart2; //items between read and write pos
       }
 
       break;
 
     case UARTCh3:
       //write position of DMA
-      pWriteUart3 = UART3_RX_FIFO_SIZE - UART3_RX_DMA->CNDTR;
+      pDMA = UART3_RX_FIFO_SIZE - UART3_RX_DMA->CNDTR;
 
-      if(pReadUart3 > pWriteUart3) //if write position has come around
+      if(pRxUart3 > pDMA) //if write position has come around
       {
-        result = UART3_RX_FIFO_SIZE - pReadUart3; //items readPos until end
-        result += pWriteUart3;                    //+items 0-writePos
+        result = UART3_RX_FIFO_SIZE - pRxUart3; //items readPos until end
+        result += pDMA;                    //+items 0-writePos
       }
-      else if ( pReadUart3 < pWriteUart3) //if writePos is leading readPos
+      else if ( pRxUart3 < pDMA) //if writePos is leading readPos
       {
-        result = pWriteUart3 - pReadUart3; //items between read and write pos
+        result = pDMA - pRxUart3; //items between read and write pos
       }
       break;
   }
@@ -249,64 +233,178 @@ uint32_t UARTAvailable(UART_ch_t uartCh)
 }
 
 
-//void UARTSend(UART_ch_t uartCh, uint8_t data)
-//{
-//  switch(uartCh)
-//  {
-//    case UARTCh2:
-//      HAL_UART_Transmit(&huart2,*data,1,1000);
-//      break;
-//    case UARTCh3:
-//      HAL_UART_Transmit(&huart3,*data,1,1000);
-//      break;
-//  }
-//}
+uint32_t UARTTxAvailable(UART_ch_t uartCh)
+{
+  uint32_t result = 0;
+  uint32_t pDMA = 0;
+
+  switch(uartCh)
+  {
+    case UARTCh2:
+      //read position of DMA
+      pDMA = (UART2_TX_DMA->CMAR-(uint32_t)uart2_tx) + uart2_tx_size - UART2_TX_DMA->CNDTR;
+
+      if(pTxUart2 > pDMA)
+      {
+        result = UART2_TX_FIFO_SIZE - pTxUart2; //items write pos until end
+        result += pDMA;                         //+items 0-dma read position
+      }
+      else if ( pTxUart2 < pDMA) //if write position has come around, but DMA has not
+      {
+        result = pDMA - pTxUart2; //items between write pos and DMA
+      }
+      else
+      {
+        result = UART2_TX_FIFO_SIZE;
+      }
+
+      break;
+
+    case UARTCh3:
+      //read position of DMA
+      pDMA = (UART2_TX_DMA->CMAR-(uint32_t)uart3_tx) + uart3_tx_size - UART3_TX_DMA->CNDTR;
+
+      if(pTxUart3 > pDMA)
+      {
+        result = UART3_TX_FIFO_SIZE - pTxUart3; //items write pos until end
+        result += pDMA;                         //+items 0-dma read position
+      }
+      else if ( pTxUart3 < pDMA) //if write position has come around, but DMA has not
+      {
+        result = pDMA - pTxUart3; //items between write pos and DMA
+      }
+      else
+      {
+        result = UART3_TX_FIFO_SIZE;
+      }
+  }
+
+  return result;
+}
+
+
+int UARTQueue(UART_ch_t uartCh, const uint8_t *buff, uint32_t len)
+{
+  int writeCnt = MIN(len,UARTTxAvailable(uartCh));
+
+  switch(uartCh)
+  {
+    case UARTCh2:
+      for(int i =0; i<writeCnt; i++)
+      {
+        uart2_tx[pTxUart2]=buff[i];
+        pTxUart2 ++;
+        pTxUart2 %= UART2_TX_FIFO_SIZE;
+      }
+      break;
+
+    case UARTCh3:
+      for(int i =0; i<writeCnt; i++)
+      {
+        uart3_tx[pTxUart3]=buff[i];
+        pTxUart3 ++;
+        pTxUart3 %= UART3_TX_FIFO_SIZE;
+      }
+      break;
+  }
+
+  return writeCnt;
+}
+
+
+uint32_t UARTStartTx(UART_ch_t uartCh)
+{
+  uint32_t len = 0;
+  uint32_t pStart,pDMA;
+
+  switch(uartCh)
+  {
+    case UARTCh2:
+      //limit DMA size to 16 bytes to improve response time
+      len = MIN(16,UART2_TX_FIFO_SIZE - UARTTxAvailable(uartCh));
+      pDMA = (UART2_TX_DMA->CMAR-(uint32_t)uart2_tx) + uart2_tx_size - UART2_TX_DMA->CNDTR;
+
+      if(len > 0)
+      {
+        if(pDMA == UART2_TX_FIFO_SIZE) //if we reached end of buffer
+        {
+          pStart = 0;
+        }
+        else if(pDMA + len < UART2_TX_FIFO_SIZE) //if amount to send is within buffer limits
+        {
+          pStart = pDMA;
+        }
+        else if(pDMA + len >= UART2_TX_FIFO_SIZE )
+        {
+          pStart = pDMA;
+          len = UART2_TX_FIFO_SIZE - pDMA;
+        }
+
+        uart2_tx_size = len;
+        UART2_TX_DMA->CCR &= ~DMA_CCR_EN;
+        UART2_TX_DMA->CNDTR = uart2_tx_size;
+        UART2_TX_DMA->CMAR  = (uint32_t)&uart2_tx[pStart];
+        UART2_TX_DMA->CCR |= DMA_CCR_EN;
+      }
+      break;
+
+    case UARTCh3:
+      //limit DMA size to 16 bytes to improve response time
+      len = MIN(16,UART3_TX_FIFO_SIZE - UARTTxAvailable(uartCh));
+      pDMA = (UART3_TX_DMA->CMAR-(uint32_t)uart3_tx) + uart3_tx_size - UART3_TX_DMA->CNDTR;;
+
+      if(len > 0)
+      {
+        if(pDMA == UART3_TX_FIFO_SIZE) //if we reached end of buffer
+        {
+          pStart = 0;
+        }
+        else if(pDMA + len < UART3_TX_FIFO_SIZE) //if amount to send is within buffer limits
+        {
+          pStart = pDMA;
+        }
+        else if(pDMA + len >= UART3_TX_FIFO_SIZE )
+        {
+          pStart = pDMA;
+          len = UART3_TX_FIFO_SIZE - pDMA;
+        }
+
+        uart3_tx_size = len;
+        UART3_TX_DMA->CCR &= ~DMA_CCR_EN;
+        UART3_TX_DMA->CNDTR = uart3_tx_size;
+        UART3_TX_DMA->CMAR  = (uint32_t)&uart3_tx[pStart];
+        UART3_TX_DMA->CCR |= DMA_CCR_EN;
+      }
+      break;
+  }
+
+  return len;
+}
+
+
 
 int UARTSend(UART_ch_t uartCh, const uint8_t *buff, uint32_t len)
 {
-  int result = -1;
 
-  //wait max 1ms if DMA is still running.
-  switch(uartCh)
-  {
-    case UARTCh2:
-      if(UART2_TX_DMA->CNDTR != 0)
-        HAL_Delay(1);
-      break;
+    int result = UARTQueue(uartCh, buff, len);
 
-    case UARTCh3:
-      if(UART3_TX_DMA->CNDTR != 0)
-        HAL_Delay(1);
-      break;
-  }
-
-  switch(uartCh)
-  {
-    case UARTCh2:
-      if(UART2_TX_DMA->CNDTR == 0)
+    if(result > 0){
+      switch(uartCh)
       {
-        memcpy(uart2_tx,buff,len);
-        UART2_TX_DMA->CCR &= ~DMA_CCR_EN;
-        UART2_TX_DMA->CNDTR = len;
-        UART2_TX_DMA->CMAR  = (uint32_t)uart2_tx;
-        UART2_TX_DMA->CCR |= DMA_CCR_EN;
-        result = 0;
-      }
-      break;
-    case UARTCh3:
-      if(UART3_TX_DMA->CNDTR == 0)
-      {
-        memcpy(uart3_tx,buff,len);
-        UART3_TX_DMA->CCR &= ~DMA_CCR_EN;
-        UART3_TX_DMA->CNDTR = len;
-        UART3_TX_DMA->CMAR  = (uint32_t)uart3_tx;
-        UART3_TX_DMA->CCR |= DMA_CCR_EN;
-        result = 0;
-      }
-      break;
-  }
+        case UARTCh2:
+          if(UART2_TX_DMA->CNDTR == 0)
+            UARTStartTx(uartCh);
+          break;
 
-  return result;
+        case UARTCh3:
+          if(UART3_TX_DMA->CNDTR == 0)
+            UARTStartTx(uartCh);
+          break;
+      }
+    }
+
+    return result;
+
 }
 
 
@@ -315,12 +413,10 @@ void UARTFlushRX(UART_ch_t uartCh)
   switch(uartCh)
   {
     case UARTCh2:
-      pWriteUart2 = UART2_RX_FIFO_SIZE - UART2_RX_DMA->CNDTR;
-      pReadUart2 = pWriteUart2;
+      pRxUart2 = UART2_RX_FIFO_SIZE - UART2_RX_DMA->CNDTR;
       break;
     case UARTCh3:
-      pWriteUart3 = UART3_RX_FIFO_SIZE - UART3_RX_DMA->CNDTR;
-      pReadUart3 = pWriteUart3;
+      pRxUart3 = UART3_RX_FIFO_SIZE - UART3_RX_DMA->CNDTR;
       break;
   }
 }
@@ -360,16 +456,32 @@ int UARTTXReady(UART_ch_t uartCh)
   return result;
 }
 
+
+
 //will be called every 64 received bytes, update FIFO info here
-void DMA1_Channel6_IRQHandler(void)
+void DMA1_Channel6_IRQHandler(void) //UART2-RX
 {
   DMA1->IFCR = DMA_IFCR_CGIF6;
 }
 
 //will be called every 64 reveived bytes, update FIFO info here
-void DMA1_Channel3_IRQHandler(void)
+void DMA1_Channel3_IRQHandler(void) //UART3-RX
 {
   DMA1->IFCR = DMA_IFCR_CGIF3;
+}
+
+//update TX FIFO info and restart DMA here
+void DMA1_Channel7_IRQHandler(void) //UART2-TX
+{
+  DMA1->IFCR = DMA_IFCR_CGIF7;
+  UARTStartTx(UARTCh2);
+}
+
+//update TX FIFO info and restart DMA here
+void DMA1_Channel2_IRQHandler(void) //UART3-TX
+{
+  DMA1->IFCR = DMA_IFCR_CGIF2;
+  UARTStartTx(UARTCh3);
 }
 
 
