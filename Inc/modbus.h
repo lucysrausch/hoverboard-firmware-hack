@@ -17,8 +17,12 @@
 #define MODBUS_BROADCAST_ADDRESS 0
 
 /* Protocol exceptions */
-#define MODBUS_EXCEPTION_ILLEGAL_FUNCTION     1
-#define MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS 2
-#define MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE   3
+typedef enum
+{
+  mb_illegal_func    = 1,
+  mb_illegal_address = 2,
+  mb_illega_value    = 3
+
+} mb_exception_t;
 
 int modbusUpdate();

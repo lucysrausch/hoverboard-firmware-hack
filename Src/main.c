@@ -36,7 +36,7 @@ extern uint8_t enable;
 uint32_t lastLedTick=0;
 uint8_t ledState=0;
 
-uint16_t regs[16] = {0};
+extern volatile uint16_t tab_reg[16];
 
 void led_update(void)
 {
@@ -45,7 +45,7 @@ void led_update(void)
     ledState = (ledState) ? 0 : 1;
     HAL_GPIO_WritePin(LED_PORT, LED_PIN, ledState);
     lastLedTick = HAL_GetTick();
-    regs[0]++;
+    tab_reg[1]++;
   }
 }
 
@@ -103,7 +103,7 @@ int main(void) {
     led_update();
 
     //update cfg_bus communication
-    modbusUpdate(regs,16);
+    modbusUpdate();
 
   }
 }
