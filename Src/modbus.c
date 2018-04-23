@@ -66,6 +66,7 @@ enum {
 
 uint8_t _rcvBuff[_MODBUSINO_RTU_MAX_ADU_LENGTH] = {0};
 
+
 uint8_t _state = _st_idle;
 uint32_t _lastTick = 0;
 uint32_t _lastAvailable = 0;
@@ -111,8 +112,8 @@ static uint16_t crc16(uint16_t crcIn, uint8_t *data, uint8_t size) {
 static void send_msg(uint8_t *msg, uint8_t msg_length) {
   uint16_t crc = crc16(0xFFFF, msg, msg_length);
 
-  msg[msg_length++] = crc >> 8;
-  msg[msg_length++] = crc & 0x00FF;
+  msg[msg_length++] = crc & 0xFF;
+  msg[msg_length++] = (crc >> 8) & 0xFF;
 
   CfgWrite(msg, msg_length);
 }
@@ -201,7 +202,7 @@ int check_integrity(uint8_t *data)
   }
 
   //get crc from received data (MSB first)
-  uint16_t masterCrc = ((uint16_t)(data[_hdr.data_len] << 8)) + data[_hdr.data_len+1];
+  uint16_t masterCrc = ((uint16_t)(data[_hdr.data_len +1] << 8)) + data[_hdr.data_len];
 
   return (crc == masterCrc) ? 0 : -1;
 }
@@ -227,10 +228,6 @@ void modbusUpdate() {
   //waiting for message to be addressed to this slave
   if(_state == _st_idle && CfgAvailable())
   {
-    //reset state where necessary
-    _hdr.data_len  = 0;
-    _lastAvailable = 0;
-
     CfgRead(&_hdr.slave,1); //get slave address
     if(_hdr.slave != _slaveID && _hdr.slave != _MB_BROADCAST_ADDR )
     {
@@ -238,12 +235,9 @@ void modbusUpdate() {
       return;
     }
 
-    if(_hdr.fcode != _fc_write_regs && _hdr.fcode != _fc_read_regs)
-    {
-      exception(mb_illegal_func, _st_idle); //unsupported function
-      return;
-    }
-
+    //reset state where necessary, and receive header
+    _hdr.data_len  = 0;
+    _lastAvailable = CfgAvailable();
     _lastTick = CfgTick();
     _state = _st_header;
   }
@@ -263,6 +257,12 @@ void modbusUpdate() {
       _hdr.fcode     = rcv[0];
       _hdr.first_reg = ((uint16_t)(rcv[1] << 8)) + rcv[2];
       _hdr.nr_regs   = ((uint16_t)(rcv[3] << 8)) + rcv[4];
+
+      if(_hdr.fcode != _fc_write_regs && _hdr.fcode != _fc_read_regs)
+      {
+        exception(mb_illegal_func, _st_idle); //unsupported function
+        return;
+      }
 
       if(valid_range(_hdr.first_reg,_hdr.nr_regs) != 0)
       {
@@ -298,7 +298,7 @@ void modbusUpdate() {
       CfgRead(_rcvBuff,_hdr.data_len + 2);
 
       //check integrity
-      if(check_integrity(_rcvBuff))
+      if(check_integrity(_rcvBuff) == 0)
       {
         _state = _st_respond;
       }
@@ -340,6 +340,8 @@ void modbusUpdate() {
       uint8_t rsp[6];
       rspHeader(rsp);
       send_msg(rsp,6);
+
+      _state = _st_idle;
     }
 
     //    0: The Slave Address
@@ -359,6 +361,8 @@ void modbusUpdate() {
       }
 
       send_msg(_rcvBuff, 3 + _hdr.nr_regs * 2);
+
+      _state = _st_idle;
     }
 
   }

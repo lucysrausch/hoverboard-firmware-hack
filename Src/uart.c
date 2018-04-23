@@ -285,9 +285,10 @@ int UARTSend(UART_ch_t uartCh, const uint8_t *buff, uint32_t len)
     case UARTCh2:
       if(UART2_TX_DMA->CNDTR == 0)
       {
+        memcpy(uart2_tx,buff,len);
         UART2_TX_DMA->CCR &= ~DMA_CCR_EN;
         UART2_TX_DMA->CNDTR = len;
-        UART2_TX_DMA->CMAR  = (uint32_t)buff;
+        UART2_TX_DMA->CMAR  = (uint32_t)uart2_tx;
         UART2_TX_DMA->CCR |= DMA_CCR_EN;
         result = 0;
       }
@@ -295,9 +296,10 @@ int UARTSend(UART_ch_t uartCh, const uint8_t *buff, uint32_t len)
     case UARTCh3:
       if(UART3_TX_DMA->CNDTR == 0)
       {
+        memcpy(uart3_tx,buff,len);
         UART3_TX_DMA->CCR &= ~DMA_CCR_EN;
         UART3_TX_DMA->CNDTR = len;
-        UART3_TX_DMA->CMAR  = (uint32_t)buff;
+        UART3_TX_DMA->CMAR  = (uint32_t)uart3_tx;
         UART3_TX_DMA->CCR |= DMA_CCR_EN;
         result = 0;
       }

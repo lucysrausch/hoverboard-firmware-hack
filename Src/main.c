@@ -92,7 +92,7 @@ int main(void) {
   enable = 1;
 
   UARTRxEnable(UARTCh2, 1);
-  UARTSendStr(UARTCh2, "Hover-Controller Online!\n");
+  //UARTSendStr(UARTCh2, "Hover-Controller Online!\n");
 
   //cfg_init();
   lastLedTick = HAL_GetTick();

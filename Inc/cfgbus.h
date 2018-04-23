@@ -66,9 +66,16 @@ typedef struct
 
 typedef struct
 {
-  uint32_t magic; //do not remove, it is used to determine endiannes on the other side
-  uint8_t err_code; //do not remove, it is used to read back error states
+  //cfgbus default entries, do not remove
+  uint32_t magic;      //verify CFGBus compatibility
   char dev_name[12];
+  uint8_t err_code;
+  uint16_t err_cnt;
+  uint16_t list_size;
+  uint16_t list_addr;
+
+  //user entries
+
   uint32_t pwm_l;
   uint32_t pwm_r;
   float vbat;
