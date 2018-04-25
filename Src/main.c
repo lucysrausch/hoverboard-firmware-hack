@@ -139,7 +139,7 @@ int main(void) {
 
     #ifdef CONTROL_ADC
       cmd1 = CLAMP(adc_buffer.l_rx2 - 700, 0, 2350) / 2.35; // ADC values range 0-4095, however full range of our poti only covers 650 - 3050
-      //uint8_t button1 = (uint8_t)(adc_buffer.l_tx2 > 2000);
+      uint8_t button1 = (uint8_t)(adc_buffer.l_tx2 > 2000);
 
       timeout = 0;
     #endif
@@ -158,10 +158,15 @@ int main(void) {
     setScopeChannel(2, (int)speedR);
     setScopeChannel(3, (int)speedL);
 
+    // ####### ADDITIONAL CODE #######
+    #ifdef ADDITIONAL_CODE
+    ADDITIONAL_CODE;
+    #endif
+
     // ####### SET OUTPUTS #######
     if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < 50) {
       pwmr = speedR;
-      pwml = speedL;
+      pwml = -speedL;
     }
 
     lastSpeedL = speedL;
