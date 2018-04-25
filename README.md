@@ -30,7 +30,8 @@ openocd -f interface/stlink-v2.cfg -f target/stm32f1x.cfg -c init -c "stm32f1x u
 ```
 Then you can simply flash the firmware:
 ```
-st-flash write build/hoverboard.bin 0x8000000
+st-flash write build/hover.hex 0x8000000
+
 ```
 
 ---
