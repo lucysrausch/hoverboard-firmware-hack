@@ -21,10 +21,11 @@
 /* Protocol exceptions */
 typedef enum
 {
-  mb_illegal_func    = 1,
-  mb_illegal_address = 2,
+  mb_ok               = 0,
+  mb_illegal_func     = 1,
+  mb_illegal_address  = 2,
   mb_illegal_value    = 3,
-  mb_timeout         = 4
+  mb_timeout          = 4
 } mb_exception_t;
 
 void modbusUpdate();

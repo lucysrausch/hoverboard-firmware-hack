@@ -8,22 +8,42 @@
  *
  */
 
-#include <inttypes.h>
+#include <stdint.h>
+#include <stdbool.h>
 #include "modbus.h"
 #include "cfgbus.h"
 #include <string.h>
 
+//the following function pointers are used throughout the code. Point them to implementations to connect modbus
+//to a UART port and register file
 
-void (*reg_read)(uint16_t start, uint16_t nr_regs, uint8_t* data)   = &CfgRegRead;
-void (*reg_write)(uint16_t start, uint16_t nr_regs, uint8_t* data)  = &CfgRegWrite;
-uint32_t (*available)()                                             = &CfgAvailable;
+//should handle the logic of reading from and writing to holding registers (16bit).
+//start  : the register index to start read/writing
+//nr_regs: the number of registers to read/write
+//data   : the data to write, or the buffer to read to
+void (*reg_read)(uint16_t start, uint16_t nr_regs, uint8_t* data)             = &CfgRegRead;
+mb_exception_t (*reg_write)(uint16_t start, uint16_t nr_regs, uint8_t* data)  = &CfgRegWrite;
+bool (*valid_range)(uint16_t start, uint16_t nr_regs)                         = &CfgValidRange;
+
+//modbus physical communication (e.g. uart) read/write functions
+//data: data to write/buffer to read to
+//len : number of bytes to read/write
 int (*read)(uint8_t * data, uint32_t len)                           = &CfgRead;
 int (*write)(uint8_t * data, uint32_t len)                          = &CfgWrite;
+
+//returns the number of avaialbe data-bytes to read
+uint32_t (*available)()                                             = &CfgAvailable;
+
+//flush rx/tx buffers of the serial communication
 void (*flush_rx)(void)                                              = &CfgFlushRx;
 void (*flush_tx)(void)                                              = &CfgFlushTx;
+
+//get current timestamp in ms
 uint32_t (*tick)(void)                                              = &CfgTick;
+
+//gives the user information if something goes wrong. Use this to log or act
+//allowed to do nothing
 void (*error)(int code)                                             = &CfgSetError;
-int (*valid_range)(uint16_t first, uint16_t cnt)                    = &CfgValidRange;
 
 
 //modbus frame header indices
@@ -235,7 +255,7 @@ void modbusUpdate() {
         return;
       }
 
-      if(valid_range(_hdr.first_reg,_hdr.nr_regs) != 0)
+      if(!valid_range(_hdr.first_reg,_hdr.nr_regs))
       {
         exception(mb_illegal_address,_st_idle);
         return;
@@ -300,7 +320,13 @@ void modbusUpdate() {
     //6..7: The CRC (cyclic redundancy check) for error checking.
     if(_hdr.fcode == _fc_write_regs)
     {
-      reg_write(_hdr.first_reg, _hdr.nr_regs, _rcvBuff);
+      mb_exception_t res = reg_write(_hdr.first_reg, _hdr.nr_regs, _rcvBuff);
+
+      if(res != mb_ok)
+      {
+        exception(mb_illegal_address,_st_idle);
+        return;
+      }
 
       //respond
       uint8_t rsp[6];

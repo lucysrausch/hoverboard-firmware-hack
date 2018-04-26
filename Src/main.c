@@ -79,6 +79,7 @@ int main(void) {
   MX_ADC1_Init();
   MX_ADC2_Init();
   UART_Init();
+  CfgInit();
 
   HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 1);
 

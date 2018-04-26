@@ -2,14 +2,17 @@
 #define CFGBUS_H
 
 #include <stdint.h>
+#include <stdbool.h>
+#include "modbus.h"
 
 //address at which the cfgbus list can be requested
 #define CFG_LIST_REG_INDEX  (5000)   //excl 40001 range offset
 #define CFG_DEVICE_NAME     "Hover"  //10 chars max
+#define CFG_LIST_NAME_CHARS (16)     //max characters in entry name string (excl. terminating \0)
 
 //I am not a big fan of complicated macro structures, but this was the only way I could think
 //of that allows an easy definition of entries, that can be easily accessed (cfg.vars._varname),
-//and that leaves no room for error by multiple definitions of the same thing
+//and that leaves no room for error by multiple definitions of the same thing (like nr. entries)
 
 //assign initial values in CfgInit()
 
@@ -17,15 +20,15 @@
 //FORMAT      | var name       | type      | cfg_type | writeable | name string         |
 //---------------------------------------------------------------------------------------
 #define CFG_ENTRIES(_ENTRY) \
-        _ENTRY( magic          , uint32_t  , t_u32    , 0         , "Magic Value"       ) \
-        _ENTRY( dev_name[12]   , char      , t_str    , 0         , "Device Name"       ) \
-        _ENTRY( err_code       , uint16_t  , t_u16    , 1         , "Error Code"        ) \
-        _ENTRY( err_cnt        , uint16_t  , t_u16    , 1         , "Error Count"       ) \
-        _ENTRY( list_size      , uint16_t  , t_u16    , 0         , "List Size"         ) \
-        _ENTRY( list_addr      , uint16_t  , t_u16    , 0         , "List Address"      ) \
-        _ENTRY( pwm_l          , uint32_t  , t_u32    , 1         , "Left-Mtr PWM"      ) \
-        _ENTRY( pwm_r          , uint32_t  , t_u32    , 1         , "Right-Mtr PWM"     ) \
-        _ENTRY( vbat           , float     , t_flt    , 0         , "Battery Voltage"   )
+        _ENTRY( magic          , uint32_t  , t_u32    , false     , "Magic Value"       ) \
+        _ENTRY( dev_name[12]   , char      , t_str    , false     , "Device Name"       ) \
+        _ENTRY( err_code       , uint16_t  , t_u16    , true      , "Error Code"        ) \
+        _ENTRY( err_cnt        , uint16_t  , t_u16    , true      , "Error Count"       ) \
+        _ENTRY( list_size      , uint16_t  , t_u16    , false     , "List Size"         ) \
+        _ENTRY( list_addr      , uint16_t  , t_u16    , false     , "List Address"      ) \
+        _ENTRY( pwm_l          , uint32_t  , t_u32    , true      , "Left-Mtr PWM"      ) \
+        _ENTRY( pwm_r          , uint32_t  , t_u32    , true      , "Right-Mtr PWM"     ) \
+        _ENTRY( vbat           , float     , t_flt    , false     , "Battery Voltage"   )
 
 //---------------------------------------------------------------------------------------
 // DO NOT EDIT BELOW THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING
@@ -37,10 +40,11 @@ int CfgWrite(uint8_t * data, uint32_t len);
 void CfgFlushRx();
 void CfgFlushTx();
 uint32_t CfgTick();
+void CfgInit();
 void CfgSetError(int error);
 void CfgRegRead(uint16_t start, uint16_t nr_regs, uint8_t* data);
-void CfgRegWrite(uint16_t start, uint16_t nr_regs, uint8_t* data);
-int CfgValidRange(uint16_t first, uint16_t cnt);
+mb_exception_t CfgRegWrite(uint16_t start, uint16_t nr_regs, uint8_t* data);
+bool CfgValidRange(uint16_t first, uint16_t cnt);
 
 typedef enum
 {
@@ -83,15 +87,6 @@ typedef enum
 
 typedef struct
 {
-  uint8_t index;
-  uint8_t size;
-  uint8_t type; //types declared in "type_t" enum
-  uint8_t writeable; //0=no, !0= yes
-  const char name[16];
-} cfg_entry_t;
-
-typedef struct
-{
   CFG_ENTRIES(_STRUCT)
 } cfg_t;
 
@@ -104,7 +99,6 @@ typedef union{
 } cfg_mem_t;
 
 extern volatile cfg_mem_t cfg;
-extern const  cfg_entry_t cfg_entries[CFG_NR_ENTRIES];
 
 #endif //CFGBUS_H
 
