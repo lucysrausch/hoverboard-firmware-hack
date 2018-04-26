@@ -23,7 +23,7 @@
 #include "setup.h"
 #include "config.h"
 #include "uart.h"
-//#include "cfgbus.h"
+#include "cfgbus.h"
 #include "modbus.h"
 
 void SystemClock_Config(void);
@@ -36,8 +36,6 @@ extern uint8_t enable;
 uint32_t lastLedTick=0;
 uint8_t ledState=0;
 
-extern volatile uint16_t tab_reg[16];
-
 void led_update(void)
 {
   if(HAL_GetTick() - lastLedTick > LED_PERIOD)
@@ -45,7 +43,7 @@ void led_update(void)
     ledState = (ledState) ? 0 : 1;
     HAL_GPIO_WritePin(LED_PORT, LED_PIN, ledState);
     lastLedTick = HAL_GetTick();
-    tab_reg[1]++;
+    cfg.vars.err_cnt++;
   }
 }
 

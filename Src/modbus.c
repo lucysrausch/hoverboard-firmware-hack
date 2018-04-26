@@ -14,14 +14,17 @@
 #include <string.h>
 
 
-extern volatile cfg_t cfg;
-const uint8_t _slaveID = 16;
+void (*reg_read)(uint16_t start, uint16_t nr_regs, uint8_t* data)   = &CfgRegRead;
+void (*reg_write)(uint16_t start, uint16_t nr_regs, uint8_t* data)  = &CfgRegWrite;
+uint32_t (*available)()                                             = &CfgAvailable;
+int (*read)(uint8_t * data, uint32_t len)                           = &CfgRead;
+int (*write)(uint8_t * data, uint32_t len)                          = &CfgWrite;
+void (*flush_rx)(void)                                              = &CfgFlushRx;
+void (*flush_tx)(void)                                              = &CfgFlushTx;
+uint32_t (*tick)(void)                                              = &CfgTick;
+void (*error)(int code)                                             = &CfgSetError;
+int (*valid_range)(uint16_t first, uint16_t cnt)                    = &CfgValidRange;
 
-#define MB_CHAR_TIMEOUT (1)  //max ms between chars
-#define MB_PACKET_TIMEOUT (3)  //max ms between chars
-
-const uint32_t nb_reg = 16;
-volatile uint16_t tab_reg[16];
 
 //modbus frame header indices
 enum
@@ -34,14 +37,6 @@ enum
   _idx_data_start = 7
 };
 
-#define _MB_BROADCAST_ADDR (0)
-
-#define _MODBUS_RTU_PRESET_REQ_LENGTH  6
-#define _MODBUS_RTU_PRESET_RSP_LENGTH  2
-
-#define _MODBUS_RTU_CHECKSUM_LENGTH    2
-
-#define _MODBUSINO_RTU_MAX_ADU_LENGTH  128
 
 /* Supported function codes */
 enum
@@ -50,6 +45,7 @@ enum
   _fc_write_regs = 0x10,
   _fc_invalid    = 0xFF
 };
+
 
 enum
 {
@@ -60,16 +56,6 @@ enum
   _st_error
 };
 
-enum {
-  _STEP_FUNCTION = 0x01, _STEP_META, _STEP_DATA
-};
-
-uint8_t _rcvBuff[_MODBUSINO_RTU_MAX_ADU_LENGTH] = {0};
-
-
-uint8_t _state = _st_idle;
-uint32_t _lastTick = 0;
-uint32_t _lastAvailable = 0;
 
 typedef struct
 {
@@ -80,7 +66,13 @@ typedef struct
   uint8_t data_len;
 } mb_hdr_t;
 
+
 mb_hdr_t _hdr = {0};
+uint8_t _rcvBuff[MB_RX_BUFFER_SIZE] = {0};
+uint8_t _state = _st_idle;
+uint32_t _lastTick = 0;
+uint32_t _lastAvailable = 0;
+
 
 static uint16_t _crc16(uint16_t crcIn, uint8_t data)
 {
@@ -95,6 +87,7 @@ static uint16_t _crc16(uint16_t crcIn, uint8_t data)
 
   return crc;
 }
+
 
 static uint16_t crc16(uint16_t crcIn, uint8_t *data, uint8_t size) {
 
@@ -115,52 +108,45 @@ static void send_msg(uint8_t *msg, uint8_t msg_length) {
   msg[msg_length++] = crc & 0xFF;
   msg[msg_length++] = (crc >> 8) & 0xFF;
 
-  CfgWrite(msg, msg_length);
+  write(msg, msg_length);
 }
+
 
 static void flush(void) {
   //wait until gap of pack-timeout occurs
 
-  uint32_t loopStart = CfgTick();
+  uint32_t loopStart = tick();
   uint32_t start = 0;
 
-  while (loopStart - CfgTick() < 30) //wait max 30ms
+  while (loopStart - tick() < 30) //wait max 30ms
   {
-    if(!CfgAvailable() && start == 0)
+    if(!available() && start == 0)
     {
-      start = CfgTick();
+      start = tick();
     }
     else
     {
-      CfgFlushRx();
+      flush_rx();
       start = 0;
     }
 
-    if(CfgTick() - start > MB_PACKET_TIMEOUT)
+    if(tick() - start > MB_PACKET_TIMEOUT)
     {
-      CfgFlushRx();
+      flush_rx();
       break;
     }
   }
 
 }
 
-int valid_range(uint16_t first, uint16_t cnt)
-{
-  if(first+cnt > sizeof(tab_reg)/2)
-    return -1;
-  else
-    return 0;
-}
 
 void exception(uint8_t e, uint8_t nextState)
 {
-  cfg.err_cnt++;
-  cfg.err_code = (cfg.err_code == cfg_ok) ? cfg_invalid_entry : cfg.err_code; //don't change until user clears
+  error(e);
 
   uint8_t rsp[3];
 
-  rsp[0] = _slaveID;
+  rsp[0] = MB_SLAVE_ID;
   rsp[1] = _hdr.fcode + 0x80;
   rsp[2] = e;
 
@@ -171,10 +157,10 @@ void exception(uint8_t e, uint8_t nextState)
 
 void inline timeout(uint8_t nextState)
 {
-  cfg.err_cnt++;
-  cfg.err_code = (cfg.err_code == cfg_ok) ? cfg_rx_timeout : cfg.err_code; //don't change until user clears
+  error(mb_timeout);
   _state = nextState;
 }
+
 
 void rspHeader(uint8_t* rsp)
 {
@@ -201,35 +187,20 @@ int check_integrity(uint8_t *data)
     crc = crc16(crc,data,_hdr.data_len);
   }
 
-  //get crc from received data (MSB first)
+  //get crc from received data (local crc is LSB first, so invert bytes)
   uint16_t masterCrc = ((uint16_t)(data[_hdr.data_len +1] << 8)) + data[_hdr.data_len];
 
   return (crc == masterCrc) ? 0 : -1;
 }
 
 
-//const uint32_t nb_reg = 16;
-//volatile uint16_t tab_reg[16];
-
-void reg_read(uint16_t reg, uint8_t* data)
-{
-  data[0] = (tab_reg[reg] >> 8) & 0xff;//MSB
-  data[1] = tab_reg[reg] & 0xff;
-}
-
-
-void reg_write(uint16_t reg, uint8_t* data)
-{
-  tab_reg[reg] = ((uint16_t)(data[0] << 8)) + data[1];
-}
-
 void modbusUpdate() {
 
   //waiting for message to be addressed to this slave
-  if(_state == _st_idle && CfgAvailable())
+  if(_state == _st_idle && available())
   {
-    CfgRead(&_hdr.slave,1); //get slave address
-    if(_hdr.slave != _slaveID && _hdr.slave != _MB_BROADCAST_ADDR )
+    read(&_hdr.slave,1); //get slave address
+    if(_hdr.slave != MB_SLAVE_ID && _hdr.slave != MB_BROADCAST_ADDR )
     {
       flush(); //not for me, ignore
       return;
@@ -237,8 +208,8 @@ void modbusUpdate() {
 
     //reset state where necessary, and receive header
     _hdr.data_len  = 0;
-    _lastAvailable = CfgAvailable();
-    _lastTick = CfgTick();
+    _lastAvailable = available();
+    _lastTick = tick();
     _state = _st_header;
   }
 
@@ -250,10 +221,10 @@ void modbusUpdate() {
     //1..2: first reg address
     //3..4: nr regs involved
     //5: nr write bytes (only for writes)
-    if(CfgAvailable() >= 6)
+    if(available() >= 6)
     {
       uint8_t rcv[5];
-      CfgRead(rcv,5);
+      read(rcv,5);
       _hdr.fcode     = rcv[0];
       _hdr.first_reg = ((uint16_t)(rcv[1] << 8)) + rcv[2];
       _hdr.nr_regs   = ((uint16_t)(rcv[3] << 8)) + rcv[4];
@@ -271,17 +242,17 @@ void modbusUpdate() {
       }
 
       if(_hdr.fcode == _fc_write_regs)
-        CfgRead(&_hdr.data_len,1);
+        read(&_hdr.data_len,1);
 
-      _lastTick = CfgTick();
+      _lastTick = tick();
       _state = _st_receive;
     }
-    else if (CfgAvailable() > _lastAvailable) //new data so proceed
+    else if (available() > _lastAvailable) //new data so proceed
     {
-      _lastTick = CfgTick();
-      _lastAvailable = CfgAvailable();
+      _lastTick = tick();
+      _lastAvailable = available();
     }
-    else if (CfgTick() - _lastTick > MB_CHAR_TIMEOUT) //timed out
+    else if (tick() - _lastTick > MB_CHAR_TIMEOUT) //timed out
     {
       timeout(_st_idle);
       return;
@@ -291,11 +262,9 @@ void modbusUpdate() {
 
   if(_state == _st_receive)
   {
-    //uint32_t timeout = (CfgTick() - _lastTick > MB_CHAR_TIMEOUT) ? 1 : 0;
-
-    if(CfgAvailable() >= _hdr.data_len + 2)
+    if(available() >= _hdr.data_len + 2)
     {
-      CfgRead(_rcvBuff,_hdr.data_len + 2);
+      read(_rcvBuff,_hdr.data_len + 2);
 
       //check integrity
       if(check_integrity(_rcvBuff) == 0)
@@ -304,16 +273,16 @@ void modbusUpdate() {
       }
       else
       {
-        exception(mb_illega_value,_st_idle);
+        exception(mb_illegal_value,_st_idle);
         return;
       }
     }
-    else if (CfgAvailable() > _lastAvailable) //new data so proceed
+    else if (available() > _lastAvailable) //new data so proceed
     {
-      _lastTick = CfgTick();
-      _lastAvailable = CfgAvailable();
+      _lastTick = tick();
+      _lastAvailable = available();
     }
-    else if (CfgTick() - _lastTick > MB_CHAR_TIMEOUT) //timed out
+    else if (tick() - _lastTick > MB_CHAR_TIMEOUT) //timed out
     {
       timeout(_st_idle);
       return;
@@ -331,10 +300,7 @@ void modbusUpdate() {
     //6..7: The CRC (cyclic redundancy check) for error checking.
     if(_hdr.fcode == _fc_write_regs)
     {
-      for(int i=0; i<_hdr.nr_regs; i++)
-      {
-        reg_write(_hdr.first_reg + i, &_rcvBuff[i*2]);
-      }
+      reg_write(_hdr.first_reg, _hdr.nr_regs, _rcvBuff);
 
       //respond
       uint8_t rsp[6];
@@ -355,10 +321,7 @@ void modbusUpdate() {
       _rcvBuff[1] = _hdr.fcode;
       _rcvBuff[2] = _hdr.nr_regs * 2;
 
-      for(int i=0; i<_hdr.nr_regs; i++)
-      {
-        reg_read(_hdr.first_reg + i, &_rcvBuff[3 + i*2]);
-      }
+      reg_read(_hdr.first_reg, _hdr.nr_regs, &_rcvBuff[3]);
 
       send_msg(_rcvBuff, 3 + _hdr.nr_regs * 2);
 
