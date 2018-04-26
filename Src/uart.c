@@ -262,7 +262,7 @@ uint32_t UARTTxAvailable(UART_ch_t uartCh)
 
     case UARTCh3:
       //read position of DMA
-      pDMA = (UART2_TX_DMA->CMAR-(uint32_t)uart3_tx) + uart3_tx_size - UART3_TX_DMA->CNDTR;
+      pDMA = (UART3_TX_DMA->CMAR-(uint32_t)uart3_tx) + uart3_tx_size - UART3_TX_DMA->CNDTR;
 
       if(pTxUart3 > pDMA)
       {
@@ -382,7 +382,6 @@ uint32_t UARTStartTx(UART_ch_t uartCh)
 }
 
 
-
 int UARTSend(UART_ch_t uartCh, const uint8_t *buff, uint32_t len)
 {
 
@@ -427,10 +426,22 @@ void UARTFlushTX(UART_ch_t uartCh)
   switch(uartCh)
   {
     case UARTCh2:
+      HAL_NVIC_DisableIRQ(DMA1_Channel7_IRQn);
       UART2_TX_DMA->CCR &= ~DMA_CCR_EN;
+      UART2_TX_DMA->CNDTR = 0;
+      UART2_TX_DMA->CMAR  = (uint32_t)uart2_tx;
+      uart2_tx_size = 0;
+      pTxUart2 = 0;
+      HAL_NVIC_EnableIRQ(DMA1_Channel7_IRQn);
       break;
     case UARTCh3:
+      HAL_NVIC_DisableIRQ(DMA1_Channel2_IRQn);
       UART3_TX_DMA->CCR &= ~DMA_CCR_EN;
+      UART3_TX_DMA->CNDTR = 0;
+      UART3_TX_DMA->CMAR  = (uint32_t)uart3_tx;
+      uart3_tx_size = 0;
+      pTxUart3 = 0;
+      HAL_NVIC_EnableIRQ(DMA1_Channel2_IRQn);
       break;
   }
 }
@@ -449,7 +460,7 @@ int UARTTXReady(UART_ch_t uartCh)
     result = (UART2_TX_DMA->CNDTR == 0) ? 0 : -1;
     break;
   case UARTCh3:
-    result =  (UART3_TX_DMA->CNDTR == 0) ? 0 : -1;
+    result = (UART3_TX_DMA->CNDTR == 0) ? 0 : -1;
     break;
   }
 
