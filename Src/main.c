@@ -43,7 +43,6 @@ void led_update(void)
     ledState = (ledState) ? 0 : 1;
     HAL_GPIO_WritePin(LED_PORT, LED_PIN, ledState);
     lastLedTick = HAL_GetTick();
-    cfg.vars.err_cnt++;
   }
 }
 
@@ -121,7 +120,7 @@ int main(void) {
     //update motor speeds
     if(lastSpeedR != cfg.vars.speed_r)
     {
-      cfg.vars.speed_r = CLAMP(cfg.vars.speed_l, -1000, 1000);
+      cfg.vars.speed_r = CLAMP(cfg.vars.speed_r, -1000, 1000);
       cfg.vars.pwm_r = cfg.vars.speed_r;
       lastSpeedR = cfg.vars.speed_r;
     }
