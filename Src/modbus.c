@@ -21,9 +21,9 @@
 //start  : the register index to start read/writing
 //nr_regs: the number of registers to read/write
 //data   : the data to write, or the buffer to read to
-void (*reg_read)(uint16_t start, uint16_t nr_regs, uint8_t* data)             = &CfgRegRead;
-mb_exception_t (*reg_write)(uint16_t start, uint16_t nr_regs, uint8_t* data)  = &CfgRegWrite;
-bool (*valid_range)(uint16_t start, uint16_t nr_regs)                         = &CfgValidRange;
+void (*reg_read)(uint16_t start, uint16_t nr_regs, uint8_t* data)            = &CfgRegRead;
+mb_exception_t (*reg_write)(uint16_t start, uint16_t nr_regs, uint8_t* data) = &CfgRegWrite;
+bool (*valid_range)(uint16_t start, uint16_t nr_regs)                        = &CfgValidRange;
 
 //modbus physical communication (e.g. uart) read/write functions
 //data: data to write/buffer to read to

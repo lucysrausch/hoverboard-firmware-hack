@@ -95,6 +95,8 @@ int main(void) {
 
   //cfg_init();
   lastLedTick = HAL_GetTick();
+  uint16_t lastSpeedL = 0;
+  uint16_t lastSpeedR = 0;
 
   while(1)
   {
@@ -103,6 +105,26 @@ int main(void) {
 
     //update cfg_bus communication
     modbusUpdate();
+
+    float vBatNew = ((float)(((uint32_t)adc_buffer.vbat)*VBAT_ADC_TO_UV))/1000000;
+    cfg.vars.vbat = vBatNew;
+
+
+    //update motor speeds
+    if(lastSpeedL != cfg.vars.speed_l)
+    {
+      cfg.vars.speed_l = CLAMP(cfg.vars.speed_l, -1000, 1000);
+      cfg.vars.pwm_l = cfg.vars.speed_l;
+      lastSpeedL = cfg.vars.speed_l;
+    }
+
+    //update motor speeds
+    if(lastSpeedR != cfg.vars.speed_r)
+    {
+      cfg.vars.speed_r = CLAMP(cfg.vars.speed_l, -1000, 1000);
+      cfg.vars.pwm_r = cfg.vars.speed_r;
+      lastSpeedR = cfg.vars.speed_r;
+    }
 
   }
 }

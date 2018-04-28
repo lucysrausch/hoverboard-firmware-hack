@@ -4,11 +4,7 @@
 #include "defines.h"
 #include "setup.h"
 #include "config.h"
-
-volatile int posl = 0;
-volatile int posr = 0;
-volatile int pwml = 0;
-volatile int pwmr = 0;
+#include "cfgbus.h"
 
 uint8_t enable = 0;
 
@@ -116,15 +112,15 @@ void DMA1_Channel1_IRQHandler() {
   uint8_t hall_l =  (LEFT_HALL_PORT->IDR >> LEFT_HALL_LSB_PIN) & 0b111;
   uint8_t hall_r =  (RIGHT_HALL_PORT->IDR >> RIGHT_HALL_LSB_PIN) & 0b111;
 
-  uint8_t posl = hall_to_pos[hall_l];
-  uint8_t posr = hall_to_pos[hall_r];
+  cfg.vars.pos_r = hall_to_pos[hall_l];
+  cfg.vars.pos_l = hall_to_pos[hall_r];
 
   //update PWM channels based on position
   int ul, vl, wl;
   int ur, vr, wr;
 
-  blockPWM(pwml, posl, &ul, &vl, &wl);
-  blockPWM(pwmr, posr, &ur, &vr, &wr);
+  blockPWM(cfg.vars.pwm_l, cfg.vars.pos_l, &ul, &vl, &wl);
+  blockPWM(cfg.vars.pwm_r, cfg.vars.pos_r, &ur, &vr, &wr);
 
   LEFT_TIM->LEFT_TIM_U = CLAMP(ul + pwm_res / 2, 10, pwm_res-10);
   LEFT_TIM->LEFT_TIM_V = CLAMP(vl + pwm_res / 2, 10, pwm_res-10);

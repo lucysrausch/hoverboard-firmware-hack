@@ -9,9 +9,60 @@
 
 #define MIN(a, b) (((a) < (b)) ? (a) : (b))
 
+//DO NOT TOUCH, used to generate cfg struct, entry list, and count number of entries
+#define _VAR_ADDR(_var) (((uint16_t*)&cfg.vars._var)-&cfg.regs[0])
+#define _VAR_SIZE(_var) ((sizeof(cfg.vars._var)+1)/2)
+
+#define _XX_VAR(_var,_type)  _VAR_ADDR(_var), _VAR_SIZE(_var), _type
+#define _U16(_var) _XX_VAR(_var,t_u16)
+#define _U32(_var) _XX_VAR(_var,t_u32)
+#define _U64(_var) _XX_VAR(_var,t_u64)
+#define _I16(_var) _XX_VAR(_var,t_i16)
+#define _I32(_var) _XX_VAR(_var,t_i32)
+#define _I64(_var) _XX_VAR(_var,t_i64)
+#define _FLT(_var) _XX_VAR(_var,t_flt)
+#define _DBL(_var) _XX_VAR(_var,t_dbl)
+#define _ERR(_var) _XX_VAR(_var,t_err)
+#define _BOOL(_var) _XX_VAR(_var,t_bool)
+
+#define _XX_STR(_var,_len) (_VAR_ADDR(_var)-_len/2), _len/2, t_str
+#define _STR8(_var)  _XX_STR(_var,8)
+#define _STR9(_var)  _XX_STR(_var,9)
+#define _STR10(_var) _XX_STR(_var,10)
+#define _STR11(_var) _XX_STR(_var,11)
+#define _STR12(_var) _XX_STR(_var,12)
+#define _STR13(_var) _XX_STR(_var,13)
+#define _STR14(_var) _XX_STR(_var,14)
+#define _STR15(_var) _XX_STR(_var,15)
+#define _STR16(_var) _XX_STR(_var,16)
+#define _STR17(_var) _XX_STR(_var,17)
+#define _STR18(_var) _XX_STR(_var,18)
+#define _STR19(_var) _XX_STR(_var,19)
+#define _STR20(_var) _XX_STR(_var,20)
+#define _STR21(_var) _XX_STR(_var,21)
+#define _STR22(_var) _XX_STR(_var,22)
+#define _STR23(_var) _XX_STR(_var,23)
+#define _STR24(_var) _XX_STR(_var,24)
+
+#define _LIST(_var,_2,_type,_rw,_name) { _type(_var), _rw, _name},
+#define CFG_ENTRY_HEADER_REGS (12)
+
+typedef enum
+{
+  cfg_magic_reg     = 0,
+  cfg_dev_reg_first = 1,
+  cfg_dev_reg_last  = 6,
+  cfg_err_code      = 7,
+  cfg_err_cnt       = 8,
+  cfg_list_addr     = 9,
+  cfg_list_size     = 10,
+  cfg_nr_entries    = 11,
+} cfg_fixed_reg_t;
+
+
 typedef struct
 {
-  uint16_t index;
+  uint16_t address;
   uint8_t size;
   uint8_t type;      //types declared in "type_t" enum
   bool writeable;
@@ -38,14 +89,17 @@ inline bool _isListEntry(uint16_t start, uint16_t nr_regs);
 
 void CfgInit()
 {
-  //do not change, cfgbus required entries
-  cfg.vars.magic = 0xBAADC0DE;
-  strncpy((char *)cfg.vars.dev_name,CFG_DEVICE_NAME,sizeof(cfg.vars.dev_name)-1);
-  cfg.vars.dev_name[sizeof(cfg.vars.dev_name)-1] = 0x00;
+  //=======================================
+  //DO NOT CHANGE:: cfgbus required entries
+  //=======================================
+  cfg.vars.magic = 0xC0DE;
+
+  strncpy((char *)cfg.vars.dev_name,CFG_DEVICE_NAME,10);
+  cfg.vars.dev_name[11] = 0x00;
+
   cfg.vars.err_cnt = 0;
   cfg.vars.err_code = cfg_ok;
-  cfg.vars.list_addr = CFG_LIST_REG_INDEX;
-  cfg.vars.list_size = CFG_NR_ENTRIES;
+  cfg.vars.nr_entries = CFG_NR_ENTRIES;
 
   //initialize writeMask here, so writeability can be determined fast after init
   for(int i=0; i<CFG_NR_ENTRIES; i++)
@@ -53,11 +107,15 @@ void CfgInit()
     if(!cfg_entries[i].writeable)
     {
       //set corresponding writeMask entries to 1
-      _setWriteMask(cfg_entries[i].index,(cfg_entries[i].size+1)/2);
+      _setWriteMask(cfg_entries[i].address,(cfg_entries[i].size+1)/2);
     }
   }
 
-  //initialize user entries here
+
+  //=======================================
+  //Initialize user entries here
+  //=======================================
+
   //...
 
 }
@@ -127,9 +185,13 @@ void CfgSetError(int error)
 
 _Bool CfgValidRange(uint16_t start, uint16_t nr_regs)
 {
-  if(start < CFG_LIST_REG_INDEX)
+  if(start < CFG_ENTRY_HEADER_REGS)
   {
-    return (start+nr_regs < sizeof(cfg.regs)/2); //if within register range
+    return (start+nr_regs <= CFG_ENTRY_HEADER_REGS);
+  }
+  else if(start < CFG_LIST_REG_INDEX)
+  {
+    return (start+nr_regs <= sizeof(cfg.regs)/2); //if within register range
   }
   else
   {
@@ -153,8 +215,8 @@ void CfgRegRead(uint16_t start, uint16_t nr_regs, uint8_t* data)
     //5..n name chars;
     //n..m :/0 characters, where m == CFG_LIST_NAME_CHARS
 
-    data[0] = entry.index;
-    data[1] = entry.index;
+    data[0] = (entry.address >> 8) & 0xFF;  //MSB
+    data[1] = entry.address & 0xFF;         //LSB
     data[2] = entry.size;
     data[3] = entry.type;
     data[4] = entry.writeable;
@@ -165,7 +227,7 @@ void CfgRegRead(uint16_t start, uint16_t nr_regs, uint8_t* data)
     strncpy((char *)&data[5],entry.name, cpy_len);
     memset(&data[5+cpy_len],'\0',remaining);   //fill remainder with 0 (always at least the last)
   }
-  else //read from registers
+  else
   {
     _endianRegCpy((uint16_t*)data,&cfg.regs[start],nr_regs);
   }
@@ -254,19 +316,13 @@ bool _isWriteAllowed(uint16_t start, uint16_t nr_regs)
 }
 
 
-//copies in into out, assuming one of these is big endian (network)
+//handle endianess conversion on host side. If we do it here, and we have a little
+//endian machine, a 32bit value like 0x01020304 will be read/written als 0x04030102
+//and thus still needs to be corrected at the host side. No need to do that twice
 void _endianRegCpy(volatile uint16_t* dst,volatile uint16_t* src, uint8_t nr_regs)
 {
-//  const uint16_t _e = 1;
-//  if( (*(char*)&_e) == 0 ) // if cpu=big_endian, don't flip data, just copy
-
-  //solve endiannes on host with magic value, as otherwise little endian value
-  //will have to be written as 03 04 01 02 (where 0n represent nth bit)
-
-  for(uint32_t i = 0; i<nr_regs; i++)
-    dst[i] = src[i];
-
-
+    for(uint32_t i = 0; i<nr_regs; i++)
+      dst[i] = src[i];
 }
 
 

@@ -16,23 +16,27 @@
 
 //assign initial values in CfgInit()
 
-//---------------------------------------------------------------------------------------
-//FORMAT      | var name       | type      | cfg_type | writeable | name string         |
-//---------------------------------------------------------------------------------------
+//USE _STRxx FOR STRING ENTRIES of size xx!!!
+//--------------------------------------------------------------------------------------------------
+//FORMAT      | entry type | var name       | cfg_type | writeable | name string         |
+//--------------------------------------------------------------------------------------------------
 #define CFG_ENTRIES(_ENTRY) \
-        _ENTRY( magic          , uint32_t  , t_u32    , false     , "Magic Value"       ) \
-        _ENTRY( dev_name[12]   , char      , t_str    , false     , "Device Name"       ) \
-        _ENTRY( err_code       , uint16_t  , t_u16    , true      , "Error Code"        ) \
-        _ENTRY( err_cnt        , uint16_t  , t_u16    , true      , "Error Count"       ) \
-        _ENTRY( list_size      , uint16_t  , t_u16    , false     , "List Size"         ) \
-        _ENTRY( list_addr      , uint16_t  , t_u16    , false     , "List Address"      ) \
-        _ENTRY( pwm_l          , uint32_t  , t_u32    , true      , "Left-Mtr PWM"      ) \
-        _ENTRY( pwm_r          , uint32_t  , t_u32    , true      , "Right-Mtr PWM"     ) \
-        _ENTRY( vbat           , float     , t_flt    , false     , "Battery Voltage"   )
+        _ENTRY( magic          , uint16_t   , _U16     , false     , "Magic Value"       ) \
+        _ENTRY( nr_entries     , uint16_t   , _U16     , false     , "Nr Entries"        ) \
+        _ENTRY( dev_name[12]   , char       , _STR12   , false     , "Device Name"       ) \
+        _ENTRY( err_code       , uint16_t   , _U16     , true      , "Error Code"        ) \
+        _ENTRY( err_cnt        , uint16_t   , _U16     , true      , "Error Count"       ) \
+        _ENTRY( speed_l        , int16_t    , _I16     , true      , "Speed Left (.1%)"  ) \
+        _ENTRY( speed_r        , int16_t    , _I16     , true      , "Speed Right (.1%)" ) \
+        _ENTRY( pwm_l          , int32_t    , _I32     , false     , "PWM-Left"          ) \
+        _ENTRY( pwm_r          , int32_t    , _I32     , false     , "PWM-Right"         ) \
+        _ENTRY( pos_l          , uint16_t   , _U16     , false     , "HALLPos-Left"      ) \
+        _ENTRY( pos_r          , uint16_t   , _U16     , false     , "HALLPos-Right"     ) \
+        _ENTRY( vbat           , float      , _FLT     , false     , "Battery Voltage"   )
 
-//---------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------
 // DO NOT EDIT BELOW THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING
-//---------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------
 
 uint32_t CfgAvailable();
 int CfgRead(uint8_t * data, uint32_t len);
@@ -78,12 +82,12 @@ typedef enum
   t_unknown = 11//should be last
 } cfg_type_t;
 
-//DO NOT TOUCH, used to generate cfg struct, entry list, and count number of entries
-#define _STRUCT(_var,_type,_1,_2,_3) _type _var;
-#define _LIST(_var,_1,_type,_rw,_name) {((uint16_t*)&cfg.vars._var)-&cfg.regs[0], sizeof(cfg.vars._var), _type, _rw, _name},
-#define _COUNT(_1,_2,_3,_5,_6) +1
 
+//DONT TOUCH! required for CFGbus operation
+#define _STRUCT(_var,_sys,_3,_4,_5) _sys _var;
+#define _COUNT(_1,_2,_3,_4,_5) +1
 #define CFG_NR_ENTRIES (0+CFG_ENTRIES(_COUNT))
+
 
 typedef struct
 {
