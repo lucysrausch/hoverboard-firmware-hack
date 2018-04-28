@@ -112,8 +112,8 @@ void DMA1_Channel1_IRQHandler() {
   uint8_t hall_l =  (LEFT_HALL_PORT->IDR >> LEFT_HALL_LSB_PIN) & 0b111;
   uint8_t hall_r =  (RIGHT_HALL_PORT->IDR >> RIGHT_HALL_LSB_PIN) & 0b111;
 
-  cfg.vars.pos_r = hall_to_pos[hall_l];
-  cfg.vars.pos_l = hall_to_pos[hall_r];
+  cfg.vars.pos_r = hall_to_pos[hall_r];
+  cfg.vars.pos_l = hall_to_pos[hall_l];
 
   //update PWM channels based on position
   int ul, vl, wl;
