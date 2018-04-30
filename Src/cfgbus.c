@@ -7,6 +7,7 @@
 #undef MIN
 #endif
 
+#define CFG_BUS_UART (UARTCh3)
 #define MIN(a, b) (((a) < (b)) ? (a) : (b))
 
 //DO NOT TOUCH, used to generate cfg struct, entry list, and count number of entries
@@ -129,31 +130,31 @@ uint32_t CfgTick()
 
 uint32_t CfgAvailable(void)
 {
-  return UARTRxAvailable(UARTCh2);
+  return UARTRxAvailable(CFG_BUS_UART);
 }
 
 
 int CfgRead(uint8_t *out, uint32_t cnt)
 {
-  return UARTRead(UARTCh2,out,cnt);
+  return UARTRead(CFG_BUS_UART,out,cnt);
 }
 
 
 int CfgWrite(uint8_t * data, uint32_t len)
 {
-  return UARTSend(UARTCh2,data,len);
+  return UARTSend(CFG_BUS_UART,data,len);
 }
 
 
 void CfgFlushRx()
 {
-  UARTFlushRX(UARTCh2);
+  UARTFlushRX(CFG_BUS_UART);
 }
 
 
 void CfgFlushTx()
 {
-  UARTFlushTX(UARTCh2);
+  UARTFlushTX(CFG_BUS_UART);
 }
 
 

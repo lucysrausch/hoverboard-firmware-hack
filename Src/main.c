@@ -36,6 +36,7 @@ extern uint8_t enable;
 uint32_t lastLedTick=0;
 uint8_t ledState=0;
 
+
 void led_update(void)
 {
   if(HAL_GetTick() - lastLedTick > LED_PERIOD)
@@ -90,6 +91,7 @@ int main(void) {
   enable = 1;
 
   UARTRxEnable(UARTCh2, 1);
+  UARTRxEnable(UARTCh3, 1);
   //UARTSendStr(UARTCh2, "Hover-Controller Online!\n");
 
   //cfg_init();
