@@ -154,7 +154,7 @@ int main(void) {
     speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
 
     setScopeChannel(2, (int)speedR);
-    setScopeChannel(3, (int)timeout);
+    setScopeChannel(3, (int)speedL);
 
     // ####### ADDITIONAL CODE #######
     #ifdef ADDITIONAL_CODE
