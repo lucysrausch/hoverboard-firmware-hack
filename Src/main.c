@@ -123,13 +123,11 @@ int main(void) {
 
     #ifdef CONTROL_NUNCHUCK
       Nunchuck_Read();
-      cmd1 = CLAMP((nunchuck_data[0] - 127) * 10, -1000, 1000); // y - axis. Nunchuck joystick readings range 30 - 230
-      cmd2 = CLAMP((nunchuck_data[1] - 127) * 10, -1000, 1000); // x - axis
+      cmd1 = CLAMP((nunchuck_data[0] - 127) * 8, -1000, 1000); // x - axis. Nunchuck joystick readings range 30 - 230
+      cmd2 = CLAMP((nunchuck_data[1] - 128) * 8, -1000, 1000); // y - axis
 
       //uint8_t button1 = (uint8_t)nunchuck_data[5] & 1;
       //uint8_t button2 = (uint8_t)(nunchuck_data[5] >> 1) & 1;
-
-      timeout = 0;
     #endif
 
     #ifdef CONTROL_PPM
@@ -145,8 +143,8 @@ int main(void) {
     #endif
 
     // ####### LOW-PASS FILTER #######
-    speed = speed * (1.0 - FILTER) + cmd1 * FILTER;
-    steer = steer * (1.0 - FILTER) + cmd2 * FILTER;
+    steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
+    speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
 
     setScopeChannel(0, (int)speed);
     setScopeChannel(1, (int)steer);
@@ -156,7 +154,7 @@ int main(void) {
     speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
 
     setScopeChannel(2, (int)speedR);
-    setScopeChannel(3, (int)speedL);
+    setScopeChannel(3, (int)timeout);
 
     // ####### ADDITIONAL CODE #######
     #ifdef ADDITIONAL_CODE
@@ -164,7 +162,7 @@ int main(void) {
     #endif
 
     // ####### SET OUTPUTS #######
-    if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < 50) {
+    if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
       pwmr = speedR;
       pwml = -speedL;
     }
@@ -174,8 +172,6 @@ int main(void) {
 
     // ####### LOG TO CONSOLE #######
     consoleScope();
-
-    timeout=0;
 
     if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
       enable = 0;

@@ -30,6 +30,8 @@
 #define DEBUG_SERIAL_ASCII
 //#define DEBUG_I2C_LCD
 
+#define TIMEOUT          5           //wrong commands before emergency off
+
 // ################################################################################
 
 // ###### CONTROL VIA RC REMOTE ######

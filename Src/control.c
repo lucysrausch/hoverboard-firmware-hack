@@ -9,7 +9,7 @@ uint8_t ppm_count = 0;
 uint32_t timeout = 100;
 uint8_t nunchuck_data[6] = {0};
 
-uint8_t ai2cBuffer[6];
+uint8_t i2cBuffer[2];
 
 extern I2C_HandleTypeDef hi2c2;
 DMA_HandleTypeDef hdma_i2c2_rx;
@@ -60,27 +60,29 @@ void PPM_Init() {
 
 void Nunchuck_Init() {
     //-- START -- init WiiNunchuck
-  ai2cBuffer[0] = 0xF0;
-  ai2cBuffer[1] = 0x55;
-  //Originale
-  ai2cBuffer[0] = 0x40;
-  ai2cBuffer[1] = 0x00;
-  //HAL_I2C_Master_Transmit_DMA(&hi2c2, 0xA4, (uint8_t*)ai2cBuffer, 2);
-  //while(wii_JOYdati.I2CTxDone ==0);
-  //wii_JOYdati.I2CTxDone = 0;
-  HAL_I2C_Master_Transmit(&hi2c2,0xA4,(uint8_t*)ai2cBuffer, 2, 100);
+  i2cBuffer[0] = 0xF0;
+  i2cBuffer[1] = 0x55;
+
+  HAL_I2C_Master_Transmit(&hi2c2,0xA4,(uint8_t*)i2cBuffer, 2, 100);
   HAL_Delay(10);
-  //wii_JOYdati.done = 0;
+
+  i2cBuffer[0] = 0xFB;
+  i2cBuffer[1] = 0x00;
+
+  HAL_I2C_Master_Transmit(&hi2c2,0xA4,(uint8_t*)i2cBuffer, 2, 100);
+  HAL_Delay(10);
 }
 
 void Nunchuck_Read() {
-  ai2cBuffer[0] = 0x00;
-  HAL_I2C_Master_Transmit(&hi2c2,0xA4,(uint8_t*)ai2cBuffer, 1, 100);
+  i2cBuffer[0] = 0x00;
+  HAL_I2C_Master_Transmit(&hi2c2,0xA4,(uint8_t*)i2cBuffer, 1, 100);
   HAL_Delay(2);
-  HAL_I2C_Master_Receive(&hi2c2,0xA4,(uint8_t*)ai2cBuffer, 6, 100);
-  for (int i = 0; i < 6; i++) {
-     nunchuck_data[i] = (ai2cBuffer[i] ^ 0x17) + 0x17;
+  if (HAL_I2C_Master_Receive(&hi2c2,0xA4,(uint8_t*)nunchuck_data, 6, 100) == HAL_OK) {
+    timeout = 0;
+  } else {
+    timeout++;
   }
+
   //setScopeChannel(0, (int)nunchuck_data[0]);
   //setScopeChannel(1, (int)nunchuck_data[1]);
   //setScopeChannel(2, (int)nunchuck_data[5] & 1);
