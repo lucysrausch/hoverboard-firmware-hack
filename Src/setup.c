@@ -22,6 +22,7 @@
 
 TIM_HandleTypeDef htim_right;
 TIM_HandleTypeDef htim_left;
+TIM_HandleTypeDef htim_control;
 ADC_HandleTypeDef hadc1;
 ADC_HandleTypeDef hadc2;
 volatile adc_buf_t adc_buffer;
@@ -147,6 +148,27 @@ void MX_GPIO_Init(void) {
 
   GPIO_InitStruct.Pin = RIGHT_TIM_WL_PIN;
   HAL_GPIO_Init(RIGHT_TIM_WL_PORT, &GPIO_InitStruct);
+}
+
+
+void control_timer_init(void)
+{
+  __HAL_RCC_TIM3_CLK_ENABLE();
+
+  htim_control.Instance               = CTRL_TIM;
+  htim_control.Init.Prescaler         = 0;
+  htim_control.Init.CounterMode       = TIM_COUNTERMODE_UP;
+  htim_control.Init.Period            = 0xFFFF;
+  htim_control.Init.ClockDivision     = TIM_CLOCKDIVISION_DIV1;
+  htim_control.Init.RepetitionCounter = 0;
+  htim_control.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+
+  HAL_TIM_PWM_Init(&htim_control);
+
+  HAL_NVIC_SetPriority(TIM3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(TIM3_IRQn);
+
+  HAL_TIM_Base_Start_IT(&htim_control);
 }
 
 

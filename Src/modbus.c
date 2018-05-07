@@ -28,8 +28,8 @@ bool (*valid_range)(uint16_t start, uint16_t nr_regs)                        = &
 //modbus physical communication (e.g. uart) read/write functions
 //data: data to write/buffer to read to
 //len : number of bytes to read/write
-int (*read)(uint8_t * data, uint32_t len)                           = &CfgRead;
-int (*write)(uint8_t * data, uint32_t len)                          = &CfgWrite;
+int (*mb_read)(uint8_t * data, uint32_t len)                           = &CfgRead;
+int (*mb_write)(uint8_t * data, uint32_t len)                          = &CfgWrite;
 
 //returns the number of avaialbe data-bytes to read
 uint32_t (*available)()                                             = &CfgAvailable;
@@ -128,7 +128,7 @@ static void send_msg(uint8_t *msg, uint8_t msg_length) {
   msg[msg_length++] = crc & 0xFF;
   msg[msg_length++] = (crc >> 8) & 0xFF;
 
-  write(msg, msg_length);
+  mb_write(msg, msg_length);
 }
 
 
@@ -219,7 +219,7 @@ void modbusUpdate() {
   //waiting for message to be addressed to this slave
   if(_state == _st_idle && available())
   {
-    read(&_hdr.slave,1); //get slave address
+    mb_read(&_hdr.slave,1); //get slave address
     if(_hdr.slave != MB_SLAVE_ID && _hdr.slave != MB_BROADCAST_ADDR )
     {
       flush(); //not for me, ignore
@@ -244,7 +244,7 @@ void modbusUpdate() {
     if(available() >= 6)
     {
       uint8_t rcv[5];
-      read(rcv,5);
+      mb_read(rcv,5);
       _hdr.fcode     = rcv[0];
       _hdr.first_reg = ((uint16_t)(rcv[1] << 8)) + rcv[2];
       _hdr.nr_regs   = ((uint16_t)(rcv[3] << 8)) + rcv[4];
@@ -262,7 +262,7 @@ void modbusUpdate() {
       }
 
       if(_hdr.fcode == _fc_write_regs)
-        read(&_hdr.data_len,1);
+        mb_read(&_hdr.data_len,1);
 
       _lastTick = tick();
       _state = _st_receive;
@@ -284,7 +284,7 @@ void modbusUpdate() {
   {
     if(available() >= _hdr.data_len + 2)
     {
-      read(_rcvBuff,_hdr.data_len + 2);
+      mb_read(_rcvBuff,_hdr.data_len + 2);
 
       //check integrity
       if(check_integrity(_rcvBuff) == 0)

@@ -3,6 +3,9 @@
 #include "uart.h"
 #include <string.h>
 
+//void (*store)(cfg_t *in) = &CfgRegRead;
+//cfg_err_t (*load)(cfg_t *out) = &CfgRegWrite;
+
 #ifdef MIN
 #undef MIN
 #endif
@@ -117,7 +120,13 @@ void CfgInit()
   //Initialize user entries here
   //=======================================
 
-  //...
+  cfg.vars.rate_limit = 1;
+  cfg.vars.setpoint_l = 0;
+  cfg.vars.setpoint_r = 0;
+  cfg.vars.max_pwm_l = 200;
+  cfg.vars.max_pwm_r = 200;
+  cfg.vars.pwm_l = 0;
+  cfg.vars.pwm_r = 0;
 
 }
 

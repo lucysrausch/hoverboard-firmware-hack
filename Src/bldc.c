@@ -11,6 +11,9 @@ uint8_t enable = 0;
 uint32_t offsetcount = 0;
 adc_offsets_t offsets = {0};
 
+uint16_t _lastPosL = 0;
+uint16_t _lastPosR = 0;
+
 const int pwm_res = 64000000 / 2 / PWM_FREQ; // = 2000
 
 //(hall_to_pos + 2) % 6
@@ -114,6 +117,16 @@ void DMA1_Channel1_IRQHandler() {
 
   cfg.vars.pos_r = hall_to_pos[hall_r];
   cfg.vars.pos_l = hall_to_pos[hall_l];
+
+  //keep track of wheel movement
+  if(_lastPosL != cfg.vars.pos_l)
+    cfg.vars.tacho_l += (_lastPosL == (cfg.vars.pos_l + 1)%6) ? 1 : -1;
+
+  if(_lastPosR != cfg.vars.pos_r)
+    cfg.vars.tacho_r += (_lastPosR == (cfg.vars.pos_r + 1)%6) ? 1 : -1;
+
+  _lastPosL = cfg.vars.pos_l;
+  _lastPosR = cfg.vars.pos_r;
 
   //update PWM channels based on position
   int ul, vl, wl;

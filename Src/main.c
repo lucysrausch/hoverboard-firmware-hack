@@ -25,27 +25,13 @@
 #include "uart.h"
 #include "cfgbus.h"
 #include "modbus.h"
+#include "control.h"
 
 void SystemClock_Config(void);
 
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
 extern uint8_t enable;
-
-#define LED_PERIOD (300)  //ms
-uint32_t lastLedTick=0;
-uint8_t ledState=0;
-
-
-void led_update(void)
-{
-  if(HAL_GetTick() - lastLedTick > LED_PERIOD)
-  {
-    ledState = (ledState) ? 0 : 1;
-    HAL_GPIO_WritePin(LED_PORT, LED_PIN, ledState);
-    lastLedTick = HAL_GetTick();
-  }
-}
 
 
 int main(void) {
@@ -86,19 +72,15 @@ int main(void) {
   HAL_ADC_Start(&hadc1);
   HAL_ADC_Start(&hadc2);
 
-  HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
-
   enable = 1;
 
   UARTRxEnable(UARTCh2, 1);
   UARTRxEnable(UARTCh3, 1);
   //UARTSendStr(UARTCh2, "Hover-Controller Online!\n");
 
+  control_timer_init();
   //cfg_init();
-  lastLedTick = HAL_GetTick();
-  uint16_t lastSpeedL = 0;
-  uint16_t lastSpeedR = 0;
-
+  //astLedTick = HAL_GetTick();
   while(1)
   {
     //show user board is alive
@@ -109,23 +91,6 @@ int main(void) {
 
     float vBatNew = ((float)(((uint32_t)adc_buffer.vbat)*VBAT_ADC_TO_UV))/1000000;
     cfg.vars.vbat = vBatNew;
-
-
-    //update motor speeds
-    if(lastSpeedL != cfg.vars.speed_l)
-    {
-      cfg.vars.speed_l = CLAMP(cfg.vars.speed_l, -1000, 1000);
-      cfg.vars.pwm_l = cfg.vars.speed_l;
-      lastSpeedL = cfg.vars.speed_l;
-    }
-
-    //update motor speeds
-    if(lastSpeedR != cfg.vars.speed_r)
-    {
-      cfg.vars.speed_r = CLAMP(cfg.vars.speed_r, -1000, 1000);
-      cfg.vars.pwm_r = cfg.vars.speed_r;
-      lastSpeedR = cfg.vars.speed_r;
-    }
 
   }
 }
