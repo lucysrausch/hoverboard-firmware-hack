@@ -1,4 +1,3 @@
-# New Firmware! Now with actual current sensing!
 This firmware is much better than the old one. tested up to 40A / 60V, no dead board so far :)
 
 ## hoverboard-firmware-hack
@@ -9,7 +8,7 @@ The firmware you can find here allows you to use your Hoverboard Hardware (like 
 ---
 
 #### Hardware
-![otter](https://raw.githubusercontent.com/NiklasFauth/Hoverboard-Board-Hack/master/pinout.png)
+![otter](https://raw.githubusercontent.com/NiklasFauth/hoverboard-firmware-hack/master/pinout.png)
 
 The original Hardware supports two 4-pin cables that originally were connected to the two sensor boards. They break out GND, 12/15V and USART2&3 of the Hoverboard mainboard.
 Both USART2 & 3 can be used for UART and I2C, PA2&3 can be used as 12bit ADCs.
