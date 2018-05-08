@@ -143,6 +143,9 @@ int timer = 0;
 const int max_time = PWM_FREQ / 10;
 volatile int vel = 0;
 
+//scan 8 channels with 2ADCs @ 20 clk cycles per sample
+//meaning ~80 ADC clock cycles @ 8MHz until new DMA interrupt =~ 100KHz
+//=640 cpu cycles
 void DMA1_Channel1_IRQHandler() {
   DMA1->IFCR = DMA_IFCR_CTCIF1;
   // HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
@@ -174,7 +177,7 @@ void DMA1_Channel1_IRQHandler() {
   #endif
 
 
-
+  //disable PWM when current limit is reached (current chopping)
   if(ABS((adc_buffer.dcl - offsetdcl) * MOTOR_AMP_CONV_DC_AMP) > DC_CUR_LIMIT || timeout > TIMEOUT || enable == 0) {
     LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;
     //HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
@@ -192,6 +195,7 @@ void DMA1_Channel1_IRQHandler() {
   int ul, vl, wl;
   int ur, vr, wr;
 
+  //determine next position based on hall sensors
   uint8_t hall_ul = !(LEFT_HALL_U_PORT->IDR & LEFT_HALL_U_PIN);
   uint8_t hall_vl = !(LEFT_HALL_V_PORT->IDR & LEFT_HALL_V_PIN);
   uint8_t hall_wl = !(LEFT_HALL_W_PORT->IDR & LEFT_HALL_W_PIN);
@@ -215,8 +219,8 @@ void DMA1_Channel1_IRQHandler() {
   //setScopeChannel(2, (adc_buffer.rl1 - offsetrl1) / 8);
   //setScopeChannel(3, (adc_buffer.rl2 - offsetrl2) / 8);
 
+  //create square wave for buzzer
   buzzerTimer++;
-
   if (buzzerFreq != 0 && (buzzerTimer / 5000) % (buzzerPattern + 1) == 0) {
     if (buzzerTimer % buzzerFreq == 0) {
       HAL_GPIO_TogglePin(BUZZER_PORT, BUZZER_PIN);
@@ -225,32 +229,9 @@ void DMA1_Channel1_IRQHandler() {
       HAL_GPIO_WritePin(BUZZER_PORT, BUZZER_PIN, 0);
   }
 
-  // //measure vel
-  // timer++;
-  // if(timer > max_time){
-  //   timer = max_time;
-  //   vel = 0;
-  // }
-
-  // if(posl != last_pos){
-  //   vel = 1000 * PWM_FREQ / timer / P / 6 * 2;
-
-  //   if((posl - last_pos + 6) % 6 > 2){
-  //     vel = -vel;
-  //   }
-
-  //   timer = 0;
-  // }
-  // last_pos = posl;
-
-  //YOLOTEST
-  // errorl = cmdl - curl;
-  // pwml = kp * errorl;
-
-
+  //update PWM channels based on position
   blockPWM(pwml, posl, &ul, &vl, &wl);
   blockPWM(pwmr, posr, &ur, &vr, &wr);
-
 
   int weakul, weakvl, weakwl;
   if (pwml > 0) {
@@ -271,7 +252,6 @@ void DMA1_Channel1_IRQHandler() {
   ur += weakur;
   vr += weakvr;
   wr += weakwr;
-//  blockPWM(pwmr, posr, &ur, &vr, &wr);
 
   LEFT_TIM->LEFT_TIM_U = CLAMP(ul + pwm_res / 2, 10, pwm_res-10);
   LEFT_TIM->LEFT_TIM_V = CLAMP(vl + pwm_res / 2, 10, pwm_res-10);
@@ -280,5 +260,4 @@ void DMA1_Channel1_IRQHandler() {
   RIGHT_TIM->RIGHT_TIM_U = CLAMP(ur + pwm_res / 2, 10, pwm_res-10);
   RIGHT_TIM->RIGHT_TIM_V = CLAMP(vr + pwm_res / 2, 10, pwm_res-10);
   RIGHT_TIM->RIGHT_TIM_W = CLAMP(wr + pwm_res / 2, 10, pwm_res-10);
-  // HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);blockPhaseCurrent
 }

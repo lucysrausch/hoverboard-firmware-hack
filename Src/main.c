@@ -25,39 +25,37 @@
 
 void SystemClock_Config(void);
 
-int cmd1;
-int cmd2;
-int cmd3;
-
-int steer;
-int speed;
-
 extern TIM_HandleTypeDef htim_left;
 extern TIM_HandleTypeDef htim_right;
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
 extern volatile adc_buf_t adc_buffer;
+extern volatile adc_buf_t adc_buffer;
+
+int cmd1;
+int cmd2;
+int cmd3;
+
+int steer; // global variable for steering. -1000 to 1000
+int speed; // global variable for speed. -1000 to 1000
+
+extern volatile int pwml;  // global variable for pwm left. -1000 to 1000
+extern volatile int pwmr;  // global variable for pwm right. -1000 to 1000
+extern volatile int weakl; // global variable for field weakening left. -1000 to 1000
+extern volatile int weakr; // global variable for field weakening right. -1000 to 1000
+
+extern uint8_t buzzerFreq;    // global variable for the buzzer pitch. can be 1, 2, 3, 4, 5, 6, 7...
+extern uint8_t buzzerPattern; // global variable for the buzzer pattern. can be 1, 2, 3, 4, 5, 6, 7...
+
+extern uint8_t enable; // global variable for motor enable
+
+extern volatile uint32_t timeout; // global variable for timeout
+extern float batteryVoltage; // global variable for battery voltage
+
+extern uint8_t nunchuck_data[6];
 #ifdef CONTROL_PPM
 extern volatile uint16_t ppm_captured_value[PPM_NUM_CHANNELS+1];
 #endif
-
-extern volatile int pwml;
-extern volatile int pwmr;
-extern volatile int weakl;
-extern volatile int weakr;
-
-volatile int pwmrl = 0;
-
-extern uint8_t buzzerFreq;
-extern uint8_t buzzerPattern;
-
-extern uint8_t enable;
-
-extern volatile uint32_t timeout;
-
-extern float batteryVoltage;
-extern uint8_t nunchuck_data[6];
-
 
 int milli_vel_error_sum = 0;
 
