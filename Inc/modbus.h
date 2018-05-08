@@ -28,4 +28,4 @@ typedef enum
   mb_timeout          = 4
 } mb_exception_t;
 
-void modbusUpdate();
+void mb_update();

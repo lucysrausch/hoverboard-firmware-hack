@@ -26,6 +26,7 @@
 #include "cfgbus.h"
 #include "modbus.h"
 #include "control.h"
+#include "eeprom.h"
 
 void SystemClock_Config(void);
 
@@ -65,6 +66,8 @@ int main(void) {
   MX_ADC1_Init();
   MX_ADC2_Init();
   UART_Init();
+
+  volatile uint16_t ee_tmp = ee_init();
   CfgInit();
 
   HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 1);
@@ -76,18 +79,17 @@ int main(void) {
 
   UARTRxEnable(UARTCh2, 1);
   UARTRxEnable(UARTCh3, 1);
-  //UARTSendStr(UARTCh2, "Hover-Controller Online!\n");
 
   control_timer_init();
-  //cfg_init();
-  //astLedTick = HAL_GetTick();
+
+
   while(1)
   {
     //show user board is alive
     led_update();
 
     //update cfg_bus communication
-    modbusUpdate();
+    mb_update();
 
     float vBatNew = ((float)(((uint32_t)adc_buffer.vbat)*VBAT_ADC_TO_UV))/1000000;
     cfg.vars.vbat = vBatNew;

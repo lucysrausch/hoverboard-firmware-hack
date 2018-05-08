@@ -77,7 +77,7 @@ FLASH_Status FLASH_ErasePage(uint32_t Page_Address)
 	if(!IS_FLASH_ADDRESS(Page_Address))
 		return FLASH_BAD_ADDRESS;
 	/* Wait for last operation to be completed */
-	status = FLASH_WaitForLastOperation(EraseTimeout);
+	status = FLASH_WaitForLastOp(EraseTimeout);
   
 	if(status == FLASH_COMPLETE)
 	{
@@ -87,7 +87,7 @@ FLASH_Status FLASH_ErasePage(uint32_t Page_Address)
 		FLASH->CR |= FLASH_CR_STRT;
 
 		/* Wait for last operation to be completed */
-		status = FLASH_WaitForLastOperation(EraseTimeout);
+		status = FLASH_WaitForLastOp(EraseTimeout);
 		if(status != FLASH_TIMEOUT)
 		{
 			/* if the erase operation is completed, disable the PER Bit */
@@ -113,14 +113,14 @@ FLASH_Status FLASH_ProgramHalfWord(uint32_t Address, uint16_t Data)
 	if (IS_FLASH_ADDRESS(Address))
 	{
 		/* Wait for last operation to be completed */
-		status = FLASH_WaitForLastOperation(ProgramTimeout);
+		status = FLASH_WaitForLastOp(ProgramTimeout);
 		if(status == FLASH_COMPLETE)
 		{
 			/* if the previous operation is completed, proceed to program the new data */
 			FLASH->CR |= FLASH_CR_PG;
 			*(__IO uint16_t*)Address = Data;
 			/* Wait for last operation to be completed */
-			status = FLASH_WaitForLastOperation(ProgramTimeout);
+			status = FLASH_WaitForLastOp(ProgramTimeout);
 			if(status != FLASH_TIMEOUT)
 			{
 				/* if the program operation is completed, disable the PG Bit */

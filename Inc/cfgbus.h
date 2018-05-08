@@ -29,9 +29,9 @@
         _ENTRY( rate_limit     , uint16_t   , _U16     , true      , "Rate Limit (p/ms)" ) \
         _ENTRY( setpoint_l     , int16_t    , _I16     , true      , "PWM Setpoint-L"    ) \
         _ENTRY( setpoint_r     , int16_t    , _I16     , true      , "PWM Setpoint-R"    ) \
-		_ENTRY( max_pwm_l      , uint16_t   , _U16     , true      , "Max PWM Left"      ) \
-	    _ENTRY( max_pwm_r      , uint16_t   , _U16     , true      , "Max PWM Right"     ) \
-		_ENTRY( buzzer         , uint16_t   , _U16     , true      , "Buzzer"            ) \
+		    _ENTRY( max_pwm_l      , uint16_t   , _U16     , true      , "Max PWM Left"      ) \
+	      _ENTRY( max_pwm_r      , uint16_t   , _U16     , true      , "Max PWM Right"     ) \
+		    _ENTRY( buzzer         , uint16_t   , _U16     , true      , "Buzzer"            ) \
         _ENTRY( speed_l        , int16_t    , _I16     , false     , "Speed Left"        ) \
         _ENTRY( speed_r        , int16_t    , _I16     , false     , "Speed Right"       ) \
         _ENTRY( tacho_l        , uint16_t   , _U16     , false     , "Tacho Left"        ) \
@@ -94,7 +94,8 @@ typedef enum
 //DONT TOUCH! required for CFGbus operation
 #define _STRUCT(_var,_sys,_3,_4,_5) _sys _var;
 #define _COUNT(_1,_2,_3,_4,_5) +1
-#define CFG_NR_ENTRIES (0+CFG_ENTRIES(_COUNT))
+#define CFG_NR_ENTRIES   (0+CFG_ENTRIES(_COUNT))
+#define CFG_NR_REGISTERS (cfg_entries[CFG_NR_ENTRIES-1].address + cfg_entries[CFG_NR_ENTRIES-1].size)
 
 
 typedef struct

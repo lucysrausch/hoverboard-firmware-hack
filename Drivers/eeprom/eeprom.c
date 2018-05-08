@@ -25,20 +25,20 @@
 #define EEPROM_PAGE1_BASE		((uint32_t)(EEPROM_START_ADDRESS + EEPROM_PAGE_SIZE))
 
 /* Page status definitions */
-#define EEPROM_ERASED			((uint16_t)0xFFFF)	/* PAGE is empty */
-#define EEPROM_RECEIVE_DATA		((uint16_t)0xEEEE)	/* PAGE is marked to receive data */
-#define EEPROM_VALID_PAGE		((uint16_t)0x0000)	/* PAGE containing valid data */
+#define EEPROM_ERASED			   ((uint16_t)0xFFFF)	/* PAGE is empty */
+#define EEPROM_RECEIVE_DATA	 ((uint16_t)0xEEEE)	/* PAGE is marked to receive data */
+#define EEPROM_VALID_PAGE		 ((uint16_t)0x0000)	/* PAGE containing valid data */
 
 /* Page full define */
 enum
 {
-	EEPROM_OK				= 0x0000,
-	EEPROM_OUT_SIZE			= 0x0081,
-	EEPROM_BAD_ADDRESS		= 0x0082,
-	EEPROM_BAD_FLASH		= 0x0083,
-	EEPROM_NOT_INIT			= 0x0084,
-	EEPROM_SAME_VALUE		= 0x0085,
-	EEPROM_NO_VALID_PAGE	= 0x00AB
+	EEPROM_OK				      = 0x0000,   //0
+	EEPROM_OUT_SIZE			  = 0x0081,   //129
+	EEPROM_BAD_ADDRESS	  = 0x0082,   //130
+	EEPROM_BAD_FLASH		  = 0x0083,   //131
+	EEPROM_NOT_INIT			  = 0x0084,   //132
+	EEPROM_SAME_VALUE		  = 0x0085,   //133
+	EEPROM_NO_VALID_PAGE	= 0x00AB    //171
 };
 
 #define EEPROM_DEFAULT_DATA		0xFFFF
@@ -525,7 +525,7 @@ uint16_t ee_read(uint16_t Address, uint16_t *Data)
 }
 
 /**
-  * @brief  Writes/upadtes variable data in EEPROM.
+  * @brief  Writes/updates variable data in EEPROM.
   * @param  VirtAddress: Variable virtual address
   * @param  Data: 16 bit data to be written
   * @retval Success or error status:
@@ -550,8 +550,72 @@ uint16_t ee_write(uint16_t Address, uint16_t Data)
 	return status;
 }
 
+
 /**
-  * @brief  Writes/upadtes variable data in EEPROM.
+  * @brief  Stores an array of 16-bit values into eeprom address 0
+  * @param  data: array of data to store
+  * @param  len: number of 16-bit values to store
+  * @retval number of data elements succesfully stored
+  */
+uint16_t ee_store(volatile uint16_t *data, uint16_t len)
+{
+  return ee_write_multiple(0,data,len);
+}
+
+/**
+  * @brief  Reads an array of 16-bit values from eeprom address 0
+  * @param  data: array to store data
+  * @param  len: number of 16-bit values to load
+  * @retval number of data elements succesfully loaded
+  */
+uint16_t ee_load(volatile uint16_t *data, uint16_t len)
+{
+  return ee_read_multiple(0,data,len);
+}
+
+
+/**
+  * @brief  Reads multiple variables from EEPROM.
+  * @param  addr: data start address
+  * @param  data: data buffer to be read into
+  * @param  len : number of variables to be read
+  * @retval number of variables succesfully read
+  */
+uint16_t ee_read_multiple(uint16_t addr, volatile uint16_t *data, uint16_t len)
+{
+  uint16_t cnt;
+  for(cnt=0; cnt<len; cnt++)
+  {
+    if(ee_read(addr+cnt,&data[cnt]) != EEPROM_OK)
+     return cnt;
+  }
+
+  return cnt;
+}
+
+
+/**
+  * @brief  Writes/updates multiple variables in EEPROM.
+  * @param  addr: data start address
+  * @param  data: data buffer to be written
+  * @param  len : number of variables to be written
+  * @retval number of variables succesfully written
+  */
+uint16_t ee_write_multiple(uint16_t addr, volatile uint16_t *data, uint16_t len)
+{
+  uint16_t cnt;
+  for(cnt=0; cnt<len; cnt++)
+  {
+    if(ee_write(addr+cnt,data[cnt]) != EEPROM_OK)
+     return cnt;
+  }
+
+  return cnt;
+}
+
+
+/**
+  * @brief  Writes/updates variable data in EEPROM.
             The value is written only if differs from the one already saved at the same address.
   * @param  VirtAddress: Variable virtual address
   * @param  Data: 16 bit data to be written

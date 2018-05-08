@@ -1,10 +1,15 @@
 #include "cfgbus.h"
 #include "modbus.h"
 #include "uart.h"
+#include "eeprom.h"
 #include <string.h>
 
-//void (*store)(cfg_t *in) = &CfgRegRead;
-//cfg_err_t (*load)(cfg_t *out) = &CfgRegWrite;
+
+//these function pointers should point to a user configurable function
+//that stores/reads the 16bit value array in a non-volatile memory such as an eeprom
+//@return: the number of registers succesfully written, should equal len on success
+uint16_t (*CfgStore)(volatile uint16_t *data, uint16_t len) = &ee_store;
+uint16_t (*CfgLoad)(volatile uint16_t *data, uint16_t len)  = &ee_load;
 
 #ifdef MIN
 #undef MIN
@@ -96,6 +101,13 @@ void CfgInit()
   //=======================================
   //DO NOT CHANGE:: cfgbus required entries
   //=======================================
+
+  if(ee_load(cfg.regs,CFG_NR_REGISTERS) != CFG_NR_REGISTERS)
+  {
+    for(int i=0; i<CFG_NR_REGISTERS; i++)
+      cfg.regs[i] = 0; //if load was not succesfull, set all entries to 0 to be safe.
+  }
+
   cfg.vars.magic = 0xC0DE;
 
   strncpy((char *)cfg.vars.dev_name,CFG_DEVICE_NAME,10);
@@ -115,19 +127,33 @@ void CfgInit()
     }
   }
 
-
   //=======================================
-  //Initialize user entries here
+  //Initialize user entries here that should always have the
+  //same value when starting the system. The rest will be
+  //loaded from eeprom
   //=======================================
 
-  cfg.vars.rate_limit = 1;
+  if(cfg.vars.rate_limit == 0)
+    cfg.vars.rate_limit = 1;
+
+  if(cfg.vars.max_pwm_r == 0)
+    cfg.vars.max_pwm_r = 200;
+
+  if(cfg.vars.max_pwm_l == 0)
+      cfg.vars.max_pwm_l = 200;
+
   cfg.vars.setpoint_l = 0;
   cfg.vars.setpoint_r = 0;
-  cfg.vars.max_pwm_l = 200;
-  cfg.vars.max_pwm_r = 200;
+  cfg.vars.buzzer = 0;
+  cfg.vars.speed_l = 0;
+  cfg.vars.speed_r = 0;
+  cfg.vars.tacho_l = 0;
+  cfg.vars.tacho_r =0;
   cfg.vars.pwm_l = 0;
   cfg.vars.pwm_r = 0;
-
+  cfg.vars.pos_l = 0;
+  cfg.vars.pos_r = 0;
+  cfg.vars.vbat = 0;
 }
 
 
@@ -246,6 +272,16 @@ void CfgRegRead(uint16_t start, uint16_t nr_regs, uint8_t* data)
 
 mb_exception_t CfgRegWrite(uint16_t start, uint16_t nr_regs, uint8_t* data)
 {
+  //before any check, if it is a write to magic value, and data equals magic value
+  //store current settings in eeprom
+  if(start == 0 && ((uint16_t*)data)[0] == cfg.vars.magic)
+  {
+    if(CfgStore(cfg.regs,CFG_NR_REGISTERS) != CFG_NR_REGISTERS)
+      return mb_timeout;
+    else
+      return mb_ok;
+  }
+
   if(_isListEntry(start,nr_regs))
     return mb_illegal_address;
 

@@ -21,9 +21,9 @@
 //start  : the register index to start read/writing
 //nr_regs: the number of registers to read/write
 //data   : the data to write, or the buffer to read to
-void (*reg_read)(uint16_t start, uint16_t nr_regs, uint8_t* data)            = &CfgRegRead;
+void (*mb_reg_read)(uint16_t start, uint16_t nr_regs, uint8_t* data)            = &CfgRegRead;
 mb_exception_t (*reg_write)(uint16_t start, uint16_t nr_regs, uint8_t* data) = &CfgRegWrite;
-bool (*valid_range)(uint16_t start, uint16_t nr_regs)                        = &CfgValidRange;
+bool (*mb_valid_range)(uint16_t start, uint16_t nr_regs)                        = &CfgValidRange;
 
 //modbus physical communication (e.g. uart) read/write functions
 //data: data to write/buffer to read to
@@ -31,19 +31,19 @@ bool (*valid_range)(uint16_t start, uint16_t nr_regs)                        = &
 int (*mb_read)(uint8_t * data, uint32_t len)                           = &CfgRead;
 int (*mb_write)(uint8_t * data, uint32_t len)                          = &CfgWrite;
 
-//returns the number of avaialbe data-bytes to read
-uint32_t (*available)()                                             = &CfgAvailable;
+//returns the number of available data-bytes to read
+uint32_t (*mb_available)()                                             = &CfgAvailable;
 
 //flush rx/tx buffers of the serial communication
-void (*flush_rx)(void)                                              = &CfgFlushRx;
-void (*flush_tx)(void)                                              = &CfgFlushTx;
+void (*mb_flush_rx)(void)                                              = &CfgFlushRx;
+void (*mb_flush_tx)(void)                                              = &CfgFlushTx;
 
 //get current timestamp in ms
-uint32_t (*tick)(void)                                              = &CfgTick;
+uint32_t (*mb_tick)(void)                                              = &CfgTick;
 
 //gives the user information if something goes wrong. Use this to log or act
 //allowed to do nothing
-void (*error)(int code)                                             = &CfgSetError;
+void (*mb_error)(int code)                                             = &CfgSetError;
 
 
 //modbus frame header indices
@@ -94,7 +94,7 @@ uint32_t _lastTick = 0;
 uint32_t _lastAvailable = 0;
 
 
-static uint16_t _crc16(uint16_t crcIn, uint8_t data)
+static uint16_t mb_single_crc16(uint16_t crcIn, uint8_t data)
 {
   uint16_t crc = crcIn ^ data;
 
@@ -109,21 +109,21 @@ static uint16_t _crc16(uint16_t crcIn, uint8_t data)
 }
 
 
-static uint16_t crc16(uint16_t crcIn, uint8_t *data, uint8_t size) {
+static uint16_t mb_crc16(uint16_t crcIn, uint8_t *data, uint8_t size) {
 
   uint16_t crc = crcIn;
 
   for(uint16_t i=0; i<size; i++)
   {
-    crc = _crc16(crc,data[i]);
+    crc = mb_single_crc16(crc,data[i]);
   }
 
   return crc;
 }
 
 
-static void send_msg(uint8_t *msg, uint8_t msg_length) {
-  uint16_t crc = crc16(0xFFFF, msg, msg_length);
+static void mb_send_msg(uint8_t *msg, uint8_t msg_length) {
+  uint16_t crc = mb_crc16(0xFFFF, msg, msg_length);
 
   msg[msg_length++] = crc & 0xFF;
   msg[msg_length++] = (crc >> 8) & 0xFF;
@@ -132,27 +132,27 @@ static void send_msg(uint8_t *msg, uint8_t msg_length) {
 }
 
 
-static void flush(void) {
+static void mb_flush(void) {
   //wait until gap of pack-timeout occurs
 
-  uint32_t loopStart = tick();
+  uint32_t loopStart = mb_tick();
   uint32_t start = 0;
 
-  while (loopStart - tick() < 30) //wait max 30ms
+  while (loopStart - mb_tick() < 30) //wait max 30ms
   {
-    if(!available() && start == 0)
+    if(!mb_available() && start == 0)
     {
-      start = tick();
+      start = mb_tick();
     }
     else
     {
-      flush_rx();
+      mb_flush_rx();
       start = 0;
     }
 
-    if(tick() - start > MB_PACKET_TIMEOUT)
+    if(mb_tick() - start > MB_PACKET_TIMEOUT)
     {
-      flush_rx();
+      mb_flush_rx();
       break;
     }
   }
@@ -160,9 +160,9 @@ static void flush(void) {
 }
 
 
-void exception(uint8_t e, uint8_t nextState)
+void mb_exception(uint8_t e, uint8_t nextState)
 {
-  error(e);
+  mb_error(e);
 
   uint8_t rsp[3];
 
@@ -170,19 +170,19 @@ void exception(uint8_t e, uint8_t nextState)
   rsp[1] = _hdr.fcode + 0x80;
   rsp[2] = e;
 
-  send_msg(rsp,3);
+  mb_send_msg(rsp,3);
   _state = nextState;
 }
 
 
-void inline timeout(uint8_t nextState)
+void inline mb_do_timeout(uint8_t nextState)
 {
-  error(mb_timeout);
+  mb_error(mb_timeout);
   _state = nextState;
 }
 
 
-void rspHeader(uint8_t* rsp)
+void mb_rsp_header(uint8_t* rsp)
 {
   rsp[0] = _hdr.slave;
   rsp[1] = _hdr.fcode;
@@ -193,18 +193,18 @@ void rspHeader(uint8_t* rsp)
 }
 
 
-int check_integrity(uint8_t *data)
+int mb_check_integrity(uint8_t *data)
 {
   //build crc for header
   uint8_t hdr[6];
-  rspHeader(hdr);
-  uint16_t crc = crc16(0xFFFF,hdr,6);
+  mb_rsp_header(hdr);
+  uint16_t crc = mb_crc16(0xFFFF,hdr,6);
 
-  //continu for data if write regs
+  //continue for data if write regs
   if(_hdr.fcode == _fc_write_regs)
   {
-    crc = crc16(crc,&_hdr.data_len,1);
-    crc = crc16(crc,data,_hdr.data_len);
+    crc = mb_crc16(crc,&_hdr.data_len,1);
+    crc = mb_crc16(crc,data,_hdr.data_len);
   }
 
   //get crc from received data (local crc is LSB first, so invert bytes)
@@ -214,22 +214,22 @@ int check_integrity(uint8_t *data)
 }
 
 
-void modbusUpdate() {
+void mb_update() {
 
   //waiting for message to be addressed to this slave
-  if(_state == _st_idle && available())
+  if(_state == _st_idle && mb_available())
   {
     mb_read(&_hdr.slave,1); //get slave address
     if(_hdr.slave != MB_SLAVE_ID && _hdr.slave != MB_BROADCAST_ADDR )
     {
-      flush(); //not for me, ignore
+      mb_flush(); //not for me, ignore
       return;
     }
 
     //reset state where necessary, and receive header
     _hdr.data_len  = 0;
-    _lastAvailable = available();
-    _lastTick = tick();
+    _lastAvailable = mb_available();
+    _lastTick = mb_tick();
     _state = _st_header;
   }
 
@@ -241,7 +241,7 @@ void modbusUpdate() {
     //1..2: first reg address
     //3..4: nr regs involved
     //5: nr write bytes (only for writes)
-    if(available() >= 6)
+    if(mb_available() >= 6)
     {
       uint8_t rcv[5];
       mb_read(rcv,5);
@@ -251,30 +251,30 @@ void modbusUpdate() {
 
       if(_hdr.fcode != _fc_write_regs && _hdr.fcode != _fc_read_regs)
       {
-        exception(mb_illegal_func, _st_idle); //unsupported function
+        mb_exception(mb_illegal_func, _st_idle); //unsupported function
         return;
       }
 
-      if(!valid_range(_hdr.first_reg,_hdr.nr_regs))
+      if(!mb_valid_range(_hdr.first_reg,_hdr.nr_regs))
       {
-        exception(mb_illegal_address,_st_idle);
+        mb_exception(mb_illegal_address,_st_idle);
         return;
       }
 
       if(_hdr.fcode == _fc_write_regs)
         mb_read(&_hdr.data_len,1);
 
-      _lastTick = tick();
+      _lastTick = mb_tick();
       _state = _st_receive;
     }
-    else if (available() > _lastAvailable) //new data so proceed
+    else if (mb_available() > _lastAvailable) //new data so proceed
     {
-      _lastTick = tick();
-      _lastAvailable = available();
+      _lastTick = mb_tick();
+      _lastAvailable = mb_available();
     }
-    else if (tick() - _lastTick > MB_CHAR_TIMEOUT) //timed out
+    else if (mb_tick() - _lastTick > MB_CHAR_TIMEOUT) //timed out
     {
-      timeout(_st_idle);
+      mb_do_timeout(_st_idle);
       return;
     }
   }
@@ -282,29 +282,29 @@ void modbusUpdate() {
 
   if(_state == _st_receive)
   {
-    if(available() >= _hdr.data_len + 2)
+    if(mb_available() >= _hdr.data_len + 2)
     {
       mb_read(_rcvBuff,_hdr.data_len + 2);
 
       //check integrity
-      if(check_integrity(_rcvBuff) == 0)
+      if(mb_check_integrity(_rcvBuff) == 0)
       {
         _state = _st_respond;
       }
       else
       {
-        exception(mb_illegal_value,_st_idle);
+        mb_exception(mb_illegal_value,_st_idle);
         return;
       }
     }
-    else if (available() > _lastAvailable) //new data so proceed
+    else if (mb_available() > _lastAvailable) //new data so proceed
     {
-      _lastTick = tick();
-      _lastAvailable = available();
+      _lastTick = mb_tick();
+      _lastAvailable = mb_available();
     }
-    else if (tick() - _lastTick > MB_CHAR_TIMEOUT) //timed out
+    else if (mb_tick() - _lastTick > MB_CHAR_TIMEOUT) //timed out
     {
-      timeout(_st_idle);
+      mb_do_timeout(_st_idle);
       return;
     }
   }
@@ -324,14 +324,14 @@ void modbusUpdate() {
 
       if(res != mb_ok)
       {
-        exception(mb_illegal_address,_st_idle);
+        mb_exception(mb_illegal_address,_st_idle);
         return;
       }
 
       //respond
       uint8_t rsp[6];
-      rspHeader(rsp);
-      send_msg(rsp,6);
+      mb_rsp_header(rsp);
+      mb_send_msg(rsp,6);
 
       _state = _st_idle;
     }
@@ -347,9 +347,9 @@ void modbusUpdate() {
       _rcvBuff[1] = _hdr.fcode;
       _rcvBuff[2] = _hdr.nr_regs * 2;
 
-      reg_read(_hdr.first_reg, _hdr.nr_regs, &_rcvBuff[3]);
+      mb_reg_read(_hdr.first_reg, _hdr.nr_regs, &_rcvBuff[3]);
 
-      send_msg(_rcvBuff, 3 + _hdr.nr_regs * 2);
+      mb_send_msg(_rcvBuff, 3 + _hdr.nr_regs * 2);
 
       _state = _st_idle;
     }
