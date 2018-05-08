@@ -42,6 +42,15 @@
 #define SPEED_COEFFICIENT   0.5
 #define STEER_COEFFICIENT   0.5
 
+//Turno boost at high speeds while button1 is pressed:
+//#define ADDITIONAL_CODE \
+if (button1 && speed > 700) { /* field weakening at high speeds */ \
+  weakl = cmd1 - 700; /* weak should never exceed 400 or 450 MAX!! */ \
+  weakr = cmd1 - 700; } \
+else { \
+  weakl = 0; \
+  weakr = 0; }
+
 // ###### BOBBYCAR ######
 // #define FILTER              0.1
 // #define SPEED_COEFFICIENT   -1

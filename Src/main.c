@@ -141,6 +141,11 @@ int main(void) {
       timeout = 0;
     #endif
 
+    // ####### ADDITIONAL CODE #######
+    #ifdef ADDITIONAL_CODE
+    ADDITIONAL_CODE;
+    #endif
+
     // ####### LOW-PASS FILTER #######
     steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
     speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
@@ -154,11 +159,6 @@ int main(void) {
 
     setScopeChannel(2, (int)speedR);
     setScopeChannel(3, (int)speedL);
-
-    // ####### ADDITIONAL CODE #######
-    #ifdef ADDITIONAL_CODE
-    ADDITIONAL_CODE;
-    #endif
 
     // ####### SET OUTPUTS #######
     if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
