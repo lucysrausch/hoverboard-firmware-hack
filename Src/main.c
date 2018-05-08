@@ -1,8 +1,9 @@
 /*
-* This file is part of the stmbl project.
+* This file is part of the hoverboard-firmware-hack project.
 *
-* Copyright (C) 2013-2018 Rene Hopf <renehopf@mac.com>
-* Copyright (C) 2013-2018 Nico Stute <crinq@crinq.de>
+* Copyright (C) 2017-2018 Rene Hopf <renehopf@mac.com>
+* Copyright (C) 2017-2018 Nico Stute <crinq@crinq.de>
+* Copyright (C) 2017-2018 Niklas Fauth <niklas.fauth@kit.fail>
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -124,8 +125,8 @@ int main(void) {
       cmd1 = CLAMP((nunchuck_data[0] - 127) * 8, -1000, 1000); // x - axis. Nunchuck joystick readings range 30 - 230
       cmd2 = CLAMP((nunchuck_data[1] - 128) * 8, -1000, 1000); // y - axis
 
-      //uint8_t button1 = (uint8_t)nunchuck_data[5] & 1;
-      //uint8_t button2 = (uint8_t)(nunchuck_data[5] >> 1) & 1;
+      uint8_t button1 = (uint8_t)nunchuck_data[5] & 1;
+      uint8_t button2 = (uint8_t)(nunchuck_data[5] >> 1) & 1;
     #endif
 
     #ifdef CONTROL_PPM

@@ -1,25 +1,16 @@
 #pragma once
 #include "stm32f1xx_hal.h"
 
-#define R 0.27
-#define P 15
-#define PSI 0.02
-#define V 23
-
-#define MILLI_R (R * 1000)
-#define MILLI_PSI (PSI * 1000)
-#define MILLI_V (V * 1000)
-
 // ################################################################################
 
 #define PWM_FREQ         16000      // PWM frequency in Hz
 #define DEAD_TIME        32         // PWM deadtime
 
-#define DC_CUR_LIMIT     25         // Motor DC current limit in amps
+#define DC_CUR_LIMIT     15         // Motor DC current limit in amps
 
 #define BAT_LOW_LVL1     36.0       // gently beeps at this voltage level
 #define BAT_LOW_LVL2     33.0       // your battery is almost empty. Charge now!
-#define BAT_LOW_DEAD     30.0       // undervoltage lockout
+#define BAT_LOW_DEAD     31.0       // undervoltage lockout
 
 // ################################################################################
 
@@ -30,7 +21,7 @@
 #define DEBUG_SERIAL_ASCII
 //#define DEBUG_I2C_LCD
 
-#define TIMEOUT          5           //wrong commands before emergency off
+#define TIMEOUT          5           //number of wrong / missing commands before emergency off
 
 // ################################################################################
 

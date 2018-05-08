@@ -1,8 +1,9 @@
 /*
-* This file is part of the stmbl project.
+* This file is part of the hoverboard-firmware-hack project.
 *
-* Copyright (C) 2013-2018 Rene Hopf <renehopf@mac.com>
-* Copyright (C) 2013-2018 Nico Stute <crinq@crinq.de>
+* Copyright (C) 2017-2018 Rene Hopf <renehopf@mac.com>
+* Copyright (C) 2017-2018 Nico Stute <crinq@crinq.de>
+* Copyright (C) 2017-2018 Niklas Fauth <niklas.fauth@kit.fail>
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
