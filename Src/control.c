@@ -76,11 +76,16 @@ void Nunchuck_Init() {
 void Nunchuck_Read() {
   i2cBuffer[0] = 0x00;
   HAL_I2C_Master_Transmit(&hi2c2,0xA4,(uint8_t*)i2cBuffer, 1, 100);
-  HAL_Delay(2);
+  HAL_Delay(5);
   if (HAL_I2C_Master_Receive(&hi2c2,0xA4,(uint8_t*)nunchuck_data, 6, 100) == HAL_OK) {
     timeout = 0;
   } else {
     timeout++;
+  }
+
+  if (timeout > 3) {
+    HAL_Delay(50);
+    Nunchuck_Init();
   }
 
   //setScopeChannel(0, (int)nunchuck_data[0]);

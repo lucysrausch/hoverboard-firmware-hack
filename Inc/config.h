@@ -74,4 +74,11 @@ else { \
 // #define SPEED_COEFFICIENT   0.5
 // #define STEER_COEFFICIENT   -0.2
 
+// #define ADDITIONAL_CODE if (button1 && scale > 0.8) { /* field weakening at high speeds */ \
+  weakl = speedL - 600; /* weak should never exceed 400 or 450 MAX!! */ \
+  weakr = speedR - 600; } \
+else {\
+  weakl = 0;\
+  weakr = 0;
+
 // #define BEEPS_BACKWARD

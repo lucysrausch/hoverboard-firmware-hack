@@ -23,6 +23,7 @@
 #include "defines.h"
 #include "setup.h"
 #include "config.h"
+//#include "hd44780.h"
 
 void SystemClock_Config(void);
 
@@ -32,10 +33,14 @@ extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
 extern volatile adc_buf_t adc_buffer;
 extern volatile adc_buf_t adc_buffer;
+//LCD_PCF8574_HandleTypeDef lcd;
+extern I2C_HandleTypeDef hi2c2;
 
 int cmd1;
 int cmd2;
 int cmd3;
+
+uint8_t button1, button2;
 
 int steer; // global variable for steering. -1000 to 1000
 int speed; // global variable for speed. -1000 to 1000
@@ -87,7 +92,10 @@ int main(void) {
   MX_TIM_Init();
   MX_ADC1_Init();
   MX_ADC2_Init();
-  UART_Init();
+
+  #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+    UART_Init();
+  #endif
 
   HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 1);
 
@@ -115,23 +123,48 @@ int main(void) {
     Nunchuck_Init();
   #endif
 
+  #ifdef DEBUG_I2C_LCD
+    I2C_Init();
+    HAL_Delay(50);
+    lcd.pcf8574.PCF_I2C_ADDRESS = 0x27;
+  	lcd.pcf8574.PCF_I2C_TIMEOUT = 5;
+  	lcd.pcf8574.i2c = hi2c2;
+  	lcd.NUMBER_OF_LINES = NUMBER_OF_LINES_2;
+  	lcd.type = TYPE0;
+
+  	if(LCD_Init(&lcd)!=LCD_OK){
+  		// error occured
+  		//TODO while(1);
+  	}
+
+  	LCD_ClearDisplay(&lcd);
+    HAL_Delay(5);
+    LCD_SetLocation(&lcd, 0, 0);
+  	LCD_WriteString(&lcd, "Hover V2.0");
+    LCD_SetLocation(&lcd, 0, 1);
+    LCD_WriteString(&lcd, "Initializing...");
+  #endif
+
   enable = 1;
 
   while(1) {
-    HAL_Delay(2);
+    HAL_Delay(5);
+
 
     #ifdef CONTROL_NUNCHUCK
       Nunchuck_Read();
       cmd1 = CLAMP((nunchuck_data[0] - 127) * 8, -1000, 1000); // x - axis. Nunchuck joystick readings range 30 - 230
       cmd2 = CLAMP((nunchuck_data[1] - 128) * 8, -1000, 1000); // y - axis
 
-      uint8_t button1 = (uint8_t)nunchuck_data[5] & 1;
-      uint8_t button2 = (uint8_t)(nunchuck_data[5] >> 1) & 1;
+      button1 = (uint8_t)nunchuck_data[5] & 1;
+      button2 = (uint8_t)(nunchuck_data[5] >> 1) & 1;
     #endif
 
     #ifdef CONTROL_PPM
       cmd1 = CLAMP((ppm_captured_value[0] - 500) * 2, -1000, 1000);
       cmd2 = CLAMP((ppm_captured_value[1] - 500) * 2, -1000, 1000);
+      button1 = ppm_captured_value[5] > 500;
+      float scale = ppm_captured_value[2] / 1000.0f;
     #endif
 
     #ifdef CONTROL_ADC
@@ -141,17 +174,11 @@ int main(void) {
       timeout = 0;
     #endif
 
-    // ####### ADDITIONAL CODE #######
-    #ifdef ADDITIONAL_CODE
-    ADDITIONAL_CODE;
-    #endif
 
     // ####### LOW-PASS FILTER #######
     steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
     speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
 
-    setScopeChannel(0, (int)speed);
-    setScopeChannel(1, (int)steer);
 
     // ####### MIXER #######
     speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
@@ -159,6 +186,10 @@ int main(void) {
 
     setScopeChannel(2, (int)speedR);
     setScopeChannel(3, (int)speedL);
+
+    #ifdef ADDITIONAL_CODE
+    ADDITIONAL_CODE;
+    #endif
 
     // ####### SET OUTPUTS #######
     if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
