@@ -152,7 +152,7 @@ $(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 	$(BIN) $< $@
 
 $(BUILD_DIR):
-	mkdir $@
+	mkdir -p $@
 
 format:
 	find Src/ Inc/ -iname '*.h' -o -iname '*.c' | xargs clang-format -i
