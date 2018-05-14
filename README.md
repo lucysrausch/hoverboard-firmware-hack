@@ -5,6 +5,9 @@ This firmware is much better than the old one. tested up to 40A / 60V, no dead b
 This repo contains open source firmware for generic Hoverboard Mainboards.
 The firmware you can find here allows you to use your Hoverboard Hardware (like the Mainboard, Motors and Battery) for cool projects like driving armchairs, person-tracking transportation robots and every other application you can imagine that requires controlling the Motors.
 
+If you want an overview of what you can do with this firmware, here is a ~40min video of a talk about this project:
+https://media.ccc.de/v/gpn18-95-howto-moving-objects
+
 ---
 
 #### Hardware
@@ -12,6 +15,9 @@ The firmware you can find here allows you to use your Hoverboard Hardware (like 
 
 The original Hardware supports two 4-pin cables that originally were connected to the two sensor boards. They break out GND, 12/15V and USART2&3 of the Hoverboard mainboard.
 Both USART2 & 3 can be used for UART and I2C, PA2&3 can be used as 12bit ADCs.
+
+The reverse-engineered schematics of the mainboard can be found here:
+http://vocke.tv/lib/exe/fetch.php?media=20150722_hoverboard_sch.pdf
 
 ---
 
