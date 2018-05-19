@@ -3,6 +3,8 @@
 #include "defines.h"
 #include "setup.h"
 #include "config.h"
+#include <stdbool.h>
+#include <string.h>
 
 TIM_HandleTypeDef TimHandle;
 uint8_t ppm_count = 0;
@@ -16,7 +18,13 @@ DMA_HandleTypeDef hdma_i2c2_rx;
 DMA_HandleTypeDef hdma_i2c2_tx;
 
 #ifdef CONTROL_PPM
-uint16_t ppm_captured_value[PPM_NUM_CHANNELS+1] = {0};
+uint16_t ppm_captured_value[PPM_NUM_CHANNELS + 1] = {500, 500};
+uint16_t ppm_captured_value_buffer[PPM_NUM_CHANNELS+1] = {500, 500};
+uint32_t ppm_timeout = 0;
+
+bool ppm_valid = true;
+
+#define IN_RANGE(x, low, up) (((x) >= (low)) && ((x) <= (up)))
 
 void PPM_ISR_Callback() {
   // Dummy loop with 16 bit count wrap around
@@ -24,14 +32,32 @@ void PPM_ISR_Callback() {
   TIM2->CNT = 0;
 
   if (rc_delay > 3000) {
+    if (ppm_valid && ppm_count == PPM_NUM_CHANNELS) {
+      ppm_timeout = 0;
+      memcpy(ppm_captured_value, ppm_captured_value_buffer, sizeof(ppm_captured_value));
+    }
+    ppm_valid = true;
     ppm_count = 0;
   }
-  else if (ppm_count < PPM_NUM_CHANNELS){
+  else if (ppm_count < PPM_NUM_CHANNELS && IN_RANGE(rc_delay, 900, 2100)){
     timeout = 0;
-    ppm_captured_value[ppm_count] = CLAMP(rc_delay, 1000, 2000) - 1000;
-    ppm_count++;
+    ppm_captured_value_buffer[ppm_count++] = CLAMP(rc_delay, 1000, 2000) - 1000;
+  } else {
+    ppm_valid = false;
   }
+}
 
+// SysTick executes once each ms
+void PPM_SysTick_Callback() {
+  ppm_timeout++;
+  // Stop after 500 ms without PPM signal
+  if(ppm_timeout > 500) {
+    int i;
+    for(i = 0; i < PPM_NUM_CHANNELS; i++) {
+      ppm_captured_value[i] = 500;
+    }
+    ppm_timeout = 0;
+  }
 }
 
 void PPM_Init() {

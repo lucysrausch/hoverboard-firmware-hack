@@ -158,6 +158,9 @@ void PendSV_Handler(void) {
 /**
 * @brief This function handles System tick timer.
 */
+#ifdef CONTROL_PPM
+void PPM_SysTick_Callback(void);
+#endif
 void SysTick_Handler(void) {
   /* USER CODE BEGIN SysTick_IRQn 0 */
 
@@ -165,7 +168,9 @@ void SysTick_Handler(void) {
   HAL_IncTick();
   HAL_SYSTICK_IRQHandler();
   /* USER CODE BEGIN SysTick_IRQn 1 */
-
+#ifdef CONTROL_PPM
+  PPM_SysTick_Callback();
+#endif
   /* USER CODE END SysTick_IRQn 1 */
 }
 
