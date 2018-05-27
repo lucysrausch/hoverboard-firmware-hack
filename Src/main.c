@@ -32,11 +32,10 @@ extern TIM_HandleTypeDef htim_right;
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
 extern volatile adc_buf_t adc_buffer;
-extern volatile adc_buf_t adc_buffer;
 //LCD_PCF8574_HandleTypeDef lcd;
 extern I2C_HandleTypeDef hi2c2;
 
-int cmd1;
+int cmd1;  // normalized input values. -1000 to 1000
 int cmd2;
 int cmd3;
 
@@ -127,30 +126,29 @@ int main(void) {
     I2C_Init();
     HAL_Delay(50);
     lcd.pcf8574.PCF_I2C_ADDRESS = 0x27;
-  	lcd.pcf8574.PCF_I2C_TIMEOUT = 5;
-  	lcd.pcf8574.i2c = hi2c2;
-  	lcd.NUMBER_OF_LINES = NUMBER_OF_LINES_2;
-  	lcd.type = TYPE0;
+      lcd.pcf8574.PCF_I2C_TIMEOUT = 5;
+      lcd.pcf8574.i2c = hi2c2;
+      lcd.NUMBER_OF_LINES = NUMBER_OF_LINES_2;
+      lcd.type = TYPE0;
 
-  	if(LCD_Init(&lcd)!=LCD_OK){
-  		// error occured
-  		//TODO while(1);
-  	}
+      if(LCD_Init(&lcd)!=LCD_OK){
+          // error occured
+          //TODO while(1);
+      }
 
-  	LCD_ClearDisplay(&lcd);
+      LCD_ClearDisplay(&lcd);
     HAL_Delay(5);
     LCD_SetLocation(&lcd, 0, 0);
-  	LCD_WriteString(&lcd, "Hover V2.0");
+      LCD_WriteString(&lcd, "Hover V2.0");
     LCD_SetLocation(&lcd, 0, 1);
     LCD_WriteString(&lcd, "Initializing...");
   #endif
 
-  enable = 1;
+  enable = 1;  // enable motors
 
   while(1) {
     HAL_Delay(5);
-
-
+    
     #ifdef CONTROL_NUNCHUCK
       Nunchuck_Read();
       cmd1 = CLAMP((nunchuck_data[0] - 127) * 8, -1000, 1000); // x - axis. Nunchuck joystick readings range 30 - 230
@@ -168,8 +166,13 @@ int main(void) {
     #endif
 
     #ifdef CONTROL_ADC
-      cmd1 = CLAMP(adc_buffer.l_rx2 - 700, 0, 2350) / 2.35; // ADC values range 0-4095, however full range of our poti only covers 650 - 3050
-      uint8_t button1 = (uint8_t)(adc_buffer.l_tx2 > 2000);
+      // ADC values range: 0-4095, see ADC-calibration in config.h
+      cmd1 = CLAMP(adc_buffer.l_tx2 - ADC1_MIN, 0, ADC1_MAX) / (ADC1_MAX / 1000.0f);  // ADC1
+      cmd2 = CLAMP(adc_buffer.l_rx2 - ADC2_MIN, 0, ADC2_MAX) / (ADC2_MAX / 1000.0f);  // ADC2
+      
+      // use ADCs as button inputs:
+      button1 = (uint8_t)(adc_buffer.l_tx2 > 2000);  // ADC1
+      button2 = (uint8_t)(adc_buffer.l_rx2 > 2000);  // ADC2
 
       timeout = 0;
     #endif
@@ -184,17 +187,31 @@ int main(void) {
     speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
     speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
 
+
+    // ####### DEBUG SERIAL OUT #######
+    #ifdef CONTROL_ADC
+      setScopeChannel(0, (int)adc_buffer.l_tx2);  // ADC1
+      setScopeChannel(1, (int)adc_buffer.l_rx2);  // ADC2
+    #endif
     setScopeChannel(2, (int)speedR);
     setScopeChannel(3, (int)speedL);
 
     #ifdef ADDITIONAL_CODE
-    ADDITIONAL_CODE;
+      ADDITIONAL_CODE;
     #endif
 
     // ####### SET OUTPUTS #######
     if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
+    #ifdef INVERT_R_DIRECTION
       pwmr = speedR;
+    #else
+      pwmr = -speedR;
+    #endif
+    #ifdef INVERT_L_DIRECTION
       pwml = -speedL;
+    #else
+      pwml = speedL;
+    #endif
     }
 
     lastSpeedL = speedL;
