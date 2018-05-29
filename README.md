@@ -22,9 +22,9 @@ http://vocke.tv/lib/exe/fetch.php?media=20150722_hoverboard_sch.pdf
 ---
 
 #### Flashing
-To build the firmware, just type "make". Make sure you have specified your gcc-arm-none-eabi binary location in the Makefile. Right to the STM32, there is a debugging header with GND, 3V3, SWDIO and SWCLK. Connect these to your SWD programmer, like the ST-Link found on many STM devboards.
+To build the firmware, just type "make". Make sure you have specified your gcc-arm-none-eabi binary location in the Makefile ("PREFIX = ..."). Right to the STM32, there is a debugging header with GND, 3V3, SWDIO and SWCLK. Connect GND, SWDIO and SWCLK to your SWD programmer, like the ST-Link found on many STM devboards.
 
-Make sure you hold the powerbutton or connect a jumper to the power button pins while flashing the firmware, as the STM might release the power latch and switches itself off during flashing.
+Make sure you hold the powerbutton or connect a jumper to the power button pins while flashing the firmware, as the STM might release the power latch and switches itself off during flashing. Battery > 36V have to be connected while flashing.
 
 To flash the STM32, use the ST-Flash utility (https://github.com/texane/stlink).
 
@@ -40,10 +40,16 @@ st-flash --reset write build/hover.bin 0x8000000
 
 ---
 #### Troubleshooting
-First, check that power is connected and voltage is > 36V.
+First, check that power is connected and voltage is >36V while flashing.
 If the board draws more than 100mA in idle, it's probably broken.
 
 If the motors do something, but don't rotate smooth and quietly, try to use an alternative phase mapping. Usually, color-correct mapping (blue to blue, green to green, yellow to yellow) works fine. However, some hoverboards have a different layout then others, and this might be the reason your motor isn't spinning.
+
+Nunchuck not working: Use the right one of the 2 types of nunchucks. Use i2c pullups.
+
+Nunchuck or PPM working bad: The i2c bus and PPM signal are very sensitive to emv distortions of the motor controller. They get stronger the faster you are. Keep cables short, use shielded cable, use ferrits, stabalize voltage in nunchuck or reviever, add i2c pullups. To many errors leads to very high accelerations which triggers the protection board within the battery to shut everything down.
+
+Most robust way for input is to use the ADC and potis. It works well even on 1m unshielded cable. Solder ~100k Ohm resistors between ADC-inputs and gnd directly on the mainboard. Use potis as pullups to 3.3V.
 
 ---
 
@@ -51,5 +57,5 @@ If the motors do something, but don't rotate smooth and quietly, try to use an a
 #### Examples
 
 Have a look at the config.h in the Inc directory. That's where you configure to firmware to match your project.
-Currently supported: Wii Nunchuck, analog potentiometer and PPM signal from a RC remote.
+Currently supported: Wii Nunchuck, analog potentiometer and PPM-Sum signal from a RC remote.
 If you need additional features like a boost button, have a look at the while(1) loop in the main.c
