@@ -57,6 +57,8 @@ extern uint8_t enable; // global variable for motor enable
 extern volatile uint32_t timeout; // global variable for timeout
 extern float batteryVoltage; // global variable for battery voltage
 
+uint32_t inactivity_timeout_counter;
+
 extern uint8_t nunchuck_data[6];
 #ifdef CONTROL_PPM
 extern volatile uint16_t ppm_captured_value[PPM_NUM_CHANNELS+1];
@@ -147,7 +149,7 @@ int main(void) {
   enable = 1;  // enable motors
 
   while(1) {
-    HAL_Delay(5);
+    HAL_Delay(DELAY_IN_MAIN_LOOP);  //delay in ms
     
     #ifdef CONTROL_NUNCHUCK
       Nunchuck_Read();
@@ -188,17 +190,10 @@ int main(void) {
     speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
 
 
-    // ####### DEBUG SERIAL OUT #######
-    #ifdef CONTROL_ADC
-      setScopeChannel(0, (int)adc_buffer.l_tx2);  // ADC1
-      setScopeChannel(1, (int)adc_buffer.l_rx2);  // ADC2
-    #endif
-    setScopeChannel(2, (int)speedR);
-    setScopeChannel(3, (int)speedL);
-
     #ifdef ADDITIONAL_CODE
       ADDITIONAL_CODE;
     #endif
+
 
     // ####### SET OUTPUTS #######
     if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
@@ -217,9 +212,18 @@ int main(void) {
     lastSpeedL = speedL;
     lastSpeedR = speedR;
 
-    // ####### LOG TO CONSOLE #######
+
+    // ####### DEBUG SERIAL OUT #######
+    #ifdef CONTROL_ADC
+      setScopeChannel(0, (int)adc_buffer.l_tx2);  // ADC1
+      setScopeChannel(1, (int)adc_buffer.l_rx2);  // ADC2
+    #endif
+    setScopeChannel(2, (int)speedR);
+    setScopeChannel(3, (int)speedL);
     consoleScope();
 
+
+    // ####### POWEROFF BY POWER-BUTTON #######
     if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
       enable = 0;
       while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {}
@@ -233,6 +237,8 @@ int main(void) {
       while(1) {}
     }
 
+
+    // ####### BATTERY VOLTAGE #######
     if (batteryVoltage < BAT_LOW_LVL1 && batteryVoltage > BAT_LOW_LVL2) {
       buzzerFreq = 5;
       buzzerPattern = 8;
@@ -251,6 +257,24 @@ int main(void) {
     } else {
       buzzerFreq = 0;
       buzzerPattern = 0;
+    }
+
+
+    // ####### INACTIVITY TIMEOUT #######
+    if (abs(speedL) > 50 || abs(speedR) > 50) {
+      inactivity_timeout_counter = 0;
+    } else {
+      inactivity_timeout_counter ++;
+    }
+    if (inactivity_timeout_counter > (INACTIVITY_TIMEOUT * 60 * 1000) / (DELAY_IN_MAIN_LOOP + 1)) {  // rest of main loop needs maybe 1ms
+      buzzerPattern = 0;
+      enable = 0;
+      for (int i = 0; i < 8; i++) {
+        buzzerFreq = i;
+        HAL_Delay(100);
+      }
+      HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0);
+      while(1) {}
     }
   }
 }

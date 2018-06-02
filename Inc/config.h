@@ -8,9 +8,13 @@
 
 #define DC_CUR_LIMIT     15         // Motor DC current limit in amps. it does not disable motors, it is a soft current limit.
 
+#define DELAY_IN_MAIN_LOOP 5        // in ms. default 5. it is independent of all the timing critical stuff. do not touch if you do not know what you are doing.
+
 #define BAT_LOW_LVL1     36.0       // gently beeps at this voltage level. ~3.6V/cell
 #define BAT_LOW_LVL2     33.0       // your battery is almost empty. Charge now! ~3.3V/cell
 #define BAT_LOW_DEAD     31.0       // undervoltage lockout. ~3.1V/cell
+
+#define INACTIVITY_TIMEOUT 8        // minutes of not driving until poweroff. it is not very precise.
 
 // ################################################################################
 
