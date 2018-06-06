@@ -161,6 +161,10 @@ void PendSV_Handler(void) {
 #ifdef CONTROL_PPM
 void PPM_SysTick_Callback(void);
 #endif
+#ifdef RIGHT_BUTTONS
+void SysTick_Callback(void);
+#endif
+
 void SysTick_Handler(void) {
   /* USER CODE BEGIN SysTick_IRQn 0 */
 
@@ -170,6 +174,9 @@ void SysTick_Handler(void) {
   /* USER CODE BEGIN SysTick_IRQn 1 */
 #ifdef CONTROL_PPM
   PPM_SysTick_Callback();
+#endif
+#ifdef RIGHT_BUTTONS
+  SysTick_Callback();
 #endif
   /* USER CODE END SysTick_IRQn 1 */
 }
