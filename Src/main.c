@@ -203,11 +203,11 @@ int main(void) {
     #endif
 
     // ####### EXAMPLE CASE FOR BUTTONS ON PB10 & PB11 #######
-	  #ifdef RIGHT_BUTTONS
-			if (button3) {
+    #ifdef RIGHT_BUTTONS
+      if (button3) {
       }	else {
-			}
-  		if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
+      }
+      if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
         if (button4) {
           LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;  //disable left
           RIGHT_TIM->BDTR |= TIM_BDTR_MOE;  //enable right
@@ -223,7 +223,7 @@ int main(void) {
     #endif
 
     // ####### SET OUTPUTS #######
-	  #ifndef RIGHT_BUTTONS
+    #ifndef RIGHT_BUTTONS
       if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
       #ifdef INVERT_R_DIRECTION
         pwmr = speedR;
