@@ -17,6 +17,46 @@ extern I2C_HandleTypeDef hi2c2;
 DMA_HandleTypeDef hdma_i2c2_rx;
 DMA_HandleTypeDef hdma_i2c2_tx;
 
+#ifdef RIGHT_BUTTONS
+  #define DEBOUNCE 10
+  uint8_t in1_0, in1_1, in2_0, in2_1;
+  extern uint8_t button3, button4;
+
+// SysTick executes once each ms
+void SysTick_Callback() {
+  if (HAL_GPIO_ReadPin(BUTTON_R_TX_PORT, BUTTON_R_TX_PIN) == 0) { //button3
+	  in1_0++;
+	  in1_1 = 0;
+	  if (in1_0 >= DEBOUNCE) {
+		  in1_0 = DEBOUNCE;
+		  button3 = 0;
+	  }
+  } else {
+	  in1_0 = 0;
+	  in1_1++;
+	  if (in1_1 >= DEBOUNCE) {
+		  in1_1 = DEBOUNCE;
+		  button3 = 1;
+	  }
+  }
+  if (HAL_GPIO_ReadPin(BUTTON_R_RX_PORT, BUTTON_R_RX_PIN) == 0) { //button4
+	  in2_0++;
+	  in2_1 = 0;
+	  if (in2_0 >= DEBOUNCE) {
+		  in2_0 = DEBOUNCE;
+		  button4 = 0;
+	  }
+  } else {
+	  in2_0 = 0;
+	  in2_1++;
+	  if (in2_1 >= DEBOUNCE) {
+		  in2_1 = DEBOUNCE;
+		  button4 = 1;
+	  }
+  }
+}
+#endif
+
 #ifdef CONTROL_PPM
 uint16_t ppm_captured_value[PPM_NUM_CHANNELS + 1] = {500, 500};
 uint16_t ppm_captured_value_buffer[PPM_NUM_CHANNELS+1] = {500, 500};

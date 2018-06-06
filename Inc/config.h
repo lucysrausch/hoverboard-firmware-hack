@@ -14,6 +14,7 @@
 
 // ################################################################################
 
+//#define RIGHT_BUTTONS				        // Use PB10=Right_sensor_board_TX and PB11=Right_sensor_board_RX as button input.
 #define DEBUG_SERIAL_USART2         // left sensor board cable, disable if ADC or PPM is used!
 //#define DEBUG_SERIAL_USART3         // right sensor board cable, disable if I2C (nunchuck) is used!
 #define DEBUG_BAUD       115200     // UART baud rate
@@ -105,6 +106,14 @@ else {\
 // ################################################################################
 
 // validate settings (do not touch this):
+
+#if defined DEBUG_SERIAL_ASCII && defined RIGHT_BUTTONS
+  #error DEBUG_SERIAL_ASCII and RIGHT_BUTTONS not allowed. Use only one of them.
+#endif
+
+#if defined DEBUG_SERIAL_USART3 && defined RIGHT_BUTTONS
+  #error DEBUG_SERIAL_USART3 and RIGHT_BUTTONS not allowed. Use only one of them.
+#endif
 
 #if defined DEBUG_SERIAL_USART2 && defined CONTROL_ADC
   #error CONTROL_ADC and DEBUG_SERIAL_USART2 not allowed. use DEBUG_SERIAL_USART3 instead.

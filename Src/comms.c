@@ -25,6 +25,7 @@ void setScopeChannel(uint8_t ch, int16_t val) {
 }
 
 void consoleScope() {
+  #ifndef RIGHT_BUTTONS
   #ifdef DEBUG_SERIAL_SERVOTERM
     uart_buf[0] = 0xff;
     uart_buf[1] = CLAMP(ch_buf[0]+127, 0, 255);
@@ -55,6 +56,7 @@ void consoleScope() {
       UART_DMA_CHANNEL->CMAR  = (uint32_t)uart_buf;
       UART_DMA_CHANNEL->CCR |= DMA_CCR_EN;
     }
+  #endif
   #endif
 }
 
