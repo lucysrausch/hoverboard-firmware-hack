@@ -266,6 +266,14 @@ void MX_GPIO_Init(void) {
   GPIO_InitStruct.Pin = BUTTON_PIN;
   HAL_GPIO_Init(BUTTON_PORT, &GPIO_InitStruct);
 
+  #ifdef RIGHT_BUTTONS
+    //Use an external pullup or pulldown of 100k on pins.
+    GPIO_InitStruct.Pin = BUTTON_R_TX_PIN;
+    HAL_GPIO_Init(BUTTON_R_TX_PORT, &GPIO_InitStruct);
+    GPIO_InitStruct.Pin = BUTTON_R_RX_PIN;
+    HAL_GPIO_Init(BUTTON_R_RX_PORT, &GPIO_InitStruct);
+  #endif
+
 
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 
