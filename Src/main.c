@@ -40,6 +40,9 @@ int cmd2;
 int cmd3;
 
 uint8_t button1, button2;
+#ifdef RIGHT_BUTTONS
+uint8_t button3, button4;
+#endif
 
 int steer; // global variable for steering. -1000 to 1000
 int speed; // global variable for speed. -1000 to 1000
@@ -187,7 +190,6 @@ int main(void) {
     speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
     speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
 
-
     // ####### DEBUG SERIAL OUT #######
     #ifdef CONTROL_ADC
       setScopeChannel(0, (int)adc_buffer.l_tx2);  // ADC1
@@ -200,19 +202,41 @@ int main(void) {
       ADDITIONAL_CODE;
     #endif
 
+    // ####### EXAMPLE CASE FOR BUTTONS ON PB10 & PB11 #######
+	  #ifdef RIGHT_BUTTONS
+			if (button3) {
+      }	else {
+			}
+  		if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
+        if (button4) {
+          LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;  //disable left
+          RIGHT_TIM->BDTR |= TIM_BDTR_MOE;  //enable right
+          pwml = 0; //pwml = -speedL;
+          pwmr = speedR;
+        } else {
+          LEFT_TIM->BDTR |= TIM_BDTR_MOE;   //enable left
+          RIGHT_TIM->BDTR |= TIM_BDTR_MOE;  //enable right
+          pwml = -speedL;
+          pwmr = speedR;
+        }
+      }
+    #endif
+
     // ####### SET OUTPUTS #######
-    if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
-    #ifdef INVERT_R_DIRECTION
-      pwmr = speedR;
-    #else
-      pwmr = -speedR;
+	  #ifndef RIGHT_BUTTONS
+      if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
+      #ifdef INVERT_R_DIRECTION
+        pwmr = speedR;
+      #else
+        pwmr = -speedR;
+      #endif
+      #ifdef INVERT_L_DIRECTION
+        pwml = -speedL;
+      #else
+        pwml = speedL;
+      #endif
+      }
     #endif
-    #ifdef INVERT_L_DIRECTION
-      pwml = -speedL;
-    #else
-      pwml = speedL;
-    #endif
-    }
 
     lastSpeedL = speedL;
     lastSpeedR = speedR;
