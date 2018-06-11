@@ -17,12 +17,6 @@ extern I2C_HandleTypeDef hi2c2;
 DMA_HandleTypeDef hdma_i2c2_rx;
 DMA_HandleTypeDef hdma_i2c2_tx;
 
-typedef struct{
-   float motorR;
-   float motorL;
-   //uint32_t crc;
-} Serialcommand;
-
 #ifdef CONTROL_PPM
 uint16_t ppm_captured_value[PPM_NUM_CHANNELS + 1] = {500, 500};
 uint16_t ppm_captured_value_buffer[PPM_NUM_CHANNELS+1] = {500, 500};
@@ -30,15 +24,7 @@ uint32_t ppm_timeout = 0;
 
 bool ppm_valid = true;
 
-volatile Serialcommand command;
-
 #define IN_RANGE(x, low, up) (((x) >= (low)) && ((x) <= (up)))
-
-#ifdef CONTROL_SERIAL_USART2
-void Telemetry_Init(){
-  HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, 8);
-}
-#endif
 
 void PPM_ISR_Callback() {
   // Dummy loop with 16 bit count wrap around
