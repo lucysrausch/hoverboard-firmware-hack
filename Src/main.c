@@ -34,10 +34,20 @@ extern ADC_HandleTypeDef hadc2;
 extern volatile adc_buf_t adc_buffer;
 //LCD_PCF8574_HandleTypeDef lcd;
 extern I2C_HandleTypeDef hi2c2;
+extern UART_HandleTypeDef huart2;
 
 int cmd1;  // normalized input values. -1000 to 1000
 int cmd2;
 int cmd3;
+
+
+typedef struct{
+   int16_t motorR;
+   int16_t motorL;
+   //uint32_t crc;
+} Serialcommand;
+
+volatile Serialcommand command;
 
 uint8_t button1, button2;
 
@@ -122,6 +132,11 @@ int main(void) {
     Nunchuck_Init();
   #endif
 
+  #ifdef CONTROL_SERIAL_USART2
+    UART_Control_Init();
+    HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, 4);
+  #endif
+
   #ifdef DEBUG_I2C_LCD
     I2C_Init();
     HAL_Delay(50);
@@ -148,7 +163,7 @@ int main(void) {
 
   while(1) {
     HAL_Delay(5);
-    
+
     #ifdef CONTROL_NUNCHUCK
       Nunchuck_Read();
       cmd1 = CLAMP((nunchuck_data[0] - 127) * 8, -1000, 1000); // x - axis. Nunchuck joystick readings range 30 - 230
@@ -169,12 +184,17 @@ int main(void) {
       // ADC values range: 0-4095, see ADC-calibration in config.h
       cmd1 = CLAMP(adc_buffer.l_tx2 - ADC1_MIN, 0, ADC1_MAX) / (ADC1_MAX / 1000.0f);  // ADC1
       cmd2 = CLAMP(adc_buffer.l_rx2 - ADC2_MIN, 0, ADC2_MAX) / (ADC2_MAX / 1000.0f);  // ADC2
-      
+
       // use ADCs as button inputs:
       button1 = (uint8_t)(adc_buffer.l_tx2 > 2000);  // ADC1
       button2 = (uint8_t)(adc_buffer.l_rx2 > 2000);  // ADC2
 
       timeout = 0;
+    #endif
+
+    #ifdef CONTROL_SERIAL_USART2
+    cmd1 = CLAMP((int16_t)command.motorR, -1000, 1000);
+    cmd2 = CLAMP((int16_t)command.motorL, -1000, 1000);
     #endif
 
 

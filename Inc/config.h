@@ -14,11 +14,14 @@
 
 // ################################################################################
 
-#define DEBUG_SERIAL_USART2         // left sensor board cable, disable if ADC or PPM is used!
+#define DEBUG_SERIAL_USART3         // left sensor board cable, disable if ADC or PPM is used!
 //#define DEBUG_SERIAL_USART3         // right sensor board cable, disable if I2C (nunchuck) is used!
 #define DEBUG_BAUD       115200     // UART baud rate
 //#define DEBUG_SERIAL_SERVOTERM
 #define DEBUG_SERIAL_ASCII          // human readable output. i.e. "345;1337;0;0\n\r"
+
+#define CONTROL_SERIAL_USART2
+#define CONTROL_BAUD       9600
 
 //#define DEBUG_I2C_LCD               // standard 16x2 or larger text-lcd via i2c-converter on right sensor board cable
 
@@ -27,7 +30,7 @@
 // ################################################################################
 
 // ###### CONTROL VIA RC REMOTE ######
-// left sensor board cable. Channel 1: steering, Channel 2: speed. 
+// left sensor board cable. Channel 1: steering, Channel 2: speed.
 //#define CONTROL_PPM                 // use PPM-Sum as input. disable DEBUG_SERIAL_USART2!
 //#define PPM_NUM_CHANNELS 6          // total number of PPM channels to receive, even if they are not used.
 
@@ -41,7 +44,7 @@
 
 // ###### CONTROL VIA NINTENDO NUNCHUCK ######
 // left sensor board cable. keep cable short, use shielded cable, use ferrits, stabalize voltage in nunchuck, use the right one of the 2 types of nunchucks, add i2c pullups.
-#define CONTROL_NUNCHUCK            // use nunchuck as input. disable DEBUG_SERIAL_USART3!
+//#define CONTROL_NUNCHUCK            // use nunchuck as input. disable DEBUG_SERIAL_USART3!
 
 // ################################################################################
 
