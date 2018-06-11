@@ -42,8 +42,8 @@ int cmd3;
 
 
 typedef struct{
-   int16_t motorR;
-   int16_t motorL;
+   int16_t steer;
+   int16_t speed;
    //uint32_t crc;
 } Serialcommand;
 
@@ -151,10 +151,10 @@ int main(void) {
           //TODO while(1);
       }
 
-      LCD_ClearDisplay(&lcd);
+    LCD_ClearDisplay(&lcd);
     HAL_Delay(5);
     LCD_SetLocation(&lcd, 0, 0);
-      LCD_WriteString(&lcd, "Hover V2.0");
+    LCD_WriteString(&lcd, "Hover V2.0");
     LCD_SetLocation(&lcd, 0, 1);
     LCD_WriteString(&lcd, "Initializing...");
   #endif
@@ -193,8 +193,10 @@ int main(void) {
     #endif
 
     #ifdef CONTROL_SERIAL_USART2
-    cmd1 = CLAMP((int16_t)command.motorR, -1000, 1000);
-    cmd2 = CLAMP((int16_t)command.motorL, -1000, 1000);
+      cmd1 = CLAMP((int16_t)command.steer, -1000, 1000);
+      cmd2 = CLAMP((int16_t)command.speed, -1000, 1000);
+
+      timeout = 0;
     #endif
 
 

@@ -21,7 +21,8 @@
 #define DEBUG_SERIAL_ASCII          // human readable output. i.e. "345;1337;0;0\n\r"
 
 #define CONTROL_SERIAL_USART2
-#define CONTROL_BAUD       9600
+#define CONTROL_BAUD       9600     // control via usart from eg an Arduino or raspberry
+                                    // for Arduino, use: while(1) {Serial.write((int16_t) steer); Serial.write((int16_t) speed); delay(10);} or so
 
 //#define DEBUG_I2C_LCD               // standard 16x2 or larger text-lcd via i2c-converter on right sensor board cable
 
