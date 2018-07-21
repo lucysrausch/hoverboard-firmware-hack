@@ -8,6 +8,10 @@
 
 #define DC_CUR_LIMIT     15         // Motor DC current limit in amps. it does not disable motors, it is a soft current limit.
 
+// Battery voltage calibration: connect power source. use multimeter to measure real voltage and write it to BAT_CALIB_REAL_VOLTAGE. watch UART on one of the sensor board cables. write value nr 4 to BAT_CALIB_ADC. make and flash firmware. you can verify voltage on UART debug value 5 (devide it by 100.0 to get calibrated voltage). 
+#define BAT_CALIB_REAL_VOLTAGE        42.0       // input voltage measured by multimeter  
+#define BAT_CALIB_ADC                 1667       // adc-value measured by mainboard (value nr 4 on UART debug output)
+
 #define BAT_LOW_LVL1     36.0       // gently beeps at this voltage level. ~3.6V/cell
 #define BAT_LOW_LVL2     33.0       // your battery is almost empty. Charge now! ~3.3V/cell
 #define BAT_LOW_DEAD     31.0       // undervoltage lockout. ~3.1V/cell

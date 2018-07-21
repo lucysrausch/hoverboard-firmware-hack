@@ -161,8 +161,8 @@ void DMA1_Channel1_IRQHandler() {
     return;
   }
 
-  if (buzzerTimer % 100 == 0) {
-    batteryVoltage = batteryVoltage * 0.999 + ((float)adc_buffer.batt1 * ADC_BATTERY_VOLT) * 0.001;
+  if (buzzerTimer % 100 == 0) {  // because you get float rounding errors if it would run every time
+    batteryVoltage = batteryVoltage * 0.999 + ((float)adc_buffer.batt1 * ((float)BAT_CALIB_REAL_VOLTAGE / (float)BAT_CALIB_ADC)) * 0.001;
   }
 
 

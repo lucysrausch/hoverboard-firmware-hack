@@ -217,8 +217,8 @@ int main(void) {
     #endif
     setScopeChannel(2, (int)speedR);
     setScopeChannel(3, (int)speedL);
-    // setScopeChannel(4, (int));
-    // setScopeChannel(5, (int));
+    setScopeChannel(4, (int)adc_buffer.batt1);  // for battery voltage calibration
+    setScopeChannel(5, (int)(batteryVoltage * 100.0f));  // for verifying battery voltage calibration
     // setScopeChannel(6, (int));
     // setScopeChannel(7, (int));
 
