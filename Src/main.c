@@ -221,10 +221,13 @@ int main(void) {
     setScopeChannel(5, (int)(batteryVoltage * 100.0f));  // for verifying battery voltage calibration
     // setScopeChannel(6, (int));
     // setScopeChannel(7, (int));
+    consoleScope();
+
 
     #ifdef ADDITIONAL_CODE
       ADDITIONAL_CODE;
     #endif
+
 
     // ####### SET OUTPUTS #######
     if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
@@ -243,9 +246,8 @@ int main(void) {
     lastSpeedL = speedL;
     lastSpeedR = speedR;
 
-    // ####### LOG TO CONSOLE #######
-    consoleScope();
 
+    // ####### POWEROFF BY POWER-BUTTON #######
     if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
       enable = 0;
       while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {}
@@ -259,13 +261,15 @@ int main(void) {
       while(1) {}
     }
 
-    if (batteryVoltage < BAT_LOW_LVL1 && batteryVoltage > BAT_LOW_LVL2) {
+
+    // ####### BATTERY VOLTAGE #######
+    if (batteryVoltage < ((float)BAT_LOW_LVL1 * (float)BAT_NUMBER_OF_CELLS) && batteryVoltage > ((float)BAT_LOW_LVL2 * (float)BAT_NUMBER_OF_CELLS)) {
       buzzerFreq = 5;
-      buzzerPattern = 8;
-    } else if  (batteryVoltage < BAT_LOW_LVL2 && batteryVoltage > BAT_LOW_DEAD) {
+      buzzerPattern = 42;
+    } else if (batteryVoltage < ((float)BAT_LOW_LVL2 * (float)BAT_NUMBER_OF_CELLS) && batteryVoltage > ((float)BAT_LOW_DEAD * (float)BAT_NUMBER_OF_CELLS)) {
       buzzerFreq = 5;
-      buzzerPattern = 1;
-    } else if  (batteryVoltage < BAT_LOW_DEAD) {
+      buzzerPattern = 6;
+    } else if (batteryVoltage < ((float)BAT_LOW_DEAD * (float)BAT_NUMBER_OF_CELLS)) {
       buzzerPattern = 0;
       enable = 0;
       for (int i = 0; i < 8; i++) {
