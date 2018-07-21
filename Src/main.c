@@ -217,6 +217,10 @@ int main(void) {
     #endif
     setScopeChannel(2, (int)speedR);
     setScopeChannel(3, (int)speedL);
+    // setScopeChannel(4, (int));
+    // setScopeChannel(5, (int));
+    // setScopeChannel(6, (int));
+    // setScopeChannel(7, (int));
 
     #ifdef ADDITIONAL_CODE
       ADDITIONAL_CODE;
