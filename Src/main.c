@@ -212,15 +212,15 @@ int main(void) {
 
     // ####### DEBUG SERIAL OUT #######
     #ifdef CONTROL_ADC
-      setScopeChannel(0, (int)adc_buffer.l_tx2);  // ADC1
-      setScopeChannel(1, (int)adc_buffer.l_rx2);  // ADC2
+      setScopeChannel(0, (int)adc_buffer.l_tx2);  // 1: ADC1
+      setScopeChannel(1, (int)adc_buffer.l_rx2);  // 2: ADC2
     #endif
-    setScopeChannel(2, (int)speedR);
-    setScopeChannel(3, (int)speedL);
-    setScopeChannel(4, (int)adc_buffer.batt1);  // for battery voltage calibration
-    setScopeChannel(5, (int)(batteryVoltage * 100.0f));  // for verifying battery voltage calibration
-    // setScopeChannel(6, (int));
-    // setScopeChannel(7, (int));
+    setScopeChannel(2, (int)speedR);  // 3:
+    setScopeChannel(3, (int)speedL);  // 4:
+    setScopeChannel(4, (int)adc_buffer.batt1);  // 5: for battery voltage calibration
+    setScopeChannel(5, (int)(batteryVoltage * 100.0f));  // 6: for verifying battery voltage calibration
+    // setScopeChannel(6, (int));  // 7:
+    // setScopeChannel(7, (int));  // 8:
     consoleScope();
 
 
