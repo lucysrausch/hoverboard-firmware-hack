@@ -12,7 +12,7 @@
 #define BAT_CALIB_REAL_VOLTAGE        42.0       // input voltage measured by multimeter  
 #define BAT_CALIB_ADC                 1667       // adc-value measured by mainboard (value nr 4 on UART debug output)
 
-#define BAT_NUMBER_OF_CELLS     12        // normal Hoverboard battery: 10s
+#define BAT_NUMBER_OF_CELLS     10        // normal Hoverboard battery: 10s
 #define BAT_LOW_LVL1            3.6       // gently beeps at this voltage level. [V/cell]
 #define BAT_LOW_LVL2            3.5       // your battery is almost empty. Charge now!  [V/cell]
 #define BAT_LOW_DEAD            3.37      // undervoltage lockout.  [V/cell]

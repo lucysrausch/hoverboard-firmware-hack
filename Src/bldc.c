@@ -131,7 +131,7 @@ int offsetrr2   = 2000;
 int offsetdcl   = 2000;
 int offsetdcr   = 2000;
 
-float batteryVoltage = 40.0;
+float batteryVoltage = BAT_NUMBER_OF_CELLS * 4.0;
 
 int curl = 0;
 // int errorl = 0;
