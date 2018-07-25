@@ -165,18 +165,6 @@ void DMA1_Channel1_IRQHandler() {
     batteryVoltage = batteryVoltage * 0.999 + ((float)adc_buffer.batt1 * ((float)BAT_CALIB_REAL_VOLTAGE / (float)BAT_CALIB_ADC)) * 0.001;
   }
 
-
-  #ifdef BEEPS_BACKWARD
-    if (speed < -50 && enable == 1) {
-      buzzerFreq = 5;
-      buzzerPattern = 1;
-    } else if (enable == 1) {
-      buzzerFreq = 0;
-      buzzerPattern = 1;
-    }
-  #endif
-
-
   //disable PWM when current limit is reached (current chopping)
   if(ABS((adc_buffer.dcl - offsetdcl) * MOTOR_AMP_CONV_DC_AMP) > DC_CUR_LIMIT || timeout > TIMEOUT || enable == 0) {
     LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;
