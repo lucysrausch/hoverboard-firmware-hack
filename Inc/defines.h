@@ -155,6 +155,6 @@ typedef struct {
   uint16_t dcl;
   uint16_t batt1;
   uint16_t l_tx2;
-  uint16_t bat1;
+  uint16_t temp;
   uint16_t l_rx2;
 } adc_buf_t;

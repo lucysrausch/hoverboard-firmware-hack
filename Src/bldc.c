@@ -18,8 +18,8 @@ extern volatile adc_buf_t adc_buffer;
 
 extern volatile uint32_t timeout;
 
-uint8_t buzzerFreq = 0;
-uint8_t buzzerPattern = 0;
+uint32_t buzzerFreq = 0;
+uint32_t buzzerPattern = 0;
 
 uint8_t enable = 0;
 
@@ -121,7 +121,7 @@ inline void blockPhaseCurrent(int pos, int u, int v, int *q) {
   }
 }
 
-uint16_t buzzerTimer        = 0;
+uint32_t buzzerTimer        = 0;
 
 int offsetcount = 0;
 int offsetrl1   = 2000;
@@ -161,8 +161,8 @@ void DMA1_Channel1_IRQHandler() {
     return;
   }
 
-  if (buzzerTimer % 100 == 0) {  // because you get float rounding errors if it would run every time
-    batteryVoltage = batteryVoltage * 0.999 + ((float)adc_buffer.batt1 * ((float)BAT_CALIB_REAL_VOLTAGE / (float)BAT_CALIB_ADC)) * 0.001;
+  if (buzzerTimer % 1000 == 0) {  // because you get float rounding errors if it would run every time
+    batteryVoltage = batteryVoltage * 0.99 + ((float)adc_buffer.batt1 * ((float)BAT_CALIB_REAL_VOLTAGE / (float)BAT_CALIB_ADC)) * 0.01;
   }
 
   //disable PWM when current limit is reached (current chopping)
@@ -206,6 +206,34 @@ void DMA1_Channel1_IRQHandler() {
 
   //setScopeChannel(2, (adc_buffer.rl1 - offsetrl1) / 8);
   //setScopeChannel(3, (adc_buffer.rl2 - offsetrl2) / 8);
+
+
+  // uint8_t buzz(uint16_t *notes, uint32_t len){
+    // static uint32_t counter = 0;
+    // static uint32_t timer = 0;
+    // if(len == 0){
+        // return(0);
+    // }
+    
+    // struct {
+        // uint16_t freq : 4;
+        // uint16_t volume : 4;
+        // uint16_t time : 8;
+    // } note = notes[counter];
+    
+    // if(timer / 500 == note.time){
+        // timer = 0;
+        // counter++;
+    // }
+    
+    // if(counter == len){
+        // counter = 0;
+    // }
+
+    // timer++;
+    // return(note.freq);
+  // }
+
 
   //create square wave for buzzer
   buzzerTimer++;

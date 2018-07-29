@@ -551,29 +551,32 @@ void MX_ADC1_Init(void) {
 
   sConfig.SamplingTime = ADC_SAMPLETIME_7CYCLES_5;
 
-  sConfig.Channel = ADC_CHANNEL_14;
+  sConfig.Channel = ADC_CHANNEL_14;  // pc4 left b
   sConfig.Rank    = 1;
   HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 
-  sConfig.Channel = ADC_CHANNEL_0;
+  sConfig.Channel = ADC_CHANNEL_0;  // pa0 right a
   sConfig.Rank    = 2;
   HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 
   sConfig.SamplingTime = ADC_SAMPLETIME_13CYCLES_5;
 
-  sConfig.Channel = ADC_CHANNEL_11;
+  sConfig.Channel = ADC_CHANNEL_11;  // pc1 left cur
   sConfig.Rank    = 3;
   HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 
-  sConfig.Channel = ADC_CHANNEL_12;
+  sConfig.Channel = ADC_CHANNEL_12;  // pc2 vbat
   sConfig.Rank    = 4;
   HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 
-  sConfig.Channel = ADC_CHANNEL_12;
+  //temperature requires at least 17.1uS sampling time
+  sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
+
+  sConfig.Channel = ADC_CHANNEL_TEMPSENSOR;  // internal temp
   sConfig.Rank    = 5;
   HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 
-  hadc1.Instance->CR2 |= ADC_CR2_DMA;
+  hadc1.Instance->CR2 |= ADC_CR2_DMA | ADC_CR2_TSVREFE;
 
   __HAL_ADC_ENABLE(&hadc1);
 
@@ -611,25 +614,27 @@ void MX_ADC2_Init(void) {
 
   sConfig.SamplingTime = ADC_SAMPLETIME_7CYCLES_5;
 
-  sConfig.Channel = ADC_CHANNEL_15;
+  sConfig.Channel = ADC_CHANNEL_15;  // pc5 left c
   sConfig.Rank    = 1;
   HAL_ADC_ConfigChannel(&hadc2, &sConfig);
 
-  sConfig.Channel = ADC_CHANNEL_13;
+  sConfig.Channel = ADC_CHANNEL_13;  // pc3 right b
   sConfig.Rank    = 2;
   HAL_ADC_ConfigChannel(&hadc2, &sConfig);
 
   sConfig.SamplingTime = ADC_SAMPLETIME_13CYCLES_5;
 
-  sConfig.Channel = ADC_CHANNEL_10;
+  sConfig.Channel = ADC_CHANNEL_10;  // pc0 right cur
   sConfig.Rank    = 3;
   HAL_ADC_ConfigChannel(&hadc2, &sConfig);
 
-  sConfig.Channel = ADC_CHANNEL_2;
+  sConfig.Channel = ADC_CHANNEL_2;  // pa2 uart-l-tx
   sConfig.Rank    = 4;
   HAL_ADC_ConfigChannel(&hadc2, &sConfig);
 
-  sConfig.Channel = ADC_CHANNEL_3;
+  sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
+
+  sConfig.Channel = ADC_CHANNEL_3;  // pa3 uart-l-rx
   sConfig.Rank    = 5;
   HAL_ADC_ConfigChannel(&hadc2, &sConfig);
 
