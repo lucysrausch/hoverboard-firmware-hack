@@ -39,6 +39,8 @@
 
 #define INACTIVITY_TIMEOUT 8        // minutes of not driving until poweroff. it is not very precise.
 
+// ############################### LCD DEBUG ###############################
+
 //#define DEBUG_I2C_LCD             // standard 16x2 or larger text-lcd via i2c-converter on right sensor board cable
 
 // ############################### SERIAL DEBUG ###############################
