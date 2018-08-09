@@ -6,7 +6,7 @@
 #define PWM_FREQ         16000      // PWM frequency in Hz
 #define DEAD_TIME        32         // PWM deadtime
 
-#define DELAY_IN_MAIN_LOOP 2        // in ms. default 5. it is independent of all the timing critical stuff. do not touch if you do not know what you are doing.
+#define DELAY_IN_MAIN_LOOP 5        // in ms. default 5. it is independent of all the timing critical stuff. do not touch if you do not know what you are doing.
 
 #define TIMEOUT          5          // number of wrong / missing input commands before emergency off
 
