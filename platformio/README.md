@@ -19,10 +19,12 @@ Then, you can open the folder in platform.io (e.g. vscode or atom based IDE), an
 
 There were a couple of changes to the source code to enable build:
 
-a/ 'inline' was changed to 'static inline' in bldc.called
+a/ 'inline' was changed to 'static inline' in bldc.c
 
 b/ 'spoof_init.c' was introduced to provide an empty '_init()' function
 
 
-In the platformio.ini, source_filter is used to prevent platform.io from building ALL the files in Drivers.
+In the platformio.ini, src_filter is used to prevent platform.io from building ALL the files in Drivers.
 
+
+I have added the (untested) firmware.bin in case anyone cares to test it on an ST based board.
