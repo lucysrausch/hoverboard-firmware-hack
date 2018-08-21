@@ -1,6 +1,6 @@
 This firmware is much better than the old one. tested up to 40A / 60V, no dead board so far :)
 
-## hoverboard-firmware-hack
+# hoverboard-firmware-hack
 
 This repo contains open source firmware for generic Hoverboard Mainboards.
 The firmware you can find here allows you to use your Hoverboard Hardware (like the Mainboard, Motors and Battery) for cool projects like driving armchairs, person-tracking transportation robots and every other application you can imagine that requires controlling the Motors.
@@ -8,11 +8,9 @@ The firmware you can find here allows you to use your Hoverboard Hardware (like 
 If you want an overview of what you can do with this firmware, here is a ~40min video of a talk about this project:
 https://media.ccc.de/v/gpn18-95-howto-moving-objects
 
-There is a bobbycar-optimized firmware based on this one with driving modes, acceleration ramps and some other features:  https://github.com/larsmm/hoverboard-firmware-hack-bbcar
-
 ---
 
-#### Hardware
+## Hardware
 ![otter](https://raw.githubusercontent.com/NiklasFauth/hoverboard-firmware-hack/master/pinout.png)
 
 The original Hardware supports two 4-pin cables that originally were connected to the two sensor boards. They break out GND, 12/15V and USART2&3 of the Hoverboard mainboard.
@@ -23,7 +21,7 @@ http://vocke.tv/lib/exe/fetch.php?media=20150722_hoverboard_sch.pdf
 
 ---
 
-#### Flashing
+## Flashing
 To build the firmware, just type "make". Make sure you have specified your gcc-arm-none-eabi binary (version 7 works, there is a version that does not!) location in the Makefile ("PREFIX = ..."). Right to the STM32, there is a debugging header with GND, 3V3, SWDIO and SWCLK. Connect GND, SWDIO and SWCLK to your SWD programmer, like the ST-Link found on many STM devboards.
 
 Make sure you hold the powerbutton or connect a jumper to the power button pins while flashing the firmware, as the STM might release the power latch and switches itself off during flashing. Battery > 36V have to be connected while flashing.
@@ -50,7 +48,7 @@ st-flash --reset write build/hover.bin 0x8000000
 ```
 
 ---
-#### Troubleshooting
+## Troubleshooting
 First, check that power is connected and voltage is >36V while flashing.
 If the board draws more than 100mA in idle, it's probably broken.
 
@@ -65,8 +63,12 @@ Most robust way for input is to use the ADC and potis. It works well even on 1m 
 ---
 
 
-#### Examples
+## Examples
 
 Have a look at the config.h in the Inc directory. That's where you configure to firmware to match your project.
 Currently supported: Wii Nunchuck, analog potentiometer and PPM-Sum signal from a RC remote.
 If you need additional features like a boost button, have a look at the while(1) loop in the main.c
+
+### Projects based on it
+* [bobbycar-optimized firmware](https://github.com/larsmm/hoverboard-firmware-hack-bbcar)  based on this one with driving modes, acceleration ramps and some other features
+* [wheel chair](https://github.com/Lahorde/steer_speed_ctrl) controlled with a joystick or using a CC2650 sensortag to control it over  bluetooth with pitch/roll.
