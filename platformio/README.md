@@ -1,6 +1,6 @@
 ## Building the firmware in platform.io
 
-This folder contains a platformio.ini file which results in a successful but untested build of the hoverboard firmware.
+This folder contains a platformio.ini file which results in a successful build of the hoverboard firmware.
 
 To use it, you must:
 
@@ -26,5 +26,3 @@ b/ 'spoof_init.c' was introduced to provide an empty '_init()' function
 
 In the platformio.ini, src_filter is used to prevent platform.io from building ALL the files in Drivers.
 
-
-I have added the (untested) firmware.bin in case anyone cares to test it on an ST based board.

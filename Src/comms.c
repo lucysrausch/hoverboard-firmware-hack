@@ -4,8 +4,10 @@
 #include "config.h"
 #include "stdio.h"
 #include "string.h"
+#include "sensorcoms.h"
 
-UART_HandleTypeDef huart2;
+
+extern UART_HandleTypeDef huart2;
 
 #ifdef DEBUG_SERIAL_USART3
 #define UART_DMA_CHANNEL DMA1_Channel2
@@ -56,9 +58,20 @@ void consoleScope() {
       UART_DMA_CHANNEL->CCR |= DMA_CCR_EN;
     }
   #endif
+
+  #if defined DEBUG_SERIAL_ASCII && defined DEBUG_SERIAL_SENSOR && defined CONTROL_SENSOR
+    memset(uart_buf, 0, sizeof(uart_buf));
+    sprintf(uart_buf, "1:%i 2:%i 3:%i 4:%i 5:%i 6:%i 7:%i 8:%i\r\n", ch_buf[0], ch_buf[1], ch_buf[2], ch_buf[3], ch_buf[4], ch_buf[5], ch_buf[6], ch_buf[7]);
+    USART_sensorSend(0, uart_buf, strlen(uart_buf), 0);
+    USART_sensorSend(1, uart_buf, strlen(uart_buf), 0);
+  #endif
 }
 
 void consoleLog(char *message)
 {
+    #if defined DEBUG_SERIAL_SENSOR && defined CONTROL_SENSOR
+    USART_sensorSend(1, message, strlen(message), 0);
+    #else
     HAL_UART_Transmit_DMA(&huart2, (uint8_t *)message, strlen(message));
+    #endif
 }
