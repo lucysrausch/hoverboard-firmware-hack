@@ -46,6 +46,7 @@
 // ############################### SERIAL DEBUG ###############################
 
 #define DEBUG_SERIAL_USART3         // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
+//#define DEBUG_SERIAL_SENSOR         // send to USART3 sensor board, without framing, at the CONTROL_SENSOR_BAUD rate
 #define DEBUG_BAUD       115200     // UART baud rate
 //#define DEBUG_SERIAL_SERVOTERM
 #define DEBUG_SERIAL_ASCII          // "1:345 2:1337 3:0 4:0 5:0 6:0 7:0 8:0\r\n"
@@ -54,8 +55,14 @@
 
 // ###### CONTROL VIA UART (serial) ######
 //#define CONTROL_SERIAL_USART2       // left sensor board cable, disable if ADC or PPM is used!
-#define CONTROL_BAUD       19200    // control via usart from eg an Arduino or raspberry
+#define CONTROL_BAUD     19200    // control via usart from eg an Arduino or raspberry
 // for Arduino, use void loop(void){ Serial.write((uint8_t *) &steer, sizeof(steer)); Serial.write((uint8_t *) &speed, sizeof(speed));delay(20); }
+
+// CONTROL_SENSOR implements control from original sensor boards.
+// the baud rate is 52177 for GD32 baseed YST boards.
+//#define CONTROL_SENSOR
+#define CONTROL_SENSOR_BAUD     52177    // control via usart from GD32 based sensor boards
+//#define CONTROL_SENSOR_BAUD     26300    // reported baudrate for other sensor boards?
 
 // ###### CONTROL VIA RC REMOTE ######
 // left sensor board cable. Channel 1: steering, Channel 2: speed.
@@ -148,6 +155,11 @@ else {\
 #if defined DEBUG_SERIAL_USART3 && defined DEBUG_I2C_LCD
   #error DEBUG_I2C_LCD and DEBUG_SERIAL_USART3 not allowed. it is on the same cable.
 #endif
+
+#if defined DEBUG_SERIAL_USART3 && defined CONTROL_SENSOR
+  #error DEBUG_SERIAL_USART3 and CONTROL_SENSOR not allowed. it is on the same cable.
+#endif
+
 
 #if defined CONTROL_PPM && defined CONTROL_ADC && defined CONTROL_NUNCHUCK || defined CONTROL_PPM && defined CONTROL_ADC || defined CONTROL_ADC && defined CONTROL_NUNCHUCK || defined CONTROL_PPM && defined CONTROL_NUNCHUCK
   #error only 1 input method allowed. use CONTROL_PPM or CONTROL_ADC or CONTROL_NUNCHUCK.

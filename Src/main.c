@@ -23,6 +23,8 @@
 #include "defines.h"
 #include "setup.h"
 #include "config.h"
+#include "comms.h"
+#include "sensorcoms.h"
 //#include "hd44780.h"
 
 void SystemClock_Config(void);
@@ -127,6 +129,11 @@ int main(void) {
   HAL_ADC_Start(&hadc1);
   HAL_ADC_Start(&hadc2);
 
+  #ifdef CONTROL_SENSOR
+  // initialise to 9 bit interrupt driven comms on USART 2 & 3
+  USART_init_sensor_comms();
+  #endif
+
   for (int i = 8; i >= 0; i--) {
     buzzerFreq = i;
     HAL_Delay(100);
@@ -138,6 +145,26 @@ int main(void) {
   int lastSpeedL = 0, lastSpeedR = 0;
   int speedL = 0, speedR = 0;
   float direction = 1;
+
+
+  #ifdef CONTROL_SENSOR
+  // things we use in main loop for sensor control
+  consoleLog("power on\n");
+  short c = 0;
+  char tmp[512];
+
+  SENSOR_LIGHTS lights[2];
+  SENSOR_DATA sensor_data[2];
+  SENSOR_DATA last_sensor_data[2];
+  int sensor_ok[2] = {0,0};
+  memset(lights, 0, sizeof(lights));
+
+  int counts[2];
+  char rx[2][20];
+  char data_read[2] = {0,0};
+  int OnBoard = 0;
+  int Center[2] = {0, 0};
+  #endif
 
   #ifdef CONTROL_PPM
     PPM_Init();
@@ -151,6 +178,7 @@ int main(void) {
   #ifdef CONTROL_SERIAL_USART2
     UART_Control_Init();
     HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, 4);
+
   #endif
 
   #ifdef DEBUG_I2C_LCD
@@ -182,6 +210,8 @@ int main(void) {
 
   while(1) {
     HAL_Delay(DELAY_IN_MAIN_LOOP); //delay in ms
+    cmd1 = 0;
+    cmd2 = 0;
 
     #ifdef CONTROL_NUNCHUCK
       Nunchuck_Read();
@@ -219,15 +249,107 @@ int main(void) {
     #endif
 
 
-    // ####### LOW-PASS FILTER #######
-    steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
-    speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
+    #ifdef CONTROL_SENSOR
+      // read the last sensor message in the buffer
+      for (int side = 0; side < 2; side++){
+        counts[side] = USART_sensor_rxcount(side);
+        int toflush = counts[side] - 20;
+        if (toflush > 0){
+          // flush data up to last 20 bytes
+          for (int i = 0; i < toflush; i++){
+            USART_sensor_getrx(side);
+          }
+
+          // read bytes until 0x100 is found with at least 10 bytes read
+          short c;
+          int i = 0;
+          do {
+            c = USART_sensor_getrx(side);
+            rx[side][i++] = c & 0xff;
+          } while ((!(c & 0x100) || (i < 10)) && (i < 20));
+
+          // if we got the end of a frame, copy into data
+          if (c & 0x100){
+            memcpy(&sensor_data[side], &rx[side][i-10], 10);
+            data_read[side] = 1;
+          }
+        }
+
+        if (data_read[side]){
+          sprintf(tmp, "\r\n%d: %d %d %2X %d %d", side, 
+            (int)sensor_data[side].Angle, 
+            (int)sensor_data[side].Angle_duplicate, 
+            (int)sensor_data[side].AA_55, 
+            (int)sensor_data[side].Accelleration, 
+            (int)sensor_data[side].Roll);
+          //consoleLog(tmp);
+        } else {
+          sprintf(tmp, "\r\n%d: nodata", side); 
+          //consoleLog(tmp);
+        }
+      }
 
 
-    // ####### MIXER #######
-    speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
-    speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
+      memset(lights, 0, sizeof(lights));
+      lights[0].colour = SENSOR_COLOUR_RED;
+      lights[1].colour = SENSOR_COLOUR_RED;
 
+      for (int i = 0; i < 2; i++){
+        if (sensor_data[i].AA_55 == 0x55){
+          lights[i].colour = SENSOR_COLOUR_GREEN;
+          memcpy(&last_sensor_data[i], &sensor_data[i], sizeof(last_sensor_data[i]));
+          sensor_ok[i] = 3;
+        } else {
+          sensor_ok[i]--;
+          if (sensor_ok[i] < 0)
+            sensor_ok[i] = 0;
+        }
+      }
+
+      if (sensor_ok[0] && sensor_ok[1]){
+
+        if (!OnBoard){
+          Center[0] = last_sensor_data[0].Angle;
+          Center[1] = last_sensor_data[1].Angle;
+          OnBoard = 1;
+        }
+
+        speedL = CLAMP(-(last_sensor_data[0].Angle - Center[0])/3, -300, 300);
+        speedR = CLAMP((last_sensor_data[1].Angle - Center[1])/3, -300, 300);
+        timeout = 0;
+        enable = 1;
+        lights[0].colour = SENSOR_COLOUR_YELLOW;
+        lights[1].colour = SENSOR_COLOUR_YELLOW;
+        inactivity_timeout_counter = 0;
+
+      } else {
+        OnBoard = 0;
+        speedL = CLAMP(-(last_sensor_data[0].Angle - Center[0])/3, -300, 300);
+        speedR = CLAMP((last_sensor_data[1].Angle - Center[1])/3, -300, 300);
+        enable = 0;
+      }
+
+      // send twice to make sure each side gets it.
+      // if we sent diagnositc data, it seems to need this.
+      USART_sensorSend(0, &lights[0], 6, 1);
+      USART_sensorSend(0, &lights[0], 6, 1);
+      USART_sensorSend(1, &lights[1], 6, 1);
+      USART_sensorSend(1, &lights[1], 6, 1);
+
+
+    #else
+
+
+      // ####### LOW-PASS FILTER #######
+      steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
+      speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
+
+
+      // ####### MIXER #######
+      speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
+      speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
+
+    #endif
 
     #ifdef ADDITIONAL_CODE
       ADDITIONAL_CODE;
@@ -262,6 +384,12 @@ int main(void) {
         setScopeChannel(0, (int)adc_buffer.l_tx2);  // 1: ADC1
         setScopeChannel(1, (int)adc_buffer.l_rx2);  // 2: ADC2
       #endif
+
+      #ifdef CONTROL_SENSOR
+        setScopeChannel(0, (int)sensor_data[0].Angle);  // 1: ADC1
+        setScopeChannel(1, -(int)sensor_data[1].Angle);  // 2: ADC2
+      #endif
+
       setScopeChannel(2, (int)speedR);  // 3: output speed: 0-1000
       setScopeChannel(3, (int)speedL);  // 4: output speed: 0-1000
       setScopeChannel(4, (int)adc_buffer.batt1);  // 5: for battery voltage calibration
