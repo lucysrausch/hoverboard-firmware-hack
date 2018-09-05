@@ -38,8 +38,8 @@ extern volatile adc_buf_t adc_buffer;
 extern I2C_HandleTypeDef hi2c2;
 extern UART_HandleTypeDef huart2;
 
-int cmd1;  // normalized input values. -1000 to 1000
-int cmd2;
+int cmd1, cmd1_ADC, cmd1_nunchuck;  // normalized input values. -1000 to 1000
+int cmd2, cmd2_ADC, cmd2_nunchuck;
 int cmd3;
 
 typedef struct{
@@ -50,7 +50,7 @@ typedef struct{
 
 volatile Serialcommand command;
 
-uint8_t button1, button2;
+uint8_t button1, button2, button1_ADC, button2_ADC, button1_nunchuck, button2_nunchuck;
 
 int steer; // global variable for steering. -1000 to 1000
 int speed; // global variable for speed. -1000 to 1000
@@ -200,11 +200,11 @@ int main(void) {
 
     #ifdef CONTROL_NUNCHUCK
       Nunchuck_Read();
-      cmd1 = CLAMP((nunchuck_data[0] - 127) * 8, -1000, 1000); // x - axis. Nunchuck joystick readings range 30 - 230
-      cmd2 = CLAMP((nunchuck_data[1] - 128) * 8, -1000, 1000); // y - axis
+      cmd1_nunchuck = CLAMP((nunchuck_data[0] - 127) * 8, -1000, 1000); // x - axis. Nunchuck joystick readings range 30 - 230
+      cmd2_nunchuck = CLAMP((nunchuck_data[1] - 128) * 8, -1000, 1000); // y - axis
 
-      button1 = (uint8_t)nunchuck_data[5] & 1;
-      button2 = (uint8_t)(nunchuck_data[5] >> 1) & 1;
+      button1_nunchuck = (uint8_t)nunchuck_data[5] & 1;
+      button2_nunchuck = (uint8_t)(nunchuck_data[5] >> 1) & 1;
     #endif
 
     #ifdef CONTROL_PPM
@@ -216,14 +216,15 @@ int main(void) {
 
     #ifdef CONTROL_ADC
       // ADC values range: 0-4095, see ADC-calibration in config.h
-      cmd1 = CLAMP(adc_buffer.l_tx2 - ADC1_MIN, 0, ADC1_MAX) / (ADC1_MAX / 1000.0f);  // ADC1
-      cmd2 = CLAMP(adc_buffer.l_rx2 - ADC2_MIN, 0, ADC2_MAX) / (ADC2_MAX / 1000.0f);  // ADC2
+      cmd1_ADC = CLAMP(adc_buffer.l_tx2 - ADC1_MIN, 0, ADC1_MAX) / (ADC1_MAX / 1000.0f);  // ADC1 - Speed
+      cmd2_ADC = CLAMP(adc_buffer.l_rx2 - ADC2_MIN, 0, ADC2_MAX) / (ADC2_MAX / 1000.0f);  // ADC2 - Steer
+
+      cmd1_ADC = cmd1_ADC - 590;
+      cmd2_ADC = 470 - cmd2_ADC;
 
       // use ADCs as button inputs:
-      button1 = (uint8_t)(adc_buffer.l_tx2 > 2000);  // ADC1
-      button2 = (uint8_t)(adc_buffer.l_rx2 > 2000);  // ADC2
-
-      timeout = 0;
+      button1_ADC = (uint8_t)(adc_buffer.l_tx2 > 2000);  // ADC1
+      button2_ADC = (uint8_t)(adc_buffer.l_rx2 > 2000);  // ADC2
     #endif
 
     #ifdef CONTROL_SERIAL_USART2
@@ -241,6 +242,35 @@ int main(void) {
       timeout = 0;
     #endif
 
+    // ####### MIX and match ADC and Nunchuck #######
+#if defined CONTROL_NUNCHUCK
+  	cmd1 = cmd1_nunchuck;
+  	cmd2 = cmd2_nunchuck;
+#endif
+
+#if defined CONTROL_ADC
+
+
+    if(cmd1_ADC > -10 && cmd1_ADC < 10) {
+    	cmd1 = 0;
+    	cmd2 = 0;
+#if defined CONTROL_NUNCHUCK
+    	// use nunchuck if ADC value is low
+    	cmd1 = cmd1_nunchuck;
+    	cmd2 = cmd2_nunchuck;
+#endif
+    } else if(cmd1_ADC<-200) {
+    	// drive backwards
+    	cmd1 = cmd2_ADC; // offset by 500/1000 and flip direction of steering
+    	cmd2 = cmd1_ADC+10;  // offset by 300/1000
+        timeout = 0;
+    } else {
+    	// drive forward
+    	cmd1 = cmd2_ADC; // offset by 500/1000 and flip direction of steering
+    	cmd2 = cmd1_ADC-10;  // offset by 300/1000
+        timeout = 0;
+    }
+#endif
 
     // ####### LOW-PASS FILTER #######
     steer = steer * (1.0 - FILTER) + cmd1 * FILTER;

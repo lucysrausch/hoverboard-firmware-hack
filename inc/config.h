@@ -73,6 +73,12 @@
 // ###### CONTROL VIA NINTENDO NUNCHUCK ######
 // left sensor board cable. keep cable short, use shielded cable, use ferrits, stabalize voltage in nunchuck, use the right one of the 2 types of nunchucks, add i2c pullups. use original nunchuck. most clones does not work very well.
 //#define CONTROL_NUNCHUCK            // use nunchuck as input. disable DEBUG_SERIAL_USART3!
+//#define CONTROL_ADC_NUNCHUCK		// use ADC and nunchuck as Input
+
+#ifdef CONTROL_ADC_NUNCHUCK
+	#define CONTROL_NUNCHUCK
+	#define CONTROL_ADC
+#endif
 
 // ############################### DRIVING BEHAVIOR ###############################
 
@@ -149,6 +155,6 @@ else {\
   #error DEBUG_I2C_LCD and DEBUG_SERIAL_USART3 not allowed. it is on the same cable.
 #endif
 
-#if defined CONTROL_PPM && defined CONTROL_ADC && defined CONTROL_NUNCHUCK || defined CONTROL_PPM && defined CONTROL_ADC || defined CONTROL_ADC && defined CONTROL_NUNCHUCK || defined CONTROL_PPM && defined CONTROL_NUNCHUCK
+#if defined CONTROL_PPM && defined CONTROL_ADC && defined CONTROL_NUNCHUCK || defined CONTROL_PPM && defined CONTROL_ADC || (defined CONTROL_ADC && defined CONTROL_NUNCHUCK && !defined(CONTROL_ADC_NUNCHUCK)) || defined CONTROL_PPM && defined CONTROL_NUNCHUCK
   #error only 1 input method allowed. use CONTROL_PPM or CONTROL_ADC or CONTROL_NUNCHUCK.
 #endif
