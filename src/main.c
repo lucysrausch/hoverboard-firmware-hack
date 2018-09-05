@@ -24,6 +24,8 @@
 #include "setup.h"
 #include "config.h"
 //#include "hd44780.h"
+#include "crc32.h"
+#include <stdbool.h>
 
 void SystemClock_Config(void);
 
@@ -43,7 +45,7 @@ int cmd3;
 typedef struct{
    int16_t steer;
    int16_t speed;
-   //uint32_t crc;
+   uint32_t crc;
 } Serialcommand;
 
 volatile Serialcommand command;
@@ -89,6 +91,19 @@ void poweroff() {
     }
 }
 
+bool checkCRC(Serialcommand* command) {
+	uint32_t crc = 0;
+	crc32((const void *)command, 4, &crc); // 4 2x uint16_t = 4 bytes
+
+	setScopeChannel(0, (int)crc);  // 1: ADC1
+	setScopeChannel(1, (int)command->crc);  // 2: ADC2
+
+
+	if(command->crc == crc) {
+		return true;
+	}
+	return false;
+}
 
 int main(void) {
   HAL_Init();
@@ -150,7 +165,7 @@ int main(void) {
 
   #ifdef CONTROL_SERIAL_USART2
     UART_Control_Init();
-    HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, 4);
+    HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, 8);
   #endif
 
   #ifdef DEBUG_I2C_LCD
@@ -212,8 +227,16 @@ int main(void) {
     #endif
 
     #ifdef CONTROL_SERIAL_USART2
+      if(checkCRC(&command))
+      {
       cmd1 = CLAMP((int16_t)command.steer, -1000, 1000);
       cmd2 = CLAMP((int16_t)command.speed, -1000, 1000);
+      } else
+      {
+    	  cmd1 = 0;
+    	  cmd2 = 0;
+      }
+
 
       timeout = 0;
     #endif
