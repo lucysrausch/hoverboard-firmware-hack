@@ -59,12 +59,12 @@
 
 // ###### CONTROL VIA RC REMOTE ######
 // left sensor board cable. Channel 1: steering, Channel 2: speed.
-//#define CONTROL_PPM                 // use PPM-Sum as input. disable DEBUG_SERIAL_USART2!
+//#define CONTROL_PPM                 // use PPM-Sum as input. disable CONTROL_SERIAL_USART2!
 //#define PPM_NUM_CHANNELS 6          // total number of PPM channels to receive, even if they are not used.
 
 // ###### CONTROL VIA TWO POTENTIOMETERS ######
 // ADC-calibration to cover the full poti-range: connect potis to left sensor board cable (0 to 3.3V) (do NOT use the red 15V wire in the cable!). see <How to calibrate>. turn the potis to minimum position, write value 1 to ADC1_MIN and value 2 to ADC2_MIN. turn to maximum position and repeat it for ADC?_MAX. make, flash and test it.
-#define CONTROL_ADC                 // use ADC as input. disable DEBUG_SERIAL_USART2!
+#define CONTROL_ADC                 // use ADC as input. disable CONTROL_SERIAL_USART2!
 #define ADC1_MIN 0                // min ADC1-value while poti at minimum-position (0 - 4095)
 #define ADC1_MAX 4095               // max ADC1-value while poti at maximum-position (0 - 4095)
 #define ADC2_MIN 0                // min ADC2-value while poti at minimum-position (0 - 4095)
