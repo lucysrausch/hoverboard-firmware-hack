@@ -16,7 +16,7 @@
 
 // Battery voltage calibration: connect power source. see <How to calibrate>. write value nr 5 to BAT_CALIB_ADC. make and flash firmware. then you can verify voltage on value 6 (devide it by 100.0 to get calibrated voltage).
 #define BAT_CALIB_REAL_VOLTAGE        43.0       // input voltage measured by multimeter  
-#define BAT_CALIB_ADC                 1704       // adc-value measured by mainboard (value nr 4 on UART debug output)
+#define BAT_CALIB_ADC                 1704       // adc-value measured by mainboard (value nr 5 on UART debug output)
 
 #define BAT_NUMBER_OF_CELLS     10        // normal Hoverboard battery: 10s
 #define BAT_LOW_LVL1_ENABLE     0         // to beep or not to beep, 1 or 0
