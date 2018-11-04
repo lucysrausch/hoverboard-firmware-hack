@@ -1,15 +1,29 @@
 /*
- * comms.h
- *
- *  Created on: 20.04.2018
- *      Author: Jan
- */
+* This file is part of the hoverboard-firmware-hack project.
+*
+* Copyright (C) 2017-2018 Rene Hopf <renehopf@mac.com>
+* Copyright (C) 2017-2018 Nico Stute <crinq@crinq.de>
+* Copyright (C) 2017-2018 Niklas Fauth <niklas.fauth@kit.fail>
+* Copyright (C) 2018 Jan Kossowski <jan_kossowski@web.de>
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
-#ifndef INC_COMMS_H_
-#define INC_COMMS_H_
+#pragma once
 
 void setScopeChannel(uint8_t ch, int16_t val);
 void consoleScope();
 void consoleLog(char *message);
 
-#endif /* INC_COMMS_H_ */
+
