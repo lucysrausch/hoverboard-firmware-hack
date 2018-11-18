@@ -37,6 +37,7 @@ extern volatile adc_buf_t adc_buffer;
 //LCD_PCF8574_HandleTypeDef lcd;
 extern I2C_HandleTypeDef hi2c2;
 extern UART_HandleTypeDef huart2;
+extern UART_HandleTypeDef huart3;
 
 int cmd1, cmd1_ADC, cmd1_nunchuck;  // normalized input values. -1000 to 1000
 int cmd2, cmd2_ADC, cmd2_nunchuck;
@@ -168,6 +169,11 @@ int main(void) {
     HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, 8);
   #endif
 
+  #ifdef CONTROL_SERIAL_USART3
+    UART_Control_Init();
+    HAL_UART_Receive_DMA(&huart3, (uint8_t *)&command, 8);
+  #endif
+
   #ifdef DEBUG_I2C_LCD
     I2C_Init();
     HAL_Delay(50);
@@ -227,7 +233,7 @@ int main(void) {
       button2_ADC = (uint8_t)(adc_buffer.l_rx2 > 2000);  // ADC2
     #endif
 
-    #ifdef CONTROL_SERIAL_USART2
+    #if defined(CONTROL_SERIAL_USART2) || defined(CONTROL_SERIAL_USART3)
       if(checkCRC(&command))
       {
       cmd1 = CLAMP((int16_t)command.steer, -1000, 1000);
