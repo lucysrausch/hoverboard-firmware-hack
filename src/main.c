@@ -134,9 +134,6 @@ int main(void) {
   MX_ADC1_Init();
   MX_ADC2_Init();
 
-  #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
-    UART_Init();
-  #endif
 
   HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 1);
 
@@ -164,13 +161,19 @@ int main(void) {
     Nunchuck_Init();
   #endif
 
+  #if defined(DEBUG_SERIAL_USART2) || defined(CONTROL_SERIAL_USART2)
+    UART2_Init();
+  #endif
+
+  #if defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_USART3)
+    UART3_Init();
+  #endif
+  
   #ifdef CONTROL_SERIAL_USART2
-    UART_Control_Init();
     HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, 8);
   #endif
 
   #ifdef CONTROL_SERIAL_USART3
-    UART_Control_Init();
     HAL_UART_Receive_DMA(&huart3, (uint8_t *)&command, 8);
   #endif
 

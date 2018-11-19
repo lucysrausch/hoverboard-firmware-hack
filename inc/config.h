@@ -43,11 +43,13 @@
 
 //#define DEBUG_I2C_LCD             // standard 16x2 or larger text-lcd via i2c-converter on right sensor board cable
 
-// ############################### SERIAL DEBUG ###############################
+// ############################### SERIAL ###############################
 
 #define DEBUG_SERIAL_USART2         // left sensor board cable, disable if ADC or PPM is used!
 //#define DEBUG_SERIAL_USART3       // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
-#define DEBUG_BAUD       115200     // UART baud rate
+#define USART2_BAUD     115200      // UART baud rate left sensor board cable
+#define USART3_BAUD       9600      // UART baud rate right sensor board cable
+
 //#define DEBUG_SERIAL_SERVOTERM
 #define DEBUG_SERIAL_ASCII          // "1:345 2:1337 3:0 4:0 5:0 6:0 7:0 8:0\r\n"
 
@@ -56,7 +58,6 @@
 // ###### CONTROL VIA UART (serial) ######
 //#define CONTROL_SERIAL_USART2     // left sensor board cable, disable if ADC or PPM is used!
 #define CONTROL_SERIAL_USART3       // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
-#define CONTROL_BAUD       9600    // control via usart from eg an Arduino or raspberry
 // for Arduino, use void loop(void){ Serial.write((uint8_t *) &steer, sizeof(steer)); Serial.write((uint8_t *) &speed, sizeof(speed));delay(20); }
 
 // ###### CONTROL VIA RC REMOTE ######
@@ -141,20 +142,19 @@ else {\
 
 // ############################### VALIDATE SETTINGS ###############################
 
-#if defined(DEBUG_SERIAL_USART2) 
+#if defined(DEBUG_SERIAL_USART2) && defined(DEBUG_SERIAL_USART3) 
+  #error DEBUG_SERIAL_USART2 and DEBUG_SERIAL_USART3 not allowed, choose one.
+#endif
+
+#if defined(DEBUG_SERIAL_USART2) || defined(CONTROL_SERIAL_USART2) 
   #ifdef SENSOR_BOARD_CABLE_LEFT_IN_USE
-    #error DEBUG_SERIAL_USART2 not allowed, cable already in use.
+    #error SERIAL_USART2 not allowed, cable already in use.
   #else
     #define SENSOR_BOARD_CABLE_LEFT_IN_USE
   #endif
 #endif
 
-#if defined(CONTROL_SERIAL_USART2) 
-  #ifdef SENSOR_BOARD_CABLE_LEFT_IN_USE
-    #error CONTROL_SERIAL_USART2 not allowed, cable already in use.
-  #else
-    #define SENSOR_BOARD_CABLE_LEFT_IN_USE
-  #endif
+#if defined(CONTROL_SERIAL_USART2)
   #ifdef CONTROL_METHOD_DEFINED
     #error CONTROL_SERIAL_USART2 not allowed, another control Method is already defined.
   #else
@@ -189,20 +189,15 @@ else {\
 #endif
 
 
-#if defined(DEBUG_SERIAL_USART3) 
+#if defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_USART3) 
   #ifdef SENSOR_BOARD_CABLE_RIGHT_IN_USE
-    #error DEBUG_SERIAL_USART3 not allowed, cable already in use.
+    #error SERIAL_USART3 not allowed, cable already in use.
   #else
     #define SENSOR_BOARD_CABLE_RIGHT_IN_USE
   #endif
 #endif
 
 #if defined(CONTROL_SERIAL_USART3) 
-  #ifdef SENSOR_BOARD_CABLE_RIGHT_IN_USE
-    #error CONTROL_SERIAL_USART3 not allowed, cable already in use.
-  #else
-    #define SENSOR_BOARD_CABLE_RIGHT_IN_USE
-  #endif
   #ifdef CONTROL_METHOD_DEFINED
     #error CONTROL_SERIAL_USART3 not allowed, another control Method is already defined.
   #else

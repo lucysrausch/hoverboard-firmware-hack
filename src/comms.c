@@ -5,14 +5,15 @@
 #include "stdio.h"
 #include "string.h"
 
-UART_HandleTypeDef huart2;
 
 #ifdef DEBUG_SERIAL_USART3
 #define UART_DMA_CHANNEL DMA1_Channel2
+extern UART_HandleTypeDef huart3;
 #endif
 
 #ifdef DEBUG_SERIAL_USART2
 #define UART_DMA_CHANNEL DMA1_Channel7
+extern UART_HandleTypeDef huart2;
 #endif
 
 
@@ -60,5 +61,11 @@ void consoleScope() {
 
 void consoleLog(char *message)
 {
+#ifdef DEBUG_SERIAL_USART2
     HAL_UART_Transmit_DMA(&huart2, (uint8_t *)message, strlen(message));
+#endif
+
+#ifdef DEBUG_SERIAL_USART3
+    HAL_UART_Transmit_DMA(&huart3, (uint8_t *)message, strlen(message));
+#endif
 }
