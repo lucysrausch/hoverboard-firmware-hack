@@ -45,10 +45,10 @@
 
 // ############################### SERIAL ###############################
 
-#define DEBUG_SERIAL_USART2         // left sensor board cable, disable if ADC or PPM is used!
-//#define DEBUG_SERIAL_USART3       // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
+//#define DEBUG_SERIAL_USART2       // left sensor board cable, disable if ADC or PPM is used!
+#define DEBUG_SERIAL_USART3         // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
 #define USART2_BAUD     115200      // UART baud rate left sensor board cable
-#define USART3_BAUD       9600      // UART baud rate right sensor board cable
+#define USART3_BAUD     115200      // UART baud rate right sensor board cable
 
 //#define DEBUG_SERIAL_SERVOTERM
 #define DEBUG_SERIAL_ASCII          // "1:345 2:1337 3:0 4:0 5:0 6:0 7:0 8:0\r\n"
@@ -67,21 +67,28 @@
 
 // ###### CONTROL VIA TWO POTENTIOMETERS ######
 // ADC-calibration to cover the full poti-range: connect potis to left sensor board cable (0 to 3.3V) (do NOT use the red 15V wire in the cable!). see <How to calibrate>. turn the potis to minimum position, write value 1 to ADC1_MIN and value 2 to ADC2_MIN. turn to maximum position and repeat it for ADC?_MAX. make, flash and test it.
-#define CONTROL_ADC                 // use ADC as input. disable DEBUG_SERIAL_USART2!
-#define ADC1_MIN 0                // min ADC1-value while poti at minimum-position (0 - 4095)
-#define ADC1_MAX 4095               // max ADC1-value while poti at maximum-position (0 - 4095)
-#define ADC2_MIN 0                // min ADC2-value while poti at minimum-position (0 - 4095)
-#define ADC2_MAX 4095               // max ADC2-value while poti at maximum-position (0 - 4095)
+#define CONTROL_ADC               // use ADC as input. disable DEBUG_SERIAL_USART2!
+#define ADC1_MIN         0        // min ADC1-value while poti at minimum-position (0 - 4095)
+#define ADC1_ZERO     1500        // ADC1-value while poti at zero-position (0 - 4095)
+#define ADC1_MAX      4095        // max ADC1-value while poti at maximum-position (0 - 4095)
+#define ADC1_MULT_NEG  500.0f     // Use 1000.0f to calibrate form MIN to MAX
+#define ADC1_MULT_POS 1500.0f     // Use 1000.0f to calibrate form MIN to MAX
+
+#define ADC2_MIN         0        // min ADC2-value while poti at minimum-position (0 - 4095)
+#define ADC2_ZERO     2000        // ADC2-value while poti at zero-position (0 - 4095)
+#define ADC2_MAX      4095        // max ADC2-value while poti at maximum-position (0 - 4095)
+#define ADC2_MULT_NEG  300.0f     // Use 1000.0f to calibrate form MIN to MAX
+#define ADC2_MULT_POS  300.0f     // Use 1000.0f to calibrate form MIN to MAX
+
+#define ADC_OFF_START    0          // Start Value of Area at which other inputs can be active (0 - 4095) Applies to Speed ADC
+#define ADC_OFF_END   1000          // End Value of Area at which other inputs can be active (0 - 4095) Applies to Speed ADC
+#define ADC_SWITCH_CHANNELS         // define if ADC1 is used for Steer and ADC2 for Speed
+#define ADC_REVERSE_STEER           // define if ADC1 is used for Steer and ADC2 for Speed
+
 
 // ###### CONTROL VIA NINTENDO NUNCHUCK ######
 // left sensor board cable. keep cable short, use shielded cable, use ferrits, stabalize voltage in nunchuck, use the right one of the 2 types of nunchucks, add i2c pullups. use original nunchuck. most clones does not work very well.
 //#define CONTROL_NUNCHUCK            // use nunchuck as input. disable DEBUG_SERIAL_USART3!
-//#define CONTROL_ADC_NUNCHUCK		// use ADC and nunchuck as Input
-
-#ifdef CONTROL_ADC_NUNCHUCK
-	#define CONTROL_NUNCHUCK
-	#define CONTROL_ADC
-#endif
 
 // ############################### DRIVING BEHAVIOR ###############################
 
@@ -167,11 +174,6 @@ else {\
     #error CONTROL_ADC not allowed, cable already in use.
   #else
     #define SENSOR_BOARD_CABLE_LEFT_IN_USE
-  #endif
-  #ifdef CONTROL_METHOD_DEFINED
-    #error CONTROL_ADC not allowed, another control Method is already defined.
-  #else
-    #define CONTROL_METHOD_DEFINED
   #endif
 #endif
 
