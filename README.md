@@ -1,5 +1,3 @@
-This firmware is much better than the old one. tested up to 40A / 60V, no dead board so far :)
-
 # hoverboard-firmware-hack
 
 This repo contains open source firmware for generic Hoverboard Mainboards.
@@ -7,6 +5,15 @@ The firmware you can find here allows you to use your Hoverboard Hardware (like 
 
 If you want an overview of what you can do with this firmware, here is a ~40min video of a talk about this project:
 https://media.ccc.de/v/gpn18-95-howto-moving-objects
+
+
+## Deviations to main repo at https://github.com/NiklasFauth/hoverboard-firmware-hack
+* Build Environment is platform.io. Old Makefile based system should work too, but not tested.
+* UART Control can be configured to Connect to USART2 or USART3
+* Added CRC Checksum to UART Control. This way, the protocol just loses sync but the board does not try to kill you anymore (at least less often)
+* UART Control and Debug can be active on the same cable
+* Extended ADC Input Control config options. Default is platooning / "transpotter"
+* ADC Input Control can coexist with all other control Methods as long as the other Method uses the other cable
 
 ---
 
@@ -77,6 +84,6 @@ Have a look at the config.h in the Inc directory. That's where you configure to 
 Currently supported: Wii Nunchuck, analog potentiometer and PPM-Sum signal from a RC remote.
 If you need additional features like a boost button, have a look at the while(1) loop in the main.c
 
-### Projects based on it
+### Projects based on
 * [bobbycar-optimized firmware](https://github.com/larsmm/hoverboard-firmware-hack-bbcar)  based on this one with driving modes, acceleration ramps and some other features
 * [wheel chair](https://github.com/Lahorde/steer_speed_ctrl) controlled with a joystick or using a CC2650 sensortag to control it over  bluetooth with pitch/roll.
