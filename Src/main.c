@@ -23,7 +23,29 @@
 #include "defines.h"
 #include "setup.h"
 #include "config.h"
-//#include "hd44780.h"
+
+#ifdef CONTROL_GAMETRAK
+#include "hd44780.h"
+#include "eeprom.h"
+LCD_PCF8574_HandleTypeDef lcd;
+extern I2C_HandleTypeDef hi2c2;
+
+void longBeep(void);
+void shortBeep(void);
+
+/* Virtual address defined by the user: 0xFFFF value is prohibited */
+uint16_t VirtAddVarTab[NB_OF_VAR] = {0x1337};
+uint16_t VarDataTab[NB_OF_VAR] = {0};
+uint16_t VarValue = 0;
+uint16_t saveValue = 0;
+
+extern volatile float currentR;
+extern volatile float currentL;
+
+uint16_t counter = 0;
+
+#endif
+
 
 void SystemClock_Config(void);
 
@@ -127,11 +149,100 @@ int main(void) {
   HAL_ADC_Start(&hadc1);
   HAL_ADC_Start(&hadc2);
 
+  #ifndef CONTROL_GAMETRAK
   for (int i = 8; i >= 0; i--) {
     buzzerFreq = i;
     HAL_Delay(100);
   }
   buzzerFreq = 0;
+  #endif
+
+  #ifdef CONTROL_GAMETRAK
+  for (int i = 4; i >= 0; i--) {
+    buzzerFreq = i*2;
+    HAL_Delay(100);
+  }
+  for (int i = 4; i >= 0; i--) {
+    buzzerFreq = i*2-1;
+    HAL_Delay(100);
+  }
+  buzzerFreq = 0;
+
+  int  lastDistance = 0;
+  enable = 1;
+
+  HAL_FLASH_Unlock();
+
+  /* EEPROM Init */
+  EE_Init();
+
+  EE_ReadVariable(VirtAddVarTab[0], &saveValue);
+
+  HAL_FLASH_Lock();
+  float setDistance = saveValue / 1000.0;
+  if (setDistance < 0.2) {
+    setDistance = 1.0;
+  }
+  #endif
+
+  #ifdef SUPPORT_LCD
+  I2C_Init();
+  Led_init();
+
+  lcd.pcf8574.PCF_I2C_ADDRESS = 0x27;
+	lcd.pcf8574.PCF_I2C_TIMEOUT = 5;
+	lcd.pcf8574.i2c = hi2c2;
+	lcd.NUMBER_OF_LINES = NUMBER_OF_LINES_2;
+	lcd.type = TYPE0;
+
+	if(LCD_Init(&lcd)!=LCD_OK){
+		// error occured
+		//TODO while(1);
+	}
+
+  HAL_Delay(50);
+  LCD_ClearDisplay(&lcd);
+  HAL_Delay(50);
+  LCD_SetLocation(&lcd, 0, 0);
+  LCD_WriteString(&lcd, "TranspOtter V2.1");
+
+  LCD_SetLocation(&lcd, 0, 1);
+  LCD_WriteString(&lcd, "Initializing...");
+
+  int buttonTimeout = 0;
+  uint8_t checkRemote = 1;
+  while(HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
+    buttonTimeout++;
+    HAL_Delay(100);
+    if(buttonTimeout > 20) {
+      LCD_ClearDisplay(&lcd);
+      HAL_Delay(5);
+      LCD_SetLocation(&lcd, 0, 0);
+      LCD_WriteString(&lcd, "Starting without");
+      LCD_SetLocation(&lcd, 0, 1);
+      LCD_WriteString(&lcd, "remote E-off!");
+      checkRemote = 0;
+      HAL_Delay(2000);
+    }
+  }
+
+  LCD_ClearDisplay(&lcd);
+  HAL_Delay(5);
+  LCD_SetLocation(&lcd, 0, 1);
+	LCD_WriteString(&lcd, "Bat:");
+  LCD_SetLocation(&lcd, 8, 1);
+  LCD_WriteString(&lcd, "V");
+
+  LCD_SetLocation(&lcd, 15, 1);
+  LCD_WriteString(&lcd, "A");
+
+  LCD_SetLocation(&lcd, 0, 0);
+	LCD_WriteString(&lcd, "Len:");
+  LCD_SetLocation(&lcd, 8, 0);
+  LCD_WriteString(&lcd, "m(");
+  LCD_SetLocation(&lcd, 14, 0);
+  LCD_WriteString(&lcd, "m)");
+  #endif
 
   HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
 
@@ -218,6 +329,83 @@ int main(void) {
       timeout = 0;
     #endif
 
+    #ifdef CONTROL_GAMETRAK
+    if(HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
+      enable = 0;
+      while(HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
+        HAL_Delay(10);
+      }
+      shortBeep();
+      HAL_Delay(300);
+      if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
+        while(HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
+          HAL_Delay(10);
+        }
+        longBeep();
+        HAL_Delay(350);
+        //Power_Set(0);
+        poweroff();
+      } else {
+        setDistance += 0.25;
+        if (setDistance > 2.6) {
+          setDistance = 0.5;
+        }
+        saveValue = setDistance * 1000;
+        saveConfig();
+      }
+    }
+
+
+    uint16_t distance = CLAMP((adc_buffer.l_rx2) - 180, 0, 4095);
+    float steering = (adc_buffer.l_tx2 - 2048) / 2048.0;
+    int feedforward = ((distance - (int)(setDistance * 1345)));
+
+    speedL = speedL * 0.8f + (CLAMP(feedforward +  ((steering)*((float)MAX(ABS(feedforward), 50)) * ROT_P), -750, 750) * -0.2f);
+    speedR = speedR * 0.8f + (CLAMP(feedforward -  ((steering)*((float)MAX(ABS(feedforward), 50)) * ROT_P), -750, 750) * -0.2f);
+
+    if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50)) {
+      if (distance - (int)(setDistance * 1345) > -300) {
+        pwml = speedL;
+        pwmr = -speedR;
+        if (checkRemote) {
+          if (!HAL_GPIO_ReadPin(LED_PORT, LED_PIN)) {
+            enable = 1;
+          } else {
+            enable = 0;
+          }
+        } else {
+          enable = 1;
+        }
+      } else {
+        enable = 0;
+      }
+    }
+
+
+    if ((distance / 1345.0) - setDistance > 0.5 && (lastDistance / 1345.0) - setDistance > 0.5) { // Error, robot too far away!
+      enable = 0;
+      longBeep();
+      LCD_ClearDisplay(&lcd);
+      HAL_Delay(5);
+      LCD_SetLocation(&lcd, 0, 0);
+    	LCD_WriteString(&lcd, "Emergency Off!");
+      LCD_SetLocation(&lcd, 0, 1);
+    	LCD_WriteString(&lcd, "Keeper to fast.");
+      poweroff();
+    }
+
+    if (counter % 100 == 0) {
+      LCD_SetLocation(&lcd, 4, 0);
+      LCD_WriteFloat(&lcd,distance/1345.0,2);
+      LCD_SetLocation(&lcd, 10, 0);
+      LCD_WriteFloat(&lcd,setDistance,2);
+      LCD_SetLocation(&lcd, 4, 1);
+      LCD_WriteFloat(&lcd,batteryVoltage, 1);
+      LCD_SetLocation(&lcd, 11, 1);
+      LCD_WriteFloat(&lcd,MAX(ABS(currentR), ABS(currentL)),2);
+    }
+    #endif
+
 
     // ####### LOW-PASS FILTER #######
     steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
@@ -256,7 +444,7 @@ int main(void) {
       // ####### CALC BOARD TEMPERATURE #######
       board_temp_adc_filtered = board_temp_adc_filtered * 0.99 + (float)adc_buffer.temp * 0.01;
       board_temp_deg_c = ((float)TEMP_CAL_HIGH_DEG_C - (float)TEMP_CAL_LOW_DEG_C) / ((float)TEMP_CAL_HIGH_ADC - (float)TEMP_CAL_LOW_ADC) * (board_temp_adc_filtered - (float)TEMP_CAL_LOW_ADC) + (float)TEMP_CAL_LOW_DEG_C;
-      
+
       // ####### DEBUG SERIAL OUT #######
       #ifdef CONTROL_ADC
         setScopeChannel(0, (int)adc_buffer.l_tx2);  // 1: ADC1
@@ -311,6 +499,25 @@ int main(void) {
       poweroff();
     }
   }
+}
+
+
+void longBeep(){
+    buzzerFreq = 5;
+    HAL_Delay(500);
+    buzzerFreq = 0;
+}
+
+void shortBeep(){
+    buzzerFreq = 5;
+    HAL_Delay(100);
+    buzzerFreq = 0;
+}
+
+void saveConfig() {
+  HAL_FLASH_Unlock();
+  EE_WriteVariable(VirtAddVarTab[0], saveValue);
+  HAL_FLASH_Lock();
 }
 
 /** System Clock Configuration

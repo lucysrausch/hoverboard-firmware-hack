@@ -6,7 +6,7 @@
 #define PWM_FREQ         16000      // PWM frequency in Hz
 #define DEAD_TIME        32         // PWM deadtime
 
-#define DELAY_IN_MAIN_LOOP 5        // in ms. default 5. it is independent of all the timing critical stuff. do not touch if you do not know what you are doing.
+#define DELAY_IN_MAIN_LOOP 2        // in ms. default 5. it is independent of all the timing critical stuff. do not touch if you do not know what you are doing.
 
 #define TIMEOUT          5          // number of wrong / missing input commands before emergency off
 
@@ -15,7 +15,7 @@
 // How to calibrate: connect GND and RX of a 3.3v uart-usb adapter to the right sensor board cable (be careful not to use the red wire of the cable. 15v will destroye verything.). if you are using nunchuck, disable it temporarily. enable DEBUG_SERIAL_USART3 and DEBUG_SERIAL_ASCII use asearial terminal.
 
 // Battery voltage calibration: connect power source. see <How to calibrate>. write value nr 5 to BAT_CALIB_ADC. make and flash firmware. then you can verify voltage on value 6 (devide it by 100.0 to get calibrated voltage).
-#define BAT_CALIB_REAL_VOLTAGE        43.0       // input voltage measured by multimeter  
+#define BAT_CALIB_REAL_VOLTAGE        43.0       // input voltage measured by multimeter
 #define BAT_CALIB_ADC                 1704       // adc-value measured by mainboard (value nr 5 on UART debug output)
 
 #define BAT_NUMBER_OF_CELLS     10        // normal Hoverboard battery: 10s
@@ -64,11 +64,21 @@
 
 // ###### CONTROL VIA TWO POTENTIOMETERS ######
 // ADC-calibration to cover the full poti-range: connect potis to left sensor board cable (0 to 3.3V) (do NOT use the red 15V wire in the cable!). see <How to calibrate>. turn the potis to minimum position, write value 1 to ADC1_MIN and value 2 to ADC2_MIN. turn to maximum position and repeat it for ADC?_MAX. make, flash and test it.
-#define CONTROL_ADC                 // use ADC as input. disable DEBUG_SERIAL_USART2!
-#define ADC1_MIN 0                // min ADC1-value while poti at minimum-position (0 - 4095)
-#define ADC1_MAX 4095               // max ADC1-value while poti at maximum-position (0 - 4095)
-#define ADC2_MIN 0                // min ADC2-value while poti at minimum-position (0 - 4095)
-#define ADC2_MAX 4095               // max ADC2-value while poti at maximum-position (0 - 4095)
+//#define CONTROL_ADC                 // use ADC as input. disable DEBUG_SERIAL_USART2!
+//#define ADC1_MIN 0                // min ADC1-value while poti at minimum-position (0 - 4095)
+//#define ADC1_MAX 4095               // max ADC1-value while poti at maximum-position (0 - 4095)
+//#define ADC2_MIN 0                // min ADC2-value while poti at minimum-position (0 - 4095)
+//#define ADC2_MAX 4095               // max ADC2-value while poti at maximum-position (0 - 4095)
+
+// ###### TRANSPOTTER FIRMWARE #######
+#define CONTROL_GAMETRAK
+//#define INVERT_GAMETRAK
+#define SUPPORT_LCD
+#define SUPPORT_NUNCHUCK
+
+#define VEL_P     0.9
+#define ROT_P     1.2
+
 
 // ###### CONTROL VIA NINTENDO NUNCHUCK ######
 // left sensor board cable. keep cable short, use shielded cable, use ferrits, stabalize voltage in nunchuck, use the right one of the 2 types of nunchucks, add i2c pullups. use original nunchuck. most clones does not work very well.
