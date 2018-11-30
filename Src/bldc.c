@@ -18,6 +18,9 @@ extern volatile adc_buf_t adc_buffer;
 
 extern volatile uint32_t timeout;
 
+float currentR = 0;
+float currentL = 0;
+
 uint32_t buzzerFreq = 0;
 uint32_t buzzerPattern = 0;
 
@@ -166,7 +169,8 @@ void DMA1_Channel1_IRQHandler() {
   }
 
   //disable PWM when current limit is reached (current chopping)
-  if(ABS((adc_buffer.dcl - offsetdcl) * MOTOR_AMP_CONV_DC_AMP) > DC_CUR_LIMIT || timeout > TIMEOUT || enable == 0) {
+  currentL = (adc_buffer.dcl - offsetdcl) * MOTOR_AMP_CONV_DC_AMP;
+  if(ABS(currentL) > DC_CUR_LIMIT || timeout > TIMEOUT || enable == 0) {
     LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;
     //HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
   } else {
@@ -174,7 +178,8 @@ void DMA1_Channel1_IRQHandler() {
     //HAL_GPIO_WritePin(LED_PORT, LED_PIN, 0);
   }
 
-  if(ABS((adc_buffer.dcr - offsetdcr) * MOTOR_AMP_CONV_DC_AMP)  > DC_CUR_LIMIT || timeout > TIMEOUT || enable == 0) {
+  currentR = (adc_buffer.dcr - offsetdcr) * MOTOR_AMP_CONV_DC_AMP;
+  if(ABS(currentR)  > DC_CUR_LIMIT || timeout > TIMEOUT || enable == 0) {
     RIGHT_TIM->BDTR &= ~TIM_BDTR_MOE;
   } else {
     RIGHT_TIM->BDTR |= TIM_BDTR_MOE;
@@ -214,18 +219,18 @@ void DMA1_Channel1_IRQHandler() {
     // if(len == 0){
         // return(0);
     // }
-    
+
     // struct {
         // uint16_t freq : 4;
         // uint16_t volume : 4;
         // uint16_t time : 8;
     // } note = notes[counter];
-    
+
     // if(timer / 500 == note.time){
         // timer = 0;
         // counter++;
     // }
-    
+
     // if(counter == len){
         // counter = 0;
     // }

@@ -187,7 +187,7 @@ int main(void) {
 
   #ifdef SUPPORT_LCD
   I2C_Init();
-  Led_init();
+  //Led_init();
 
   lcd.pcf8574.PCF_I2C_ADDRESS = 0x27;
 	lcd.pcf8574.PCF_I2C_TIMEOUT = 5;
