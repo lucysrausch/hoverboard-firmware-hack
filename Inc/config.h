@@ -54,7 +54,7 @@
 
 // ###### CONTROL VIA UART (serial) ######
 //#define CONTROL_SERIAL_USART2       // left sensor board cable, disable if ADC or PPM is used!
-#define CONTROL_BAUD       19200    // control via usart from eg an Arduino or raspberry
+// #define CONTROL_BAUD       19200    // control via usart from eg an Arduino or raspberry
 // for Arduino, use void loop(void){ Serial.write((uint8_t *) &steer, sizeof(steer)); Serial.write((uint8_t *) &speed, sizeof(speed));delay(20); }
 
 // ###### CONTROL VIA RC REMOTE ######
@@ -75,6 +75,7 @@
 //#define INVERT_GAMETRAK
 #define SUPPORT_LCD
 #define SUPPORT_NUNCHUCK
+//#define SUPPORT_REMOTE
 
 #define VEL_P     0.9
 #define ROT_P     1.2

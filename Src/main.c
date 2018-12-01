@@ -170,6 +170,7 @@ int main(void) {
 
   int  lastDistance = 0;
   enable = 1;
+  uint8_t checkRemote = 0;
 
   HAL_FLASH_Unlock();
 
@@ -210,7 +211,9 @@ int main(void) {
   LCD_WriteString(&lcd, "Initializing...");
 
   int buttonTimeout = 0;
-  uint8_t checkRemote = 1;
+
+  #ifdef SUPPORT_REMOTE
+  checkRemote = 1;
   while(HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
     buttonTimeout++;
     HAL_Delay(100);
@@ -225,6 +228,7 @@ int main(void) {
       HAL_Delay(2000);
     }
   }
+  #endif
 
   LCD_ClearDisplay(&lcd);
   HAL_Delay(5);
@@ -385,15 +389,18 @@ int main(void) {
     if ((distance / 1345.0) - setDistance > 0.5 && (lastDistance / 1345.0) - setDistance > 0.5) { // Error, robot too far away!
       enable = 0;
       longBeep();
+      #ifdef SUPPORT_LCD
       LCD_ClearDisplay(&lcd);
       HAL_Delay(5);
       LCD_SetLocation(&lcd, 0, 0);
     	LCD_WriteString(&lcd, "Emergency Off!");
       LCD_SetLocation(&lcd, 0, 1);
     	LCD_WriteString(&lcd, "Keeper to fast.");
+      #endif
       poweroff();
     }
 
+    #ifdef SUPPORT_LCD
     if (counter % 100 == 0) {
       LCD_SetLocation(&lcd, 4, 0);
       LCD_WriteFloat(&lcd,distance/1345.0,2);
@@ -405,8 +412,9 @@ int main(void) {
       LCD_WriteFloat(&lcd,MAX(ABS(currentR), ABS(currentL)),2);
     }
     #endif
+    #endif
 
-
+    #ifndef CONTROL_GAMETRAK
     // ####### LOW-PASS FILTER #######
     steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
     speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
@@ -466,6 +474,7 @@ int main(void) {
       while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {}
       poweroff();
     }
+    #endif
 
 
     // ####### BEEP AND EMERGENCY POWEROFF #######
