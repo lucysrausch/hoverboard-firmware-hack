@@ -1,4 +1,4 @@
-This firmware is much better than the old one. tested up to 40A / 60V, no dead board so far :)
+Build Instructions for this very branch: https://github.com/NiklasFauth/hoverboard-firmware-hack/wiki/Build-Instruction:-TranspOtter
 
 # hoverboard-firmware-hack
 
