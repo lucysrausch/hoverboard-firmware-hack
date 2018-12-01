@@ -1,12 +1,23 @@
-This firmware is much better than the old one. tested up to 40A / 60V, no dead board so far :)
-
 # hoverboard-firmware-hack
+
+![](https://raw.githubusercontent.com/NiklasFauth/hoverboard-firmware-hack/master/docs/pictures/armchair.gif)   ![](https://raw.githubusercontent.com/NiklasFauth/hoverboard-firmware-hack/master/docs/pictures/bobbycar.gif)
+![](https://raw.githubusercontent.com/NiklasFauth/hoverboard-firmware-hack/master/docs/pictures/transpotter.gif)   ![](https://raw.githubusercontent.com/NiklasFauth/hoverboard-firmware-hack/master/docs/pictures/chair.gif)
+
 
 This repo contains open source firmware for generic Hoverboard Mainboards.
 The firmware you can find here allows you to use your Hoverboard Hardware (like the Mainboard, Motors and Battery) for cool projects like driving armchairs, person-tracking transportation robots and every other application you can imagine that requires controlling the Motors.
 
 If you want an overview of what you can do with this firmware, here is a ~40min video of a talk about this project:
 https://media.ccc.de/v/gpn18-95-howto-moving-objects
+
+---
+
+## Build Instructions
+
+Here are detailed build instructions for some finished projects.
+If possible, a prebuild firmware release is available for these usecases, so you don't need to compile the firmware yourself
+
+TranspOtter: https://github.com/NiklasFauth/hoverboard-firmware-hack/wiki/Build-Instruction:-TranspOtter
 
 ---
 
