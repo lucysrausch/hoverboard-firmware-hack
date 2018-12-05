@@ -226,6 +226,27 @@ void EXTI3_IRQHandler(void)
 }
 #endif
 
+/////////////////////////////////////////
+// UART interrupts
+
+#if defined(SERIAL_USART2_IT)
+void USART2_IT_IRQ(USART_TypeDef *us);
+
+void USART2_IRQHandler(void){
+    USART2_IT_IRQ(USART2);
+}
+#endif
+
+#if defined(SERIAL_USART3_IT)
+void USART3_IT_IRQ(USART_TypeDef *us);
+
+void USART3_IRQHandler(void){
+    USART3_IT_IRQ(USART3);
+}
+#endif
+//
+////////////////////////////////////////
+
 #ifdef CONTROL_SERIAL_USART2
 void DMA1_Channel6_IRQHandler(void)
 {

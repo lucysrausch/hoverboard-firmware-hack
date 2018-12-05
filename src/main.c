@@ -23,6 +23,8 @@
 #include "defines.h"
 #include "setup.h"
 #include "config.h"
+#include "comms.h"
+#include "protocol.h"
 //#include "hd44780.h"
 
 void SystemClock_Config(void);
@@ -77,7 +79,7 @@ int milli_vel_error_sum = 0;
 
 
 void poweroff() {
-    if (abs(speed) < 20) {
+    if (ABS(speed) < 20) {
         buzzerPattern = 0;
         enable = 0;
         for (int i = 0; i < 8; i++) {
@@ -127,6 +129,13 @@ int main(void) {
   HAL_ADC_Start(&hadc1);
   HAL_ADC_Start(&hadc2);
 
+  #ifdef SERIAL_USART2_IT
+  USART2_IT_init();
+  #endif
+  #ifdef SERIAL_USART3_IT
+  USART3_IT_init();
+  #endif
+
   for (int i = 8; i >= 0; i--) {
     buzzerFreq = i;
     HAL_Delay(100);
@@ -137,7 +146,6 @@ int main(void) {
 
   int lastSpeedL = 0, lastSpeedR = 0;
   int speedL = 0, speedR = 0;
-  float direction = 1;
 
   #ifdef CONTROL_PPM
     PPM_Init();
@@ -181,8 +189,21 @@ int main(void) {
   enable = 1;  // enable motors
 
   while(1) {
-    HAL_Delay(DELAY_IN_MAIN_LOOP); //delay in ms
+      HAL_Delay(DELAY_IN_MAIN_LOOP); //delay in ms
 
+    // TODO: Method to select which input is used for Protocol when both are active
+    #if defined(SERIAL_USART2_IT) && defined(INCLUDE_PROTOCOL)
+      while (serial_usart_buffer_count(&usart2_it_RXbuffer) > 0) {
+        SERIAL_USART_IT_BUFFERTYPE inputc = serial_usart_buffer_pop(&usart2_it_RXbuffer);
+        protocol_byte( (unsigned char) inputc );
+      }
+    #elif defined(SERIAL_USART3_IT) && defined(INCLUDE_PROTOCOL)
+      while (serial_usart_buffer_count(&usart3_it_RXbuffer) > 0) {
+        SERIAL_USART_IT_BUFFERTYPE inputc = serial_usart_buffer_pop(&usart3_it_RXbuffer);
+        protocol_byte( (unsigned char) inputc );
+      }
+    #endif
+    
     #ifdef CONTROL_NUNCHUCK
       Nunchuck_Read();
       cmd1 = CLAMP((nunchuck_data[0] - 127) * 8, -1000, 1000); // x - axis. Nunchuck joystick readings range 30 - 230
@@ -219,15 +240,25 @@ int main(void) {
     #endif
 
 
-    // ####### LOW-PASS FILTER #######
-    steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
-    speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
+    #if defined(INCLUDE_PROTOCOL)
+      switch (control_type){
+        case CONTROL_TYPE_PWM:
+          speedR = SpeedData.wanted_speed_mm_per_sec[0];
+          speedL = SpeedData.wanted_speed_mm_per_sec[1];
+          break;
+      }
+    #else
+
+      // ####### LOW-PASS FILTER #######
+      steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
+      speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
 
 
-    // ####### MIXER #######
-    speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
-    speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
+      // ####### MIXER #######
+      speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
+      speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
 
+    #endif
 
     #ifdef ADDITIONAL_CODE
       ADDITIONAL_CODE;
@@ -272,16 +303,16 @@ int main(void) {
     }
 
 
-    // ####### POWEROFF BY POWER-BUTTON #######
-    if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN) && weakr == 0 && weakl == 0) {
-      enable = 0;
-      while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {}
-      poweroff();
-    }
+      // ####### POWEROFF BY POWER-BUTTON #######
+      if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN) && weakr == 0 && weakl == 0) {
+        enable = 0;
+        while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {}
+        poweroff();
+      }
 
 
     // ####### BEEP AND EMERGENCY POWEROFF #######
-    if ((TEMP_POWEROFF_ENABLE && board_temp_deg_c >= TEMP_POWEROFF && abs(speed) < 20) || (batteryVoltage < ((float)BAT_LOW_DEAD * (float)BAT_NUMBER_OF_CELLS) && abs(speed) < 20)) {  // poweroff before mainboard burns OR low bat 3
+    if ((TEMP_POWEROFF_ENABLE && board_temp_deg_c >= TEMP_POWEROFF && ABS(speed) < 20) || (batteryVoltage < ((float)BAT_LOW_DEAD * (float)BAT_NUMBER_OF_CELLS) && ABS(speed) < 20)) {  // poweroff before mainboard burns OR low bat 3
       poweroff();
     } else if (TEMP_WARNING_ENABLE && board_temp_deg_c >= TEMP_WARNING) {  // beep if mainboard gets hot
       buzzerFreq = 4;
@@ -296,22 +327,22 @@ int main(void) {
       buzzerFreq = 5;
       buzzerPattern = 1;
     } else {  // do not beep
-      buzzerFreq = 0;
-      buzzerPattern = 0;
-    }
+        buzzerFreq = 0;
+        buzzerPattern = 0;
+      }
 
 
     // ####### INACTIVITY TIMEOUT #######
-    if (abs(speedL) > 50 || abs(speedR) > 50) {
+    if (ABS(speedL) > 50 || ABS(speedR) > 50) {
       inactivity_timeout_counter = 0;
     } else {
       inactivity_timeout_counter ++;
     }
     if (inactivity_timeout_counter > (INACTIVITY_TIMEOUT * 60 * 1000) / (DELAY_IN_MAIN_LOOP + 1)) {  // rest of main loop needs maybe 1ms
-      poweroff();
+        poweroff();
+      }
     }
   }
-}
 
 /** System Clock Configuration
 */
