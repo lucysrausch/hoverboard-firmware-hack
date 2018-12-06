@@ -42,6 +42,8 @@ int cmd1;  // normalized input values. -1000 to 1000
 int cmd2;
 int cmd3;
 
+uint32_t killer __attribute__((used)) = 0;
+
 typedef struct{
    int16_t steer;
    int16_t speed;
@@ -117,6 +119,7 @@ int main(void) {
   __HAL_RCC_DMA1_CLK_DISABLE();
   MX_GPIO_Init();
   MX_TIM_Init();
+  MX_TIM3_Init();
   MX_ADC1_Init();
   MX_ADC2_Init();
 
@@ -327,9 +330,12 @@ int main(void) {
       buzzerFreq = 5;
       buzzerPattern = 1;
     } else {  // do not beep
-        buzzerFreq = 0;
-        buzzerPattern = 0;
+//        buzzerFreq = 0;
+//        buzzerPattern = 0;
       }
+
+    killer = __HAL_TIM_GET_COUNTER(&htim3);
+    __HAL_TIM_SET_COUNTER(&htim3, 0);
 
 
     // ####### INACTIVITY TIMEOUT #######
@@ -385,4 +391,23 @@ void SystemClock_Config(void) {
 
   /* SysTick_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3)
+{
+  while(1) {
+    buzzerFreq = 20;
+    buzzerPattern = 0;
+
+    steer = 0;
+    speed = 0;
+    enable = 0;
+    timeout = TIMEOUT + 1;
+    pwml = 0;
+    pwmr = 0;
+    weakl = 0;
+    weakr = 0;
+    cmd1 = 0;
+    cmd2 = 0;
+  }
 }
