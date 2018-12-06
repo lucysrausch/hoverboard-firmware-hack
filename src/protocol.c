@@ -88,6 +88,7 @@ extern int enablescope; // enable scope on values
 
 int speedB = 0;
 int steerB = 0;
+int8_t humanProtocolActive = 0;
 
 int control_type = 0;
 char *control_types[]={
@@ -420,6 +421,7 @@ int ascii_process_immediate(unsigned char byte){
 /////////////////////////////////////////////
 // process commands which ended CR or LF
 void ascii_process_msg(char *cmd, int len){
+    char password[] = "unlockHuman";   // unlock password, has to be 11 characters and start with an 'u'
     ascii_out[0] = 0;
 
     // skip nuls, observed at startup
@@ -431,6 +433,10 @@ void ascii_process_msg(char *cmd, int len){
     if (len == 0){ // makes double prompt if /r/n is sent by terminal
         //sprintf(ascii_out, "\r\n>");
         //send_serial_data((unsigned char *) ascii_out, strlen(ascii_out));
+        return;
+    }
+
+    if (!humanProtocolActive && cmd[0]!='u') {
         return;
     }
 
@@ -576,6 +582,29 @@ void ascii_process_msg(char *cmd, int len){
                 // CR before prompt.... after message
                 sprintf(ascii_out, "\r\n");
             }
+            break;
+
+        case 'u':
+            if (len < 11){
+                sprintf(ascii_out, "Wrong Password\r\n");
+            } else {
+                for (int i = 0; i < 11; i++){
+                    if(cmd[i] != password[i]) {
+                        sprintf(ascii_out, "Wrong Password\r\n");
+                        break;
+                    }
+                    if(i == 10) {
+                        humanProtocolActive = 1;
+                        sprintf(ascii_out, "Human protocol unlocked. ? for help\r\n");
+                    }
+                }
+            }
+            break;
+
+        case 'l':
+        case 'L':
+            humanProtocolActive = 0;
+            sprintf(ascii_out, "Human protocol locked.\r\n");
             break;
 
         default:
