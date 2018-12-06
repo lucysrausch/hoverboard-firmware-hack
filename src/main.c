@@ -42,10 +42,11 @@ int cmd1;  // normalized input values. -1000 to 1000
 int cmd2;
 int cmd3;
 
-uint32_t watchdogCounter __attribute__((used)) = 0;
-uint8_t abandonWatchdog __attribute__((used)) = 0;
-uint8_t stopMain __attribute__((used)) = 0;
-uint8_t watchdogBeepOnly __attribute__((used)) = 0;
+volatile uint32_t watchdogCounter __attribute__((used)) = 0;
+volatile uint32_t watchdogCount __attribute__((used)) = 0;
+volatile uint8_t abandonWatchdog __attribute__((used)) = 0;
+volatile uint8_t stopMain __attribute__((used)) = 0;
+volatile uint8_t watchdogBeepOnly __attribute__((used)) = 0;
 
 typedef struct{
    int16_t steer;
@@ -122,10 +123,9 @@ int main(void) {
   __HAL_RCC_DMA1_CLK_DISABLE();
   MX_GPIO_Init();
   MX_TIM_Init();
-  MX_TIM3_Init();
   MX_ADC1_Init();
   MX_ADC2_Init();
-
+  
   #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
     UART_Init();
   #endif
@@ -193,6 +193,7 @@ int main(void) {
   float board_temp_deg_c;
 
   enable = 1;  // enable motors
+  MX_TIM3_Init();
 
   while(1) {
       HAL_Delay(DELAY_IN_MAIN_LOOP); //delay in ms
@@ -249,8 +250,8 @@ int main(void) {
     #if defined(INCLUDE_PROTOCOL)
       switch (control_type){
         case CONTROL_TYPE_PWM:
-          speedR = SpeedData.wanted_speed_mm_per_sec[0];
-          speedL = SpeedData.wanted_speed_mm_per_sec[1];
+          speedR = -SpeedData.wanted_speed_mm_per_sec[1];
+          speedL = -SpeedData.wanted_speed_mm_per_sec[0];
           break;
       }
     #else
@@ -405,8 +406,8 @@ void SystemClock_Config(void) {
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3)
 {
-  while(1) {
-    buzzerFreq = 20;
+  while(watchdogCount) {
+    buzzerFreq = 2 + watchdogCount;
     buzzerPattern = 0;
 
     if(!watchdogBeepOnly) {
@@ -422,4 +423,5 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3)
       cmd2 = 0;
     }
   }
+  watchdogCount++;
 }

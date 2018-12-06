@@ -87,7 +87,7 @@
 // ############################### SERIAL PROTOCOL ###############################
 // enables processing of input characters through 'protocol.c'
 #define INCLUDE_PROTOCOL
-
+#define WATCHDOG_TIMEOUT_MS 100
 // ############################### DRIVING BEHAVIOR ###############################
 
 // inputs:
@@ -101,8 +101,8 @@
 #define FILTER              0.1  // lower value == softer filter. do not use values <0.01, you will get float precision issues.
 #define SPEED_COEFFICIENT   0.5  // higher value == stronger. 0.0 to ~2.0?
 #define STEER_COEFFICIENT   0.5  // higher value == stronger. if you do not want any steering, set it to 0.0; 0.0 to 1.0
-#define INVERT_R_DIRECTION
-#define INVERT_L_DIRECTION
+//#define INVERT_R_DIRECTION
+//#define INVERT_L_DIRECTION
 #define BEEPS_BACKWARD 1    // 0 or 1
 
 //Turbo boost at high speeds while button1 is pressed:
