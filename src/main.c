@@ -44,6 +44,7 @@ int cmd3;
 
 uint32_t killer __attribute__((used)) = 0;
 uint8_t abandonWatchdog __attribute__((used)) = 0;
+uint8_t stopMain __attribute__((used)) = 0;
 
 typedef struct{
    int16_t steer;
@@ -339,6 +340,10 @@ int main(void) {
 
     if(!abandonWatchdog) {
       __HAL_TIM_SET_COUNTER(&htim3, 0);
+    }
+
+    while(stopMain) {
+      // loop to death
     }
 
 
