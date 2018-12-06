@@ -42,9 +42,10 @@ int cmd1;  // normalized input values. -1000 to 1000
 int cmd2;
 int cmd3;
 
-uint32_t killer __attribute__((used)) = 0;
+uint32_t watchdogCounter __attribute__((used)) = 0;
 uint8_t abandonWatchdog __attribute__((used)) = 0;
 uint8_t stopMain __attribute__((used)) = 0;
+uint8_t watchdogBeepOnly __attribute__((used)) = 0;
 
 typedef struct{
    int16_t steer;
@@ -336,7 +337,7 @@ int main(void) {
 //        buzzerPattern = 0;
       }
 
-    killer = __HAL_TIM_GET_COUNTER(&htim3);
+    watchdogCounter = __HAL_TIM_GET_COUNTER(&htim3);
 
     if(!abandonWatchdog) {
       __HAL_TIM_SET_COUNTER(&htim3, 0);
@@ -408,15 +409,17 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3)
     buzzerFreq = 20;
     buzzerPattern = 0;
 
-    steer = 0;
-    speed = 0;
-    enable = 0;
-    timeout = TIMEOUT + 1;
-    pwml = 0;
-    pwmr = 0;
-    weakl = 0;
-    weakr = 0;
-    cmd1 = 0;
-    cmd2 = 0;
+    if(!watchdogBeepOnly) {
+      steer = 0;
+      speed = 0;
+      enable = 0;
+      timeout = TIMEOUT + 1;
+      pwml = 0;
+      pwmr = 0;
+      weakl = 0;
+      weakr = 0;
+      cmd1 = 0;
+      cmd2 = 0;
+    }
   }
 }
