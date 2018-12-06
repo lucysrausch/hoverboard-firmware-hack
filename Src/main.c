@@ -30,6 +30,14 @@
 LCD_PCF8574_HandleTypeDef lcd;
 extern I2C_HandleTypeDef hi2c2;
 
+extern uint8_t LCDerrorFlag;
+
+uint8_t nunchuck_connected = 0;
+
+float steering;
+int feedforward;
+
+
 void longBeep(void);
 void shortBeep(void);
 
@@ -272,15 +280,15 @@ int main(void) {
     I2C_Init();
     HAL_Delay(50);
     lcd.pcf8574.PCF_I2C_ADDRESS = 0x27;
-      lcd.pcf8574.PCF_I2C_TIMEOUT = 5;
-      lcd.pcf8574.i2c = hi2c2;
-      lcd.NUMBER_OF_LINES = NUMBER_OF_LINES_2;
-      lcd.type = TYPE0;
+    lcd.pcf8574.PCF_I2C_TIMEOUT = 1;
+    lcd.pcf8574.i2c = hi2c2;
+    lcd.NUMBER_OF_LINES = NUMBER_OF_LINES_2;
+    lcd.type = TYPE0;
 
-      if(LCD_Init(&lcd)!=LCD_OK){
-          // error occured
-          //TODO while(1);
-      }
+    if(LCD_Init(&lcd)!=LCD_OK){
+        // error occured
+        //TODO while(1);
+    }
 
     LCD_ClearDisplay(&lcd);
     HAL_Delay(5);
@@ -297,41 +305,6 @@ int main(void) {
 
   while(1) {
     HAL_Delay(DELAY_IN_MAIN_LOOP); //delay in ms
-
-    #ifdef CONTROL_NUNCHUCK
-      Nunchuck_Read();
-      cmd1 = CLAMP((nunchuck_data[0] - 127) * 8, -1000, 1000); // x - axis. Nunchuck joystick readings range 30 - 230
-      cmd2 = CLAMP((nunchuck_data[1] - 128) * 8, -1000, 1000); // y - axis
-
-      button1 = (uint8_t)nunchuck_data[5] & 1;
-      button2 = (uint8_t)(nunchuck_data[5] >> 1) & 1;
-    #endif
-
-    #ifdef CONTROL_PPM
-      cmd1 = CLAMP((ppm_captured_value[0] - 500) * 2, -1000, 1000);
-      cmd2 = CLAMP((ppm_captured_value[1] - 500) * 2, -1000, 1000);
-      button1 = ppm_captured_value[5] > 500;
-      float scale = ppm_captured_value[2] / 1000.0f;
-    #endif
-
-    #ifdef CONTROL_ADC
-      // ADC values range: 0-4095, see ADC-calibration in config.h
-      cmd1 = CLAMP(adc_buffer.l_tx2 - ADC1_MIN, 0, ADC1_MAX) / (ADC1_MAX / 1000.0f);  // ADC1
-      cmd2 = CLAMP(adc_buffer.l_rx2 - ADC2_MIN, 0, ADC2_MAX) / (ADC2_MAX / 1000.0f);  // ADC2
-
-      // use ADCs as button inputs:
-      button1 = (uint8_t)(adc_buffer.l_tx2 > 2000);  // ADC1
-      button2 = (uint8_t)(adc_buffer.l_rx2 > 2000);  // ADC2
-
-      timeout = 0;
-    #endif
-
-    #ifdef CONTROL_SERIAL_USART2
-      cmd1 = CLAMP((int16_t)command.steer, -1000, 1000);
-      cmd2 = CLAMP((int16_t)command.speed, -1000, 1000);
-
-      timeout = 0;
-    #endif
 
     #ifdef CONTROL_GAMETRAK
     if(HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
@@ -360,30 +333,98 @@ int main(void) {
     }
 
 
+
+
+
     uint16_t distance = CLAMP((adc_buffer.l_rx2) - 180, 0, 4095);
-    float steering = (adc_buffer.l_tx2 - 2048) / 2048.0;
-    int feedforward = ((distance - (int)(setDistance * 1345)));
-
-    speedL = speedL * 0.8f + (CLAMP(feedforward +  ((steering)*((float)MAX(ABS(feedforward), 50)) * ROT_P), -750, 750) * -0.2f);
-    speedR = speedR * 0.8f + (CLAMP(feedforward -  ((steering)*((float)MAX(ABS(feedforward), 50)) * ROT_P), -750, 750) * -0.2f);
-
-    if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50)) {
-      if (distance - (int)(setDistance * 1345) > -300) {
-        pwml = speedL;
-        pwmr = -speedR;
-        if (checkRemote) {
-          if (!HAL_GPIO_ReadPin(LED_PORT, LED_PIN)) {
-            enable = 1;
-          } else {
-            enable = 0;
-          }
-        } else {
+    steering = (adc_buffer.l_tx2 - 2048) / 2048.0;
+    feedforward = ((distance - (int)(setDistance * 1345)));
+    if (nunchuck_connected == 0) {
+      speedL = speedL * 0.8f + (CLAMP(feedforward +  ((steering)*((float)MAX(ABS(feedforward), 50)) * ROT_P), -850, 850) * -0.2f);
+      speedR = speedR * 0.8f + (CLAMP(feedforward -  ((steering)*((float)MAX(ABS(feedforward), 50)) * ROT_P), -850, 850) * -0.2f);
+      if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50)) {
+        if (distance - (int)(setDistance * 1345) > 0) {
           enable = 1;
         }
-      } else {
-        enable = 0;
+        if (distance - (int)(setDistance * 1345) > -300) {
+          #ifdef INVERT_R_DIRECTION
+          pwmr = -speedR;
+          #endif
+          #ifndef INVERT_R_DIRECTION
+          pwmr = speedR;
+          #endif
+
+          #ifdef INVERT_L_DIRECTION
+          pwml = -speedL;
+          #endif
+          #ifndef INVERT_L_DIRECTION
+          pwml = speedL;
+          #endif
+
+          if (checkRemote) {
+            if (!HAL_GPIO_ReadPin(LED_PORT, LED_PIN)) {
+              //enable = 1;
+            } else {
+              enable = 0;
+            }
+          }
+        } else {
+          enable = 0;
+        }
       }
+      lastSpeedL = speedL;
+      lastSpeedR = speedR;
+
+      timeout = 0;
+    } else {
+      Nunchuck_Read();
+      enable = 1;
+      cmd1 = CLAMP((nunchuck_data[0] - 127) * 8, -1000, 1000); // x - axis. Nunchuck joystick readings range 30 - 230
+      cmd2 = CLAMP((nunchuck_data[1] - 128) * 8, -1000, 1000); // y - axis
+
+        // ####### LOW-PASS FILTER #######
+      steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
+      speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
+
+
+      // ####### MIXER #######
+      speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -900, 900);
+      speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -900, 900);
+
+      // ####### SET OUTPUTS #######
+      if ((speedL < lastSpeedL + 100 && speedL > lastSpeedL - 100) && (speedR < lastSpeedR + 100 && speedR > lastSpeedR - 100) && timeout < TIMEOUT) {
+        #ifdef INVERT_R_DIRECTION
+          pwmr = speedR;
+        #else
+          pwmr = -speedR;
+        #endif
+        #ifdef INVERT_L_DIRECTION
+          pwml = speedL;
+        #else
+          pwml = -speedL;
+        #endif
+      }
+      else if (timeout > TIMEOUT) {
+        pwml = 0;
+        pwmr = 0;
+        enable = 0;
+
+        LCD_SetLocation(&lcd, 0, 0);
+      	LCD_WriteString(&lcd, "Len:");
+        LCD_SetLocation(&lcd, 8, 0);
+        LCD_WriteString(&lcd, "m(");
+        LCD_SetLocation(&lcd, 14, 0);
+        LCD_WriteString(&lcd, "m)");
+
+        HAL_Delay(1000);
+
+        nunchuck_connected = 0;
+      }
+      lastSpeedL = speedL;
+      lastSpeedR = speedR;
     }
+
+
 
 
     if ((distance / 1345.0) - setDistance > 0.5 && (lastDistance / 1345.0) - setDistance > 0.5) { // Error, robot too far away!
@@ -400,81 +441,47 @@ int main(void) {
       poweroff();
     }
 
+    #ifdef SUPPORT_NUNCHUCK
+    if (counter % 500 == 0) {
+      if (nunchuck_connected == 0 && enable == 0) {
+        if (Nunchuck_Ping()) {
+          HAL_Delay(500);
+          Nunchuck_Init();
+          #ifdef SUPPORT_LCD
+          LCD_SetLocation(&lcd, 0, 0);
+          LCD_WriteString(&lcd, "Nunchuck Control");
+          #endif
+          timeout = 0;
+          HAL_Delay(1000);
+          nunchuck_connected = 1;
+        }
+      }
+    }
+    #endif
+
     #ifdef SUPPORT_LCD
     if (counter % 100 == 0) {
-      LCD_SetLocation(&lcd, 4, 0);
-      LCD_WriteFloat(&lcd,distance/1345.0,2);
-      LCD_SetLocation(&lcd, 10, 0);
-      LCD_WriteFloat(&lcd,setDistance,2);
-      LCD_SetLocation(&lcd, 4, 1);
-      LCD_WriteFloat(&lcd,batteryVoltage, 1);
-      LCD_SetLocation(&lcd, 11, 1);
-      LCD_WriteFloat(&lcd,MAX(ABS(currentR), ABS(currentL)),2);
-    }
-    #endif
-    #endif
+      if (LCDerrorFlag == 1 && enable == 0) {
 
-    #ifndef CONTROL_GAMETRAK
-    // ####### LOW-PASS FILTER #######
-    steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
-    speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
-
-
-    // ####### MIXER #######
-    speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
-    speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
-
-
-    #ifdef ADDITIONAL_CODE
-      ADDITIONAL_CODE;
-    #endif
-
-
-    // ####### SET OUTPUTS #######
-    if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
-    #ifdef INVERT_R_DIRECTION
-      pwmr = speedR;
-    #else
-      pwmr = -speedR;
-    #endif
-    #ifdef INVERT_L_DIRECTION
-      pwml = -speedL;
-    #else
-      pwml = speedL;
-    #endif
-    }
-
-    lastSpeedL = speedL;
-    lastSpeedR = speedR;
-
-
-    if (inactivity_timeout_counter % 25 == 0) {
-      // ####### CALC BOARD TEMPERATURE #######
-      board_temp_adc_filtered = board_temp_adc_filtered * 0.99 + (float)adc_buffer.temp * 0.01;
-      board_temp_deg_c = ((float)TEMP_CAL_HIGH_DEG_C - (float)TEMP_CAL_LOW_DEG_C) / ((float)TEMP_CAL_HIGH_ADC - (float)TEMP_CAL_LOW_ADC) * (board_temp_adc_filtered - (float)TEMP_CAL_LOW_ADC) + (float)TEMP_CAL_LOW_DEG_C;
-
-      // ####### DEBUG SERIAL OUT #######
-      #ifdef CONTROL_ADC
-        setScopeChannel(0, (int)adc_buffer.l_tx2);  // 1: ADC1
-        setScopeChannel(1, (int)adc_buffer.l_rx2);  // 2: ADC2
-      #endif
-      setScopeChannel(2, (int)speedR);  // 3: output speed: 0-1000
-      setScopeChannel(3, (int)speedL);  // 4: output speed: 0-1000
-      setScopeChannel(4, (int)adc_buffer.batt1);  // 5: for battery voltage calibration
-      setScopeChannel(5, (int)(batteryVoltage * 100.0f));  // 6: for verifying battery voltage calibration
-      setScopeChannel(6, (int)board_temp_adc_filtered);  // 7: for board temperature calibration
-      setScopeChannel(7, (int)board_temp_deg_c);  // 8: for verifying board temperature calibration
-      consoleScope();
+      } else {
+        if (nunchuck_connected == 0) {
+          LCD_SetLocation(&lcd, 4, 0);
+          LCD_WriteFloat(&lcd,distance/1345.0,2);
+          LCD_SetLocation(&lcd, 10, 0);
+          LCD_WriteFloat(&lcd,setDistance,2);
+        }
+        LCD_SetLocation(&lcd, 4, 1);
+        LCD_WriteFloat(&lcd,batteryVoltage, 1);
+        LCD_SetLocation(&lcd, 11, 1);
+        LCD_WriteFloat(&lcd,MAX(ABS(currentR), ABS(currentL)),2);
+      }
     }
 
 
-    // ####### POWEROFF BY POWER-BUTTON #######
-    if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN) && weakr == 0 && weakl == 0) {
-      enable = 0;
-      while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {}
-      poweroff();
-    }
     #endif
+    counter++;
+    #endif
+
 
 
     // ####### BEEP AND EMERGENCY POWEROFF #######

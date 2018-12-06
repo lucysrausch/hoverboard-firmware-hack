@@ -18,12 +18,12 @@
 #define BAT_CALIB_REAL_VOLTAGE        43.0       // input voltage measured by multimeter
 #define BAT_CALIB_ADC                 1704       // adc-value measured by mainboard (value nr 5 on UART debug output)
 
-#define BAT_NUMBER_OF_CELLS     10        // normal Hoverboard battery: 10s
+#define BAT_NUMBER_OF_CELLS     9        // normal Hoverboard battery: 10s
 #define BAT_LOW_LVL1_ENABLE     0         // to beep or not to beep, 1 or 0
-#define BAT_LOW_LVL1            3.6       // gently beeps at this voltage level. [V/cell]
+#define BAT_LOW_LVL1            3.2       // gently beeps at this voltage level. [V/cell]
 #define BAT_LOW_LVL2_ENABLE     1         // to beep or not to beep, 1 or 0
-#define BAT_LOW_LVL2            3.5       // your battery is almost empty. Charge now! [V/cell]
-#define BAT_LOW_DEAD            3.37      // undervoltage poweroff. (while not driving) [V/cell]
+#define BAT_LOW_LVL2            3.0       // your battery is almost empty. Charge now! [V/cell]
+#define BAT_LOW_DEAD            2.6      // undervoltage poweroff. (while not driving) [V/cell]
 
 #define DC_CUR_LIMIT     15         // DC current limit in amps per motor. so 15 means it will draw 30A out of your battery. it does not disable motors, it is a soft current limit.
 
@@ -45,10 +45,10 @@
 
 // ############################### SERIAL DEBUG ###############################
 
-#define DEBUG_SERIAL_USART3         // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
-#define DEBUG_BAUD       115200     // UART baud rate
+//#define DEBUG_SERIAL_USART3         // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
+//#define DEBUG_BAUD       115200     // UART baud rate
 //#define DEBUG_SERIAL_SERVOTERM
-#define DEBUG_SERIAL_ASCII          // "1:345 2:1337 3:0 4:0 5:0 6:0 7:0 8:0\r\n"
+//#define DEBUG_SERIAL_ASCII          // "1:345 2:1337 3:0 4:0 5:0 6:0 7:0 8:0\r\n"
 
 // ############################### INPUT ###############################
 
@@ -72,13 +72,12 @@
 
 // ###### TRANSPOTTER FIRMWARE #######
 #define CONTROL_GAMETRAK
-//#define INVERT_GAMETRAK
 #define SUPPORT_LCD
 #define SUPPORT_NUNCHUCK
 //#define SUPPORT_REMOTE
 
 #define VEL_P     0.9
-#define ROT_P     1.2
+#define ROT_P     -1.2
 
 
 // ###### CONTROL VIA NINTENDO NUNCHUCK ######
@@ -96,7 +95,7 @@
 // - weakr and weakl: field weakening for extra boost at high speed (speedR > 700 and speedL > 700). 0 to ~400
 
 #define FILTER              0.1  // lower value == softer filter. do not use values <0.01, you will get float precision issues.
-#define SPEED_COEFFICIENT   0.5  // higher value == stronger. 0.0 to ~2.0?
+#define SPEED_COEFFICIENT   0.9  // higher value == stronger. 0.0 to ~2.0?
 #define STEER_COEFFICIENT   0.5  // higher value == stronger. if you do not want any steering, set it to 0.0; 0.0 to 1.0
 #define INVERT_R_DIRECTION
 #define INVERT_L_DIRECTION

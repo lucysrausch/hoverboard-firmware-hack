@@ -13,10 +13,11 @@ uint8_t LCDerrorFlag = 0;
 void LCD_WaitForBusyFlag(LCD_PCF8574_HandleTypeDef* handle) {
 	uint8_t flag;
 	LCD_GetBusyFlag(handle, &flag);
-	uint32_t startTick=HAL_GetTick();
-	while (flag == 1 && HAL_GetTick()-startTick<handle->pcf8574.PCF_I2C_TIMEOUT) {
-		LCD_GetBusyFlag(handle, &flag);
-	}
+	//uint32_t startTick=HAL_GetTick();
+	//while (flag == 1 && HAL_GetTick()-startTick<handle->pcf8574.PCF_I2C_TIMEOUT) {
+	//	LCD_GetBusyFlag(handle, &flag);
+	//}
+	return;
 }
 
 LCD_RESULT LCD_I2C_WriteOut(LCD_PCF8574_HandleTypeDef* handle) {
@@ -61,7 +62,7 @@ LCD_RESULT LCD_Init(LCD_PCF8574_HandleTypeDef* handle) {
 		return LCD_ERROR;
 	}
 
-	HAL_Delay(50);
+	//HAL_Delay(50);
 	LCD_StateWriteBit(handle, 0, LCD_PIN_RS);
 	LCD_StateWriteBit(handle, 0, LCD_PIN_RW);
 	LCD_StateWriteBit(handle, 0, LCD_PIN_E);
@@ -155,17 +156,17 @@ LCD_RESULT LCD_GetBusyFlag(LCD_PCF8574_HandleTypeDef* handle, uint8_t* flag) {
 
 	LCD_StateWriteBit(handle, 1, LCD_PIN_E);
 
-	PCF8574_Read(&handle->pcf8574, flag);
+	//PCF8574_Read(&handle->pcf8574, flag);
 
-	*flag &= 1 << handle->pins[LCD_PIN_D7];
-	*flag >>= handle->pins[LCD_PIN_D7];
+	//*flag &= 1 << handle->pins[LCD_PIN_D7];
+	//*flag >>= handle->pins[LCD_PIN_D7];
 
 	LCD_StateWriteBit(handle, 0, LCD_PIN_E);
 
 	LCD_StateWriteBit(handle, 1, LCD_PIN_E);
 
-	uint8_t flag2;
-	PCF8574_Read(&handle->pcf8574, &flag2);
+	//uint8_t flag2;
+	//PCF8574_Read(&handle->pcf8574, &flag2);
 
 	LCD_StateWriteBit(handle, 0, LCD_PIN_E);
 	LCD_StateWriteBit(handle, 0, LCD_PIN_RW);
