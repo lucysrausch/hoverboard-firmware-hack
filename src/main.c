@@ -246,26 +246,23 @@ int main(void) {
       timeout = 0;
     #endif
 
-
     #if defined(INCLUDE_PROTOCOL)
-      switch (control_type){
-        case CONTROL_TYPE_PWM:
-          speedR = -SpeedData.wanted_speed_mm_per_sec[1];
-          speedL = -SpeedData.wanted_speed_mm_per_sec[0];
-          break;
-      }
-    #else
+      cmd1 = PwmSteerCmd.steer;
+      cmd2 = PwmSteerCmd.base_pwm;
 
-      // ####### LOW-PASS FILTER #######
-      steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
-      speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
-
-
-      // ####### MIXER #######
-      speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
-      speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
-
+      timeout = 0;
     #endif
+
+    // ####### LOW-PASS FILTER #######
+    steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
+    speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
+
+
+    // ####### MIXER #######
+    speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
+    speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
+
+
 
     #ifdef ADDITIONAL_CODE
       ADDITIONAL_CODE;
