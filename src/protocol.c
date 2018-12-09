@@ -106,6 +106,10 @@ SPEED_DATA SpeedData = {
     40 // minimum mm/s which we can ask for
 };
 
+PWM_STEER_CMD PwmSteerCmd = {
+    .base_pwm = 0,
+    .steer = 0,
+};
 
 int speed_control = 0; // incicates protocol driven
 
@@ -190,7 +194,8 @@ int version = 1;
 // NOTE: Don't start uistr with 'a'
 PARAMSTAT params[] = {
     { 0x00, NULL, NULL, UI_NONE, &version,           sizeof(version),        PARAM_R,    NULL, NULL, NULL, NULL },
-    { 0x03, NULL, NULL, UI_NONE, &SpeedData,         sizeof(SpeedData),      PARAM_RW,   PreRead_getspeeds, NULL, NULL, PostWrite_setspeeds }
+    { 0x03, NULL, NULL, UI_NONE, &SpeedData,         sizeof(SpeedData),      PARAM_RW,   PreRead_getspeeds, NULL, NULL, PostWrite_setspeeds },
+    { 0x07, NULL, NULL, UI_NONE, &PwmSteerCmd,         sizeof(PwmSteerCmd),      PARAM_RW,   NULL, NULL, NULL, NULL }
 };
 
 
@@ -328,13 +333,14 @@ int ascii_process_immediate(unsigned char byte){
         case 'W':
         case 'w':
             processed = 1;
-            if (!enable) { speedB = 0; steerB = 0; }
+            if (!enable) { speedB = 0; steerB = 0; PwmSteerCmd.base_pwm = 0; PwmSteerCmd.steer = 0; }
             enable = 1;
             timeout = 0;
 
             switch (control_type){
                 case CONTROL_TYPE_PWM:
                     speedB += 10*dir;
+                    PwmSteerCmd.base_pwm += 10*dir;
                     SpeedData.wanted_speed_mm_per_sec[1] = CLAMP(speedB * SPEED_COEFFICIENT -  steerB * STEER_COEFFICIENT, -1000, 1000);
                     SpeedData.wanted_speed_mm_per_sec[0] = CLAMP(speedB * SPEED_COEFFICIENT +  steerB * STEER_COEFFICIENT, -1000, 1000);
                     sprintf(ascii_out, "speed now %d, steer now %d, speedL %ld, speedR %ld\r\n", speedB, steerB, SpeedData.wanted_speed_mm_per_sec[0], SpeedData.wanted_speed_mm_per_sec[1]);
@@ -348,12 +354,13 @@ int ascii_process_immediate(unsigned char byte){
         case 'D':
         case 'd':
             processed = 1;
-            if (!enable) { speedB = 0; steerB = 0; }
+            if (!enable) { speedB = 0; steerB = 0; PwmSteerCmd.base_pwm = 0; PwmSteerCmd.steer = 0; }
             enable = 1;
             timeout = 0;
             switch (control_type){
                 case CONTROL_TYPE_PWM:
                     steerB += 10*dir;
+                    PwmSteerCmd.steer += 10*dir;
                     SpeedData.wanted_speed_mm_per_sec[1] = CLAMP(speedB * SPEED_COEFFICIENT -  steerB * STEER_COEFFICIENT, -1000, 1000);
                     SpeedData.wanted_speed_mm_per_sec[0] = CLAMP(speedB * SPEED_COEFFICIENT +  steerB * STEER_COEFFICIENT, -1000, 1000);
                     sprintf(ascii_out, "speed now %d, steer now %d, speedL %ld, speedR %ld\r\n", speedB, steerB, SpeedData.wanted_speed_mm_per_sec[0], SpeedData.wanted_speed_mm_per_sec[1]);
@@ -364,8 +371,10 @@ int ascii_process_immediate(unsigned char byte){
         case 'X':
         case 'x':
             processed = 1;
-            speedB = 0; 
+            speedB = 0;
             steerB = 0;
+            PwmSteerCmd.base_pwm = 0;
+            PwmSteerCmd.steer = 0;
             SpeedData.wanted_speed_mm_per_sec[0] = SpeedData.wanted_speed_mm_per_sec[1] = speedB;
             enable = 0;
             sprintf(ascii_out, "Stop set\r\n");
@@ -375,8 +384,10 @@ int ascii_process_immediate(unsigned char byte){
         case 'q':
             processed = 1;
             enable_immediate = 0;
-            speedB = 0; 
+            speedB = 0;
             steerB = 0;
+            PwmSteerCmd.base_pwm = 0;
+            PwmSteerCmd.steer = 0;
             SpeedData.wanted_speed_mm_per_sec[0] = SpeedData.wanted_speed_mm_per_sec[1] = speedB;
 
             control_type = 0;
@@ -535,8 +546,10 @@ void ascii_process_msg(char *cmd, int len){
 
         case 'I':
         case 'i':
-            speedB = 0; 
+            speedB = 0;
             steerB = 0;
+            PwmSteerCmd.base_pwm = 0;
+            PwmSteerCmd.steer = 0;
             SpeedData.wanted_speed_mm_per_sec[0] = SpeedData.wanted_speed_mm_per_sec[1] = speedB;
             if (len == 1){
                 enable_immediate = 1;

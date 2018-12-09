@@ -42,3 +42,8 @@ void USART3_IT_init();
   void Nunchuck_Init();     // defined in control.c
   void I2C_Init();          // defined in setup.c
 #endif
+
+#ifdef SOFTWATCHDOG_TIMEOUT
+  void MX_TIM3_Softwatchdog_Init(void);
+  extern TIM_HandleTypeDef htim3;
+#endif

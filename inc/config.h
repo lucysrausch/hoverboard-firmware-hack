@@ -9,6 +9,7 @@
 #define DELAY_IN_MAIN_LOOP 5        // in ms. default 5. it is independent of all the timing critical stuff. do not touch if you do not know what you are doing.
 
 #define TIMEOUT          5          // number of wrong / missing input commands before emergency off
+#define SOFTWATCHDOG_TIMEOUT 100    // In ms. If the main loop takes longer, a timer routine stops the motors and goes into a safe condition.
 
 // ############################### GENERAL ###############################
 
@@ -58,11 +59,11 @@
 
 
 //  #define SERIAL_USART2_IT
-  #define USART2_BAUD       115200                  // UART baud rate
+  #define USART2_BAUD       19200                  // UART baud rate
   #define USART2_WORDLENGTH UART_WORDLENGTH_8B      // UART_WORDLENGTH_8B or UART_WORDLENGTH_9B
 
   #define SERIAL_USART3_IT
-  #define USART3_BAUD       115200                  // UART baud rate
+  #define USART3_BAUD       19200                  // UART baud rate
   #define USART3_WORDLENGTH UART_WORDLENGTH_8B      // UART_WORDLENGTH_8B or UART_WORDLENGTH_9B
 
   #define SERIAL_USART_IT_BUFFERTYPE  unsigned char // char or short
@@ -87,7 +88,7 @@
 // ############################### SERIAL PROTOCOL ###############################
 // enables processing of input characters through 'protocol.c'
 #define INCLUDE_PROTOCOL
-
+#define WATCHDOG_TIMEOUT_MS 100
 // ############################### DRIVING BEHAVIOR ###############################
 
 // inputs:
@@ -103,7 +104,7 @@
 #define STEER_COEFFICIENT   0.5  // higher value == stronger. if you do not want any steering, set it to 0.0; 0.0 to 1.0
 #define INVERT_R_DIRECTION
 #define INVERT_L_DIRECTION
-#define BEEPS_BACKWARD 1    // 0 or 1
+#define BEEPS_BACKWARD 0    // 0 or 1
 
 //Turbo boost at high speeds while button1 is pressed:
 //#define ADDITIONAL_CODE \

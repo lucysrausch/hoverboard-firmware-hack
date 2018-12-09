@@ -84,9 +84,16 @@ void poweroff() {
         enable = 0;
         for (int i = 0; i < 8; i++) {
             buzzerFreq = i;
+#ifdef SOFTWATCHDOG_TIMEOUT
+            for(int j = 0; j < 100; j++) {
+              __HAL_TIM_SET_COUNTER(&htim3, 0); // Kick the Watchdog
+              HAL_Delay(1);
+            }
+#else
             HAL_Delay(100);
+#endif
         }
-        HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0);
+        HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0); // shutdown  power
         while(1) {}
     }
 }
@@ -119,7 +126,7 @@ int main(void) {
   MX_TIM_Init();
   MX_ADC1_Init();
   MX_ADC2_Init();
-
+  
   #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
     UART_Init();
   #endif
@@ -187,6 +194,9 @@ int main(void) {
   float board_temp_deg_c;
 
   enable = 1;  // enable motors
+#ifdef SOFTWATCHDOG_TIMEOUT
+  MX_TIM3_Softwatchdog_Init(); // Start the WAtchdog
+#endif
 
   while(1) {
       HAL_Delay(DELAY_IN_MAIN_LOOP); //delay in ms
@@ -239,26 +249,23 @@ int main(void) {
       timeout = 0;
     #endif
 
-
     #if defined(INCLUDE_PROTOCOL)
-      switch (control_type){
-        case CONTROL_TYPE_PWM:
-          speedR = SpeedData.wanted_speed_mm_per_sec[0];
-          speedL = SpeedData.wanted_speed_mm_per_sec[1];
-          break;
-      }
-    #else
+      cmd1 = PwmSteerCmd.steer;
+      cmd2 = PwmSteerCmd.base_pwm;
 
-      // ####### LOW-PASS FILTER #######
-      steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
-      speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
-
-
-      // ####### MIXER #######
-      speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
-      speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
-
+      timeout = 0;
     #endif
+
+    // ####### LOW-PASS FILTER #######
+    steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
+    speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
+
+
+    // ####### MIXER #######
+    speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
+    speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
+
+
 
     #ifdef ADDITIONAL_CODE
       ADDITIONAL_CODE;
@@ -306,7 +313,11 @@ int main(void) {
       // ####### POWEROFF BY POWER-BUTTON #######
       if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN) && weakr == 0 && weakl == 0) {
         enable = 0;
-        while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {}
+        while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {    // wait, till the power button is released. Otherwise cutting power does nothing
+#ifdef SOFTWATCHDOG_TIMEOUT
+          __HAL_TIM_SET_COUNTER(&htim3, 0); // Kick the Watchdog
+#endif
+        }
         poweroff();
       }
 
@@ -340,9 +351,13 @@ int main(void) {
     }
     if (inactivity_timeout_counter > (INACTIVITY_TIMEOUT * 60 * 1000) / (DELAY_IN_MAIN_LOOP + 1)) {  // rest of main loop needs maybe 1ms
         poweroff();
-      }
     }
+
+#ifdef SOFTWATCHDOG_TIMEOUT
+    __HAL_TIM_SET_COUNTER(&htim3, 0); // Kick the Watchdog
+#endif
   }
+}
 
 /** System Clock Configuration
 */
@@ -385,4 +400,46 @@ void SystemClock_Config(void) {
 
   /* SysTick_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+}
+
+/** Software Watchdog Actions 
+ * */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3)
+{
+  while(1) {
+
+    // Stop Left Motor
+    LEFT_TIM->LEFT_TIM_U = 0;
+    LEFT_TIM->LEFT_TIM_V = 0;
+    LEFT_TIM->LEFT_TIM_W = 0;
+    LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;
+
+    // Stop Right Motor
+    RIGHT_TIM->RIGHT_TIM_U = 0;
+    RIGHT_TIM->RIGHT_TIM_V = 0;
+    RIGHT_TIM->RIGHT_TIM_W = 0;
+    RIGHT_TIM->BDTR &= ~TIM_BDTR_MOE;
+
+    // Just to be safe, set every variable which is somehow involved in motor control to safe values
+    steer = 0;
+    speed = 0;
+    enable = 0;
+    timeout = TIMEOUT + 1;
+    pwml = 0;
+    pwmr = 0;
+    weakl = 0;
+    weakr = 0;
+    cmd1 = 0;
+    cmd2 = 0;
+
+    // Beep for 5s
+    for(int i = 0; i > 5000; i++) {
+      HAL_GPIO_TogglePin(BUZZER_PORT, BUZZER_PIN);
+      HAL_Delay(1);
+    }
+
+    // shutdown power
+    HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0); // shutdown  power
+  }
+  watchdogCount++;
 }
