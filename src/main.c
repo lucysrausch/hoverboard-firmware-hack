@@ -42,8 +42,6 @@ int cmd1;  // normalized input values. -1000 to 1000
 int cmd2;
 int cmd3;
 
-volatile uint32_t watchdogCount __attribute__((used)) = 0;
-
 typedef struct{
    int16_t steer;
    int16_t speed;
@@ -411,7 +409,7 @@ void SystemClock_Config(void) {
  * */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3)
 {
-  while(watchdogCount) {
+  while(1) {
 
     // Stop Left Motor
     LEFT_TIM->LEFT_TIM_U = 0;
@@ -425,12 +423,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3)
     RIGHT_TIM->RIGHT_TIM_W = 0;
     RIGHT_TIM->BDTR &= ~TIM_BDTR_MOE;
 
-    // Beep for 5s
-    for(int i = 0; i > 5000; i++) {
-      HAL_GPIO_TogglePin(BUZZER_PORT, BUZZER_PIN);
-      HAL_Delay(1);
-    }
-
     // Just to be safe, set every variable which is somehow involved in motor control to safe values
     steer = 0;
     speed = 0;
@@ -442,6 +434,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3)
     weakr = 0;
     cmd1 = 0;
     cmd2 = 0;
+
+    // Beep for 5s
+    for(int i = 0; i > 5000; i++) {
+      HAL_GPIO_TogglePin(BUZZER_PORT, BUZZER_PIN);
+      HAL_Delay(1);
+    }
+
+    // shutdown power
+    HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0); // shutdown  power
   }
-  watchdogCount++; // Ignore first occasion of watchdog event
 }
