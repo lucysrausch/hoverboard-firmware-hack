@@ -90,7 +90,10 @@ void poweroff() {
         enable = 0;
         for (int i = 0; i < 8; i++) {
             buzzerFreq = i;
-            HAL_Delay(100);
+            __HAL_TIM_SET_COUNTER(&htim3, 0);
+            HAL_Delay(50);
+            __HAL_TIM_SET_COUNTER(&htim3, 0);
+            HAL_Delay(50);
         }
         HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0);
         while(1) {}
@@ -310,7 +313,7 @@ int main(void) {
       // ####### POWEROFF BY POWER-BUTTON #######
       if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN) && weakr == 0 && weakl == 0) {
         enable = 0;
-        while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {}
+        while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {__HAL_TIM_SET_COUNTER(&htim3,0);}
         poweroff();
       }
 
