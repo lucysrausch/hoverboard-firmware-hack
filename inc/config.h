@@ -9,6 +9,7 @@
 #define DELAY_IN_MAIN_LOOP 5        // in ms. default 5. it is independent of all the timing critical stuff. do not touch if you do not know what you are doing.
 
 #define TIMEOUT          5          // number of wrong / missing input commands before emergency off
+#define SOFTWATCHDOG_TIMEOUT 100    // In ms. If the main loop takes longer, a timer routine stops the motors and goes into a safe condition.
 
 // ############################### GENERAL ###############################
 
@@ -43,22 +44,32 @@
 
 //#define DEBUG_I2C_LCD             // standard 16x2 or larger text-lcd via i2c-converter on right sensor board cable
 
-// ############################### SERIAL ###############################
+// ############################### SERIAL DEBUG ###############################
 
 //#define DEBUG_SERIAL_USART2       // left sensor board cable, disable if ADC or PPM is used!
 #define DEBUG_SERIAL_USART3         // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
-#define USART2_BAUD     115200      // UART baud rate left sensor board cable
-#define USART3_BAUD     115200      // UART baud rate right sensor board cable
 
 //#define DEBUG_SERIAL_SERVOTERM
-#define DEBUG_SERIAL_ASCII          // "1:345 2:1337 3:0 4:0 5:0 6:0 7:0 8:0\r\n"
+//#define DEBUG_SERIAL_ASCII          // "1:345 2:1337 3:0 4:0 5:0 6:0 7:0 8:0\r\n"
 
 // ############################### INPUT ###############################
 
 // ###### CONTROL VIA UART (serial) ######
-//#define CONTROL_SERIAL_USART2     // left sensor board cable, disable if ADC or PPM is used!
-#define CONTROL_SERIAL_USART3       // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
+//#define CONTROL_SERIAL_USART2       // left sensor board cable, disable if ADC or PPM is used!
+//#define CONTROL_SERIAL_USART3       // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
+                                      // control via usart from eg an Arduino or raspberry
 // for Arduino, use void loop(void){ Serial.write((uint8_t *) &steer, sizeof(steer)); Serial.write((uint8_t *) &speed, sizeof(speed));delay(20); }
+
+
+//  #define SERIAL_USART2_IT
+  #define USART2_BAUD       19200                  // UART baud rate
+  #define USART2_WORDLENGTH UART_WORDLENGTH_8B      // UART_WORDLENGTH_8B or UART_WORDLENGTH_9B
+
+  #define SERIAL_USART3_IT
+  #define USART3_BAUD       19200                  // UART baud rate
+  #define USART3_WORDLENGTH UART_WORDLENGTH_8B      // UART_WORDLENGTH_8B or UART_WORDLENGTH_9B
+
+  #define SERIAL_USART_IT_BUFFERTYPE  unsigned char // char or short
 
 // ###### CONTROL VIA RC REMOTE ######
 // left sensor board cable. Channel 1: steering, Channel 2: speed.
@@ -90,6 +101,10 @@
 // left sensor board cable. keep cable short, use shielded cable, use ferrits, stabalize voltage in nunchuck, use the right one of the 2 types of nunchucks, add i2c pullups. use original nunchuck. most clones does not work very well.
 //#define CONTROL_NUNCHUCK            // use nunchuck as input. disable DEBUG_SERIAL_USART3!
 
+// ############################### SERIAL PROTOCOL ###############################
+// enables processing of input characters through 'protocol.c'
+//#define INCLUDE_PROTOCOL
+#define WATCHDOG_TIMEOUT_MS 100
 // ############################### DRIVING BEHAVIOR ###############################
 
 // inputs:
@@ -108,13 +123,7 @@
 #define BEEPS_BACKWARD 1    // 0 or 1
 
 //Turbo boost at high speeds while button1 is pressed:
-//#define ADDITIONAL_CODE \
-if (button1 && speedR > 700) { /* field weakening at high speeds */ \
-  weakl = cmd1 - 700; /* weak should never exceed 400 or 450 MAX!! */ \
-  weakr = cmd1 - 700; } \
-else { \
-  weakl = 0; \
-  weakr = 0; }
+//#define ADDITIONAL_CODE if (button1 && speedR > 700) { /* field weakening at high speeds */  weakl = cmd1 - 700; /* weak should never exceed 400 or 450 MAX!! */  weakr = cmd1 - 700; } else {  weakl = 0;  weakr = 0; }
 
 // ###### SIMPLE BOBBYCAR ######
 // for better bobbycar code see: https://github.com/larsmm/hoverboard-firmware-hack-bbcar
@@ -122,30 +131,14 @@ else { \
 // #define SPEED_COEFFICIENT   -1
 // #define STEER_COEFFICIENT   0
 
-// #define ADDITIONAL_CODE \
-if (button1 && speedR < 300) { /* drive backwards */ \
-  speedR = speedR * -0.2f;   \
-  speedL = speedL * -0.2f; } \
-else { \
-  direction = 1; } \
-if (button1 && speedR > 700) { /* field weakening at high speeds */ \
-  weakl = speedR - 600; /* weak should never exceed 400 or 450 MAX!! */ \
-  weakr = speedR - 600; } \
-else { \
-  weakl = 0; \
-  weakr = 0; }
+// #define ADDITIONAL_CODE if (button1 && speedR < 300) { /* drive backwards */   speedR = speedR * -0.2f;     speedL = speedL * -0.2f; } else {   direction = 1; } if (button1 && speedR > 700) { /* field weakening at high speeds */   weakl = speedR - 600; /* weak should never exceed 400 or 450 MAX!! */   weakr = speedR - 600; } else {   weakl = 0;   weakr = 0; }
 
 // ###### ARMCHAIR ######
 // #define FILTER              0.05
 // #define SPEED_COEFFICIENT   0.5
 // #define STEER_COEFFICIENT   -0.2
 
-// #define ADDITIONAL_CODE if (button1 && scale > 0.8) { /* field weakening at high speeds */ \
-  weakl = speedL - 600; /* weak should never exceed 400 or 450 MAX!! */ \
-  weakr = speedR - 600; } \
-else {\
-  weakl = 0;\
-  weakr = 0;
+// #define ADDITIONAL_CODE if (button1 && scale > 0.8) { /* field weakening at high speeds */   weakl = speedL - 600; /* weak should never exceed 400 or 450 MAX!! */   weakr = speedR - 600; } else {  weakl = 0;  weakr = 0;
 
 // ############################### VALIDATE SETTINGS ###############################
 

@@ -41,6 +41,8 @@ src/control.c \
 src/main.c \
 src/bldc.c \
 src/comms.c \
+src/protocol.c \
+src/hallinterrupts.c \
 src/stm32f1xx_it.c \
 
 # ASM sources

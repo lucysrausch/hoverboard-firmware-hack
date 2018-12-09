@@ -23,6 +23,8 @@
 #include "defines.h"
 #include "setup.h"
 #include "config.h"
+#include "comms.h"
+#include "protocol.h"
 //#include "hd44780.h"
 #include "crc32.h"
 #include <stdbool.h>
@@ -82,14 +84,21 @@ int milli_vel_error_sum = 0;
 
 
 void poweroff() {
-    if (abs(speed) < 20) {
+    if (ABS(speed) < 20) {
         buzzerPattern = 0;
         enable = 0;
         for (int i = 0; i < 8; i++) {
             buzzerFreq = i;
+#ifdef SOFTWATCHDOG_TIMEOUT
+            for(int j = 0; j < 100; j++) {
+              __HAL_TIM_SET_COUNTER(&htim3, 0); // Kick the Watchdog
+              HAL_Delay(1);
+            }
+#else
             HAL_Delay(100);
+#endif
         }
-        HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0);
+        HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0); // shutdown  power
         while(1) {}
     }
 }
@@ -135,12 +144,19 @@ int main(void) {
   MX_TIM_Init();
   MX_ADC1_Init();
   MX_ADC2_Init();
-
+  
 
   HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 1);
 
   HAL_ADC_Start(&hadc1);
   HAL_ADC_Start(&hadc2);
+
+  #ifdef SERIAL_USART2_IT
+  USART2_IT_init();
+  #endif
+  #ifdef SERIAL_USART3_IT
+  USART3_IT_init();
+  #endif
 
   for (int i = 8; i >= 0; i--) {
     buzzerFreq = i;
@@ -152,7 +168,6 @@ int main(void) {
 
   int lastSpeedL = 0, lastSpeedR = 0;
   int speedL = 0, speedR = 0;
-  float direction = 1;
 
   #ifdef CONTROL_PPM
     PPM_Init();
@@ -205,10 +220,26 @@ int main(void) {
   float board_temp_deg_c;
 
   enable = 1;  // enable motors
+#ifdef SOFTWATCHDOG_TIMEOUT
+  MX_TIM3_Softwatchdog_Init(); // Start the WAtchdog
+#endif
 
   while(1) {
-    HAL_Delay(DELAY_IN_MAIN_LOOP); //delay in ms
+      HAL_Delay(DELAY_IN_MAIN_LOOP); //delay in ms
 
+    // TODO: Method to select which input is used for Protocol when both are active
+    #if defined(SERIAL_USART2_IT) && defined(INCLUDE_PROTOCOL)
+      while (serial_usart_buffer_count(&usart2_it_RXbuffer) > 0) {
+        SERIAL_USART_IT_BUFFERTYPE inputc = serial_usart_buffer_pop(&usart2_it_RXbuffer);
+        protocol_byte( (unsigned char) inputc );
+      }
+    #elif defined(SERIAL_USART3_IT) && defined(INCLUDE_PROTOCOL)
+      while (serial_usart_buffer_count(&usart3_it_RXbuffer) > 0) {
+        SERIAL_USART_IT_BUFFERTYPE inputc = serial_usart_buffer_pop(&usart3_it_RXbuffer);
+        protocol_byte( (unsigned char) inputc );
+      }
+    #endif
+    
     #ifdef CONTROL_NUNCHUCK
       Nunchuck_Read();
       cmd1 = CLAMP((nunchuck_data[0] - 127) * 8, -1000, 1000); // x - axis. Nunchuck joystick readings range 30 - 230
@@ -304,6 +335,12 @@ int main(void) {
       timeout = 0;
     #endif
 
+    #if defined(INCLUDE_PROTOCOL)
+      cmd1 = PwmSteerCmd.steer;
+      cmd2 = PwmSteerCmd.base_pwm;
+
+      timeout = 0;
+    #endif
 
     #if defined CONTROL_ADC
       if(ADCcontrolActive) {
@@ -321,6 +358,7 @@ int main(void) {
     // ####### MIXER #######
     speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
     speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
+
 
 
     #ifdef ADDITIONAL_CODE
@@ -366,16 +404,20 @@ int main(void) {
     }
 
 
-    // ####### POWEROFF BY POWER-BUTTON #######
-    if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN) && weakr == 0 && weakl == 0) {
-      enable = 0;
-      while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {}
-      poweroff();
-    }
+      // ####### POWEROFF BY POWER-BUTTON #######
+      if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN) && weakr == 0 && weakl == 0) {
+        enable = 0;
+        while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {    // wait, till the power button is released. Otherwise cutting power does nothing
+#ifdef SOFTWATCHDOG_TIMEOUT
+          __HAL_TIM_SET_COUNTER(&htim3, 0); // Kick the Watchdog
+#endif
+        }
+        poweroff();
+      }
 
 
     // ####### BEEP AND EMERGENCY POWEROFF #######
-    if ((TEMP_POWEROFF_ENABLE && board_temp_deg_c >= TEMP_POWEROFF && abs(speed) < 20) || (batteryVoltage < ((float)BAT_LOW_DEAD * (float)BAT_NUMBER_OF_CELLS) && abs(speed) < 20)) {  // poweroff before mainboard burns OR low bat 3
+    if ((TEMP_POWEROFF_ENABLE && board_temp_deg_c >= TEMP_POWEROFF && ABS(speed) < 20) || (batteryVoltage < ((float)BAT_LOW_DEAD * (float)BAT_NUMBER_OF_CELLS) && ABS(speed) < 20)) {  // poweroff before mainboard burns OR low bat 3
       poweroff();
     } else if (TEMP_WARNING_ENABLE && board_temp_deg_c >= TEMP_WARNING) {  // beep if mainboard gets hot
       buzzerFreq = 4;
@@ -390,20 +432,24 @@ int main(void) {
       buzzerFreq = 5;
       buzzerPattern = 1;
     } else {  // do not beep
-      buzzerFreq = 0;
-      buzzerPattern = 0;
-    }
+        buzzerFreq = 0;
+        buzzerPattern = 0;
+      }
 
 
     // ####### INACTIVITY TIMEOUT #######
-    if (abs(speedL) > 50 || abs(speedR) > 50) {
+    if (ABS(speedL) > 50 || ABS(speedR) > 50) {
       inactivity_timeout_counter = 0;
     } else {
       inactivity_timeout_counter ++;
     }
     if (inactivity_timeout_counter > (INACTIVITY_TIMEOUT * 60 * 1000) / (DELAY_IN_MAIN_LOOP + 1)) {  // rest of main loop needs maybe 1ms
-      poweroff();
+        poweroff();
     }
+
+#ifdef SOFTWATCHDOG_TIMEOUT
+    __HAL_TIM_SET_COUNTER(&htim3, 0); // Kick the Watchdog
+#endif
   }
 }
 
@@ -448,4 +494,45 @@ void SystemClock_Config(void) {
 
   /* SysTick_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+}
+
+/** Software Watchdog Actions 
+ * */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3)
+{
+  while(1) {
+
+    // Stop Left Motor
+    LEFT_TIM->LEFT_TIM_U = 0;
+    LEFT_TIM->LEFT_TIM_V = 0;
+    LEFT_TIM->LEFT_TIM_W = 0;
+    LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;
+
+    // Stop Right Motor
+    RIGHT_TIM->RIGHT_TIM_U = 0;
+    RIGHT_TIM->RIGHT_TIM_V = 0;
+    RIGHT_TIM->RIGHT_TIM_W = 0;
+    RIGHT_TIM->BDTR &= ~TIM_BDTR_MOE;
+
+    // Just to be safe, set every variable which is somehow involved in motor control to safe values
+    steer = 0;
+    speed = 0;
+    enable = 0;
+    timeout = TIMEOUT + 1;
+    pwml = 0;
+    pwmr = 0;
+    weakl = 0;
+    weakr = 0;
+    cmd1 = 0;
+    cmd2 = 0;
+
+    // Beep for 5s
+    for(int i = 0; i > 5000; i++) {
+      HAL_GPIO_TogglePin(BUZZER_PORT, BUZZER_PIN);
+      HAL_Delay(1);
+    }
+
+    // shutdown power
+    HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0); // shutdown  power
+  }
 }

@@ -37,9 +37,12 @@ pb10 usart3 dma1 channel2/3
 
 #include "defines.h"
 #include "config.h"
+#include "comms.h"
+#include <string.h> /* memset */
 
 TIM_HandleTypeDef htim_right;
 TIM_HandleTypeDef htim_left;
+TIM_HandleTypeDef htim3;
 ADC_HandleTypeDef hadc1;
 ADC_HandleTypeDef hadc2;
 I2C_HandleTypeDef hi2c2;
@@ -215,6 +218,91 @@ void UART3_Init() {
   DMA1_Channel2->CNDTR = 0;
   DMA1->IFCR           = DMA_IFCR_CTCIF2 | DMA_IFCR_CHTIF2 | DMA_IFCR_CGIF2;
 #endif
+}
+#endif
+
+#ifdef SERIAL_USART2_IT
+
+void USART2_IT_init(){
+    memset((void*)&usart2_it_TXbuffer, 0, sizeof(usart2_it_TXbuffer));
+    memset((void*)&usart2_it_RXbuffer, 0, sizeof(usart2_it_RXbuffer));
+
+    memset(&huart2, 0, sizeof(huart2));
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_USART2_CLK_ENABLE();
+
+    huart2.Instance          = USART2;
+    huart2.Init.BaudRate     = USART2_BAUD;
+    huart2.Init.WordLength   = USART2_WORDLENGTH;
+    huart2.Init.StopBits     = UART_STOPBITS_1;
+    huart2.Init.Parity       = UART_PARITY_NONE;
+    huart2.Init.Mode         = UART_MODE_TX_RX;
+    huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+    huart2.Init.HwFlowCtl    = UART_HWCONTROL_NONE;
+    HAL_UART_Init(&huart2);
+
+    GPIO_InitTypeDef GPIO_InitStruct;
+    memset(&GPIO_InitStruct, 0, sizeof(GPIO_InitStruct));
+    GPIO_InitStruct.Pin      = GPIO_PIN_2;
+    GPIO_InitStruct.Pull     = GPIO_PULLUP;
+    GPIO_InitStruct.Mode     = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Speed    = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+    memset(&GPIO_InitStruct, 0, sizeof(GPIO_InitStruct));
+    GPIO_InitStruct.Pin      = GPIO_PIN_3;
+    GPIO_InitStruct.Pull     = GPIO_NOPULL;
+    GPIO_InitStruct.Mode     = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Speed    = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+    // start interrupt receive?
+    HAL_NVIC_SetPriority(USART2_IRQn, 1, 0);
+    HAL_NVIC_EnableIRQ(USART2_IRQn);
+
+    __HAL_UART_ENABLE_IT(&huart2, UART_IT_RXNE);
+}
+#endif
+
+#ifdef SERIAL_USART3_IT
+void USART3_IT_init(){
+    memset((void *)&usart3_it_TXbuffer, 0, sizeof(usart3_it_TXbuffer));
+    memset((void *)&usart3_it_RXbuffer, 0, sizeof(usart3_it_RXbuffer));
+
+    memset(&huart3, 0, sizeof(huart3));
+    __HAL_RCC_GPIOB_CLK_ENABLE();
+    __HAL_RCC_USART3_CLK_ENABLE();
+
+    huart3.Instance          = USART3;
+    huart3.Init.BaudRate     = USART3_BAUD;
+    huart3.Init.WordLength   = USART3_WORDLENGTH;
+    huart3.Init.StopBits     = UART_STOPBITS_1;
+    huart3.Init.Parity       = UART_PARITY_NONE;
+    huart3.Init.Mode         = UART_MODE_TX_RX;
+    huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+    huart3.Init.HwFlowCtl    = UART_HWCONTROL_NONE;
+    HAL_UART_Init(&huart3);
+
+    GPIO_InitTypeDef GPIO_InitStruct;
+    memset(&GPIO_InitStruct, 0, sizeof(GPIO_InitStruct));
+    GPIO_InitStruct.Pin      = GPIO_PIN_10;
+    GPIO_InitStruct.Pull     = GPIO_PULLUP;
+    GPIO_InitStruct.Mode     = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Speed    = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+    memset(&GPIO_InitStruct, 0, sizeof(GPIO_InitStruct));
+    GPIO_InitStruct.Pin      = GPIO_PIN_11;
+    GPIO_InitStruct.Pull     = GPIO_NOPULL;
+    GPIO_InitStruct.Mode     = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Speed    = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+    // start interrupt receive?
+    HAL_NVIC_SetPriority(USART3_IRQn, 1, 0);
+    HAL_NVIC_EnableIRQ(USART3_IRQn);
+
+    __HAL_UART_ENABLE_IT(&huart3, UART_IT_RXNE);
 }
 #endif
 
@@ -638,3 +726,59 @@ void MX_ADC2_Init(void) {
   hadc2.Instance->CR2 |= ADC_CR2_DMA;
   __HAL_ADC_ENABLE(&hadc2);
 }
+
+
+/**
+  * @brief  This function is executed in case of error occurrence.
+  * @param  file: The file name as string.
+  * @param  line: The line in file as a number.
+  * @retval None
+  */
+void _Error_Handler(char *file, int line)
+{
+  /* USER CODE BEGIN Error_Handler_Debug */
+  /* User can add his own implementation to report the HAL error return state */
+  while(1)
+  {
+  }
+  /* USER CODE END Error_Handler_Debug */
+}
+
+#ifdef SOFTWATCHDOG_TIMEOUT
+/* TIM3 init function */
+void MX_TIM3_Softwatchdog_Init(void)
+{
+  HAL_NVIC_SetPriority(TIM3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(TIM3_IRQn);
+  __HAL_RCC_TIM3_CLK_ENABLE();
+
+  TIM_ClockConfigTypeDef sClockSourceConfig;
+  TIM_MasterConfigTypeDef sMasterConfig;
+
+  htim3.Instance = TIM3;                                   // Timer 3 is connected to APB1 clock line, which is 64MHz
+  htim3.Init.Prescaler = 64000-1;                          // Therefore 64,000,000 Hz / 64,000 = 1000 Hz. One count per ms
+  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.Period = SOFTWATCHDOG_TIMEOUT;                                 // Trigger every 100ms
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  HAL_TIM_Base_Start_IT(&htim3);
+}
+#endif
