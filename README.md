@@ -30,9 +30,21 @@ Both USART2 & 3 can be used for UART and I2C, PA2&3 can be used as 12bit ADCs.
 The reverse-engineered schematics of the mainboard can be found here:
 http://vocke.tv/lib/exe/fetch.php?media=20150722_hoverboard_sch.pdf
 
+
+### Inputs
+Plenty of input Methods can be used to control the board.
+You can configure your preferred Method in config.h.
+#### Analog Values
+Probably the most reliable Method. 2 Potis can be connected to one of the old sensor board connections. Make sure to reference the Poti voltages to 3.3V, not 12V or 15V. The gametrak Controller in the TranspOtter project is an examample for analog input.
+#### PPM Input
+[Pulse Pause Modulated](https://en.wikipedia.org/wiki/Pulse-position_modulation) Signals.
+#### I2C/Nunchuck
+A nunchuck, which communicates via I2C can be connected to the board.
+#### UART
+A complete protocol is implemented to communicate with the board. Have a look at protocol.c to find out how it works.
 ---
 
-## Building
+## Compiling
 To build the firmware, just type "make". Make sure you have specified your gcc-arm-none-eabi binary (version 7 works, there is a version that does not!) location in the Makefile ("PREFIX = ..."). 
 
 The firmware will also build (and flash) very easily from platform.io, plaformio.ini file included.  Simply open the folder in the IDE of choice (vscode or Atom), and press the 'PlatformIO:Build' or the 'PlatformIO:Upload' button (bottom left in vscode). 
