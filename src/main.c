@@ -42,10 +42,7 @@ int cmd1;  // normalized input values. -1000 to 1000
 int cmd2;
 int cmd3;
 
-uint32_t watchdogCounter __attribute__((used)) = 0;
-uint8_t abandonWatchdog __attribute__((used)) = 0;
-uint8_t stopMain __attribute__((used)) = 0;
-uint8_t watchdogBeepOnly __attribute__((used)) = 0;
+volatile uint32_t watchdogCount __attribute__((used)) = 0;
 
 typedef struct{
    int16_t steer;
@@ -89,9 +86,16 @@ void poweroff() {
         enable = 0;
         for (int i = 0; i < 8; i++) {
             buzzerFreq = i;
+#ifdef SOFTWATCHDOG_TIMEOUT
+            for(int j = 0; j < 100; j++) {
+              __HAL_TIM_SET_COUNTER(&htim3, 0); // Kick the Watchdog
+              HAL_Delay(1);
+            }
+#else
             HAL_Delay(100);
+#endif
         }
-        HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0);
+        HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0); // shutdown  power
         while(1) {}
     }
 }
@@ -122,10 +126,9 @@ int main(void) {
   __HAL_RCC_DMA1_CLK_DISABLE();
   MX_GPIO_Init();
   MX_TIM_Init();
-  MX_TIM3_Init();
   MX_ADC1_Init();
   MX_ADC2_Init();
-
+  
   #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
     UART_Init();
   #endif
@@ -193,6 +196,9 @@ int main(void) {
   float board_temp_deg_c;
 
   enable = 1;  // enable motors
+#ifdef SOFTWATCHDOG_TIMEOUT
+  MX_TIM3_Softwatchdog_Init(); // Start the WAtchdog
+#endif
 
   while(1) {
       HAL_Delay(DELAY_IN_MAIN_LOOP); //delay in ms
@@ -312,7 +318,11 @@ int main(void) {
       // ####### POWEROFF BY POWER-BUTTON #######
       if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN) && weakr == 0 && weakl == 0) {
         enable = 0;
-        while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {}
+        while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {    // wait, till the power button is released. Otherwise cutting power does nothing
+#ifdef SOFTWATCHDOG_TIMEOUT
+          __HAL_TIM_SET_COUNTER(&htim3, 0); // Kick the Watchdog
+#endif
+        }
         poweroff();
       }
 
@@ -333,19 +343,9 @@ int main(void) {
       buzzerFreq = 5;
       buzzerPattern = 1;
     } else {  // do not beep
-//        buzzerFreq = 0;
-//        buzzerPattern = 0;
+        buzzerFreq = 0;
+        buzzerPattern = 0;
       }
-
-    watchdogCounter = __HAL_TIM_GET_COUNTER(&htim3);
-
-    if(!abandonWatchdog) {
-      __HAL_TIM_SET_COUNTER(&htim3, 0);
-    }
-
-    while(stopMain) {
-      // loop to death
-    }
 
 
     // ####### INACTIVITY TIMEOUT #######
@@ -356,9 +356,13 @@ int main(void) {
     }
     if (inactivity_timeout_counter > (INACTIVITY_TIMEOUT * 60 * 1000) / (DELAY_IN_MAIN_LOOP + 1)) {  // rest of main loop needs maybe 1ms
         poweroff();
-      }
     }
+
+#ifdef SOFTWATCHDOG_TIMEOUT
+    __HAL_TIM_SET_COUNTER(&htim3, 0); // Kick the Watchdog
+#endif
   }
+}
 
 /** System Clock Configuration
 */
@@ -403,23 +407,41 @@ void SystemClock_Config(void) {
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
 
+/** Software Watchdog Actions 
+ * */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3)
 {
-  while(1) {
-    buzzerFreq = 20;
-    buzzerPattern = 0;
+  while(watchdogCount) {
 
-    if(!watchdogBeepOnly) {
-      steer = 0;
-      speed = 0;
-      enable = 0;
-      timeout = TIMEOUT + 1;
-      pwml = 0;
-      pwmr = 0;
-      weakl = 0;
-      weakr = 0;
-      cmd1 = 0;
-      cmd2 = 0;
+    // Stop Left Motor
+    LEFT_TIM->LEFT_TIM_U = 0;
+    LEFT_TIM->LEFT_TIM_V = 0;
+    LEFT_TIM->LEFT_TIM_W = 0;
+    LEFT_TIM->BDTR &= ~TIM_BDTR_MOE;
+
+    // Stop Right Motor
+    RIGHT_TIM->RIGHT_TIM_U = 0;
+    RIGHT_TIM->RIGHT_TIM_V = 0;
+    RIGHT_TIM->RIGHT_TIM_W = 0;
+    RIGHT_TIM->BDTR &= ~TIM_BDTR_MOE;
+
+    // Beep for 5s
+    for(int i = 0; i > 5000; i++) {
+      HAL_GPIO_TogglePin(BUZZER_PORT, BUZZER_PIN);
+      HAL_Delay(1);
     }
+
+    // Just to be safe, set every variable which is somehow involved in motor control to safe values
+    steer = 0;
+    speed = 0;
+    enable = 0;
+    timeout = TIMEOUT + 1;
+    pwml = 0;
+    pwmr = 0;
+    weakl = 0;
+    weakr = 0;
+    cmd1 = 0;
+    cmd2 = 0;
   }
+  watchdogCount++; // Ignore first occasion of watchdog event
 }

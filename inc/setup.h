@@ -31,7 +31,6 @@ void MX_ADC2_Init(void);
 void UART_Init(void);
 void USART2_IT_init();
 void USART3_IT_init();
-void MX_TIM3_Init(void);
 
 
 #if defined(CONTROL_SERIAL_USART2)
@@ -44,4 +43,7 @@ void MX_TIM3_Init(void);
   void I2C_Init();          // defined in setup.c
 #endif
 
-extern TIM_HandleTypeDef htim3;
+#ifdef SOFTWATCHDOG_TIMEOUT
+  void MX_TIM3_Softwatchdog_Init(void);
+  extern TIM_HandleTypeDef htim3;
+#endif

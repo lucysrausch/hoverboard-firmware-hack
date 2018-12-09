@@ -9,6 +9,7 @@
 #define DELAY_IN_MAIN_LOOP 5        // in ms. default 5. it is independent of all the timing critical stuff. do not touch if you do not know what you are doing.
 
 #define TIMEOUT          5          // number of wrong / missing input commands before emergency off
+#define SOFTWATCHDOG_TIMEOUT 100    // In ms. If the main loop takes longer, a timer routine stops the motors and goes into a safe condition.
 
 // ############################### GENERAL ###############################
 
