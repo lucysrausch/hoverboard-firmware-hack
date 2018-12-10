@@ -1,3 +1,15 @@
+# Deviations to [main repo](https://github.com/NiklasFauth/hoverboard-firmware-hack)
+* Build Environment is platform.io. Old Makefile based system should work too, but not tested.
+* UART Control can be configured to Connect to USART2 or USART3
+* Added CRC Checksum to UART Control. This way, the protocol just loses sync but the board does not try to kill you anymore (at least less often)
+* UART Control and Debug can be active on the same cable
+* Extended ADC Input Control config options. Default is platooning / "transpotter"
+* ADC Input Control can coexist with all other control Methods as long as the other Method uses the other cable
+* Watchdog Implemented which monitors if main is still running. Stops motors and shuts down if not.
+* Serial Protocol implemented (very shrunk down version from [btsimonh's pidcontrol](https://github.com/btsimonh/hoverboard-firmware-hack))
+
+---
+
 # hoverboard-firmware-hack
 
 ![](https://raw.githubusercontent.com/NiklasFauth/hoverboard-firmware-hack/master/docs/pictures/armchair.gif)   ![](https://raw.githubusercontent.com/NiklasFauth/hoverboard-firmware-hack/master/docs/pictures/bobbycar.gif)
@@ -10,14 +22,6 @@ The firmware you can find here allows you to use your Hoverboard Hardware (like 
 If you want an overview of what you can do with this firmware, here is a ~40min video of a talk about this project:
 https://media.ccc.de/v/gpn18-95-howto-moving-objects
 
-
-## Deviations to main repo at https://github.com/NiklasFauth/hoverboard-firmware-hack
-* Build Environment is platform.io. Old Makefile based system should work too, but not tested.
-* UART Control can be configured to Connect to USART2 or USART3
-* Added CRC Checksum to UART Control. This way, the protocol just loses sync but the board does not try to kill you anymore (at least less often)
-* UART Control and Debug can be active on the same cable
-* Extended ADC Input Control config options. Default is platooning / "transpotter"
-* ADC Input Control can coexist with all other control Methods as long as the other Method uses the other cable
 
 ---
 
@@ -48,9 +52,10 @@ Probably the most reliable Method. 2 Potis can be connected to one of the old se
 #### PPM Input
 [Pulse Pause Modulated](https://en.wikipedia.org/wiki/Pulse-position_modulation) Signals.
 #### I2C/Nunchuck
-A nunchuck, which communicates via I2C can be connected to the board.
+A nunchuck, which communicates via I2C can be connected to the board. Have a look into the troubleshooting section if you have trouble with the Nunchucks.
 #### UART
 A complete protocol is implemented to communicate with the board. Have a look at protocol.c to find out how it works.
+
 ---
 
 ## Compiling
