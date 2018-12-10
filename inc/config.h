@@ -39,6 +39,7 @@
 #define TEMP_POWEROFF           65        // overheat poweroff. (while not driving) [°C]
 
 #define INACTIVITY_TIMEOUT 8        // minutes of not driving until poweroff. it is not very precise.
+#define WATCHDOG_TIMEOUT_MS 100     // Watchdog, Monitors main loop. Stops motors and shuts down when not called after xx ms.
 
 // ############################### LCD DEBUG ###############################
 
@@ -47,7 +48,7 @@
 // ############################### SERIAL DEBUG ###############################
 
 //#define DEBUG_SERIAL_USART2       // left sensor board cable, disable if ADC or PPM is used!
-#define DEBUG_SERIAL_USART3         // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
+//#define DEBUG_SERIAL_USART3         // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
 
 //#define DEBUG_SERIAL_SERVOTERM
 //#define DEBUG_SERIAL_ASCII          // "1:345 2:1337 3:0 4:0 5:0 6:0 7:0 8:0\r\n"
@@ -55,18 +56,19 @@
 // ############################### INPUT ###############################
 
 // ###### CONTROL VIA UART (serial) ######
-//#define CONTROL_SERIAL_USART2       // left sensor board cable, disable if ADC or PPM is used!
-//#define CONTROL_SERIAL_USART3       // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
-                                      // control via usart from eg an Arduino or raspberry
+//#define CONTROL_SERIAL_NAIVE_USART2               // left sensor board cable, disable if ADC or PPM is used!
+//#define CONTROL_SERIAL_NAIVE_USART3               // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
+                                            // control via usart from eg an Arduino or raspberry
 // for Arduino, use void loop(void){ Serial.write((uint8_t *) &steer, sizeof(steer)); Serial.write((uint8_t *) &speed, sizeof(speed));delay(20); }
+//#define CONTROL_SERIAL_NAIVE_CRC                  // Add CRC32 check to control serial
 
-
-//  #define SERIAL_USART2_IT
-  #define USART2_BAUD       19200                  // UART baud rate
+#define CONTROL_SERIAL_PROTOCOL                     // enables processing of input characters through 'protocol.c'
+//  #define SERIAL_USART2_IT                        // Interface for CONTROL_SERIAL_PROTOCOL
+  #define USART2_BAUD       19200                   // UART baud rate
   #define USART2_WORDLENGTH UART_WORDLENGTH_8B      // UART_WORDLENGTH_8B or UART_WORDLENGTH_9B
 
-  #define SERIAL_USART3_IT
-  #define USART3_BAUD       19200                  // UART baud rate
+  #define SERIAL_USART3_IT                          // Interface for CONTROL_SERIAL_PROTOCOL
+  #define USART3_BAUD       19200                   // UART baud rate
   #define USART3_WORDLENGTH UART_WORDLENGTH_8B      // UART_WORDLENGTH_8B or UART_WORDLENGTH_9B
 
   #define SERIAL_USART_IT_BUFFERTYPE  unsigned char // char or short
@@ -101,10 +103,6 @@
 // left sensor board cable. keep cable short, use shielded cable, use ferrits, stabalize voltage in nunchuck, use the right one of the 2 types of nunchucks, add i2c pullups. use original nunchuck. most clones does not work very well.
 //#define CONTROL_NUNCHUCK            // use nunchuck as input. disable DEBUG_SERIAL_USART3!
 
-// ############################### SERIAL PROTOCOL ###############################
-// enables processing of input characters through 'protocol.c'
-//#define INCLUDE_PROTOCOL
-#define WATCHDOG_TIMEOUT_MS 100
 // ############################### DRIVING BEHAVIOR ###############################
 
 // inputs:
@@ -146,7 +144,7 @@
   #error DEBUG_SERIAL_USART2 and DEBUG_SERIAL_USART3 not allowed, choose one.
 #endif
 
-#if defined(DEBUG_SERIAL_USART2) || defined(CONTROL_SERIAL_USART2) 
+#if defined(DEBUG_SERIAL_USART2) || defined(CONTROL_SERIAL_NAIVE_USART2) 
   #ifdef SENSOR_BOARD_CABLE_LEFT_IN_USE
     #error SERIAL_USART2 not allowed, cable already in use.
   #else
@@ -154,9 +152,9 @@
   #endif
 #endif
 
-#if defined(CONTROL_SERIAL_USART2)
+#if defined(CONTROL_SERIAL_NAIVE_USART2)
   #ifdef CONTROL_METHOD_DEFINED
-    #error CONTROL_SERIAL_USART2 not allowed, another control Method is already defined.
+    #error CONTROL_SERIAL_NAIVE_USART2 not allowed, another control Method is already defined.
   #else
     #define CONTROL_METHOD_DEFINED
   #endif
@@ -184,7 +182,7 @@
 #endif
 
 
-#if defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_USART3) 
+#if defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_NAIVE_USART3) 
   #ifdef SENSOR_BOARD_CABLE_RIGHT_IN_USE
     #error SERIAL_USART3 not allowed, cable already in use.
   #else
@@ -192,9 +190,9 @@
   #endif
 #endif
 
-#if defined(CONTROL_SERIAL_USART3) 
+#if defined(CONTROL_SERIAL_NAIVE_USART3) 
   #ifdef CONTROL_METHOD_DEFINED
-    #error CONTROL_SERIAL_USART3 not allowed, another control Method is already defined.
+    #error CONTROL_SERIAL_NAIVE_USART3 not allowed, another control Method is already defined.
   #else
     #define CONTROL_METHOD_DEFINED
   #endif
@@ -219,4 +217,36 @@
   #else
     #define SENSOR_BOARD_CABLE_RIGHT_IN_USE
   #endif
+#endif
+
+#if defined(CONTROL_SERIAL_PROTOCOL)
+  #ifdef CONTROL_METHOD_DEFINED
+    #error CONTROL_SERIAL_PROTOCOL not allowed, another control Method is already defined.
+  #else
+    #define CONTROL_METHOD_DEFINED
+  #endif
+#endif
+
+#if defined(SERIAL_USART2_IT)
+  #ifdef SENSOR_BOARD_CABLE_LEFT_IN_USE
+    #error SERIAL_USART2_IT not allowed, cable already in use.
+  #else
+    #define SENSOR_BOARD_CABLE_LEFT_IN_USE
+  #endif
+#endif
+
+#if defined(SERIAL_USART3_IT)
+  #ifdef SENSOR_BOARD_CABLE_RIGHT_IN_USE
+    #error SERIAL_USART3_IT not allowed, cable already in use.
+  #else
+    #define SENSOR_BOARD_CABLE_RIGHT_IN_USE
+  #endif
+#endif
+
+#if defined(SERIAL_USART2_IT) && defined(SERIAL_USART3_IT)
+  #error SERIAL_USART2_IT and SERIAL_USART3_IT not allowed together.
+#endif
+
+#if defined(CONTROL_SERIAL_PROTOCOL) && !(defined(SERIAL_USART2_IT) || defined(SERIAL_USART3_IT))
+  #error Either SERIAL_USART2_IT or SERIAL_USART3_IT has to be selected when using CONTROL_SERIAL_PROTOCOL.
 #endif

@@ -25,7 +25,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#ifdef INCLUDE_PROTOCOL
+#ifdef CONTROL_SERIAL_PROTOCOL
 
 //////////////////////////////////////////////////////////
 // two new protocols are created, and simultaneously active

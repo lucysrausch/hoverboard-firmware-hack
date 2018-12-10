@@ -50,7 +50,9 @@ bool ADCcontrolActive = false;
 typedef struct{
    int16_t steer;
    int16_t speed;
+#ifdef CONTROL_SERIAL_NAIVE_CRC
    uint32_t crc;
+#endif
 } Serialcommand;
 
 volatile Serialcommand command;
@@ -103,6 +105,7 @@ void poweroff() {
     }
 }
 
+#ifdef CONTROL_SERIAL_NAIVE_CRC
 bool checkCRC(Serialcommand* command) {
 	uint32_t crc = 0;
 	crc32((const void *)command, 4, &crc); // 4 2x uint16_t = 4 bytes
@@ -116,6 +119,7 @@ bool checkCRC(Serialcommand* command) {
 	}
 	return false;
 }
+#endif
 
 int main(void) {
   HAL_Init();
@@ -178,20 +182,20 @@ int main(void) {
     Nunchuck_Init();
   #endif
 
-  #if defined(DEBUG_SERIAL_USART2) || defined(CONTROL_SERIAL_USART2)
+  #if defined(DEBUG_SERIAL_USART2) || defined(CONTROL_SERIAL_NAIVE_USART2)
     UART2_Init();
   #endif
 
-  #if defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_USART3)
+  #if defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_NAIVE_USART3)
     UART3_Init();
   #endif
   
-  #ifdef CONTROL_SERIAL_USART2
-    HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, 8);
+  #ifdef CONTROL_SERIAL_NAIVE_USART2
+    HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, sizeof(command));
   #endif
 
-  #ifdef CONTROL_SERIAL_USART3
-    HAL_UART_Receive_DMA(&huart3, (uint8_t *)&command, 8);
+  #ifdef CONTROL_SERIAL_NAIVE_USART3
+    HAL_UART_Receive_DMA(&huart3, (uint8_t *)&command, sizeof(command));
   #endif
 
   #ifdef DEBUG_I2C_LCD
@@ -228,6 +232,7 @@ int main(void) {
       HAL_Delay(DELAY_IN_MAIN_LOOP); //delay in ms
 
     // TODO: Method to select which input is used for Protocol when both are active
+    #if defined(SERIAL_USART2_IT) && defined(CONTROL_SERIAL_PROTOCOL)
       timeout++;
       while (serial_usart_buffer_count(&usart2_it_RXbuffer) > 0) {
         SERIAL_USART_IT_BUFFERTYPE inputc = serial_usart_buffer_pop(&usart2_it_RXbuffer);
@@ -235,6 +240,7 @@ int main(void) {
       }
       cmd1 = PwmSteerCmd.steer;
       cmd2 = PwmSteerCmd.base_pwm;
+    #elif defined(SERIAL_USART3_IT) && defined(CONTROL_SERIAL_PROTOCOL)
       timeout++;
       while (serial_usart_buffer_count(&usart3_it_RXbuffer) > 0) {
         SERIAL_USART_IT_BUFFERTYPE inputc = serial_usart_buffer_pop(&usart3_it_RXbuffer);
@@ -324,8 +330,12 @@ int main(void) {
       button2_ADC = (uint8_t)(adc_buffer.l_rx2 > 2000);  // ADC2
     #endif
 
-    #if defined(CONTROL_SERIAL_USART2) || defined(CONTROL_SERIAL_USART3)
+    #if defined(CONTROL_SERIAL_NAIVE_USART2) || defined(CONTROL_SERIAL_NAIVE_USART3)
+    #ifdef CONTROL_SERIAL_NAIVE_CRC
       if(checkCRC(&command))
+    #else
+      if(1)
+    #endif
       {
       cmd1 = CLAMP((int16_t)command.steer, -1000, 1000);
       cmd2 = CLAMP((int16_t)command.speed, -1000, 1000);

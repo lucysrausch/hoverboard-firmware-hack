@@ -251,7 +251,7 @@ void USART3_IRQHandler(void){
 //
 ////////////////////////////////////////
 
-#ifdef CONTROL_SERIAL_USART2
+#ifdef CONTROL_SERIAL_NAIVE_USART2
 void DMA1_Channel6_IRQHandler(void)
 {
   /* USER CODE BEGIN DMA1_Channel4_IRQn 0 */
@@ -279,7 +279,7 @@ void DMA1_Channel7_IRQHandler(void)
 #endif
 
 
-#ifdef CONTROL_SERIAL_USART3
+#ifdef CONTROL_SERIAL_NAIVE_USART3
 /**
 * @brief This function handles DMA1 channel3 global interrupt.
 */

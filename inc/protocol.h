@@ -21,7 +21,7 @@
 
 #include "config.h"
 
-#ifdef INCLUDE_PROTOCOL
+#ifdef CONTROL_SERIAL_PROTOCOL
 
 
 /////////////////////////////////////////////////////////////////
