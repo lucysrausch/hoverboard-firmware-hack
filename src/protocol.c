@@ -95,6 +95,7 @@ extern int enablescope; // enable scope on values
 int speedB = 0;
 int steerB = 0;
 int8_t humanProtocolActive = 0;
+int enable_immediate = 0;
 
 int control_type = 0;
 char *control_types[]={
@@ -325,7 +326,7 @@ void protocol_byte( unsigned char byte ){
 char ascii_cmd[20];
 char ascii_out[512];
 int ascii_posn = 0;
-int enable_immediate = 0;
+
 
 void ascii_byte( unsigned char byte ){
     int skipchar = 0;

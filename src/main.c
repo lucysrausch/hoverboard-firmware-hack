@@ -244,7 +244,7 @@ int main(void) {
 
     // TODO: Method to select which input is used for Protocol when both are active
     #if defined(SERIAL_USART2_IT) && defined(CONTROL_SERIAL_PROTOCOL)
-      timeout++;
+      if(!enable_immediate) timeout++;
       while (serial_usart_buffer_count(&usart2_it_RXbuffer) > 0) {
         SERIAL_USART_IT_BUFFERTYPE inputc = serial_usart_buffer_pop(&usart2_it_RXbuffer);
         protocol_byte( (unsigned char) inputc );
@@ -252,7 +252,7 @@ int main(void) {
       cmd1 = PwmSteerCmd.steer;
       cmd2 = PwmSteerCmd.base_pwm;
     #elif defined(SERIAL_USART3_IT) && defined(CONTROL_SERIAL_PROTOCOL)
-      timeout++;
+      if(!enable_immediate) timeout++;
       while (serial_usart_buffer_count(&usart3_it_RXbuffer) > 0) {
         SERIAL_USART_IT_BUFFERTYPE inputc = serial_usart_buffer_pop(&usart3_it_RXbuffer);
         protocol_byte( (unsigned char) inputc );

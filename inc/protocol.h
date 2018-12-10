@@ -16,8 +16,7 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef PROCOTOL_H
-#define PROCOTOL_H
+#pragma once
 
 #include "config.h"
 
@@ -144,8 +143,6 @@ typedef struct tag_PROTOCOL_BYTES_WRITEVALS {
 /////////////////////////////////////////////////////////////////
 
 
-
-
-#endif
+extern int enable_immediate;
 
 #endif
