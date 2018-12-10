@@ -91,6 +91,8 @@ extern uint8_t buzzerFreq;    // global variable for the buzzer pitch. can be 1,
 extern uint8_t buzzerPattern; // global variable for the buzzer pattern. can be 1, 2, 3, 4, 5, 6, 7...
 extern int buzzerLen;
 extern int enablescope; // enable scope on values
+extern int steer; // global variable for steering. -1000 to 1000
+extern int speed; // global variable for speed. -1000 to 1000
 
 int speedB = 0;
 int steerB = 0;
@@ -167,6 +169,8 @@ SPEEDS speedsx = {0,0};
 void PreRead_getspeeds(void){
     speedsx.speedl = SpeedData.wanted_speed_mm_per_sec[0];
     speedsx.speedr = SpeedData.wanted_speed_mm_per_sec[1];
+    PwmSteerCmd.base_pwm = speed;
+    PwmSteerCmd.steer = steer;
 }
 
 // after write we call this...
@@ -230,16 +234,16 @@ int version = 1;
 
 // NOTE: Don't start uistr with 'a'
 PARAMSTAT params[] = {
-    { 0x00, NULL, NULL, UI_NONE, &version,           sizeof(version),        PARAM_R,    NULL, NULL, NULL, NULL },
+    { 0x00, NULL, NULL, UI_NONE, &version,           sizeof(version),        PARAM_R,    NULL,                  NULL, NULL, NULL },
 #ifdef HALL_INTERRUPTS
-    { 0x02, NULL, NULL, UI_NONE, (void *)&HallData,          sizeof(HallData),       PARAM_R,    NULL, NULL, NULL, NULL },
+    { 0x02, NULL, NULL, UI_NONE, (void *)&HallData,  sizeof(HallData),       PARAM_R,    NULL,                  NULL, NULL, NULL },
 #endif
-    { 0x03, NULL, NULL, UI_NONE, &SpeedData,         sizeof(SpeedData),      PARAM_RW,   PreRead_getspeeds, NULL, NULL, PostWrite_setspeeds },
+    { 0x03, NULL, NULL, UI_NONE, &SpeedData,         sizeof(SpeedData),      PARAM_RW,   PreRead_getspeeds,     NULL, NULL, PostWrite_setspeeds },
 #ifdef HALL_INTERRUPTS
     { 0x04, NULL, NULL, UI_NONE, &Position,          sizeof(Position),       PARAM_RW,   PreRead_getposnupdate, NULL, NULL, PostWrite_setposnupdate },
-    { 0x06, NULL, NULL, UI_NONE, &PosnData,          sizeof(PosnData),       PARAM_RW,    NULL, NULL, NULL, NULL },
+    { 0x06, NULL, NULL, UI_NONE, &PosnData,          sizeof(PosnData),       PARAM_RW,   NULL,                  NULL, NULL, NULL },
 #endif
-    { 0x07, NULL, NULL, UI_NONE, &PwmSteerCmd,         sizeof(PwmSteerCmd),      PARAM_RW,   NULL, NULL, NULL, PostWrite_setspeeds }
+    { 0x07, NULL, NULL, UI_NONE, &PwmSteerCmd,       sizeof(PwmSteerCmd),    PARAM_RW,   PreRead_getspeeds,     NULL, NULL, PostWrite_setspeeds }
 };
 
 
