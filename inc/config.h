@@ -1,5 +1,6 @@
 #pragma once
 #include "stm32f1xx_hal.h"
+#ifndef IGNORE_GLOBAL_CONFIG
 
 // ############################### DO-NOT-TOUCH SETTINGS ###############################
 
@@ -9,7 +10,7 @@
 #define DELAY_IN_MAIN_LOOP 5        // in ms. default 5. it is independent of all the timing critical stuff. do not touch if you do not know what you are doing.
 
 #define TIMEOUT          5          // number of wrong / missing input commands before emergency off
-#define SOFTWATCHDOG_TIMEOUT 100    // In ms. If the main loop takes longer, a timer routine stops the motors and goes into a safe condition.
+#define WATCHDOG_TIMEOUT 100        // Watchdog, Monitors main loop. Stops motors and shuts down when not called after xx ms.
 
 // ############################### GENERAL ###############################
 
@@ -39,7 +40,6 @@
 #define TEMP_POWEROFF           65        // overheat poweroff. (while not driving) [°C]
 
 #define INACTIVITY_TIMEOUT 8        // minutes of not driving until poweroff. it is not very precise.
-#define WATCHDOG_TIMEOUT_MS 100     // Watchdog, Monitors main loop. Stops motors and shuts down when not called after xx ms.
 
 // ############################### LCD DEBUG ###############################
 
@@ -48,10 +48,10 @@
 // ############################### SERIAL DEBUG ###############################
 
 //#define DEBUG_SERIAL_USART2       // left sensor board cable, disable if ADC or PPM is used!
-//#define DEBUG_SERIAL_USART3         // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
+#define DEBUG_SERIAL_USART3         // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
 
 //#define DEBUG_SERIAL_SERVOTERM
-//#define DEBUG_SERIAL_ASCII          // "1:345 2:1337 3:0 4:0 5:0 6:0 7:0 8:0\r\n"
+#define DEBUG_SERIAL_ASCII          // "1:345 2:1337 3:0 4:0 5:0 6:0 7:0 8:0\r\n"
 
 // ############################### INPUT ###############################
 
@@ -62,13 +62,13 @@
 // for Arduino, use void loop(void){ Serial.write((uint8_t *) &steer, sizeof(steer)); Serial.write((uint8_t *) &speed, sizeof(speed));delay(20); }
 //#define CONTROL_SERIAL_NAIVE_CRC                  // Add CRC32 check to control serial
 
-#define CONTROL_SERIAL_PROTOCOL                     // enables processing of input characters through 'protocol.c'
+//#define CONTROL_SERIAL_PROTOCOL                     // enables processing of input characters through 'protocol.c'
 //  #define SERIAL_USART2_IT                        // Interface for CONTROL_SERIAL_PROTOCOL
   #define USART2_BAUD       19200                   // UART baud rate
   #define USART2_WORDLENGTH UART_WORDLENGTH_8B      // UART_WORDLENGTH_8B or UART_WORDLENGTH_9B
 
-  #define SERIAL_USART3_IT                          // Interface for CONTROL_SERIAL_PROTOCOL
-  #define USART3_BAUD       19200                   // UART baud rate
+//  #define SERIAL_USART3_IT                          // Interface for CONTROL_SERIAL_PROTOCOL
+  #define USART3_BAUD       115200                  // UART baud rate
   #define USART3_WORDLENGTH UART_WORDLENGTH_8B      // UART_WORDLENGTH_8B or UART_WORDLENGTH_9B
 
   #define SERIAL_USART_IT_BUFFERTYPE  unsigned char // char or short
@@ -138,6 +138,7 @@
 
 // #define ADDITIONAL_CODE if (button1 && scale > 0.8) { /* field weakening at high speeds */   weakl = speedL - 600; /* weak should never exceed 400 or 450 MAX!! */   weakr = speedR - 600; } else {  weakl = 0;  weakr = 0;
 
+#endif // IGNORE_GLOBAL_CONFIG
 // ############################### VALIDATE SETTINGS ###############################
 
 #if defined(DEBUG_SERIAL_USART2) && defined(DEBUG_SERIAL_USART3) 
