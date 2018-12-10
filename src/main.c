@@ -46,6 +46,7 @@ int cmd2, cmd2_ADC;
 int cmd3;
 
 bool ADCcontrolActive = false;
+bool SoftWatchdogActive= false;
 
 typedef struct{
    int16_t steer;
@@ -96,7 +97,7 @@ void poweroff() {
         for (int i = 0; i < 8; i++) {
             buzzerFreq = i;
 #ifdef SOFTWATCHDOG_TIMEOUT
-            for(int j = 0; j < 100; j++) {
+            for(int j = 0; j < 50; j++) {
               __HAL_TIM_SET_COUNTER(&htim3, 0); // Kick the Watchdog
               HAL_Delay(1);
             }
@@ -230,6 +231,7 @@ int main(void) {
   enable = 1;  // enable motors
 #ifdef SOFTWATCHDOG_TIMEOUT
   MX_TIM3_Softwatchdog_Init(); // Start the WAtchdog
+  SoftWatchdogActive= true;
 #endif
 
   while(1) {
@@ -564,7 +566,7 @@ void SystemClock_Config(void) {
  * */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3)
 {
-  while(1) {
+  while(SoftWatchdogActive) {
 
     // Stop Left Motor
     LEFT_TIM->LEFT_TIM_U = 0;
@@ -589,14 +591,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3)
     weakr = 0;
     cmd1 = 0;
     cmd2 = 0;
-
-    // Beep for 5s
-    for(int i = 0; i > 5000; i++) {
-      HAL_GPIO_TogglePin(BUZZER_PORT, BUZZER_PIN);
-      HAL_Delay(1);
-    }
-
+ 
     // shutdown power
     HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0); // shutdown  power
   }
+  SoftWatchdogActive = true;
 }
