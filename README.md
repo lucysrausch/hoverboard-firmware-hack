@@ -7,6 +7,10 @@
 * ADC Input Control can coexist with all other control Methods as long as the other Method uses the other cable
 * Watchdog Implemented which monitors if main is still running. Stops motors and shuts down if not.
 * Serial Protocol implemented (very shrunk down version from [btsimonh's pidcontrol](https://github.com/btsimonh/hoverboard-firmware-hack))
+  * PWM can be set and read
+  * Humand readable ASCII Protocol can coexist with machine parseable Messages
+  * Buzzer commands
+  * Hall Interrupts for Speed Feedback
 
 ---
 
