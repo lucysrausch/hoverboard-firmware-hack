@@ -78,7 +78,7 @@ void PPM_Init() {
   HAL_TIM_Base_Init(&TimHandle);
 
   /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI3_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(EXTI3_IRQn, 0, 0); // TODO
   HAL_NVIC_EnableIRQ(EXTI3_IRQn);
   HAL_TIM_Base_Start(&TimHandle);
 }

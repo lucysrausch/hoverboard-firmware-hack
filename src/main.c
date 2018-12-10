@@ -25,7 +25,7 @@
 #include "config.h"
 #include "comms.h"
 #include "protocol.h"
-//#include "hd44780.h"
+#include "hallinterrupts.h"
 #include "crc32.h"
 #include <stdbool.h>
 
@@ -176,6 +176,11 @@ int main(void) {
 
   int lastSpeedL = 0, lastSpeedR = 0;
   int speedL = 0, speedR = 0;
+
+  #ifdef HALL_INTERRUPTS
+    // enables interrupt reading of hall sensors for dead reconing wheel position.
+    HallInterruptinit();
+  #endif
 
   #ifdef CONTROL_PPM
     PPM_Init();
@@ -508,7 +513,7 @@ int main(void) {
       if (powerofftimer <= 0){
         powerofftimer = 0;
         poweroff();
-    }
+      }
     }
 
 #ifdef SOFTWATCHDOG_TIMEOUT

@@ -405,7 +405,10 @@ void MX_GPIO_Init(void) {
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
 
   GPIO_InitStruct.Pin = LEFT_HALL_U_PIN;
-  HAL_GPIO_Init(LEFT_HALL_U_PORT, &GPIO_InitStruct);
+  #ifdef HALL_INTERRUPTS
+    GPIO_InitStruct.Mode  = GPIO_MODE_IT_RISING_FALLING;
+  #endif
+    HAL_GPIO_Init(LEFT_HALL_U_PORT, &GPIO_InitStruct);
 
   GPIO_InitStruct.Pin = LEFT_HALL_V_PIN;
   HAL_GPIO_Init(LEFT_HALL_V_PORT, &GPIO_InitStruct);
@@ -422,6 +425,7 @@ void MX_GPIO_Init(void) {
   GPIO_InitStruct.Pin = RIGHT_HALL_W_PIN;
   HAL_GPIO_Init(RIGHT_HALL_W_PORT, &GPIO_InitStruct);
 
+  GPIO_InitStruct.Mode  = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pin = CHARGER_PIN;
   HAL_GPIO_Init(CHARGER_PORT, &GPIO_InitStruct);
 

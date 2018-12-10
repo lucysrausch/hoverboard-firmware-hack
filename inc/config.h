@@ -72,6 +72,8 @@
   #define USART3_WORDLENGTH UART_WORDLENGTH_8B      // UART_WORDLENGTH_8B or UART_WORDLENGTH_9B
 
   #define SERIAL_USART_IT_BUFFERTYPE  unsigned char // char or short
+  #define HALL_INTERRUPTS                              // ENABLE INTERRUPT READING OF HALL SENSORS FOR POSITION
+  //#define WHEEL_SIZE_INCHES 8.5                      // - set to your wheelsize to override the default 6.5
 
 // ###### CONTROL VIA RC REMOTE ######
 // left sensor board cable. Channel 1: steering, Channel 2: speed.

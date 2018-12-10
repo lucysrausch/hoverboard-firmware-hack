@@ -30,6 +30,23 @@ void protocol_byte( unsigned char byte );
 /////////////////////////////////////////////////////////////////
 
 
+//// control structures used in firmware
+typedef struct tag_POSN_DATA {
+    // these get set
+    long wanted_posn_mm[2];
+
+    // configurations/constants
+    int posn_max_speed; // max speed in this mode
+    int posn_min_speed; // minimum speed (to get wheels moving)
+
+
+
+    // just so it can be read back
+    long posn_diff_mm[2];
+    long posn_speed_demand[2];
+} POSN_DATA;
+
+extern POSN_DATA PosnData;
 
 typedef struct tag_SPEED_DATA {
     // these get set

@@ -20,6 +20,9 @@
 #include "defines.h"
 #include "config.h"
 #include "protocol.h"
+#ifdef HALL_INTERRUPTS
+#include "hallinterrupts.h"
+#endif
 #include "comms.h"
 
 #include <string.h>
@@ -99,6 +102,13 @@ char *control_types[]={
     "PWM Direct"
 };
 
+#ifdef HALL_INTERRUPTS
+POSN_DATA PosnData = {
+    {0, 0},
+    200, // max pwm in posn mode
+    70, // min pwm in posn mode
+};
+#endif
 
 
 SPEED_DATA SpeedData = {
@@ -166,6 +176,29 @@ void PostWrite_setspeeds(void){
     timeout = 0;
 }
 
+#ifdef HALL_INTERRUPTS
+typedef struct tag_POSN {
+    long LeftAbsolute;
+    long RightAbsolute;
+    long LeftOffset;
+    long RightOffset;
+} POSN;
+
+POSN Position;
+
+void PreRead_getposnupdate(){
+    Position.LeftAbsolute = HallData[0].HallPosn_mm;
+    Position.LeftOffset = HallData[0].HallPosn_mm - HallData[0].HallPosn_mm_lastread;
+    Position.RightAbsolute = HallData[1].HallPosn_mm;
+    Position.RightOffset = HallData[1].HallPosn_mm - HallData[1].HallPosn_mm_lastread;
+}
+
+void PostWrite_setposnupdate(){
+    HallData[0].HallPosn_mm_lastread = Position.LeftAbsolute;
+    HallData[1].HallPosn_mm_lastread = Position.RightAbsolute; 
+}
+#endif
+
 ///////////////////////////////////////////////////
 // structure used to gather variables we want to read/write.
 #define PARAM_R     1
@@ -197,7 +230,14 @@ int version = 1;
 // NOTE: Don't start uistr with 'a'
 PARAMSTAT params[] = {
     { 0x00, NULL, NULL, UI_NONE, &version,           sizeof(version),        PARAM_R,    NULL, NULL, NULL, NULL },
+#ifdef HALL_INTERRUPTS
+    { 0x02, NULL, NULL, UI_NONE, (void *)&HallData,          sizeof(HallData),       PARAM_R,    NULL, NULL, NULL, NULL },
+#endif
     { 0x03, NULL, NULL, UI_NONE, &SpeedData,         sizeof(SpeedData),      PARAM_RW,   PreRead_getspeeds, NULL, NULL, PostWrite_setspeeds },
+#ifdef HALL_INTERRUPTS
+    { 0x04, NULL, NULL, UI_NONE, &Position,          sizeof(Position),       PARAM_RW,   PreRead_getposnupdate, NULL, NULL, PostWrite_setposnupdate },
+    { 0x06, NULL, NULL, UI_NONE, &PosnData,          sizeof(PosnData),       PARAM_RW,    NULL, NULL, NULL, NULL },
+#endif
     { 0x07, NULL, NULL, UI_NONE, &PwmSteerCmd,         sizeof(PwmSteerCmd),      PARAM_RW,   NULL, NULL, NULL, PostWrite_setspeeds }
 };
 
@@ -374,11 +414,14 @@ int ascii_process_immediate(unsigned char byte){
         case 'X':
         case 'x':
             processed = 1;
-            speedB = 0;
+            speedB = 0; 
             steerB = 0;
             PwmSteerCmd.base_pwm = 0;
             PwmSteerCmd.steer = 0;
             SpeedData.wanted_speed_mm_per_sec[0] = SpeedData.wanted_speed_mm_per_sec[1] = speedB;
+#ifdef HALL_INTERRUPTS
+            HallData[0].HallSpeed_mm_per_s = HallData[1].HallSpeed_mm_per_s = 0;
+#endif
             enable = 0;
             sprintf(ascii_out, "Stop set\r\n");
             break;
@@ -387,15 +430,33 @@ int ascii_process_immediate(unsigned char byte){
         case 'q':
             processed = 1;
             enable_immediate = 0;
-            speedB = 0;
+            speedB = 0; 
             steerB = 0;
             PwmSteerCmd.base_pwm = 0;
             PwmSteerCmd.steer = 0;
             SpeedData.wanted_speed_mm_per_sec[0] = SpeedData.wanted_speed_mm_per_sec[1] = speedB;
+#ifdef HALL_INTERRUPTS
+            HallData[0].HallSpeed_mm_per_s = HallData[1].HallSpeed_mm_per_s = 0;
+#endif
 
             control_type = 0;
             enable = 0;
             sprintf(ascii_out, "Immediate commands disabled\r\n");
+            break;
+
+        case 'H':
+        case 'h':
+#ifdef HALL_INTERRUPTS
+            processed = 1;
+            sprintf(ascii_out, 
+                "L: P:%ld(%ldmm) S:%ld(%ldmm/s) dT:%lu Skip:%lu Dma:%d\r\n"\
+                "R: P:%ld(%ldmm) S:%ld(%ldmm/s) dT:%lu Skip:%lu Dma:%d\r\n",
+                HallData[0].HallPosn, HallData[0].HallPosn_mm, HallData[0].HallSpeed, HallData[0].HallSpeed_mm_per_s, HallData[0].HallTimeDiff, HallData[0].HallSkipped, local_hall_params[0].dmacount,
+                HallData[1].HallPosn, HallData[1].HallPosn_mm, HallData[1].HallSpeed, HallData[1].HallSpeed_mm_per_s, HallData[1].HallTimeDiff, HallData[1].HallSkipped, local_hall_params[1].dmacount
+            );
+#else
+            sprintf(ascii_out, "Hall Data not available\r\n");
+#endif
             break;
 
         case 'G':
@@ -476,6 +537,12 @@ void ascii_process_msg(char *cmd, int len){
                 " I -enable Immediate commands:\r\n"\
                 "   W/S/A/D/X -Faster/Slower/Lefter/Righter/DisableDrive\r\n");
             send_serial_data_wait((unsigned char *)ascii_out, strlen(ascii_out));
+
+#ifdef HALL_INTERRUPTS
+            snprintf(ascii_out, sizeof(ascii_out)-1, 
+                "   H/C/G/Q -read Hall posn,speed/read Currents/read GPIOs/Quit immediate mode\r\n");
+            send_serial_data_wait((unsigned char *)ascii_out, strlen(ascii_out));
+#endif
 
             snprintf(ascii_out, sizeof(ascii_out)-1, 
                 " Iw - direct to pwm control\r\n"\
@@ -560,11 +627,15 @@ void ascii_process_msg(char *cmd, int len){
 
         case 'I':
         case 'i':
-            speedB = 0;
+            speedB = 0; 
             steerB = 0;
             PwmSteerCmd.base_pwm = 0;
             PwmSteerCmd.steer = 0;
             SpeedData.wanted_speed_mm_per_sec[0] = SpeedData.wanted_speed_mm_per_sec[1] = speedB;
+#ifdef HALL_INTERRUPTS
+            PosnData.wanted_posn_mm[0] = HallData[0].HallPosn_mm;
+            PosnData.wanted_posn_mm[1] = HallData[1].HallPosn_mm;
+#endif
             if (len == 1){
                 enable_immediate = 1;
                 sprintf(ascii_out, "Immediate commands enabled - WASDXHCGQ\r\n>");
