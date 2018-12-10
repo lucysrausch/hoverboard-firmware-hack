@@ -228,16 +228,20 @@ int main(void) {
       HAL_Delay(DELAY_IN_MAIN_LOOP); //delay in ms
 
     // TODO: Method to select which input is used for Protocol when both are active
-    #if defined(SERIAL_USART2_IT) && defined(INCLUDE_PROTOCOL)
+      timeout++;
       while (serial_usart_buffer_count(&usart2_it_RXbuffer) > 0) {
         SERIAL_USART_IT_BUFFERTYPE inputc = serial_usart_buffer_pop(&usart2_it_RXbuffer);
         protocol_byte( (unsigned char) inputc );
       }
-    #elif defined(SERIAL_USART3_IT) && defined(INCLUDE_PROTOCOL)
+      cmd1 = PwmSteerCmd.steer;
+      cmd2 = PwmSteerCmd.base_pwm;
+      timeout++;
       while (serial_usart_buffer_count(&usart3_it_RXbuffer) > 0) {
         SERIAL_USART_IT_BUFFERTYPE inputc = serial_usart_buffer_pop(&usart3_it_RXbuffer);
         protocol_byte( (unsigned char) inputc );
       }
+      cmd1 = PwmSteerCmd.steer;
+      cmd2 = PwmSteerCmd.base_pwm;
     #endif
     
     #ifdef CONTROL_NUNCHUCK
@@ -335,12 +339,6 @@ int main(void) {
       timeout = 0;
     #endif
 
-    #if defined(INCLUDE_PROTOCOL)
-      cmd1 = PwmSteerCmd.steer;
-      cmd2 = PwmSteerCmd.base_pwm;
-
-      timeout = 0;
-    #endif
 
     #if defined CONTROL_ADC
       if(ADCcontrolActive) {

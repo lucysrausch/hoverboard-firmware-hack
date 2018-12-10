@@ -195,7 +195,7 @@ int version = 1;
 PARAMSTAT params[] = {
     { 0x00, NULL, NULL, UI_NONE, &version,           sizeof(version),        PARAM_R,    NULL, NULL, NULL, NULL },
     { 0x03, NULL, NULL, UI_NONE, &SpeedData,         sizeof(SpeedData),      PARAM_RW,   PreRead_getspeeds, NULL, NULL, PostWrite_setspeeds },
-    { 0x07, NULL, NULL, UI_NONE, &PwmSteerCmd,         sizeof(PwmSteerCmd),      PARAM_RW,   NULL, NULL, NULL, NULL }
+    { 0x07, NULL, NULL, UI_NONE, &PwmSteerCmd,         sizeof(PwmSteerCmd),      PARAM_RW,   NULL, NULL, NULL, PostWrite_setspeeds }
 };
 
 
