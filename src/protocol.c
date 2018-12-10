@@ -82,8 +82,11 @@ extern volatile uint32_t timeout; // global variable for timeout
 
 
 extern int debug_out;
+extern int disablepoweroff;
+extern int powerofftimer;
 extern uint8_t buzzerFreq;    // global variable for the buzzer pitch. can be 1, 2, 3, 4, 5, 6, 7...
 extern uint8_t buzzerPattern; // global variable for the buzzer pattern. can be 1, 2, 3, 4, 5, 6, 7...
+extern int buzzerLen;
 extern int enablescope; // enable scope on values
 
 int speedB = 0;
@@ -459,11 +462,17 @@ void ascii_process_msg(char *cmd, int len){
                 "Cmds (press return after):\r\n"\
                 " A n m l -set buzzer (freq, patt, len_ms)\r\n");
             send_serial_data_wait((unsigned char *)ascii_out, strlen(ascii_out));
+
             snprintf(ascii_out, sizeof(ascii_out)-1, 
-                " E - dEbug 'E'-disable all, EC-enable consoleLog, ES enable Scope\r\n");
+                " E - dEbug 'E'-disable all, EC-enable consoleLog, ES enable Scope\r\n"\
+                " P -power control\r\n"\
+                "  P -disablepoweroff\r\n");
             send_serial_data_wait((unsigned char *)ascii_out, strlen(ascii_out));
 
             snprintf(ascii_out, sizeof(ascii_out)-1, 
+                "  PE enable poweroff\r\n"\
+                "  Pn power off in n seconds\r\n" \
+                "  Pr software reset\r\n" \
                 " I -enable Immediate commands:\r\n"\
                 "   W/S/A/D/X -Faster/Slower/Lefter/Righter/DisableDrive\r\n");
             send_serial_data_wait((unsigned char *)ascii_out, strlen(ascii_out));
@@ -496,13 +505,18 @@ void ascii_process_msg(char *cmd, int len){
         case 'a':{
             int a = 0;
             int b = 0;
+            int c = 0;
             if (len > 1){
-                sscanf(cmd+1, "%d %d", &a, &b);
+                sscanf(cmd+1, "%d %d %d", &a, &b, &c);
+            }
+            if (a && (0==c)){
+                c = 1000;
             }
 
             buzzerFreq = a;
             buzzerPattern = b;
-            sprintf(ascii_out, "Alarm set to %d %d\r\n", a, b);
+            buzzerLen = c/5; // roughly 5ms per main loop, so 1s default
+            sprintf(ascii_out, "Alarm set to %d %d %d\r\n", a, b, c);
             break;
         }
 
@@ -570,6 +584,41 @@ void ascii_process_msg(char *cmd, int len){
             ascii_process_immediate('n');
             // already sent
             ascii_out[0] = 0;
+            break;
+
+        case 'P':
+        case 'p':
+            if (len == 1){
+                disablepoweroff = 1;
+                powerofftimer = 0;
+            } else {
+                if ((cmd[1] | 0x20) == 'r'){
+                    sprintf(ascii_out, "Reset in 500ms\r\n");
+                    send_serial_data_wait((unsigned char *)ascii_out, strlen(ascii_out));
+                    HAL_Delay(500);
+                    HAL_NVIC_SystemReset();
+                }
+
+                if ((cmd[1] | 0x20) == 'e'){
+                    disablepoweroff = 0;
+                    powerofftimer = 0;
+                } else {
+                    int s = -1;
+                    sscanf(cmd+1, "%d", &s);
+                    if (s >= 0){
+                        if (s == 0){
+                            powerofftimer = 1; // immediate
+                        } else {
+                            powerofftimer = ((s*1000)/DELAY_IN_MAIN_LOOP);
+                        }
+                    }
+                }
+            }
+            sprintf(ascii_out, 
+                "disablepoweroff now %d\r\n"\
+                "powerofftimer now %d\r\n",
+                disablepoweroff,
+                powerofftimer);
             break;
 
         case 'T':

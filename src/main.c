@@ -57,6 +57,9 @@ typedef struct{
 
 volatile Serialcommand command;
 
+int disablepoweroff = 0;
+int powerofftimer = 0;
+
 uint8_t button1, button2, button1_ADC, button2_ADC;
 
 int steer; // global variable for steering. -1000 to 1000
@@ -69,6 +72,7 @@ extern volatile int weakr; // global variable for field weakening right. -1000 t
 
 extern uint8_t buzzerFreq;    // global variable for the buzzer pitch. can be 1, 2, 3, 4, 5, 6, 7...
 extern uint8_t buzzerPattern; // global variable for the buzzer pattern. can be 1, 2, 3, 4, 5, 6, 7...
+int buzzerLen = 0;
 
 extern uint8_t enable; // global variable for motor enable
 
@@ -440,9 +444,13 @@ int main(void) {
       buzzerFreq = 5;
       buzzerPattern = 1;
     } else {  // do not beep
+      if (buzzerLen > 0) {
+        buzzerLen--;
+      } else {
         buzzerFreq = 0;
         buzzerPattern = 0;
       }
+    }
 
 
     // ####### INACTIVITY TIMEOUT #######
@@ -451,8 +459,56 @@ int main(void) {
     } else {
       inactivity_timeout_counter ++;
     }
+    
+    // inactivity 10s warning; 1s bleeping
+    if ((inactivity_timeout_counter > (INACTIVITY_TIMEOUT * 50 * 1000) / (DELAY_IN_MAIN_LOOP + 1)) &&
+        (buzzerFreq == 0)) {
+      buzzerFreq = 3;
+      buzzerPattern = 1;
+      buzzerLen = 1000;
+    }
+
+    // inactivity 5s warning; 1s bleeping
+    if ((inactivity_timeout_counter > (INACTIVITY_TIMEOUT * 55 * 1000) / (DELAY_IN_MAIN_LOOP + 1)) &&
+        (buzzerFreq == 0)) {
+      buzzerFreq = 2;
+      buzzerPattern = 1;
+      buzzerLen = 1000;
+    }
+
+    // power off after ~60s of inactivity
     if (inactivity_timeout_counter > (INACTIVITY_TIMEOUT * 60 * 1000) / (DELAY_IN_MAIN_LOOP + 1)) {  // rest of main loop needs maybe 1ms
+          inactivity_timeout_counter = 0;
         poweroff();
+    }
+    
+    
+    if (powerofftimer > 0){
+      powerofftimer --;
+
+      // spit a msg every 2 seconds
+      if (!(powerofftimer % (2000/DELAY_IN_MAIN_LOOP))){
+        char tmp[30];
+        sprintf(tmp, "power off in %ds\r\n", (powerofftimer*DELAY_IN_MAIN_LOOP)/1000 );
+        consoleLog(tmp);
+      }
+
+      if (powerofftimer <= 10000/DELAY_IN_MAIN_LOOP){
+        buzzerFreq = 3;
+        buzzerPattern = 1;
+        buzzerLen = 1000;
+      }
+
+      if (powerofftimer <= 5000/DELAY_IN_MAIN_LOOP){
+        buzzerFreq = 2;
+        buzzerPattern = 1;
+        buzzerLen = 1000;
+      }
+
+      if (powerofftimer <= 0){
+        powerofftimer = 0;
+        poweroff();
+    }
     }
 
 #ifdef SOFTWATCHDOG_TIMEOUT
