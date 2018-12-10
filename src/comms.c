@@ -88,7 +88,7 @@ void consoleLog(char *message)
 #endif
 }
 
-#ifdef SERIAL_USART2_IT  
+#ifdef SERIAL_USART2_IT
 
 int USART2_IT_starttx() {
     __HAL_UART_ENABLE_IT(&huart2, UART_IT_TXE);
@@ -106,7 +106,7 @@ int USART2_IT_send(unsigned char *data, int len) {
     for (int i = 0; i < len; i++){
         serial_usart_buffer_push(&usart2_it_TXbuffer, (SERIAL_USART_IT_BUFFERTYPE) data[i]);
     }
-    
+
     return USART2_IT_starttx();
 }
 
@@ -117,12 +117,12 @@ void USART2_IT_IRQ(USART_TypeDef *us) {
   volatile uint32_t *DR     = &us->DR;  // USART Data register
   volatile uint32_t *CR1    = &us->CR1; // USART Control register 1
 
-  // Transmit 
+  // Transmit
   if ((*SR) & UART_FLAG_TXE) {
     if (serial_usart_buffer_count(&usart2_it_TXbuffer) == 0) {
       *CR1 = (*CR1 & ~(USART_CR1_TXEIE | USART_CR1_TCIE));
     } else {
-      *DR = (serial_usart_buffer_pop(&usart2_it_TXbuffer) & 0x1ff);    
+      *DR = (serial_usart_buffer_pop(&usart2_it_TXbuffer) & 0x1ff);
     }
   }
 
@@ -155,7 +155,7 @@ int USART3_IT_send(unsigned char *data, int len) {
     for (int i = 0; i < len; i++){
         serial_usart_buffer_push(&usart3_it_TXbuffer, (SERIAL_USART_IT_BUFFERTYPE) data[i]);
     }
-    
+
     return USART3_IT_starttx();
 }
 
@@ -166,12 +166,12 @@ void USART3_IT_IRQ(USART_TypeDef *us) {
   volatile uint32_t *DR     = &us->DR;  // USART Data register
   volatile uint32_t *CR1    = &us->CR1; // USART Control register 1
 
-  // Transmit 
+  // Transmit
   if ((*SR) & UART_FLAG_TXE) {
     if (serial_usart_buffer_count(&usart3_it_TXbuffer) == 0) {
       *CR1 = (*CR1 & ~(USART_CR1_TXEIE | USART_CR1_TCIE));
     } else {
-      *DR = (serial_usart_buffer_pop(&usart3_it_TXbuffer) & 0x1ff);    
+      *DR = (serial_usart_buffer_pop(&usart3_it_TXbuffer) & 0x1ff);
     }
   }
 
@@ -201,7 +201,7 @@ void serial_usart_buffer_push(volatile SERIAL_USART_BUFFER *usart_buf, SERIAL_US
 
     usart_buf->buff[usart_buf->head] = value;
     usart_buf->head = ((usart_buf->head + 1 ) % SERIAL_USART_BUFFER_SIZE);
-} 
+}
 
 SERIAL_USART_IT_BUFFERTYPE serial_usart_buffer_pop(volatile SERIAL_USART_BUFFER *usart_buf) {
   SERIAL_USART_IT_BUFFERTYPE t = 0;

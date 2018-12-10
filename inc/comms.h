@@ -3,15 +3,15 @@
 #define SERIAL_USART_BUFFER_SIZE 1024 // TODO: implement send_wait routine..
 typedef struct tag_serial_usart_buffer {
     SERIAL_USART_IT_BUFFERTYPE buff[SERIAL_USART_BUFFER_SIZE];
-    int head; 
-    int tail; 
-    
+    int head;
+    int tail;
+
     // count of buffer overflows
     unsigned int overflow;
 
 } SERIAL_USART_BUFFER;
 
-#if defined(SERIAL_USART2_IT) 
+#if defined(SERIAL_USART2_IT)
 
 volatile SERIAL_USART_BUFFER usart2_it_TXbuffer;
 volatile SERIAL_USART_BUFFER usart2_it_RXbuffer;
@@ -22,7 +22,7 @@ void  USART2_IT_IRQ(USART_TypeDef *us);
 
 #endif
 
-#if defined(SERIAL_USART3_IT) 
+#if defined(SERIAL_USART3_IT)
 
 volatile SERIAL_USART_BUFFER usart3_it_TXbuffer;
 volatile SERIAL_USART_BUFFER usart3_it_RXbuffer;

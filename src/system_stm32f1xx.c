@@ -5,19 +5,19 @@
   * @version V4.2.0
   * @date    31-March-2017
   * @brief   CMSIS Cortex-M3 Device Peripheral Access Layer System Source File.
-  * 
-  * 1.  This file provides two functions and one global variable to be called from 
+  *
+  * 1.  This file provides two functions and one global variable to be called from
   *     user application:
   *      - SystemInit(): Setups the system clock (System clock source, PLL Multiplier
-  *                      factors, AHB/APBx prescalers and Flash settings). 
-  *                      This function is called at startup just after reset and 
+  *                      factors, AHB/APBx prescalers and Flash settings).
+  *                      This function is called at startup just after reset and
   *                      before branch to main program. This call is made inside
   *                      the "startup_stm32f1xx_xx.s" file.
   *
   *      - SystemCoreClock variable: Contains the core clock (HCLK), it can be used
-  *                                  by the user application to setup the SysTick 
+  *                                  by the user application to setup the SysTick
   *                                  timer or configure other parameters.
-  *                                     
+  *
   *      - SystemCoreClockUpdate(): Updates the variable SystemCoreClock and must
   *                                 be called whenever the core clock is changed
   *                                 during program execution.
@@ -27,11 +27,11 @@
   *    configure the system clock before to branch to main program.
   *
   * 4. The default value of HSE crystal is set to 8 MHz (or 25 MHz, depending on
-  *    the product used), refer to "HSE_VALUE". 
+  *    the product used), refer to "HSE_VALUE".
   *    When HSE is used as system clock source, directly or through PLL, and you
   *    are using different crystal you have to adapt the HSE value to your own
   *    configuration.
-  *        
+  *
   ******************************************************************************
   * @attention
   *
@@ -166,7 +166,7 @@ static void SystemInit_ExtMemCtl(void);
 
 /**
   * @brief  Setup the microcontroller system
-  *         Initialize the Embedded Flash Interface, the PLL and update the 
+  *         Initialize the Embedded Flash Interface, the PLL and update the
   *         SystemCoreClock variable.
   * @note   This function should be used only after reset.
   * @param  None
@@ -231,31 +231,31 @@ void SystemInit(void) {
   *         The SystemCoreClock variable contains the core clock (HCLK), it can
   *         be used by the user application to setup the SysTick timer or configure
   *         other parameters.
-  *           
+  *
   * @note   Each time the core clock (HCLK) changes, this function must be called
   *         to update SystemCoreClock variable value. Otherwise, any configuration
-  *         based on this variable will be incorrect.         
-  *     
-  * @note   - The system frequency computed by this function is not the real 
-  *           frequency in the chip. It is calculated based on the predefined 
+  *         based on this variable will be incorrect.
+  *
+  * @note   - The system frequency computed by this function is not the real
+  *           frequency in the chip. It is calculated based on the predefined
   *           constant and the selected clock source:
-  *             
+  *
   *           - If SYSCLK source is HSI, SystemCoreClock will contain the HSI_VALUE(*)
-  *                                              
+  *
   *           - If SYSCLK source is HSE, SystemCoreClock will contain the HSE_VALUE(**)
-  *                          
-  *           - If SYSCLK source is PLL, SystemCoreClock will contain the HSE_VALUE(**) 
+  *
+  *           - If SYSCLK source is PLL, SystemCoreClock will contain the HSE_VALUE(**)
   *             or HSI_VALUE(*) multiplied by the PLL factors.
-  *         
+  *
   *         (*) HSI_VALUE is a constant defined in stm32f1xx.h file (default value
   *             8 MHz) but the real value may vary depending on the variations
-  *             in voltage and temperature.   
-  *    
+  *             in voltage and temperature.
+  *
   *         (**) HSE_VALUE is a constant defined in stm32f1xx.h file (default value
   *              8 MHz or 25 MHz, depending on the product used), user has to ensure
   *              that HSE_VALUE is same as the real frequency of the crystal used.
   *              Otherwise, this function may have wrong result.
-  *                
+  *
   *         - The result of this function could be not correct when using fractional
   *           value for HSE crystal.
   * @param  None
@@ -354,14 +354,14 @@ void SystemCoreClockUpdate(void) {
 
 #if defined(STM32F100xE) || defined(STM32F101xE) || defined(STM32F101xG) || defined(STM32F103xE) || defined(STM32F103xG)
 /**
-  * @brief  Setup the external memory controller. Called in startup_stm32f1xx.s 
+  * @brief  Setup the external memory controller. Called in startup_stm32f1xx.s
   *          before jump to __main
   * @param  None
   * @retval None
   */
 #ifdef DATA_IN_ExtSRAM
 /**
-  * @brief  Setup the external memory controller. 
+  * @brief  Setup the external memory controller.
   *         Called in startup_stm32f1xx_xx.s/.c before jump to main.
   *         This function configures the external SRAM mounted on STM3210E-EVAL
   *         board (STM32 High density devices). This SRAM will be used as program
@@ -371,7 +371,7 @@ void SystemCoreClockUpdate(void) {
   */
 void SystemInit_ExtMemCtl(void) {
   __IO uint32_t tmpreg;
-  /*!< FSMC Bank1 NOR/SRAM3 is used for the STM3210E-EVAL, if another Bank is 
+  /*!< FSMC Bank1 NOR/SRAM3 is used for the STM3210E-EVAL, if another Bank is
     required, then adjust the Register Addresses */
 
   /* Enable FSMC clock */

@@ -65,10 +65,10 @@
 // or  can be stated as : (06+54+54+65+73+74+06)&0xff = 0
 //
 // if a message is received with invalid checksum, then nack will be sent.
-// if a message is received complete, it will with be responded to with a 
+// if a message is received complete, it will with be responded to with a
 // return message, or with the ack message
 //
-// for simplicities sake, we will treat the hoverboard controller as a 
+// for simplicities sake, we will treat the hoverboard controller as a
 // slave unit always - i.e. not ask it to send *unsolicited* messages.
 // in this way, it does not need to wait for ack, etc. from the host.
 // if the host gets a bad message, or no response, it can retry.
@@ -118,7 +118,7 @@ SPEED_DATA SpeedData = {
     {0, 0},
 
     600, // max power (PWM)
-    -600,  // min power 
+    -600,  // min power
     40 // minimum mm/s which we can ask for
 };
 
@@ -200,7 +200,7 @@ void PreRead_getposnupdate(){
 
 void PostWrite_setposnupdate(){
     HallData[0].HallPosn_mm_lastread = Position.LeftAbsolute;
-    HallData[1].HallPosn_mm_lastread = Position.RightAbsolute; 
+    HallData[1].HallPosn_mm_lastread = Position.RightAbsolute;
 }
 #endif
 
@@ -260,7 +260,7 @@ void ascii_byte( unsigned char byte );
 
 
 ///////////////////////////////////////////////////
-// local variables for handling the machine protocol, 
+// local variables for handling the machine protocol,
 // not really for external usage
 //
 typedef struct tag_PROTOCOL_STAT {
@@ -294,7 +294,7 @@ void protocol_byte( unsigned char byte ){
                 s.CS = 0;
             } else {
                 //////////////////////////////////////////////////////
-                // if the byte was NOT SOM (02), then treat it as an 
+                // if the byte was NOT SOM (02), then treat it as an
                 // ascii protocol byte.  BOTH protocol can co-exist
                 ascii_byte( byte );
                 //////////////////////////////////////////////////////
@@ -324,7 +324,7 @@ void protocol_byte( unsigned char byte ){
 
 
 ///////////////////////////////////////////////////
-// local variables for handling the 'human' protocol, 
+// local variables for handling the 'human' protocol,
 // not really for external usage
 //
 char ascii_cmd[20];
@@ -367,7 +367,7 @@ void ascii_byte( unsigned char byte ){
 
 
 /////////////////////////////////////////////
-// single byte commands at start of command 
+// single byte commands at start of command
 // - i.e. only after CR of LF and ascii buffer empty
 int ascii_process_immediate(unsigned char byte){
     int processed = 0;
@@ -419,7 +419,7 @@ int ascii_process_immediate(unsigned char byte){
         case 'X':
         case 'x':
             processed = 1;
-            speedB = 0; 
+            speedB = 0;
             steerB = 0;
             PwmSteerCmd.base_pwm = 0;
             PwmSteerCmd.steer = 0;
@@ -435,7 +435,7 @@ int ascii_process_immediate(unsigned char byte){
         case 'q':
             processed = 1;
             enable_immediate = 0;
-            speedB = 0; 
+            speedB = 0;
             steerB = 0;
             PwmSteerCmd.base_pwm = 0;
             PwmSteerCmd.steer = 0;
@@ -453,7 +453,7 @@ int ascii_process_immediate(unsigned char byte){
         case 'h':
 #ifdef HALL_INTERRUPTS
             processed = 1;
-            sprintf(ascii_out, 
+            sprintf(ascii_out,
                 "L: P:%ld(%ldmm) S:%ld(%ldmm/s) dT:%lu Skip:%lu Dma:%d\r\n"\
                 "R: P:%ld(%ldmm) S:%ld(%ldmm/s) dT:%lu Skip:%lu Dma:%d\r\n",
                 HallData[0].HallPosn, HallData[0].HallPosn_mm, HallData[0].HallSpeed, HallData[0].HallSpeed_mm_per_s, HallData[0].HallTimeDiff, HallData[0].HallSkipped, local_hall_params[0].dmacount,
@@ -467,7 +467,7 @@ int ascii_process_immediate(unsigned char byte){
         case 'G':
         case 'g':
             processed = 1;
-            sprintf(ascii_out, 
+            sprintf(ascii_out,
                 "A:%04X B:%04X C:%04X D:%04X E:%04X\r\n"\
                 "Button: %d Charge:%d\r\n",
                 (int)GPIOA->IDR, (int)GPIOB->IDR, (int)GPIOC->IDR, (int)GPIOD->IDR, (int)GPIOE->IDR,
@@ -523,19 +523,19 @@ void ascii_process_msg(char *cmd, int len){
     switch(cmd[0]){
         case '?':
             // split, else too big for buffer
-            snprintf(ascii_out, sizeof(ascii_out)-1, 
+            snprintf(ascii_out, sizeof(ascii_out)-1,
                 "Hoverboard Mk1\r\n"\
                 "Cmds (press return after):\r\n"\
                 " A n m l -set buzzer (freq, patt, len_ms)\r\n");
             send_serial_data_wait((unsigned char *)ascii_out, strlen(ascii_out));
 
-            snprintf(ascii_out, sizeof(ascii_out)-1, 
+            snprintf(ascii_out, sizeof(ascii_out)-1,
                 " E - dEbug 'E'-disable all, EC-enable consoleLog, ES enable Scope\r\n"\
                 " P -power control\r\n"\
                 "  P -disablepoweroff\r\n");
             send_serial_data_wait((unsigned char *)ascii_out, strlen(ascii_out));
 
-            snprintf(ascii_out, sizeof(ascii_out)-1, 
+            snprintf(ascii_out, sizeof(ascii_out)-1,
                 "  PE enable poweroff\r\n"\
                 "  Pn power off in n seconds\r\n" \
                 "  Pr software reset\r\n" \
@@ -544,28 +544,28 @@ void ascii_process_msg(char *cmd, int len){
             send_serial_data_wait((unsigned char *)ascii_out, strlen(ascii_out));
 
 #ifdef HALL_INTERRUPTS
-            snprintf(ascii_out, sizeof(ascii_out)-1, 
+            snprintf(ascii_out, sizeof(ascii_out)-1,
                 "   H/C/G/Q -read Hall posn,speed/read Currents/read GPIOs/Quit immediate mode\r\n");
             send_serial_data_wait((unsigned char *)ascii_out, strlen(ascii_out));
 #endif
 
-            snprintf(ascii_out, sizeof(ascii_out)-1, 
+            snprintf(ascii_out, sizeof(ascii_out)-1,
                 " Iw - direct to pwm control\r\n"\
                 " T -send a test message A-ack N-nack T-test\r\n"
                 );
             send_serial_data_wait((unsigned char *)ascii_out, strlen(ascii_out));
-            
+
             for (int i = 0; i < sizeof(params)/sizeof(params[0]); i++){
                 if (params[i].uistr){
-                    snprintf(ascii_out, sizeof(ascii_out)-1, 
-                        "  %s - F%s<n>\r\n", 
-                            (params[i].description)?params[i].description:"", 
+                    snprintf(ascii_out, sizeof(ascii_out)-1,
+                        "  %s - F%s<n>\r\n",
+                            (params[i].description)?params[i].description:"",
                             params[i].uistr
                         );
                     send_serial_data_wait((unsigned char *)ascii_out, strlen(ascii_out));
                 }
             }
-            snprintf(ascii_out, sizeof(ascii_out)-1, 
+            snprintf(ascii_out, sizeof(ascii_out)-1,
                 " ? -show this\r\n"
                 );
             send_serial_data_wait((unsigned char *)ascii_out, strlen(ascii_out));
@@ -632,7 +632,7 @@ void ascii_process_msg(char *cmd, int len){
 
         case 'I':
         case 'i':
-            speedB = 0; 
+            speedB = 0;
             steerB = 0;
             PwmSteerCmd.base_pwm = 0;
             PwmSteerCmd.steer = 0;
@@ -690,7 +690,7 @@ void ascii_process_msg(char *cmd, int len){
                     }
                 }
             }
-            sprintf(ascii_out, 
+            sprintf(ascii_out,
                 "disablepoweroff now %d\r\n"\
                 "powerofftimer now %d\r\n",
                 disablepoweroff,
@@ -793,10 +793,10 @@ void protocol_send(PROTOCOL_MSG *msg){
 
 
 /////////////////////////////////////////////
-// a complete machineprotocl message has been 
+// a complete machineprotocl message has been
 // received without error
 void process_message(PROTOCOL_MSG *msg){
-    PROTOCOL_BYTES *bytes = (PROTOCOL_BYTES *)msg->bytes; 
+    PROTOCOL_BYTES *bytes = (PROTOCOL_BYTES *)msg->bytes;
     switch (bytes->cmd){
         case PROTOCOL_CMD_READVAL:{
 

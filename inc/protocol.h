@@ -96,7 +96,7 @@ typedef struct tag_PROTOCOL_MSG {
     unsigned char SOM; // 0x02
     unsigned char len; // len is len of ALL bytes to follow, including CS
     unsigned char bytes[254];  // variable number of data bytes, with a checksum on the end
-    // checksum such that sum of bytes len to CS is zero     
+    // checksum such that sum of bytes len to CS is zero
 } PROTOCOL_MSG;
 
 // content of 'bytes' above, for single byte commands

@@ -27,7 +27,7 @@
 
 //////////////////////////////////////////////////////////////
 // file reads Hall sensors, and gets Distance and Speed.
-// Uses: 
+// Uses:
 // EXTI15_10_IRQHandler
 // EXTI9_5_IRQHandler
 // TIM4 running at 100khz, reloading 0xFFFF
@@ -40,7 +40,7 @@
 // for distance measurement and speed calculations, it defaults to 6.5" wheels.
 // this may be changed by calling:
 // void HallInterruptSetWheelDiameterInches(float inches);
-// or 
+// or
 // void HallInterruptSetWheelDiameterMM(float mm);
 //
 // if you wish to reset the values in the structure completely, use:
@@ -131,7 +131,7 @@ void HallInterruptSetWheelDiameterMM(float mm){
 
 //////////////////////////////////////////////////////////////
 // reset the whole structure.
-// note that this will then miss the first transition, as it will have no 
+// note that this will then miss the first transition, as it will have no
 // 'last' information.
 void HallInterruptReset(){
     __disable_irq(); // but we want both values at the same time, without interferance
@@ -153,7 +153,7 @@ void HallInterruptReset(){
 //////////////////////////////////////////////////////////////
 // read values with interupts disabled
 // optionally reset posn to zero.
-// 
+//
 void HallInterruptReadPosn( HALL_POSN *p, int Reset ){
     __disable_irq(); // but we want both values at the same time, without interferance
     HAL_NVIC_DisableIRQ(EXTI9_5_IRQn);
@@ -182,7 +182,7 @@ void HallInterruptReadPosn( HALL_POSN *p, int Reset ){
 // the transtion tells us the direction of movement.
 // this table is [last hall value][new hall value], and gives the
 // direction of movement.
-// table values of 0 represent 'illegal' transitions - 
+// table values of 0 represent 'illegal' transitions -
 // i.e. if we see a 0 out, then we missed an interrupt
 // (never seen in practice yet)
 static const int increments[7][7] =
@@ -221,8 +221,8 @@ void HallInterruptsInterrupt(void){
                 long long dt = local_hall_params[i].hall_time - local_hall_params[i].last_hall_time;
 
                 // note correction of direction for left wheel
-                local_hall_params[i].incr = 
-                    increments[local_hall_params[i].last_hall][local_hall_params[i].hall] * 
+                local_hall_params[i].incr =
+                    increments[local_hall_params[i].last_hall][local_hall_params[i].hall] *
                     local_hall_params[i].direction;
 
                 HallData[i].HallPosn = HallData[i].HallPosn + local_hall_params[i].incr;
@@ -234,12 +234,12 @@ void HallInterruptsInterrupt(void){
                     // in this case, distance is always 1.
                     // and time is between 10 and 65535
                     HallData[i].HallSpeed = (int)
-                        (HALL_SPEED_CALIBRATION/(float)HallData[i].HallTimeDiff) * 
+                        (HALL_SPEED_CALIBRATION/(float)HallData[i].HallTimeDiff) *
                         local_hall_params[i].incr;
 
                     HallData[i].HallSpeed_mm_per_s = (int)
-                        ((float)(HallData[i].HallPosnMultiplier/(float)HallData[i].HallTimeDiff) * 
-                        (float)local_hall_params[i].incr * 
+                        ((float)(HallData[i].HallPosnMultiplier/(float)HallData[i].HallTimeDiff) *
+                        (float)local_hall_params[i].incr *
                         (float)HALL_INTERRUPT_TIMER_FREQ);
                 } else {
                     // we missed a transition?

@@ -63,9 +63,9 @@ A complete protocol is implemented to communicate with the board. Have a look at
 ---
 
 ## Compiling
-To build the firmware, just type "make". Make sure you have specified your gcc-arm-none-eabi binary (version 7 works, there is a version that does not!) location in the Makefile ("PREFIX = ..."). 
+To build the firmware, just type "make". Make sure you have specified your gcc-arm-none-eabi binary (version 7 works, there is a version that does not!) location in the Makefile ("PREFIX = ...").
 
-The firmware will also build (and flash) very easily from platform.io, plaformio.ini file included.  Simply open the folder in the IDE of choice (vscode or Atom), and press the 'PlatformIO:Build' or the 'PlatformIO:Upload' button (bottom left in vscode). 
+The firmware will also build (and flash) very easily from platform.io, plaformio.ini file included.  Simply open the folder in the IDE of choice (vscode or Atom), and press the 'PlatformIO:Build' or the 'PlatformIO:Upload' button (bottom left in vscode).
 
 (Note: if you have no buttons, use Debug/Add Configuration, and select 'PlatformIO Debugger'; seems to kick it into life).
 

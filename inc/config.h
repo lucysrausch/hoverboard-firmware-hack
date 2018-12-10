@@ -17,7 +17,7 @@
 // How to calibrate: connect GND and RX of a 3.3v uart-usb adapter to the right sensor board cable (be careful not to use the red wire of the cable. 15v will destroye verything.). if you are using nunchuck, disable it temporarily. enable DEBUG_SERIAL_USART3 and DEBUG_SERIAL_ASCII use asearial terminal.
 
 // Battery voltage calibration: connect power source. see <How to calibrate>. write value nr 5 to BAT_CALIB_ADC. make and flash firmware. then you can verify voltage on value 6 (devide it by 100.0 to get calibrated voltage).
-#define BAT_CALIB_REAL_VOLTAGE        43.0       // input voltage measured by multimeter  
+#define BAT_CALIB_REAL_VOLTAGE        43.0       // input voltage measured by multimeter
 #define BAT_CALIB_ADC                 1704       // adc-value measured by mainboard (value nr 5 on UART debug output)
 
 #define BAT_NUMBER_OF_CELLS     10        // normal Hoverboard battery: 10s
@@ -143,11 +143,11 @@
 #endif // IGNORE_GLOBAL_CONFIG
 // ############################### VALIDATE SETTINGS ###############################
 
-#if defined(DEBUG_SERIAL_USART2) && defined(DEBUG_SERIAL_USART3) 
+#if defined(DEBUG_SERIAL_USART2) && defined(DEBUG_SERIAL_USART3)
   #error DEBUG_SERIAL_USART2 and DEBUG_SERIAL_USART3 not allowed, choose one.
 #endif
 
-#if defined(DEBUG_SERIAL_USART2) || defined(CONTROL_SERIAL_NAIVE_USART2) 
+#if defined(DEBUG_SERIAL_USART2) || defined(CONTROL_SERIAL_NAIVE_USART2)
   #ifdef SENSOR_BOARD_CABLE_LEFT_IN_USE
     #error SERIAL_USART2 not allowed, cable already in use.
   #else
@@ -163,7 +163,7 @@
   #endif
 #endif
 
-#if defined(CONTROL_ADC) 
+#if defined(CONTROL_ADC)
   #ifdef SENSOR_BOARD_CABLE_LEFT_IN_USE
     #error CONTROL_ADC not allowed, cable already in use.
   #else
@@ -171,7 +171,7 @@
   #endif
 #endif
 
-#if defined(CONTROL_PPM) 
+#if defined(CONTROL_PPM)
   #ifdef SENSOR_BOARD_CABLE_LEFT_IN_USE
     #error CONTROL_PPM not allowed, cable already in use.
   #else
@@ -185,7 +185,7 @@
 #endif
 
 
-#if defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_NAIVE_USART3) 
+#if defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_NAIVE_USART3)
   #ifdef SENSOR_BOARD_CABLE_RIGHT_IN_USE
     #error SERIAL_USART3 not allowed, cable already in use.
   #else
@@ -193,7 +193,7 @@
   #endif
 #endif
 
-#if defined(CONTROL_SERIAL_NAIVE_USART3) 
+#if defined(CONTROL_SERIAL_NAIVE_USART3)
   #ifdef CONTROL_METHOD_DEFINED
     #error CONTROL_SERIAL_NAIVE_USART3 not allowed, another control Method is already defined.
   #else
@@ -201,7 +201,7 @@
   #endif
 #endif
 
-#if defined(CONTROL_NUNCHUCK) 
+#if defined(CONTROL_NUNCHUCK)
   #ifdef SENSOR_BOARD_CABLE_RIGHT_IN_USE
     #error CONTROL_NUNCHUCK not allowed, cable already in use.
   #else
@@ -214,7 +214,7 @@
   #endif
 #endif
 
-#if defined(DEBUG_I2C_LCD) 
+#if defined(DEBUG_I2C_LCD)
   #ifdef SENSOR_BOARD_CABLE_RIGHT_IN_USE
     #error DEBUG_I2C_LCD not allowed, cable already in use.
   #else

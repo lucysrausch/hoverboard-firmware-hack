@@ -242,7 +242,7 @@ void EXTI9_5_IRQHandler(void)
     __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_9);
     triggered |= GPIO_PIN_9;
   }
-  
+
   if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_8) != RESET)
   {
     /* Clear the EXTI line 9 pending bit */
@@ -269,12 +269,12 @@ void EXTI9_5_IRQHandler(void)
     __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_5);
     triggered |= GPIO_PIN_5;
   }
- 
+
 #ifdef HALL_INTERRUPTS
   if (triggered & HALL_PIN_MASK)
     HallInterruptsInterrupt();
 #endif
-} 
+}
 
 /////////////////////////////////////////////////////////////////////
 // actual IRQ for RIGHT pins 10, 11, 12
@@ -287,7 +287,7 @@ void EXTI15_10_IRQHandler(void)
     __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_15);
     triggered |= GPIO_PIN_15;
   }
-  
+
   if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_14) != RESET)
   {
     /* Clear the EXTI line 9 pending bit */
@@ -324,7 +324,7 @@ void EXTI15_10_IRQHandler(void)
   if (triggered & HALL_PIN_MASK)
     HallInterruptsInterrupt();
 #endif
-} 
+}
 // end EXTI
 /////////////////////////////////////////
 // UART interrupts

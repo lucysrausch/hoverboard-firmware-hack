@@ -71,7 +71,7 @@ void HallInterruptsInterrupt(void);
 
 ////////////////////////////////////////////////////////////////////////////
 // it may be useful to read the current position and zero it at the same time
-// this function provides this as an option, as well as getting a single 
+// this function provides this as an option, as well as getting a single
 // snapshot with interrupts disabled
 typedef struct tag_HALL_POSN {
     struct {

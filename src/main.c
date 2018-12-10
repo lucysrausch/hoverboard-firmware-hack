@@ -153,7 +153,7 @@ int main(void) {
   MX_TIM_Init();
   MX_ADC1_Init();
   MX_ADC2_Init();
-  
+
 
   HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 1);
 
@@ -199,7 +199,7 @@ int main(void) {
   #if defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_NAIVE_USART3)
     UART3_Init();
   #endif
-  
+
   #ifdef CONTROL_SERIAL_NAIVE_USART2
     HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, sizeof(command));
   #endif
@@ -260,7 +260,7 @@ int main(void) {
       cmd1 = PwmSteerCmd.steer;
       cmd2 = PwmSteerCmd.base_pwm;
     #endif
-    
+
     #ifdef CONTROL_NUNCHUCK
       Nunchuck_Read();
       cmd1 = CLAMP((nunchuck_data[0] - 127) * 8, -1000, 1000); // x - axis. Nunchuck joystick readings range 30 - 230
@@ -329,7 +329,7 @@ int main(void) {
           }
           ADCcontrolActive = false;
         }
-        
+
       #endif
 
       #ifdef ADC_REVERSE_STEER
@@ -407,7 +407,7 @@ int main(void) {
       // ####### CALC BOARD TEMPERATURE #######
       board_temp_adc_filtered = board_temp_adc_filtered * 0.99 + (float)adc_buffer.temp * 0.01;
       board_temp_deg_c = ((float)TEMP_CAL_HIGH_DEG_C - (float)TEMP_CAL_LOW_DEG_C) / ((float)TEMP_CAL_HIGH_ADC - (float)TEMP_CAL_LOW_ADC) * (board_temp_adc_filtered - (float)TEMP_CAL_LOW_ADC) + (float)TEMP_CAL_LOW_DEG_C;
-      
+
       // ####### DEBUG SERIAL OUT #######
       #ifdef CONTROL_ADC
         setScopeChannel(0, (int)adc_buffer.l_tx2);  // 1: ADC1
@@ -466,7 +466,7 @@ int main(void) {
     } else {
       inactivity_timeout_counter ++;
     }
-    
+
     // inactivity 10s warning; 1s bleeping
     if ((inactivity_timeout_counter > (INACTIVITY_TIMEOUT * 50 * 1000) / (DELAY_IN_MAIN_LOOP + 1)) &&
         (buzzerFreq == 0)) {
@@ -488,8 +488,8 @@ int main(void) {
           inactivity_timeout_counter = 0;
         poweroff();
     }
-    
-    
+
+
     if (powerofftimer > 0){
       powerofftimer --;
 
@@ -567,7 +567,7 @@ void SystemClock_Config(void) {
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
 
-/** Software Watchdog Actions 
+/** Software Watchdog Actions
  * */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3)
 {
@@ -596,7 +596,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3)
     weakr = 0;
     cmd1 = 0;
     cmd2 = 0;
- 
+
     // shutdown power
     HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0); // shutdown  power
   }
