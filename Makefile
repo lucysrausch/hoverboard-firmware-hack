@@ -35,13 +35,15 @@ Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c \
-Src/system_stm32f1xx.c \
-Src/setup.c \
-Src/control.c \
-Src/main.c \
-Src/bldc.c \
-Src/comms.c \
-Src/stm32f1xx_it.c \
+src/system_stm32f1xx.c \
+src/setup.c \
+src/control.c \
+src/main.c \
+src/bldc.c \
+src/comms.c \
+src/protocol.c \
+src/hallinterrupts.c \
+src/stm32f1xx_it.c \
 
 # ASM sources
 ASM_SOURCES =  \
@@ -89,11 +91,12 @@ AS_INCLUDES =
 
 # C includes
 C_INCLUDES =  \
--IInc \
+-Iinc \
 -IDrivers/STM32F1xx_HAL_Driver/Inc \
 -IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy \
 -IDrivers/CMSIS/Device/ST/STM32F1xx/Include \
--IDrivers/CMSIS/Include
+-IDrivers/CMSIS/Include \
+-Ilib/crc/src
 
 
 # compile gcc flags
@@ -135,10 +138,10 @@ vpath %.c $(sort $(dir $(C_SOURCES)))
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(ASM_SOURCES:.s=.o)))
 vpath %.s $(sort $(dir $(ASM_SOURCES)))
 
-$(BUILD_DIR)/%.o: %.c Inc/config.h Makefile | $(BUILD_DIR)
+$(BUILD_DIR)/%.o: %.c inc/config.h Makefile | $(BUILD_DIR)
 	$(CC) -c $(CFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
 
-$(BUILD_DIR)/%.o: %.s Inc/config.h Makefile | $(BUILD_DIR)
+$(BUILD_DIR)/%.o: %.s inc/config.h Makefile | $(BUILD_DIR)
 	$(AS) -c $(CFLAGS) $< -o $@
 
 $(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile
@@ -155,7 +158,7 @@ $(BUILD_DIR):
 	mkdir -p $@
 
 format:
-	find Src/ Inc/ -iname '*.h' -o -iname '*.c' | xargs clang-format -i
+	find src/ inc/ -iname '*.h' -o -iname '*.c' | xargs clang-format -i
 #######################################
 # clean up
 #######################################

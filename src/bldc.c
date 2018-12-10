@@ -36,7 +36,7 @@ const uint8_t hall_to_pos[8] = {
     0,
 };
 
-inline void blockPWM(int pwm, int pos, int *u, int *v, int *w) {
+static inline void blockPWM(int pwm, int pos, int *u, int *v, int *w) {
   switch(pos) {
     case 0:
       *u = 0;
@@ -75,7 +75,7 @@ inline void blockPWM(int pwm, int pos, int *u, int *v, int *w) {
   }
 }
 
-inline void blockPhaseCurrent(int pos, int u, int v, int *q) {
+static inline void blockPhaseCurrent(int pos, int u, int v, int *q) {
   switch(pos) {
     case 0:
       *q = u - v;
@@ -214,18 +214,18 @@ void DMA1_Channel1_IRQHandler() {
     // if(len == 0){
         // return(0);
     // }
-    
+
     // struct {
         // uint16_t freq : 4;
         // uint16_t volume : 4;
         // uint16_t time : 8;
     // } note = notes[counter];
-    
+
     // if(timer / 500 == note.time){
         // timer = 0;
         // counter++;
     // }
-    
+
     // if(counter == len){
         // counter = 0;
     // }

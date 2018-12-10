@@ -35,6 +35,7 @@
 #include "stm32f1xx.h"
 #include "stm32f1xx_it.h"
 #include "config.h"
+#include "hallinterrupts.h"
 
 extern DMA_HandleTypeDef hdma_i2c2_rx;
 extern DMA_HandleTypeDef hdma_i2c2_tx;
@@ -42,6 +43,10 @@ extern I2C_HandleTypeDef hi2c2;
 
 extern DMA_HandleTypeDef hdma_usart2_rx;
 extern DMA_HandleTypeDef hdma_usart2_tx;
+extern TIM_HandleTypeDef htim3;
+
+extern DMA_HandleTypeDef hdma_usart3_rx;
+extern DMA_HandleTypeDef hdma_usart3_tx;
 
 /* USER CODE BEGIN 0 */
 
@@ -226,7 +231,123 @@ void EXTI3_IRQHandler(void)
 }
 #endif
 
-#ifdef CONTROL_SERIAL_USART2
+/////////////////////////////////////////////////////////////////////
+// actual IRQ for LEFT pins 5,6,7
+void EXTI9_5_IRQHandler(void)
+{
+  unsigned long triggered = 0;
+  if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_9) != RESET)
+  {
+    /* Clear the EXTI line 8 pending bit */
+    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_9);
+    triggered |= GPIO_PIN_9;
+  }
+
+  if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_8) != RESET)
+  {
+    /* Clear the EXTI line 9 pending bit */
+    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_8);
+    triggered |= GPIO_PIN_9;
+  }
+
+  if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_7) != RESET)
+  {
+    /* Clear the EXTI line 13 pending bit */
+    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_7);
+    triggered |= GPIO_PIN_7;
+  }
+
+  if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_6) != RESET)
+  {
+    /* Clear the EXTI line 13 pending bit */
+    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_6);
+    triggered |= GPIO_PIN_6;
+  }
+  if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_5) != RESET)
+  {
+    /* Clear the EXTI line 13 pending bit */
+    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_5);
+    triggered |= GPIO_PIN_5;
+  }
+
+#ifdef HALL_INTERRUPTS
+  if (triggered & HALL_PIN_MASK)
+    HallInterruptsInterrupt();
+#endif
+}
+
+/////////////////////////////////////////////////////////////////////
+// actual IRQ for RIGHT pins 10, 11, 12
+void EXTI15_10_IRQHandler(void)
+{
+  unsigned long triggered = 0;
+  if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_15) != RESET)
+  {
+    /* Clear the EXTI line 8 pending bit */
+    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_15);
+    triggered |= GPIO_PIN_15;
+  }
+
+  if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_14) != RESET)
+  {
+    /* Clear the EXTI line 9 pending bit */
+    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_14);
+    triggered |= GPIO_PIN_14;
+  }
+
+  if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_13) != RESET)
+  {
+    /* Clear the EXTI line 13 pending bit */
+    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_13);
+    triggered |= GPIO_PIN_13;
+  }
+  if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_12) != RESET)
+  {
+    /* Clear the EXTI line 13 pending bit */
+    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12);
+    triggered |= GPIO_PIN_12;
+  }
+  if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_11) != RESET)
+  {
+    /* Clear the EXTI line 13 pending bit */
+    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_11);
+    triggered |= GPIO_PIN_11;
+  }
+  if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_10) != RESET)
+  {
+    /* Clear the EXTI line 13 pending bit */
+    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_10);
+    triggered |= GPIO_PIN_10;
+  }
+
+#ifdef HALL_INTERRUPTS
+  if (triggered & HALL_PIN_MASK)
+    HallInterruptsInterrupt();
+#endif
+}
+// end EXTI
+/////////////////////////////////////////
+// UART interrupts
+
+#if defined(SERIAL_USART2_IT)
+void USART2_IT_IRQ(USART_TypeDef *us);
+
+void USART2_IRQHandler(void){
+    USART2_IT_IRQ(USART2);
+}
+#endif
+
+#if defined(SERIAL_USART3_IT)
+void USART3_IT_IRQ(USART_TypeDef *us);
+
+void USART3_IRQHandler(void){
+    USART3_IT_IRQ(USART3);
+}
+#endif
+//
+////////////////////////////////////////
+
+#ifdef CONTROL_SERIAL_NAIVE_USART2
 void DMA1_Channel6_IRQHandler(void)
 {
   /* USER CODE BEGIN DMA1_Channel4_IRQn 0 */
@@ -253,12 +374,58 @@ void DMA1_Channel7_IRQHandler(void)
 }
 #endif
 
+
+#ifdef CONTROL_SERIAL_NAIVE_USART3
+/**
+* @brief This function handles DMA1 channel3 global interrupt.
+*/
+void DMA1_Channel3_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Channel3_IRQn 0 */
+
+  /* USER CODE END DMA1_Channel3_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_usart3_rx);
+  /* USER CODE BEGIN DMA1_Channel3_IRQn 1 */
+
+  /* USER CODE END DMA1_Channel3_IRQn 1 */
+}
+
+/**
+* @brief This function handles DMA1 channel2 global interrupt.
+*/
+void DMA1_Channel2_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Channel2_IRQn 0 */
+
+  /* USER CODE END DMA1_Channel2_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_usart3_tx);
+  /* USER CODE BEGIN DMA1_Channel2_IRQn 1 */
+
+  /* USER CODE END DMA1_Channel2_IRQn 1 */
+}
+#endif
+
 /******************************************************************************/
 /* STM32F1xx Peripheral Interrupt Handlers                                    */
 /* Add here the Interrupt Handlers for the used peripherals.                  */
 /* For the available peripheral interrupt handler names,                      */
 /* please refer to the startup file (startup_stm32f1xx.s).                    */
 /******************************************************************************/
+
+
+/**
+* @brief This function handles TIM3 global interrupt.
+*/
+void TIM3_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM3_IRQn 0 */
+
+  /* USER CODE END TIM3_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim3);
+  /* USER CODE BEGIN TIM3_IRQn 1 */
+
+  /* USER CODE END TIM3_IRQn 1 */
+}
 
 
 /* USER CODE BEGIN 1 */

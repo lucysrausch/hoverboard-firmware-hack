@@ -21,10 +21,25 @@
 
 #pragma once
 
+#include "config.h"
 #include "stm32f1xx_hal.h"
 
 void MX_GPIO_Init(void);
 void MX_TIM_Init(void);
 void MX_ADC1_Init(void);
 void MX_ADC2_Init(void);
-void UART_Init(void);
+void USART2_IT_init();
+void USART3_IT_init();
+void UART2_Init();
+void UART3_Init();
+
+#if defined(CONTROL_NUNCHUCK)
+  void Nunchuck_Read();     // defined in control.c
+  void Nunchuck_Init();     // defined in control.c
+  void I2C_Init();          // defined in setup.c
+#endif
+
+#ifdef SOFTWATCHDOG_TIMEOUT
+  void MX_TIM3_Softwatchdog_Init(void);
+  extern TIM_HandleTypeDef htim3;
+#endif

@@ -1,2 +1,7 @@
 build/*
 !build/hover.hex
+.pioenvs
+.piolibdeps
+.vscode/*
+.travis.yml
+lib/readme.txt

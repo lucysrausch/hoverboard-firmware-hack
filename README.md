@@ -1,3 +1,19 @@
+# Deviations to [main repo](https://github.com/NiklasFauth/hoverboard-firmware-hack)
+* Build Environment is platform.io. Old Makefile based system should work too, but not tested.
+* UART Control can be configured to Connect to USART2 or USART3
+* Added CRC Checksum to UART Control. This way, the protocol just loses sync but the board does not try to kill you anymore (at least less often)
+* UART Control and Debug can be active on the same cable
+* Extended ADC Input Control config options. Default is platooning / "transpotter"
+* ADC Input Control can coexist with all other control Methods as long as the other Method uses the other cable
+* Watchdog Implemented which monitors if main is still running. Stops motors and shuts down if not.
+* Serial Protocol implemented (very shrunk down version from [btsimonh's pidcontrol](https://github.com/btsimonh/hoverboard-firmware-hack))
+  * PWM can be set and read
+  * Humand readable ASCII Protocol can coexist with machine parseable Messages
+  * Buzzer commands
+  * Hall Interrupts for Speed Feedback
+
+---
+
 # hoverboard-firmware-hack
 
 ![](https://raw.githubusercontent.com/NiklasFauth/hoverboard-firmware-hack/master/docs/pictures/armchair.gif)   ![](https://raw.githubusercontent.com/NiklasFauth/hoverboard-firmware-hack/master/docs/pictures/bobbycar.gif)
@@ -9,6 +25,7 @@ The firmware you can find here allows you to use your Hoverboard Hardware (like 
 
 If you want an overview of what you can do with this firmware, here is a ~40min video of a talk about this project:
 https://media.ccc.de/v/gpn18-95-howto-moving-objects
+
 
 ---
 
@@ -30,10 +47,31 @@ Both USART2 & 3 can be used for UART and I2C, PA2&3 can be used as 12bit ADCs.
 The reverse-engineered schematics of the mainboard can be found here:
 http://vocke.tv/lib/exe/fetch.php?media=20150722_hoverboard_sch.pdf
 
+
+### Inputs
+Plenty of input Methods can be used to control the board.
+You can configure your preferred Method in config.h.
+#### Analog Values
+Probably the most reliable Method. 2 Potis can be connected to one of the old sensor board connections. Make sure to reference the Poti voltages to 3.3V, not 12V or 15V. The gametrak Controller in the TranspOtter project is an examample for analog input.
+#### PPM Input
+[Pulse Pause Modulated](https://en.wikipedia.org/wiki/Pulse-position_modulation) Signals.
+#### I2C/Nunchuck
+A nunchuck, which communicates via I2C can be connected to the board. Have a look into the troubleshooting section if you have trouble with the Nunchucks.
+#### UART
+A complete protocol is implemented to communicate with the board. Have a look at protocol.c to find out how it works.
+
 ---
 
+## Compiling
+To build the firmware, just type "make". Make sure you have specified your gcc-arm-none-eabi binary (version 7 works, there is a version that does not!) location in the Makefile ("PREFIX = ...").
+
+The firmware will also build (and flash) very easily from platform.io, plaformio.ini file included.  Simply open the folder in the IDE of choice (vscode or Atom), and press the 'PlatformIO:Build' or the 'PlatformIO:Upload' button (bottom left in vscode).
+
+(Note: if you have no buttons, use Debug/Add Configuration, and select 'PlatformIO Debugger'; seems to kick it into life).
+
+
 ## Flashing
-To build the firmware, just type "make". Make sure you have specified your gcc-arm-none-eabi binary (version 7 works, there is a version that does not!) location in the Makefile ("PREFIX = ..."). Right to the STM32, there is a debugging header with GND, 3V3, SWDIO and SWCLK. Connect GND, SWDIO and SWCLK to your SWD programmer, like the ST-Link found on many STM devboards.
+Right to the STM32, there is a debugging header with GND, 3V3, SWDIO and SWCLK. Connect GND, SWDIO and SWCLK to your SWD programmer, like the ST-Link found on many STM devboards.
 
 Make sure you hold the powerbutton or connect a jumper to the power button pins while flashing the firmware, as the STM might release the power latch and switches itself off during flashing. Battery > 36V have to be connected while flashing.
 
@@ -80,6 +118,6 @@ Have a look at the config.h in the Inc directory. That's where you configure to 
 Currently supported: Wii Nunchuck, analog potentiometer and PPM-Sum signal from a RC remote.
 If you need additional features like a boost button, have a look at the while(1) loop in the main.c
 
-### Projects based on it
+### Projects based on
 * [bobbycar-optimized firmware](https://github.com/larsmm/hoverboard-firmware-hack-bbcar)  based on this one with driving modes, acceleration ramps and some other features
 * [wheel chair](https://github.com/Lahorde/steer_speed_ctrl) controlled with a joystick or using a CC2650 sensortag to control it over  bluetooth with pitch/roll.
