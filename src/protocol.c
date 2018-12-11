@@ -842,6 +842,7 @@ void process_message(PROTOCOL_MSG *msg){
                     // send back with 'write' command with no data.
                     protocol_send(msg);
                     if (params[i].postwrite) params[i].postwrite();
+                    break;
                 }
             }
             // nothing written
