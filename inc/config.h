@@ -9,7 +9,7 @@
 
 #define DELAY_IN_MAIN_LOOP 5        // in ms. default 5. it is independent of all the timing critical stuff. do not touch if you do not know what you are doing.
 
-#define TIMEOUT          15         // number of wrong / missing input commands before emergency off
+#define TIMEOUT                5    // number of wrong / missing input commands before emergency off
 #define SOFTWATCHDOG_TIMEOUT 100    // Watchdog, Monitors main loop. Stops motors and shuts down when not called after xx ms.
 
 // ############################### GENERAL ###############################
