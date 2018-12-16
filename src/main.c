@@ -107,6 +107,8 @@ void poweroff() {
         }
         HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0); // shutdown  power
         while(1) {}
+    } else {
+      powerofftimer = 1000;
     }
 }
 
@@ -232,6 +234,14 @@ int main(void) {
 
   float board_temp_adc_filtered = (float)adc_buffer.temp;
   float board_temp_deg_c;
+
+#if defined(SERIAL_USART2_IT)
+  serial_usart_buffer_flush(&usart2_it_RXbuffer);
+#endif
+
+#if defined(SERIAL_USART3_IT)
+  serial_usart_buffer_flush(&usart3_it_RXbuffer);
+#endif
 
   enable = 1;  // enable motors
 #ifdef SOFTWATCHDOG_TIMEOUT
@@ -426,9 +436,11 @@ int main(void) {
       // ####### POWEROFF BY POWER-BUTTON #######
       if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN) && weakr == 0 && weakl == 0) {
         enable = 0;
+        int i = 0;
         while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {    // wait, till the power button is released. Otherwise cutting power does nothing
 #ifdef SOFTWATCHDOG_TIMEOUT
           __HAL_TIM_SET_COUNTER(&htim3, 0); // Kick the Watchdog
+          HAL_Delay(i++/2);                 // The watchdog will get you eventually..
 #endif
         }
         poweroff();

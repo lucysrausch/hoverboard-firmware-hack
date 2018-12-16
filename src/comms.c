@@ -211,3 +211,7 @@ SERIAL_USART_IT_BUFFERTYPE serial_usart_buffer_pop(volatile SERIAL_USART_BUFFER 
   }
   return t;
 }
+
+void serial_usart_buffer_flush(volatile SERIAL_USART_BUFFER *usart_buf) {
+  usart_buf->tail = usart_buf->head;
+}
