@@ -335,9 +335,15 @@ int main(void) {
 
 
 
-
+    #ifdef GAMETRAK_CONNECTION_NORMAL
     uint16_t distance = CLAMP((adc_buffer.l_rx2) - 180, 0, 4095);
     steering = (adc_buffer.l_tx2 - 2048) / 2048.0;
+    #endif
+    #ifdef GAMETRAK_CONNECTION_ALTERNATE
+    uint16_t distance = CLAMP((adc_buffer.l_tx2) - 180, 0, 4095);
+    steering = (adc_buffer.l_rx2 - 2048) / 2048.0;
+    #endif
+
     feedforward = ((distance - (int)(setDistance * 1345)));
     if (nunchuck_connected == 0) {
       speedL = speedL * 0.8f + (CLAMP(feedforward +  ((steering)*((float)MAX(ABS(feedforward), 50)) * ROT_P), -850, 850) * -0.2f);
