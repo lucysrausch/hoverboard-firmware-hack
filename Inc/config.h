@@ -18,12 +18,12 @@
 #define BAT_CALIB_REAL_VOLTAGE        43.0       // input voltage measured by multimeter
 #define BAT_CALIB_ADC                 1704       // adc-value measured by mainboard (value nr 5 on UART debug output)
 
-#define BAT_NUMBER_OF_CELLS     9        // normal Hoverboard battery: 10s
+#define BAT_NUMBER_OF_CELLS     10        // normal Hoverboard battery: 10s
 #define BAT_LOW_LVL1_ENABLE     0         // to beep or not to beep, 1 or 0
-#define BAT_LOW_LVL1            3.2       // gently beeps at this voltage level. [V/cell]
+#define BAT_LOW_LVL1            3.5       // gently beeps at this voltage level. [V/cell]
 #define BAT_LOW_LVL2_ENABLE     1         // to beep or not to beep, 1 or 0
-#define BAT_LOW_LVL2            3.0       // your battery is almost empty. Charge now! [V/cell]
-#define BAT_LOW_DEAD            2.6      // undervoltage poweroff. (while not driving) [V/cell]
+#define BAT_LOW_LVL2            3.3       // your battery is almost empty. Charge now! [V/cell]
+#define BAT_LOW_DEAD            3.2      // undervoltage poweroff. (while not driving) [V/cell]
 
 #define DC_CUR_LIMIT     15         // DC current limit in amps per motor. so 15 means it will draw 30A out of your battery. it does not disable motors, it is a soft current limit.
 
@@ -76,70 +76,18 @@
 #define SUPPORT_NUNCHUCK
 //#define SUPPORT_REMOTE
 
-#define VEL_P     0.9
-#define ROT_P     -1.2
+#define ROT_P         -1.2  // P coefficient for the direction controller. Positive / Negative values to invert gametrak steering direction.
+#define FILTER         0.1  // lower value == softer filter. do not use values <0.01, you will get float precision issues.
 
+#define INVERT_R_DIRECTION  // Invert right motor
+#define INVERT_L_DIRECTION  // Invert left motor
 
-// ###### CONTROL VIA NINTENDO NUNCHUCK ######
-// left sensor board cable. keep cable short, use shielded cable, use ferrits, stabalize voltage in nunchuck, use the right one of the 2 types of nunchucks, add i2c pullups. use original nunchuck. most clones does not work very well.
-//#define CONTROL_NUNCHUCK            // use nunchuck as input. disable DEBUG_SERIAL_USART3!
-
-// ############################### DRIVING BEHAVIOR ###############################
-
-// inputs:
-// - cmd1 and cmd2: analog normalized input values. -1000 to 1000
-// - button1 and button2: digital input values. 0 or 1
-// - adc_buffer.l_tx2 and adc_buffer.l_rx2: unfiltered ADC values (you do not need them). 0 to 4095
-// outputs:
-// - speedR and speedL: normal driving -1000 to 1000
-// - weakr and weakl: field weakening for extra boost at high speed (speedR > 700 and speedL > 700). 0 to ~400
-
-#define FILTER              0.1  // lower value == softer filter. do not use values <0.01, you will get float precision issues.
+// during nunchuck control (only relevant when activated)
 #define SPEED_COEFFICIENT   0.9  // higher value == stronger. 0.0 to ~2.0?
 #define STEER_COEFFICIENT   0.5  // higher value == stronger. if you do not want any steering, set it to 0.0; 0.0 to 1.0
-#define INVERT_R_DIRECTION
-#define INVERT_L_DIRECTION
+
 #define BEEPS_BACKWARD 1    // 0 or 1
 
-//Turbo boost at high speeds while button1 is pressed:
-//#define ADDITIONAL_CODE \
-if (button1 && speedR > 700) { /* field weakening at high speeds */ \
-  weakl = cmd1 - 700; /* weak should never exceed 400 or 450 MAX!! */ \
-  weakr = cmd1 - 700; } \
-else { \
-  weakl = 0; \
-  weakr = 0; }
-
-// ###### SIMPLE BOBBYCAR ######
-// for better bobbycar code see: https://github.com/larsmm/hoverboard-firmware-hack-bbcar
-// #define FILTER              0.1
-// #define SPEED_COEFFICIENT   -1
-// #define STEER_COEFFICIENT   0
-
-// #define ADDITIONAL_CODE \
-if (button1 && speedR < 300) { /* drive backwards */ \
-  speedR = speedR * -0.2f;   \
-  speedL = speedL * -0.2f; } \
-else { \
-  direction = 1; } \
-if (button1 && speedR > 700) { /* field weakening at high speeds */ \
-  weakl = speedR - 600; /* weak should never exceed 400 or 450 MAX!! */ \
-  weakr = speedR - 600; } \
-else { \
-  weakl = 0; \
-  weakr = 0; }
-
-// ###### ARMCHAIR ######
-// #define FILTER              0.05
-// #define SPEED_COEFFICIENT   0.5
-// #define STEER_COEFFICIENT   -0.2
-
-// #define ADDITIONAL_CODE if (button1 && scale > 0.8) { /* field weakening at high speeds */ \
-  weakl = speedL - 600; /* weak should never exceed 400 or 450 MAX!! */ \
-  weakr = speedR - 600; } \
-else {\
-  weakl = 0;\
-  weakr = 0;
 
 // ############################### VALIDATE SETTINGS ###############################
 
