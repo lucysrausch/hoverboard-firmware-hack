@@ -108,6 +108,8 @@ void poweroff() {
         HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0); // shutdown  power
         while(1) {}
     } else {
+      speed=0;
+      steer=0;
       powerofftimer = 1000;
     }
 }
@@ -385,10 +387,13 @@ int main(void) {
 
 
     // ####### MIXER #######
-    speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
-    speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
-
-
+    #ifdef SWITCH_WHEELS
+      speedL = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
+      speedR = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
+    #else
+      speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
+      speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
+    #endif
 
     #ifdef ADDITIONAL_CODE
       ADDITIONAL_CODE;
@@ -408,6 +413,9 @@ int main(void) {
       pwml = speedL;
     #endif
     }
+
+
+
 
     lastSpeedL = speedL;
     lastSpeedR = speedR;

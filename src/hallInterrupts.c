@@ -206,8 +206,13 @@ void HallInterruptsInterrupt(void){
     __disable_irq(); // but we want both values at the same time, without interferance
     unsigned long time = h_timer_hall.Instance->CNT;
     long long timerwraps_copy = timerwraps;
+#ifdef SWITCH_WHEELS
+    local_hall_params[1].hall = (~(LEFT_HALL_U_PORT->IDR & (LEFT_HALL_U_PIN | LEFT_HALL_V_PIN | LEFT_HALL_W_PIN))/LEFT_HALL_U_PIN) & 7;
+    local_hall_params[0].hall = (~(RIGHT_HALL_U_PORT->IDR & (RIGHT_HALL_U_PIN | RIGHT_HALL_V_PIN | RIGHT_HALL_W_PIN))/RIGHT_HALL_U_PIN) & 7;
+#else
     local_hall_params[0].hall = (~(LEFT_HALL_U_PORT->IDR & (LEFT_HALL_U_PIN | LEFT_HALL_V_PIN | LEFT_HALL_W_PIN))/LEFT_HALL_U_PIN) & 7;
     local_hall_params[1].hall = (~(RIGHT_HALL_U_PORT->IDR & (RIGHT_HALL_U_PIN | RIGHT_HALL_V_PIN | RIGHT_HALL_W_PIN))/RIGHT_HALL_U_PIN) & 7;
+#endif
     __enable_irq();
 
     for (int i = 0; i < 2; i++){
