@@ -66,6 +66,15 @@ extern SPEED_DATA SpeedData;
 
 
 typedef struct {
+    uint8_t buzzerFreq;
+    uint8_t buzzerPattern;
+    uint16_t buzzerLen;
+} BUZZER;
+
+extern BUZZER Buzzer;
+
+
+typedef struct {
     // both of these values are absolute values ranging from -1000 to 1000
     // base_pwm plus/minus steer is the raw PWM value
     // wether steer is added or substracted depends on the side R/L

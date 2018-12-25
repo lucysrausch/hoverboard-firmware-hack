@@ -21,7 +21,7 @@
 #include "config.h"
 #include "protocol.h"
 #ifdef HALL_INTERRUPTS
-#include "hallinterrupts.h"
+    #include "hallinterrupts.h"
 #endif
 #include "comms.h"
 
@@ -89,7 +89,7 @@ extern int disablepoweroff;
 extern int powerofftimer;
 extern uint8_t buzzerFreq;    // global variable for the buzzer pitch. can be 1, 2, 3, 4, 5, 6, 7...
 extern uint8_t buzzerPattern; // global variable for the buzzer pattern. can be 1, 2, 3, 4, 5, 6, 7...
-extern int buzzerLen;
+extern uint16_t buzzerLen;
 extern int enablescope; // enable scope on values
 extern int steer; // global variable for steering. -1000 to 1000
 extern int speed; // global variable for speed. -1000 to 1000
@@ -126,6 +126,26 @@ PWM_STEER_CMD PwmSteerCmd = {
     .base_pwm = 0,
     .steer = 0,
 };
+
+BUZZER Buzzer = {
+    .buzzerFreq = 0,
+    .buzzerPattern = 0,
+    .buzzerLen = 0,
+};
+
+// after write we call this...
+void PostWrite_setbuzzer(void){
+    buzzerFreq      = Buzzer.buzzerFreq;
+    buzzerLen       = Buzzer.buzzerLen;
+    buzzerPattern   = Buzzer.buzzerPattern;
+}
+
+// before read we call this...
+void PreRead_getbuzzer(void){
+    Buzzer.buzzerFreq       = buzzerFreq;
+    Buzzer.buzzerLen        = buzzerLen;
+    Buzzer.buzzerPattern    = buzzerPattern;
+}
 
 int speed_control = 0; // incicates protocol driven
 
@@ -235,15 +255,20 @@ int version = 1;
 // NOTE: Don't start uistr with 'a'
 PARAMSTAT params[] = {
     { 0x00, NULL, NULL, UI_NONE, &version,           sizeof(version),        PARAM_R,    NULL,                  NULL, NULL, NULL },
+
 #ifdef HALL_INTERRUPTS
     { 0x02, NULL, NULL, UI_NONE, (void *)&HallData,  sizeof(HallData),       PARAM_R,    NULL,                  NULL, NULL, NULL },
 #endif
+
     { 0x03, NULL, NULL, UI_NONE, &SpeedData,         sizeof(SpeedData),      PARAM_RW,   PreRead_getspeeds,     NULL, NULL, PostWrite_setspeeds },
+
 #ifdef HALL_INTERRUPTS
     { 0x04, NULL, NULL, UI_NONE, &Position,          sizeof(Position),       PARAM_RW,   PreRead_getposnupdate, NULL, NULL, PostWrite_setposnupdate },
     { 0x06, NULL, NULL, UI_NONE, &PosnData,          sizeof(PosnData),       PARAM_RW,   NULL,                  NULL, NULL, NULL },
 #endif
-    { 0x07, NULL, NULL, UI_NONE, &PwmSteerCmd,       sizeof(PwmSteerCmd),    PARAM_RW,   PreRead_getspeeds,     NULL, NULL, PostWrite_setspeeds }
+
+    { 0x07, NULL, NULL, UI_NONE, &PwmSteerCmd,       sizeof(PwmSteerCmd),    PARAM_RW,   PreRead_getspeeds,     NULL, NULL, PostWrite_setspeeds },
+    { 0x08, NULL, NULL, UI_NONE, &Buzzer,            sizeof(Buzzer),         PARAM_RW,   PreRead_getbuzzer,     NULL, NULL, PostWrite_setbuzzer }
 };
 
 

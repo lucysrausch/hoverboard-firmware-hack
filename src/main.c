@@ -73,7 +73,7 @@ extern volatile int weakr; // global variable for field weakening right. -1000 t
 
 extern uint8_t buzzerFreq;    // global variable for the buzzer pitch. can be 1, 2, 3, 4, 5, 6, 7...
 extern uint8_t buzzerPattern; // global variable for the buzzer pattern. can be 1, 2, 3, 4, 5, 6, 7...
-int buzzerLen = 0;
+uint16_t buzzerLen = 0;
 
 extern uint8_t enable; // global variable for motor enable
 
