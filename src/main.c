@@ -91,27 +91,28 @@ int milli_vel_error_sum = 0;
 
 
 void poweroff() {
-    if (ABS(speed) < 20) {
-        buzzerPattern = 0;
-        enable = 0;
-        for (int i = 0; i < 8; i++) {
-            buzzerFreq = i;
+  enable = 0;    // disable Motors
+  if (ABS(speed) < 20) {
+    buzzerPattern = 0;
+    for (int i = 0; i < 8; i++) {
+      buzzerFreq = i;
+
 #ifdef SOFTWATCHDOG_TIMEOUT
-            for(int j = 0; j < 50; j++) {
-              __HAL_TIM_SET_COUNTER(&htim3, 0); // Kick the Watchdog
-              HAL_Delay(1);
-            }
-#else
-            HAL_Delay(100);
-#endif
-        }
-        HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0); // shutdown  power
-        while(1) {}
-    } else {
-      speed=0;
-      steer=0;
-      powerofftimer = 1000;
+      for(int j = 0; j < 50; j++) {
+        __HAL_TIM_SET_COUNTER(&htim3, 0); // Kick the Watchdog
+        HAL_Delay(1);
+      }
     }
+#else
+      HAL_Delay(100);
+    }
+#endif
+
+    HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0); // shutdown  power
+    while(1) {}
+  } else {
+    powerofftimer = 1000;
+  }
 }
 
 #ifdef CONTROL_SERIAL_NAIVE_CRC
@@ -456,7 +457,9 @@ int main(void) {
 
 
     // ####### BEEP AND EMERGENCY POWEROFF #######
-    if ((TEMP_POWEROFF_ENABLE && board_temp_deg_c >= TEMP_POWEROFF && ABS(speed) < 20) || (batteryVoltage < ((float)BAT_LOW_DEAD * (float)BAT_NUMBER_OF_CELLS) && ABS(speed) < 20)) {  // poweroff before mainboard burns OR low bat 3
+    if (TEMP_POWEROFF_ENABLE && board_temp_deg_c >= TEMP_POWEROFF && ABS(speed) < 20) {  // poweroff before mainboard burns
+      poweroff();
+    } else if (batteryVoltage < ((float)BAT_LOW_DEAD * (float)BAT_NUMBER_OF_CELLS) && ABS(speed) < 20) {  // poweroff low bat 3
       poweroff();
     } else if (TEMP_WARNING_ENABLE && board_temp_deg_c >= TEMP_WARNING) {  // beep if mainboard gets hot
       buzzerFreq = 4;
