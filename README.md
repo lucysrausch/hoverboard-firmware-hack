@@ -80,6 +80,10 @@ Have a look at the config.h in the Inc directory. That's where you configure to 
 Currently supported: Wii Nunchuck, analog potentiometer and PPM-Sum signal from a RC remote.
 If you need additional features like a boost button, have a look at the while(1) loop in the main.c
 
+### Additional Hardware
+
+* [breakout/interconnect boards](https://github.com/Jan--Henrik/hoverboard-breakout)  Breakout/Interconnection boards for hoverboard hacking.
+
 ### Projects based on it
 * [bobbycar-optimized firmware](https://github.com/larsmm/hoverboard-firmware-hack-bbcar)  based on this one with driving modes, acceleration ramps and some other features
 * [wheel chair](https://github.com/Lahorde/steer_speed_ctrl) controlled with a joystick or using a CC2650 sensortag to control it over  bluetooth with pitch/roll.
