@@ -23,7 +23,10 @@
 #include "defines.h"
 #include "setup.h"
 #include "config.h"
+#include "comms.h"
 //#include "hd44780.h"
+
+#include <stdlib.h>	//for abs()
 
 void SystemClock_Config(void);
 
