@@ -8,6 +8,7 @@
 
 TIM_HandleTypeDef TimHandle;
 uint8_t ppm_count = 0;
+uint8_t pwm_count = 0;
 uint32_t timeout = 100;
 uint8_t nunchuck_data[6] = {0};
 
@@ -65,6 +66,77 @@ void PPM_Init() {
   /*Configure GPIO pin : PA3 */
   GPIO_InitStruct.Pin = GPIO_PIN_3;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  __HAL_RCC_TIM2_CLK_ENABLE();
+  TimHandle.Instance = TIM2;
+  TimHandle.Init.Period = UINT16_MAX;
+  TimHandle.Init.Prescaler = (SystemCoreClock/DELAY_TIM_FREQUENCY_US)-1;;
+  TimHandle.Init.ClockDivision = 0;
+  TimHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
+  HAL_TIM_Base_Init(&TimHandle);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI3_IRQn);
+  HAL_TIM_Base_Start(&TimHandle);
+}
+#endif
+
+
+#ifdef CONTROL_PWM
+uint16_t pwm_captured_value = 500;
+uint16_t pwm_captured_value_buffer = 500;
+uint32_t pwm_timeout = 0;
+
+bool pwm_valid = true;
+
+#define IN_RANGE(x, low, up) (((x) >= (low)) && ((x) <= (up)))
+
+int PWM_Signal_Correct(x, max, min) {
+  int outVal = 0;
+  if(x > -100 && x < 100) {
+    outVal = 0;
+  } else if(x > 0) {
+    outVal = (float)x / max * 1000;
+  } else {
+    outVal = 0 - ((float)x / min * 1000);
+  }
+  return outVal;
+}
+
+void PWM_ISR_Callback() {
+  // Dummy loop with 16 bit count wrap around
+  uint16_t rc_signal = TIM2->CNT;
+  TIM2->CNT = 0;
+
+  if (IN_RANGE(rc_signal, 900, 2100)){
+    timeout = 0;
+    pwm_timeout = 0;
+    pwm_captured_value = CLAMP(rc_signal, 1000, 2000) - 1000;
+    pwm_valid = true;
+  } else {
+    pwm_valid = false;
+  }
+}
+
+// SysTick executes once each ms
+void PWM_SysTick_Callback() {
+  pwm_timeout++;
+  // Stop after 500 ms without PPM signal
+  if(pwm_timeout > 500) {
+    pwm_captured_value = 500;
+    pwm_timeout = 0;
+  }
+}
+
+void PWM_Init() {
+  GPIO_InitTypeDef GPIO_InitStruct;
+  /*Configure GPIO pin : PA3 */
+  GPIO_InitStruct.Pin = GPIO_PIN_3;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);

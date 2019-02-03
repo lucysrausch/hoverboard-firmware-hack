@@ -73,6 +73,10 @@ extern uint8_t nunchuck_data[6];
 extern volatile uint16_t ppm_captured_value[PPM_NUM_CHANNELS+1];
 #endif
 
+#ifdef CONTROL_PWM
+extern volatile uint16_t pwm_captured_value;
+#endif
+
 int milli_vel_error_sum = 0;
 
 
@@ -120,6 +124,8 @@ int main(void) {
 
   #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
     UART_Init();
+
+    consoleLog("Test");
   #endif
 
   HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 1);
@@ -143,6 +149,10 @@ int main(void) {
     PPM_Init();
   #endif
 
+  #ifdef CONTROL_PWM
+    PWM_Init();
+  #endif
+
   #ifdef CONTROL_NUNCHUCK
     I2C_Init();
     Nunchuck_Init();
@@ -162,6 +172,7 @@ int main(void) {
       lcd.NUMBER_OF_LINES = NUMBER_OF_LINES_2;
       lcd.type = TYPE0;
 
+      LCD_Init(&lcd);
       if(LCD_Init(&lcd)!=LCD_OK){
           // error occured
           //TODO while(1);
@@ -197,6 +208,12 @@ int main(void) {
       cmd2 = CLAMP((ppm_captured_value[1] - 500) * 2, -1000, 1000);
       button1 = ppm_captured_value[5] > 500;
       float scale = ppm_captured_value[2] / 1000.0f;
+    #endif
+
+    #ifdef CONTROL_PWM
+      cmd1 = 0;
+      cmd2 = CLAMP(PWM_Signal_Correct((pwm_captured_value - 500) * 2, PWM_CH2_MAX, PWM_CH2_MIN), -1000, 1000);
+      button1 = 0;
     #endif
 
     #ifdef CONTROL_ADC
@@ -235,7 +252,7 @@ int main(void) {
 
 
     // ####### SET OUTPUTS #######
-    if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
+    if ((speedL < lastSpeedL + 100 && speedL > lastSpeedL - 100) && (speedR < lastSpeedR + 100 && speedR > lastSpeedR - 100) && timeout < TIMEOUT) {
     #ifdef INVERT_R_DIRECTION
       pwmr = speedR;
     #else
@@ -261,6 +278,10 @@ int main(void) {
       #ifdef CONTROL_ADC
         setScopeChannel(0, (int)adc_buffer.l_tx2);  // 1: ADC1
         setScopeChannel(1, (int)adc_buffer.l_rx2);  // 2: ADC2
+      #endif
+      #ifdef CONTROL_PWM
+        setScopeChannel(0, cmd1);  // 1: CH1
+        setScopeChannel(1, cmd2);  // 2: CH2
       #endif
       setScopeChannel(2, (int)speedR);  // 3: output speed: 0-1000
       setScopeChannel(3, (int)speedL);  // 4: output speed: 0-1000

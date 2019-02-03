@@ -50,12 +50,12 @@ startup_stm32f103xe.s
 #######################################
 # binaries
 #######################################
-PREFIX = arm-none-eabi-
-CC = $(PREFIX)gcc
-AS = $(PREFIX)gcc -x assembler-with-cpp
-CP = $(PREFIX)objcopy
-AR = $(PREFIX)ar
-SZ = $(PREFIX)size
+PREFIX = "C:/Program Files (x86)/GNU Tools Arm Embedded/7 2018-q2-update/bin/arm-none-eabi-
+CC = $(PREFIX)gcc"
+AS = $(PREFIX)gcc" -x assembler-with-cpp
+CP = $(PREFIX)objcopy"
+AR = $(PREFIX)ar"
+SZ = $(PREFIX)size"
 HEX = $(CP) -O ihex
 BIN = $(CP) -O binary -S
 
