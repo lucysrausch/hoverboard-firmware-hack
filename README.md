@@ -59,6 +59,45 @@ Probably the most reliable Method. 2 Potis can be connected to one of the old se
 A nunchuck, which communicates via I2C can be connected to the board. Have a look into the troubleshooting section if you have trouble with the Nunchucks.
 #### UART
 A complete protocol is implemented to communicate with the board. Have a look at protocol.c to find out how it works.
+Sample code to send speed and steer:
+
+` setHoverboardPWM(200,50); // sends 200 as speed and 50 steer `
+```
+typedef struct MsgToHoverboard_t{
+  unsigned char SOM;  // 0x02
+  unsigned char len;  // len is len of ALL bytes to follow, including CS
+  unsigned char cmd;  // 'W'
+  unsigned char code; // code of value to write
+  int16_t base_pwm;   // absolute value ranging from -1000 to 1000 .. base_pwm plus/minus steer is the raw PWM value
+  int16_t steer;      // absolute value ranging from -1000 to 1000 .. wether steer is added or substracted depends on the side R/L
+  unsigned char CS;   // checksumm
+};
+
+typedef union UART_Packet_t{
+  MsgToHoverboard_t msgToHover;
+  byte UART_Packet[sizeof(MsgToHoverboard_t)];
+};
+
+void setHoverboardPWM( int16_t base_pwm, int16_t steer )
+{
+  UART_Packet_t ups;
+
+  ups.msgToHover.SOM = 2 ;  // PROTOCOL_SOM; //Start of Message;
+  ups.msgToHover.len = 7;   // payload + SC only
+  ups.msgToHover.cmd  = 'W'; // PROTOCOL_CMD_WRITEVAL;  // Write value
+  ups.msgToHover.code = 0x07; // speed data from params array
+  ups.msgToHover.base_pwm = base_pwm;
+  ups.msgToHover.steer = steer;
+  ups.msgToHover.CS = 0;
+
+  for (int i = 0; i < ups.msgToHover.len; i++){
+    ups.msgToHover.CS -= ups.UART_Packet[i+1];
+  }
+
+  Serial1.write(ups.UART_Packet,sizeof(UART_Packet_t));
+}
+```
+a project which makes use of the protocol (ESP32) can be found at https://github.com/p-h-a-i-l/hoverboard-control
 
 ---
 
