@@ -63,10 +63,15 @@
 //#define PPM_NUM_CHANNELS 6          // total number of PPM channels to receive, even if they are not used.
 
 // ###### CONTROL VIA RC REMOTE PWM ######
-// left sensor board cable. Channel 1: steering, Channel 2: speed.
+// left sensor board cable. Connect PA2 to channel 1 and PA3 to channel 2 on receiver.
+// Channel 1: steering, Channel 2: speed.
 #define CONTROL_PWM                 // use RC PWM as input. disable DEBUG_SERIAL_USART2!
-#define PWM_CH2_MAX 550
-#define PWM_CH2_MIN -800
+#define PWM_DEADBAND 100            // How much of the center position is considered 'center' (100 = values -100 to 100 are considered 0)
+// Min / Max values of each channel (use DEBUG to determine these values)
+#define PWM_CH1_MAX 1000            // (0 - 1000)
+#define PWM_CH1_MIN -1000           // (-1000 - 0)
+#define PWM_CH2_MAX 500             // (0 - 1000)
+#define PWM_CH2_MIN -800            // (-1000 - 0)
 
 // ###### CONTROL VIA TWO POTENTIOMETERS ######
 // ADC-calibration to cover the full poti-range: connect potis to left sensor board cable (0 to 3.3V) (do NOT use the red 15V wire in the cable!). see <How to calibrate>. turn the potis to minimum position, write value 1 to ADC1_MIN and value 2 to ADC2_MIN. turn to maximum position and repeat it for ADC?_MAX. make, flash and test it.
