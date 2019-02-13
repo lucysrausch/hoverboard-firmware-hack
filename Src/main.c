@@ -200,7 +200,6 @@ int main(void) {
     #endif
 
     #ifdef CONTROL_ADC
-      cmd1 = CLAMP(adc_buffer.l_tx2 - ADC1_MIN, 0, ADC1_MAX) / (ADC1_MAX / 1000.0f);  // ADC1
         if(adc_buffer.l_tx2 < ADC1_ZERO) {
           cmd1 = (CLAMP(adc_buffer.l_tx2, ADC1_MIN, ADC1_ZERO) - ADC1_ZERO) / ((ADC1_ZERO - ADC1_MIN) / ADC1_MULT_NEG); // ADC1 - Steer
         } else {
