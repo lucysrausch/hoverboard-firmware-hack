@@ -203,7 +203,6 @@ int main(void) {
       // ADC values range: 0-4095, see ADC-calibration in config.h
       cmd1 = CLAMP(adc_buffer.l_tx2 - ADC1_MIN, 0, ADC1_MAX) / (ADC1_MAX / 1000.0f);  // ADC1
       cmd1 = (cmd1 - 500) * 2; // steer stick zero  in middle position  for allow left/right rotation   
-      cmd2 = CLAMP(adc_buffer.l_rx2 - ADC2_MIN, 0, ADC2_MAX) / (ADC2_MAX / 1000.0f);  // ADC2
      #endif 
      // use ADCs as button inputs:
       button1 = (uint8_t)(adc_buffer.l_tx2 > 2000);  // ADC1
