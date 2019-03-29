@@ -61,9 +61,7 @@ st-flash --reset write build/hover.bin 0x8000000
 ```
 or
 ```
-
 openocd -f interface/stlink-v2.cfg -f target/stm32f1x.cfg -c flash "write_image erase /path/to/my_firmware.img 0x8000000"
-
 ```
 
 ---
