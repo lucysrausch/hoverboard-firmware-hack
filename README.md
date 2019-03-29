@@ -35,6 +35,8 @@ http://vocke.tv/lib/exe/fetch.php?media=20150722_hoverboard_sch.pdf
 ## Flashing
 To build the firmware, just type "make". Make sure you have specified your gcc-arm-none-eabi binary location in the Makefile ("PREFIX = ...") (version 7 works, there is a version that does not!) (if the ons in linux repos do not work, use the official version: https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads). Right to the STM32, there is a debugging header with GND, 3V3, SWDIO and SWCLK. Connect GND, SWDIO and SWCLK to your SWD programmer, like the ST-Link found on many STM devboards.
 
+Do not power the mainboard from the 3.3V of your programmer! This has already killed multiple mainboards.
+
 Make sure you hold the powerbutton or connect a jumper to the power button pins while flashing the firmware, as the STM might release the power latch and switches itself off during flashing. Battery > 36V have to be connected while flashing.
 
 To flash the STM32, use the ST-Flash utility (https://github.com/texane/stlink).
@@ -78,6 +80,9 @@ Most robust way for input is to use the ADC and potis. It works well even on 1m 
 
 Have a look at the config.h in the Inc directory. That's where you configure to firmware to match your project.
 Currently supported: Wii Nunchuck, analog potentiometer and PPM-Sum signal from a RC remote.
+A good example of control via UART, eg. from an Arduino or raspberryPi, can be found here:
+https://github.com/p-h-a-i-l/hoverboard-firmware-hack
+
 If you need additional features like a boost button, have a look at the while(1) loop in the main.c
 
 ### Additional Hardware
