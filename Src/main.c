@@ -201,8 +201,11 @@ int main(void) {
 
     #ifdef CONTROL_ADC
       // ADC values range: 0-4095, see ADC-calibration in config.h
-      cmd1 = CLAMP(adc_buffer.l_tx2 - ADC1_MIN, 0, ADC1_MAX) / (ADC1_MAX / 1000.0f);  // ADC1
-      cmd2 = CLAMP(adc_buffer.l_rx2 - ADC2_MIN, 0, ADC2_MAX) / (ADC2_MAX / 1000.0f);  // ADC2
+
+      #define ADC1_RANGE (ADC1_MAX - ADC1_MIN)
+      #define ADC2_RANGE (ADC2_MAX - ADC2_MIN)
+      cmd1 = CLAMP(adc_buffer.l_tx2 - ADC1_MIN, 0, ADC1_RANGE) * (2000.0f / ADC1_RANGE) - 1000.0f; // ADC1
+      cmd2 = CLAMP(adc_buffer.l_rx2 - ADC2_MIN, 0, ADC2_RANGE) * (2000.0f / ADC2_RANGE) - 1000.0f; // ADC2
 
       // use ADCs as button inputs:
       button1 = (uint8_t)(adc_buffer.l_tx2 > 2000);  // ADC1
