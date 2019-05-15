@@ -23,6 +23,7 @@
 #include "defines.h"
 #include "setup.h"
 #include "config.h"
+#include <stdbool.h>
 //#include "hd44780.h"
 
 void SystemClock_Config(void);
@@ -74,9 +75,15 @@ extern volatile uint16_t ppm_captured_value[PPM_NUM_CHANNELS+1];
 #endif
 
 #ifdef CONTROL_PWM
-extern volatile uint16_t pwm_captured_ch1_value;
+//extern volatile uint16_t pwm_captured_ch1_value;
 extern volatile uint16_t pwm_captured_ch2_value;
 #endif
+
+#ifdef BUTTONS_RIGHT
+extern volatile bool btn1;  // Blue
+extern volatile bool btn2;  // Green
+#endif
+
 
 int milli_vel_error_sum = 0;
 
@@ -140,9 +147,26 @@ int main(void) {
   }
   buzzerFreq = 0;
 
+  #ifdef BUTTONS_RIGHT
+    BUTTONS_RIGHT_Init();
+
+    if(btn1) {
+      HAL_Delay(1000);
+      buzzerFreq = 8;
+      HAL_Delay(100);
+      buzzerFreq = 0;
+    }
+    if(btn2) {
+      HAL_Delay(1000);
+      buzzerFreq = 2;
+      HAL_Delay(100);
+      buzzerFreq = 0;
+    }
+  #endif
+
   HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
 
-  int lastSpeedL = 0, lastSpeedR = 0;
+  int lastSpeedL = 0, lastSpeedR = 0, lastSpeed = 0;
   int speedL = 0, speedR = 0;
   float direction = 1;
 
@@ -212,7 +236,7 @@ int main(void) {
     #endif
 
     #ifdef CONTROL_PWM
-      cmd1 = CLAMP(PWM_Signal_Correct((pwm_captured_ch1_value - 500) * 2, PWM_CH1_MAX, PWM_CH1_MIN), -1000, 1000);
+      cmd1 = 0; // CLAMP(PWM_Signal_Correct((pwm_captured_ch1_value - 500) * 2, PWM_CH1_MAX, PWM_CH1_MIN), -1000, 1000);
       cmd2 = CLAMP(PWM_Signal_Correct((pwm_captured_ch2_value - 500) * 2, PWM_CH2_MAX, PWM_CH2_MIN), -1000, 1000);
       button1 = 0;
     #endif
@@ -242,6 +266,18 @@ int main(void) {
     speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
 
 
+    // Smoother braking
+    if((speed > 0 && speed < lastSpeed) || (speed < 0 && speed > lastSpeed)) { 
+      speed = lastSpeed * (1.0 - BRAKE_FILTER) + cmd2 * BRAKE_FILTER;
+    }
+
+    // Disable motors when throttle is in neutral
+    if(cmd2 == 0) {
+      enable = 0;
+    } else {
+      enable = 1;
+    }
+
     // ####### MIXER #######
     speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
     speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
@@ -266,6 +302,7 @@ int main(void) {
     #endif
     }
 
+    lastSpeed = speed;
     lastSpeedL = speedL;
     lastSpeedR = speedR;
 
@@ -281,7 +318,7 @@ int main(void) {
         setScopeChannel(1, (int)adc_buffer.l_rx2);  // 2: ADC2
       #endif
       #ifdef CONTROL_PWM
-        setScopeChannel(0, pwm_captured_ch1_value);  // 1: CH1
+        setScopeChannel(0, 0);//pwm_captured_ch1_value);  // 1: CH1
         setScopeChannel(1, pwm_captured_ch2_value);  // 2: CH2
       #endif
       setScopeChannel(2, (int)speedR);  // 3: output speed: 0-1000

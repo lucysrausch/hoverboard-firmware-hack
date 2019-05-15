@@ -45,7 +45,7 @@
 
 // ############################### SERIAL DEBUG ###############################
 
-#define DEBUG_SERIAL_USART3         // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
+//#define DEBUG_SERIAL_USART3         // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
 #define DEBUG_BAUD       115200     // UART baud rate
 //#define DEBUG_SERIAL_SERVOTERM
 #define DEBUG_SERIAL_ASCII          // "1:345 2:1337 3:0 4:0 5:0 6:0 7:0 8:0\r\n"
@@ -73,6 +73,12 @@
 #define PWM_CH2_MAX 500             // (0 - 1000)
 #define PWM_CH2_MIN -800            // (-1000 - 0)
 
+
+
+// ###### RIGHT SENSOR BOARD CABLE BUTTONS ######
+// right sensor board cable. Only read once during startup
+#define BUTTONS_RIGHT                 // use right sensor board cable for button inputs. Disable DEBUG_SERIAL_USART3!
+
 // ###### CONTROL VIA TWO POTENTIOMETERS ######
 // ADC-calibration to cover the full poti-range: connect potis to left sensor board cable (0 to 3.3V) (do NOT use the red 15V wire in the cable!). see <How to calibrate>. turn the potis to minimum position, write value 1 to ADC1_MIN and value 2 to ADC2_MIN. turn to maximum position and repeat it for ADC?_MAX. make, flash and test it.
 //#define CONTROL_ADC                 // use ADC as input. disable DEBUG_SERIAL_USART2!
@@ -95,12 +101,15 @@
 // - speedR and speedL: normal driving -1000 to 1000
 // - weakr and weakl: field weakening for extra boost at high speed (speedR > 700 and speedL > 700). 0 to ~400
 
-#define FILTER              0.2  // lower value == softer filter. do not use values <0.01, you will get float precision issues.
-#define SPEED_COEFFICIENT   0.5  // higher value == stronger. 0.0 to ~2.0?
-#define STEER_COEFFICIENT   0.5  // higher value == stronger. if you do not want any steering, set it to 0.0; 0.0 to 1.0
+#define FILTER              0.1  // lower value == softer filter. do not use values <0.01, you will get float precision issues.
+#define SPEED_COEFFICIENT   1  // higher value == stronger. 0.0 to ~2.0?
+#define STEER_COEFFICIENT   0.0  // higher value == stronger. if you do not want any steering, set it to 0.0; 0.0 to 1.0
 #define INVERT_R_DIRECTION
 #define INVERT_L_DIRECTION
 #define BEEPS_BACKWARD 0    // 0 or 1
+#define BRAKE_FILTER        0.01f // Replaces FILTER while braking
+
+#define ADDITIONAL_CODE
 
 //Turbo boost at high speeds while button1 is pressed:
 //#define ADDITIONAL_CODE \

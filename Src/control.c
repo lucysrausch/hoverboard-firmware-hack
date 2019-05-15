@@ -86,9 +86,37 @@ void PPM_Init() {
 }
 #endif
 
+#ifdef BUTTONS_RIGHT
+
+bool btn1 = false;
+bool btn2 = false;
+
+void BUTTONS_RIGHT_Init() {
+  GPIO_InitTypeDef GPIO_InitStruct;
+  /*Configure GPIO pin : PB10 */
+  GPIO_InitStruct.Pin = GPIO_PIN_10;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  btn1 = !HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10);
+
+  GPIO_InitTypeDef GPIO_InitStruct2;
+  /*Configure GPIO pin : PB11 */
+  GPIO_InitStruct2.Pin = GPIO_PIN_11;
+  GPIO_InitStruct2.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct2.Speed = GPIO_SPEED_FREQ_MEDIUM;
+  GPIO_InitStruct2.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct2);
+
+  btn2 = !HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_11);
+}
+
+#endif
 
 #ifdef CONTROL_PWM
-uint16_t pwm_captured_ch1_value = 500;
+//uint16_t pwm_captured_ch1_value = 500;
 uint16_t pwm_captured_ch2_value = 500;
 uint32_t pwm_timeout = 0;
 
@@ -99,13 +127,14 @@ int PWM_Signal_Correct(x, max, min) {
   if(x > -PWM_DEADBAND && x < PWM_DEADBAND) {
     outVal = 0;
   } else if(x > 0) {
-    outVal = (float)CLAMP(x-PWM_DEADBAND, 0, 1000) / max * 1000;
+    outVal = (float)CLAMP(x-PWM_DEADBAND, 0, max - PWM_DEADBAND) / (max - PWM_DEADBAND) * 1000;
   } else {
-    outVal = 0 - ((float)CLAMP(x+PWM_DEADBAND, -1000, 0) / min * 1000);
+    outVal = 0 - ((float)CLAMP(x+PWM_DEADBAND, min + PWM_DEADBAND, 0) / (min + PWM_DEADBAND) * 1000);
   }
   return outVal;
 }
 
+/*
 void PWM_ISR_CH1_Callback() {
   // Dummy loop with 16 bit count wrap around
   uint16_t rc_signal = TIM3->CNT;
@@ -117,6 +146,7 @@ void PWM_ISR_CH1_Callback() {
     pwm_captured_ch1_value = CLAMP(rc_signal, 1000, 2000) - 1000;
   }
 }
+*/
 
 void PWM_ISR_CH2_Callback() {
   // Dummy loop with 16 bit count wrap around
@@ -135,7 +165,7 @@ void PWM_SysTick_Callback() {
   pwm_timeout++;
   // Stop after 500 ms without PPM signal
   if(pwm_timeout > 500) {
-    pwm_captured_ch1_value = 500;
+    //pwm_captured_ch1_value = 500;
     pwm_captured_ch2_value = 500;
     pwm_timeout = 0;
   }
@@ -143,9 +173,9 @@ void PWM_SysTick_Callback() {
 
 void PWM_Init() {
   // Channel 1 (steering)
-
+  /*
   GPIO_InitTypeDef GPIO_InitStruct2;
-  /*Configure GPIO pin : PA2 */
+  // Configure GPIO pin : PA2
   GPIO_InitStruct2.Pin = GPIO_PIN_2;
   GPIO_InitStruct2.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct2.Speed = GPIO_SPEED_FREQ_HIGH;
@@ -160,10 +190,11 @@ void PWM_Init() {
   TimHandle2.Init.CounterMode = TIM_COUNTERMODE_UP;
   HAL_TIM_Base_Init(&TimHandle2);
 
-  /* EXTI interrupt init*/
+  // EXTI interrupt init
   HAL_NVIC_SetPriority(EXTI2_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI2_IRQn);
   HAL_TIM_Base_Start(&TimHandle2);
+*/
 
   // Channel 2 (speed)
 
