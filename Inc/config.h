@@ -108,6 +108,7 @@
 #define INVERT_L_DIRECTION
 #define BEEPS_BACKWARD 0    // 0 or 1
 #define BRAKE_FILTER        0.01f // Replaces FILTER while braking
+#define KIDDIE_MODE_REDUCTION 0.5f  // Reduce max speed and acceleration based on switch 
 
 #define ADDITIONAL_CODE
 

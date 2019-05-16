@@ -53,6 +53,8 @@ uint8_t button1, button2;
 
 int steer; // global variable for steering. -1000 to 1000
 int speed; // global variable for speed. -1000 to 1000
+float filter; // Filter limiting acceleration
+float speed_factor; // Reduction of speed
 
 extern volatile int pwml;  // global variable for pwm left. -1000 to 1000
 extern volatile int pwmr;  // global variable for pwm right. -1000 to 1000
@@ -147,16 +149,22 @@ int main(void) {
   }
   buzzerFreq = 0;
 
+  filter = FILTER;
+  speed_factor = 1;
+
   #ifdef BUTTONS_RIGHT
     BUTTONS_RIGHT_Init();
 
-    if(btn1) {
+    if(btn1) {  // Kiddie-mode (Speed and Acceleration reduced by 50%)
       HAL_Delay(1000);
       buzzerFreq = 8;
       HAL_Delay(100);
       buzzerFreq = 0;
+
+      filter = filter * KIDDIE_MODE_REDUCTION;
+      speed_factor = KIDDIE_MODE_REDUCTION;
     }
-    if(btn2) {
+    if(btn2) {  // Does nothing for now
       HAL_Delay(1000);
       buzzerFreq = 2;
       HAL_Delay(100);
@@ -262,8 +270,8 @@ int main(void) {
 
 
     // ####### LOW-PASS FILTER #######
-    steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
-    speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
+    steer = steer * (1.0 - filter) + cmd1 * filter;
+    speed = speed * (1.0 - filter) + cmd2 * filter;
 
 
     // Smoother braking
@@ -279,8 +287,8 @@ int main(void) {
     }
 
     // ####### MIXER #######
-    speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
-    speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
+    speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000) * speed_factor;
+    speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000) * speed_factor;
 
 
     #ifdef ADDITIONAL_CODE
