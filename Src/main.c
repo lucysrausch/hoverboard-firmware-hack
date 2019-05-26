@@ -23,7 +23,12 @@
 #include "defines.h"
 #include "setup.h"
 #include "config.h"
+#include <stdlib.h>
 //#include "hd44780.h"
+
+// Matlab includes - from auto-code generation
+#include "BLDC_controller.h"           /* Model's header file */
+#include "rtwtypes.h"
 
 void SystemClock_Config(void);
 
@@ -38,7 +43,6 @@ extern UART_HandleTypeDef huart2;
 
 int cmd1;  // normalized input values. -1000 to 1000
 int cmd2;
-int cmd3;
 
 typedef struct{
    int16_t steer;
@@ -55,8 +59,6 @@ int speed; // global variable for speed. -1000 to 1000
 
 extern volatile int pwml;  // global variable for pwm left. -1000 to 1000
 extern volatile int pwmr;  // global variable for pwm right. -1000 to 1000
-extern volatile int weakl; // global variable for field weakening left. -1000 to 1000
-extern volatile int weakr; // global variable for field weakening right. -1000 to 1000
 
 extern uint8_t buzzerFreq;    // global variable for the buzzer pitch. can be 1, 2, 3, 4, 5, 6, 7...
 extern uint8_t buzzerPattern; // global variable for the buzzer pattern. can be 1, 2, 3, 4, 5, 6, 7...
@@ -77,7 +79,7 @@ int milli_vel_error_sum = 0;
 
 
 void poweroff() {
-    if (abs(speed) < 20) {
+  //  if (abs(speed) < 20) {  // wait for the speed to drop, then shut down -> this is commented out for SAFETY reasons
         buzzerPattern = 0;
         enable = 0;
         for (int i = 0; i < 8; i++) {
@@ -86,11 +88,12 @@ void poweroff() {
         }
         HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0);
         while(1) {}
-    }
+  //  }
 }
 
 
 int main(void) {
+
   HAL_Init();
   __HAL_RCC_AFIO_CLK_ENABLE();
   HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
@@ -127,6 +130,19 @@ int main(void) {
   HAL_ADC_Start(&hadc1);
   HAL_ADC_Start(&hadc2);
 
+//////////////////////////////////////
+  
+  /* Set BLDC controller parameters */
+  rtP.z_ctrlTypSel        = CTRL_TYP_SEL;
+  rtP.b_phaAdvEna         = PHASE_ADV_ENA;
+  rtP.n_commDeacvHi       = COMM_DEACV_HI;
+  rtP.n_commAcvLo         = COMM_ACV_LO;
+
+/* Initialize BLDC controller */
+  BLDC_controller_initialize();
+
+/////////////////////////////////////
+
   for (int i = 8; i >= 0; i--) {
     buzzerFreq = i;
     HAL_Delay(100);
@@ -137,7 +153,6 @@ int main(void) {
 
   int lastSpeedL = 0, lastSpeedR = 0;
   int speedL = 0, speedR = 0;
-  float direction = 1;
 
   #ifdef CONTROL_PPM
     PPM_Init();
@@ -180,6 +195,7 @@ int main(void) {
 
   enable = 1;  // enable motors
 
+
   while(1) {
     HAL_Delay(DELAY_IN_MAIN_LOOP); //delay in ms
 
@@ -201,8 +217,8 @@ int main(void) {
 
     #ifdef CONTROL_ADC
       // ADC values range: 0-4095, see ADC-calibration in config.h
-      cmd1 = CLAMP(adc_buffer.l_tx2 - ADC1_MIN, 0, ADC1_MAX) / (ADC1_MAX / 1000.0f);  // ADC1
-      cmd2 = CLAMP(adc_buffer.l_rx2 - ADC2_MIN, 0, ADC2_MAX) / (ADC2_MAX / 1000.0f);  // ADC2
+       cmd1 = CLAMP(adc_buffer.l_tx2 - ADC1_MIN, 0, ADC1_MAX) / (ADC1_MAX / 1000.0f);  // ADC1
+       cmd2 = CLAMP(adc_buffer.l_rx2 - ADC2_MIN, 0, ADC2_MAX) / (ADC2_MAX / 1000.0f);  // ADC2
 
       // use ADCs as button inputs:
       button1 = (uint8_t)(adc_buffer.l_tx2 > 2000);  // ADC1
@@ -217,7 +233,6 @@ int main(void) {
 
       timeout = 0;
     #endif
-
 
     // ####### LOW-PASS FILTER #######
     steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
@@ -234,7 +249,7 @@ int main(void) {
     #endif
 
 
-    // ####### SET OUTPUTS #######
+    // ####### SET OUTPUTS (if the target change less than +/- 50) #######
     if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
     #ifdef INVERT_R_DIRECTION
       pwmr = speedR;
@@ -256,24 +271,27 @@ int main(void) {
       // ####### CALC BOARD TEMPERATURE #######
       board_temp_adc_filtered = board_temp_adc_filtered * 0.99 + (float)adc_buffer.temp * 0.01;
       board_temp_deg_c = ((float)TEMP_CAL_HIGH_DEG_C - (float)TEMP_CAL_LOW_DEG_C) / ((float)TEMP_CAL_HIGH_ADC - (float)TEMP_CAL_LOW_ADC) * (board_temp_adc_filtered - (float)TEMP_CAL_LOW_ADC) + (float)TEMP_CAL_LOW_DEG_C;
-      
+
       // ####### DEBUG SERIAL OUT #######
       #ifdef CONTROL_ADC
-        setScopeChannel(0, (int)adc_buffer.l_tx2);  // 1: ADC1
-        setScopeChannel(1, (int)adc_buffer.l_rx2);  // 2: ADC2
+        // setScopeChannel(0, (int)adc_buffer.l_tx2);        // 1: ADC1
+        // setScopeChannel(1, (int)adc_buffer.l_rx2);        // 2: ADC2
       #endif
-      setScopeChannel(2, (int)speedR);  // 3: output speed: 0-1000
-      setScopeChannel(3, (int)speedL);  // 4: output speed: 0-1000
-      setScopeChannel(4, (int)adc_buffer.batt1);  // 5: for battery voltage calibration
-      setScopeChannel(5, (int)(batteryVoltage * 100.0f));  // 6: for verifying battery voltage calibration
-      setScopeChannel(6, (int)board_temp_adc_filtered);  // 7: for board temperature calibration
-      setScopeChannel(7, (int)board_temp_deg_c);  // 8: for verifying board temperature calibration
+      setScopeChannel(0, (int)speedR);                    // 1: output command: [-1000, 1000]
+      setScopeChannel(1, (int)speedL);                    // 2: output command: [-1000, 1000]
+      setScopeChannel(2, (int)rtY.n_motRight);            // 3: Real motor speed [rpm]
+      setScopeChannel(3, (int)rtY.n_motLeft);             // 4: Real motor speed [rpm]
+      setScopeChannel(4, (int)adc_buffer.batt1);          // 5: for battery voltage calibration
+      setScopeChannel(5, (int)(batteryVoltage * 100.0f)); // 6: for verifying battery voltage calibration
+      setScopeChannel(6, (int)board_temp_adc_filtered);   // 7: for board temperature calibration
+      setScopeChannel(7, (int)board_temp_deg_c);          // 8: for verifying board temperature calibration
+
       consoleScope();
     }
 
 
     // ####### POWEROFF BY POWER-BUTTON #######
-    if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN) && weakr == 0 && weakl == 0) {
+    if (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {
       enable = 0;
       while (HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) {}
       poweroff();
