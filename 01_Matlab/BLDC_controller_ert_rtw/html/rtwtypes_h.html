@@ -1,0 +1,128 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>RTW Report - rtwtypes.h</title>
+<link rel="stylesheet" type="text/css" href="rtwreport.css"></link><script language="JavaScript" type="text/javascript" src="rtwreport_utils.js"></script>
+<SCRIPT type="text/javascript" language="JavaScript" src="slwebview.js"></SCRIPT>
+<SCRIPT type="text/javascript" language="JavaScript" src="id_mapping.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="rtwannotate.js"></SCRIPT>
+</head>
+<body bgcolor="#eeeeee" onload="try {if (top) { if (top.rtwFileOnLoad) top.rtwFileOnLoad(window.document); else local_onload();}} catch(err) {};if (typeof rtwannotate === 'function') {rtwannotate('rtwtypes_h_cov.xml');}">
+<p>
+<table border="0" cellspacing="0" cellpadding="6" width="100%%" height="100%%"><tr><td width="100%%" valign="top" bgcolor="#ffffff">
+<h4>File: <a href="../rtwtypes.h" target="rtwreport_document_frame" id="linkToText_plain">rtwtypes.h</a></h4>
+<pre id="RTWcode">
+<span><a class="LN" name="1">    1   </a><span class="CT">/*</span>
+</span><span><a class="LN" name="2">    2   </a><span class="CT"> * Academic License - for use in teaching, academic research, and meeting</span>
+</span><span><a class="LN" name="3">    3   </a><span class="CT"> * course requirements at degree granting institutions only.  Not for</span>
+</span><span><a class="LN" name="4">    4   </a><span class="CT"> * government, commercial, or other organizational use.</span>
+</span><span><a class="LN" name="5">    5   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="6">    6   </a><span class="CT"> * File: rtwtypes.h</span>
+</span><span><a class="LN" name="7">    7   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="8">    8   </a><span class="CT"> * Code generated for Simulink model 'BLDC_controller'.</span>
+</span><span><a class="LN" name="9">    9   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model version                  : 1.800</span>
+</span><span><a class="LN" name="11">   11   </a><span class="CT"> * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017</span>
+</span><span><a class="LN" name="12">   12   </a><span class="CT"> * C/C++ source code generated on : Sat May 25 21:42:39 2019</span>
+</span><span><a class="LN" name="13">   13   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="14">   14   </a><span class="CT"> * Target selection: ert.tlc</span>
+</span><span><a class="LN" name="15">   15   </a><span class="CT"> * Embedded hardware selection: ARM Compatible-&gt;ARM Cortex</span>
+</span><span><a class="LN" name="16">   16   </a><span class="CT"> * Emulation hardware selection:</span>
+</span><span><a class="LN" name="17">   17   </a><span class="CT"> *    Differs from embedded hardware (MATLAB Host)</span>
+</span><span><a class="LN" name="18">   18   </a><span class="CT"> * Code generation objectives:</span>
+</span><span><a class="LN" name="19">   19   </a><span class="CT"> *    1. Execution efficiency</span>
+</span><span><a class="LN" name="20">   20   </a><span class="CT"> *    2. RAM efficiency</span>
+</span><span><a class="LN" name="21">   21   </a><span class="CT"> * Validation result: Not run</span>
+</span><span><a class="LN" name="22">   22   </a><span class="CT"> */</span>
+</span><span><a class="LN" name="23">   23   </a>
+</span><span><a class="LN" name="24">   24   </a><font color="#992211">#</font><span class="PP">ifndef</span> RTWTYPES_H
+</span><span><a class="LN" name="25">   25   </a><font color="#992211">#</font><span class="PP">define</span> RTWTYPES_H
+</span><span><a class="LN" name="26">   26   </a>
+</span><span><a class="LN" name="27">   27   </a><span class="CT">/* Logical type definitions */</span>
+</span><span><a class="LN" name="28">   28   </a><font color="#992211">#</font><span class="PP">if</span> (!<span class="PP">defined</span>(__cplusplus))
+</span><span><a class="LN" name="29">   29   </a><font color="#992211">#</font>  <span class="PP">ifndef</span> false
+</span><span><a class="LN" name="30">   30   </a><font color="#992211">#</font>   <span class="PP">define</span> false                       (0U)
+</span><span><a class="LN" name="31">   31   </a><font color="#992211">#</font>  <span class="PP">endif</span>
+</span><span><a class="LN" name="32">   32   </a>
+</span><span><a class="LN" name="33">   33   </a><font color="#992211">#</font>  <span class="PP">ifndef</span> true
+</span><span><a class="LN" name="34">   34   </a><font color="#992211">#</font>   <span class="PP">define</span> true                        (1U)
+</span><span><a class="LN" name="35">   35   </a><font color="#992211">#</font>  <span class="PP">endif</span>
+</span><span><a class="LN" name="36">   36   </a><font color="#992211">#</font><span class="PP">endif</span>
+</span><span><a class="LN" name="37">   37   </a>
+</span><span><a class="LN" name="38">   38   </a><span class="CT">/*=======================================================================*</span>
+</span><span><a class="LN" name="39">   39   </a><span class="CT"> * Target hardware information</span>
+</span><span><a class="LN" name="40">   40   </a><span class="CT"> *   Device type: MATLAB Host</span>
+</span><span><a class="LN" name="41">   41   </a><span class="CT"> *   Number of bits:     char:   8    short:   16    int:  32</span>
+</span><span><a class="LN" name="42">   42   </a><span class="CT"> *                       long:  32    long long:  64</span>
+</span><span><a class="LN" name="43">   43   </a><span class="CT"> *                       native word size:  64</span>
+</span><span><a class="LN" name="44">   44   </a><span class="CT"> *   Byte ordering: LittleEndian</span>
+</span><span><a class="LN" name="45">   45   </a><span class="CT"> *   Signed integer division rounds to: Zero</span>
+</span><span><a class="LN" name="46">   46   </a><span class="CT"> *   Shift right on a signed integer as arithmetic shift: on</span>
+</span><span><a class="LN" name="47">   47   </a><span class="CT"> *=======================================================================*/</span>
+</span><span><a class="LN" name="48">   48   </a>
+</span><span><a class="LN" name="49">   49   </a><span class="CT">/*=======================================================================*</span>
+</span><span><a class="LN" name="50">   50   </a><span class="CT"> * Fixed width word size data types:                                     *</span>
+</span><span><a class="LN" name="51">   51   </a><span class="CT"> *   int8_T, int16_T, int32_T     - signed 8, 16, or 32 bit integers     *</span>
+</span><span><a class="LN" name="52">   52   </a><span class="CT"> *   uint8_T, uint16_T, uint32_T  - unsigned 8, 16, or 32 bit integers   *</span>
+</span><span><a class="LN" name="53">   53   </a><span class="CT"> *   real32_T, real64_T           - 32 and 64 bit floating point numbers *</span>
+</span><span><a class="LN" name="54">   54   </a><span class="CT"> *=======================================================================*/</span>
+</span><span><a class="LN" name="55">   55   </a><span class="KW">typedef</span> <span class="DT">signed</span> <span class="DT">char</span> <a name="type_int8_T">int8_T</a>;
+</span><span><a class="LN" name="56">   56   </a><span class="KW">typedef</span> <span class="DT">unsigned</span> <span class="DT">char</span> <a name="type_uint8_T">uint8_T</a>;
+</span><span><a class="LN" name="57">   57   </a><span class="KW">typedef</span> <span class="DT">short</span> <a name="type_int16_T">int16_T</a>;
+</span><span><a class="LN" name="58">   58   </a><span class="KW">typedef</span> <span class="DT">unsigned</span> <span class="DT">short</span> <a name="type_uint16_T">uint16_T</a>;
+</span><span><a class="LN" name="59">   59   </a><span class="KW">typedef</span> <span class="DT">int</span> <a name="type_int32_T">int32_T</a>;
+</span><span><a class="LN" name="60">   60   </a><span class="KW">typedef</span> <span class="DT">unsigned</span> <span class="DT">int</span> <a name="type_uint32_T">uint32_T</a>;
+</span><span><a class="LN" name="61">   61   </a><span class="KW">typedef</span> <span class="DT">long</span> <span class="DT">long</span> <a name="type_int64_T">int64_T</a>;
+</span><span><a class="LN" name="62">   62   </a><span class="KW">typedef</span> <span class="DT">unsigned</span> <span class="DT">long</span> <span class="DT">long</span> <a name="type_uint64_T">uint64_T</a>;
+</span><span><a class="LN" name="63">   63   </a><span class="KW">typedef</span> <span class="DT">float</span> <a name="type_real32_T">real32_T</a>;
+</span><span><a class="LN" name="64">   64   </a><span class="KW">typedef</span> <span class="DT">double</span> <a name="type_real64_T">real64_T</a>;
+</span><span><a class="LN" name="65">   65   </a>
+</span><span><a class="LN" name="66">   66   </a><span class="CT">/*===========================================================================*</span>
+</span><span><a class="LN" name="67">   67   </a><span class="CT"> * Generic type definitions: boolean_T, char_T, byte_T, int_T, uint_T,       *</span>
+</span><span><a class="LN" name="68">   68   </a><span class="CT"> *                           real_T, time_T, ulong_T, ulonglong_T.           *</span>
+</span><span><a class="LN" name="69">   69   </a><span class="CT"> *===========================================================================*/</span>
+</span><span><a class="LN" name="70">   70   </a><span class="KW">typedef</span> <span class="DT">double</span> <a name="type_real_T">real_T</a>;
+</span><span><a class="LN" name="71">   71   </a><span class="KW">typedef</span> <span class="DT">double</span> <a name="type_time_T">time_T</a>;
+</span><span><a class="LN" name="72">   72   </a><span class="KW">typedef</span> <span class="DT">unsigned</span> <span class="DT">char</span> <a name="type_boolean_T">boolean_T</a>;
+</span><span><a class="LN" name="73">   73   </a><span class="KW">typedef</span> <span class="DT">int</span> <a name="type_int_T">int_T</a>;
+</span><span><a class="LN" name="74">   74   </a><span class="KW">typedef</span> <span class="DT">unsigned</span> <span class="DT">int</span> <a name="type_uint_T">uint_T</a>;
+</span><span><a class="LN" name="75">   75   </a><span class="KW">typedef</span> <span class="DT">unsigned</span> <span class="DT">long</span> <a name="type_ulong_T">ulong_T</a>;
+</span><span><a class="LN" name="76">   76   </a><span class="KW">typedef</span> <span class="DT">unsigned</span> <span class="DT">long</span> <span class="DT">long</span> <a name="type_ulonglong_T">ulonglong_T</a>;
+</span><span><a class="LN" name="77">   77   </a><span class="KW">typedef</span> <span class="DT">char</span> <a name="type_char_T">char_T</a>;
+</span><span><a class="LN" name="78">   78   </a><span class="KW">typedef</span> <span class="DT">unsigned</span> <span class="DT">char</span> <a name="type_uchar_T">uchar_T</a>;
+</span><span><a class="LN" name="79">   79   </a><span class="KW">typedef</span> <a href="#type_char_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_char_T');" target="_self"><font color="#1122aa">char_T</font></a> <a name="type_byte_T">byte_T</a>;
+</span><span><a class="LN" name="80">   80   </a>
+</span><span><a class="LN" name="81">   81   </a><span class="CT">/*=======================================================================*</span>
+</span><span><a class="LN" name="82">   82   </a><span class="CT"> * Min and Max:                                                          *</span>
+</span><span><a class="LN" name="83">   83   </a><span class="CT"> *   int8_T, int16_T, int32_T     - signed 8, 16, or 32 bit integers     *</span>
+</span><span><a class="LN" name="84">   84   </a><span class="CT"> *   uint8_T, uint16_T, uint32_T  - unsigned 8, 16, or 32 bit integers   *</span>
+</span><span><a class="LN" name="85">   85   </a><span class="CT"> *=======================================================================*/</span>
+</span><span><a class="LN" name="86">   86   </a><font color="#992211">#</font><span class="PP">define</span> MAX_int8_T                     ((<a href="#type_int8_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int8_T');" target="_self"><font color="#1122aa">int8_T</font></a>)(127))
+</span><span><a class="LN" name="87">   87   </a><font color="#992211">#</font><span class="PP">define</span> MIN_int8_T                     ((<a href="#type_int8_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int8_T');" target="_self"><font color="#1122aa">int8_T</font></a>)(-128))
+</span><span><a class="LN" name="88">   88   </a><font color="#992211">#</font><span class="PP">define</span> MAX_uint8_T                    ((<a href="#type_uint8_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint8_T');" target="_self"><font color="#1122aa">uint8_T</font></a>)(255U))
+</span><span><a class="LN" name="89">   89   </a><font color="#992211">#</font><span class="PP">define</span> MAX_int16_T                    ((<a href="#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)(32767))
+</span><span><a class="LN" name="90">   90   </a><font color="#992211">#</font><span class="PP">define</span> MIN_int16_T                    ((<a href="#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)(-32768))
+</span><span><a class="LN" name="91">   91   </a><font color="#992211">#</font><span class="PP">define</span> MAX_uint16_T                   ((<a href="#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a>)(65535U))
+</span><span><a class="LN" name="92">   92   </a><font color="#992211">#</font><span class="PP">define</span> MAX_int32_T                    ((<a href="#type_int32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int32_T');" target="_self"><font color="#1122aa">int32_T</font></a>)(2147483647))
+</span><span><a class="LN" name="93">   93   </a><font color="#992211">#</font><span class="PP">define</span> MIN_int32_T                    ((<a href="#type_int32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int32_T');" target="_self"><font color="#1122aa">int32_T</font></a>)(-2147483647-1))
+</span><span><a class="LN" name="94">   94   </a><font color="#992211">#</font><span class="PP">define</span> MAX_uint32_T                   ((<a href="#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a>)(0xFFFFFFFFU))
+</span><span><a class="LN" name="95">   95   </a><font color="#992211">#</font><span class="PP">define</span> MAX_int64_T                    ((<a href="#type_int64_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int64_T');" target="_self"><font color="#1122aa">int64_T</font></a>)(9223372036854775807LL))
+</span><span><a class="LN" name="96">   96   </a><font color="#992211">#</font><span class="PP">define</span> MIN_int64_T                    ((<a href="#type_int64_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int64_T');" target="_self"><font color="#1122aa">int64_T</font></a>)(-9223372036854775807LL-1LL))
+</span><span><a class="LN" name="97">   97   </a><font color="#992211">#</font><span class="PP">define</span> MAX_uint64_T                   ((<a href="#type_uint64_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint64_T');" target="_self"><font color="#1122aa">uint64_T</font></a>)(0xFFFFFFFFFFFFFFFFULL))
+</span><span><a class="LN" name="98">   98   </a>
+</span><span><a class="LN" name="99">   99   </a><span class="CT">/* Block D-Work pointer type */</span>
+</span><span><a class="LN" name="100">  100   </a><span class="KW">typedef</span> <span class="DT">void</span> * <a name="type_pointer_T">pointer_T</a>;
+</span><span><a class="LN" name="101">  101   </a>
+</span><span><a class="LN" name="102">  102   </a><font color="#992211">#</font><span class="PP">endif</span>                                 <span class="CT">/* RTWTYPES_H */</span>
+</span><span><a class="LN" name="103">  103   </a>
+</span><span><a class="LN" name="104">  104   </a><span class="CT">/*</span>
+</span><span><a class="LN" name="105">  105   </a><span class="CT"> * File trailer for generated code.</span>
+</span><span><a class="LN" name="106">  106   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="107">  107   </a><span class="CT"> * [EOF]</span>
+</span><span><a class="LN" name="108">  108   </a><span class="CT"> */</span>
+</span><span><a class="LN" name="109">  109   </a>
+</span></pre>
+</td></tr></table>
+</p>
+</body>
+</html>

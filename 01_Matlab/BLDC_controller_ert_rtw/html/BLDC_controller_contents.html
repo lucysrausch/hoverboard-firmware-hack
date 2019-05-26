@@ -1,0 +1,307 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="rtwreport.css" /><script language="JavaScript" type="text/javascript" defer="defer">
+    function rtwFileListShrink(o, category, numFiles)
+    {
+        var indent = document.getElementById(category + "_indent");
+        var fileTable = document.getElementById(category + "_table");
+        var catName = document.getElementById(category + "_name");
+        if (fileTable.style.display == "none") {
+            fileTable.style.display = "";
+            indent.style.display = "";
+            o.innerHTML = '<span style="font-family:monospace" id = "' + category + '_button">[-]</span>';
+            catName.innerHTML = "<b>" + category + "</b>";
+        } else {
+            fileTable.style.display = "none";
+            indent.style.display = "none";
+            o.innerHTML = '<span style="font-family:monospace" id = "' + category + '_button">[+]</span>';
+            catName.innerHTML = "<b>" + category + " (" + numFiles + ")" + "</b>";
+        }
+    }
+</script>
+
+</head>
+<body bgcolor="#eeeeee" link="#0033cc" vlink="#666666" rightmargin="0">
+<table class="toc" border="1">
+<tr>
+<td align="left" valign="top">
+<b>
+Contents
+</b>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<a href="rtwmsg.html" id="rtwIdMsgFileLink" style="display: none" target="rtwreport_document_frame" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, true);" name="TOC_List">
+Block-to-code Message
+</a>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<a href="BLDC_controller_survey.html" id="rtwIdSummaryPage" target="rtwreport_document_frame" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, true);" name="TOC_List">
+Summary
+</a>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<a href="BLDC_controller_subsystems.html" id="rtwIdSubsystem" target="rtwreport_document_frame" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, true);" name="TOC_List">
+Subsystem Report
+</a>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<a href="BLDC_controller_interface.html" id="rtwIdCodeInterface" target="rtwreport_document_frame" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, true);" name="TOC_List">
+Code Interface Report
+</a>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<a href="BLDC_controller_trace.html" id="rtwIdTraceability" target="rtwreport_document_frame" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, true);" name="TOC_List">
+Traceability Report
+</a>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<a href="BLDC_controller_metrics.html" id="rtwIdCodeMetrics" target="rtwreport_document_frame" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, true);" name="TOC_List">
+Static Code Metrics Report
+</a>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<a href="BLDC_controller_replacements.html" id="rtwIdCodeReplacements" target="rtwreport_document_frame" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, true);" name="TOC_List">
+Code Replacements Report
+</a>
+
+</td>
+
+</tr>
+
+</table>
+<!--ADD_CODE_PROFILE_REPORT_LINK_HERE--><table class="panel small_font" style="display: none; margin-top: 10px; margin-bottom: 10px" id="rtwIdTracePanel" border="1">
+<tr>
+<td align="left" valign="top">
+<b>
+Highlight Navigation
+</b>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<INPUT TYPE="button" VALUE="Previous" style="width: 85" ID="rtwIdButtonPrev" ONCLICK="if (top.rtwGoPrev) top.rtwGoPrev();" disabled="disabled" /><INPUT TYPE="button" VALUE="Next" style="width: 85" ID="rtwIdButtonNext" ONCLICK="if (top.rtwGoNext) top.rtwGoNext();" disabled="disabled" />
+</td>
+
+</tr>
+
+</table>
+<hr /><table cellspacing="0" cellpadding="4" width="100%" bgcolor="#ffffff" border="0">
+<tr>
+<td align="left" valign="top">
+<b>
+Generated Code
+</b>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table cellspacing="0" cellpadding="1" width="100%" bgcolor="#ffffff" id="Main file" border="0">
+<tr>
+<td width="0%" align="left" valign="top">
+<span style="background-color:#ffffff;width:100%;cursor:pointer;white-space:nowrap" title="Click to shrink or expand category" onclick="rtwFileListShrink(this,'Main file','1')"><span style="font-family:monospace" id = "Main file_button">[-]</span></span>
+</td>
+<td width="100%" align="left" valign="top">
+<span id="Main file_name"><b>Main file</b></span>
+</td>
+
+</tr>
+<tr>
+<td width="0%" align="left" valign="top">
+<span id="Main file_indent"></span>
+</td>
+<td width="100%" align="left" valign="top">
+<table cellspacing="0" cellpadding="4" width="100%" bgcolor="#ffffff" id="Main file_table" border="0">
+<tr>
+<td align="left" valign="top">
+<A HREF="ert_main_c.html" TARGET="rtwreport_document_frame" ONCLICK="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" ID="ert_main_c.html" NAME="rtwIdGenFileLinks">
+ert_main.c
+</A>
+<span> </span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table cellspacing="0" cellpadding="1" width="100%" bgcolor="#ffffff" id="Model files" border="0">
+<tr>
+<td width="0%" align="left" valign="top">
+<span style="background-color:#ffffff;width:100%;cursor:pointer;white-space:nowrap" title="Click to shrink or expand category" onclick="rtwFileListShrink(this,'Model files','2')"><span style="font-family:monospace" id = "Model files_button">[-]</span></span>
+</td>
+<td width="100%" align="left" valign="top">
+<span id="Model files_name"><b>Model files</b></span>
+</td>
+
+</tr>
+<tr>
+<td width="0%" align="left" valign="top">
+<span id="Model files_indent"></span>
+</td>
+<td width="100%" align="left" valign="top">
+<table cellspacing="0" cellpadding="4" width="100%" bgcolor="#ffffff" id="Model files_table" border="0">
+<tr>
+<td align="left" valign="top">
+<A HREF="BLDC_controller_c.html" TARGET="rtwreport_document_frame" ONCLICK="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" ID="BLDC_controller_c.html" NAME="rtwIdGenFileLinks">
+BLDC_controller.c
+</A>
+<span> </span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<A HREF="BLDC_controller_h.html" TARGET="rtwreport_document_frame" ONCLICK="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" ID="BLDC_controller_h.html" NAME="rtwIdGenFileLinks">
+BLDC_controller.h
+</A>
+<span> </span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table cellspacing="0" cellpadding="1" width="100%" bgcolor="#ffffff" id="Data files" border="0">
+<tr>
+<td width="0%" align="left" valign="top">
+<span style="background-color:#ffffff;width:100%;cursor:pointer;white-space:nowrap" title="Click to shrink or expand category" onclick="rtwFileListShrink(this,'Data files','1')"><span style="font-family:monospace" id = "Data files_button">[-]</span></span>
+</td>
+<td width="100%" align="left" valign="top">
+<span id="Data files_name"><b>Data files</b></span>
+</td>
+
+</tr>
+<tr>
+<td width="0%" align="left" valign="top">
+<span id="Data files_indent"></span>
+</td>
+<td width="100%" align="left" valign="top">
+<table cellspacing="0" cellpadding="4" width="100%" bgcolor="#ffffff" id="Data files_table" border="0">
+<tr>
+<td align="left" valign="top">
+<A HREF="BLDC_controller_data_c.html" TARGET="rtwreport_document_frame" ONCLICK="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" ID="BLDC_controller_data_c.html" NAME="rtwIdGenFileLinks">
+BLDC_controller_data.c
+</A>
+<span> </span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table cellspacing="0" cellpadding="1" width="100%" bgcolor="#ffffff" id="Utility files" border="0">
+<tr>
+<td width="0%" align="left" valign="top">
+<span style="background-color:#ffffff;width:100%;cursor:pointer;white-space:nowrap" title="Click to shrink or expand category" onclick="rtwFileListShrink(this,'Utility files','2')"><span style="font-family:monospace" id = "Utility files_button">[+]</span></span>
+</td>
+<td width="100%" align="left" valign="top">
+<span id="Utility files_name"><b>Utility files (2)</b></span>
+</td>
+
+</tr>
+<tr>
+<td width="0%" align="left" valign="top">
+<span id="Utility files_indent"></span>
+</td>
+<td width="100%" align="left" valign="top">
+<table cellspacing="0" cellpadding="4" width="100%" bgcolor="#ffffff" id="Utility files_table" style="display:none" border="0">
+<tr>
+<td align="left" valign="top">
+<A HREF="rtwtypes_h.html" TARGET="rtwreport_document_frame" ONCLICK="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" ID="rtwtypes_h.html" NAME="rtwIdGenFileLinks">
+rtwtypes.h
+</A>
+<span> </span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<A HREF="zero_crossing_types_h.html" TARGET="rtwreport_document_frame" ONCLICK="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" ID="zero_crossing_types_h.html" NAME="rtwIdGenFileLinks">
+zero_crossing_types.h
+</A>
+<span> </span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+<hr />
+</body>
+
+</html>

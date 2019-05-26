@@ -1,0 +1,3728 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="rtwreport.css" /><script language="JavaScript" type="text/javascript" src="rtwreport_utils.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><script language="JavaScript" type="text/javascript" src="rtwshrink.js"></script><title>
+Static Code Metrics Report
+</title>
+
+</head>
+<body onload="try {if (top) {if (top.rtwPageOnLoad) top.rtwPageOnLoad('rtwIdCodeMetrics'); else local_onload();}} catch(err) {};">
+<h1>
+Static Code Metrics Report
+</h1>
+<div>
+<p>
+The static code metrics report provides statistics of the generated code. Metrics are estimated from static analysis of the generated code using the C data types specified in the 'Device details' section of the <b>Configuration Parameter > Hardware Implementation</b> pane: <b>char</b> 8, <b>short</b> 16, <b>int</b> 32, <b>long</b> 32, <b>float</b> 32, <b>double</b> 64, <b>pointer</b> 64 bits. If your model contains a Variant block, the Static Code Metrics Report does not contain data for the inactive variant. Actual object code metrics might differ due to target specific compiler and platform settings. Consult the <b>Code Generation Advisor</b><a name="MATLAB_link" style="text-decoration: none" href="matlab:helpview([docroot '/toolbox/ecoder/helptargets.map'], 'code_gen_advisor')">
+<img src="help.png" title="Open Code Generation Advisor help" style="border:none;cursor:pointer">
+
+</img>
+
+</a>
+ for options to improve code efficiency.
+</p>
+
+</div>
+<div>
+<h3>
+Table of Contents
+</h3>
+<ol>
+<li>
+<a href="#sec_File_Information" onclick="top.rtwTableExpand(window.document, window.document.getElementById('rtwIdCodeMetrics_table_001_control'), 'rtwIdCodeMetrics_table_001')">
+File Information
+</a>
+
+</li>
+<li>
+<a href="#sec_Global_Variables" onclick="top.rtwTableExpand(window.document, window.document.getElementById('rtwIdCodeMetrics_table_002_control'), 'rtwIdCodeMetrics_table_002')">
+Global Variables
+</a>
+
+</li>
+<li>
+<a href="#sec_Function_Information" onclick="top.rtwTableExpand(window.document, window.document.getElementById('rtwIdCodeMetrics_table_027_control'), 'rtwIdCodeMetrics_table_027')">
+Function Information
+</a>
+
+</li>
+
+</ol>
+
+</div>
+<h3 name="sec_File_Information" id="sec_File_Information">
+1. File Information <span title="Click to shrink or expand section" style="cursor:pointer;font-weight:normal;" id="rtwIdCodeMetrics_table_001_control" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'rtwIdCodeMetrics_table_001', false)"><span class="shrink-button">[<u>hide</u>]</span></span>
+</h3>
+<table width="100%" name="rtwIdCodeMetrics_table_001" id="rtwIdCodeMetrics_table_001" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" border="0">
+<tr>
+<td align="left" valign="top">
+<p>
+<span name="button_fileInfo_summary_table" id="button_fileInfo_summary_table" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'fileInfo_summary_table', true)"><span class="shrink-button">[-]</span></span> Summary (excludes ert_main.c)
+</p>
+<table width="50%" cellpadding="0" name="fileInfo_summary_table" id="fileInfo_summary_table" border="0">
+<tr>
+<td width="4%" align="left" valign="top">
+<span style="white-space:nowrap" title="Number of source files excluding ert_main.c.">Number of .c files</span>
+</td>
+<td width="4%" align="left" valign="top">
+:
+</td>
+<td width="4%" align="right" valign="top">
+2
+</td>
+<td width="86%" align="right" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td width="4%" align="left" valign="top">
+<span style="white-space:nowrap" title="Number of header files.">Number of .h files</span>
+</td>
+<td width="4%" align="left" valign="top">
+:
+</td>
+<td width="4%" align="right" valign="top">
+3
+</td>
+<td width="86%" align="right" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td width="4%" align="left" valign="top">
+<span title="Lines of code excluding comments and blank lines">Lines of code</span>
+</td>
+<td width="4%" align="left" valign="top">
+:
+</td>
+<td width="4%" align="right" valign="top">
+754
+</td>
+<td width="86%" align="right" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td width="4%" align="left" valign="top">
+<span style="white-space:nowrap" title="Lines including source code, comments, and blank lines.">Lines</span>
+</td>
+<td width="4%" align="left" valign="top">
+:
+</td>
+<td width="4%" align="right" valign="top">
+2,139
+</td>
+<td width="86%" align="right" valign="top">
+&#160;
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<p>
+<span name="button_fileInfo_detail_table" id="button_fileInfo_detail_table" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'fileInfo_detail_table', true)"><span class="shrink-button">[-]</span></span> File details
+</p>
+<table width="100%" cellpadding="2" name="fileInfo_detail_table" id="fileInfo_detail_table" border="1">
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="Files sorted in descending order by number of lines of code.">File Name</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Lines of code excluding comments and blank lines.">Lines of Code</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="Lines including source code, comments, and blank lines.">Lines</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="Timestamp of the file">Generated On</span>
+</b>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html" class="code2code">
+BLDC_controller.c
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+510
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+1,314
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+05/25/2019  9:42 PM
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_h.html" class="code2code">
+BLDC_controller.h
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+140
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+445
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+05/25/2019  9:42 PM
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="rtwtypes_h.html" class="code2code">
+rtwtypes.h
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+44
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+109
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+05/25/2019  9:42 PM
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_data_c.html" class="code2code">
+BLDC_controller_data.c
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+41
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+213
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+05/25/2019  9:42 PM
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="zero_crossing_types_h.html" class="code2code">
+zero_crossing_types.h
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+19
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+58
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+05/25/2019  9:42 PM
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+<h3 name="sec_Global_Variables" id="sec_Global_Variables">
+2. Global Variables <span title="Click to shrink or expand section" style="cursor:pointer;font-weight:normal;" id="rtwIdCodeMetrics_table_002_control" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'rtwIdCodeMetrics_table_002', false)"><span class="shrink-button">[<u>hide</u>]</span></span>
+</h3>
+<table width="100%" name="rtwIdCodeMetrics_table_002" id="rtwIdCodeMetrics_table_002" border="0">
+<tr>
+<td align="left" valign="top">
+Global variables defined in the generated code.
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table" id="globalvarInfo_table" border="1">
+<tr style="background-color: #ffffff">
+<td width="100%" align="left" valign="top" style="border-style: none">
+<table class="treeTable" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<b>
+<span title="Global variables sorted by the maximum size in bytes.">Global Variable</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Global variable size in bytes.">Size (bytes)</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Total number of potential reads and writes for this global variable">Reads / Writes</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Maximum number of potential reads and writes in a function">Reads / Writes in a Function</span>
+</b>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap"><span name="button_globalvarInfo_table_sub3" id="button_globalvarInfo_table_sub3" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub3', true)"><span class="shrink-button">[+]</span></span> <a href="BLDC_controller_data_c.html#var_rtP" class="code2code">
+rtP
+</a>
+</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+91
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+25<span style="font-family:Courier">&#160;</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+18<span style="font-family:Courier">&#160;</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub3" id="globalvarInfo_table_sub3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; cf_spdCoef</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; n_commAcvLo</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; n_commDeacvHi</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; n_thresSpdDeacv</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; r_commDCDeacv</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; r_phaAdvDC_XA</span></td>
+<td align="right" width="22.22%">44</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; a_phaAdv_M1</span></td>
+<td align="right" width="22.22%">22</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; z_maxCntRst</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; z_ctrlTypSel</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">6<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">6<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; z_nrEdgeSpdAcv</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; b_phaAdvEna</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap"><span name="button_globalvarInfo_table_sub15" id="button_globalvarInfo_table_sub15" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub15', true)"><span class="shrink-button">[+]</span></span> <a href="BLDC_controller_c.html#var_rtDW" class="code2code">
+rtDW
+</a>
+</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+88
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+132<span style="font-family:Courier">&#160;</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+118<span style="font-family:Courier">&#160;</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub15" id="globalvarInfo_table_sub15" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_globalvarInfo_table_sub15_sub15" id="button_globalvarInfo_table_sub15_sub15" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub15_sub15', true)"><span class="shrink-button">[+]</span></span> Moving_Average_Filter_n</span></td>
+<td align="right" width="22.22%">8</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub15_sub15" id="globalvarInfo_table_sub15_sub15" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay5_DSTATE</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay1_DSTATE</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_globalvarInfo_table_sub15_sub15_sub18" id="button_globalvarInfo_table_sub15_sub15_sub18" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub15_sub15_sub18', true)"><span class="shrink-button">[+]</span></span> Edge_counter_l</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub15_sub15_sub18" id="globalvarInfo_table_sub15_sub15_sub18" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay1_DSTATE</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Edge_counter_MODE</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_globalvarInfo_table_sub15_sub15_sub18_sub21" id="button_globalvarInfo_table_sub15_sub15_sub18_sub21" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub15_sub15_sub18_sub21', true)"><span class="shrink-button">[+]</span></span> F01_03_Direction_Detection_j</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub15_sub15_sub18_sub21" id="globalvarInfo_table_sub15_sub15_sub18_sub21" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay1_DSTATE</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_globalvarInfo_table_sub15_sub15_sub18_sub21_sub23" id="button_globalvarInfo_table_sub15_sub15_sub18_sub21_sub23" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub15_sub15_sub18_sub21_sub23', true)"><span class="shrink-button">[+]</span></span> Moving_Average_Filter_l</span></td>
+<td align="right" width="22.22%">8</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub15_sub15_sub18_sub21_sub23" id="globalvarInfo_table_sub15_sub15_sub18_sub21_sub23" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay5_DSTATE</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay1_DSTATE</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_globalvarInfo_table_sub15_sub15_sub18_sub21_sub23_sub26" id="button_globalvarInfo_table_sub15_sub15_sub18_sub21_sub23_sub26" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub15_sub15_sub18_sub21_sub23_sub26', true)"><span class="shrink-button">[+]</span></span> Edge_counter_f</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub15_sub15_sub18_sub21_sub23_sub26" id="globalvarInfo_table_sub15_sub15_sub18_sub21_sub23_sub26" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay1_DSTATE</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Edge_counter_MODE</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_globalvarInfo_table_sub15_sub15_sub18_sub21_sub23_sub26_sub29" id="button_globalvarInfo_table_sub15_sub15_sub18_sub21_sub23_sub26_sub29" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub15_sub15_sub18_sub21_sub23_sub26_sub29', true)"><span class="shrink-button">[+]</span></span> F01_03_Direction_Detection_o</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub15_sub15_sub18_sub21_sub23_sub26_sub29" id="globalvarInfo_table_sub15_sub15_sub18_sub21_sub23_sub26_sub29" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay1_DSTATE</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Switch_PhaAdv</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">5<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">5<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; rpm_signed</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">5<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">5<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Switch_PhaAdv_a</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">5<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">5<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; rpm_signed_c</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">5<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">5<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Merge</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Merge1</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Merge2</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Merge_j</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Merge1_m</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Merge2_d</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; z_counterRawPrev_DSTATE</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; z_counter2_DSTATE</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay1_DSTATE</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; z_counterRawPrev_DSTATE_p</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; z_counter2_DSTATE_h</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay1_DSTATE_k</span></td>
+<td align="right" width="22.22%">2</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay1</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Switch2</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay1_k</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Switch2_e</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; If1_ActiveSubsystem</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; If1_ActiveSubsystem_j</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Sum2_i</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Sum2_l</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay_DSTATE</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay1_DSTATE_p</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay2_DSTATE</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay1_DSTATE_g</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay_DSTATE_j</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay1_DSTATE_f</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay2_DSTATE_b</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay1_DSTATE_j</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; RelationalOperator4</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">6<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; LogicalOperator</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay8_DSTATE</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay8_DSTATE_p</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay_DSTATE_k</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; UnitDelay_DSTATE_l</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Memory_PreviousInput</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Relay_Mode</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Memory_PreviousInput_i</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Relay_Mode_m</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap"><span name="button_globalvarInfo_table_sub74" id="button_globalvarInfo_table_sub74" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub74', true)"><span class="shrink-button">[+]</span></span> <a href="BLDC_controller_c.html#var_rtY" class="code2code">
+rtY
+</a>
+</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+40
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+18<span style="font-family:Courier">&#160;</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+18<span style="font-family:Courier">&#160;</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub74" id="globalvarInfo_table_sub74" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; DC_phaALeft</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; DC_phaBLeft</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; DC_phaCLeft</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; n_motLeft</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; a_elecAngleLeft</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; DC_phaARight</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; DC_phaBRight</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; DC_phaCRight</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; n_motRight</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">4<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; a_elecAngleRight</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap"><span name="button_globalvarInfo_table_sub85" id="button_globalvarInfo_table_sub85" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub85', true)"><span class="shrink-button">[+]</span></span> <a href="BLDC_controller_c.html#var_rtU" class="code2code">
+rtU
+</a>
+</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+38<span style="font-family:Courier">&#160;</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+38<span style="font-family:Courier">&#160;</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub85" id="globalvarInfo_table_sub85" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; b_hallALeft</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; b_hallBLeft</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; b_hallCLeft</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; r_DCLeft</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">10<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">10<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; b_hallARight</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; b_hallBRight</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; b_hallCRight</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">3<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; r_DCRight</span></td>
+<td align="right" width="22.22%">4</td>
+<td align="right" width="22.22%">10<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">10<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap"><span name="button_globalvarInfo_table_sub94" id="button_globalvarInfo_table_sub94" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub94', true)"><span class="shrink-button">[+]</span></span> <a href="BLDC_controller_c.html#var_rtPrevZCX" class="code2code">
+rtPrevZCX
+</a>
+</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+8<span style="font-family:Courier">&#160;</span>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+4<span style="font-family:Courier">&#160;</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub94" id="globalvarInfo_table_sub94" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_globalvarInfo_table_sub94_sub94" id="button_globalvarInfo_table_sub94_sub94" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub94_sub94', true)"><span class="shrink-button">[+]</span></span> Raw_Speed_calculation_k</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub94_sub94" id="globalvarInfo_table_sub94_sub94" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Raw_Speed_calculation_Trig_ZCE</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_globalvarInfo_table_sub94_sub94_sub96" id="button_globalvarInfo_table_sub94_sub94_sub96" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub94_sub94_sub96', true)"><span class="shrink-button">[+]</span></span> Moving_Average_Filter_n</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub94_sub94_sub96" id="globalvarInfo_table_sub94_sub94_sub96" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Moving_Average_Filter_Trig_ZCE</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_globalvarInfo_table_sub94_sub94_sub96_sub98" id="button_globalvarInfo_table_sub94_sub94_sub96_sub98" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub94_sub94_sub96_sub98', true)"><span class="shrink-button">[+]</span></span> Raw_Speed_calculation_m</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub94_sub94_sub96_sub98" id="globalvarInfo_table_sub94_sub94_sub96_sub98" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Raw_Speed_calculation_Trig_ZCE</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #ffffff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_globalvarInfo_table_sub94_sub94_sub96_sub98_sub100" id="button_globalvarInfo_table_sub94_sub94_sub96_sub98_sub100" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub94_sub94_sub96_sub98_sub100', true)"><span class="shrink-button">[+]</span></span> Moving_Average_Filter_l</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table_sub94_sub94_sub96_sub98_sub100" id="globalvarInfo_table_sub94_sub94_sub96_sub98_sub100" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2"  style="background-color: #eeeeff" >
+<tr><td align="left" width="33.33%"><span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160; Moving_Average_Filter_Trig_ZCE</span></td>
+<td align="right" width="22.22%">1</td>
+<td align="right" width="22.22%">2<span style="font-family:Courier">&#160;</span></td>
+<td align="right" width="22.22%">1<span style="font-family:Courier">&#160;</span></td>
+</tr></table>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<b>Total</b>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>237</b>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>221<span style="font-family:Courier">&#160;</span></b>
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+ 
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+<h3 name="sec_Function_Information" id="sec_Function_Information">
+3. Function Information <span title="Click to shrink or expand section" style="cursor:pointer;font-weight:normal;" id="rtwIdCodeMetrics_table_027_control" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'rtwIdCodeMetrics_table_027', false)"><span class="shrink-button">[<u>hide</u>]</span></span>
+</h3>
+<table width="100%" name="rtwIdCodeMetrics_table_027" id="rtwIdCodeMetrics_table_027" border="0">
+<tr>
+<td align="left" valign="top">
+View function metrics in a call tree format or table format. Accumulated stack numbers include the estimated stack size of the function plus the maximum of the accumulated stack size of the subroutines that the function calls.
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" name="fcnInfo_calltree" id="fcnInfo_calltree" border="0">
+<tr>
+<td align="left" valign="top">
+View:Call Tree | <a href="javascript:if (top) if (top.rtwSwitchView) top.rtwSwitchView(window.document,'fcnInfo_calltree', 'fcnInfo_table')" title="List of functions in alphabetical order. The second column includes the callers of the functions.">
+Table
+</a>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="1">
+<tr style="background-color: #ffffff">
+<td width="100%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="0" cellspacing="0" class="treeTable" id="fcnTreeView" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<b>
+<span title="Function name sorted by the maximum accumulated stack size.">Function Name</span>
+</b>
+
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Estimated stack size of the function plus the maximum of the accumulated stack size of its subroutines.">Accumulated Stack Size (bytes)</span>
+</b>
+
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Size of local variables in the function.">Self Stack Size (bytes)</span>
+</b>
+
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Lines of code excluding comments and blank lines.">Lines of Code</span>
+</b>
+
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="Lines including source code, comments, and blank lines.">Lines</span>
+</b>
+
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="Cyclomatic complexity">Complexity</span>
+</b>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="border-style: none" width="100%" cellpadding="0" cellspacing="0" name="" id="" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap"><span name="button_3" id="button_3" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, '3', true)"><span class="shrink-button">[+]</span></span>&#160;<b><a href="BLDC_controller_c.html#fcn_BLDC_controller_step" title="BLDC_controller_step" class="code2code">
+BLDC_controller_step
+</a>
+</b></span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+52
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+32
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+237
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+693
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+29
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_4" id="button_4" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, '4', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="BLDC_controller_c.html#fcn_F02_Electrical_Angle_Calculatio" title="F02_Electrical_Angle_Calculatio is a static function in BLDC_controller.c." class="code2code">
+F02_Electrical_Angle_Calculatio
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+20
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+27
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+67
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="4" id="4" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_plook_u8s32u32n31_evenc_s" title="plook_u8s32u32n31_evenc_s is a static function in BLDC_controller.c." class="code2code">
+plook_u8s32u32n31_evenc_s
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+19
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+33
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="4" id="4" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_intrp1d_s16s32s32u8u32n31l_s" title="intrp1d_s16s32s32u8u32n31l_s is a static function in BLDC_controller.c." class="code2code">
+intrp1d_s16s32s32u8u32n31l_s
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+15
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="4" id="4" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_div_nde_s32_floor" title="div_nde_s32_floor is a static function in BLDC_controller.c." class="code2code">
+div_nde_s32_floor
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+2
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+5
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+2
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_8" id="button_8" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, '8', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="BLDC_controller_c.html#fcn_F03_01_Pure_Trapezoidal_Method" title="F03_01_Pure_Trapezoidal_Method is a static function in BLDC_controller.c." class="code2code">
+F03_01_Pure_Trapezoidal_Method
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+5
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+10
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+22
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="8" id="8" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_plook_u8s32u32n31_evenc_s" title="plook_u8s32u32n31_evenc_s is a static function in BLDC_controller.c." class="code2code">
+plook_u8s32u32n31_evenc_s
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+19
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+33
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="8" id="8" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_intrp1d_s16s32s32u8u32n31l_s" title="intrp1d_s16s32s32u8u32n31l_s is a static function in BLDC_controller.c." class="code2code">
+intrp1d_s16s32s32u8u32n31l_s
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+15
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_11" id="button_11" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, '11', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="BLDC_controller_c.html#fcn_F03_02_Sinusoidal_Method" title="F03_02_Sinusoidal_Method is a static function in BLDC_controller.c." class="code2code">
+F03_02_Sinusoidal_Method
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+5
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+10
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+22
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="11" id="11" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_plook_u8s32u32n31_evenc_s" title="plook_u8s32u32n31_evenc_s is a static function in BLDC_controller.c." class="code2code">
+plook_u8s32u32n31_evenc_s
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+19
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+33
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="11" id="11" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_intrp1d_s16s32s32u8u32n31l_s" title="intrp1d_s16s32s32u8u32n31l_s is a static function in BLDC_controller.c." class="code2code">
+intrp1d_s16s32s32u8u32n31l_s
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+15
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_14" id="button_14" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, '14', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="BLDC_controller_c.html#fcn_F03_02_Sinusoidal3rd_Method" title="F03_02_Sinusoidal3rd_Method is a static function in BLDC_controller.c." class="code2code">
+F03_02_Sinusoidal3rd_Method
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+5
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+10
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+22
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="14" id="14" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_plook_u8s32u32n31_evenc_s" title="plook_u8s32u32n31_evenc_s is a static function in BLDC_controller.c." class="code2code">
+plook_u8s32u32n31_evenc_s
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+19
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+33
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="14" id="14" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_intrp1d_s16s32s32u8u32n31l_s" title="intrp1d_s16s32s32u8u32n31l_s is a static function in BLDC_controller.c." class="code2code">
+intrp1d_s16s32s32u8u32n31l_s
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+15
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_Raw_Speed_calculation" title="Raw_Speed_calculation is a static function in BLDC_controller.c." class="code2code">
+Raw_Speed_calculation
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+10
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+32
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_Moving_Average_Filter" title="Moving_Average_Filter is a static function in BLDC_controller.c." class="code2code">
+Moving_Average_Filter
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+32
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+2
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_19" id="button_19" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, '19', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="BLDC_controller_c.html#fcn_Edge_counter" title="Edge_counter is a static function in BLDC_controller.c." class="code2code">
+Edge_counter
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+2
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+2
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+21
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+47
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+5
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="19" id="19" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_Edge_counter_Reset" title="Edge_counter_Reset is a static function in BLDC_controller.c." class="code2code">
+Edge_counter_Reset
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+5
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="19" id="19" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_Edge_counter_Disable" title="Edge_counter_Disable is a static function in BLDC_controller.c." class="code2code">
+Edge_counter_Disable
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+2
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_F01_03_Direction_Detection" title="F01_03_Direction_Detection is a static function in BLDC_controller.c." class="code2code">
+F01_03_Direction_Detection
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+42
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_rising_edge" title="rising_edge is a static function in BLDC_controller.c." class="code2code">
+rising_edge
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+2
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_F02_Electrical_Angle_Ca_Disable" title="F02_Electrical_Angle_Ca_Disable is a static function in BLDC_controller.c." class="code2code">
+F02_Electrical_Angle_Ca_Disable
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+2
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="BLDC_controller_c.html#fcn_rising_edge_f" title="rising_edge_f is a static function in BLDC_controller.c." class="code2code">
+rising_edge_f
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+2
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="border-style: none" width="100%" cellpadding="0" cellspacing="0" name="" id="" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<b><a href="BLDC_controller_c.html#fcn_BLDC_controller_initialize" title="BLDC_controller_initialize" class="code2code">
+BLDC_controller_initialize
+</a>
+</b></span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+24
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" name="fcnInfo_table" id="fcnInfo_table" style="display: none" border="0">
+<tr>
+<td align="left" valign="top">
+View: <a href="javascript:if (top) if (top.rtwSwitchView) top.rtwSwitchView(window.document,'fcnInfo_table', 'fcnInfo_calltree')" title="Browse call graph in a call tree format.">
+Call Tree
+</a>
+ | Table
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" class="treeTable" id="fcnTableView" border="1">
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<b>
+<span title="Function name sorted alphabetically">Function Name</span>
+</b>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<b>
+<span title="List of functions calling the function in the corresponding first column. The number of call sites is included in parentheses.">Called By (number of call sites)</span>
+</b>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Estimated stack size of the function plus the maximum of the accumulated stack size of its subroutines.">Accumulated Stack Size (bytes)</span>
+</b>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Size of local variables in the function.">Self Stack Size (bytes)</span>
+</b>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Lines of code excluding comments and blank lines.">Lines of Code</span>
+</b>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="Lines including source code, comments, and blank lines.">Lines</span>
+</b>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="Cyclomatic complexity">Complexity</span>
+</b>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_Edge_counter" title="Edge_counter is a static function in BLDC_controller.c." class="code2code">
+Edge_counter
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller_step has 2 call sites of BLDC_controller.c:Edge_counter."><a href="BLDC_controller_c.html#fcn_BLDC_controller_step" title="BLDC_controller_step" class="code2code">
+BLDC_controller_step
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+2
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+2
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+21
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+47
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+5
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_Edge_counter_Disable" title="Edge_counter_Disable is a static function in BLDC_controller.c." class="code2code">
+Edge_counter_Disable
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller.c:Edge_counter has one call site of BLDC_controller.c:Edge_counter_Disable."><a href="BLDC_controller_c.html#fcn_Edge_counter" title="Edge_counter is a static function in BLDC_controller.c." class="code2code">
+Edge_counter
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+2
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_Edge_counter_Reset" title="Edge_counter_Reset is a static function in BLDC_controller.c." class="code2code">
+Edge_counter_Reset
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller.c:Edge_counter has one call site of BLDC_controller.c:Edge_counter_Reset."><a href="BLDC_controller_c.html#fcn_Edge_counter" title="Edge_counter is a static function in BLDC_controller.c." class="code2code">
+Edge_counter
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+5
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_F01_03_Direction_Detection" title="F01_03_Direction_Detection is a static function in BLDC_controller.c." class="code2code">
+F01_03_Direction_Detection
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller_step has 2 call sites of BLDC_controller.c:F01_03_Direction_Detection."><a href="BLDC_controller_c.html#fcn_BLDC_controller_step" title="BLDC_controller_step" class="code2code">
+BLDC_controller_step
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+42
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_F02_Electrical_Angle_Ca_Disable" title="F02_Electrical_Angle_Ca_Disable is a static function in BLDC_controller.c." class="code2code">
+F02_Electrical_Angle_Ca_Disable
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller_step has 2 call sites of BLDC_controller.c:F02_Electrical_Angle_Ca_Disable."><a href="BLDC_controller_c.html#fcn_BLDC_controller_step" title="BLDC_controller_step" class="code2code">
+BLDC_controller_step
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+2
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_F02_Electrical_Angle_Calculatio" title="F02_Electrical_Angle_Calculatio is a static function in BLDC_controller.c." class="code2code">
+F02_Electrical_Angle_Calculatio
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller_step has 2 call sites of BLDC_controller.c:F02_Electrical_Angle_Calculatio."><a href="BLDC_controller_c.html#fcn_BLDC_controller_step" title="BLDC_controller_step" class="code2code">
+BLDC_controller_step
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+20
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+27
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+67
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_F03_01_Pure_Trapezoidal_Method" title="F03_01_Pure_Trapezoidal_Method is a static function in BLDC_controller.c." class="code2code">
+F03_01_Pure_Trapezoidal_Method
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller_step has 2 call sites of BLDC_controller.c:F03_01_Pure_Trapezoidal_Method."><a href="BLDC_controller_c.html#fcn_BLDC_controller_step" title="BLDC_controller_step" class="code2code">
+BLDC_controller_step
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+5
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+10
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+22
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_F03_02_Sinusoidal3rd_Method" title="F03_02_Sinusoidal3rd_Method is a static function in BLDC_controller.c." class="code2code">
+F03_02_Sinusoidal3rd_Method
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller_step has 2 call sites of BLDC_controller.c:F03_02_Sinusoidal3rd_Method."><a href="BLDC_controller_c.html#fcn_BLDC_controller_step" title="BLDC_controller_step" class="code2code">
+BLDC_controller_step
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+5
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+10
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+22
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_F03_02_Sinusoidal_Method" title="F03_02_Sinusoidal_Method is a static function in BLDC_controller.c." class="code2code">
+F03_02_Sinusoidal_Method
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller_step has 2 call sites of BLDC_controller.c:F03_02_Sinusoidal_Method."><a href="BLDC_controller_c.html#fcn_BLDC_controller_step" title="BLDC_controller_step" class="code2code">
+BLDC_controller_step
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+5
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+10
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+22
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_Moving_Average_Filter" title="Moving_Average_Filter is a static function in BLDC_controller.c." class="code2code">
+Moving_Average_Filter
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller_step has 2 call sites of BLDC_controller.c:Moving_Average_Filter."><a href="BLDC_controller_c.html#fcn_BLDC_controller_step" title="BLDC_controller_step" class="code2code">
+BLDC_controller_step
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+32
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+2
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_Raw_Speed_calculation" title="Raw_Speed_calculation is a static function in BLDC_controller.c." class="code2code">
+Raw_Speed_calculation
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller_step has 2 call sites of BLDC_controller.c:Raw_Speed_calculation."><a href="BLDC_controller_c.html#fcn_BLDC_controller_step" title="BLDC_controller_step" class="code2code">
+BLDC_controller_step
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+10
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+32
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_div_nde_s32_floor" title="div_nde_s32_floor is a static function in BLDC_controller.c." class="code2code">
+div_nde_s32_floor
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller.c:F02_Electrical_Angle_Calculatio has one call site of BLDC_controller.c:div_nde_s32_floor."><a href="BLDC_controller_c.html#fcn_F02_Electrical_Angle_Calculatio" title="F02_Electrical_Angle_Calculatio is a static function in BLDC_controller.c." class="code2code">
+F02_Electrical_Angle_Calculatio
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+2
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+5
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+2
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_intrp1d_s16s32s32u8u32n31l_s" title="intrp1d_s16s32s32u8u32n31l_s is a static function in BLDC_controller.c." class="code2code">
+intrp1d_s16s32s32u8u32n31l_s
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller.c:F03_01_Pure_Trapezoidal_Method has 3 call sites of BLDC_controller.c:intrp1d_s16s32s32u8u32n31l_s."><a href="BLDC_controller_c.html#fcn_F03_01_Pure_Trapezoidal_Method" title="F03_01_Pure_Trapezoidal_Method is a static function in BLDC_controller.c." class="code2code">
+F03_01_Pure_Trapezoidal_Method
+</a>
+ (3)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller.c:F03_02_Sinusoidal_Method has 3 call sites of BLDC_controller.c:intrp1d_s16s32s32u8u32n31l_s."><a href="BLDC_controller_c.html#fcn_F03_02_Sinusoidal_Method" title="F03_02_Sinusoidal_Method is a static function in BLDC_controller.c." class="code2code">
+F03_02_Sinusoidal_Method
+</a>
+ (3)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller.c:F03_02_Sinusoidal3rd_Method has 3 call sites of BLDC_controller.c:intrp1d_s16s32s32u8u32n31l_s."><a href="BLDC_controller_c.html#fcn_F03_02_Sinusoidal3rd_Method" title="F03_02_Sinusoidal3rd_Method is a static function in BLDC_controller.c." class="code2code">
+F03_02_Sinusoidal3rd_Method
+</a>
+ (3)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller.c:F02_Electrical_Angle_Calculatio has one call site of BLDC_controller.c:intrp1d_s16s32s32u8u32n31l_s."><a href="BLDC_controller_c.html#fcn_F02_Electrical_Angle_Calculatio" title="F02_Electrical_Angle_Calculatio is a static function in BLDC_controller.c." class="code2code">
+F02_Electrical_Angle_Calculatio
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+15
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_plook_u8s32u32n31_evenc_s" title="plook_u8s32u32n31_evenc_s is a static function in BLDC_controller.c." class="code2code">
+plook_u8s32u32n31_evenc_s
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller.c:F03_01_Pure_Trapezoidal_Method has one call site of BLDC_controller.c:plook_u8s32u32n31_evenc_s."><a href="BLDC_controller_c.html#fcn_F03_01_Pure_Trapezoidal_Method" title="F03_01_Pure_Trapezoidal_Method is a static function in BLDC_controller.c." class="code2code">
+F03_01_Pure_Trapezoidal_Method
+</a>
+</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller.c:F03_02_Sinusoidal_Method has one call site of BLDC_controller.c:plook_u8s32u32n31_evenc_s."><a href="BLDC_controller_c.html#fcn_F03_02_Sinusoidal_Method" title="F03_02_Sinusoidal_Method is a static function in BLDC_controller.c." class="code2code">
+F03_02_Sinusoidal_Method
+</a>
+</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller.c:F03_02_Sinusoidal3rd_Method has one call site of BLDC_controller.c:plook_u8s32u32n31_evenc_s."><a href="BLDC_controller_c.html#fcn_F03_02_Sinusoidal3rd_Method" title="F03_02_Sinusoidal3rd_Method is a static function in BLDC_controller.c." class="code2code">
+F03_02_Sinusoidal3rd_Method
+</a>
+</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller.c:F02_Electrical_Angle_Calculatio has one call site of BLDC_controller.c:plook_u8s32u32n31_evenc_s."><a href="BLDC_controller_c.html#fcn_F02_Electrical_Angle_Calculatio" title="F02_Electrical_Angle_Calculatio is a static function in BLDC_controller.c." class="code2code">
+F02_Electrical_Angle_Calculatio
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+19
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+33
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_rising_edge" title="rising_edge is a static function in BLDC_controller.c." class="code2code">
+rising_edge
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller_step has one call site of BLDC_controller.c:rising_edge."><a href="BLDC_controller_c.html#fcn_BLDC_controller_step" title="BLDC_controller_step" class="code2code">
+BLDC_controller_step
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+2
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_rising_edge_f" title="rising_edge_f is a static function in BLDC_controller.c." class="code2code">
+rising_edge_f
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="BLDC_controller_step has one call site of BLDC_controller.c:rising_edge_f."><a href="BLDC_controller_c.html#fcn_BLDC_controller_step" title="BLDC_controller_step" class="code2code">
+BLDC_controller_step
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+2
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_BLDC_controller_initialize" title="BLDC_controller_initialize" class="code2code">
+BLDC_controller_initialize
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+&#160;
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+24
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="BLDC_controller_c.html#fcn_BLDC_controller_step" title="BLDC_controller_step" class="code2code">
+BLDC_controller_step
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+&#160;
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+52
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+32
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+237
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+693
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+29
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>

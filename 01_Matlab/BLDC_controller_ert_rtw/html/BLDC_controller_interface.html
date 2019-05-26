@@ -1,0 +1,737 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="rtwreport.css" /><script language="JavaScript" type="text/javascript">function rtwTableShrink(o) {var t = o.nextSibling;if (t.nodeType != 1) {t = t.nextSibling;}if (t.style.display == "none") {t.style.display = "";o.innerHTML = "[-]"} else {t.style.display = "none";o.innerHTML = "[+] ... "}}</script><SCRIPT type="text/javascript" language="JavaScript" src="slwebview.js"></SCRIPT>
+<SCRIPT type="text/javascript" language="JavaScript" src="id_mapping.js"></SCRIPT>
+<script language="JavaScript" type="text/javascript" src="rtwreport_utils.js"></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>
+Code Interface Report for BLDC_controller
+</title>
+
+</head>
+<body ONLOAD="try {if (top) {if (top.rtwPageOnLoad) top.rtwPageOnLoad('rtwIdCodeInterface'); else local_onload();}} catch(err) {};">
+<h1>
+Code Interface Report for BLDC_controller
+</h1>
+<h3>
+Table of Contents
+</h3>
+<ul>
+<li>
+<a href="#sec_Entry_Point_Functions">
+Entry Point Functions
+</a>
+
+</li>
+<li>
+<a href="#sec_Inports">
+Inports
+</a>
+
+</li>
+<li>
+<a href="#sec_Outports">
+Outports
+</a>
+
+</li>
+<li>
+<a href="#sec_Interface_Parameters">
+Interface Parameters
+</a>
+
+</li>
+<li>
+<a href="#sec_Data_Stores">
+Data Stores
+</a>
+
+</li>
+
+</ul>
+<h3>
+<a name="sec_Entry_Point_Functions">
+Entry Point Functions
+</a>
+
+</h3>
+<p>
+Function: <a href="BLDC_controller_c.html#fcn_BLDC_controller_initialize">BLDC_controller_initialize</a>
+</p>
+<table width="100%" class="AltRow" cellspacing="0">
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Prototype
+</td>
+<td width="75%" align="left" valign="top">
+<b>
+void BLDC_controller_initialize(void)
+</b>
+
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Description
+</td>
+<td width="75%" align="left" valign="top">
+Initialization entry point of generated code
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Timing
+</td>
+<td width="75%" align="left" valign="top">
+Must be called exactly once
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Arguments
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Return value
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Header file
+</td>
+<td width="75%" align="left" valign="top">
+<a href="BLDC_controller_h.html">BLDC_controller.h</a>
+</td>
+
+</tr>
+
+</table>
+<p>
+Function: <a href="BLDC_controller_c.html#fcn_BLDC_controller_step">BLDC_controller_step</a>
+</p>
+<table width="100%" class="AltRow" cellspacing="0">
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Prototype
+</td>
+<td width="75%" align="left" valign="top">
+<b>
+void BLDC_controller_step(void)
+</b>
+
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Description
+</td>
+<td width="75%" align="left" valign="top">
+Output entry point of generated code
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Timing
+</td>
+<td width="75%" align="left" valign="top">
+Must be called periodically, every 1e-05 seconds
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Arguments
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Return value
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Header file
+</td>
+<td width="75%" align="left" valign="top">
+<a href="BLDC_controller_h.html">BLDC_controller.h</a>
+</td>
+
+</tr>
+
+</table>
+<h3>
+<a name="sec_Inports">
+Inports
+</a>
+
+</h3>
+<span title="Click to shrink or expand table" onclick="rtwTableShrink(this)">[-]</span><table width="100%" class="AltRow FirstColumn" cellspacing="0">
+<tr class="heading">
+<th width="42%" align="left" valign="top">
+<b>
+Block Name
+</b>
+
+</th>
+<th width="26%" align="left" valign="top">
+<b>
+Code Identifier
+</b>
+
+</th>
+<th width="21%" align="left" valign="top">
+<b>
+Data Type
+</b>
+
+</th>
+<th width="10%" align="right" valign="top">
+<b>
+Dimension
+</b>
+
+</th>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:365')" name="code2model" class="code2model">&lt;S1&gt;/b_hallALeft </a>
+</td>
+<td width="26%" align="left" valign="top">
+rtU.b_hallALeft
+</td>
+<td width="21%" align="left" valign="top">
+uint8_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:1277')" name="code2model" class="code2model">&lt;S1&gt;/b_hallBLeft</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtU.b_hallBLeft
+</td>
+<td width="21%" align="left" valign="top">
+uint8_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:1278')" name="code2model" class="code2model">&lt;S1&gt;/b_hallCLeft</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtU.b_hallCLeft
+</td>
+<td width="21%" align="left" valign="top">
+uint8_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:1766')" name="code2model" class="code2model">&lt;S1&gt;/r_DCLeft</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtU.r_DCLeft
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2542')" name="code2model" class="code2model">&lt;S1&gt;/b_hallARight</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtU.b_hallARight
+</td>
+<td width="21%" align="left" valign="top">
+uint8_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2543')" name="code2model" class="code2model">&lt;S1&gt;/b_hallBRight</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtU.b_hallBRight
+</td>
+<td width="21%" align="left" valign="top">
+uint8_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2544')" name="code2model" class="code2model">&lt;S1&gt;/b_hallCRight</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtU.b_hallCRight
+</td>
+<td width="21%" align="left" valign="top">
+uint8_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2545')" name="code2model" class="code2model">&lt;S1&gt;/r_DCRight</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtU.r_DCRight
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+
+</table>
+<h3>
+<a name="sec_Outports">
+Outports
+</a>
+
+</h3>
+<span title="Click to shrink or expand table" onclick="rtwTableShrink(this)">[-]</span><table width="100%" class="AltRow FirstColumn" cellspacing="0">
+<tr class="heading">
+<th width="42%" align="left" valign="top">
+<b>
+Block Name
+</b>
+
+</th>
+<th width="26%" align="left" valign="top">
+<b>
+Code Identifier
+</b>
+
+</th>
+<th width="21%" align="left" valign="top">
+<b>
+Data Type
+</b>
+
+</th>
+<th width="10%" align="right" valign="top">
+<b>
+Dimension
+</b>
+
+</th>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:39')" name="code2model" class="code2model">&lt;S1&gt;/DC_phaALeft</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtY.DC_phaALeft
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:1762')" name="code2model" class="code2model">&lt;S1&gt;/DC_phaBLeft</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtY.DC_phaBLeft
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:1764')" name="code2model" class="code2model">&lt;S1&gt;/DC_phaCLeft</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtY.DC_phaCLeft
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:628')" name="code2model" class="code2model">&lt;S1&gt;/n_motLeft</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtY.n_motLeft
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2463')" name="code2model" class="code2model">&lt;S1&gt;/a_elecAngleLeft</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtY.a_elecAngleLeft
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2537')" name="code2model" class="code2model">&lt;S1&gt;/DC_phaARight</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtY.DC_phaARight
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2538')" name="code2model" class="code2model">&lt;S1&gt;/DC_phaBRight</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtY.DC_phaBRight
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2539')" name="code2model" class="code2model">&lt;S1&gt;/DC_phaCRight</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtY.DC_phaCRight
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2540')" name="code2model" class="code2model">&lt;S1&gt;/n_motRight</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtY.n_motRight
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2541')" name="code2model" class="code2model">&lt;S1&gt;/a_elecAngleRight</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtY.a_elecAngleRight
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+
+</table>
+<h3>
+<a name="sec_Interface_Parameters">
+Interface Parameters
+</a>
+
+</h3>
+<span title="Click to shrink or expand table" onclick="rtwTableShrink(this)">[-]</span><table width="100%" class="AltRow FirstColumn" cellspacing="0">
+<tr class="heading">
+<th width="42%" align="left" valign="top">
+<b>
+Parameter Source
+</b>
+
+</th>
+<th width="26%" align="left" valign="top">
+<b>
+Code Identifier
+</b>
+
+</th>
+<th width="21%" align="left" valign="top">
+<b>
+Data Type
+</b>
+
+</th>
+<th width="10%" align="right" valign="top">
+<b>
+Dimension
+</b>
+
+</th>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+cf_spdCoef
+</td>
+<td width="26%" align="left" valign="top">
+rtP.cf_spdCoef
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+n_commAcvLo
+</td>
+<td width="26%" align="left" valign="top">
+rtP.n_commAcvLo
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+n_commDeacvHi
+</td>
+<td width="26%" align="left" valign="top">
+rtP.n_commDeacvHi
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+n_thresSpdDeacv
+</td>
+<td width="26%" align="left" valign="top">
+rtP.n_thresSpdDeacv
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+r_commDCDeacv
+</td>
+<td width="26%" align="left" valign="top">
+rtP.r_commDCDeacv
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+r_phaAdvDC_XA
+</td>
+<td width="26%" align="left" valign="top">
+rtP.r_phaAdvDC_XA
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+[1  11]
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+a_phaAdv_M1
+</td>
+<td width="26%" align="left" valign="top">
+rtP.a_phaAdv_M1
+</td>
+<td width="21%" align="left" valign="top">
+int16_T
+</td>
+<td width="10%" align="right" valign="top">
+[1  11]
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+z_maxCntRst
+</td>
+<td width="26%" align="left" valign="top">
+rtP.z_maxCntRst
+</td>
+<td width="21%" align="left" valign="top">
+int16_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+z_ctrlTypSel
+</td>
+<td width="26%" align="left" valign="top">
+rtP.z_ctrlTypSel
+</td>
+<td width="21%" align="left" valign="top">
+uint8_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+z_nrEdgeSpdAcv
+</td>
+<td width="26%" align="left" valign="top">
+rtP.z_nrEdgeSpdAcv
+</td>
+<td width="21%" align="left" valign="top">
+uint8_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+b_phaAdvEna
+</td>
+<td width="26%" align="left" valign="top">
+rtP.b_phaAdvEna
+</td>
+<td width="21%" align="left" valign="top">
+boolean_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+
+</table>
+<h3>
+<a name="sec_Data_Stores">
+Data Stores
+</a>
+
+</h3>
+<p>
+No data stores in the model; note that this report lists only data stores with non-auto storage class and global data stores
+</p>
+
+</body>
+
+</html>
