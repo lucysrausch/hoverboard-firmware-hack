@@ -32,8 +32,8 @@ A short video showing the noise performance of the Commutation method vs Sinusoi
 GENERAL NOTES:
  - All the calibratable motor parameters can be found in the 'BLDC_controller_data.c'. I provided you with an already calibrated controller, but if you feel like fine tuning it feel free to do so.
  - The C code for the controller was auto-code generated using [Matlab/Simulink](https://nl.mathworks.com/solutions/embedded-code-generation.html) from a model which I developed from scratch specifically for hoverboard control. For more details regarding the parameters and the working principle of the controller please consult the [Matlab/Simulink model](https://github.com/EmanuelFeru/hoverboard-firmware-hack/tree/master/01_Matlab).
- - The code generation report can be explored by opening [BLDC_controller_codegen_rpt.html](https://github.com/EmanuelFeru/hoverboard-firmware-hack/blob/master/01_Matlab/BLDC_controller_ert_rtw/html/BLDC_controller_codegen_rpt.html) from your cloned or downloaded repository
  - A [webview](https://github.com/EmanuelFeru/hoverboard-firmware-hack/tree/master/01_Matlab/BLDC_controller_ert_rtw/html/webview) was created, so Matlab/Simulink installation is not needed, unless you want to regenerate the code
+ - The code generation report can be explored by opening [BLDC_controller_codegen_rpt.html](https://github.com/EmanuelFeru/hoverboard-firmware-hack/blob/master/01_Matlab/BLDC_controller_ert_rtw/html/BLDC_controller_codegen_rpt.html) from your cloned or downloaded repository
 
 NOTES Phase Advance / Field weakening:
 
