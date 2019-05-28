@@ -13,8 +13,6 @@
 <li>improved motor efficiency. Thus, lower energy consumption</li>
 <li>automatic phase advance / field weakening</li>
 </ul>
-<pre><code>![Schematic representation of the control methods](http://url/to/img.png)
-</code></pre>
 <p><img src="https://github.com/EmanuelFeru/hoverboard-firmware-hack/blob/master/01_Matlab/02_Figures/control_methods.png" alt="Schematic representation of the control methods"></p>
 <p><a href="https://github.com/EmanuelFeru/hoverboard-firmware-hack/blob/master/docs/pictures/hoverboard_wheel.JPG">Hoverboard wheel</a></p>
 <p>A classification of the BLDC control methods in terms of performance is as follows:</p>
