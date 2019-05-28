@@ -36,9 +36,9 @@ GENERAL NOTES:
 
 NOTES Phase Advance / Field weakening:
 
- - The Phase Advance engages automatically and smooth (no need to boost buttons, no need for additional fancy arrangements). You can re-calibrate the Phase Advance to your needs and your liking. 
- - The default calibration was experimentally calibrated on the real motor based on the minimum noise and minimum torque ripple
- - If you re-calibrate the Phase advance map please take all the safety measures! The motors can spin VERY VERY FAST... crazy fast! Please use it with care!
+ - The Phase Advance engages automatically and smooth (no need for boost buttons or additional fancy arrangements). You can re-calibrate the Phase Advance to your needs and your liking. 
+ - The default map was experimentally calibrated on the real motor based on the minimum noise and minimum torque ripple
+ - If you re-calibrate the Phase advance map please take all the safety measures! The motors can spin VERY VERY FAST! Please use it with care!
  - I do not recommend more than 40 deg MAX Phase advance. 
 
 ### Future work
