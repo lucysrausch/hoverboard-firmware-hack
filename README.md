@@ -25,7 +25,7 @@ A short video showing the noise performance of the Commutation method vs Sinusoi
 
 ** A more detailed and better movie will come soon... so stay tuned ;)
 
-![Hoverboard wheel](https://github.com/EmanuelFeru/hoverboard-firmware-hack/blob/master/docs/pictures/hoverboard_wheel.JPG | width=640)
+![Hoverboard wheel](https://github.com/EmanuelFeru/hoverboard-firmware-hack/blob/master/docs/pictures/hoverboard_wheel.JPG)
 
 ---
 GENERAL NOTES:
