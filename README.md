@@ -23,9 +23,9 @@ A classification of the BLDC control methods in terms of performance is as follo
 A short video showing the noise performance of the Commutation method vs Sinusoidal 3rd harmonic can be found here:
 [►Video: Commutation method vs Sinusoidal 3rd harmonic](https://drive.google.com/file/d/1vC_kEkp2LE2lAaMCJcmK4z2m3jrPUoBD/view)
 
-** A more detailed and better movie will come soon... so stay tuned ;)
-
 ![Hoverboard wheel](https://github.com/EmanuelFeru/hoverboard-firmware-hack/blob/master/docs/pictures/hoverboard_wheel.JPG)
+
+** A more detailed and better movie will come soon... so stay tuned ;)
 
 ---
 GENERAL NOTES:
