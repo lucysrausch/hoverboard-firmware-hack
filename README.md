@@ -11,6 +11,7 @@ This repository improves significantly the performance of the previous BLDC moto
 ![Schematic representation of the control methods](https://github.com/EmanuelFeru/hoverboard-firmware-hack/blob/master/01_Matlab/02_Figures/control_methods.png)
 
 A classification of the BLDC control methods in terms of performance is as follows:
+
 |Control method| Torque output | Noise performance | Efficiency |
 |--|--|--|--|
 |Commutation| High | Low | Low |
