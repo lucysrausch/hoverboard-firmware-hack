@@ -9,7 +9,6 @@ This repository improves significantly the performance of the previous BLDC moto
  - automatic phase advance / field weakening
 
 ![Schematic representation of the control methods](https://github.com/EmanuelFeru/hoverboard-firmware-hack/blob/master/01_Matlab/02_Figures/control_methods.png)
-![Hoverboard wheel](https://github.com/EmanuelFeru/hoverboard-firmware-hack/blob/master/docs/pictures/hoverboard_wheel.JPG)
 
 A classification of the BLDC control methods in terms of performance is as follows:
 |Control method| Torque output | Noise performance | Efficiency |
@@ -24,7 +23,7 @@ A classification of the BLDC control methods in terms of performance is as follo
 A short video showing the noise performance of the Commutation method vs Sinusoidal 3rd harmonic can be found here:
 [►Video: Commutation method vs Sinusoidal 3rd harmonic](https://drive.google.com/file/d/1vC_kEkp2LE2lAaMCJcmK4z2m3jrPUoBD/view)
 ** A more detailed and better movie will come soon... so stay tuned ;)
-
+![Hoverboard wheel](https://github.com/EmanuelFeru/hoverboard-firmware-hack/blob/master/docs/pictures/hoverboard_wheel.JPG | width=640)
 ---
 GENERAL NOTES:
  - All the calibratable motor parameters can be found in the 'BLDC_controller_data.c'. I provided you with an already calibrated controller, but if you feel like fine tuning it feel free to do so.
@@ -51,7 +50,7 @@ Additionally, you can also flash using the method described below in the Flashin
 ---
 
 ## Hardware
-![otter](https://raw.githubusercontent.com/NiklasFauth/hoverboard-firmware-hack/master/pinout.png)
+![otter](https://raw.githubusercontent.com/NiklasFauth/hoverboard-firmware-hack/master/pinout.png | width=48)
 
 The original Hardware supports two 4-pin cables that originally were connected to the two sensor boards. They break out GND, 12/15V and USART2&3 of the Hoverboard mainboard.
 Both USART2 & 3 can be used for UART and I2C, PA2&3 can be used as 12bit ADCs.
