@@ -583,28 +583,76 @@
         <!--RAWSTRING-->
       </g>
       <!--RAWSTRING-->
-      <g id="BLDCmotorControl_R2017b:2530:140:136#out:1">
+      <g id="BLDCmotorControl_R2017b:2530:140:133#out:1">
         <!--RAWSTRING-->
         <g data-tags="PathIntersectionsEnabledTag">
-          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,90,160)">
+          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,90,115)">
             <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
           </g>
           <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
-            <path d="M115,40 L10,40 L10,160 L82,160" fill-rule="evenodd" vector-effect="none"/>
+            <path d="M55,115 L82,115" fill-rule="evenodd" vector-effect="none"/>
           </g>
           <!--RAWSTRING-->
         </g>
         <!--RAWSTRING-->
       </g>
       <!--RAWSTRING-->
-      <g id="BLDCmotorControl_R2017b:2530:140:137#out:1">
+      <g id="BLDCmotorControl_R2017b:2530:140:132#out:1">
         <!--RAWSTRING-->
         <g data-tags="PathIntersectionsEnabledTag">
-          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,115,115)">
+          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,90,70)">
             <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
           </g>
           <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
-            <path d="M95,115 L100,115 L107,115" fill-rule="evenodd" vector-effect="none"/>
+            <path d="M55,70 L82,70" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <!--RAWSTRING-->
+      </g>
+      <!--RAWSTRING-->
+      <g id="BLDCmotorControl_R2017b:2530:140:134#out:1">
+        <!--RAWSTRING-->
+        <g data-tags="PathIntersectionsEnabledTag">
+          <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
+            <path d="M180,90 L210,90" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <!--RAWSTRING-->
+        <g data-tags="PathIntersectionsEnabledTag">
+          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(-1,1.22465e-16,-1.22465e-16,-1,155,40)">
+            <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
+          </g>
+          <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
+            <path d="M210,90 L210,40 L163,40" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <!--RAWSTRING-->
+        <g data-tags="PathIntersectionsEnabledTag">
+          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,255,90)">
+            <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
+          </g>
+          <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
+            <path d="M210,90 L247,90" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,210,90)">
+          <path d="M2.5,0 C2.5,1.38071 1.38071,2.5 0,2.5 C-1.38071,2.5 -2.5,1.38071 -2.5,0 C-2.5,-1.38071 -1.38071,-2.5 0,-2.5 C1.38071,-2.5 2.5,-1.38071 2.5,0 z" fill-rule="evenodd" vector-effect="none"/>
+        </g>
+        <!--RAWSTRING-->
+      </g>
+      <!--RAWSTRING-->
+      <g id="BLDCmotorControl_R2017b:2530:140:134#out:2">
+        <!--RAWSTRING-->
+        <g data-tags="PathIntersectionsEnabledTag">
+          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,255,135)">
+            <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
+          </g>
+          <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
+            <path d="M180,135 L247,135" fill-rule="evenodd" vector-effect="none"/>
           </g>
           <!--RAWSTRING-->
         </g>
@@ -625,76 +673,28 @@
         <!--RAWSTRING-->
       </g>
       <!--RAWSTRING-->
-      <g id="BLDCmotorControl_R2017b:2530:140:134#out:2">
+      <g id="BLDCmotorControl_R2017b:2530:140:137#out:1">
         <!--RAWSTRING-->
         <g data-tags="PathIntersectionsEnabledTag">
-          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,255,135)">
+          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,115,115)">
             <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
           </g>
           <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
-            <path d="M180,135 L247,135" fill-rule="evenodd" vector-effect="none"/>
+            <path d="M95,115 L100,115 L107,115" fill-rule="evenodd" vector-effect="none"/>
           </g>
           <!--RAWSTRING-->
         </g>
         <!--RAWSTRING-->
       </g>
       <!--RAWSTRING-->
-      <g id="BLDCmotorControl_R2017b:2530:140:134#out:1">
+      <g id="BLDCmotorControl_R2017b:2530:140:136#out:1">
         <!--RAWSTRING-->
         <g data-tags="PathIntersectionsEnabledTag">
-          <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
-            <path d="M180,90 L210,90" fill-rule="evenodd" vector-effect="none"/>
-          </g>
-          <!--RAWSTRING-->
-        </g>
-        <!--RAWSTRING-->
-        <g data-tags="PathIntersectionsEnabledTag">
-          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,255,90)">
+          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,90,160)">
             <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
           </g>
           <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
-            <path d="M210,90 L247,90" fill-rule="evenodd" vector-effect="none"/>
-          </g>
-          <!--RAWSTRING-->
-        </g>
-        <!--RAWSTRING-->
-        <g data-tags="PathIntersectionsEnabledTag">
-          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(-1,1.22465e-16,-1.22465e-16,-1,155,40)">
-            <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
-          </g>
-          <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
-            <path d="M210,90 L210,40 L163,40" fill-rule="evenodd" vector-effect="none"/>
-          </g>
-          <!--RAWSTRING-->
-        </g>
-        <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,210,90)">
-          <path d="M2.5,0 C2.5,1.38071 1.38071,2.5 0,2.5 C-1.38071,2.5 -2.5,1.38071 -2.5,0 C-2.5,-1.38071 -1.38071,-2.5 0,-2.5 C1.38071,-2.5 2.5,-1.38071 2.5,0 z" fill-rule="evenodd" vector-effect="none"/>
-        </g>
-        <!--RAWSTRING-->
-      </g>
-      <!--RAWSTRING-->
-      <g id="BLDCmotorControl_R2017b:2530:140:132#out:1">
-        <!--RAWSTRING-->
-        <g data-tags="PathIntersectionsEnabledTag">
-          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,90,70)">
-            <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
-          </g>
-          <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
-            <path d="M55,70 L82,70" fill-rule="evenodd" vector-effect="none"/>
-          </g>
-          <!--RAWSTRING-->
-        </g>
-        <!--RAWSTRING-->
-      </g>
-      <!--RAWSTRING-->
-      <g id="BLDCmotorControl_R2017b:2530:140:133#out:1">
-        <!--RAWSTRING-->
-        <g data-tags="PathIntersectionsEnabledTag">
-          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,90,115)">
-            <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
-          </g>
-          <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
-            <path d="M55,115 L82,115" fill-rule="evenodd" vector-effect="none"/>
+            <path d="M115,40 L10,40 L10,160 L82,160" fill-rule="evenodd" vector-effect="none"/>
           </g>
           <!--RAWSTRING-->
         </g>
@@ -703,5 +703,5 @@
       <!--RAWSTRING-->
     </g>
   </g>
-  <!--generated on windows @ 2019-05-25 21:42:52 W. Europe Daylight Time-->
+  <!--generated on windows @ 2019-05-28 19:55:46 W. Europe Daylight Time-->
 </svg>

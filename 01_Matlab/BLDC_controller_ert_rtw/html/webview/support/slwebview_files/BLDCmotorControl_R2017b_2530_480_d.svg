@@ -15,7 +15,7 @@
         <!--RAWSTRING-->
         <g id="BLDCmotorControl_R2017b:2530:480:476">
           <g clip-path="none" fill="none" opacity="0.65098" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,139,18)">
-            <image height="140" preserveAspectRatio="none" width="48" x="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAACMCAYAAAA6CiqJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACPklEQVR4nO2dsVICMRRFL85KY6sNDZUfo61/5r/4M0JjQwMFFFBAoUXCTAy7uks2uXl6z0wmjGZCDm8zb9mE3QmAFwAPAO59XQNrABtfh2UTN2zgBj0LSg3cAZj61ycABwC7toYN3Cc/AzD3pQZufX0EsAewDf72jTACcwCPJUbXkxPc4Hdwh0+rwE3JEeVAAmwkwEYCbMwLND3aTAb2+QbgueN/CwDLoH4d2PcFOSKwzNBnJxJoIfmwGIL5SSwBNuYF+uSBz+yjSMB8BMwL9DmEFiO+3weAFdx33O0YHfYRGDOzrnzZoOMyyVD6CDyN8Ua5MD8HJMBGAmwkwKZ0Jo5JvhpeOhPHFBHIGYHkLM+OQDLsCCTzLyJQtYD5PCABNhJgIwE25gX6JLL3K/rtOsuM18iSyZWJi+16yXUyV+ximPlzIZ1OszEvYD4PSICNVinZSICNBNhIgI22GgyEstVgzAiEv40xGYEt3Ce/RUGBMSNw8GXv62RKR+Dky9HXyegbGRsJsJEAGwmwMS/QJ5FdQ9elmNEXOMxHQAJsJMBGAmwkwMa8gFZo2EiAjQTYSICNBNhIgI0E2EiAjQTY5Fonrmrzd033X7zA/CEkATYSYCMBNtr0NxDdXyjG/ByQABsJsJEAmwYuK96h4+7yJOKMfUDHTt8GLiuGDyuogThj/yiw9q/PDyuogXib/h5ufBecBcKHFdRAvE3/1wgcfMN1WyMC8Tb9PToEJnDP4JjCTeJaJnK8TT8sQoi/xBdi9ZNmfAdK2AAAAABJRU5ErkJggg==" y="0"/>
+            <image height="140" preserveAspectRatio="none" width="48" x="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAACMCAYAAAA6CiqJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACPUlEQVR4nO2dsVICMRRFL85qY6sNDZUfo61/5r/4M0JjQwMFFFBIoUXCTAysZskmN0/vmclkBzJLDm8zb0jC7gTAM4B7AHe+boEVgLWvw7KOG3ZwnZ4GpQVuAdz44wOAPYDtuYYd3Dc/BTDzpQWuff0BYAdgE7z2jTACMwAPNXqXyAGu81u4y+eswFXNHpVAAmwkwEYCbMwLdAltJgPP+Qrgqee9OYBFUL8MPPcJJSKwKHDOXiRwhuzLYgjmB7EE2JgXSMkDn8V7kYH5CJgXSLmE5iN+3juAJdxv3M0YJ0wRGDOzLn1Zo2eaZCgpAo9jfFApzI8BCbCRABsJsKmdiWOyZ8NrZ+KYKgIlI5Cd5dkRyIYdgWz+RQSaFjCfByTARgJsJMDGvEBKIruEvvnUeI0sG/MRkAAbCbCRABsJsNEqJRsJsJEAGwmw0VaDgVC2GowZgfC/MSYjsIH75jeoKDBmBPa+7HydTe0IHHz58HU2WuBgIwE2EmAjATbmBbTAwUYCbCTARgJszAtofYCNBNiYFyg1sVXtHi2l5oWaErgkAtX+e2Z+Zk6719mYFzCfByTARgJsJMDGvEBKInsr3osMUgRauv/iCeYvIQmwkQAbCbDRpr+B6P5CMebHgATYSICNBNh0cFnxFj13lycRZ+w9enb6dnBZMXxYQQvEGftHgZU/Pj6soAXibfo7uP6dcBQIH1bQAvE2/V8jsPcNV+caEYi36e/QIzCBewbHDdwgbmUgx9v0wyKE+Et8ARbElEIgPaAvAAAAAElFTkSuQmCC" y="0"/>
           </g>
           <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,140,19)">
             <path d="M0,0 L40,0 L40,132 L0,132 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
@@ -577,5 +577,5 @@
       <!--RAWSTRING-->
     </g>
   </g>
-  <!--generated on windows @ 2019-05-25 21:42:52 W. Europe Daylight Time-->
+  <!--generated on windows @ 2019-05-28 19:55:45 W. Europe Daylight Time-->
 </svg>

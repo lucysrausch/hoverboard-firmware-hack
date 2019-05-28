@@ -3,8 +3,8 @@
   "sid":"BLDCmotorControl_R2017b:2531:135",
   "className":"Simulink.Annotation",
   "icon":"WebViewIcon5",
-  "name":"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"> <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\"> p, li { white-space: pre-wrap; } </style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\"> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed calculations:</span></p> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed_radps = Mechanical_angle_radps / Time_s</span></p> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed_rpm = (Mechanical_angle_deg * pi/180 * </span><span style=\" font-size:10px; color:#ff0000;\">30/pi </span><span style=\" font-size:10px; color:#ff0000;\">) / Time_s</span></p> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">cf_spd_coef =  </span><span style=\" font-size:10px; color:#ff0000;\"> (Mechanical_angle_deg * pi/180 * 30/pi ) </span></p></body></html>",
-  "label":"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"> <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\"> p, li { white-space: pre-wrap; } </style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\"> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed calculations:</span></p> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed_radps = Mechanical_angle_radps / Time_s</span></p> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed_rpm = (Mechanical_angle_deg * pi/180 * </span><span style=\" font-size:10px; color:#ff0000;\">30/pi </span><span style=\" font-size:10px; color:#ff0000;\">) / Time_s</span></p> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">cf_spd_coef =  </span><span style=\" font-size:10px; color:#ff0000;\"> (Mechanical_angle_deg * pi/180 * 30/pi ) </span></p></body></html>",
+  "name":"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"> <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\"> p, li { white-space: pre-wrap; } </style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\"> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed calculations:</span></p> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed_radps = Mechanical_angle_radps / Time_s</span></p> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed_rpm = (Mechanical_angle_deg * pi/180 * 30/pi ) / Time_s</span></p> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">cf_spd_coef =   (Mechanical_angle_deg * pi/180 * 30/pi ) </span></p></body></html>",
+  "label":"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"> <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\"> p, li { white-space: pre-wrap; } </style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\"> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed calculations:</span></p> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed_radps = Mechanical_angle_radps / Time_s</span></p> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed_rpm = (Mechanical_angle_deg * pi/180 * 30/pi ) / Time_s</span></p> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">cf_spd_coef =   (Mechanical_angle_deg * pi/180 * 30/pi ) </span></p></body></html>",
   "parent":"BLDCmotorControl_R2017b:2531:124",
   "inspector":{
    "params":[
@@ -22,7 +22,56 @@
     "ClickFcn"
    ],
    "values":[
-    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed calculations:</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed_radps = Mechanical_angle_radps / Time_s</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed_rpm = (Mechanical_angle_deg * pi/180 * </span><span style=\" font-size:10px; color:#ff0000;\">30/pi </span><span style=\" font-size:10px; color:#ff0000;\">) / Time_s</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">cf_spd_coef =  </span><span style=\" font-size:10px; color:#ff0000;\"> (Mechanical_angle_deg * pi/180 * 30/pi ) </span></p></body></html>",
+    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed calculations:</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed_radps = Mechanical_angle_radps / Time_s</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Speed_rpm = (Mechanical_angle_deg * pi/180 * 30/pi ) / Time_s</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">cf_spd_coef =   (Mechanical_angle_deg * pi/180 * 30/pi ) </span></p></body></html>",
+    "off",
+    "rich",
+    "auto",
+    "auto",
+    -1,
+    "auto",
+    "black",
+    "white",
+    "left",
+    "off",
+    ""
+   ],
+   "tabs":[
+   ],
+   "tabs_idx":[
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:755",
+  "className":"Simulink.Annotation",
+  "icon":"WebViewIcon5",
+  "name":"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"> <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\"> p, li { white-space: pre-wrap; } </style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\"> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Moving average filter</span></p></body></html>",
+  "label":"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"> <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\"> p, li { white-space: pre-wrap; } </style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\"> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Moving average filter</span></p></body></html>",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "Text",
+    "DropShadow",
+    "Interpreter",
+    "FontName",
+    "FontWeight",
+    "FontSize",
+    "FontAngle",
+    "ForegroundColor",
+    "BackgroundColor",
+    "HorizontalAlignment",
+    "UseDisplayTextAsClickCallback",
+    "ClickFcn"
+   ],
+   "values":[
+    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Moving average filter</span></p></body></html>",
     "off",
     "rich",
     "auto",
@@ -116,86 +165,6 @@
   }
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2531:134",
-  "className":"Simulink.Outport",
-  "icon":"WebViewIcon2",
-  "name":"n_motRaw ",
-  "label":"n_motRaw ",
-  "parent":"BLDCmotorControl_R2017b:2531:124",
-  "inspector":{
-   "params":[
-    "Port",
-    "IconDisplay",
-    "OutMin",
-    "OutMax",
-    "OutDataTypeStr",
-    "LockScale",
-    "Unit",
-    "PortDimensions",
-    "VarSizeSig",
-    "SampleTime",
-    "SignalType",
-    "BusOutputAsStruct",
-    "EnsureOutportIsVirtual",
-    "InitialOutput",
-    "MustResolveToSignalObject",
-    "OutputWhenDisabled",
-    "OutputWhenUnConnected",
-    "OutputWhenUnconnectedValue",
-    "SignalName",
-    "SignalObject",
-    "SourceOfInitialOutputValue",
-    "StorageClass",
-    "VectorParamsAs1DForOutWhenUnconnected"
-   ],
-   "values":[
-    "1",
-    "Port number",
-    "[]",
-    "[]",
-    "Inherit: auto",
-    "off",
-    "inherit",
-    "-1",
-    "Inherit",
-    "-1",
-    "auto",
-    "off",
-    "off",
-    "0",
-    "off",
-    "reset",
-    "off",
-    "0",
-    "",
-    [
-    ],
-    "Dialog",
-    "Auto",
-    "off"
-   ],
-   "tabs":[
-    "Main",
-    "Signal Attributes",
-    "-Other"
-   ],
-   "tabs_idx":[
-    0,
-    2,
-    11
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"Outport",
-   "masktype":""
-  }
- },
- {
   "sid":"BLDCmotorControl_R2017b:2531:132",
   "className":"Simulink.Constant",
   "icon":"WebViewIcon2",
@@ -214,7 +183,7 @@
     "VectorParams1D"
    ],
    "values":[
-    "cf_spdCoef",
+    "cf_speedCoef",
     "int32",
     "inf",
     "off",
@@ -489,7 +458,7 @@
    "values":[
     "boolean",
     "off",
-    ">",
+    ">=",
     "Simplest",
     "-1",
     "on"
@@ -618,7 +587,87 @@
   }
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2531:483",
+  "sid":"BLDCmotorControl_R2017b:2531:605",
+  "className":"Simulink.Outport",
+  "icon":"WebViewIcon2",
+  "name":"n_mot",
+  "label":"n_mot",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "Port",
+    "IconDisplay",
+    "OutMin",
+    "OutMax",
+    "OutDataTypeStr",
+    "LockScale",
+    "Unit",
+    "PortDimensions",
+    "VarSizeSig",
+    "SampleTime",
+    "SignalType",
+    "BusOutputAsStruct",
+    "EnsureOutportIsVirtual",
+    "InitialOutput",
+    "MustResolveToSignalObject",
+    "OutputWhenDisabled",
+    "OutputWhenUnConnected",
+    "OutputWhenUnconnectedValue",
+    "SignalName",
+    "SignalObject",
+    "SourceOfInitialOutputValue",
+    "StorageClass",
+    "VectorParamsAs1DForOutWhenUnconnected"
+   ],
+   "values":[
+    "1",
+    "Port number",
+    "[]",
+    "[]",
+    "Inherit: auto",
+    "off",
+    "inherit",
+    "-1",
+    "Inherit",
+    "-1",
+    "auto",
+    "off",
+    "off",
+    "[]",
+    "off",
+    "held",
+    "off",
+    "0",
+    "",
+    [
+    ],
+    "Dialog",
+    "Auto",
+    "off"
+   ],
+   "tabs":[
+    "Main",
+    "Signal Attributes",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    2,
+    11
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"Outport",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:650",
   "className":"Simulink.TriggerPort",
   "icon":"WebViewIcon2",
   "name":"Trigger",
@@ -691,6 +740,633 @@
    "blocktype":"TriggerPort",
    "masktype":""
   }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:751",
+  "className":"Simulink.Sum",
+  "icon":"WebViewIcon2",
+  "name":"Sum2",
+  "label":"Sum2",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "AccumDataTypeStr",
+    "OutDataTypeStr",
+    "CollapseDim",
+    "CollapseMode",
+    "IconShape",
+    "InputSameDT",
+    "Inputs",
+    "LockScale",
+    "OutMax",
+    "OutMin",
+    "RndMeth",
+    "SampleTime",
+    "SaturateOnIntegerOverflow"
+   ],
+   "values":[
+    "Inherit: Same as first input",
+    "Inherit: Same as first input",
+    "1",
+    "All dimensions",
+    "rectangular",
+    "on",
+    "+++",
+    "off",
+    "[]",
+    "[]",
+    "Simplest",
+    "-1",
+    "off"
+   ],
+   "tabs":[
+    "Signal Attributes",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    2
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"Sum",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:752",
+  "className":"Simulink.UnitDelay",
+  "icon":"WebViewIcon2",
+  "name":"UnitDelay1",
+  "label":"UnitDelay1",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "InitialCondition",
+    "InputProcessing",
+    "SampleTime",
+    "CodeGenStateStorageTypeQualifier",
+    "StateMustResolveToSignalObject",
+    "StateName",
+    "StateSignalObject",
+    "StateStorageClass"
+   ],
+   "values":[
+    "0",
+    "Elements as channels (sample based)",
+    "-1",
+    "",
+    "off",
+    "",
+    [
+    ],
+    "Auto"
+   ],
+   "tabs":[
+    "Main",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    3
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"UnitDelay",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:753",
+  "className":"Simulink.UnitDelay",
+  "icon":"WebViewIcon2",
+  "name":"UnitDelay5",
+  "label":"UnitDelay5",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "InitialCondition",
+    "InputProcessing",
+    "SampleTime",
+    "CodeGenStateStorageTypeQualifier",
+    "StateMustResolveToSignalObject",
+    "StateName",
+    "StateSignalObject",
+    "StateStorageClass"
+   ],
+   "values":[
+    "0",
+    "Elements as channels (sample based)",
+    "-1",
+    "",
+    "off",
+    "",
+    [
+    ],
+    "Auto"
+   ],
+   "tabs":[
+    "Main",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    3
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"UnitDelay",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:748",
+  "className":"Simulink.Constant",
+  "icon":"WebViewIcon2",
+  "name":"Constant2",
+  "label":"Constant2",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "Value",
+    "OutDataTypeStr",
+    "FramePeriod",
+    "LockScale",
+    "OutMax",
+    "OutMin",
+    "SampleTime",
+    "VectorParams1D"
+   ],
+   "values":[
+    "3",
+    "Inherit: Inherit via back propagation",
+    "inf",
+    "off",
+    "[]",
+    "[]",
+    "inf",
+    "on"
+   ],
+   "tabs":[
+    "Main",
+    "Signal Attributes",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    1,
+    2
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"Constant",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:749",
+  "className":"Simulink.Product",
+  "icon":"WebViewIcon2",
+  "name":"Divide1",
+  "label":"Divide1",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "OutDataTypeStr",
+    "CollapseDim",
+    "CollapseMode",
+    "InputSameDT",
+    "Inputs",
+    "LockScale",
+    "Multiplication",
+    "OutMax",
+    "OutMin",
+    "RndMeth",
+    "SampleTime",
+    "SaturateOnIntegerOverflow"
+   ],
+   "values":[
+    "Inherit: Inherit via internal rule",
+    "1",
+    "All dimensions",
+    "off",
+    "*/",
+    "off",
+    "Element-wise(.*)",
+    "[]",
+    "[]",
+    "Simplest",
+    "-1",
+    "off"
+   ],
+   "tabs":[
+    "Signal Attributes",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    1
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"Product",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:750",
+  "className":"Simulink.From",
+  "icon":"WebViewIcon2",
+  "name":"From",
+  "label":"From",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "GotoTag",
+    "IconDisplay"
+   ],
+   "values":[
+    "n_motRaw",
+    "Tag"
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"From",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:756",
+  "className":"Simulink.Goto",
+  "icon":"WebViewIcon2",
+  "name":"Goto22",
+  "label":"Goto22",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "GotoTag",
+    "TagVisibility",
+    "IconDisplay"
+   ],
+   "values":[
+    "n_motRaw",
+    "local",
+    "Tag"
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"Goto",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:749#out:1",
+  "className":"Simulink.Line",
+  "icon":"WebViewIcon4",
+  "name":"",
+  "label":"",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:753#out:1",
+  "className":"Simulink.Line",
+  "icon":"WebViewIcon4",
+  "name":"",
+  "label":"",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:748#out:1",
+  "className":"Simulink.Line",
+  "icon":"WebViewIcon4",
+  "name":"",
+  "label":"",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:750#out:1",
+  "className":"Simulink.Line",
+  "icon":"WebViewIcon4",
+  "name":"",
+  "label":"",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:751#out:1",
+  "className":"Simulink.Line",
+  "icon":"WebViewIcon4",
+  "name":"",
+  "label":"",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:752#out:1",
+  "className":"Simulink.Line",
+  "icon":"WebViewIcon4",
+  "name":"",
+  "label":"",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
  },
  {
   "sid":"BLDCmotorControl_R2017b:2531:133#out:1",
@@ -796,108 +1472,6 @@
  },
  {
   "sid":"BLDCmotorControl_R2017b:2531:126#out:1",
-  "className":"Simulink.Line",
-  "icon":"WebViewIcon4",
-  "name":"",
-  "label":"",
-  "parent":"BLDCmotorControl_R2017b:2531:124",
-  "inspector":{
-   "params":[
-    "SignalNameFromLabel",
-    "MustResolveToSignal",
-    "ShowPropagatedSignal",
-    "DataLogging",
-    "TestPoint",
-    "SignalObjectPackage",
-    "StorageClass",
-    "Description",
-    "documentLink"
-   ],
-   "values":[
-    "",
-    "off",
-    "off",
-    "off",
-    "off",
-    "Simulink",
-    "Auto",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes",
-    "Logging and Accessibility",
-    "Code Generation",
-    "Documentation"
-   ],
-   "tabs_idx":[
-    0,
-    3,
-    5,
-    7
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2531:131#out:1",
-  "className":"Simulink.Line",
-  "icon":"WebViewIcon4",
-  "name":"",
-  "label":"",
-  "parent":"BLDCmotorControl_R2017b:2531:124",
-  "inspector":{
-   "params":[
-    "SignalNameFromLabel",
-    "MustResolveToSignal",
-    "ShowPropagatedSignal",
-    "DataLogging",
-    "TestPoint",
-    "SignalObjectPackage",
-    "StorageClass",
-    "Description",
-    "documentLink"
-   ],
-   "values":[
-    "",
-    "off",
-    "off",
-    "off",
-    "off",
-    "Simulink",
-    "Auto",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes",
-    "Logging and Accessibility",
-    "Code Generation",
-    "Documentation"
-   ],
-   "tabs_idx":[
-    0,
-    3,
-    5,
-    7
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2531:130#out:1",
   "className":"Simulink.Line",
   "icon":"WebViewIcon4",
   "name":"",
@@ -1102,6 +1676,108 @@
  },
  {
   "sid":"BLDCmotorControl_R2017b:2531:125#out:1",
+  "className":"Simulink.Line",
+  "icon":"WebViewIcon4",
+  "name":"",
+  "label":"",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:130#out:1",
+  "className":"Simulink.Line",
+  "icon":"WebViewIcon4",
+  "name":"",
+  "label":"",
+  "parent":"BLDCmotorControl_R2017b:2531:124",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2531:131#out:1",
   "className":"Simulink.Line",
   "icon":"WebViewIcon4",
   "name":"",

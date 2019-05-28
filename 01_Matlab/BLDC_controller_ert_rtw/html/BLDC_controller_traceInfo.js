@@ -1,74 +1,77 @@
 function RTW_Sid2UrlHash() {
 	this.urlHashMap = new Array();
 	/* <S2>/F02_Electrical_Angle_Calculation */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:215"] = "BLDC_controller.c:489,504,774,781";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:215"] = "BLDC_controller.c:482,497,774,781";
 	/* <S2>/If1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:434"] = "BLDC_controller.c:755,784,1287&BLDC_controller.h:91";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:434"] = "BLDC_controller.c:755,784,1282&BLDC_controller.h:84";
 	/* <S3>/F02_Electrical_Angle_Calculation */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:215"] = "BLDC_controller.c:490,505,1071,1078";
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:215"] = "BLDC_controller.c:483,498,1070,1077";
 	/* <S3>/If1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:434"] = "BLDC_controller.c:1052,1081,1290&BLDC_controller.h:92";
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:434"] = "BLDC_controller.c:1051,1080,1285&BLDC_controller.h:85";
 	/* <S12>/F01_03_Direction_Detection */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:38"] = "BLDC_controller.c:187,196,230,639,649&BLDC_controller.h:36,70";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:38"] = "BLDC_controller.c:187,196,230,633,643&BLDC_controller.h:36,65";
 	/* <S12>/z_ctrlTypSel1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:208"] = "BLDC_controller.c:756,787,835&BLDC_controller.h:282&BLDC_controller_data.c:88";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:208"] = "BLDC_controller.c:756,787,835&BLDC_controller.h:279&BLDC_controller_data.c:87";
 	/* <S13>/Action Port */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:221"] = "BLDC_controller.c:775";
 	/* <S13>/Abs2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:595"] = "BLDC_controller.c:545,552";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:595"] = "BLDC_controller.c:536,543";
 	/* <S13>/Constant16 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:224"] = "BLDC_controller.c:517";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:224"] = "BLDC_controller.c:510";
 	/* <S13>/Constant2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:225"] = "msg=rtwMsg_CodeGenerationReducedBlock&block=BLDCmotorControl_R2017b:2530:225";
 	/* <S13>/Divide4 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:227"] = "BLDC_controller.c:530";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:227"] = "BLDC_controller.c:524";
 	/* <S13>/Divide5 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:228"] = "BLDC_controller.c:531";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:228"] = "BLDC_controller.c:525";
+	/* <S13>/Math
+Function */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:623"] = "BLDC_controller.c:533";
 	/* <S13>/Product2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:545"] = "BLDC_controller.c:564";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:545"] = "BLDC_controller.c:555";
 	/* <S13>/Product6 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:260"] = "BLDC_controller.c:532";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:260"] = "BLDC_controller.c:526";
 	/* <S13>/Relational
 Operator7 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:261"] = "BLDC_controller.c:518";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:261"] = "BLDC_controller.c:511";
 	/* <S13>/Scope */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:262"] = "msg=rtwMsg_reducedBlock&block=BLDCmotorControl_R2017b:2530:262";
 	/* <S13>/Sum1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:263"] = "BLDC_controller.c:519";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:263"] = "BLDC_controller.c:512";
 	/* <S13>/Sum2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:264"] = "BLDC_controller.c:529";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:264"] = "BLDC_controller.c:522";
 	/* <S13>/Sum3 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:546"] = "BLDC_controller.c:563";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:546"] = "BLDC_controller.c:554";
 	/* <S13>/Switch3 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:266"] = "BLDC_controller.c:516,527";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:266"] = "BLDC_controller.c:509,520";
 	/* <S13>/Switch_PhaAdv */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:514"] = "BLDC_controller.c:537,572&BLDC_controller.h:73";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:514"] = "BLDC_controller.c:531,563&BLDC_controller.h:67";
 	/* <S13>/a_elecAngle1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:223"] = "msg=rtwMsg_CodeGenerationReducedBlock&block=BLDCmotorControl_R2017b:2530:223";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:223"] = "BLDC_controller.c:523";
 	/* <S13>/a_elecPeriod1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:512"] = "BLDC_controller.c:538&BLDC_controller.h:292&BLDC_controller_data.c:102";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:512"] = "BLDC_controller.c:532&BLDC_controller.h:289&BLDC_controller_data.c:101";
 	/* <S13>/a_elecPeriod2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:547"] = "BLDC_controller.c:539";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:547"] = "msg=rtwMsg_CodeGenerationReducedBlock&block=BLDCmotorControl_R2017b:2530:547";
 	/* <S13>/a_phaAdv_M2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:521"] = "BLDC_controller.c:559&BLDC_controller.h:270&BLDC_controller_data.c:72";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:521"] = "BLDC_controller.c:550&BLDC_controller.h:261&BLDC_controller_data.c:65";
 	/* <S13>/r_phaAdvDC_XA */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:522"] = "BLDC_controller.c:554&BLDC_controller.h:265&BLDC_controller_data.c:65";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:522"] = "BLDC_controller.c:545&BLDC_controller.h:256&BLDC_controller_data.c:58";
 	/* <S13>/a_elecAngleAdv */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:278"] = "BLDC_controller.c:495";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:278"] = "BLDC_controller.c:488";
 	/* <S13>/a_elecAngle */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:279"] = "BLDC_controller.c:498";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:279"] = "BLDC_controller.c:491";
 	/* <S14>/F03_01_Pure_Trapezoidal_Method */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:285"] = "BLDC_controller.c:405,791,797";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:285"] = "BLDC_controller.c:398,791,797";
 	/* <S14>/F03_02_Sinusoidal3rd_Method */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:295"] = "BLDC_controller.c:461,811,817";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:295"] = "BLDC_controller.c:454,811,817";
 	/* <S14>/F03_02_Sinusoidal_Method */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:305"] = "BLDC_controller.c:433,801,807";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:305"] = "BLDC_controller.c:426,801,807";
 	/* <S14>/Merge */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:345"] = "BLDC_controller.h:75";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:345"] = "BLDC_controller.h:68";
 	/* <S14>/Merge1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:346"] = "BLDC_controller.h:76";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:346"] = "BLDC_controller.h:69";
 	/* <S14>/Merge2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:347"] = "BLDC_controller.h:77";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:347"] = "BLDC_controller.h:70";
 	/* <S14>/Switch Case */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:348"] = "BLDC_controller.c:786,821";
 	/* <S15>/Abs1 */
@@ -95,34 +98,34 @@ Operator1 */
 Operator2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:590"] = "BLDC_controller.c:845";
 	/* <S15>/Relay */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:400"] = "BLDC_controller.c:731,846&BLDC_controller.h:110,245,250&BLDC_controller_data.c:37,44";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:400"] = "BLDC_controller.c:731,846&BLDC_controller.h:108,241,246&BLDC_controller_data.c:37,44";
 	/* <S15>/Switch1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:401"] = "BLDC_controller.c:834,887";
 	/* <S15>/r_commDCDeacv */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:593"] = "BLDC_controller.c:837&BLDC_controller.h:260&BLDC_controller_data.c:58";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:593"] = "BLDC_controller.c:837&BLDC_controller.h:251&BLDC_controller_data.c:51";
 	/* <S15>/z_commutMap_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:411"] = "BLDC_controller.c:841,849,859,863,868,870,876,878&BLDC_controller.h:190&BLDC_controller_data.c:187";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:411"] = "BLDC_controller.c:841,849,859,863,868,870,876,878&BLDC_controller.h:186&BLDC_controller_data.c:186";
 	/* <S20>/Logical
 Operator */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:30"] = "BLDC_controller.c:619";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:30"] = "BLDC_controller.c:621";
 	/* <S20>/UnitDelay */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:31"] = "BLDC_controller.c:623,1198&BLDC_controller.h:95";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:31"] = "BLDC_controller.c:625,1197&BLDC_controller.h:88";
 	/* <S20>/UnitDelay1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:32"] = "BLDC_controller.c:624,1203&BLDC_controller.h:96";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:32"] = "BLDC_controller.c:626,1202&BLDC_controller.h:89";
 	/* <S20>/UnitDelay2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:33"] = "BLDC_controller.c:625,1208&BLDC_controller.h:97";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:33"] = "BLDC_controller.c:627,1207&BLDC_controller.h:90";
 	/* <S21>/Selector */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:14"] = "BLDC_controller.c:641,760,847,861,1218";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:14"] = "BLDC_controller.c:635,760,847,861,1214";
 	/* <S21>/Sum */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:15"] = "BLDC_controller.c:609";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:15"] = "BLDC_controller.c:611";
 	/* <S21>/UnitDelay1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:16"] = "BLDC_controller.c:643,1216&BLDC_controller.h:98";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:16"] = "BLDC_controller.c:637,1212&BLDC_controller.h:91";
 	/* <S21>/g_Ha */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:17"] = "BLDC_controller.c:610";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:17"] = "BLDC_controller.c:612";
 	/* <S21>/g_Hb */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:18"] = "BLDC_controller.c:611";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:18"] = "BLDC_controller.c:613";
 	/* <S21>/vec_hallToPos */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:22"] = "BLDC_controller.c:642,757,838,860,1217&BLDC_controller.h:197&BLDC_controller_data.c:195";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:22"] = "BLDC_controller.c:636,757,838,860,1213&BLDC_controller.h:193&BLDC_controller_data.c:194";
 	/* <S22>/Enable */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:41"] = "BLDC_controller.c:197";
 	/* <S22>/Constant20 */
@@ -149,59 +152,65 @@ Operator6 */
 	/* <S22>/Sum2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:51"] = "BLDC_controller.c:203";
 	/* <S22>/Switch2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:52"] = "BLDC_controller.c:209,224&BLDC_controller.h:90";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:52"] = "BLDC_controller.c:209,224&BLDC_controller.h:83";
 	/* <S22>/UnitDelay1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:53"] = "BLDC_controller.c:200,226&BLDC_controller.h:38,89";
-	/* <S23>/Abs4 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:63"] = "BLDC_controller.c:661,670";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:53"] = "BLDC_controller.c:200,226&BLDC_controller.h:38,82";
 	/* <S23>/Constant6 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:64"] = "msg=rtwMsg_CodeGenerationReducedBlock&block=BLDCmotorControl_R2017b:2530:64";
 	/* <S23>/Edge_counter */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:65"] = "BLDC_controller.c:235,246,251,257,263,272,311,651,659&BLDC_controller.h:41,44,69";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:65"] = "BLDC_controller.c:235,246,251,257,263,272,311,653,661&BLDC_controller.h:41,44,64";
 	/* <S23>/Logical
 Operator1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:109"] = "BLDC_controller.c:693";
 	/* <S23>/Logical
 Operator2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:110"] = "BLDC_controller.c:653";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:110"] = "BLDC_controller.c:655";
 	/* <S23>/Logical
 Operator3 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:111"] = "BLDC_controller.c:631";
-	/* <S23>/Moving_Average_Filter */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:112"] = "BLDC_controller.c:316,325,349,711,718&BLDC_controller.h:47,53,55,68,120";
-	/* <S23>/Raw_ Speed_calculation */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:124"] = "BLDC_controller.c:354,362,387,705,709&BLDC_controller.h:58,60,119";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:111"] = "BLDC_controller.c:645";
+	/* <S23>/Logical
+Operator5 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:722"] = "BLDC_controller.c:663";
+	/* <S23>/Motor_Speed_Calculation */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:124"] = "BLDC_controller.c:316,325,367,711,718&BLDC_controller.h:47,53,55,63,116";
 	/* <S23>/Relational
 Operator1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:136"] = "BLDC_controller.c:633";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:136"] = "BLDC_controller.c:647";
 	/* <S23>/Relational
-Operator4 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:137"] = "BLDC_controller.c:672";
+Operator3 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:696"] = "BLDC_controller.c:665";
 	/* <S23>/Relational
 Operator5 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:138"] = "BLDC_controller.c:685";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:138"] = "BLDC_controller.c:680";
+	/* <S23>/Relational
+Operator6 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:720"] = "BLDC_controller.c:666";
 	/* <S23>/Scope2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:141"] = "msg=rtwMsg_reducedBlock&block=BLDCmotorControl_R2017b:2530:141";
 	/* <S23>/Sum1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:142"] = "BLDC_controller.c:752";
 	/* <S23>/Switch */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:143"] = "BLDC_controller.c:691,703";
-	/* <S23>/UnitDelay10 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:145"] = "BLDC_controller.c:662";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:143"] = "BLDC_controller.c:692,709";
+	/* <S23>/Switch1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:714"] = "BLDC_controller.c:694,701";
 	/* <S23>/UnitDelay8 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:146"] = "BLDC_controller.c:654,1222&BLDC_controller.h:105";
-	/* <S23>/n_thresSpdDeacv */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:147"] = "BLDC_controller.c:673&BLDC_controller.h:255&BLDC_controller_data.c:51";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:146"] = "BLDC_controller.c:656,1221&BLDC_controller.h:101";
+	/* <S23>/falling_edge2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:733"] = "BLDC_controller.c:370,687,690";
 	/* <S23>/rising_edge */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:588"] = "BLDC_controller.c:390,677,680";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:588"] = "BLDC_controller.c:383,672,675";
 	/* <S23>/z_counter2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:169"] = "BLDC_controller.c:694,1228,1300&BLDC_controller.h:82";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:169"] = "BLDC_controller.c:695,1227,1295&BLDC_controller.h:75,269&BLDC_controller_data.c:75";
 	/* <S23>/z_counterRawPrev */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:170"] = "BLDC_controller.c:634,695,1213&BLDC_controller.h:81";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:170"] = "BLDC_controller.c:648,667,696,1218&BLDC_controller.h:74";
 	/* <S23>/z_maxCntRst */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:171"] = "BLDC_controller.c:632&BLDC_controller.h:275&BLDC_controller_data.c:79";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:171"] = "BLDC_controller.c:646&BLDC_controller.h:266&BLDC_controller_data.c:72";
+	/* <S23>/z_maxCntRst1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:726"] = "BLDC_controller.c:702&BLDC_controller.h:267&BLDC_controller_data.c:73";
+	/* <S23>/z_maxCntRst2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:721"] = "BLDC_controller.c:664&BLDC_controller.h:268&BLDC_controller_data.c:74";
 	/* <S23>/z_nrEdgeSpdAcv */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:172"] = "BLDC_controller.c:683&BLDC_controller.h:287&BLDC_controller_data.c:95";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:172"] = "BLDC_controller.c:678&BLDC_controller.h:284&BLDC_controller_data.c:94";
 	/* <S27>/Enable */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:69"] = "BLDC_controller.c:252,273";
 	/* <S27>/Constant23 */
@@ -218,547 +227,552 @@ Operator2 */
 Operator1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:74"] = "BLDC_controller.c:281";
 	/* <S27>/Sum2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:76"] = "BLDC_controller.c:297&BLDC_controller.h:94";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:76"] = "BLDC_controller.c:297&BLDC_controller.h:87";
 	/* <S27>/Switch2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:77"] = "msg=rtwMsg_CodeGenerationReducedBlock&block=BLDCmotorControl_R2017b:2530:77";
 	/* <S27>/cnt */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:78"] = "BLDC_controller.c:254";
 	/* <S28>/Trigger */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:114"] = "BLDC_controller.c:326";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:650"] = "BLDC_controller.c:326";
 	/* <S28>/Constant1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:115"] = "BLDC_controller.c:333";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:127"] = "BLDC_controller.c:330";
+	/* <S28>/Constant2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:748"] = "BLDC_controller.c:348";
+	/* <S28>/Divide1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:749"] = "BLDC_controller.c:347";
 	/* <S28>/Divide4 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:116"] = "BLDC_controller.c:332";
-	/* <S28>/Sum2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:117"] = "BLDC_controller.c:334";
-	/* <S28>/UnitDelay1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:118"] = "BLDC_controller.c:329,343&BLDC_controller.h:50";
-	/* <S28>/UnitDelay5 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:121"] = "BLDC_controller.c:335,340&BLDC_controller.h:49";
-	/* <S29>/Trigger */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:483"] = "BLDC_controller.c:363";
-	/* <S29>/Constant1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:127"] = "BLDC_controller.c:367";
-	/* <S29>/Divide4 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:128"] = "BLDC_controller.c:370";
-	/* <S29>/Product2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:129"] = "BLDC_controller.c:381&BLDC_controller.h:74";
-	/* <S29>/Relational
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:128"] = "BLDC_controller.c:333";
+	/* <S28>/From */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:750"] = "msg=&block=BLDCmotorControl_R2017b:2530:750";
+	/* <S28>/Goto22 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:756"] = "msg=&block=BLDCmotorControl_R2017b:2530:756";
+	/* <S28>/Product2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:129"] = "BLDC_controller.c:344";
+	/* <S28>/Relational
 Operator1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:130"] = "BLDC_controller.c:371";
-	/* <S29>/Switch */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:131"] = "BLDC_controller.c:366,379";
-	/* <S29>/cf_spdCoef */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:132"] = "BLDC_controller.c:368&BLDC_controller.h:240&BLDC_controller_data.c:30";
-	/* <S29>/z_maxCntRst */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:133"] = "BLDC_controller.c:369&BLDC_controller.h:277&BLDC_controller_data.c:81";
-	/* <S30>/Logic */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:140:135"] = "BLDC_controller.c:682,692&BLDC_controller.h:204&BLDC_controller_data.c:202";
-	/* <S30>/Memory */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:140:136"] = "BLDC_controller.c:684,1225&BLDC_controller.h:109";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:130"] = "BLDC_controller.c:334";
+	/* <S28>/Sum2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:751"] = "BLDC_controller.c:349";
+	/* <S28>/Switch */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:131"] = "BLDC_controller.c:329,342";
+	/* <S28>/UnitDelay1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:752"] = "BLDC_controller.c:350,357,361&BLDC_controller.h:50";
+	/* <S28>/UnitDelay5 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:753"] = "BLDC_controller.c:351,356&BLDC_controller.h:49";
+	/* <S28>/cf_spdCoef */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:132"] = "BLDC_controller.c:331&BLDC_controller.h:236&BLDC_controller_data.c:30";
+	/* <S28>/z_maxCntRst */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:133"] = "BLDC_controller.c:332&BLDC_controller.h:274&BLDC_controller_data.c:80";
+	/* <S29>/Logic */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:140:135"] = "BLDC_controller.c:677&BLDC_controller.h:96,200&BLDC_controller_data.c:201";
+	/* <S29>/Memory */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:140:136"] = "BLDC_controller.c:679,1224&BLDC_controller.h:107";
+	/* <S30>/Logical
+Operator */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:733:729"] = "BLDC_controller.c:373&BLDC_controller.h:98";
+	/* <S30>/Logical
+Operator1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:733:730"] = "BLDC_controller.c:374";
+	/* <S30>/UnitDelay */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:733:731"] = "BLDC_controller.c:375,379&BLDC_controller.h:106";
 	/* <S31>/Logical
 Operator */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:588:584"] = "BLDC_controller.c:393";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:588:584"] = "BLDC_controller.c:386";
 	/* <S31>/Logical
 Operator1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:588:585"] = "BLDC_controller.c:394";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:588:585"] = "BLDC_controller.c:387";
 	/* <S31>/UnitDelay */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:588:586"] = "BLDC_controller.c:395,399&BLDC_controller.h:108";
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:588:586"] = "BLDC_controller.c:388,392&BLDC_controller.h:105";
 	/* <S32>/Constant23 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:479:475"] = "BLDC_controller.c:741";
 	/* <S32>/Switch1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:479:476"] = "BLDC_controller.c:740,750";
 	/* <S32>/UnitDelay1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:479:477"] = "BLDC_controller.c:742,1231&BLDC_controller.h:83";
-	/* <S38>/Constant23 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:479:477"] = "BLDC_controller.c:742,1230&BLDC_controller.h:76";
+	/* <S37>/Constant23 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:480:475"] = "BLDC_controller.c:285";
-	/* <S38>/Switch1 */
+	/* <S37>/Switch1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:480:476"] = "BLDC_controller.c:284,295";
-	/* <S38>/UnitDelay1 */
+	/* <S37>/UnitDelay1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:480:477"] = "BLDC_controller.c:240,287,303&BLDC_controller.h:43";
-	/* <S39>/Divide2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:577:572"] = "BLDC_controller.c:540";
-	/* <S39>/Divide3 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:577:573"] = "BLDC_controller.c:541";
-	/* <S39>/Sum3 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:577:574"] = "BLDC_controller.c:542";
-	/* <S43>/Action Port */
+	/* <S41>/Action Port */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:287"] = "BLDC_controller.c:792";
-	/* <S43>/a_trapElecAngle_XA */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:288"] = "BLDC_controller.c:414";
-	/* <S43>/r_trapPhaA_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:289"] = "BLDC_controller.c:418&BLDC_controller.h:127&BLDC_controller_data.c:112";
-	/* <S43>/r_trapPhaB_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:290"] = "BLDC_controller.c:422&BLDC_controller.h:134&BLDC_controller_data.c:119";
-	/* <S43>/r_trapPhaC_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:291"] = "BLDC_controller.c:426&BLDC_controller.h:141&BLDC_controller_data.c:126";
-	/* <S44>/Action Port */
+	/* <S41>/a_trapElecAngle_XA */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:288"] = "BLDC_controller.c:407";
+	/* <S41>/r_trapPhaA_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:289"] = "BLDC_controller.c:411&BLDC_controller.h:123&BLDC_controller_data.c:111";
+	/* <S41>/r_trapPhaB_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:290"] = "BLDC_controller.c:415&BLDC_controller.h:130&BLDC_controller_data.c:118";
+	/* <S41>/r_trapPhaC_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:291"] = "BLDC_controller.c:419&BLDC_controller.h:137&BLDC_controller_data.c:125";
+	/* <S42>/Action Port */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:297"] = "BLDC_controller.c:812";
-	/* <S44>/a_sinElecAngle_XA */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:298"] = "BLDC_controller.c:470";
-	/* <S44>/r_sin3PhaA_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:299"] = "BLDC_controller.c:474&BLDC_controller.h:169&BLDC_controller_data.c:160";
-	/* <S44>/r_sin3PhaB_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:300"] = "BLDC_controller.c:478&BLDC_controller.h:176&BLDC_controller_data.c:169";
-	/* <S44>/r_sin3PhaC_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:301"] = "BLDC_controller.c:482&BLDC_controller.h:183&BLDC_controller_data.c:178";
-	/* <S45>/Action Port */
+	/* <S42>/a_sinElecAngle_XA */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:298"] = "BLDC_controller.c:463";
+	/* <S42>/r_sin3PhaA_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:299"] = "BLDC_controller.c:467&BLDC_controller.h:165&BLDC_controller_data.c:159";
+	/* <S42>/r_sin3PhaB_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:300"] = "BLDC_controller.c:471&BLDC_controller.h:172&BLDC_controller_data.c:168";
+	/* <S42>/r_sin3PhaC_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:301"] = "BLDC_controller.c:475&BLDC_controller.h:179&BLDC_controller_data.c:177";
+	/* <S43>/Action Port */
 	this.urlHashMap["BLDCmotorControl_R2017b:2530:307"] = "BLDC_controller.c:802";
-	/* <S45>/a_sinElecAngle_XA */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:308"] = "BLDC_controller.c:442";
-	/* <S45>/r_sinPhaA_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:309"] = "BLDC_controller.c:446&BLDC_controller.h:148&BLDC_controller_data.c:133";
-	/* <S45>/r_sinPhaB_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:310"] = "BLDC_controller.c:450&BLDC_controller.h:155&BLDC_controller_data.c:142";
-	/* <S45>/r_sinPhaC_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2530:311"] = "BLDC_controller.c:454&BLDC_controller.h:162&BLDC_controller_data.c:151";
-	/* <S52>/F01_03_Direction_Detection */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:38"] = "BLDC_controller.c:188,937,947&BLDC_controller.h:67";
-	/* <S52>/z_ctrlTypSel1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:208"] = "BLDC_controller.c:1053,1084,1132&BLDC_controller.h:283&BLDC_controller_data.c:89";
-	/* <S53>/r_DC */
+	/* <S43>/a_sinElecAngle_XA */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:308"] = "BLDC_controller.c:435";
+	/* <S43>/r_sinPhaA_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:309"] = "BLDC_controller.c:439&BLDC_controller.h:144&BLDC_controller_data.c:132";
+	/* <S43>/r_sinPhaB_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:310"] = "BLDC_controller.c:443&BLDC_controller.h:151&BLDC_controller_data.c:141";
+	/* <S43>/r_sinPhaC_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2530:311"] = "BLDC_controller.c:447&BLDC_controller.h:158&BLDC_controller_data.c:150";
+	/* <S50>/F01_03_Direction_Detection */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:38"] = "BLDC_controller.c:188,929,939&BLDC_controller.h:62";
+	/* <S50>/z_ctrlTypSel1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:208"] = "BLDC_controller.c:1052,1083,1131&BLDC_controller.h:280&BLDC_controller_data.c:88";
+	/* <S51>/r_DC */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:535"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:535";
-	/* <S53>/z_pos */
+	/* <S51>/z_pos */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:216"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:216";
-	/* <S53>/z_dir */
+	/* <S51>/z_dir */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:217"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:217";
-	/* <S53>/z_counter */
+	/* <S51>/z_counter */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:219"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:219";
-	/* <S53>/z_counterRaw */
+	/* <S51>/z_counterRaw */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:220"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:220";
-	/* <S53>/Action Port */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:221"] = "BLDC_controller.c:1072";
-	/* <S53>/Abs2 */
+	/* <S51>/Action Port */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:221"] = "BLDC_controller.c:1071";
+	/* <S51>/Abs2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:595"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:595";
-	/* <S53>/Constant16 */
+	/* <S51>/Constant16 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:224"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:224";
-	/* <S53>/Constant2 */
+	/* <S51>/Constant2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:225"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:225";
-	/* <S53>/Divide4 */
+	/* <S51>/Divide4 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:227"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:227";
-	/* <S53>/Divide5 */
+	/* <S51>/Divide5 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:228"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:228";
-	/* <S53>/From10 */
+	/* <S51>/From10 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:231"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:231";
-	/* <S53>/From11 */
+	/* <S51>/From11 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:518"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:518";
-	/* <S53>/From12 */
+	/* <S51>/From12 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:534"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:534";
-	/* <S53>/From2 */
+	/* <S51>/From2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:232"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:232";
-	/* <S53>/From3 */
+	/* <S51>/From3 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:233"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:233";
-	/* <S53>/From5 */
+	/* <S51>/From5 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:235"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:235";
-	/* <S53>/From51 */
+	/* <S51>/From51 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:236"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:236";
-	/* <S53>/From52 */
+	/* <S51>/From52 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:237"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:237";
-	/* <S53>/From53 */
+	/* <S51>/From53 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:238"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:238";
-	/* <S53>/From54 */
+	/* <S51>/From54 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:239"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:239";
-	/* <S53>/From59 */
+	/* <S51>/From59 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:240"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:240";
-	/* <S53>/From6 */
+	/* <S51>/From6 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:241"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:241";
-	/* <S53>/From7 */
+	/* <S51>/From7 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:542"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:542";
-	/* <S53>/From9 */
+	/* <S51>/From9 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:543"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:543";
-	/* <S53>/Goto */
+	/* <S51>/Goto */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:242"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:242";
-	/* <S53>/Goto1 */
+	/* <S51>/Goto1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:243"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:243";
-	/* <S53>/Goto2 */
+	/* <S51>/Goto2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:244"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:244";
-	/* <S53>/Goto3 */
+	/* <S51>/Goto3 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:245"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:245";
-	/* <S53>/Goto5 */
+	/* <S51>/Goto5 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:578"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:578";
-	/* <S53>/Goto7 */
+	/* <S51>/Goto7 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:249"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:249";
-	/* <S53>/Goto8 */
+	/* <S51>/Goto8 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:536"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:536";
-	/* <S53>/Goto9 */
+	/* <S51>/Goto9 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:538"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:538";
-	/* <S53>/Modulo_Calculation */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:577"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:577";
-	/* <S53>/Mux */
+	/* <S51>/Math
+Function */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:623"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:623";
+	/* <S51>/Mux */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:258"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:258";
-	/* <S53>/Product2 */
+	/* <S51>/Product2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:545"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:545";
-	/* <S53>/Product6 */
+	/* <S51>/Product6 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:260"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:260";
-	/* <S53>/Relational
+	/* <S51>/Relational
 Operator7 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:261"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:261";
-	/* <S53>/Scope */
+	/* <S51>/Scope */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:262"] = "msg=rtwMsg_reducedBlock&block=BLDCmotorControl_R2017b:2531:262";
-	/* <S53>/Sum1 */
+	/* <S51>/Sum1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:263"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:263";
-	/* <S53>/Sum2 */
+	/* <S51>/Sum2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:264"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:264";
-	/* <S53>/Sum3 */
+	/* <S51>/Sum3 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:546"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:546";
-	/* <S53>/Switch3 */
+	/* <S51>/Switch3 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:266"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:266";
-	/* <S53>/Switch_PhaAdv */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:514"] = "BLDC_controller.h:71";
-	/* <S53>/a_elecAngle1 */
+	/* <S51>/Switch_PhaAdv */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:514"] = "BLDC_controller.h:66";
+	/* <S51>/a_elecAngle1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:223"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:223";
-	/* <S53>/a_elecPeriod1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:512"] = "BLDC_controller.h:293&BLDC_controller_data.c:103";
-	/* <S53>/a_elecPeriod2 */
+	/* <S51>/a_elecPeriod1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:512"] = "BLDC_controller.h:290&BLDC_controller_data.c:102";
+	/* <S51>/a_elecPeriod2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:547"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:547";
-	/* <S53>/a_phaAdv_M2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:521"] = "BLDC_controller.h:271&BLDC_controller_data.c:73";
-	/* <S53>/r_phaAdvDC_XA */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:522"] = "BLDC_controller.h:266&BLDC_controller_data.c:66";
-	/* <S53>/signal_log1 */
+	/* <S51>/a_phaAdv_M2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:521"] = "BLDC_controller.h:262&BLDC_controller_data.c:66";
+	/* <S51>/r_phaAdvDC_XA */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:522"] = "BLDC_controller.h:257&BLDC_controller_data.c:59";
+	/* <S51>/signal_log1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:579"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:579";
-	/* <S53>/signal_log2 */
+	/* <S51>/signal_log2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:272"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:272";
-	/* <S53>/signal_log6 */
+	/* <S51>/signal_log6 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:275"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:275";
-	/* <S53>/a_elecAngleAdv */
+	/* <S51>/a_elecAngleAdv */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:278"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:278";
-	/* <S53>/a_elecAngle */
+	/* <S51>/a_elecAngle */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:279"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:279";
-	/* <S54>/F03_01_Pure_Trapezoidal_Method */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:285"] = "BLDC_controller.c:406,1088,1094";
-	/* <S54>/F03_02_Sinusoidal3rd_Method */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:295"] = "BLDC_controller.c:462,1108,1114";
-	/* <S54>/F03_02_Sinusoidal_Method */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:305"] = "BLDC_controller.c:434,1098,1104";
-	/* <S54>/Merge */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:345"] = "BLDC_controller.h:78";
-	/* <S54>/Merge1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:346"] = "BLDC_controller.h:79";
-	/* <S54>/Merge2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:347"] = "BLDC_controller.h:80";
-	/* <S54>/Switch Case */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:348"] = "BLDC_controller.c:1083,1118";
-	/* <S55>/Abs1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:594"] = "BLDC_controller.c:1120,1129";
-	/* <S55>/Abs5 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:369"] = "BLDC_controller.c:1017,1026";
-	/* <S55>/CTRL_COMM */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:371"] = "BLDC_controller.c:1133";
-	/* <S55>/Constant1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:370"] = "BLDC_controller.c:1187,1193,1275";
-	/* <S55>/Divide1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:373"] = "BLDC_controller.c:1188,1194,1276";
-	/* <S55>/Divide2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:374"] = "BLDC_controller.c:1139";
-	/* <S55>/Divide4 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:375"] = "BLDC_controller.c:1140";
-	/* <S55>/Logical
+	/* <S52>/F03_01_Pure_Trapezoidal_Method */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:285"] = "BLDC_controller.c:399,1087,1093";
+	/* <S52>/F03_02_Sinusoidal3rd_Method */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:295"] = "BLDC_controller.c:455,1107,1113";
+	/* <S52>/F03_02_Sinusoidal_Method */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:305"] = "BLDC_controller.c:427,1097,1103";
+	/* <S52>/Merge */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:345"] = "BLDC_controller.h:71";
+	/* <S52>/Merge1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:346"] = "BLDC_controller.h:72";
+	/* <S52>/Merge2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:347"] = "BLDC_controller.h:73";
+	/* <S52>/Switch Case */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:348"] = "BLDC_controller.c:1082,1117";
+	/* <S53>/Abs1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:594"] = "BLDC_controller.c:1119,1128";
+	/* <S53>/Abs5 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:369"] = "BLDC_controller.c:1016,1025";
+	/* <S53>/CTRL_COMM */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:371"] = "BLDC_controller.c:1132";
+	/* <S53>/Constant1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:370"] = "BLDC_controller.c:1186,1192,1270";
+	/* <S53>/Divide1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:373"] = "BLDC_controller.c:1187,1193,1271";
+	/* <S53>/Divide2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:374"] = "BLDC_controller.c:1138";
+	/* <S53>/Divide4 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:375"] = "BLDC_controller.c:1139";
+	/* <S53>/Logical
 Operator3 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:397"] = "BLDC_controller.c:1137";
-	/* <S55>/Relational
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:397"] = "BLDC_controller.c:1136";
+	/* <S53>/Relational
 Operator1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:399"] = "BLDC_controller.c:1141";
-	/* <S55>/Relational
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:399"] = "BLDC_controller.c:1140";
+	/* <S53>/Relational
 Operator2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:590"] = "BLDC_controller.c:1142";
-	/* <S55>/Relay */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:400"] = "BLDC_controller.c:1028,1143&BLDC_controller.h:112,246,251&BLDC_controller_data.c:38,45";
-	/* <S55>/Switch1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:401"] = "BLDC_controller.c:1131,1184";
-	/* <S55>/r_commDCDeacv */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:593"] = "BLDC_controller.c:1134&BLDC_controller.h:261&BLDC_controller_data.c:59";
-	/* <S55>/z_commutMap_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:411"] = "BLDC_controller.c:1138,1146,1156,1160,1165,1167,1173,1175&BLDC_controller.h:191&BLDC_controller_data.c:188";
-	/* <S60>/Logical
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:590"] = "BLDC_controller.c:1141";
+	/* <S53>/Relay */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:400"] = "BLDC_controller.c:1027,1142&BLDC_controller.h:110,242,247&BLDC_controller_data.c:38,45";
+	/* <S53>/Switch1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:401"] = "BLDC_controller.c:1130,1183";
+	/* <S53>/r_commDCDeacv */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:593"] = "BLDC_controller.c:1133&BLDC_controller.h:252&BLDC_controller_data.c:52";
+	/* <S53>/z_commutMap_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:411"] = "BLDC_controller.c:1137,1145,1155,1159,1164,1166,1172,1174&BLDC_controller.h:187&BLDC_controller_data.c:187";
+	/* <S58>/Logical
 Operator */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:30"] = "BLDC_controller.c:917";
-	/* <S60>/UnitDelay */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:31"] = "BLDC_controller.c:921,1234&BLDC_controller.h:99";
-	/* <S60>/UnitDelay1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:32"] = "BLDC_controller.c:922,1239&BLDC_controller.h:100";
-	/* <S60>/UnitDelay2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:33"] = "BLDC_controller.c:923,1244&BLDC_controller.h:101";
-	/* <S61>/Selector */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:14"] = "BLDC_controller.c:939,1057,1144,1158,1254";
-	/* <S61>/Sum */
+	/* <S58>/UnitDelay */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:31"] = "BLDC_controller.c:921,1233&BLDC_controller.h:92";
+	/* <S58>/UnitDelay1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:32"] = "BLDC_controller.c:922,1238&BLDC_controller.h:93";
+	/* <S58>/UnitDelay2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:33"] = "BLDC_controller.c:923,1243&BLDC_controller.h:94";
+	/* <S59>/Selector */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:14"] = "BLDC_controller.c:931,1056,1143,1157,1250";
+	/* <S59>/Sum */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:15"] = "BLDC_controller.c:907";
-	/* <S61>/UnitDelay1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:16"] = "BLDC_controller.c:941,1252&BLDC_controller.h:102";
-	/* <S61>/g_Ha */
+	/* <S59>/UnitDelay1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:16"] = "BLDC_controller.c:933,1248&BLDC_controller.h:95";
+	/* <S59>/g_Ha */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:17"] = "BLDC_controller.c:908";
-	/* <S61>/g_Hb */
+	/* <S59>/g_Hb */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:18"] = "BLDC_controller.c:909";
-	/* <S61>/vec_hallToPos */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:22"] = "BLDC_controller.c:940,1054,1135,1157,1253&BLDC_controller.h:198&BLDC_controller_data.c:196";
-	/* <S62>/z_pos */
+	/* <S59>/vec_hallToPos */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:22"] = "BLDC_controller.c:932,1053,1134,1156,1249&BLDC_controller.h:194&BLDC_controller_data.c:195";
+	/* <S60>/z_pos */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:39"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:39";
-	/* <S62>/z_posPrev */
+	/* <S60>/z_posPrev */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:40"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:40";
-	/* <S62>/Enable */
+	/* <S60>/Enable */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:41"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:41";
-	/* <S62>/Constant20 */
+	/* <S60>/Constant20 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:42"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:42";
-	/* <S62>/Constant23 */
+	/* <S60>/Constant23 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:43"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:43";
-	/* <S62>/Constant24 */
+	/* <S60>/Constant24 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:44"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:44";
-	/* <S62>/Constant8 */
+	/* <S60>/Constant8 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:45"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:45";
-	/* <S62>/Data Type Conversion1 */
+	/* <S60>/Data Type Conversion1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:46"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:46";
-	/* <S62>/Data Type Conversion10 */
+	/* <S60>/Data Type Conversion10 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:47"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:47";
-	/* <S62>/Logical
+	/* <S60>/Logical
 Operator3 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:48"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:48";
-	/* <S62>/Relational
+	/* <S60>/Relational
 Operator1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:49"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:49";
-	/* <S62>/Relational
+	/* <S60>/Relational
 Operator6 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:50"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:50";
-	/* <S62>/Sum2 */
+	/* <S60>/Sum2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:51"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:51";
-	/* <S62>/Switch2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:52"] = "BLDC_controller.h:88";
-	/* <S62>/UnitDelay1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:53"] = "BLDC_controller.h:87";
-	/* <S62>/signal_log6 */
+	/* <S60>/Switch2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:52"] = "BLDC_controller.h:81";
+	/* <S60>/UnitDelay1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:53"] = "BLDC_controller.h:80";
+	/* <S60>/signal_log6 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:54"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:54";
-	/* <S62>/z_dir */
+	/* <S60>/z_dir */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:57"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:57";
-	/* <S62>/z_dirPrev */
+	/* <S60>/z_dirPrev */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:58"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:58";
-	/* <S63>/Abs4 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:63"] = "BLDC_controller.c:959,968";
-	/* <S63>/Constant6 */
+	/* <S61>/Constant6 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:64"] = "msg=rtwMsg_CodeGenerationReducedBlock&block=BLDCmotorControl_R2017b:2531:64";
-	/* <S63>/Edge_counter */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:65"] = "BLDC_controller.c:236,247,264,949,957&BLDC_controller.h:66";
-	/* <S63>/Logical
+	/* <S61>/Edge_counter */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:65"] = "BLDC_controller.c:236,247,264,949,957&BLDC_controller.h:61";
+	/* <S61>/Logical
 Operator1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:109"] = "BLDC_controller.c:990";
-	/* <S63>/Logical
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:109"] = "BLDC_controller.c:989";
+	/* <S61>/Logical
 Operator2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:110"] = "BLDC_controller.c:951";
-	/* <S63>/Logical
+	/* <S61>/Logical
 Operator3 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:111"] = "BLDC_controller.c:929";
-	/* <S63>/Moving_Average_Filter */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:112"] = "BLDC_controller.c:317,1008,1015&BLDC_controller.h:65,118";
-	/* <S63>/Raw_ Speed_calculation */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:124"] = "BLDC_controller.c:355,1002,1006&BLDC_controller.h:117";
-	/* <S63>/Relational
-Operator1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:136"] = "BLDC_controller.c:931";
-	/* <S63>/Relational
-Operator4 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:137"] = "BLDC_controller.c:970&BLDC_controller.h:103";
-	/* <S63>/Relational
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:111"] = "BLDC_controller.c:941";
+	/* <S61>/Logical
 Operator5 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:138"] = "BLDC_controller.c:983";
-	/* <S63>/Scope2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:722"] = "BLDC_controller.c:959&BLDC_controller.h:99";
+	/* <S61>/Motor_Speed_Calculation */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:124"] = "BLDC_controller.c:317,1007,1014&BLDC_controller.h:60,115";
+	/* <S61>/Relational
+Operator1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:136"] = "BLDC_controller.c:943";
+	/* <S61>/Relational
+Operator3 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:696"] = "BLDC_controller.c:961";
+	/* <S61>/Relational
+Operator5 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:138"] = "BLDC_controller.c:976";
+	/* <S61>/Relational
+Operator6 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:720"] = "BLDC_controller.c:962";
+	/* <S61>/Scope2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:141"] = "msg=rtwMsg_reducedBlock&block=BLDCmotorControl_R2017b:2531:141";
-	/* <S63>/Sum1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:142"] = "BLDC_controller.c:1049";
-	/* <S63>/Switch */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:143"] = "BLDC_controller.c:988,1000";
-	/* <S63>/UnitDelay10 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:145"] = "BLDC_controller.c:960";
-	/* <S63>/UnitDelay8 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:146"] = "BLDC_controller.c:952,1258&BLDC_controller.h:106";
-	/* <S63>/n_thresSpdDeacv */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:147"] = "BLDC_controller.c:971&BLDC_controller.h:256&BLDC_controller_data.c:52";
-	/* <S63>/rising_edge */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:588"] = "BLDC_controller.c:575,975,978";
-	/* <S63>/z_counter2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:169"] = "BLDC_controller.c:991,1268,1303&BLDC_controller.h:85";
-	/* <S63>/z_counterRawPrev */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:170"] = "BLDC_controller.c:932,992,1249&BLDC_controller.h:84";
-	/* <S63>/z_maxCntRst */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:171"] = "BLDC_controller.c:930&BLDC_controller.h:276&BLDC_controller_data.c:80";
-	/* <S63>/z_nrEdgeSpdAcv */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:172"] = "BLDC_controller.c:981&BLDC_controller.h:288&BLDC_controller_data.c:96";
-	/* <S66>/z_dir */
+	/* <S61>/Sum1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:142"] = "BLDC_controller.c:1048";
+	/* <S61>/Switch */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:143"] = "BLDC_controller.c:988,1005";
+	/* <S61>/Switch1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:714"] = "BLDC_controller.c:990,997";
+	/* <S61>/UnitDelay8 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:146"] = "BLDC_controller.c:952,1257&BLDC_controller.h:102";
+	/* <S61>/falling_edge2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:733"] = "BLDC_controller.c:566,983,986";
+	/* <S61>/rising_edge */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:588"] = "BLDC_controller.c:579,968,971";
+	/* <S61>/z_counter2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:169"] = "BLDC_controller.c:991,1263,1298&BLDC_controller.h:78,273&BLDC_controller_data.c:79";
+	/* <S61>/z_counterRawPrev */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:170"] = "BLDC_controller.c:944,963,992,1254&BLDC_controller.h:77";
+	/* <S61>/z_maxCntRst */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:171"] = "BLDC_controller.c:942&BLDC_controller.h:270&BLDC_controller_data.c:76";
+	/* <S61>/z_maxCntRst1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:726"] = "BLDC_controller.c:998&BLDC_controller.h:271&BLDC_controller_data.c:77";
+	/* <S61>/z_maxCntRst2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:721"] = "BLDC_controller.c:960&BLDC_controller.h:272&BLDC_controller_data.c:78";
+	/* <S61>/z_nrEdgeSpdAcv */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:172"] = "BLDC_controller.c:974&BLDC_controller.h:285&BLDC_controller_data.c:95";
+	/* <S64>/z_dir */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:55"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:55";
-	/* <S66>/Terminator_1 */
+	/* <S64>/Terminator_1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:56"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:56";
-	/* <S67>/b_edge */
+	/* <S65>/b_edge */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:66"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:66";
-	/* <S67>/z_dir */
+	/* <S65>/z_dir */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:67"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:67";
-	/* <S67>/z_dirPrev */
+	/* <S65>/z_dirPrev */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:68"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:68";
-	/* <S67>/Enable */
+	/* <S65>/Enable */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:69"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:69";
-	/* <S67>/Constant23 */
+	/* <S65>/Constant23 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:70"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:70";
-	/* <S67>/Constant24 */
+	/* <S65>/Constant24 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:71"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:71";
-	/* <S67>/Logical
+	/* <S65>/Logical
 Operator1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:72"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:72";
-	/* <S67>/Logical
+	/* <S65>/Logical
 Operator2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:73"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:73";
-	/* <S67>/Relational
+	/* <S65>/Relational
 Operator1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:74"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:74";
-	/* <S67>/Sum2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:76"] = "BLDC_controller.h:93";
-	/* <S67>/Switch2 */
+	/* <S65>/Sum2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:76"] = "BLDC_controller.h:86";
+	/* <S65>/Switch2 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:77"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:77";
-	/* <S67>/rst_Delay */
+	/* <S65>/rst_Delay */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:480"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:480";
-	/* <S67>/cnt */
+	/* <S65>/cnt */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:78"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:78";
-	/* <S68>/n_motRaw */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:113"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:113";
-	/* <S68>/Trigger */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:114"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:114";
-	/* <S68>/Constant1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:115"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:115";
-	/* <S68>/Divide4 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:116"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:116";
-	/* <S68>/Sum2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:117"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:117";
-	/* <S68>/UnitDelay1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:118"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:118";
-	/* <S68>/UnitDelay5 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:121"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:121";
-	/* <S68>/n_mot */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:122"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:122";
-	/* <S69>/z_counter */
+	/* <S66>/z_counter */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:125"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:125";
-	/* <S69>/z_dir */
+	/* <S66>/z_dir */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:126"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:126";
-	/* <S69>/Trigger */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:483"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:483";
-	/* <S69>/Constant1 */
+	/* <S66>/Trigger */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:650"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:650";
+	/* <S66>/Constant1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:127"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:127";
-	/* <S69>/Divide4 */
+	/* <S66>/Constant2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:748"] = "msg=&block=BLDCmotorControl_R2017b:2531:748";
+	/* <S66>/Divide1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:749"] = "msg=&block=BLDCmotorControl_R2017b:2531:749";
+	/* <S66>/Divide4 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:128"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:128";
-	/* <S69>/Product2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:129"] = "BLDC_controller.h:72";
-	/* <S69>/Relational
+	/* <S66>/From */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:750"] = "msg=&block=BLDCmotorControl_R2017b:2531:750";
+	/* <S66>/Goto22 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:756"] = "msg=&block=BLDCmotorControl_R2017b:2531:756";
+	/* <S66>/Product2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:129"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:129";
+	/* <S66>/Relational
 Operator1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:130"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:130";
-	/* <S69>/Switch */
+	/* <S66>/Sum2 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:751"] = "msg=&block=BLDCmotorControl_R2017b:2531:751";
+	/* <S66>/Switch */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:131"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:131";
-	/* <S69>/cf_spdCoef */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:132"] = "BLDC_controller.h:241&BLDC_controller_data.c:31";
-	/* <S69>/z_maxCntRst */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:133"] = "BLDC_controller.h:278&BLDC_controller_data.c:82";
-	/* <S69>/n_motRaw  */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:134"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:134";
-	/* <S70>/Logic */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:140:135"] = "BLDC_controller.c:980,989,1259,1264&BLDC_controller.h:205&BLDC_controller_data.c:203";
-	/* <S70>/Memory */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:140:136"] = "BLDC_controller.c:982,1263&BLDC_controller.h:111";
-	/* <S71>/Logical
+	/* <S66>/UnitDelay1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:752"] = "msg=&block=BLDCmotorControl_R2017b:2531:752";
+	/* <S66>/UnitDelay5 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:753"] = "msg=&block=BLDCmotorControl_R2017b:2531:753";
+	/* <S66>/cf_spdCoef */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:132"] = "BLDC_controller.h:237&BLDC_controller_data.c:31";
+	/* <S66>/z_maxCntRst */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:133"] = "BLDC_controller.h:275&BLDC_controller_data.c:81";
+	/* <S66>/n_mot */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:605"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:605";
+	/* <S67>/Logic */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:140:135"] = "BLDC_controller.c:973&BLDC_controller.h:97,201&BLDC_controller_data.c:202";
+	/* <S67>/Memory */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:140:136"] = "BLDC_controller.c:975,1260&BLDC_controller.h:109";
+	/* <S68>/Logical
 Operator */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:588:584"] = "BLDC_controller.c:578&BLDC_controller.h:104";
-	/* <S71>/Logical
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:733:729"] = "BLDC_controller.c:569&BLDC_controller.h:100";
+	/* <S68>/Logical
 Operator1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:588:585"] = "BLDC_controller.c:579";
-	/* <S71>/UnitDelay */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:588:586"] = "BLDC_controller.c:580,584&BLDC_controller.h:107";
-	/* <S72>/Constant23 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:479:475"] = "BLDC_controller.c:1038";
-	/* <S72>/Switch1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:479:476"] = "BLDC_controller.c:1037,1047";
-	/* <S72>/UnitDelay1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:479:477"] = "BLDC_controller.c:1039,1271&BLDC_controller.h:86";
-	/* <S78>/u */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:733:730"] = "BLDC_controller.c:570";
+	/* <S68>/UnitDelay */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:733:731"] = "BLDC_controller.c:571,575&BLDC_controller.h:104";
+	/* <S69>/Logical
+Operator */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:588:584"] = "BLDC_controller.c:582";
+	/* <S69>/Logical
+Operator1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:588:585"] = "BLDC_controller.c:583";
+	/* <S69>/UnitDelay */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:588:586"] = "BLDC_controller.c:584,588&BLDC_controller.h:103";
+	/* <S70>/Constant23 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:479:475"] = "BLDC_controller.c:1037";
+	/* <S70>/Switch1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:479:476"] = "BLDC_controller.c:1036,1046";
+	/* <S70>/UnitDelay1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:479:477"] = "BLDC_controller.c:1038,1266&BLDC_controller.h:79";
+	/* <S75>/u */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:480:473"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:480:473";
-	/* <S78>/rst */
+	/* <S75>/rst */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:480:474"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:480:474";
-	/* <S78>/Constant23 */
+	/* <S75>/Constant23 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:480:475"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:480:475";
-	/* <S78>/Switch1 */
+	/* <S75>/Switch1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:480:476"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:480:476";
-	/* <S78>/UnitDelay1 */
+	/* <S75>/UnitDelay1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:480:477"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:480:477";
-	/* <S78>/y */
+	/* <S75>/y */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:480:478"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:480:478";
-	/* <S79>/num */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:577:570"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:577:570";
-	/* <S79>/div */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:577:571"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:577:571";
-	/* <S79>/Divide2 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:577:572"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:577:572";
-	/* <S79>/Divide3 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:577:573"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:577:573";
-	/* <S79>/Sum3 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:577:574"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:577:574";
-	/* <S79>/rem */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:577:575"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:577:575";
-	/* <S80>/a_phaAdv_M1 */
+	/* <S76>/a_phaAdv_M1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:580"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:580";
-	/* <S80>/Terminator_1 */
+	/* <S76>/Terminator_1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:581"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:581";
-	/* <S81>/a_elecAngleAdv */
+	/* <S77>/a_elecAngleAdv */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:273"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:273";
-	/* <S81>/Terminator_1 */
+	/* <S77>/Terminator_1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:274"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:274";
-	/* <S82>/a_elecAngle */
+	/* <S78>/a_elecAngle */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:276"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:276";
-	/* <S82>/Terminator_1 */
+	/* <S78>/Terminator_1 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:277"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:277";
-	/* <S83>/a_elecAngleAdv */
+	/* <S79>/a_elecAngleAdv */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:286"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:286";
-	/* <S83>/Action Port */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:287"] = "BLDC_controller.c:1089";
-	/* <S83>/a_trapElecAngle_XA */
+	/* <S79>/Action Port */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:287"] = "BLDC_controller.c:1088";
+	/* <S79>/a_trapElecAngle_XA */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:288"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:288";
-	/* <S83>/r_trapPhaA_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:289"] = "BLDC_controller.h:128&BLDC_controller_data.c:113";
-	/* <S83>/r_trapPhaB_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:290"] = "BLDC_controller.h:135&BLDC_controller_data.c:120";
-	/* <S83>/r_trapPhaC_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:291"] = "BLDC_controller.h:142&BLDC_controller_data.c:127";
-	/* <S83>/r_phaA_Trap */
+	/* <S79>/r_trapPhaA_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:289"] = "BLDC_controller.h:124&BLDC_controller_data.c:112";
+	/* <S79>/r_trapPhaB_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:290"] = "BLDC_controller.h:131&BLDC_controller_data.c:119";
+	/* <S79>/r_trapPhaC_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:291"] = "BLDC_controller.h:138&BLDC_controller_data.c:126";
+	/* <S79>/r_phaA_Trap */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:292"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:292";
-	/* <S83>/r_phaB_Trap */
+	/* <S79>/r_phaB_Trap */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:293"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:293";
-	/* <S83>/r_phaC_Trap */
+	/* <S79>/r_phaC_Trap */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:294"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:294";
-	/* <S84>/a_elecAngleAdv */
+	/* <S80>/a_elecAngleAdv */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:296"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:296";
-	/* <S84>/Action Port */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:297"] = "BLDC_controller.c:1109";
-	/* <S84>/a_sinElecAngle_XA */
+	/* <S80>/Action Port */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:297"] = "BLDC_controller.c:1108";
+	/* <S80>/a_sinElecAngle_XA */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:298"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:298";
-	/* <S84>/r_sin3PhaA_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:299"] = "BLDC_controller.h:170&BLDC_controller_data.c:161";
-	/* <S84>/r_sin3PhaB_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:300"] = "BLDC_controller.h:177&BLDC_controller_data.c:170";
-	/* <S84>/r_sin3PhaC_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:301"] = "BLDC_controller.h:184&BLDC_controller_data.c:179";
-	/* <S84>/r_phaA_Sin3 */
+	/* <S80>/r_sin3PhaA_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:299"] = "BLDC_controller.h:166&BLDC_controller_data.c:160";
+	/* <S80>/r_sin3PhaB_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:300"] = "BLDC_controller.h:173&BLDC_controller_data.c:169";
+	/* <S80>/r_sin3PhaC_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:301"] = "BLDC_controller.h:180&BLDC_controller_data.c:178";
+	/* <S80>/r_phaA_Sin3 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:302"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:302";
-	/* <S84>/r_phaB_Sin3 */
+	/* <S80>/r_phaB_Sin3 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:303"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:303";
-	/* <S84>/r_phaC_Sin3 */
+	/* <S80>/r_phaC_Sin3 */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:304"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:304";
-	/* <S85>/a_elecAngleAdv */
+	/* <S81>/a_elecAngleAdv */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:306"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:306";
-	/* <S85>/Action Port */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:307"] = "BLDC_controller.c:1099";
-	/* <S85>/a_sinElecAngle_XA */
+	/* <S81>/Action Port */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:307"] = "BLDC_controller.c:1098";
+	/* <S81>/a_sinElecAngle_XA */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:308"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:308";
-	/* <S85>/r_sinPhaA_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:309"] = "BLDC_controller.h:149&BLDC_controller_data.c:134";
-	/* <S85>/r_sinPhaB_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:310"] = "BLDC_controller.h:156&BLDC_controller_data.c:143";
-	/* <S85>/r_sinPhaC_M1 */
-	this.urlHashMap["BLDCmotorControl_R2017b:2531:311"] = "BLDC_controller.h:163&BLDC_controller_data.c:152";
-	/* <S85>/r_phaA_Sin */
+	/* <S81>/r_sinPhaA_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:309"] = "BLDC_controller.h:145&BLDC_controller_data.c:133";
+	/* <S81>/r_sinPhaB_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:310"] = "BLDC_controller.h:152&BLDC_controller_data.c:142";
+	/* <S81>/r_sinPhaC_M1 */
+	this.urlHashMap["BLDCmotorControl_R2017b:2531:311"] = "BLDC_controller.h:159&BLDC_controller_data.c:151";
+	/* <S81>/r_phaA_Sin */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:312"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:312";
-	/* <S85>/r_phaB_Sin */
+	/* <S81>/r_phaB_Sin */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:313"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:313";
-	/* <S85>/r_phaC_Sin */
+	/* <S81>/r_phaC_Sin */
 	this.urlHashMap["BLDCmotorControl_R2017b:2531:314"] = "msg=rtwMsg_reusableFunction&block=BLDCmotorControl_R2017b:2531:314";
 	this.getUrlHash = function(sid) { return this.urlHashMap[sid];}
 }
@@ -822,134 +836,126 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:54"] = {rtwname: "<S26>"};
 	this.rtwnameHashMap["<S27>"] = {sid: "BLDCmotorControl_R2017b:2530:65"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:65"] = {rtwname: "<S27>"};
-	this.rtwnameHashMap["<S28>"] = {sid: "BLDCmotorControl_R2017b:2530:112"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:112"] = {rtwname: "<S28>"};
-	this.rtwnameHashMap["<S29>"] = {sid: "BLDCmotorControl_R2017b:2530:124"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:124"] = {rtwname: "<S29>"};
-	this.rtwnameHashMap["<S30>"] = {sid: "BLDCmotorControl_R2017b:2530:140"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:140"] = {rtwname: "<S30>"};
+	this.rtwnameHashMap["<S28>"] = {sid: "BLDCmotorControl_R2017b:2530:124"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:124"] = {rtwname: "<S28>"};
+	this.rtwnameHashMap["<S29>"] = {sid: "BLDCmotorControl_R2017b:2530:140"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:140"] = {rtwname: "<S29>"};
+	this.rtwnameHashMap["<S30>"] = {sid: "BLDCmotorControl_R2017b:2530:733"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:733"] = {rtwname: "<S30>"};
 	this.rtwnameHashMap["<S31>"] = {sid: "BLDCmotorControl_R2017b:2530:588"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:588"] = {rtwname: "<S31>"};
 	this.rtwnameHashMap["<S32>"] = {sid: "BLDCmotorControl_R2017b:2530:479"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:479"] = {rtwname: "<S32>"};
 	this.rtwnameHashMap["<S33>"] = {sid: "BLDCmotorControl_R2017b:2530:154"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:154"] = {rtwname: "<S33>"};
-	this.rtwnameHashMap["<S34>"] = {sid: "BLDCmotorControl_R2017b:2530:157"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:157"] = {rtwname: "<S34>"};
-	this.rtwnameHashMap["<S35>"] = {sid: "BLDCmotorControl_R2017b:2530:160"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:160"] = {rtwname: "<S35>"};
-	this.rtwnameHashMap["<S36>"] = {sid: "BLDCmotorControl_R2017b:2530:163"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:163"] = {rtwname: "<S36>"};
-	this.rtwnameHashMap["<S37>"] = {sid: "BLDCmotorControl_R2017b:2530:166"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:166"] = {rtwname: "<S37>"};
-	this.rtwnameHashMap["<S38>"] = {sid: "BLDCmotorControl_R2017b:2530:480"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:480"] = {rtwname: "<S38>"};
-	this.rtwnameHashMap["<S39>"] = {sid: "BLDCmotorControl_R2017b:2530:577"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:577"] = {rtwname: "<S39>"};
-	this.rtwnameHashMap["<S40>"] = {sid: "BLDCmotorControl_R2017b:2530:579"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:579"] = {rtwname: "<S40>"};
-	this.rtwnameHashMap["<S41>"] = {sid: "BLDCmotorControl_R2017b:2530:272"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:272"] = {rtwname: "<S41>"};
-	this.rtwnameHashMap["<S42>"] = {sid: "BLDCmotorControl_R2017b:2530:275"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:275"] = {rtwname: "<S42>"};
-	this.rtwnameHashMap["<S43>"] = {sid: "BLDCmotorControl_R2017b:2530:285"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:285"] = {rtwname: "<S43>"};
-	this.rtwnameHashMap["<S44>"] = {sid: "BLDCmotorControl_R2017b:2530:295"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:295"] = {rtwname: "<S44>"};
-	this.rtwnameHashMap["<S45>"] = {sid: "BLDCmotorControl_R2017b:2530:305"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:305"] = {rtwname: "<S45>"};
-	this.rtwnameHashMap["<S46>"] = {sid: "BLDCmotorControl_R2017b:2530:349"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:349"] = {rtwname: "<S46>"};
-	this.rtwnameHashMap["<S47>"] = {sid: "BLDCmotorControl_R2017b:2530:352"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:352"] = {rtwname: "<S47>"};
-	this.rtwnameHashMap["<S48>"] = {sid: "BLDCmotorControl_R2017b:2530:355"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:355"] = {rtwname: "<S48>"};
-	this.rtwnameHashMap["<S49>"] = {sid: "BLDCmotorControl_R2017b:2530:402"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:402"] = {rtwname: "<S49>"};
-	this.rtwnameHashMap["<S50>"] = {sid: "BLDCmotorControl_R2017b:2530:405"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:405"] = {rtwname: "<S50>"};
-	this.rtwnameHashMap["<S51>"] = {sid: "BLDCmotorControl_R2017b:2530:408"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:408"] = {rtwname: "<S51>"};
-	this.rtwnameHashMap["<S52>"] = {sid: "BLDCmotorControl_R2017b:2531:6"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:6"] = {rtwname: "<S52>"};
-	this.rtwnameHashMap["<S53>"] = {sid: "BLDCmotorControl_R2017b:2531:215"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:215"] = {rtwname: "<S53>"};
-	this.rtwnameHashMap["<S54>"] = {sid: "BLDCmotorControl_R2017b:2531:282"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:282"] = {rtwname: "<S54>"};
-	this.rtwnameHashMap["<S55>"] = {sid: "BLDCmotorControl_R2017b:2531:361"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:361"] = {rtwname: "<S55>"};
-	this.rtwnameHashMap["<S56>"] = {sid: "BLDCmotorControl_R2017b:2531:435"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:435"] = {rtwname: "<S56>"};
-	this.rtwnameHashMap["<S57>"] = {sid: "BLDCmotorControl_R2017b:2531:438"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:438"] = {rtwname: "<S57>"};
-	this.rtwnameHashMap["<S58>"] = {sid: "BLDCmotorControl_R2017b:2531:441"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:441"] = {rtwname: "<S58>"};
-	this.rtwnameHashMap["<S59>"] = {sid: "BLDCmotorControl_R2017b:2531:444"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:444"] = {rtwname: "<S59>"};
-	this.rtwnameHashMap["<S60>"] = {sid: "BLDCmotorControl_R2017b:2531:26"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:26"] = {rtwname: "<S60>"};
-	this.rtwnameHashMap["<S61>"] = {sid: "BLDCmotorControl_R2017b:2531:10"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:10"] = {rtwname: "<S61>"};
-	this.rtwnameHashMap["<S62>"] = {sid: "BLDCmotorControl_R2017b:2531:38"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:38"] = {rtwname: "<S62>"};
-	this.rtwnameHashMap["<S63>"] = {sid: "BLDCmotorControl_R2017b:2531:59"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:59"] = {rtwname: "<S63>"};
-	this.rtwnameHashMap["<S64>"] = {sid: "BLDCmotorControl_R2017b:2531:34"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:34"] = {rtwname: "<S64>"};
-	this.rtwnameHashMap["<S65>"] = {sid: "BLDCmotorControl_R2017b:2531:19"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:19"] = {rtwname: "<S65>"};
-	this.rtwnameHashMap["<S66>"] = {sid: "BLDCmotorControl_R2017b:2531:54"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:54"] = {rtwname: "<S66>"};
-	this.rtwnameHashMap["<S67>"] = {sid: "BLDCmotorControl_R2017b:2531:65"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:65"] = {rtwname: "<S67>"};
-	this.rtwnameHashMap["<S68>"] = {sid: "BLDCmotorControl_R2017b:2531:112"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:112"] = {rtwname: "<S68>"};
-	this.rtwnameHashMap["<S69>"] = {sid: "BLDCmotorControl_R2017b:2531:124"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:124"] = {rtwname: "<S69>"};
-	this.rtwnameHashMap["<S70>"] = {sid: "BLDCmotorControl_R2017b:2531:140"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:140"] = {rtwname: "<S70>"};
-	this.rtwnameHashMap["<S71>"] = {sid: "BLDCmotorControl_R2017b:2531:588"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:588"] = {rtwname: "<S71>"};
-	this.rtwnameHashMap["<S72>"] = {sid: "BLDCmotorControl_R2017b:2531:479"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:479"] = {rtwname: "<S72>"};
-	this.rtwnameHashMap["<S73>"] = {sid: "BLDCmotorControl_R2017b:2531:154"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:154"] = {rtwname: "<S73>"};
-	this.rtwnameHashMap["<S74>"] = {sid: "BLDCmotorControl_R2017b:2531:157"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:157"] = {rtwname: "<S74>"};
-	this.rtwnameHashMap["<S75>"] = {sid: "BLDCmotorControl_R2017b:2531:160"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:160"] = {rtwname: "<S75>"};
-	this.rtwnameHashMap["<S76>"] = {sid: "BLDCmotorControl_R2017b:2531:163"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:163"] = {rtwname: "<S76>"};
-	this.rtwnameHashMap["<S77>"] = {sid: "BLDCmotorControl_R2017b:2531:166"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:166"] = {rtwname: "<S77>"};
-	this.rtwnameHashMap["<S78>"] = {sid: "BLDCmotorControl_R2017b:2531:480"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:480"] = {rtwname: "<S78>"};
-	this.rtwnameHashMap["<S79>"] = {sid: "BLDCmotorControl_R2017b:2531:577"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:577"] = {rtwname: "<S79>"};
-	this.rtwnameHashMap["<S80>"] = {sid: "BLDCmotorControl_R2017b:2531:579"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:579"] = {rtwname: "<S80>"};
-	this.rtwnameHashMap["<S81>"] = {sid: "BLDCmotorControl_R2017b:2531:272"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:272"] = {rtwname: "<S81>"};
-	this.rtwnameHashMap["<S82>"] = {sid: "BLDCmotorControl_R2017b:2531:275"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:275"] = {rtwname: "<S82>"};
-	this.rtwnameHashMap["<S83>"] = {sid: "BLDCmotorControl_R2017b:2531:285"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:285"] = {rtwname: "<S83>"};
-	this.rtwnameHashMap["<S84>"] = {sid: "BLDCmotorControl_R2017b:2531:295"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:295"] = {rtwname: "<S84>"};
-	this.rtwnameHashMap["<S85>"] = {sid: "BLDCmotorControl_R2017b:2531:305"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:305"] = {rtwname: "<S85>"};
-	this.rtwnameHashMap["<S86>"] = {sid: "BLDCmotorControl_R2017b:2531:349"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:349"] = {rtwname: "<S86>"};
-	this.rtwnameHashMap["<S87>"] = {sid: "BLDCmotorControl_R2017b:2531:352"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:352"] = {rtwname: "<S87>"};
-	this.rtwnameHashMap["<S88>"] = {sid: "BLDCmotorControl_R2017b:2531:355"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:355"] = {rtwname: "<S88>"};
-	this.rtwnameHashMap["<S89>"] = {sid: "BLDCmotorControl_R2017b:2531:402"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:402"] = {rtwname: "<S89>"};
-	this.rtwnameHashMap["<S90>"] = {sid: "BLDCmotorControl_R2017b:2531:405"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:405"] = {rtwname: "<S90>"};
-	this.rtwnameHashMap["<S91>"] = {sid: "BLDCmotorControl_R2017b:2531:408"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:408"] = {rtwname: "<S91>"};
+	this.rtwnameHashMap["<S34>"] = {sid: "BLDCmotorControl_R2017b:2530:160"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:160"] = {rtwname: "<S34>"};
+	this.rtwnameHashMap["<S35>"] = {sid: "BLDCmotorControl_R2017b:2530:163"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:163"] = {rtwname: "<S35>"};
+	this.rtwnameHashMap["<S36>"] = {sid: "BLDCmotorControl_R2017b:2530:616"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:616"] = {rtwname: "<S36>"};
+	this.rtwnameHashMap["<S37>"] = {sid: "BLDCmotorControl_R2017b:2530:480"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:480"] = {rtwname: "<S37>"};
+	this.rtwnameHashMap["<S38>"] = {sid: "BLDCmotorControl_R2017b:2530:579"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:579"] = {rtwname: "<S38>"};
+	this.rtwnameHashMap["<S39>"] = {sid: "BLDCmotorControl_R2017b:2530:272"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:272"] = {rtwname: "<S39>"};
+	this.rtwnameHashMap["<S40>"] = {sid: "BLDCmotorControl_R2017b:2530:275"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:275"] = {rtwname: "<S40>"};
+	this.rtwnameHashMap["<S41>"] = {sid: "BLDCmotorControl_R2017b:2530:285"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:285"] = {rtwname: "<S41>"};
+	this.rtwnameHashMap["<S42>"] = {sid: "BLDCmotorControl_R2017b:2530:295"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:295"] = {rtwname: "<S42>"};
+	this.rtwnameHashMap["<S43>"] = {sid: "BLDCmotorControl_R2017b:2530:305"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:305"] = {rtwname: "<S43>"};
+	this.rtwnameHashMap["<S44>"] = {sid: "BLDCmotorControl_R2017b:2530:349"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:349"] = {rtwname: "<S44>"};
+	this.rtwnameHashMap["<S45>"] = {sid: "BLDCmotorControl_R2017b:2530:352"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:352"] = {rtwname: "<S45>"};
+	this.rtwnameHashMap["<S46>"] = {sid: "BLDCmotorControl_R2017b:2530:355"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:355"] = {rtwname: "<S46>"};
+	this.rtwnameHashMap["<S47>"] = {sid: "BLDCmotorControl_R2017b:2530:402"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:402"] = {rtwname: "<S47>"};
+	this.rtwnameHashMap["<S48>"] = {sid: "BLDCmotorControl_R2017b:2530:405"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:405"] = {rtwname: "<S48>"};
+	this.rtwnameHashMap["<S49>"] = {sid: "BLDCmotorControl_R2017b:2530:408"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:408"] = {rtwname: "<S49>"};
+	this.rtwnameHashMap["<S50>"] = {sid: "BLDCmotorControl_R2017b:2531:6"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:6"] = {rtwname: "<S50>"};
+	this.rtwnameHashMap["<S51>"] = {sid: "BLDCmotorControl_R2017b:2531:215"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:215"] = {rtwname: "<S51>"};
+	this.rtwnameHashMap["<S52>"] = {sid: "BLDCmotorControl_R2017b:2531:282"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:282"] = {rtwname: "<S52>"};
+	this.rtwnameHashMap["<S53>"] = {sid: "BLDCmotorControl_R2017b:2531:361"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:361"] = {rtwname: "<S53>"};
+	this.rtwnameHashMap["<S54>"] = {sid: "BLDCmotorControl_R2017b:2531:435"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:435"] = {rtwname: "<S54>"};
+	this.rtwnameHashMap["<S55>"] = {sid: "BLDCmotorControl_R2017b:2531:438"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:438"] = {rtwname: "<S55>"};
+	this.rtwnameHashMap["<S56>"] = {sid: "BLDCmotorControl_R2017b:2531:441"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:441"] = {rtwname: "<S56>"};
+	this.rtwnameHashMap["<S57>"] = {sid: "BLDCmotorControl_R2017b:2531:444"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:444"] = {rtwname: "<S57>"};
+	this.rtwnameHashMap["<S58>"] = {sid: "BLDCmotorControl_R2017b:2531:26"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:26"] = {rtwname: "<S58>"};
+	this.rtwnameHashMap["<S59>"] = {sid: "BLDCmotorControl_R2017b:2531:10"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:10"] = {rtwname: "<S59>"};
+	this.rtwnameHashMap["<S60>"] = {sid: "BLDCmotorControl_R2017b:2531:38"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:38"] = {rtwname: "<S60>"};
+	this.rtwnameHashMap["<S61>"] = {sid: "BLDCmotorControl_R2017b:2531:59"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:59"] = {rtwname: "<S61>"};
+	this.rtwnameHashMap["<S62>"] = {sid: "BLDCmotorControl_R2017b:2531:34"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:34"] = {rtwname: "<S62>"};
+	this.rtwnameHashMap["<S63>"] = {sid: "BLDCmotorControl_R2017b:2531:19"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:19"] = {rtwname: "<S63>"};
+	this.rtwnameHashMap["<S64>"] = {sid: "BLDCmotorControl_R2017b:2531:54"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:54"] = {rtwname: "<S64>"};
+	this.rtwnameHashMap["<S65>"] = {sid: "BLDCmotorControl_R2017b:2531:65"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:65"] = {rtwname: "<S65>"};
+	this.rtwnameHashMap["<S66>"] = {sid: "BLDCmotorControl_R2017b:2531:124"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:124"] = {rtwname: "<S66>"};
+	this.rtwnameHashMap["<S67>"] = {sid: "BLDCmotorControl_R2017b:2531:140"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:140"] = {rtwname: "<S67>"};
+	this.rtwnameHashMap["<S68>"] = {sid: "BLDCmotorControl_R2017b:2531:733"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:733"] = {rtwname: "<S68>"};
+	this.rtwnameHashMap["<S69>"] = {sid: "BLDCmotorControl_R2017b:2531:588"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:588"] = {rtwname: "<S69>"};
+	this.rtwnameHashMap["<S70>"] = {sid: "BLDCmotorControl_R2017b:2531:479"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:479"] = {rtwname: "<S70>"};
+	this.rtwnameHashMap["<S71>"] = {sid: "BLDCmotorControl_R2017b:2531:154"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:154"] = {rtwname: "<S71>"};
+	this.rtwnameHashMap["<S72>"] = {sid: "BLDCmotorControl_R2017b:2531:160"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:160"] = {rtwname: "<S72>"};
+	this.rtwnameHashMap["<S73>"] = {sid: "BLDCmotorControl_R2017b:2531:163"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:163"] = {rtwname: "<S73>"};
+	this.rtwnameHashMap["<S74>"] = {sid: "BLDCmotorControl_R2017b:2531:616"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:616"] = {rtwname: "<S74>"};
+	this.rtwnameHashMap["<S75>"] = {sid: "BLDCmotorControl_R2017b:2531:480"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:480"] = {rtwname: "<S75>"};
+	this.rtwnameHashMap["<S76>"] = {sid: "BLDCmotorControl_R2017b:2531:579"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:579"] = {rtwname: "<S76>"};
+	this.rtwnameHashMap["<S77>"] = {sid: "BLDCmotorControl_R2017b:2531:272"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:272"] = {rtwname: "<S77>"};
+	this.rtwnameHashMap["<S78>"] = {sid: "BLDCmotorControl_R2017b:2531:275"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:275"] = {rtwname: "<S78>"};
+	this.rtwnameHashMap["<S79>"] = {sid: "BLDCmotorControl_R2017b:2531:285"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:285"] = {rtwname: "<S79>"};
+	this.rtwnameHashMap["<S80>"] = {sid: "BLDCmotorControl_R2017b:2531:295"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:295"] = {rtwname: "<S80>"};
+	this.rtwnameHashMap["<S81>"] = {sid: "BLDCmotorControl_R2017b:2531:305"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:305"] = {rtwname: "<S81>"};
+	this.rtwnameHashMap["<S82>"] = {sid: "BLDCmotorControl_R2017b:2531:349"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:349"] = {rtwname: "<S82>"};
+	this.rtwnameHashMap["<S83>"] = {sid: "BLDCmotorControl_R2017b:2531:352"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:352"] = {rtwname: "<S83>"};
+	this.rtwnameHashMap["<S84>"] = {sid: "BLDCmotorControl_R2017b:2531:355"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:355"] = {rtwname: "<S84>"};
+	this.rtwnameHashMap["<S85>"] = {sid: "BLDCmotorControl_R2017b:2531:402"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:402"] = {rtwname: "<S85>"};
+	this.rtwnameHashMap["<S86>"] = {sid: "BLDCmotorControl_R2017b:2531:405"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:405"] = {rtwname: "<S86>"};
+	this.rtwnameHashMap["<S87>"] = {sid: "BLDCmotorControl_R2017b:2531:408"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:408"] = {rtwname: "<S87>"};
 	this.rtwnameHashMap["<S1>/b_hallALeft "] = {sid: "BLDCmotorControl_R2017b:365"};
 	this.sidHashMap["BLDCmotorControl_R2017b:365"] = {rtwname: "<S1>/b_hallALeft "};
 	this.rtwnameHashMap["<S1>/b_hallBLeft"] = {sid: "BLDCmotorControl_R2017b:1277"};
@@ -1420,8 +1426,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:536"] = {rtwname: "<S13>/Goto8"};
 	this.rtwnameHashMap["<S13>/Goto9"] = {sid: "BLDCmotorControl_R2017b:2530:538"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:538"] = {rtwname: "<S13>/Goto9"};
-	this.rtwnameHashMap["<S13>/Modulo_Calculation"] = {sid: "BLDCmotorControl_R2017b:2530:577"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:577"] = {rtwname: "<S13>/Modulo_Calculation"};
+	this.rtwnameHashMap["<S13>/Math Function"] = {sid: "BLDCmotorControl_R2017b:2530:623"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:623"] = {rtwname: "<S13>/Math Function"};
 	this.rtwnameHashMap["<S13>/Mux"] = {sid: "BLDCmotorControl_R2017b:2530:258"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:258"] = {rtwname: "<S13>/Mux"};
 	this.rtwnameHashMap["<S13>/Product2"] = {sid: "BLDCmotorControl_R2017b:2530:545"};
@@ -1754,8 +1760,6 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:61"] = {rtwname: "<S23>/z_dir"};
 	this.rtwnameHashMap["<S23>/z_dirPrev"] = {sid: "BLDCmotorControl_R2017b:2530:62"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:62"] = {rtwname: "<S23>/z_dirPrev"};
-	this.rtwnameHashMap["<S23>/Abs4"] = {sid: "BLDCmotorControl_R2017b:2530:63"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:63"] = {rtwname: "<S23>/Abs4"};
 	this.rtwnameHashMap["<S23>/Constant6"] = {sid: "BLDCmotorControl_R2017b:2530:64"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:64"] = {rtwname: "<S23>/Constant6"};
 	this.rtwnameHashMap["<S23>/Edge_counter"] = {sid: "BLDCmotorControl_R2017b:2530:65"};
@@ -1764,28 +1768,28 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:80"] = {rtwname: "<S23>/From"};
 	this.rtwnameHashMap["<S23>/From1"] = {sid: "BLDCmotorControl_R2017b:2530:81"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:81"] = {rtwname: "<S23>/From1"};
-	this.rtwnameHashMap["<S23>/From10"] = {sid: "BLDCmotorControl_R2017b:2530:82"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:82"] = {rtwname: "<S23>/From10"};
+	this.rtwnameHashMap["<S23>/From10"] = {sid: "BLDCmotorControl_R2017b:2530:660"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:660"] = {rtwname: "<S23>/From10"};
 	this.rtwnameHashMap["<S23>/From11"] = {sid: "BLDCmotorControl_R2017b:2530:83"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:83"] = {rtwname: "<S23>/From11"};
 	this.rtwnameHashMap["<S23>/From12"] = {sid: "BLDCmotorControl_R2017b:2530:84"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:84"] = {rtwname: "<S23>/From12"};
-	this.rtwnameHashMap["<S23>/From13"] = {sid: "BLDCmotorControl_R2017b:2530:85"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:85"] = {rtwname: "<S23>/From13"};
+	this.rtwnameHashMap["<S23>/From15"] = {sid: "BLDCmotorControl_R2017b:2530:645"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:645"] = {rtwname: "<S23>/From15"};
 	this.rtwnameHashMap["<S23>/From16"] = {sid: "BLDCmotorControl_R2017b:2530:86"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:86"] = {rtwname: "<S23>/From16"};
 	this.rtwnameHashMap["<S23>/From18"] = {sid: "BLDCmotorControl_R2017b:2530:97"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:97"] = {rtwname: "<S23>/From18"};
 	this.rtwnameHashMap["<S23>/From19"] = {sid: "BLDCmotorControl_R2017b:2530:98"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:98"] = {rtwname: "<S23>/From19"};
-	this.rtwnameHashMap["<S23>/From2"] = {sid: "BLDCmotorControl_R2017b:2530:87"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:87"] = {rtwname: "<S23>/From2"};
-	this.rtwnameHashMap["<S23>/From3"] = {sid: "BLDCmotorControl_R2017b:2530:88"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:88"] = {rtwname: "<S23>/From3"};
+	this.rtwnameHashMap["<S23>/From2"] = {sid: "BLDCmotorControl_R2017b:2530:719"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:719"] = {rtwname: "<S23>/From2"};
+	this.rtwnameHashMap["<S23>/From21"] = {sid: "BLDCmotorControl_R2017b:2530:697"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:697"] = {rtwname: "<S23>/From21"};
+	this.rtwnameHashMap["<S23>/From22"] = {sid: "BLDCmotorControl_R2017b:2530:698"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:698"] = {rtwname: "<S23>/From22"};
 	this.rtwnameHashMap["<S23>/From33"] = {sid: "BLDCmotorControl_R2017b:2530:89"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:89"] = {rtwname: "<S23>/From33"};
-	this.rtwnameHashMap["<S23>/From34"] = {sid: "BLDCmotorControl_R2017b:2530:90"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:90"] = {rtwname: "<S23>/From34"};
 	this.rtwnameHashMap["<S23>/From35"] = {sid: "BLDCmotorControl_R2017b:2530:91"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:91"] = {rtwname: "<S23>/From35"};
 	this.rtwnameHashMap["<S23>/From4"] = {sid: "BLDCmotorControl_R2017b:2530:92"};
@@ -1798,26 +1802,24 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:95"] = {rtwname: "<S23>/From5"};
 	this.rtwnameHashMap["<S23>/From6"] = {sid: "BLDCmotorControl_R2017b:2530:96"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:96"] = {rtwname: "<S23>/From6"};
-	this.rtwnameHashMap["<S23>/From7"] = {sid: "BLDCmotorControl_R2017b:2530:484"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:484"] = {rtwname: "<S23>/From7"};
+	this.rtwnameHashMap["<S23>/From7"] = {sid: "BLDCmotorControl_R2017b:2530:725"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:725"] = {rtwname: "<S23>/From7"};
 	this.rtwnameHashMap["<S23>/Goto"] = {sid: "BLDCmotorControl_R2017b:2530:99"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:99"] = {rtwname: "<S23>/Goto"};
 	this.rtwnameHashMap["<S23>/Goto1"] = {sid: "BLDCmotorControl_R2017b:2530:100"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:100"] = {rtwname: "<S23>/Goto1"};
 	this.rtwnameHashMap["<S23>/Goto15"] = {sid: "BLDCmotorControl_R2017b:2530:101"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:101"] = {rtwname: "<S23>/Goto15"};
-	this.rtwnameHashMap["<S23>/Goto17"] = {sid: "BLDCmotorControl_R2017b:2530:102"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:102"] = {rtwname: "<S23>/Goto17"};
-	this.rtwnameHashMap["<S23>/Goto18"] = {sid: "BLDCmotorControl_R2017b:2530:103"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:103"] = {rtwname: "<S23>/Goto18"};
 	this.rtwnameHashMap["<S23>/Goto19"] = {sid: "BLDCmotorControl_R2017b:2530:104"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:104"] = {rtwname: "<S23>/Goto19"};
 	this.rtwnameHashMap["<S23>/Goto2"] = {sid: "BLDCmotorControl_R2017b:2530:105"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:105"] = {rtwname: "<S23>/Goto2"};
 	this.rtwnameHashMap["<S23>/Goto22"] = {sid: "BLDCmotorControl_R2017b:2530:106"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:106"] = {rtwname: "<S23>/Goto22"};
-	this.rtwnameHashMap["<S23>/Goto3"] = {sid: "BLDCmotorControl_R2017b:2530:107"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:107"] = {rtwname: "<S23>/Goto3"};
+	this.rtwnameHashMap["<S23>/Goto3"] = {sid: "BLDCmotorControl_R2017b:2530:723"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:723"] = {rtwname: "<S23>/Goto3"};
+	this.rtwnameHashMap["<S23>/Goto4"] = {sid: "BLDCmotorControl_R2017b:2530:615"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:615"] = {rtwname: "<S23>/Goto4"};
 	this.rtwnameHashMap["<S23>/Goto8"] = {sid: "BLDCmotorControl_R2017b:2530:108"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:108"] = {rtwname: "<S23>/Goto8"};
 	this.rtwnameHashMap["<S23>/Logical Operator1"] = {sid: "BLDCmotorControl_R2017b:2530:109"};
@@ -1826,18 +1828,22 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:110"] = {rtwname: "<S23>/Logical Operator2"};
 	this.rtwnameHashMap["<S23>/Logical Operator3"] = {sid: "BLDCmotorControl_R2017b:2530:111"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:111"] = {rtwname: "<S23>/Logical Operator3"};
-	this.rtwnameHashMap["<S23>/Moving_Average_Filter"] = {sid: "BLDCmotorControl_R2017b:2530:112"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:112"] = {rtwname: "<S23>/Moving_Average_Filter"};
-	this.rtwnameHashMap["<S23>/Mux4"] = {sid: "BLDCmotorControl_R2017b:2530:123"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:123"] = {rtwname: "<S23>/Mux4"};
-	this.rtwnameHashMap["<S23>/Raw_ Speed_calculation"] = {sid: "BLDCmotorControl_R2017b:2530:124"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:124"] = {rtwname: "<S23>/Raw_ Speed_calculation"};
+	this.rtwnameHashMap["<S23>/Logical Operator5"] = {sid: "BLDCmotorControl_R2017b:2530:722"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:722"] = {rtwname: "<S23>/Logical Operator5"};
+	this.rtwnameHashMap["<S23>/Motor_Speed_Calculation"] = {sid: "BLDCmotorControl_R2017b:2530:124"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:124"] = {rtwname: "<S23>/Motor_Speed_Calculation"};
+	this.rtwnameHashMap["<S23>/Mux"] = {sid: "BLDCmotorControl_R2017b:2530:644"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:644"] = {rtwname: "<S23>/Mux"};
+	this.rtwnameHashMap["<S23>/Mux1"] = {sid: "BLDCmotorControl_R2017b:2530:659"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:659"] = {rtwname: "<S23>/Mux1"};
 	this.rtwnameHashMap["<S23>/Relational Operator1"] = {sid: "BLDCmotorControl_R2017b:2530:136"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:136"] = {rtwname: "<S23>/Relational Operator1"};
-	this.rtwnameHashMap["<S23>/Relational Operator4"] = {sid: "BLDCmotorControl_R2017b:2530:137"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:137"] = {rtwname: "<S23>/Relational Operator4"};
+	this.rtwnameHashMap["<S23>/Relational Operator3"] = {sid: "BLDCmotorControl_R2017b:2530:696"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:696"] = {rtwname: "<S23>/Relational Operator3"};
 	this.rtwnameHashMap["<S23>/Relational Operator5"] = {sid: "BLDCmotorControl_R2017b:2530:138"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:138"] = {rtwname: "<S23>/Relational Operator5"};
+	this.rtwnameHashMap["<S23>/Relational Operator6"] = {sid: "BLDCmotorControl_R2017b:2530:720"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:720"] = {rtwname: "<S23>/Relational Operator6"};
 	this.rtwnameHashMap["<S23>/S-R Flip-Flop"] = {sid: "BLDCmotorControl_R2017b:2530:140"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:140"] = {rtwname: "<S23>/S-R Flip-Flop"};
 	this.rtwnameHashMap["<S23>/Scope2"] = {sid: "BLDCmotorControl_R2017b:2530:141"};
@@ -1846,34 +1852,36 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:142"] = {rtwname: "<S23>/Sum1"};
 	this.rtwnameHashMap["<S23>/Switch"] = {sid: "BLDCmotorControl_R2017b:2530:143"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:143"] = {rtwname: "<S23>/Switch"};
+	this.rtwnameHashMap["<S23>/Switch1"] = {sid: "BLDCmotorControl_R2017b:2530:714"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:714"] = {rtwname: "<S23>/Switch1"};
 	this.rtwnameHashMap["<S23>/Terminator"] = {sid: "BLDCmotorControl_R2017b:2530:144"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:144"] = {rtwname: "<S23>/Terminator"};
-	this.rtwnameHashMap["<S23>/UnitDelay10"] = {sid: "BLDCmotorControl_R2017b:2530:145"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:145"] = {rtwname: "<S23>/UnitDelay10"};
 	this.rtwnameHashMap["<S23>/UnitDelay8"] = {sid: "BLDCmotorControl_R2017b:2530:146"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:146"] = {rtwname: "<S23>/UnitDelay8"};
-	this.rtwnameHashMap["<S23>/n_thresSpdDeacv"] = {sid: "BLDCmotorControl_R2017b:2530:147"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:147"] = {rtwname: "<S23>/n_thresSpdDeacv"};
+	this.rtwnameHashMap["<S23>/falling_edge2"] = {sid: "BLDCmotorControl_R2017b:2530:733"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:733"] = {rtwname: "<S23>/falling_edge2"};
 	this.rtwnameHashMap["<S23>/rising_edge"] = {sid: "BLDCmotorControl_R2017b:2530:588"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:588"] = {rtwname: "<S23>/rising_edge"};
 	this.rtwnameHashMap["<S23>/rst_Delay"] = {sid: "BLDCmotorControl_R2017b:2530:479"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:479"] = {rtwname: "<S23>/rst_Delay"};
 	this.rtwnameHashMap["<S23>/signal_log1"] = {sid: "BLDCmotorControl_R2017b:2530:154"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:154"] = {rtwname: "<S23>/signal_log1"};
-	this.rtwnameHashMap["<S23>/signal_log2"] = {sid: "BLDCmotorControl_R2017b:2530:157"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:157"] = {rtwname: "<S23>/signal_log2"};
 	this.rtwnameHashMap["<S23>/signal_log3"] = {sid: "BLDCmotorControl_R2017b:2530:160"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:160"] = {rtwname: "<S23>/signal_log3"};
 	this.rtwnameHashMap["<S23>/signal_log4"] = {sid: "BLDCmotorControl_R2017b:2530:163"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:163"] = {rtwname: "<S23>/signal_log4"};
-	this.rtwnameHashMap["<S23>/signal_log6"] = {sid: "BLDCmotorControl_R2017b:2530:166"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:166"] = {rtwname: "<S23>/signal_log6"};
+	this.rtwnameHashMap["<S23>/signal_log5"] = {sid: "BLDCmotorControl_R2017b:2530:616"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:616"] = {rtwname: "<S23>/signal_log5"};
 	this.rtwnameHashMap["<S23>/z_counter2"] = {sid: "BLDCmotorControl_R2017b:2530:169"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:169"] = {rtwname: "<S23>/z_counter2"};
 	this.rtwnameHashMap["<S23>/z_counterRawPrev"] = {sid: "BLDCmotorControl_R2017b:2530:170"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:170"] = {rtwname: "<S23>/z_counterRawPrev"};
 	this.rtwnameHashMap["<S23>/z_maxCntRst"] = {sid: "BLDCmotorControl_R2017b:2530:171"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:171"] = {rtwname: "<S23>/z_maxCntRst"};
+	this.rtwnameHashMap["<S23>/z_maxCntRst1"] = {sid: "BLDCmotorControl_R2017b:2530:726"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:726"] = {rtwname: "<S23>/z_maxCntRst1"};
+	this.rtwnameHashMap["<S23>/z_maxCntRst2"] = {sid: "BLDCmotorControl_R2017b:2530:721"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:721"] = {rtwname: "<S23>/z_maxCntRst2"};
 	this.rtwnameHashMap["<S23>/z_nrEdgeSpdAcv"] = {sid: "BLDCmotorControl_R2017b:2530:172"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:172"] = {rtwname: "<S23>/z_nrEdgeSpdAcv"};
 	this.rtwnameHashMap["<S23>/n_mot"] = {sid: "BLDCmotorControl_R2017b:2530:173"};
@@ -1920,60 +1928,68 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:480"] = {rtwname: "<S27>/rst_Delay"};
 	this.rtwnameHashMap["<S27>/cnt"] = {sid: "BLDCmotorControl_R2017b:2530:78"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:78"] = {rtwname: "<S27>/cnt"};
-	this.rtwnameHashMap["<S28>/n_motRaw"] = {sid: "BLDCmotorControl_R2017b:2530:113"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:113"] = {rtwname: "<S28>/n_motRaw"};
-	this.rtwnameHashMap["<S28>/Trigger"] = {sid: "BLDCmotorControl_R2017b:2530:114"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:114"] = {rtwname: "<S28>/Trigger"};
-	this.rtwnameHashMap["<S28>/Constant1"] = {sid: "BLDCmotorControl_R2017b:2530:115"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:115"] = {rtwname: "<S28>/Constant1"};
-	this.rtwnameHashMap["<S28>/Divide4"] = {sid: "BLDCmotorControl_R2017b:2530:116"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:116"] = {rtwname: "<S28>/Divide4"};
-	this.rtwnameHashMap["<S28>/Sum2"] = {sid: "BLDCmotorControl_R2017b:2530:117"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:117"] = {rtwname: "<S28>/Sum2"};
-	this.rtwnameHashMap["<S28>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2530:118"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:118"] = {rtwname: "<S28>/UnitDelay1"};
-	this.rtwnameHashMap["<S28>/UnitDelay5"] = {sid: "BLDCmotorControl_R2017b:2530:121"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:121"] = {rtwname: "<S28>/UnitDelay5"};
-	this.rtwnameHashMap["<S28>/n_mot"] = {sid: "BLDCmotorControl_R2017b:2530:122"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:122"] = {rtwname: "<S28>/n_mot"};
-	this.rtwnameHashMap["<S29>/z_counter"] = {sid: "BLDCmotorControl_R2017b:2530:125"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:125"] = {rtwname: "<S29>/z_counter"};
-	this.rtwnameHashMap["<S29>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2530:126"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:126"] = {rtwname: "<S29>/z_dir"};
-	this.rtwnameHashMap["<S29>/Trigger"] = {sid: "BLDCmotorControl_R2017b:2530:483"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:483"] = {rtwname: "<S29>/Trigger"};
-	this.rtwnameHashMap["<S29>/Constant1"] = {sid: "BLDCmotorControl_R2017b:2530:127"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:127"] = {rtwname: "<S29>/Constant1"};
-	this.rtwnameHashMap["<S29>/Divide4"] = {sid: "BLDCmotorControl_R2017b:2530:128"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:128"] = {rtwname: "<S29>/Divide4"};
-	this.rtwnameHashMap["<S29>/Product2"] = {sid: "BLDCmotorControl_R2017b:2530:129"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:129"] = {rtwname: "<S29>/Product2"};
-	this.rtwnameHashMap["<S29>/Relational Operator1"] = {sid: "BLDCmotorControl_R2017b:2530:130"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:130"] = {rtwname: "<S29>/Relational Operator1"};
-	this.rtwnameHashMap["<S29>/Switch"] = {sid: "BLDCmotorControl_R2017b:2530:131"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:131"] = {rtwname: "<S29>/Switch"};
-	this.rtwnameHashMap["<S29>/cf_spdCoef"] = {sid: "BLDCmotorControl_R2017b:2530:132"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:132"] = {rtwname: "<S29>/cf_spdCoef"};
-	this.rtwnameHashMap["<S29>/z_maxCntRst"] = {sid: "BLDCmotorControl_R2017b:2530:133"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:133"] = {rtwname: "<S29>/z_maxCntRst"};
-	this.rtwnameHashMap["<S29>/n_motRaw "] = {sid: "BLDCmotorControl_R2017b:2530:134"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:134"] = {rtwname: "<S29>/n_motRaw "};
-	this.rtwnameHashMap["<S30>/S"] = {sid: "BLDCmotorControl_R2017b:2530:140:132"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:132"] = {rtwname: "<S30>/S"};
-	this.rtwnameHashMap["<S30>/R"] = {sid: "BLDCmotorControl_R2017b:2530:140:133"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:133"] = {rtwname: "<S30>/R"};
-	this.rtwnameHashMap["<S30>/Demux"] = {sid: "BLDCmotorControl_R2017b:2530:140:134"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:134"] = {rtwname: "<S30>/Demux"};
-	this.rtwnameHashMap["<S30>/Logic"] = {sid: "BLDCmotorControl_R2017b:2530:140:135"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:135"] = {rtwname: "<S30>/Logic"};
-	this.rtwnameHashMap["<S30>/Memory"] = {sid: "BLDCmotorControl_R2017b:2530:140:136"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:136"] = {rtwname: "<S30>/Memory"};
-	this.rtwnameHashMap["<S30>/Mux"] = {sid: "BLDCmotorControl_R2017b:2530:140:137"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:137"] = {rtwname: "<S30>/Mux"};
-	this.rtwnameHashMap["<S30>/Q"] = {sid: "BLDCmotorControl_R2017b:2530:140:138"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:138"] = {rtwname: "<S30>/Q"};
-	this.rtwnameHashMap["<S30>/!Q"] = {sid: "BLDCmotorControl_R2017b:2530:140:139"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:139"] = {rtwname: "<S30>/!Q"};
+	this.rtwnameHashMap["<S28>/z_counter"] = {sid: "BLDCmotorControl_R2017b:2530:125"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:125"] = {rtwname: "<S28>/z_counter"};
+	this.rtwnameHashMap["<S28>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2530:126"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:126"] = {rtwname: "<S28>/z_dir"};
+	this.rtwnameHashMap["<S28>/Trigger"] = {sid: "BLDCmotorControl_R2017b:2530:650"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:650"] = {rtwname: "<S28>/Trigger"};
+	this.rtwnameHashMap["<S28>/Constant1"] = {sid: "BLDCmotorControl_R2017b:2530:127"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:127"] = {rtwname: "<S28>/Constant1"};
+	this.rtwnameHashMap["<S28>/Constant2"] = {sid: "BLDCmotorControl_R2017b:2530:748"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:748"] = {rtwname: "<S28>/Constant2"};
+	this.rtwnameHashMap["<S28>/Divide1"] = {sid: "BLDCmotorControl_R2017b:2530:749"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:749"] = {rtwname: "<S28>/Divide1"};
+	this.rtwnameHashMap["<S28>/Divide4"] = {sid: "BLDCmotorControl_R2017b:2530:128"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:128"] = {rtwname: "<S28>/Divide4"};
+	this.rtwnameHashMap["<S28>/From"] = {sid: "BLDCmotorControl_R2017b:2530:750"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:750"] = {rtwname: "<S28>/From"};
+	this.rtwnameHashMap["<S28>/Goto22"] = {sid: "BLDCmotorControl_R2017b:2530:756"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:756"] = {rtwname: "<S28>/Goto22"};
+	this.rtwnameHashMap["<S28>/Product2"] = {sid: "BLDCmotorControl_R2017b:2530:129"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:129"] = {rtwname: "<S28>/Product2"};
+	this.rtwnameHashMap["<S28>/Relational Operator1"] = {sid: "BLDCmotorControl_R2017b:2530:130"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:130"] = {rtwname: "<S28>/Relational Operator1"};
+	this.rtwnameHashMap["<S28>/Sum2"] = {sid: "BLDCmotorControl_R2017b:2530:751"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:751"] = {rtwname: "<S28>/Sum2"};
+	this.rtwnameHashMap["<S28>/Switch"] = {sid: "BLDCmotorControl_R2017b:2530:131"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:131"] = {rtwname: "<S28>/Switch"};
+	this.rtwnameHashMap["<S28>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2530:752"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:752"] = {rtwname: "<S28>/UnitDelay1"};
+	this.rtwnameHashMap["<S28>/UnitDelay5"] = {sid: "BLDCmotorControl_R2017b:2530:753"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:753"] = {rtwname: "<S28>/UnitDelay5"};
+	this.rtwnameHashMap["<S28>/cf_spdCoef"] = {sid: "BLDCmotorControl_R2017b:2530:132"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:132"] = {rtwname: "<S28>/cf_spdCoef"};
+	this.rtwnameHashMap["<S28>/z_maxCntRst"] = {sid: "BLDCmotorControl_R2017b:2530:133"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:133"] = {rtwname: "<S28>/z_maxCntRst"};
+	this.rtwnameHashMap["<S28>/n_mot"] = {sid: "BLDCmotorControl_R2017b:2530:605"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:605"] = {rtwname: "<S28>/n_mot"};
+	this.rtwnameHashMap["<S29>/S"] = {sid: "BLDCmotorControl_R2017b:2530:140:132"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:132"] = {rtwname: "<S29>/S"};
+	this.rtwnameHashMap["<S29>/R"] = {sid: "BLDCmotorControl_R2017b:2530:140:133"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:133"] = {rtwname: "<S29>/R"};
+	this.rtwnameHashMap["<S29>/Demux"] = {sid: "BLDCmotorControl_R2017b:2530:140:134"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:134"] = {rtwname: "<S29>/Demux"};
+	this.rtwnameHashMap["<S29>/Logic"] = {sid: "BLDCmotorControl_R2017b:2530:140:135"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:135"] = {rtwname: "<S29>/Logic"};
+	this.rtwnameHashMap["<S29>/Memory"] = {sid: "BLDCmotorControl_R2017b:2530:140:136"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:136"] = {rtwname: "<S29>/Memory"};
+	this.rtwnameHashMap["<S29>/Mux"] = {sid: "BLDCmotorControl_R2017b:2530:140:137"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:137"] = {rtwname: "<S29>/Mux"};
+	this.rtwnameHashMap["<S29>/Q"] = {sid: "BLDCmotorControl_R2017b:2530:140:138"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:138"] = {rtwname: "<S29>/Q"};
+	this.rtwnameHashMap["<S29>/!Q"] = {sid: "BLDCmotorControl_R2017b:2530:140:139"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:140:139"] = {rtwname: "<S29>/!Q"};
+	this.rtwnameHashMap["<S30>/Signal"] = {sid: "BLDCmotorControl_R2017b:2530:733:728"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:733:728"] = {rtwname: "<S30>/Signal"};
+	this.rtwnameHashMap["<S30>/Logical Operator"] = {sid: "BLDCmotorControl_R2017b:2530:733:729"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:733:729"] = {rtwname: "<S30>/Logical Operator"};
+	this.rtwnameHashMap["<S30>/Logical Operator1"] = {sid: "BLDCmotorControl_R2017b:2530:733:730"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:733:730"] = {rtwname: "<S30>/Logical Operator1"};
+	this.rtwnameHashMap["<S30>/UnitDelay"] = {sid: "BLDCmotorControl_R2017b:2530:733:731"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:733:731"] = {rtwname: "<S30>/UnitDelay"};
+	this.rtwnameHashMap["<S30>/Out"] = {sid: "BLDCmotorControl_R2017b:2530:733:732"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:733:732"] = {rtwname: "<S30>/Out"};
 	this.rtwnameHashMap["<S31>/Signal"] = {sid: "BLDCmotorControl_R2017b:2530:588:583"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:588:583"] = {rtwname: "<S31>/Signal"};
 	this.rtwnameHashMap["<S31>/Logical Operator"] = {sid: "BLDCmotorControl_R2017b:2530:588:584"};
@@ -2000,1000 +2016,978 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:155"] = {rtwname: "<S33>/n_mot"};
 	this.rtwnameHashMap["<S33>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:156"};
 	this.sidHashMap["BLDCmotorControl_R2017b:2530:156"] = {rtwname: "<S33>/Terminator_1"};
-	this.rtwnameHashMap["<S34>/z_counter"] = {sid: "BLDCmotorControl_R2017b:2530:158"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:158"] = {rtwname: "<S34>/z_counter"};
-	this.rtwnameHashMap["<S34>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:159"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:159"] = {rtwname: "<S34>/Terminator_1"};
-	this.rtwnameHashMap["<S35>/b_cntEna"] = {sid: "BLDCmotorControl_R2017b:2530:161"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:161"] = {rtwname: "<S35>/b_cntEna"};
-	this.rtwnameHashMap["<S35>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:162"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:162"] = {rtwname: "<S35>/Terminator_1"};
-	this.rtwnameHashMap["<S36>/z_counterRaw"] = {sid: "BLDCmotorControl_R2017b:2530:164"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:164"] = {rtwname: "<S36>/z_counterRaw"};
-	this.rtwnameHashMap["<S36>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:165"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:165"] = {rtwname: "<S36>/Terminator_1"};
-	this.rtwnameHashMap["<S37>/n_motRaw"] = {sid: "BLDCmotorControl_R2017b:2530:167"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:167"] = {rtwname: "<S37>/n_motRaw"};
-	this.rtwnameHashMap["<S37>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:168"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:168"] = {rtwname: "<S37>/Terminator_1"};
-	this.rtwnameHashMap["<S38>/u"] = {sid: "BLDCmotorControl_R2017b:2530:480:473"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:480:473"] = {rtwname: "<S38>/u"};
-	this.rtwnameHashMap["<S38>/rst"] = {sid: "BLDCmotorControl_R2017b:2530:480:474"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:480:474"] = {rtwname: "<S38>/rst"};
-	this.rtwnameHashMap["<S38>/Constant23"] = {sid: "BLDCmotorControl_R2017b:2530:480:475"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:480:475"] = {rtwname: "<S38>/Constant23"};
-	this.rtwnameHashMap["<S38>/Switch1"] = {sid: "BLDCmotorControl_R2017b:2530:480:476"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:480:476"] = {rtwname: "<S38>/Switch1"};
-	this.rtwnameHashMap["<S38>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2530:480:477"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:480:477"] = {rtwname: "<S38>/UnitDelay1"};
-	this.rtwnameHashMap["<S38>/y"] = {sid: "BLDCmotorControl_R2017b:2530:480:478"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:480:478"] = {rtwname: "<S38>/y"};
-	this.rtwnameHashMap["<S39>/num"] = {sid: "BLDCmotorControl_R2017b:2530:577:570"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:577:570"] = {rtwname: "<S39>/num"};
-	this.rtwnameHashMap["<S39>/div"] = {sid: "BLDCmotorControl_R2017b:2530:577:571"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:577:571"] = {rtwname: "<S39>/div"};
-	this.rtwnameHashMap["<S39>/Divide2"] = {sid: "BLDCmotorControl_R2017b:2530:577:572"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:577:572"] = {rtwname: "<S39>/Divide2"};
-	this.rtwnameHashMap["<S39>/Divide3"] = {sid: "BLDCmotorControl_R2017b:2530:577:573"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:577:573"] = {rtwname: "<S39>/Divide3"};
-	this.rtwnameHashMap["<S39>/Sum3"] = {sid: "BLDCmotorControl_R2017b:2530:577:574"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:577:574"] = {rtwname: "<S39>/Sum3"};
-	this.rtwnameHashMap["<S39>/rem"] = {sid: "BLDCmotorControl_R2017b:2530:577:575"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:577:575"] = {rtwname: "<S39>/rem"};
-	this.rtwnameHashMap["<S40>/a_phaAdv_M1"] = {sid: "BLDCmotorControl_R2017b:2530:580"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:580"] = {rtwname: "<S40>/a_phaAdv_M1"};
-	this.rtwnameHashMap["<S40>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:581"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:581"] = {rtwname: "<S40>/Terminator_1"};
-	this.rtwnameHashMap["<S41>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2530:273"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:273"] = {rtwname: "<S41>/a_elecAngleAdv"};
-	this.rtwnameHashMap["<S41>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:274"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:274"] = {rtwname: "<S41>/Terminator_1"};
-	this.rtwnameHashMap["<S42>/a_elecAngle"] = {sid: "BLDCmotorControl_R2017b:2530:276"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:276"] = {rtwname: "<S42>/a_elecAngle"};
-	this.rtwnameHashMap["<S42>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:277"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:277"] = {rtwname: "<S42>/Terminator_1"};
-	this.rtwnameHashMap["<S43>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2530:286"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:286"] = {rtwname: "<S43>/a_elecAngleAdv"};
-	this.rtwnameHashMap["<S43>/Action Port"] = {sid: "BLDCmotorControl_R2017b:2530:287"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:287"] = {rtwname: "<S43>/Action Port"};
-	this.rtwnameHashMap["<S43>/a_trapElecAngle_XA"] = {sid: "BLDCmotorControl_R2017b:2530:288"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:288"] = {rtwname: "<S43>/a_trapElecAngle_XA"};
-	this.rtwnameHashMap["<S43>/r_trapPhaA_M1"] = {sid: "BLDCmotorControl_R2017b:2530:289"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:289"] = {rtwname: "<S43>/r_trapPhaA_M1"};
-	this.rtwnameHashMap["<S43>/r_trapPhaB_M1"] = {sid: "BLDCmotorControl_R2017b:2530:290"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:290"] = {rtwname: "<S43>/r_trapPhaB_M1"};
-	this.rtwnameHashMap["<S43>/r_trapPhaC_M1"] = {sid: "BLDCmotorControl_R2017b:2530:291"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:291"] = {rtwname: "<S43>/r_trapPhaC_M1"};
-	this.rtwnameHashMap["<S43>/r_phaA_Trap"] = {sid: "BLDCmotorControl_R2017b:2530:292"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:292"] = {rtwname: "<S43>/r_phaA_Trap"};
-	this.rtwnameHashMap["<S43>/r_phaB_Trap"] = {sid: "BLDCmotorControl_R2017b:2530:293"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:293"] = {rtwname: "<S43>/r_phaB_Trap"};
-	this.rtwnameHashMap["<S43>/r_phaC_Trap"] = {sid: "BLDCmotorControl_R2017b:2530:294"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:294"] = {rtwname: "<S43>/r_phaC_Trap"};
-	this.rtwnameHashMap["<S44>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2530:296"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:296"] = {rtwname: "<S44>/a_elecAngleAdv"};
-	this.rtwnameHashMap["<S44>/Action Port"] = {sid: "BLDCmotorControl_R2017b:2530:297"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:297"] = {rtwname: "<S44>/Action Port"};
-	this.rtwnameHashMap["<S44>/a_sinElecAngle_XA"] = {sid: "BLDCmotorControl_R2017b:2530:298"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:298"] = {rtwname: "<S44>/a_sinElecAngle_XA"};
-	this.rtwnameHashMap["<S44>/r_sin3PhaA_M1"] = {sid: "BLDCmotorControl_R2017b:2530:299"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:299"] = {rtwname: "<S44>/r_sin3PhaA_M1"};
-	this.rtwnameHashMap["<S44>/r_sin3PhaB_M1"] = {sid: "BLDCmotorControl_R2017b:2530:300"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:300"] = {rtwname: "<S44>/r_sin3PhaB_M1"};
-	this.rtwnameHashMap["<S44>/r_sin3PhaC_M1"] = {sid: "BLDCmotorControl_R2017b:2530:301"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:301"] = {rtwname: "<S44>/r_sin3PhaC_M1"};
-	this.rtwnameHashMap["<S44>/r_phaA_Sin3"] = {sid: "BLDCmotorControl_R2017b:2530:302"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:302"] = {rtwname: "<S44>/r_phaA_Sin3"};
-	this.rtwnameHashMap["<S44>/r_phaB_Sin3"] = {sid: "BLDCmotorControl_R2017b:2530:303"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:303"] = {rtwname: "<S44>/r_phaB_Sin3"};
-	this.rtwnameHashMap["<S44>/r_phaC_Sin3"] = {sid: "BLDCmotorControl_R2017b:2530:304"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:304"] = {rtwname: "<S44>/r_phaC_Sin3"};
-	this.rtwnameHashMap["<S45>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2530:306"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:306"] = {rtwname: "<S45>/a_elecAngleAdv"};
-	this.rtwnameHashMap["<S45>/Action Port"] = {sid: "BLDCmotorControl_R2017b:2530:307"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:307"] = {rtwname: "<S45>/Action Port"};
-	this.rtwnameHashMap["<S45>/a_sinElecAngle_XA"] = {sid: "BLDCmotorControl_R2017b:2530:308"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:308"] = {rtwname: "<S45>/a_sinElecAngle_XA"};
-	this.rtwnameHashMap["<S45>/r_sinPhaA_M1"] = {sid: "BLDCmotorControl_R2017b:2530:309"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:309"] = {rtwname: "<S45>/r_sinPhaA_M1"};
-	this.rtwnameHashMap["<S45>/r_sinPhaB_M1"] = {sid: "BLDCmotorControl_R2017b:2530:310"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:310"] = {rtwname: "<S45>/r_sinPhaB_M1"};
-	this.rtwnameHashMap["<S45>/r_sinPhaC_M1"] = {sid: "BLDCmotorControl_R2017b:2530:311"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:311"] = {rtwname: "<S45>/r_sinPhaC_M1"};
-	this.rtwnameHashMap["<S45>/r_phaA_Sin"] = {sid: "BLDCmotorControl_R2017b:2530:312"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:312"] = {rtwname: "<S45>/r_phaA_Sin"};
-	this.rtwnameHashMap["<S45>/r_phaB_Sin"] = {sid: "BLDCmotorControl_R2017b:2530:313"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:313"] = {rtwname: "<S45>/r_phaB_Sin"};
-	this.rtwnameHashMap["<S45>/r_phaC_Sin"] = {sid: "BLDCmotorControl_R2017b:2530:314"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:314"] = {rtwname: "<S45>/r_phaC_Sin"};
-	this.rtwnameHashMap["<S46>/r_phaB"] = {sid: "BLDCmotorControl_R2017b:2530:350"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:350"] = {rtwname: "<S46>/r_phaB"};
-	this.rtwnameHashMap["<S46>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:351"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:351"] = {rtwname: "<S46>/Terminator_1"};
-	this.rtwnameHashMap["<S47>/r_phaC"] = {sid: "BLDCmotorControl_R2017b:2530:353"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:353"] = {rtwname: "<S47>/r_phaC"};
-	this.rtwnameHashMap["<S47>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:354"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:354"] = {rtwname: "<S47>/Terminator_1"};
-	this.rtwnameHashMap["<S48>/r_phaA"] = {sid: "BLDCmotorControl_R2017b:2530:356"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:356"] = {rtwname: "<S48>/r_phaA"};
-	this.rtwnameHashMap["<S48>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:357"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:357"] = {rtwname: "<S48>/Terminator_1"};
-	this.rtwnameHashMap["<S49>/DC_phaB"] = {sid: "BLDCmotorControl_R2017b:2530:403"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:403"] = {rtwname: "<S49>/DC_phaB"};
-	this.rtwnameHashMap["<S49>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:404"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:404"] = {rtwname: "<S49>/Terminator_1"};
-	this.rtwnameHashMap["<S50>/DC_phaC"] = {sid: "BLDCmotorControl_R2017b:2530:406"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:406"] = {rtwname: "<S50>/DC_phaC"};
-	this.rtwnameHashMap["<S50>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:407"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:407"] = {rtwname: "<S50>/Terminator_1"};
-	this.rtwnameHashMap["<S51>/DC_phaA"] = {sid: "BLDCmotorControl_R2017b:2530:409"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:409"] = {rtwname: "<S51>/DC_phaA"};
-	this.rtwnameHashMap["<S51>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:410"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2530:410"] = {rtwname: "<S51>/Terminator_1"};
-	this.rtwnameHashMap["<S52>/b_hallA"] = {sid: "BLDCmotorControl_R2017b:2531:7"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:7"] = {rtwname: "<S52>/b_hallA"};
-	this.rtwnameHashMap["<S52>/b_hallB"] = {sid: "BLDCmotorControl_R2017b:2531:8"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:8"] = {rtwname: "<S52>/b_hallB"};
-	this.rtwnameHashMap["<S52>/b_hallC"] = {sid: "BLDCmotorControl_R2017b:2531:9"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:9"] = {rtwname: "<S52>/b_hallC"};
-	this.rtwnameHashMap["<S52>/F01_01_Edge_Detector"] = {sid: "BLDCmotorControl_R2017b:2531:26"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:26"] = {rtwname: "<S52>/F01_01_Edge_Detector"};
-	this.rtwnameHashMap["<S52>/F01_02_Position_Calculation"] = {sid: "BLDCmotorControl_R2017b:2531:10"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:10"] = {rtwname: "<S52>/F01_02_Position_Calculation"};
-	this.rtwnameHashMap["<S52>/F01_03_Direction_Detection"] = {sid: "BLDCmotorControl_R2017b:2531:38"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:38"] = {rtwname: "<S52>/F01_03_Direction_Detection"};
-	this.rtwnameHashMap["<S52>/F01_04_Speed_Calculation"] = {sid: "BLDCmotorControl_R2017b:2531:59"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:59"] = {rtwname: "<S52>/F01_04_Speed_Calculation"};
-	this.rtwnameHashMap["<S52>/From"] = {sid: "BLDCmotorControl_R2017b:2531:178"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:178"] = {rtwname: "<S52>/From"};
-	this.rtwnameHashMap["<S52>/From1"] = {sid: "BLDCmotorControl_R2017b:2531:179"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:179"] = {rtwname: "<S52>/From1"};
-	this.rtwnameHashMap["<S52>/From10"] = {sid: "BLDCmotorControl_R2017b:2531:180"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:180"] = {rtwname: "<S52>/From10"};
-	this.rtwnameHashMap["<S52>/From11"] = {sid: "BLDCmotorControl_R2017b:2531:181"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:181"] = {rtwname: "<S52>/From11"};
-	this.rtwnameHashMap["<S52>/From12"] = {sid: "BLDCmotorControl_R2017b:2531:182"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:182"] = {rtwname: "<S52>/From12"};
-	this.rtwnameHashMap["<S52>/From13"] = {sid: "BLDCmotorControl_R2017b:2531:183"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:183"] = {rtwname: "<S52>/From13"};
-	this.rtwnameHashMap["<S52>/From14"] = {sid: "BLDCmotorControl_R2017b:2531:184"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:184"] = {rtwname: "<S52>/From14"};
-	this.rtwnameHashMap["<S52>/From15"] = {sid: "BLDCmotorControl_R2017b:2531:185"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:185"] = {rtwname: "<S52>/From15"};
-	this.rtwnameHashMap["<S52>/From2"] = {sid: "BLDCmotorControl_R2017b:2531:186"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:186"] = {rtwname: "<S52>/From2"};
-	this.rtwnameHashMap["<S52>/From3"] = {sid: "BLDCmotorControl_R2017b:2531:187"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:187"] = {rtwname: "<S52>/From3"};
-	this.rtwnameHashMap["<S52>/From36"] = {sid: "BLDCmotorControl_R2017b:2531:188"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:188"] = {rtwname: "<S52>/From36"};
-	this.rtwnameHashMap["<S52>/From38"] = {sid: "BLDCmotorControl_R2017b:2531:189"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:189"] = {rtwname: "<S52>/From38"};
-	this.rtwnameHashMap["<S52>/From4"] = {sid: "BLDCmotorControl_R2017b:2531:190"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:190"] = {rtwname: "<S52>/From4"};
-	this.rtwnameHashMap["<S52>/From5"] = {sid: "BLDCmotorControl_R2017b:2531:191"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:191"] = {rtwname: "<S52>/From5"};
-	this.rtwnameHashMap["<S52>/From6"] = {sid: "BLDCmotorControl_R2017b:2531:192"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:192"] = {rtwname: "<S52>/From6"};
-	this.rtwnameHashMap["<S52>/From7"] = {sid: "BLDCmotorControl_R2017b:2531:193"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:193"] = {rtwname: "<S52>/From7"};
-	this.rtwnameHashMap["<S52>/From8"] = {sid: "BLDCmotorControl_R2017b:2531:194"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:194"] = {rtwname: "<S52>/From8"};
-	this.rtwnameHashMap["<S52>/From9"] = {sid: "BLDCmotorControl_R2017b:2531:195"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:195"] = {rtwname: "<S52>/From9"};
-	this.rtwnameHashMap["<S52>/Goto"] = {sid: "BLDCmotorControl_R2017b:2531:196"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:196"] = {rtwname: "<S52>/Goto"};
-	this.rtwnameHashMap["<S52>/Goto1"] = {sid: "BLDCmotorControl_R2017b:2531:197"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:197"] = {rtwname: "<S52>/Goto1"};
-	this.rtwnameHashMap["<S52>/Goto16"] = {sid: "BLDCmotorControl_R2017b:2531:198"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:198"] = {rtwname: "<S52>/Goto16"};
-	this.rtwnameHashMap["<S52>/Goto2"] = {sid: "BLDCmotorControl_R2017b:2531:199"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:199"] = {rtwname: "<S52>/Goto2"};
-	this.rtwnameHashMap["<S52>/Goto21"] = {sid: "BLDCmotorControl_R2017b:2531:200"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:200"] = {rtwname: "<S52>/Goto21"};
-	this.rtwnameHashMap["<S52>/Goto3"] = {sid: "BLDCmotorControl_R2017b:2531:201"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:201"] = {rtwname: "<S52>/Goto3"};
-	this.rtwnameHashMap["<S52>/Goto4"] = {sid: "BLDCmotorControl_R2017b:2531:202"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:202"] = {rtwname: "<S52>/Goto4"};
-	this.rtwnameHashMap["<S52>/Goto5"] = {sid: "BLDCmotorControl_R2017b:2531:203"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:203"] = {rtwname: "<S52>/Goto5"};
-	this.rtwnameHashMap["<S52>/Goto6"] = {sid: "BLDCmotorControl_R2017b:2531:204"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:204"] = {rtwname: "<S52>/Goto6"};
-	this.rtwnameHashMap["<S52>/Goto7"] = {sid: "BLDCmotorControl_R2017b:2531:205"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:205"] = {rtwname: "<S52>/Goto7"};
-	this.rtwnameHashMap["<S52>/Goto8"] = {sid: "BLDCmotorControl_R2017b:2531:206"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:206"] = {rtwname: "<S52>/Goto8"};
-	this.rtwnameHashMap["<S52>/Goto9"] = {sid: "BLDCmotorControl_R2017b:2531:207"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:207"] = {rtwname: "<S52>/Goto9"};
-	this.rtwnameHashMap["<S52>/z_ctrlTypSel1"] = {sid: "BLDCmotorControl_R2017b:2531:208"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:208"] = {rtwname: "<S52>/z_ctrlTypSel1"};
-	this.rtwnameHashMap["<S52>/z_ctrlTypSel"] = {sid: "BLDCmotorControl_R2017b:2531:209"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:209"] = {rtwname: "<S52>/z_ctrlTypSel"};
-	this.rtwnameHashMap["<S52>/z_pos"] = {sid: "BLDCmotorControl_R2017b:2531:210"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:210"] = {rtwname: "<S52>/z_pos"};
-	this.rtwnameHashMap["<S52>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2531:211"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:211"] = {rtwname: "<S52>/z_dir"};
-	this.rtwnameHashMap["<S52>/z_counter"] = {sid: "BLDCmotorControl_R2017b:2531:213"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:213"] = {rtwname: "<S52>/z_counter"};
-	this.rtwnameHashMap["<S52>/z_counterRaw"] = {sid: "BLDCmotorControl_R2017b:2531:214"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:214"] = {rtwname: "<S52>/z_counterRaw"};
-	this.rtwnameHashMap["<S52>/n_mot "] = {sid: "BLDCmotorControl_R2017b:2531:212"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:212"] = {rtwname: "<S52>/n_mot "};
-	this.rtwnameHashMap["<S53>/r_DC"] = {sid: "BLDCmotorControl_R2017b:2531:535"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:535"] = {rtwname: "<S53>/r_DC"};
-	this.rtwnameHashMap["<S53>/z_pos"] = {sid: "BLDCmotorControl_R2017b:2531:216"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:216"] = {rtwname: "<S53>/z_pos"};
-	this.rtwnameHashMap["<S53>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2531:217"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:217"] = {rtwname: "<S53>/z_dir"};
-	this.rtwnameHashMap["<S53>/z_counter"] = {sid: "BLDCmotorControl_R2017b:2531:219"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:219"] = {rtwname: "<S53>/z_counter"};
-	this.rtwnameHashMap["<S53>/z_counterRaw"] = {sid: "BLDCmotorControl_R2017b:2531:220"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:220"] = {rtwname: "<S53>/z_counterRaw"};
-	this.rtwnameHashMap["<S53>/Action Port"] = {sid: "BLDCmotorControl_R2017b:2531:221"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:221"] = {rtwname: "<S53>/Action Port"};
-	this.rtwnameHashMap["<S53>/Abs2"] = {sid: "BLDCmotorControl_R2017b:2531:595"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:595"] = {rtwname: "<S53>/Abs2"};
-	this.rtwnameHashMap["<S53>/Constant16"] = {sid: "BLDCmotorControl_R2017b:2531:224"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:224"] = {rtwname: "<S53>/Constant16"};
-	this.rtwnameHashMap["<S53>/Constant2"] = {sid: "BLDCmotorControl_R2017b:2531:225"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:225"] = {rtwname: "<S53>/Constant2"};
-	this.rtwnameHashMap["<S53>/Divide4"] = {sid: "BLDCmotorControl_R2017b:2531:227"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:227"] = {rtwname: "<S53>/Divide4"};
-	this.rtwnameHashMap["<S53>/Divide5"] = {sid: "BLDCmotorControl_R2017b:2531:228"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:228"] = {rtwname: "<S53>/Divide5"};
-	this.rtwnameHashMap["<S53>/From10"] = {sid: "BLDCmotorControl_R2017b:2531:231"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:231"] = {rtwname: "<S53>/From10"};
-	this.rtwnameHashMap["<S53>/From11"] = {sid: "BLDCmotorControl_R2017b:2531:518"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:518"] = {rtwname: "<S53>/From11"};
-	this.rtwnameHashMap["<S53>/From12"] = {sid: "BLDCmotorControl_R2017b:2531:534"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:534"] = {rtwname: "<S53>/From12"};
-	this.rtwnameHashMap["<S53>/From2"] = {sid: "BLDCmotorControl_R2017b:2531:232"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:232"] = {rtwname: "<S53>/From2"};
-	this.rtwnameHashMap["<S53>/From3"] = {sid: "BLDCmotorControl_R2017b:2531:233"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:233"] = {rtwname: "<S53>/From3"};
-	this.rtwnameHashMap["<S53>/From5"] = {sid: "BLDCmotorControl_R2017b:2531:235"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:235"] = {rtwname: "<S53>/From5"};
-	this.rtwnameHashMap["<S53>/From51"] = {sid: "BLDCmotorControl_R2017b:2531:236"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:236"] = {rtwname: "<S53>/From51"};
-	this.rtwnameHashMap["<S53>/From52"] = {sid: "BLDCmotorControl_R2017b:2531:237"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:237"] = {rtwname: "<S53>/From52"};
-	this.rtwnameHashMap["<S53>/From53"] = {sid: "BLDCmotorControl_R2017b:2531:238"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:238"] = {rtwname: "<S53>/From53"};
-	this.rtwnameHashMap["<S53>/From54"] = {sid: "BLDCmotorControl_R2017b:2531:239"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:239"] = {rtwname: "<S53>/From54"};
-	this.rtwnameHashMap["<S53>/From59"] = {sid: "BLDCmotorControl_R2017b:2531:240"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:240"] = {rtwname: "<S53>/From59"};
-	this.rtwnameHashMap["<S53>/From6"] = {sid: "BLDCmotorControl_R2017b:2531:241"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:241"] = {rtwname: "<S53>/From6"};
-	this.rtwnameHashMap["<S53>/From7"] = {sid: "BLDCmotorControl_R2017b:2531:542"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:542"] = {rtwname: "<S53>/From7"};
-	this.rtwnameHashMap["<S53>/From9"] = {sid: "BLDCmotorControl_R2017b:2531:543"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:543"] = {rtwname: "<S53>/From9"};
-	this.rtwnameHashMap["<S53>/Goto"] = {sid: "BLDCmotorControl_R2017b:2531:242"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:242"] = {rtwname: "<S53>/Goto"};
-	this.rtwnameHashMap["<S53>/Goto1"] = {sid: "BLDCmotorControl_R2017b:2531:243"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:243"] = {rtwname: "<S53>/Goto1"};
-	this.rtwnameHashMap["<S53>/Goto2"] = {sid: "BLDCmotorControl_R2017b:2531:244"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:244"] = {rtwname: "<S53>/Goto2"};
-	this.rtwnameHashMap["<S53>/Goto3"] = {sid: "BLDCmotorControl_R2017b:2531:245"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:245"] = {rtwname: "<S53>/Goto3"};
-	this.rtwnameHashMap["<S53>/Goto5"] = {sid: "BLDCmotorControl_R2017b:2531:578"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:578"] = {rtwname: "<S53>/Goto5"};
-	this.rtwnameHashMap["<S53>/Goto7"] = {sid: "BLDCmotorControl_R2017b:2531:249"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:249"] = {rtwname: "<S53>/Goto7"};
-	this.rtwnameHashMap["<S53>/Goto8"] = {sid: "BLDCmotorControl_R2017b:2531:536"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:536"] = {rtwname: "<S53>/Goto8"};
-	this.rtwnameHashMap["<S53>/Goto9"] = {sid: "BLDCmotorControl_R2017b:2531:538"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:538"] = {rtwname: "<S53>/Goto9"};
-	this.rtwnameHashMap["<S53>/Modulo_Calculation"] = {sid: "BLDCmotorControl_R2017b:2531:577"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:577"] = {rtwname: "<S53>/Modulo_Calculation"};
-	this.rtwnameHashMap["<S53>/Mux"] = {sid: "BLDCmotorControl_R2017b:2531:258"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:258"] = {rtwname: "<S53>/Mux"};
-	this.rtwnameHashMap["<S53>/Product2"] = {sid: "BLDCmotorControl_R2017b:2531:545"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:545"] = {rtwname: "<S53>/Product2"};
-	this.rtwnameHashMap["<S53>/Product6"] = {sid: "BLDCmotorControl_R2017b:2531:260"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:260"] = {rtwname: "<S53>/Product6"};
-	this.rtwnameHashMap["<S53>/Relational Operator7"] = {sid: "BLDCmotorControl_R2017b:2531:261"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:261"] = {rtwname: "<S53>/Relational Operator7"};
-	this.rtwnameHashMap["<S53>/Scope"] = {sid: "BLDCmotorControl_R2017b:2531:262"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:262"] = {rtwname: "<S53>/Scope"};
-	this.rtwnameHashMap["<S53>/Sum1"] = {sid: "BLDCmotorControl_R2017b:2531:263"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:263"] = {rtwname: "<S53>/Sum1"};
-	this.rtwnameHashMap["<S53>/Sum2"] = {sid: "BLDCmotorControl_R2017b:2531:264"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:264"] = {rtwname: "<S53>/Sum2"};
-	this.rtwnameHashMap["<S53>/Sum3"] = {sid: "BLDCmotorControl_R2017b:2531:546"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:546"] = {rtwname: "<S53>/Sum3"};
-	this.rtwnameHashMap["<S53>/Switch3"] = {sid: "BLDCmotorControl_R2017b:2531:266"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:266"] = {rtwname: "<S53>/Switch3"};
-	this.rtwnameHashMap["<S53>/Switch_PhaAdv"] = {sid: "BLDCmotorControl_R2017b:2531:514"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:514"] = {rtwname: "<S53>/Switch_PhaAdv"};
-	this.rtwnameHashMap["<S53>/a_elecAngle1"] = {sid: "BLDCmotorControl_R2017b:2531:223"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:223"] = {rtwname: "<S53>/a_elecAngle1"};
-	this.rtwnameHashMap["<S53>/a_elecPeriod1"] = {sid: "BLDCmotorControl_R2017b:2531:512"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:512"] = {rtwname: "<S53>/a_elecPeriod1"};
-	this.rtwnameHashMap["<S53>/a_elecPeriod2"] = {sid: "BLDCmotorControl_R2017b:2531:547"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:547"] = {rtwname: "<S53>/a_elecPeriod2"};
-	this.rtwnameHashMap["<S53>/a_phaAdv_M2"] = {sid: "BLDCmotorControl_R2017b:2531:521"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:521"] = {rtwname: "<S53>/a_phaAdv_M2"};
-	this.rtwnameHashMap["<S53>/r_phaAdvDC_XA"] = {sid: "BLDCmotorControl_R2017b:2531:522"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:522"] = {rtwname: "<S53>/r_phaAdvDC_XA"};
-	this.rtwnameHashMap["<S53>/signal_log1"] = {sid: "BLDCmotorControl_R2017b:2531:579"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:579"] = {rtwname: "<S53>/signal_log1"};
-	this.rtwnameHashMap["<S53>/signal_log2"] = {sid: "BLDCmotorControl_R2017b:2531:272"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:272"] = {rtwname: "<S53>/signal_log2"};
-	this.rtwnameHashMap["<S53>/signal_log6"] = {sid: "BLDCmotorControl_R2017b:2531:275"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:275"] = {rtwname: "<S53>/signal_log6"};
-	this.rtwnameHashMap["<S53>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2531:278"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:278"] = {rtwname: "<S53>/a_elecAngleAdv"};
-	this.rtwnameHashMap["<S53>/a_elecAngle"] = {sid: "BLDCmotorControl_R2017b:2531:279"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:279"] = {rtwname: "<S53>/a_elecAngle"};
-	this.rtwnameHashMap["<S54>/z_ctrlTypSel"] = {sid: "BLDCmotorControl_R2017b:2531:283"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:283"] = {rtwname: "<S54>/z_ctrlTypSel"};
-	this.rtwnameHashMap["<S54>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2531:284"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:284"] = {rtwname: "<S54>/a_elecAngleAdv"};
-	this.rtwnameHashMap["<S54>/F03_01_Pure_Trapezoidal_Method"] = {sid: "BLDCmotorControl_R2017b:2531:285"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:285"] = {rtwname: "<S54>/F03_01_Pure_Trapezoidal_Method"};
-	this.rtwnameHashMap["<S54>/F03_02_Sinusoidal3rd_Method"] = {sid: "BLDCmotorControl_R2017b:2531:295"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:295"] = {rtwname: "<S54>/F03_02_Sinusoidal3rd_Method"};
-	this.rtwnameHashMap["<S54>/F03_02_Sinusoidal_Method"] = {sid: "BLDCmotorControl_R2017b:2531:305"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:305"] = {rtwname: "<S54>/F03_02_Sinusoidal_Method"};
-	this.rtwnameHashMap["<S54>/From"] = {sid: "BLDCmotorControl_R2017b:2531:315"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:315"] = {rtwname: "<S54>/From"};
-	this.rtwnameHashMap["<S54>/From10"] = {sid: "BLDCmotorControl_R2017b:2531:316"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:316"] = {rtwname: "<S54>/From10"};
-	this.rtwnameHashMap["<S54>/From13"] = {sid: "BLDCmotorControl_R2017b:2531:317"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:317"] = {rtwname: "<S54>/From13"};
-	this.rtwnameHashMap["<S54>/From14"] = {sid: "BLDCmotorControl_R2017b:2531:318"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:318"] = {rtwname: "<S54>/From14"};
-	this.rtwnameHashMap["<S54>/From15"] = {sid: "BLDCmotorControl_R2017b:2531:319"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:319"] = {rtwname: "<S54>/From15"};
-	this.rtwnameHashMap["<S54>/From16"] = {sid: "BLDCmotorControl_R2017b:2531:320"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:320"] = {rtwname: "<S54>/From16"};
-	this.rtwnameHashMap["<S54>/From17"] = {sid: "BLDCmotorControl_R2017b:2531:321"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:321"] = {rtwname: "<S54>/From17"};
-	this.rtwnameHashMap["<S54>/From18"] = {sid: "BLDCmotorControl_R2017b:2531:322"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:322"] = {rtwname: "<S54>/From18"};
-	this.rtwnameHashMap["<S54>/From19"] = {sid: "BLDCmotorControl_R2017b:2531:323"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:323"] = {rtwname: "<S54>/From19"};
-	this.rtwnameHashMap["<S54>/From20"] = {sid: "BLDCmotorControl_R2017b:2531:324"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:324"] = {rtwname: "<S54>/From20"};
-	this.rtwnameHashMap["<S54>/From4"] = {sid: "BLDCmotorControl_R2017b:2531:325"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:325"] = {rtwname: "<S54>/From4"};
-	this.rtwnameHashMap["<S54>/From5"] = {sid: "BLDCmotorControl_R2017b:2531:326"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:326"] = {rtwname: "<S54>/From5"};
-	this.rtwnameHashMap["<S54>/From6"] = {sid: "BLDCmotorControl_R2017b:2531:327"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:327"] = {rtwname: "<S54>/From6"};
-	this.rtwnameHashMap["<S54>/From7"] = {sid: "BLDCmotorControl_R2017b:2531:328"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:328"] = {rtwname: "<S54>/From7"};
-	this.rtwnameHashMap["<S54>/From8"] = {sid: "BLDCmotorControl_R2017b:2531:329"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:329"] = {rtwname: "<S54>/From8"};
-	this.rtwnameHashMap["<S54>/From9"] = {sid: "BLDCmotorControl_R2017b:2531:330"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:330"] = {rtwname: "<S54>/From9"};
-	this.rtwnameHashMap["<S54>/Goto"] = {sid: "BLDCmotorControl_R2017b:2531:331"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:331"] = {rtwname: "<S54>/Goto"};
-	this.rtwnameHashMap["<S54>/Goto1"] = {sid: "BLDCmotorControl_R2017b:2531:332"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:332"] = {rtwname: "<S54>/Goto1"};
-	this.rtwnameHashMap["<S54>/Goto10"] = {sid: "BLDCmotorControl_R2017b:2531:333"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:333"] = {rtwname: "<S54>/Goto10"};
-	this.rtwnameHashMap["<S54>/Goto11"] = {sid: "BLDCmotorControl_R2017b:2531:334"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:334"] = {rtwname: "<S54>/Goto11"};
-	this.rtwnameHashMap["<S54>/Goto12"] = {sid: "BLDCmotorControl_R2017b:2531:335"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:335"] = {rtwname: "<S54>/Goto12"};
-	this.rtwnameHashMap["<S54>/Goto14"] = {sid: "BLDCmotorControl_R2017b:2531:336"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:336"] = {rtwname: "<S54>/Goto14"};
-	this.rtwnameHashMap["<S54>/Goto2"] = {sid: "BLDCmotorControl_R2017b:2531:337"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:337"] = {rtwname: "<S54>/Goto2"};
-	this.rtwnameHashMap["<S54>/Goto3"] = {sid: "BLDCmotorControl_R2017b:2531:338"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:338"] = {rtwname: "<S54>/Goto3"};
-	this.rtwnameHashMap["<S54>/Goto4"] = {sid: "BLDCmotorControl_R2017b:2531:339"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:339"] = {rtwname: "<S54>/Goto4"};
-	this.rtwnameHashMap["<S54>/Goto5"] = {sid: "BLDCmotorControl_R2017b:2531:340"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:340"] = {rtwname: "<S54>/Goto5"};
-	this.rtwnameHashMap["<S54>/Goto6"] = {sid: "BLDCmotorControl_R2017b:2531:341"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:341"] = {rtwname: "<S54>/Goto6"};
-	this.rtwnameHashMap["<S54>/Goto7"] = {sid: "BLDCmotorControl_R2017b:2531:342"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:342"] = {rtwname: "<S54>/Goto7"};
-	this.rtwnameHashMap["<S54>/Goto8"] = {sid: "BLDCmotorControl_R2017b:2531:343"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:343"] = {rtwname: "<S54>/Goto8"};
-	this.rtwnameHashMap["<S54>/Goto9"] = {sid: "BLDCmotorControl_R2017b:2531:344"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:344"] = {rtwname: "<S54>/Goto9"};
-	this.rtwnameHashMap["<S54>/Merge"] = {sid: "BLDCmotorControl_R2017b:2531:345"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:345"] = {rtwname: "<S54>/Merge"};
-	this.rtwnameHashMap["<S54>/Merge1"] = {sid: "BLDCmotorControl_R2017b:2531:346"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:346"] = {rtwname: "<S54>/Merge1"};
-	this.rtwnameHashMap["<S54>/Merge2"] = {sid: "BLDCmotorControl_R2017b:2531:347"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:347"] = {rtwname: "<S54>/Merge2"};
-	this.rtwnameHashMap["<S54>/Switch Case"] = {sid: "BLDCmotorControl_R2017b:2531:348"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:348"] = {rtwname: "<S54>/Switch Case"};
-	this.rtwnameHashMap["<S54>/signal_log1"] = {sid: "BLDCmotorControl_R2017b:2531:349"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:349"] = {rtwname: "<S54>/signal_log1"};
-	this.rtwnameHashMap["<S54>/signal_log2"] = {sid: "BLDCmotorControl_R2017b:2531:352"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:352"] = {rtwname: "<S54>/signal_log2"};
-	this.rtwnameHashMap["<S54>/signal_log6"] = {sid: "BLDCmotorControl_R2017b:2531:355"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:355"] = {rtwname: "<S54>/signal_log6"};
-	this.rtwnameHashMap["<S54>/r_phaA"] = {sid: "BLDCmotorControl_R2017b:2531:358"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:358"] = {rtwname: "<S54>/r_phaA"};
-	this.rtwnameHashMap["<S54>/r_phaB"] = {sid: "BLDCmotorControl_R2017b:2531:359"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:359"] = {rtwname: "<S54>/r_phaB"};
-	this.rtwnameHashMap["<S54>/r_phaC "] = {sid: "BLDCmotorControl_R2017b:2531:360"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:360"] = {rtwname: "<S54>/r_phaC "};
-	this.rtwnameHashMap["<S55>/r_DC"] = {sid: "BLDCmotorControl_R2017b:2531:362"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:362"] = {rtwname: "<S55>/r_DC"};
-	this.rtwnameHashMap["<S55>/z_ctrlTypSel"] = {sid: "BLDCmotorControl_R2017b:2531:363"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:363"] = {rtwname: "<S55>/z_ctrlTypSel"};
-	this.rtwnameHashMap["<S55>/r_phaA"] = {sid: "BLDCmotorControl_R2017b:2531:364"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:364"] = {rtwname: "<S55>/r_phaA"};
-	this.rtwnameHashMap["<S55>/r_phaB"] = {sid: "BLDCmotorControl_R2017b:2531:365"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:365"] = {rtwname: "<S55>/r_phaB"};
-	this.rtwnameHashMap["<S55>/r_phaC"] = {sid: "BLDCmotorControl_R2017b:2531:366"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:366"] = {rtwname: "<S55>/r_phaC"};
-	this.rtwnameHashMap["<S55>/z_pos"] = {sid: "BLDCmotorControl_R2017b:2531:367"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:367"] = {rtwname: "<S55>/z_pos"};
-	this.rtwnameHashMap["<S55>/n_mot"] = {sid: "BLDCmotorControl_R2017b:2531:368"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:368"] = {rtwname: "<S55>/n_mot"};
-	this.rtwnameHashMap["<S55>/Abs1"] = {sid: "BLDCmotorControl_R2017b:2531:594"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:594"] = {rtwname: "<S55>/Abs1"};
-	this.rtwnameHashMap["<S55>/Abs5"] = {sid: "BLDCmotorControl_R2017b:2531:369"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:369"] = {rtwname: "<S55>/Abs5"};
-	this.rtwnameHashMap["<S55>/CTRL_COMM"] = {sid: "BLDCmotorControl_R2017b:2531:371"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:371"] = {rtwname: "<S55>/CTRL_COMM"};
-	this.rtwnameHashMap["<S55>/Constant1"] = {sid: "BLDCmotorControl_R2017b:2531:370"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:370"] = {rtwname: "<S55>/Constant1"};
-	this.rtwnameHashMap["<S55>/Demux"] = {sid: "BLDCmotorControl_R2017b:2531:372"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:372"] = {rtwname: "<S55>/Demux"};
-	this.rtwnameHashMap["<S55>/Divide1"] = {sid: "BLDCmotorControl_R2017b:2531:373"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:373"] = {rtwname: "<S55>/Divide1"};
-	this.rtwnameHashMap["<S55>/Divide2"] = {sid: "BLDCmotorControl_R2017b:2531:374"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:374"] = {rtwname: "<S55>/Divide2"};
-	this.rtwnameHashMap["<S55>/Divide4"] = {sid: "BLDCmotorControl_R2017b:2531:375"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:375"] = {rtwname: "<S55>/Divide4"};
-	this.rtwnameHashMap["<S55>/From1"] = {sid: "BLDCmotorControl_R2017b:2531:376"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:376"] = {rtwname: "<S55>/From1"};
-	this.rtwnameHashMap["<S55>/From10"] = {sid: "BLDCmotorControl_R2017b:2531:377"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:377"] = {rtwname: "<S55>/From10"};
-	this.rtwnameHashMap["<S55>/From2"] = {sid: "BLDCmotorControl_R2017b:2531:378"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:378"] = {rtwname: "<S55>/From2"};
-	this.rtwnameHashMap["<S55>/From27"] = {sid: "BLDCmotorControl_R2017b:2531:379"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:379"] = {rtwname: "<S55>/From27"};
-	this.rtwnameHashMap["<S55>/From3"] = {sid: "BLDCmotorControl_R2017b:2531:591"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:591"] = {rtwname: "<S55>/From3"};
-	this.rtwnameHashMap["<S55>/From39"] = {sid: "BLDCmotorControl_R2017b:2531:380"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:380"] = {rtwname: "<S55>/From39"};
-	this.rtwnameHashMap["<S55>/From40"] = {sid: "BLDCmotorControl_R2017b:2531:381"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:381"] = {rtwname: "<S55>/From40"};
-	this.rtwnameHashMap["<S55>/From41"] = {sid: "BLDCmotorControl_R2017b:2531:382"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:382"] = {rtwname: "<S55>/From41"};
-	this.rtwnameHashMap["<S55>/From5"] = {sid: "BLDCmotorControl_R2017b:2531:383"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:383"] = {rtwname: "<S55>/From5"};
-	this.rtwnameHashMap["<S55>/From6"] = {sid: "BLDCmotorControl_R2017b:2531:384"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:384"] = {rtwname: "<S55>/From6"};
-	this.rtwnameHashMap["<S55>/From8"] = {sid: "BLDCmotorControl_R2017b:2531:385"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:385"] = {rtwname: "<S55>/From8"};
-	this.rtwnameHashMap["<S55>/From9"] = {sid: "BLDCmotorControl_R2017b:2531:386"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:386"] = {rtwname: "<S55>/From9"};
-	this.rtwnameHashMap["<S55>/Goto"] = {sid: "BLDCmotorControl_R2017b:2531:387"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:387"] = {rtwname: "<S55>/Goto"};
-	this.rtwnameHashMap["<S55>/Goto1"] = {sid: "BLDCmotorControl_R2017b:2531:388"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:388"] = {rtwname: "<S55>/Goto1"};
-	this.rtwnameHashMap["<S55>/Goto2"] = {sid: "BLDCmotorControl_R2017b:2531:389"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:389"] = {rtwname: "<S55>/Goto2"};
-	this.rtwnameHashMap["<S55>/Goto3"] = {sid: "BLDCmotorControl_R2017b:2531:390"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:390"] = {rtwname: "<S55>/Goto3"};
-	this.rtwnameHashMap["<S55>/Goto4"] = {sid: "BLDCmotorControl_R2017b:2531:391"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:391"] = {rtwname: "<S55>/Goto4"};
-	this.rtwnameHashMap["<S55>/Goto5"] = {sid: "BLDCmotorControl_R2017b:2531:392"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:392"] = {rtwname: "<S55>/Goto5"};
-	this.rtwnameHashMap["<S55>/Goto6"] = {sid: "BLDCmotorControl_R2017b:2531:393"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:393"] = {rtwname: "<S55>/Goto6"};
-	this.rtwnameHashMap["<S55>/Goto7"] = {sid: "BLDCmotorControl_R2017b:2531:394"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:394"] = {rtwname: "<S55>/Goto7"};
-	this.rtwnameHashMap["<S55>/Goto8"] = {sid: "BLDCmotorControl_R2017b:2531:395"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:395"] = {rtwname: "<S55>/Goto8"};
-	this.rtwnameHashMap["<S55>/Goto9"] = {sid: "BLDCmotorControl_R2017b:2531:396"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:396"] = {rtwname: "<S55>/Goto9"};
-	this.rtwnameHashMap["<S55>/Logical Operator3"] = {sid: "BLDCmotorControl_R2017b:2531:397"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:397"] = {rtwname: "<S55>/Logical Operator3"};
-	this.rtwnameHashMap["<S55>/Mux2"] = {sid: "BLDCmotorControl_R2017b:2531:398"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:398"] = {rtwname: "<S55>/Mux2"};
-	this.rtwnameHashMap["<S55>/Relational Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:399"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:399"] = {rtwname: "<S55>/Relational Operator1"};
-	this.rtwnameHashMap["<S55>/Relational Operator2"] = {sid: "BLDCmotorControl_R2017b:2531:590"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:590"] = {rtwname: "<S55>/Relational Operator2"};
-	this.rtwnameHashMap["<S55>/Relay"] = {sid: "BLDCmotorControl_R2017b:2531:400"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:400"] = {rtwname: "<S55>/Relay"};
-	this.rtwnameHashMap["<S55>/Switch1"] = {sid: "BLDCmotorControl_R2017b:2531:401"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:401"] = {rtwname: "<S55>/Switch1"};
-	this.rtwnameHashMap["<S55>/r_commDCDeacv"] = {sid: "BLDCmotorControl_R2017b:2531:593"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:593"] = {rtwname: "<S55>/r_commDCDeacv"};
-	this.rtwnameHashMap["<S55>/signal_log1"] = {sid: "BLDCmotorControl_R2017b:2531:402"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:402"] = {rtwname: "<S55>/signal_log1"};
-	this.rtwnameHashMap["<S55>/signal_log2"] = {sid: "BLDCmotorControl_R2017b:2531:405"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:405"] = {rtwname: "<S55>/signal_log2"};
-	this.rtwnameHashMap["<S55>/signal_log6"] = {sid: "BLDCmotorControl_R2017b:2531:408"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:408"] = {rtwname: "<S55>/signal_log6"};
-	this.rtwnameHashMap["<S55>/z_commutMap_M1"] = {sid: "BLDCmotorControl_R2017b:2531:411"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:411"] = {rtwname: "<S55>/z_commutMap_M1"};
-	this.rtwnameHashMap["<S55>/DC_phaA"] = {sid: "BLDCmotorControl_R2017b:2531:412"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:412"] = {rtwname: "<S55>/DC_phaA"};
-	this.rtwnameHashMap["<S55>/DC_phaB"] = {sid: "BLDCmotorControl_R2017b:2531:413"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:413"] = {rtwname: "<S55>/DC_phaB"};
-	this.rtwnameHashMap["<S55>/DC_phaC "] = {sid: "BLDCmotorControl_R2017b:2531:414"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:414"] = {rtwname: "<S55>/DC_phaC "};
-	this.rtwnameHashMap["<S56>/b_hallB"] = {sid: "BLDCmotorControl_R2017b:2531:436"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:436"] = {rtwname: "<S56>/b_hallB"};
-	this.rtwnameHashMap["<S56>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:437"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:437"] = {rtwname: "<S56>/Terminator_1"};
-	this.rtwnameHashMap["<S57>/b_hallC"] = {sid: "BLDCmotorControl_R2017b:2531:439"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:439"] = {rtwname: "<S57>/b_hallC"};
-	this.rtwnameHashMap["<S57>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:440"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:440"] = {rtwname: "<S57>/Terminator_1"};
-	this.rtwnameHashMap["<S58>/r_DC"] = {sid: "BLDCmotorControl_R2017b:2531:442"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:442"] = {rtwname: "<S58>/r_DC"};
-	this.rtwnameHashMap["<S58>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:443"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:443"] = {rtwname: "<S58>/Terminator_1"};
-	this.rtwnameHashMap["<S59>/b_hallA"] = {sid: "BLDCmotorControl_R2017b:2531:445"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:445"] = {rtwname: "<S59>/b_hallA"};
-	this.rtwnameHashMap["<S59>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:446"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:446"] = {rtwname: "<S59>/Terminator_1"};
-	this.rtwnameHashMap["<S60>/b_hallA"] = {sid: "BLDCmotorControl_R2017b:2531:27"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:27"] = {rtwname: "<S60>/b_hallA"};
-	this.rtwnameHashMap["<S60>/b_hallB"] = {sid: "BLDCmotorControl_R2017b:2531:28"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:28"] = {rtwname: "<S60>/b_hallB"};
-	this.rtwnameHashMap["<S60>/b_hallC"] = {sid: "BLDCmotorControl_R2017b:2531:29"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:29"] = {rtwname: "<S60>/b_hallC"};
-	this.rtwnameHashMap["<S60>/Logical Operator"] = {sid: "BLDCmotorControl_R2017b:2531:30"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:30"] = {rtwname: "<S60>/Logical Operator"};
-	this.rtwnameHashMap["<S60>/UnitDelay"] = {sid: "BLDCmotorControl_R2017b:2531:31"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:31"] = {rtwname: "<S60>/UnitDelay"};
-	this.rtwnameHashMap["<S60>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2531:32"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:32"] = {rtwname: "<S60>/UnitDelay1"};
-	this.rtwnameHashMap["<S60>/UnitDelay2"] = {sid: "BLDCmotorControl_R2017b:2531:33"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:33"] = {rtwname: "<S60>/UnitDelay2"};
-	this.rtwnameHashMap["<S60>/signal_log6"] = {sid: "BLDCmotorControl_R2017b:2531:34"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:34"] = {rtwname: "<S60>/signal_log6"};
-	this.rtwnameHashMap["<S60>/b_edge "] = {sid: "BLDCmotorControl_R2017b:2531:37"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:37"] = {rtwname: "<S60>/b_edge "};
-	this.rtwnameHashMap["<S61>/b_hallA"] = {sid: "BLDCmotorControl_R2017b:2531:11"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:11"] = {rtwname: "<S61>/b_hallA"};
-	this.rtwnameHashMap["<S61>/b_hallB"] = {sid: "BLDCmotorControl_R2017b:2531:12"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:12"] = {rtwname: "<S61>/b_hallB"};
-	this.rtwnameHashMap["<S61>/b_hallC"] = {sid: "BLDCmotorControl_R2017b:2531:13"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:13"] = {rtwname: "<S61>/b_hallC"};
-	this.rtwnameHashMap["<S61>/Selector"] = {sid: "BLDCmotorControl_R2017b:2531:14"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:14"] = {rtwname: "<S61>/Selector"};
-	this.rtwnameHashMap["<S61>/Sum"] = {sid: "BLDCmotorControl_R2017b:2531:15"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:15"] = {rtwname: "<S61>/Sum"};
-	this.rtwnameHashMap["<S61>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2531:16"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:16"] = {rtwname: "<S61>/UnitDelay1"};
-	this.rtwnameHashMap["<S61>/g_Ha"] = {sid: "BLDCmotorControl_R2017b:2531:17"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:17"] = {rtwname: "<S61>/g_Ha"};
-	this.rtwnameHashMap["<S61>/g_Hb"] = {sid: "BLDCmotorControl_R2017b:2531:18"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:18"] = {rtwname: "<S61>/g_Hb"};
-	this.rtwnameHashMap["<S61>/signal_log6"] = {sid: "BLDCmotorControl_R2017b:2531:19"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:19"] = {rtwname: "<S61>/signal_log6"};
-	this.rtwnameHashMap["<S61>/vec_hallToPos"] = {sid: "BLDCmotorControl_R2017b:2531:22"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:22"] = {rtwname: "<S61>/vec_hallToPos"};
-	this.rtwnameHashMap["<S61>/z_pos "] = {sid: "BLDCmotorControl_R2017b:2531:23"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:23"] = {rtwname: "<S61>/z_pos "};
-	this.rtwnameHashMap["<S61>/z_posPrev"] = {sid: "BLDCmotorControl_R2017b:2531:24"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:24"] = {rtwname: "<S61>/z_posPrev"};
-	this.rtwnameHashMap["<S62>/z_pos"] = {sid: "BLDCmotorControl_R2017b:2531:39"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:39"] = {rtwname: "<S62>/z_pos"};
-	this.rtwnameHashMap["<S62>/z_posPrev"] = {sid: "BLDCmotorControl_R2017b:2531:40"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:40"] = {rtwname: "<S62>/z_posPrev"};
-	this.rtwnameHashMap["<S62>/Enable"] = {sid: "BLDCmotorControl_R2017b:2531:41"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:41"] = {rtwname: "<S62>/Enable"};
-	this.rtwnameHashMap["<S62>/Constant20"] = {sid: "BLDCmotorControl_R2017b:2531:42"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:42"] = {rtwname: "<S62>/Constant20"};
-	this.rtwnameHashMap["<S62>/Constant23"] = {sid: "BLDCmotorControl_R2017b:2531:43"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:43"] = {rtwname: "<S62>/Constant23"};
-	this.rtwnameHashMap["<S62>/Constant24"] = {sid: "BLDCmotorControl_R2017b:2531:44"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:44"] = {rtwname: "<S62>/Constant24"};
-	this.rtwnameHashMap["<S62>/Constant8"] = {sid: "BLDCmotorControl_R2017b:2531:45"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:45"] = {rtwname: "<S62>/Constant8"};
-	this.rtwnameHashMap["<S62>/Data Type Conversion1"] = {sid: "BLDCmotorControl_R2017b:2531:46"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:46"] = {rtwname: "<S62>/Data Type Conversion1"};
-	this.rtwnameHashMap["<S62>/Data Type Conversion10"] = {sid: "BLDCmotorControl_R2017b:2531:47"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:47"] = {rtwname: "<S62>/Data Type Conversion10"};
-	this.rtwnameHashMap["<S62>/Logical Operator3"] = {sid: "BLDCmotorControl_R2017b:2531:48"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:48"] = {rtwname: "<S62>/Logical Operator3"};
-	this.rtwnameHashMap["<S62>/Relational Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:49"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:49"] = {rtwname: "<S62>/Relational Operator1"};
-	this.rtwnameHashMap["<S62>/Relational Operator6"] = {sid: "BLDCmotorControl_R2017b:2531:50"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:50"] = {rtwname: "<S62>/Relational Operator6"};
-	this.rtwnameHashMap["<S62>/Sum2"] = {sid: "BLDCmotorControl_R2017b:2531:51"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:51"] = {rtwname: "<S62>/Sum2"};
-	this.rtwnameHashMap["<S62>/Switch2"] = {sid: "BLDCmotorControl_R2017b:2531:52"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:52"] = {rtwname: "<S62>/Switch2"};
-	this.rtwnameHashMap["<S62>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2531:53"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:53"] = {rtwname: "<S62>/UnitDelay1"};
-	this.rtwnameHashMap["<S62>/signal_log6"] = {sid: "BLDCmotorControl_R2017b:2531:54"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:54"] = {rtwname: "<S62>/signal_log6"};
-	this.rtwnameHashMap["<S62>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2531:57"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:57"] = {rtwname: "<S62>/z_dir"};
-	this.rtwnameHashMap["<S62>/z_dirPrev"] = {sid: "BLDCmotorControl_R2017b:2531:58"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:58"] = {rtwname: "<S62>/z_dirPrev"};
-	this.rtwnameHashMap["<S63>/b_edge"] = {sid: "BLDCmotorControl_R2017b:2531:60"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:60"] = {rtwname: "<S63>/b_edge"};
-	this.rtwnameHashMap["<S63>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2531:61"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:61"] = {rtwname: "<S63>/z_dir"};
-	this.rtwnameHashMap["<S63>/z_dirPrev"] = {sid: "BLDCmotorControl_R2017b:2531:62"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:62"] = {rtwname: "<S63>/z_dirPrev"};
-	this.rtwnameHashMap["<S63>/Abs4"] = {sid: "BLDCmotorControl_R2017b:2531:63"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:63"] = {rtwname: "<S63>/Abs4"};
-	this.rtwnameHashMap["<S63>/Constant6"] = {sid: "BLDCmotorControl_R2017b:2531:64"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:64"] = {rtwname: "<S63>/Constant6"};
-	this.rtwnameHashMap["<S63>/Edge_counter"] = {sid: "BLDCmotorControl_R2017b:2531:65"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:65"] = {rtwname: "<S63>/Edge_counter"};
-	this.rtwnameHashMap["<S63>/From"] = {sid: "BLDCmotorControl_R2017b:2531:80"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:80"] = {rtwname: "<S63>/From"};
-	this.rtwnameHashMap["<S63>/From1"] = {sid: "BLDCmotorControl_R2017b:2531:81"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:81"] = {rtwname: "<S63>/From1"};
-	this.rtwnameHashMap["<S63>/From10"] = {sid: "BLDCmotorControl_R2017b:2531:82"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:82"] = {rtwname: "<S63>/From10"};
-	this.rtwnameHashMap["<S63>/From11"] = {sid: "BLDCmotorControl_R2017b:2531:83"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:83"] = {rtwname: "<S63>/From11"};
-	this.rtwnameHashMap["<S63>/From12"] = {sid: "BLDCmotorControl_R2017b:2531:84"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:84"] = {rtwname: "<S63>/From12"};
-	this.rtwnameHashMap["<S63>/From13"] = {sid: "BLDCmotorControl_R2017b:2531:85"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:85"] = {rtwname: "<S63>/From13"};
-	this.rtwnameHashMap["<S63>/From16"] = {sid: "BLDCmotorControl_R2017b:2531:86"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:86"] = {rtwname: "<S63>/From16"};
-	this.rtwnameHashMap["<S63>/From18"] = {sid: "BLDCmotorControl_R2017b:2531:97"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:97"] = {rtwname: "<S63>/From18"};
-	this.rtwnameHashMap["<S63>/From19"] = {sid: "BLDCmotorControl_R2017b:2531:98"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:98"] = {rtwname: "<S63>/From19"};
-	this.rtwnameHashMap["<S63>/From2"] = {sid: "BLDCmotorControl_R2017b:2531:87"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:87"] = {rtwname: "<S63>/From2"};
-	this.rtwnameHashMap["<S63>/From3"] = {sid: "BLDCmotorControl_R2017b:2531:88"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:88"] = {rtwname: "<S63>/From3"};
-	this.rtwnameHashMap["<S63>/From33"] = {sid: "BLDCmotorControl_R2017b:2531:89"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:89"] = {rtwname: "<S63>/From33"};
-	this.rtwnameHashMap["<S63>/From34"] = {sid: "BLDCmotorControl_R2017b:2531:90"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:90"] = {rtwname: "<S63>/From34"};
-	this.rtwnameHashMap["<S63>/From35"] = {sid: "BLDCmotorControl_R2017b:2531:91"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:91"] = {rtwname: "<S63>/From35"};
-	this.rtwnameHashMap["<S63>/From4"] = {sid: "BLDCmotorControl_R2017b:2531:92"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:92"] = {rtwname: "<S63>/From4"};
-	this.rtwnameHashMap["<S63>/From42"] = {sid: "BLDCmotorControl_R2017b:2531:93"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:93"] = {rtwname: "<S63>/From42"};
-	this.rtwnameHashMap["<S63>/From44"] = {sid: "BLDCmotorControl_R2017b:2531:94"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:94"] = {rtwname: "<S63>/From44"};
-	this.rtwnameHashMap["<S63>/From5"] = {sid: "BLDCmotorControl_R2017b:2531:95"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:95"] = {rtwname: "<S63>/From5"};
-	this.rtwnameHashMap["<S63>/From6"] = {sid: "BLDCmotorControl_R2017b:2531:96"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:96"] = {rtwname: "<S63>/From6"};
-	this.rtwnameHashMap["<S63>/From7"] = {sid: "BLDCmotorControl_R2017b:2531:484"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:484"] = {rtwname: "<S63>/From7"};
-	this.rtwnameHashMap["<S63>/Goto"] = {sid: "BLDCmotorControl_R2017b:2531:99"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:99"] = {rtwname: "<S63>/Goto"};
-	this.rtwnameHashMap["<S63>/Goto1"] = {sid: "BLDCmotorControl_R2017b:2531:100"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:100"] = {rtwname: "<S63>/Goto1"};
-	this.rtwnameHashMap["<S63>/Goto15"] = {sid: "BLDCmotorControl_R2017b:2531:101"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:101"] = {rtwname: "<S63>/Goto15"};
-	this.rtwnameHashMap["<S63>/Goto17"] = {sid: "BLDCmotorControl_R2017b:2531:102"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:102"] = {rtwname: "<S63>/Goto17"};
-	this.rtwnameHashMap["<S63>/Goto18"] = {sid: "BLDCmotorControl_R2017b:2531:103"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:103"] = {rtwname: "<S63>/Goto18"};
-	this.rtwnameHashMap["<S63>/Goto19"] = {sid: "BLDCmotorControl_R2017b:2531:104"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:104"] = {rtwname: "<S63>/Goto19"};
-	this.rtwnameHashMap["<S63>/Goto2"] = {sid: "BLDCmotorControl_R2017b:2531:105"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:105"] = {rtwname: "<S63>/Goto2"};
-	this.rtwnameHashMap["<S63>/Goto22"] = {sid: "BLDCmotorControl_R2017b:2531:106"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:106"] = {rtwname: "<S63>/Goto22"};
-	this.rtwnameHashMap["<S63>/Goto3"] = {sid: "BLDCmotorControl_R2017b:2531:107"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:107"] = {rtwname: "<S63>/Goto3"};
-	this.rtwnameHashMap["<S63>/Goto8"] = {sid: "BLDCmotorControl_R2017b:2531:108"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:108"] = {rtwname: "<S63>/Goto8"};
-	this.rtwnameHashMap["<S63>/Logical Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:109"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:109"] = {rtwname: "<S63>/Logical Operator1"};
-	this.rtwnameHashMap["<S63>/Logical Operator2"] = {sid: "BLDCmotorControl_R2017b:2531:110"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:110"] = {rtwname: "<S63>/Logical Operator2"};
-	this.rtwnameHashMap["<S63>/Logical Operator3"] = {sid: "BLDCmotorControl_R2017b:2531:111"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:111"] = {rtwname: "<S63>/Logical Operator3"};
-	this.rtwnameHashMap["<S63>/Moving_Average_Filter"] = {sid: "BLDCmotorControl_R2017b:2531:112"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:112"] = {rtwname: "<S63>/Moving_Average_Filter"};
-	this.rtwnameHashMap["<S63>/Mux4"] = {sid: "BLDCmotorControl_R2017b:2531:123"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:123"] = {rtwname: "<S63>/Mux4"};
-	this.rtwnameHashMap["<S63>/Raw_ Speed_calculation"] = {sid: "BLDCmotorControl_R2017b:2531:124"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:124"] = {rtwname: "<S63>/Raw_ Speed_calculation"};
-	this.rtwnameHashMap["<S63>/Relational Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:136"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:136"] = {rtwname: "<S63>/Relational Operator1"};
-	this.rtwnameHashMap["<S63>/Relational Operator4"] = {sid: "BLDCmotorControl_R2017b:2531:137"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:137"] = {rtwname: "<S63>/Relational Operator4"};
-	this.rtwnameHashMap["<S63>/Relational Operator5"] = {sid: "BLDCmotorControl_R2017b:2531:138"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:138"] = {rtwname: "<S63>/Relational Operator5"};
-	this.rtwnameHashMap["<S63>/S-R Flip-Flop"] = {sid: "BLDCmotorControl_R2017b:2531:140"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:140"] = {rtwname: "<S63>/S-R Flip-Flop"};
-	this.rtwnameHashMap["<S63>/Scope2"] = {sid: "BLDCmotorControl_R2017b:2531:141"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:141"] = {rtwname: "<S63>/Scope2"};
-	this.rtwnameHashMap["<S63>/Sum1"] = {sid: "BLDCmotorControl_R2017b:2531:142"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:142"] = {rtwname: "<S63>/Sum1"};
-	this.rtwnameHashMap["<S63>/Switch"] = {sid: "BLDCmotorControl_R2017b:2531:143"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:143"] = {rtwname: "<S63>/Switch"};
-	this.rtwnameHashMap["<S63>/Terminator"] = {sid: "BLDCmotorControl_R2017b:2531:144"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:144"] = {rtwname: "<S63>/Terminator"};
-	this.rtwnameHashMap["<S63>/UnitDelay10"] = {sid: "BLDCmotorControl_R2017b:2531:145"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:145"] = {rtwname: "<S63>/UnitDelay10"};
-	this.rtwnameHashMap["<S63>/UnitDelay8"] = {sid: "BLDCmotorControl_R2017b:2531:146"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:146"] = {rtwname: "<S63>/UnitDelay8"};
-	this.rtwnameHashMap["<S63>/n_thresSpdDeacv"] = {sid: "BLDCmotorControl_R2017b:2531:147"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:147"] = {rtwname: "<S63>/n_thresSpdDeacv"};
-	this.rtwnameHashMap["<S63>/rising_edge"] = {sid: "BLDCmotorControl_R2017b:2531:588"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:588"] = {rtwname: "<S63>/rising_edge"};
-	this.rtwnameHashMap["<S63>/rst_Delay"] = {sid: "BLDCmotorControl_R2017b:2531:479"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:479"] = {rtwname: "<S63>/rst_Delay"};
-	this.rtwnameHashMap["<S63>/signal_log1"] = {sid: "BLDCmotorControl_R2017b:2531:154"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:154"] = {rtwname: "<S63>/signal_log1"};
-	this.rtwnameHashMap["<S63>/signal_log2"] = {sid: "BLDCmotorControl_R2017b:2531:157"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:157"] = {rtwname: "<S63>/signal_log2"};
-	this.rtwnameHashMap["<S63>/signal_log3"] = {sid: "BLDCmotorControl_R2017b:2531:160"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:160"] = {rtwname: "<S63>/signal_log3"};
-	this.rtwnameHashMap["<S63>/signal_log4"] = {sid: "BLDCmotorControl_R2017b:2531:163"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:163"] = {rtwname: "<S63>/signal_log4"};
-	this.rtwnameHashMap["<S63>/signal_log6"] = {sid: "BLDCmotorControl_R2017b:2531:166"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:166"] = {rtwname: "<S63>/signal_log6"};
-	this.rtwnameHashMap["<S63>/z_counter2"] = {sid: "BLDCmotorControl_R2017b:2531:169"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:169"] = {rtwname: "<S63>/z_counter2"};
-	this.rtwnameHashMap["<S63>/z_counterRawPrev"] = {sid: "BLDCmotorControl_R2017b:2531:170"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:170"] = {rtwname: "<S63>/z_counterRawPrev"};
-	this.rtwnameHashMap["<S63>/z_maxCntRst"] = {sid: "BLDCmotorControl_R2017b:2531:171"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:171"] = {rtwname: "<S63>/z_maxCntRst"};
-	this.rtwnameHashMap["<S63>/z_nrEdgeSpdAcv"] = {sid: "BLDCmotorControl_R2017b:2531:172"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:172"] = {rtwname: "<S63>/z_nrEdgeSpdAcv"};
-	this.rtwnameHashMap["<S63>/n_mot"] = {sid: "BLDCmotorControl_R2017b:2531:173"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:173"] = {rtwname: "<S63>/n_mot"};
-	this.rtwnameHashMap["<S63>/z_counter"] = {sid: "BLDCmotorControl_R2017b:2531:174"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:174"] = {rtwname: "<S63>/z_counter"};
-	this.rtwnameHashMap["<S63>/z_counterRaw"] = {sid: "BLDCmotorControl_R2017b:2531:175"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:175"] = {rtwname: "<S63>/z_counterRaw"};
-	this.rtwnameHashMap["<S64>/b_edge"] = {sid: "BLDCmotorControl_R2017b:2531:35"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:35"] = {rtwname: "<S64>/b_edge"};
-	this.rtwnameHashMap["<S64>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:36"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:36"] = {rtwname: "<S64>/Terminator_1"};
-	this.rtwnameHashMap["<S65>/z_pos"] = {sid: "BLDCmotorControl_R2017b:2531:20"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:20"] = {rtwname: "<S65>/z_pos"};
-	this.rtwnameHashMap["<S65>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:21"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:21"] = {rtwname: "<S65>/Terminator_1"};
-	this.rtwnameHashMap["<S66>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2531:55"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:55"] = {rtwname: "<S66>/z_dir"};
-	this.rtwnameHashMap["<S66>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:56"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:56"] = {rtwname: "<S66>/Terminator_1"};
-	this.rtwnameHashMap["<S67>/b_edge"] = {sid: "BLDCmotorControl_R2017b:2531:66"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:66"] = {rtwname: "<S67>/b_edge"};
-	this.rtwnameHashMap["<S67>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2531:67"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:67"] = {rtwname: "<S67>/z_dir"};
-	this.rtwnameHashMap["<S67>/z_dirPrev"] = {sid: "BLDCmotorControl_R2017b:2531:68"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:68"] = {rtwname: "<S67>/z_dirPrev"};
-	this.rtwnameHashMap["<S67>/Enable"] = {sid: "BLDCmotorControl_R2017b:2531:69"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:69"] = {rtwname: "<S67>/Enable"};
-	this.rtwnameHashMap["<S67>/Constant23"] = {sid: "BLDCmotorControl_R2017b:2531:70"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:70"] = {rtwname: "<S67>/Constant23"};
-	this.rtwnameHashMap["<S67>/Constant24"] = {sid: "BLDCmotorControl_R2017b:2531:71"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:71"] = {rtwname: "<S67>/Constant24"};
-	this.rtwnameHashMap["<S67>/Logical Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:72"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:72"] = {rtwname: "<S67>/Logical Operator1"};
-	this.rtwnameHashMap["<S67>/Logical Operator2"] = {sid: "BLDCmotorControl_R2017b:2531:73"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:73"] = {rtwname: "<S67>/Logical Operator2"};
-	this.rtwnameHashMap["<S67>/Relational Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:74"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:74"] = {rtwname: "<S67>/Relational Operator1"};
-	this.rtwnameHashMap["<S67>/Sum2"] = {sid: "BLDCmotorControl_R2017b:2531:76"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:76"] = {rtwname: "<S67>/Sum2"};
-	this.rtwnameHashMap["<S67>/Switch2"] = {sid: "BLDCmotorControl_R2017b:2531:77"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:77"] = {rtwname: "<S67>/Switch2"};
-	this.rtwnameHashMap["<S67>/rst_Delay"] = {sid: "BLDCmotorControl_R2017b:2531:480"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:480"] = {rtwname: "<S67>/rst_Delay"};
-	this.rtwnameHashMap["<S67>/cnt"] = {sid: "BLDCmotorControl_R2017b:2531:78"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:78"] = {rtwname: "<S67>/cnt"};
-	this.rtwnameHashMap["<S68>/n_motRaw"] = {sid: "BLDCmotorControl_R2017b:2531:113"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:113"] = {rtwname: "<S68>/n_motRaw"};
-	this.rtwnameHashMap["<S68>/Trigger"] = {sid: "BLDCmotorControl_R2017b:2531:114"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:114"] = {rtwname: "<S68>/Trigger"};
-	this.rtwnameHashMap["<S68>/Constant1"] = {sid: "BLDCmotorControl_R2017b:2531:115"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:115"] = {rtwname: "<S68>/Constant1"};
-	this.rtwnameHashMap["<S68>/Divide4"] = {sid: "BLDCmotorControl_R2017b:2531:116"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:116"] = {rtwname: "<S68>/Divide4"};
-	this.rtwnameHashMap["<S68>/Sum2"] = {sid: "BLDCmotorControl_R2017b:2531:117"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:117"] = {rtwname: "<S68>/Sum2"};
-	this.rtwnameHashMap["<S68>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2531:118"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:118"] = {rtwname: "<S68>/UnitDelay1"};
-	this.rtwnameHashMap["<S68>/UnitDelay5"] = {sid: "BLDCmotorControl_R2017b:2531:121"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:121"] = {rtwname: "<S68>/UnitDelay5"};
-	this.rtwnameHashMap["<S68>/n_mot"] = {sid: "BLDCmotorControl_R2017b:2531:122"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:122"] = {rtwname: "<S68>/n_mot"};
-	this.rtwnameHashMap["<S69>/z_counter"] = {sid: "BLDCmotorControl_R2017b:2531:125"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:125"] = {rtwname: "<S69>/z_counter"};
-	this.rtwnameHashMap["<S69>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2531:126"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:126"] = {rtwname: "<S69>/z_dir"};
-	this.rtwnameHashMap["<S69>/Trigger"] = {sid: "BLDCmotorControl_R2017b:2531:483"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:483"] = {rtwname: "<S69>/Trigger"};
-	this.rtwnameHashMap["<S69>/Constant1"] = {sid: "BLDCmotorControl_R2017b:2531:127"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:127"] = {rtwname: "<S69>/Constant1"};
-	this.rtwnameHashMap["<S69>/Divide4"] = {sid: "BLDCmotorControl_R2017b:2531:128"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:128"] = {rtwname: "<S69>/Divide4"};
-	this.rtwnameHashMap["<S69>/Product2"] = {sid: "BLDCmotorControl_R2017b:2531:129"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:129"] = {rtwname: "<S69>/Product2"};
-	this.rtwnameHashMap["<S69>/Relational Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:130"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:130"] = {rtwname: "<S69>/Relational Operator1"};
-	this.rtwnameHashMap["<S69>/Switch"] = {sid: "BLDCmotorControl_R2017b:2531:131"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:131"] = {rtwname: "<S69>/Switch"};
-	this.rtwnameHashMap["<S69>/cf_spdCoef"] = {sid: "BLDCmotorControl_R2017b:2531:132"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:132"] = {rtwname: "<S69>/cf_spdCoef"};
-	this.rtwnameHashMap["<S69>/z_maxCntRst"] = {sid: "BLDCmotorControl_R2017b:2531:133"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:133"] = {rtwname: "<S69>/z_maxCntRst"};
-	this.rtwnameHashMap["<S69>/n_motRaw "] = {sid: "BLDCmotorControl_R2017b:2531:134"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:134"] = {rtwname: "<S69>/n_motRaw "};
-	this.rtwnameHashMap["<S70>/S"] = {sid: "BLDCmotorControl_R2017b:2531:140:132"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:132"] = {rtwname: "<S70>/S"};
-	this.rtwnameHashMap["<S70>/R"] = {sid: "BLDCmotorControl_R2017b:2531:140:133"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:133"] = {rtwname: "<S70>/R"};
-	this.rtwnameHashMap["<S70>/Demux"] = {sid: "BLDCmotorControl_R2017b:2531:140:134"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:134"] = {rtwname: "<S70>/Demux"};
-	this.rtwnameHashMap["<S70>/Logic"] = {sid: "BLDCmotorControl_R2017b:2531:140:135"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:135"] = {rtwname: "<S70>/Logic"};
-	this.rtwnameHashMap["<S70>/Memory"] = {sid: "BLDCmotorControl_R2017b:2531:140:136"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:136"] = {rtwname: "<S70>/Memory"};
-	this.rtwnameHashMap["<S70>/Mux"] = {sid: "BLDCmotorControl_R2017b:2531:140:137"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:137"] = {rtwname: "<S70>/Mux"};
-	this.rtwnameHashMap["<S70>/Q"] = {sid: "BLDCmotorControl_R2017b:2531:140:138"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:138"] = {rtwname: "<S70>/Q"};
-	this.rtwnameHashMap["<S70>/!Q"] = {sid: "BLDCmotorControl_R2017b:2531:140:139"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:139"] = {rtwname: "<S70>/!Q"};
-	this.rtwnameHashMap["<S71>/Signal"] = {sid: "BLDCmotorControl_R2017b:2531:588:583"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:588:583"] = {rtwname: "<S71>/Signal"};
-	this.rtwnameHashMap["<S71>/Logical Operator"] = {sid: "BLDCmotorControl_R2017b:2531:588:584"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:588:584"] = {rtwname: "<S71>/Logical Operator"};
-	this.rtwnameHashMap["<S71>/Logical Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:588:585"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:588:585"] = {rtwname: "<S71>/Logical Operator1"};
-	this.rtwnameHashMap["<S71>/UnitDelay"] = {sid: "BLDCmotorControl_R2017b:2531:588:586"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:588:586"] = {rtwname: "<S71>/UnitDelay"};
-	this.rtwnameHashMap["<S71>/Out"] = {sid: "BLDCmotorControl_R2017b:2531:588:587"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:588:587"] = {rtwname: "<S71>/Out"};
-	this.rtwnameHashMap["<S72>/u"] = {sid: "BLDCmotorControl_R2017b:2531:479:473"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:479:473"] = {rtwname: "<S72>/u"};
-	this.rtwnameHashMap["<S72>/rst"] = {sid: "BLDCmotorControl_R2017b:2531:479:474"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:479:474"] = {rtwname: "<S72>/rst"};
-	this.rtwnameHashMap["<S72>/Constant23"] = {sid: "BLDCmotorControl_R2017b:2531:479:475"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:479:475"] = {rtwname: "<S72>/Constant23"};
-	this.rtwnameHashMap["<S72>/Switch1"] = {sid: "BLDCmotorControl_R2017b:2531:479:476"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:479:476"] = {rtwname: "<S72>/Switch1"};
-	this.rtwnameHashMap["<S72>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2531:479:477"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:479:477"] = {rtwname: "<S72>/UnitDelay1"};
-	this.rtwnameHashMap["<S72>/y"] = {sid: "BLDCmotorControl_R2017b:2531:479:478"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:479:478"] = {rtwname: "<S72>/y"};
-	this.rtwnameHashMap["<S73>/n_mot"] = {sid: "BLDCmotorControl_R2017b:2531:155"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:155"] = {rtwname: "<S73>/n_mot"};
-	this.rtwnameHashMap["<S73>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:156"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:156"] = {rtwname: "<S73>/Terminator_1"};
-	this.rtwnameHashMap["<S74>/z_counter"] = {sid: "BLDCmotorControl_R2017b:2531:158"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:158"] = {rtwname: "<S74>/z_counter"};
-	this.rtwnameHashMap["<S74>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:159"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:159"] = {rtwname: "<S74>/Terminator_1"};
-	this.rtwnameHashMap["<S75>/b_cntEna"] = {sid: "BLDCmotorControl_R2017b:2531:161"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:161"] = {rtwname: "<S75>/b_cntEna"};
-	this.rtwnameHashMap["<S75>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:162"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:162"] = {rtwname: "<S75>/Terminator_1"};
-	this.rtwnameHashMap["<S76>/z_counterRaw"] = {sid: "BLDCmotorControl_R2017b:2531:164"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:164"] = {rtwname: "<S76>/z_counterRaw"};
-	this.rtwnameHashMap["<S76>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:165"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:165"] = {rtwname: "<S76>/Terminator_1"};
-	this.rtwnameHashMap["<S77>/n_motRaw"] = {sid: "BLDCmotorControl_R2017b:2531:167"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:167"] = {rtwname: "<S77>/n_motRaw"};
-	this.rtwnameHashMap["<S77>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:168"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:168"] = {rtwname: "<S77>/Terminator_1"};
-	this.rtwnameHashMap["<S78>/u"] = {sid: "BLDCmotorControl_R2017b:2531:480:473"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:480:473"] = {rtwname: "<S78>/u"};
-	this.rtwnameHashMap["<S78>/rst"] = {sid: "BLDCmotorControl_R2017b:2531:480:474"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:480:474"] = {rtwname: "<S78>/rst"};
-	this.rtwnameHashMap["<S78>/Constant23"] = {sid: "BLDCmotorControl_R2017b:2531:480:475"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:480:475"] = {rtwname: "<S78>/Constant23"};
-	this.rtwnameHashMap["<S78>/Switch1"] = {sid: "BLDCmotorControl_R2017b:2531:480:476"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:480:476"] = {rtwname: "<S78>/Switch1"};
-	this.rtwnameHashMap["<S78>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2531:480:477"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:480:477"] = {rtwname: "<S78>/UnitDelay1"};
-	this.rtwnameHashMap["<S78>/y"] = {sid: "BLDCmotorControl_R2017b:2531:480:478"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:480:478"] = {rtwname: "<S78>/y"};
-	this.rtwnameHashMap["<S79>/num"] = {sid: "BLDCmotorControl_R2017b:2531:577:570"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:577:570"] = {rtwname: "<S79>/num"};
-	this.rtwnameHashMap["<S79>/div"] = {sid: "BLDCmotorControl_R2017b:2531:577:571"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:577:571"] = {rtwname: "<S79>/div"};
-	this.rtwnameHashMap["<S79>/Divide2"] = {sid: "BLDCmotorControl_R2017b:2531:577:572"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:577:572"] = {rtwname: "<S79>/Divide2"};
-	this.rtwnameHashMap["<S79>/Divide3"] = {sid: "BLDCmotorControl_R2017b:2531:577:573"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:577:573"] = {rtwname: "<S79>/Divide3"};
-	this.rtwnameHashMap["<S79>/Sum3"] = {sid: "BLDCmotorControl_R2017b:2531:577:574"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:577:574"] = {rtwname: "<S79>/Sum3"};
-	this.rtwnameHashMap["<S79>/rem"] = {sid: "BLDCmotorControl_R2017b:2531:577:575"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:577:575"] = {rtwname: "<S79>/rem"};
-	this.rtwnameHashMap["<S80>/a_phaAdv_M1"] = {sid: "BLDCmotorControl_R2017b:2531:580"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:580"] = {rtwname: "<S80>/a_phaAdv_M1"};
-	this.rtwnameHashMap["<S80>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:581"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:581"] = {rtwname: "<S80>/Terminator_1"};
-	this.rtwnameHashMap["<S81>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2531:273"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:273"] = {rtwname: "<S81>/a_elecAngleAdv"};
-	this.rtwnameHashMap["<S81>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:274"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:274"] = {rtwname: "<S81>/Terminator_1"};
-	this.rtwnameHashMap["<S82>/a_elecAngle"] = {sid: "BLDCmotorControl_R2017b:2531:276"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:276"] = {rtwname: "<S82>/a_elecAngle"};
-	this.rtwnameHashMap["<S82>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:277"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:277"] = {rtwname: "<S82>/Terminator_1"};
-	this.rtwnameHashMap["<S83>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2531:286"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:286"] = {rtwname: "<S83>/a_elecAngleAdv"};
-	this.rtwnameHashMap["<S83>/Action Port"] = {sid: "BLDCmotorControl_R2017b:2531:287"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:287"] = {rtwname: "<S83>/Action Port"};
-	this.rtwnameHashMap["<S83>/a_trapElecAngle_XA"] = {sid: "BLDCmotorControl_R2017b:2531:288"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:288"] = {rtwname: "<S83>/a_trapElecAngle_XA"};
-	this.rtwnameHashMap["<S83>/r_trapPhaA_M1"] = {sid: "BLDCmotorControl_R2017b:2531:289"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:289"] = {rtwname: "<S83>/r_trapPhaA_M1"};
-	this.rtwnameHashMap["<S83>/r_trapPhaB_M1"] = {sid: "BLDCmotorControl_R2017b:2531:290"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:290"] = {rtwname: "<S83>/r_trapPhaB_M1"};
-	this.rtwnameHashMap["<S83>/r_trapPhaC_M1"] = {sid: "BLDCmotorControl_R2017b:2531:291"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:291"] = {rtwname: "<S83>/r_trapPhaC_M1"};
-	this.rtwnameHashMap["<S83>/r_phaA_Trap"] = {sid: "BLDCmotorControl_R2017b:2531:292"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:292"] = {rtwname: "<S83>/r_phaA_Trap"};
-	this.rtwnameHashMap["<S83>/r_phaB_Trap"] = {sid: "BLDCmotorControl_R2017b:2531:293"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:293"] = {rtwname: "<S83>/r_phaB_Trap"};
-	this.rtwnameHashMap["<S83>/r_phaC_Trap"] = {sid: "BLDCmotorControl_R2017b:2531:294"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:294"] = {rtwname: "<S83>/r_phaC_Trap"};
-	this.rtwnameHashMap["<S84>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2531:296"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:296"] = {rtwname: "<S84>/a_elecAngleAdv"};
-	this.rtwnameHashMap["<S84>/Action Port"] = {sid: "BLDCmotorControl_R2017b:2531:297"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:297"] = {rtwname: "<S84>/Action Port"};
-	this.rtwnameHashMap["<S84>/a_sinElecAngle_XA"] = {sid: "BLDCmotorControl_R2017b:2531:298"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:298"] = {rtwname: "<S84>/a_sinElecAngle_XA"};
-	this.rtwnameHashMap["<S84>/r_sin3PhaA_M1"] = {sid: "BLDCmotorControl_R2017b:2531:299"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:299"] = {rtwname: "<S84>/r_sin3PhaA_M1"};
-	this.rtwnameHashMap["<S84>/r_sin3PhaB_M1"] = {sid: "BLDCmotorControl_R2017b:2531:300"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:300"] = {rtwname: "<S84>/r_sin3PhaB_M1"};
-	this.rtwnameHashMap["<S84>/r_sin3PhaC_M1"] = {sid: "BLDCmotorControl_R2017b:2531:301"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:301"] = {rtwname: "<S84>/r_sin3PhaC_M1"};
-	this.rtwnameHashMap["<S84>/r_phaA_Sin3"] = {sid: "BLDCmotorControl_R2017b:2531:302"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:302"] = {rtwname: "<S84>/r_phaA_Sin3"};
-	this.rtwnameHashMap["<S84>/r_phaB_Sin3"] = {sid: "BLDCmotorControl_R2017b:2531:303"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:303"] = {rtwname: "<S84>/r_phaB_Sin3"};
-	this.rtwnameHashMap["<S84>/r_phaC_Sin3"] = {sid: "BLDCmotorControl_R2017b:2531:304"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:304"] = {rtwname: "<S84>/r_phaC_Sin3"};
-	this.rtwnameHashMap["<S85>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2531:306"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:306"] = {rtwname: "<S85>/a_elecAngleAdv"};
-	this.rtwnameHashMap["<S85>/Action Port"] = {sid: "BLDCmotorControl_R2017b:2531:307"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:307"] = {rtwname: "<S85>/Action Port"};
-	this.rtwnameHashMap["<S85>/a_sinElecAngle_XA"] = {sid: "BLDCmotorControl_R2017b:2531:308"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:308"] = {rtwname: "<S85>/a_sinElecAngle_XA"};
-	this.rtwnameHashMap["<S85>/r_sinPhaA_M1"] = {sid: "BLDCmotorControl_R2017b:2531:309"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:309"] = {rtwname: "<S85>/r_sinPhaA_M1"};
-	this.rtwnameHashMap["<S85>/r_sinPhaB_M1"] = {sid: "BLDCmotorControl_R2017b:2531:310"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:310"] = {rtwname: "<S85>/r_sinPhaB_M1"};
-	this.rtwnameHashMap["<S85>/r_sinPhaC_M1"] = {sid: "BLDCmotorControl_R2017b:2531:311"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:311"] = {rtwname: "<S85>/r_sinPhaC_M1"};
-	this.rtwnameHashMap["<S85>/r_phaA_Sin"] = {sid: "BLDCmotorControl_R2017b:2531:312"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:312"] = {rtwname: "<S85>/r_phaA_Sin"};
-	this.rtwnameHashMap["<S85>/r_phaB_Sin"] = {sid: "BLDCmotorControl_R2017b:2531:313"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:313"] = {rtwname: "<S85>/r_phaB_Sin"};
-	this.rtwnameHashMap["<S85>/r_phaC_Sin"] = {sid: "BLDCmotorControl_R2017b:2531:314"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:314"] = {rtwname: "<S85>/r_phaC_Sin"};
-	this.rtwnameHashMap["<S86>/r_phaB"] = {sid: "BLDCmotorControl_R2017b:2531:350"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:350"] = {rtwname: "<S86>/r_phaB"};
-	this.rtwnameHashMap["<S86>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:351"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:351"] = {rtwname: "<S86>/Terminator_1"};
-	this.rtwnameHashMap["<S87>/r_phaC"] = {sid: "BLDCmotorControl_R2017b:2531:353"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:353"] = {rtwname: "<S87>/r_phaC"};
-	this.rtwnameHashMap["<S87>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:354"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:354"] = {rtwname: "<S87>/Terminator_1"};
-	this.rtwnameHashMap["<S88>/r_phaA"] = {sid: "BLDCmotorControl_R2017b:2531:356"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:356"] = {rtwname: "<S88>/r_phaA"};
-	this.rtwnameHashMap["<S88>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:357"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:357"] = {rtwname: "<S88>/Terminator_1"};
-	this.rtwnameHashMap["<S89>/DC_phaB"] = {sid: "BLDCmotorControl_R2017b:2531:403"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:403"] = {rtwname: "<S89>/DC_phaB"};
-	this.rtwnameHashMap["<S89>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:404"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:404"] = {rtwname: "<S89>/Terminator_1"};
-	this.rtwnameHashMap["<S90>/DC_phaC"] = {sid: "BLDCmotorControl_R2017b:2531:406"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:406"] = {rtwname: "<S90>/DC_phaC"};
-	this.rtwnameHashMap["<S90>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:407"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:407"] = {rtwname: "<S90>/Terminator_1"};
-	this.rtwnameHashMap["<S91>/DC_phaA"] = {sid: "BLDCmotorControl_R2017b:2531:409"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:409"] = {rtwname: "<S91>/DC_phaA"};
-	this.rtwnameHashMap["<S91>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:410"};
-	this.sidHashMap["BLDCmotorControl_R2017b:2531:410"] = {rtwname: "<S91>/Terminator_1"};
+	this.rtwnameHashMap["<S34>/b_cntEna"] = {sid: "BLDCmotorControl_R2017b:2530:161"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:161"] = {rtwname: "<S34>/b_cntEna"};
+	this.rtwnameHashMap["<S34>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:162"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:162"] = {rtwname: "<S34>/Terminator_1"};
+	this.rtwnameHashMap["<S35>/z_counterRaw"] = {sid: "BLDCmotorControl_R2017b:2530:164"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:164"] = {rtwname: "<S35>/z_counterRaw"};
+	this.rtwnameHashMap["<S35>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:165"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:165"] = {rtwname: "<S35>/Terminator_1"};
+	this.rtwnameHashMap["<S36>/z_counter"] = {sid: "BLDCmotorControl_R2017b:2530:617"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:617"] = {rtwname: "<S36>/z_counter"};
+	this.rtwnameHashMap["<S36>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:618"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:618"] = {rtwname: "<S36>/Terminator_1"};
+	this.rtwnameHashMap["<S37>/u"] = {sid: "BLDCmotorControl_R2017b:2530:480:473"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:480:473"] = {rtwname: "<S37>/u"};
+	this.rtwnameHashMap["<S37>/rst"] = {sid: "BLDCmotorControl_R2017b:2530:480:474"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:480:474"] = {rtwname: "<S37>/rst"};
+	this.rtwnameHashMap["<S37>/Constant23"] = {sid: "BLDCmotorControl_R2017b:2530:480:475"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:480:475"] = {rtwname: "<S37>/Constant23"};
+	this.rtwnameHashMap["<S37>/Switch1"] = {sid: "BLDCmotorControl_R2017b:2530:480:476"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:480:476"] = {rtwname: "<S37>/Switch1"};
+	this.rtwnameHashMap["<S37>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2530:480:477"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:480:477"] = {rtwname: "<S37>/UnitDelay1"};
+	this.rtwnameHashMap["<S37>/y"] = {sid: "BLDCmotorControl_R2017b:2530:480:478"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:480:478"] = {rtwname: "<S37>/y"};
+	this.rtwnameHashMap["<S38>/a_phaAdv_M1"] = {sid: "BLDCmotorControl_R2017b:2530:580"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:580"] = {rtwname: "<S38>/a_phaAdv_M1"};
+	this.rtwnameHashMap["<S38>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:581"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:581"] = {rtwname: "<S38>/Terminator_1"};
+	this.rtwnameHashMap["<S39>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2530:273"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:273"] = {rtwname: "<S39>/a_elecAngleAdv"};
+	this.rtwnameHashMap["<S39>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:274"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:274"] = {rtwname: "<S39>/Terminator_1"};
+	this.rtwnameHashMap["<S40>/a_elecAngle"] = {sid: "BLDCmotorControl_R2017b:2530:276"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:276"] = {rtwname: "<S40>/a_elecAngle"};
+	this.rtwnameHashMap["<S40>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:277"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:277"] = {rtwname: "<S40>/Terminator_1"};
+	this.rtwnameHashMap["<S41>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2530:286"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:286"] = {rtwname: "<S41>/a_elecAngleAdv"};
+	this.rtwnameHashMap["<S41>/Action Port"] = {sid: "BLDCmotorControl_R2017b:2530:287"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:287"] = {rtwname: "<S41>/Action Port"};
+	this.rtwnameHashMap["<S41>/a_trapElecAngle_XA"] = {sid: "BLDCmotorControl_R2017b:2530:288"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:288"] = {rtwname: "<S41>/a_trapElecAngle_XA"};
+	this.rtwnameHashMap["<S41>/r_trapPhaA_M1"] = {sid: "BLDCmotorControl_R2017b:2530:289"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:289"] = {rtwname: "<S41>/r_trapPhaA_M1"};
+	this.rtwnameHashMap["<S41>/r_trapPhaB_M1"] = {sid: "BLDCmotorControl_R2017b:2530:290"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:290"] = {rtwname: "<S41>/r_trapPhaB_M1"};
+	this.rtwnameHashMap["<S41>/r_trapPhaC_M1"] = {sid: "BLDCmotorControl_R2017b:2530:291"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:291"] = {rtwname: "<S41>/r_trapPhaC_M1"};
+	this.rtwnameHashMap["<S41>/r_phaA_Trap"] = {sid: "BLDCmotorControl_R2017b:2530:292"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:292"] = {rtwname: "<S41>/r_phaA_Trap"};
+	this.rtwnameHashMap["<S41>/r_phaB_Trap"] = {sid: "BLDCmotorControl_R2017b:2530:293"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:293"] = {rtwname: "<S41>/r_phaB_Trap"};
+	this.rtwnameHashMap["<S41>/r_phaC_Trap"] = {sid: "BLDCmotorControl_R2017b:2530:294"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:294"] = {rtwname: "<S41>/r_phaC_Trap"};
+	this.rtwnameHashMap["<S42>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2530:296"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:296"] = {rtwname: "<S42>/a_elecAngleAdv"};
+	this.rtwnameHashMap["<S42>/Action Port"] = {sid: "BLDCmotorControl_R2017b:2530:297"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:297"] = {rtwname: "<S42>/Action Port"};
+	this.rtwnameHashMap["<S42>/a_sinElecAngle_XA"] = {sid: "BLDCmotorControl_R2017b:2530:298"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:298"] = {rtwname: "<S42>/a_sinElecAngle_XA"};
+	this.rtwnameHashMap["<S42>/r_sin3PhaA_M1"] = {sid: "BLDCmotorControl_R2017b:2530:299"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:299"] = {rtwname: "<S42>/r_sin3PhaA_M1"};
+	this.rtwnameHashMap["<S42>/r_sin3PhaB_M1"] = {sid: "BLDCmotorControl_R2017b:2530:300"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:300"] = {rtwname: "<S42>/r_sin3PhaB_M1"};
+	this.rtwnameHashMap["<S42>/r_sin3PhaC_M1"] = {sid: "BLDCmotorControl_R2017b:2530:301"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:301"] = {rtwname: "<S42>/r_sin3PhaC_M1"};
+	this.rtwnameHashMap["<S42>/r_phaA_Sin3"] = {sid: "BLDCmotorControl_R2017b:2530:302"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:302"] = {rtwname: "<S42>/r_phaA_Sin3"};
+	this.rtwnameHashMap["<S42>/r_phaB_Sin3"] = {sid: "BLDCmotorControl_R2017b:2530:303"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:303"] = {rtwname: "<S42>/r_phaB_Sin3"};
+	this.rtwnameHashMap["<S42>/r_phaC_Sin3"] = {sid: "BLDCmotorControl_R2017b:2530:304"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:304"] = {rtwname: "<S42>/r_phaC_Sin3"};
+	this.rtwnameHashMap["<S43>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2530:306"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:306"] = {rtwname: "<S43>/a_elecAngleAdv"};
+	this.rtwnameHashMap["<S43>/Action Port"] = {sid: "BLDCmotorControl_R2017b:2530:307"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:307"] = {rtwname: "<S43>/Action Port"};
+	this.rtwnameHashMap["<S43>/a_sinElecAngle_XA"] = {sid: "BLDCmotorControl_R2017b:2530:308"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:308"] = {rtwname: "<S43>/a_sinElecAngle_XA"};
+	this.rtwnameHashMap["<S43>/r_sinPhaA_M1"] = {sid: "BLDCmotorControl_R2017b:2530:309"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:309"] = {rtwname: "<S43>/r_sinPhaA_M1"};
+	this.rtwnameHashMap["<S43>/r_sinPhaB_M1"] = {sid: "BLDCmotorControl_R2017b:2530:310"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:310"] = {rtwname: "<S43>/r_sinPhaB_M1"};
+	this.rtwnameHashMap["<S43>/r_sinPhaC_M1"] = {sid: "BLDCmotorControl_R2017b:2530:311"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:311"] = {rtwname: "<S43>/r_sinPhaC_M1"};
+	this.rtwnameHashMap["<S43>/r_phaA_Sin"] = {sid: "BLDCmotorControl_R2017b:2530:312"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:312"] = {rtwname: "<S43>/r_phaA_Sin"};
+	this.rtwnameHashMap["<S43>/r_phaB_Sin"] = {sid: "BLDCmotorControl_R2017b:2530:313"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:313"] = {rtwname: "<S43>/r_phaB_Sin"};
+	this.rtwnameHashMap["<S43>/r_phaC_Sin"] = {sid: "BLDCmotorControl_R2017b:2530:314"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:314"] = {rtwname: "<S43>/r_phaC_Sin"};
+	this.rtwnameHashMap["<S44>/r_phaB"] = {sid: "BLDCmotorControl_R2017b:2530:350"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:350"] = {rtwname: "<S44>/r_phaB"};
+	this.rtwnameHashMap["<S44>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:351"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:351"] = {rtwname: "<S44>/Terminator_1"};
+	this.rtwnameHashMap["<S45>/r_phaC"] = {sid: "BLDCmotorControl_R2017b:2530:353"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:353"] = {rtwname: "<S45>/r_phaC"};
+	this.rtwnameHashMap["<S45>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:354"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:354"] = {rtwname: "<S45>/Terminator_1"};
+	this.rtwnameHashMap["<S46>/r_phaA"] = {sid: "BLDCmotorControl_R2017b:2530:356"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:356"] = {rtwname: "<S46>/r_phaA"};
+	this.rtwnameHashMap["<S46>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:357"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:357"] = {rtwname: "<S46>/Terminator_1"};
+	this.rtwnameHashMap["<S47>/DC_phaB"] = {sid: "BLDCmotorControl_R2017b:2530:403"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:403"] = {rtwname: "<S47>/DC_phaB"};
+	this.rtwnameHashMap["<S47>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:404"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:404"] = {rtwname: "<S47>/Terminator_1"};
+	this.rtwnameHashMap["<S48>/DC_phaC"] = {sid: "BLDCmotorControl_R2017b:2530:406"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:406"] = {rtwname: "<S48>/DC_phaC"};
+	this.rtwnameHashMap["<S48>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:407"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:407"] = {rtwname: "<S48>/Terminator_1"};
+	this.rtwnameHashMap["<S49>/DC_phaA"] = {sid: "BLDCmotorControl_R2017b:2530:409"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:409"] = {rtwname: "<S49>/DC_phaA"};
+	this.rtwnameHashMap["<S49>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2530:410"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2530:410"] = {rtwname: "<S49>/Terminator_1"};
+	this.rtwnameHashMap["<S50>/b_hallA"] = {sid: "BLDCmotorControl_R2017b:2531:7"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:7"] = {rtwname: "<S50>/b_hallA"};
+	this.rtwnameHashMap["<S50>/b_hallB"] = {sid: "BLDCmotorControl_R2017b:2531:8"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:8"] = {rtwname: "<S50>/b_hallB"};
+	this.rtwnameHashMap["<S50>/b_hallC"] = {sid: "BLDCmotorControl_R2017b:2531:9"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:9"] = {rtwname: "<S50>/b_hallC"};
+	this.rtwnameHashMap["<S50>/F01_01_Edge_Detector"] = {sid: "BLDCmotorControl_R2017b:2531:26"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:26"] = {rtwname: "<S50>/F01_01_Edge_Detector"};
+	this.rtwnameHashMap["<S50>/F01_02_Position_Calculation"] = {sid: "BLDCmotorControl_R2017b:2531:10"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:10"] = {rtwname: "<S50>/F01_02_Position_Calculation"};
+	this.rtwnameHashMap["<S50>/F01_03_Direction_Detection"] = {sid: "BLDCmotorControl_R2017b:2531:38"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:38"] = {rtwname: "<S50>/F01_03_Direction_Detection"};
+	this.rtwnameHashMap["<S50>/F01_04_Speed_Calculation"] = {sid: "BLDCmotorControl_R2017b:2531:59"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:59"] = {rtwname: "<S50>/F01_04_Speed_Calculation"};
+	this.rtwnameHashMap["<S50>/From"] = {sid: "BLDCmotorControl_R2017b:2531:178"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:178"] = {rtwname: "<S50>/From"};
+	this.rtwnameHashMap["<S50>/From1"] = {sid: "BLDCmotorControl_R2017b:2531:179"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:179"] = {rtwname: "<S50>/From1"};
+	this.rtwnameHashMap["<S50>/From10"] = {sid: "BLDCmotorControl_R2017b:2531:180"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:180"] = {rtwname: "<S50>/From10"};
+	this.rtwnameHashMap["<S50>/From11"] = {sid: "BLDCmotorControl_R2017b:2531:181"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:181"] = {rtwname: "<S50>/From11"};
+	this.rtwnameHashMap["<S50>/From12"] = {sid: "BLDCmotorControl_R2017b:2531:182"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:182"] = {rtwname: "<S50>/From12"};
+	this.rtwnameHashMap["<S50>/From13"] = {sid: "BLDCmotorControl_R2017b:2531:183"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:183"] = {rtwname: "<S50>/From13"};
+	this.rtwnameHashMap["<S50>/From14"] = {sid: "BLDCmotorControl_R2017b:2531:184"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:184"] = {rtwname: "<S50>/From14"};
+	this.rtwnameHashMap["<S50>/From15"] = {sid: "BLDCmotorControl_R2017b:2531:185"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:185"] = {rtwname: "<S50>/From15"};
+	this.rtwnameHashMap["<S50>/From2"] = {sid: "BLDCmotorControl_R2017b:2531:186"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:186"] = {rtwname: "<S50>/From2"};
+	this.rtwnameHashMap["<S50>/From3"] = {sid: "BLDCmotorControl_R2017b:2531:187"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:187"] = {rtwname: "<S50>/From3"};
+	this.rtwnameHashMap["<S50>/From36"] = {sid: "BLDCmotorControl_R2017b:2531:188"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:188"] = {rtwname: "<S50>/From36"};
+	this.rtwnameHashMap["<S50>/From38"] = {sid: "BLDCmotorControl_R2017b:2531:189"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:189"] = {rtwname: "<S50>/From38"};
+	this.rtwnameHashMap["<S50>/From4"] = {sid: "BLDCmotorControl_R2017b:2531:190"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:190"] = {rtwname: "<S50>/From4"};
+	this.rtwnameHashMap["<S50>/From5"] = {sid: "BLDCmotorControl_R2017b:2531:191"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:191"] = {rtwname: "<S50>/From5"};
+	this.rtwnameHashMap["<S50>/From6"] = {sid: "BLDCmotorControl_R2017b:2531:192"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:192"] = {rtwname: "<S50>/From6"};
+	this.rtwnameHashMap["<S50>/From7"] = {sid: "BLDCmotorControl_R2017b:2531:193"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:193"] = {rtwname: "<S50>/From7"};
+	this.rtwnameHashMap["<S50>/From8"] = {sid: "BLDCmotorControl_R2017b:2531:194"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:194"] = {rtwname: "<S50>/From8"};
+	this.rtwnameHashMap["<S50>/From9"] = {sid: "BLDCmotorControl_R2017b:2531:195"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:195"] = {rtwname: "<S50>/From9"};
+	this.rtwnameHashMap["<S50>/Goto"] = {sid: "BLDCmotorControl_R2017b:2531:196"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:196"] = {rtwname: "<S50>/Goto"};
+	this.rtwnameHashMap["<S50>/Goto1"] = {sid: "BLDCmotorControl_R2017b:2531:197"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:197"] = {rtwname: "<S50>/Goto1"};
+	this.rtwnameHashMap["<S50>/Goto16"] = {sid: "BLDCmotorControl_R2017b:2531:198"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:198"] = {rtwname: "<S50>/Goto16"};
+	this.rtwnameHashMap["<S50>/Goto2"] = {sid: "BLDCmotorControl_R2017b:2531:199"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:199"] = {rtwname: "<S50>/Goto2"};
+	this.rtwnameHashMap["<S50>/Goto21"] = {sid: "BLDCmotorControl_R2017b:2531:200"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:200"] = {rtwname: "<S50>/Goto21"};
+	this.rtwnameHashMap["<S50>/Goto3"] = {sid: "BLDCmotorControl_R2017b:2531:201"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:201"] = {rtwname: "<S50>/Goto3"};
+	this.rtwnameHashMap["<S50>/Goto4"] = {sid: "BLDCmotorControl_R2017b:2531:202"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:202"] = {rtwname: "<S50>/Goto4"};
+	this.rtwnameHashMap["<S50>/Goto5"] = {sid: "BLDCmotorControl_R2017b:2531:203"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:203"] = {rtwname: "<S50>/Goto5"};
+	this.rtwnameHashMap["<S50>/Goto6"] = {sid: "BLDCmotorControl_R2017b:2531:204"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:204"] = {rtwname: "<S50>/Goto6"};
+	this.rtwnameHashMap["<S50>/Goto7"] = {sid: "BLDCmotorControl_R2017b:2531:205"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:205"] = {rtwname: "<S50>/Goto7"};
+	this.rtwnameHashMap["<S50>/Goto8"] = {sid: "BLDCmotorControl_R2017b:2531:206"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:206"] = {rtwname: "<S50>/Goto8"};
+	this.rtwnameHashMap["<S50>/Goto9"] = {sid: "BLDCmotorControl_R2017b:2531:207"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:207"] = {rtwname: "<S50>/Goto9"};
+	this.rtwnameHashMap["<S50>/z_ctrlTypSel1"] = {sid: "BLDCmotorControl_R2017b:2531:208"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:208"] = {rtwname: "<S50>/z_ctrlTypSel1"};
+	this.rtwnameHashMap["<S50>/z_ctrlTypSel"] = {sid: "BLDCmotorControl_R2017b:2531:209"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:209"] = {rtwname: "<S50>/z_ctrlTypSel"};
+	this.rtwnameHashMap["<S50>/z_pos"] = {sid: "BLDCmotorControl_R2017b:2531:210"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:210"] = {rtwname: "<S50>/z_pos"};
+	this.rtwnameHashMap["<S50>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2531:211"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:211"] = {rtwname: "<S50>/z_dir"};
+	this.rtwnameHashMap["<S50>/z_counter"] = {sid: "BLDCmotorControl_R2017b:2531:213"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:213"] = {rtwname: "<S50>/z_counter"};
+	this.rtwnameHashMap["<S50>/z_counterRaw"] = {sid: "BLDCmotorControl_R2017b:2531:214"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:214"] = {rtwname: "<S50>/z_counterRaw"};
+	this.rtwnameHashMap["<S50>/n_mot "] = {sid: "BLDCmotorControl_R2017b:2531:212"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:212"] = {rtwname: "<S50>/n_mot "};
+	this.rtwnameHashMap["<S51>/r_DC"] = {sid: "BLDCmotorControl_R2017b:2531:535"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:535"] = {rtwname: "<S51>/r_DC"};
+	this.rtwnameHashMap["<S51>/z_pos"] = {sid: "BLDCmotorControl_R2017b:2531:216"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:216"] = {rtwname: "<S51>/z_pos"};
+	this.rtwnameHashMap["<S51>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2531:217"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:217"] = {rtwname: "<S51>/z_dir"};
+	this.rtwnameHashMap["<S51>/z_counter"] = {sid: "BLDCmotorControl_R2017b:2531:219"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:219"] = {rtwname: "<S51>/z_counter"};
+	this.rtwnameHashMap["<S51>/z_counterRaw"] = {sid: "BLDCmotorControl_R2017b:2531:220"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:220"] = {rtwname: "<S51>/z_counterRaw"};
+	this.rtwnameHashMap["<S51>/Action Port"] = {sid: "BLDCmotorControl_R2017b:2531:221"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:221"] = {rtwname: "<S51>/Action Port"};
+	this.rtwnameHashMap["<S51>/Abs2"] = {sid: "BLDCmotorControl_R2017b:2531:595"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:595"] = {rtwname: "<S51>/Abs2"};
+	this.rtwnameHashMap["<S51>/Constant16"] = {sid: "BLDCmotorControl_R2017b:2531:224"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:224"] = {rtwname: "<S51>/Constant16"};
+	this.rtwnameHashMap["<S51>/Constant2"] = {sid: "BLDCmotorControl_R2017b:2531:225"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:225"] = {rtwname: "<S51>/Constant2"};
+	this.rtwnameHashMap["<S51>/Divide4"] = {sid: "BLDCmotorControl_R2017b:2531:227"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:227"] = {rtwname: "<S51>/Divide4"};
+	this.rtwnameHashMap["<S51>/Divide5"] = {sid: "BLDCmotorControl_R2017b:2531:228"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:228"] = {rtwname: "<S51>/Divide5"};
+	this.rtwnameHashMap["<S51>/From10"] = {sid: "BLDCmotorControl_R2017b:2531:231"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:231"] = {rtwname: "<S51>/From10"};
+	this.rtwnameHashMap["<S51>/From11"] = {sid: "BLDCmotorControl_R2017b:2531:518"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:518"] = {rtwname: "<S51>/From11"};
+	this.rtwnameHashMap["<S51>/From12"] = {sid: "BLDCmotorControl_R2017b:2531:534"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:534"] = {rtwname: "<S51>/From12"};
+	this.rtwnameHashMap["<S51>/From2"] = {sid: "BLDCmotorControl_R2017b:2531:232"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:232"] = {rtwname: "<S51>/From2"};
+	this.rtwnameHashMap["<S51>/From3"] = {sid: "BLDCmotorControl_R2017b:2531:233"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:233"] = {rtwname: "<S51>/From3"};
+	this.rtwnameHashMap["<S51>/From5"] = {sid: "BLDCmotorControl_R2017b:2531:235"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:235"] = {rtwname: "<S51>/From5"};
+	this.rtwnameHashMap["<S51>/From51"] = {sid: "BLDCmotorControl_R2017b:2531:236"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:236"] = {rtwname: "<S51>/From51"};
+	this.rtwnameHashMap["<S51>/From52"] = {sid: "BLDCmotorControl_R2017b:2531:237"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:237"] = {rtwname: "<S51>/From52"};
+	this.rtwnameHashMap["<S51>/From53"] = {sid: "BLDCmotorControl_R2017b:2531:238"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:238"] = {rtwname: "<S51>/From53"};
+	this.rtwnameHashMap["<S51>/From54"] = {sid: "BLDCmotorControl_R2017b:2531:239"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:239"] = {rtwname: "<S51>/From54"};
+	this.rtwnameHashMap["<S51>/From59"] = {sid: "BLDCmotorControl_R2017b:2531:240"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:240"] = {rtwname: "<S51>/From59"};
+	this.rtwnameHashMap["<S51>/From6"] = {sid: "BLDCmotorControl_R2017b:2531:241"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:241"] = {rtwname: "<S51>/From6"};
+	this.rtwnameHashMap["<S51>/From7"] = {sid: "BLDCmotorControl_R2017b:2531:542"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:542"] = {rtwname: "<S51>/From7"};
+	this.rtwnameHashMap["<S51>/From9"] = {sid: "BLDCmotorControl_R2017b:2531:543"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:543"] = {rtwname: "<S51>/From9"};
+	this.rtwnameHashMap["<S51>/Goto"] = {sid: "BLDCmotorControl_R2017b:2531:242"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:242"] = {rtwname: "<S51>/Goto"};
+	this.rtwnameHashMap["<S51>/Goto1"] = {sid: "BLDCmotorControl_R2017b:2531:243"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:243"] = {rtwname: "<S51>/Goto1"};
+	this.rtwnameHashMap["<S51>/Goto2"] = {sid: "BLDCmotorControl_R2017b:2531:244"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:244"] = {rtwname: "<S51>/Goto2"};
+	this.rtwnameHashMap["<S51>/Goto3"] = {sid: "BLDCmotorControl_R2017b:2531:245"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:245"] = {rtwname: "<S51>/Goto3"};
+	this.rtwnameHashMap["<S51>/Goto5"] = {sid: "BLDCmotorControl_R2017b:2531:578"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:578"] = {rtwname: "<S51>/Goto5"};
+	this.rtwnameHashMap["<S51>/Goto7"] = {sid: "BLDCmotorControl_R2017b:2531:249"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:249"] = {rtwname: "<S51>/Goto7"};
+	this.rtwnameHashMap["<S51>/Goto8"] = {sid: "BLDCmotorControl_R2017b:2531:536"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:536"] = {rtwname: "<S51>/Goto8"};
+	this.rtwnameHashMap["<S51>/Goto9"] = {sid: "BLDCmotorControl_R2017b:2531:538"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:538"] = {rtwname: "<S51>/Goto9"};
+	this.rtwnameHashMap["<S51>/Math Function"] = {sid: "BLDCmotorControl_R2017b:2531:623"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:623"] = {rtwname: "<S51>/Math Function"};
+	this.rtwnameHashMap["<S51>/Mux"] = {sid: "BLDCmotorControl_R2017b:2531:258"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:258"] = {rtwname: "<S51>/Mux"};
+	this.rtwnameHashMap["<S51>/Product2"] = {sid: "BLDCmotorControl_R2017b:2531:545"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:545"] = {rtwname: "<S51>/Product2"};
+	this.rtwnameHashMap["<S51>/Product6"] = {sid: "BLDCmotorControl_R2017b:2531:260"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:260"] = {rtwname: "<S51>/Product6"};
+	this.rtwnameHashMap["<S51>/Relational Operator7"] = {sid: "BLDCmotorControl_R2017b:2531:261"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:261"] = {rtwname: "<S51>/Relational Operator7"};
+	this.rtwnameHashMap["<S51>/Scope"] = {sid: "BLDCmotorControl_R2017b:2531:262"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:262"] = {rtwname: "<S51>/Scope"};
+	this.rtwnameHashMap["<S51>/Sum1"] = {sid: "BLDCmotorControl_R2017b:2531:263"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:263"] = {rtwname: "<S51>/Sum1"};
+	this.rtwnameHashMap["<S51>/Sum2"] = {sid: "BLDCmotorControl_R2017b:2531:264"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:264"] = {rtwname: "<S51>/Sum2"};
+	this.rtwnameHashMap["<S51>/Sum3"] = {sid: "BLDCmotorControl_R2017b:2531:546"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:546"] = {rtwname: "<S51>/Sum3"};
+	this.rtwnameHashMap["<S51>/Switch3"] = {sid: "BLDCmotorControl_R2017b:2531:266"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:266"] = {rtwname: "<S51>/Switch3"};
+	this.rtwnameHashMap["<S51>/Switch_PhaAdv"] = {sid: "BLDCmotorControl_R2017b:2531:514"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:514"] = {rtwname: "<S51>/Switch_PhaAdv"};
+	this.rtwnameHashMap["<S51>/a_elecAngle1"] = {sid: "BLDCmotorControl_R2017b:2531:223"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:223"] = {rtwname: "<S51>/a_elecAngle1"};
+	this.rtwnameHashMap["<S51>/a_elecPeriod1"] = {sid: "BLDCmotorControl_R2017b:2531:512"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:512"] = {rtwname: "<S51>/a_elecPeriod1"};
+	this.rtwnameHashMap["<S51>/a_elecPeriod2"] = {sid: "BLDCmotorControl_R2017b:2531:547"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:547"] = {rtwname: "<S51>/a_elecPeriod2"};
+	this.rtwnameHashMap["<S51>/a_phaAdv_M2"] = {sid: "BLDCmotorControl_R2017b:2531:521"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:521"] = {rtwname: "<S51>/a_phaAdv_M2"};
+	this.rtwnameHashMap["<S51>/r_phaAdvDC_XA"] = {sid: "BLDCmotorControl_R2017b:2531:522"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:522"] = {rtwname: "<S51>/r_phaAdvDC_XA"};
+	this.rtwnameHashMap["<S51>/signal_log1"] = {sid: "BLDCmotorControl_R2017b:2531:579"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:579"] = {rtwname: "<S51>/signal_log1"};
+	this.rtwnameHashMap["<S51>/signal_log2"] = {sid: "BLDCmotorControl_R2017b:2531:272"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:272"] = {rtwname: "<S51>/signal_log2"};
+	this.rtwnameHashMap["<S51>/signal_log6"] = {sid: "BLDCmotorControl_R2017b:2531:275"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:275"] = {rtwname: "<S51>/signal_log6"};
+	this.rtwnameHashMap["<S51>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2531:278"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:278"] = {rtwname: "<S51>/a_elecAngleAdv"};
+	this.rtwnameHashMap["<S51>/a_elecAngle"] = {sid: "BLDCmotorControl_R2017b:2531:279"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:279"] = {rtwname: "<S51>/a_elecAngle"};
+	this.rtwnameHashMap["<S52>/z_ctrlTypSel"] = {sid: "BLDCmotorControl_R2017b:2531:283"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:283"] = {rtwname: "<S52>/z_ctrlTypSel"};
+	this.rtwnameHashMap["<S52>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2531:284"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:284"] = {rtwname: "<S52>/a_elecAngleAdv"};
+	this.rtwnameHashMap["<S52>/F03_01_Pure_Trapezoidal_Method"] = {sid: "BLDCmotorControl_R2017b:2531:285"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:285"] = {rtwname: "<S52>/F03_01_Pure_Trapezoidal_Method"};
+	this.rtwnameHashMap["<S52>/F03_02_Sinusoidal3rd_Method"] = {sid: "BLDCmotorControl_R2017b:2531:295"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:295"] = {rtwname: "<S52>/F03_02_Sinusoidal3rd_Method"};
+	this.rtwnameHashMap["<S52>/F03_02_Sinusoidal_Method"] = {sid: "BLDCmotorControl_R2017b:2531:305"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:305"] = {rtwname: "<S52>/F03_02_Sinusoidal_Method"};
+	this.rtwnameHashMap["<S52>/From"] = {sid: "BLDCmotorControl_R2017b:2531:315"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:315"] = {rtwname: "<S52>/From"};
+	this.rtwnameHashMap["<S52>/From10"] = {sid: "BLDCmotorControl_R2017b:2531:316"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:316"] = {rtwname: "<S52>/From10"};
+	this.rtwnameHashMap["<S52>/From13"] = {sid: "BLDCmotorControl_R2017b:2531:317"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:317"] = {rtwname: "<S52>/From13"};
+	this.rtwnameHashMap["<S52>/From14"] = {sid: "BLDCmotorControl_R2017b:2531:318"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:318"] = {rtwname: "<S52>/From14"};
+	this.rtwnameHashMap["<S52>/From15"] = {sid: "BLDCmotorControl_R2017b:2531:319"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:319"] = {rtwname: "<S52>/From15"};
+	this.rtwnameHashMap["<S52>/From16"] = {sid: "BLDCmotorControl_R2017b:2531:320"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:320"] = {rtwname: "<S52>/From16"};
+	this.rtwnameHashMap["<S52>/From17"] = {sid: "BLDCmotorControl_R2017b:2531:321"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:321"] = {rtwname: "<S52>/From17"};
+	this.rtwnameHashMap["<S52>/From18"] = {sid: "BLDCmotorControl_R2017b:2531:322"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:322"] = {rtwname: "<S52>/From18"};
+	this.rtwnameHashMap["<S52>/From19"] = {sid: "BLDCmotorControl_R2017b:2531:323"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:323"] = {rtwname: "<S52>/From19"};
+	this.rtwnameHashMap["<S52>/From20"] = {sid: "BLDCmotorControl_R2017b:2531:324"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:324"] = {rtwname: "<S52>/From20"};
+	this.rtwnameHashMap["<S52>/From4"] = {sid: "BLDCmotorControl_R2017b:2531:325"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:325"] = {rtwname: "<S52>/From4"};
+	this.rtwnameHashMap["<S52>/From5"] = {sid: "BLDCmotorControl_R2017b:2531:326"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:326"] = {rtwname: "<S52>/From5"};
+	this.rtwnameHashMap["<S52>/From6"] = {sid: "BLDCmotorControl_R2017b:2531:327"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:327"] = {rtwname: "<S52>/From6"};
+	this.rtwnameHashMap["<S52>/From7"] = {sid: "BLDCmotorControl_R2017b:2531:328"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:328"] = {rtwname: "<S52>/From7"};
+	this.rtwnameHashMap["<S52>/From8"] = {sid: "BLDCmotorControl_R2017b:2531:329"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:329"] = {rtwname: "<S52>/From8"};
+	this.rtwnameHashMap["<S52>/From9"] = {sid: "BLDCmotorControl_R2017b:2531:330"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:330"] = {rtwname: "<S52>/From9"};
+	this.rtwnameHashMap["<S52>/Goto"] = {sid: "BLDCmotorControl_R2017b:2531:331"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:331"] = {rtwname: "<S52>/Goto"};
+	this.rtwnameHashMap["<S52>/Goto1"] = {sid: "BLDCmotorControl_R2017b:2531:332"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:332"] = {rtwname: "<S52>/Goto1"};
+	this.rtwnameHashMap["<S52>/Goto10"] = {sid: "BLDCmotorControl_R2017b:2531:333"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:333"] = {rtwname: "<S52>/Goto10"};
+	this.rtwnameHashMap["<S52>/Goto11"] = {sid: "BLDCmotorControl_R2017b:2531:334"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:334"] = {rtwname: "<S52>/Goto11"};
+	this.rtwnameHashMap["<S52>/Goto12"] = {sid: "BLDCmotorControl_R2017b:2531:335"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:335"] = {rtwname: "<S52>/Goto12"};
+	this.rtwnameHashMap["<S52>/Goto14"] = {sid: "BLDCmotorControl_R2017b:2531:336"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:336"] = {rtwname: "<S52>/Goto14"};
+	this.rtwnameHashMap["<S52>/Goto2"] = {sid: "BLDCmotorControl_R2017b:2531:337"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:337"] = {rtwname: "<S52>/Goto2"};
+	this.rtwnameHashMap["<S52>/Goto3"] = {sid: "BLDCmotorControl_R2017b:2531:338"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:338"] = {rtwname: "<S52>/Goto3"};
+	this.rtwnameHashMap["<S52>/Goto4"] = {sid: "BLDCmotorControl_R2017b:2531:339"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:339"] = {rtwname: "<S52>/Goto4"};
+	this.rtwnameHashMap["<S52>/Goto5"] = {sid: "BLDCmotorControl_R2017b:2531:340"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:340"] = {rtwname: "<S52>/Goto5"};
+	this.rtwnameHashMap["<S52>/Goto6"] = {sid: "BLDCmotorControl_R2017b:2531:341"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:341"] = {rtwname: "<S52>/Goto6"};
+	this.rtwnameHashMap["<S52>/Goto7"] = {sid: "BLDCmotorControl_R2017b:2531:342"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:342"] = {rtwname: "<S52>/Goto7"};
+	this.rtwnameHashMap["<S52>/Goto8"] = {sid: "BLDCmotorControl_R2017b:2531:343"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:343"] = {rtwname: "<S52>/Goto8"};
+	this.rtwnameHashMap["<S52>/Goto9"] = {sid: "BLDCmotorControl_R2017b:2531:344"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:344"] = {rtwname: "<S52>/Goto9"};
+	this.rtwnameHashMap["<S52>/Merge"] = {sid: "BLDCmotorControl_R2017b:2531:345"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:345"] = {rtwname: "<S52>/Merge"};
+	this.rtwnameHashMap["<S52>/Merge1"] = {sid: "BLDCmotorControl_R2017b:2531:346"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:346"] = {rtwname: "<S52>/Merge1"};
+	this.rtwnameHashMap["<S52>/Merge2"] = {sid: "BLDCmotorControl_R2017b:2531:347"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:347"] = {rtwname: "<S52>/Merge2"};
+	this.rtwnameHashMap["<S52>/Switch Case"] = {sid: "BLDCmotorControl_R2017b:2531:348"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:348"] = {rtwname: "<S52>/Switch Case"};
+	this.rtwnameHashMap["<S52>/signal_log1"] = {sid: "BLDCmotorControl_R2017b:2531:349"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:349"] = {rtwname: "<S52>/signal_log1"};
+	this.rtwnameHashMap["<S52>/signal_log2"] = {sid: "BLDCmotorControl_R2017b:2531:352"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:352"] = {rtwname: "<S52>/signal_log2"};
+	this.rtwnameHashMap["<S52>/signal_log6"] = {sid: "BLDCmotorControl_R2017b:2531:355"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:355"] = {rtwname: "<S52>/signal_log6"};
+	this.rtwnameHashMap["<S52>/r_phaA"] = {sid: "BLDCmotorControl_R2017b:2531:358"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:358"] = {rtwname: "<S52>/r_phaA"};
+	this.rtwnameHashMap["<S52>/r_phaB"] = {sid: "BLDCmotorControl_R2017b:2531:359"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:359"] = {rtwname: "<S52>/r_phaB"};
+	this.rtwnameHashMap["<S52>/r_phaC "] = {sid: "BLDCmotorControl_R2017b:2531:360"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:360"] = {rtwname: "<S52>/r_phaC "};
+	this.rtwnameHashMap["<S53>/r_DC"] = {sid: "BLDCmotorControl_R2017b:2531:362"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:362"] = {rtwname: "<S53>/r_DC"};
+	this.rtwnameHashMap["<S53>/z_ctrlTypSel"] = {sid: "BLDCmotorControl_R2017b:2531:363"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:363"] = {rtwname: "<S53>/z_ctrlTypSel"};
+	this.rtwnameHashMap["<S53>/r_phaA"] = {sid: "BLDCmotorControl_R2017b:2531:364"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:364"] = {rtwname: "<S53>/r_phaA"};
+	this.rtwnameHashMap["<S53>/r_phaB"] = {sid: "BLDCmotorControl_R2017b:2531:365"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:365"] = {rtwname: "<S53>/r_phaB"};
+	this.rtwnameHashMap["<S53>/r_phaC"] = {sid: "BLDCmotorControl_R2017b:2531:366"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:366"] = {rtwname: "<S53>/r_phaC"};
+	this.rtwnameHashMap["<S53>/z_pos"] = {sid: "BLDCmotorControl_R2017b:2531:367"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:367"] = {rtwname: "<S53>/z_pos"};
+	this.rtwnameHashMap["<S53>/n_mot"] = {sid: "BLDCmotorControl_R2017b:2531:368"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:368"] = {rtwname: "<S53>/n_mot"};
+	this.rtwnameHashMap["<S53>/Abs1"] = {sid: "BLDCmotorControl_R2017b:2531:594"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:594"] = {rtwname: "<S53>/Abs1"};
+	this.rtwnameHashMap["<S53>/Abs5"] = {sid: "BLDCmotorControl_R2017b:2531:369"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:369"] = {rtwname: "<S53>/Abs5"};
+	this.rtwnameHashMap["<S53>/CTRL_COMM"] = {sid: "BLDCmotorControl_R2017b:2531:371"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:371"] = {rtwname: "<S53>/CTRL_COMM"};
+	this.rtwnameHashMap["<S53>/Constant1"] = {sid: "BLDCmotorControl_R2017b:2531:370"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:370"] = {rtwname: "<S53>/Constant1"};
+	this.rtwnameHashMap["<S53>/Demux"] = {sid: "BLDCmotorControl_R2017b:2531:372"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:372"] = {rtwname: "<S53>/Demux"};
+	this.rtwnameHashMap["<S53>/Divide1"] = {sid: "BLDCmotorControl_R2017b:2531:373"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:373"] = {rtwname: "<S53>/Divide1"};
+	this.rtwnameHashMap["<S53>/Divide2"] = {sid: "BLDCmotorControl_R2017b:2531:374"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:374"] = {rtwname: "<S53>/Divide2"};
+	this.rtwnameHashMap["<S53>/Divide4"] = {sid: "BLDCmotorControl_R2017b:2531:375"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:375"] = {rtwname: "<S53>/Divide4"};
+	this.rtwnameHashMap["<S53>/From1"] = {sid: "BLDCmotorControl_R2017b:2531:376"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:376"] = {rtwname: "<S53>/From1"};
+	this.rtwnameHashMap["<S53>/From10"] = {sid: "BLDCmotorControl_R2017b:2531:377"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:377"] = {rtwname: "<S53>/From10"};
+	this.rtwnameHashMap["<S53>/From2"] = {sid: "BLDCmotorControl_R2017b:2531:378"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:378"] = {rtwname: "<S53>/From2"};
+	this.rtwnameHashMap["<S53>/From27"] = {sid: "BLDCmotorControl_R2017b:2531:379"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:379"] = {rtwname: "<S53>/From27"};
+	this.rtwnameHashMap["<S53>/From3"] = {sid: "BLDCmotorControl_R2017b:2531:591"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:591"] = {rtwname: "<S53>/From3"};
+	this.rtwnameHashMap["<S53>/From39"] = {sid: "BLDCmotorControl_R2017b:2531:380"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:380"] = {rtwname: "<S53>/From39"};
+	this.rtwnameHashMap["<S53>/From40"] = {sid: "BLDCmotorControl_R2017b:2531:381"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:381"] = {rtwname: "<S53>/From40"};
+	this.rtwnameHashMap["<S53>/From41"] = {sid: "BLDCmotorControl_R2017b:2531:382"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:382"] = {rtwname: "<S53>/From41"};
+	this.rtwnameHashMap["<S53>/From5"] = {sid: "BLDCmotorControl_R2017b:2531:383"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:383"] = {rtwname: "<S53>/From5"};
+	this.rtwnameHashMap["<S53>/From6"] = {sid: "BLDCmotorControl_R2017b:2531:384"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:384"] = {rtwname: "<S53>/From6"};
+	this.rtwnameHashMap["<S53>/From8"] = {sid: "BLDCmotorControl_R2017b:2531:385"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:385"] = {rtwname: "<S53>/From8"};
+	this.rtwnameHashMap["<S53>/From9"] = {sid: "BLDCmotorControl_R2017b:2531:386"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:386"] = {rtwname: "<S53>/From9"};
+	this.rtwnameHashMap["<S53>/Goto"] = {sid: "BLDCmotorControl_R2017b:2531:387"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:387"] = {rtwname: "<S53>/Goto"};
+	this.rtwnameHashMap["<S53>/Goto1"] = {sid: "BLDCmotorControl_R2017b:2531:388"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:388"] = {rtwname: "<S53>/Goto1"};
+	this.rtwnameHashMap["<S53>/Goto2"] = {sid: "BLDCmotorControl_R2017b:2531:389"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:389"] = {rtwname: "<S53>/Goto2"};
+	this.rtwnameHashMap["<S53>/Goto3"] = {sid: "BLDCmotorControl_R2017b:2531:390"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:390"] = {rtwname: "<S53>/Goto3"};
+	this.rtwnameHashMap["<S53>/Goto4"] = {sid: "BLDCmotorControl_R2017b:2531:391"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:391"] = {rtwname: "<S53>/Goto4"};
+	this.rtwnameHashMap["<S53>/Goto5"] = {sid: "BLDCmotorControl_R2017b:2531:392"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:392"] = {rtwname: "<S53>/Goto5"};
+	this.rtwnameHashMap["<S53>/Goto6"] = {sid: "BLDCmotorControl_R2017b:2531:393"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:393"] = {rtwname: "<S53>/Goto6"};
+	this.rtwnameHashMap["<S53>/Goto7"] = {sid: "BLDCmotorControl_R2017b:2531:394"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:394"] = {rtwname: "<S53>/Goto7"};
+	this.rtwnameHashMap["<S53>/Goto8"] = {sid: "BLDCmotorControl_R2017b:2531:395"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:395"] = {rtwname: "<S53>/Goto8"};
+	this.rtwnameHashMap["<S53>/Goto9"] = {sid: "BLDCmotorControl_R2017b:2531:396"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:396"] = {rtwname: "<S53>/Goto9"};
+	this.rtwnameHashMap["<S53>/Logical Operator3"] = {sid: "BLDCmotorControl_R2017b:2531:397"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:397"] = {rtwname: "<S53>/Logical Operator3"};
+	this.rtwnameHashMap["<S53>/Mux2"] = {sid: "BLDCmotorControl_R2017b:2531:398"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:398"] = {rtwname: "<S53>/Mux2"};
+	this.rtwnameHashMap["<S53>/Relational Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:399"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:399"] = {rtwname: "<S53>/Relational Operator1"};
+	this.rtwnameHashMap["<S53>/Relational Operator2"] = {sid: "BLDCmotorControl_R2017b:2531:590"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:590"] = {rtwname: "<S53>/Relational Operator2"};
+	this.rtwnameHashMap["<S53>/Relay"] = {sid: "BLDCmotorControl_R2017b:2531:400"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:400"] = {rtwname: "<S53>/Relay"};
+	this.rtwnameHashMap["<S53>/Switch1"] = {sid: "BLDCmotorControl_R2017b:2531:401"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:401"] = {rtwname: "<S53>/Switch1"};
+	this.rtwnameHashMap["<S53>/r_commDCDeacv"] = {sid: "BLDCmotorControl_R2017b:2531:593"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:593"] = {rtwname: "<S53>/r_commDCDeacv"};
+	this.rtwnameHashMap["<S53>/signal_log1"] = {sid: "BLDCmotorControl_R2017b:2531:402"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:402"] = {rtwname: "<S53>/signal_log1"};
+	this.rtwnameHashMap["<S53>/signal_log2"] = {sid: "BLDCmotorControl_R2017b:2531:405"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:405"] = {rtwname: "<S53>/signal_log2"};
+	this.rtwnameHashMap["<S53>/signal_log6"] = {sid: "BLDCmotorControl_R2017b:2531:408"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:408"] = {rtwname: "<S53>/signal_log6"};
+	this.rtwnameHashMap["<S53>/z_commutMap_M1"] = {sid: "BLDCmotorControl_R2017b:2531:411"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:411"] = {rtwname: "<S53>/z_commutMap_M1"};
+	this.rtwnameHashMap["<S53>/DC_phaA"] = {sid: "BLDCmotorControl_R2017b:2531:412"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:412"] = {rtwname: "<S53>/DC_phaA"};
+	this.rtwnameHashMap["<S53>/DC_phaB"] = {sid: "BLDCmotorControl_R2017b:2531:413"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:413"] = {rtwname: "<S53>/DC_phaB"};
+	this.rtwnameHashMap["<S53>/DC_phaC "] = {sid: "BLDCmotorControl_R2017b:2531:414"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:414"] = {rtwname: "<S53>/DC_phaC "};
+	this.rtwnameHashMap["<S54>/b_hallB"] = {sid: "BLDCmotorControl_R2017b:2531:436"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:436"] = {rtwname: "<S54>/b_hallB"};
+	this.rtwnameHashMap["<S54>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:437"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:437"] = {rtwname: "<S54>/Terminator_1"};
+	this.rtwnameHashMap["<S55>/b_hallC"] = {sid: "BLDCmotorControl_R2017b:2531:439"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:439"] = {rtwname: "<S55>/b_hallC"};
+	this.rtwnameHashMap["<S55>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:440"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:440"] = {rtwname: "<S55>/Terminator_1"};
+	this.rtwnameHashMap["<S56>/r_DC"] = {sid: "BLDCmotorControl_R2017b:2531:442"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:442"] = {rtwname: "<S56>/r_DC"};
+	this.rtwnameHashMap["<S56>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:443"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:443"] = {rtwname: "<S56>/Terminator_1"};
+	this.rtwnameHashMap["<S57>/b_hallA"] = {sid: "BLDCmotorControl_R2017b:2531:445"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:445"] = {rtwname: "<S57>/b_hallA"};
+	this.rtwnameHashMap["<S57>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:446"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:446"] = {rtwname: "<S57>/Terminator_1"};
+	this.rtwnameHashMap["<S58>/b_hallA"] = {sid: "BLDCmotorControl_R2017b:2531:27"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:27"] = {rtwname: "<S58>/b_hallA"};
+	this.rtwnameHashMap["<S58>/b_hallB"] = {sid: "BLDCmotorControl_R2017b:2531:28"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:28"] = {rtwname: "<S58>/b_hallB"};
+	this.rtwnameHashMap["<S58>/b_hallC"] = {sid: "BLDCmotorControl_R2017b:2531:29"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:29"] = {rtwname: "<S58>/b_hallC"};
+	this.rtwnameHashMap["<S58>/Logical Operator"] = {sid: "BLDCmotorControl_R2017b:2531:30"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:30"] = {rtwname: "<S58>/Logical Operator"};
+	this.rtwnameHashMap["<S58>/UnitDelay"] = {sid: "BLDCmotorControl_R2017b:2531:31"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:31"] = {rtwname: "<S58>/UnitDelay"};
+	this.rtwnameHashMap["<S58>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2531:32"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:32"] = {rtwname: "<S58>/UnitDelay1"};
+	this.rtwnameHashMap["<S58>/UnitDelay2"] = {sid: "BLDCmotorControl_R2017b:2531:33"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:33"] = {rtwname: "<S58>/UnitDelay2"};
+	this.rtwnameHashMap["<S58>/signal_log6"] = {sid: "BLDCmotorControl_R2017b:2531:34"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:34"] = {rtwname: "<S58>/signal_log6"};
+	this.rtwnameHashMap["<S58>/b_edge "] = {sid: "BLDCmotorControl_R2017b:2531:37"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:37"] = {rtwname: "<S58>/b_edge "};
+	this.rtwnameHashMap["<S59>/b_hallA"] = {sid: "BLDCmotorControl_R2017b:2531:11"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:11"] = {rtwname: "<S59>/b_hallA"};
+	this.rtwnameHashMap["<S59>/b_hallB"] = {sid: "BLDCmotorControl_R2017b:2531:12"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:12"] = {rtwname: "<S59>/b_hallB"};
+	this.rtwnameHashMap["<S59>/b_hallC"] = {sid: "BLDCmotorControl_R2017b:2531:13"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:13"] = {rtwname: "<S59>/b_hallC"};
+	this.rtwnameHashMap["<S59>/Selector"] = {sid: "BLDCmotorControl_R2017b:2531:14"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:14"] = {rtwname: "<S59>/Selector"};
+	this.rtwnameHashMap["<S59>/Sum"] = {sid: "BLDCmotorControl_R2017b:2531:15"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:15"] = {rtwname: "<S59>/Sum"};
+	this.rtwnameHashMap["<S59>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2531:16"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:16"] = {rtwname: "<S59>/UnitDelay1"};
+	this.rtwnameHashMap["<S59>/g_Ha"] = {sid: "BLDCmotorControl_R2017b:2531:17"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:17"] = {rtwname: "<S59>/g_Ha"};
+	this.rtwnameHashMap["<S59>/g_Hb"] = {sid: "BLDCmotorControl_R2017b:2531:18"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:18"] = {rtwname: "<S59>/g_Hb"};
+	this.rtwnameHashMap["<S59>/signal_log6"] = {sid: "BLDCmotorControl_R2017b:2531:19"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:19"] = {rtwname: "<S59>/signal_log6"};
+	this.rtwnameHashMap["<S59>/vec_hallToPos"] = {sid: "BLDCmotorControl_R2017b:2531:22"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:22"] = {rtwname: "<S59>/vec_hallToPos"};
+	this.rtwnameHashMap["<S59>/z_pos "] = {sid: "BLDCmotorControl_R2017b:2531:23"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:23"] = {rtwname: "<S59>/z_pos "};
+	this.rtwnameHashMap["<S59>/z_posPrev"] = {sid: "BLDCmotorControl_R2017b:2531:24"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:24"] = {rtwname: "<S59>/z_posPrev"};
+	this.rtwnameHashMap["<S60>/z_pos"] = {sid: "BLDCmotorControl_R2017b:2531:39"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:39"] = {rtwname: "<S60>/z_pos"};
+	this.rtwnameHashMap["<S60>/z_posPrev"] = {sid: "BLDCmotorControl_R2017b:2531:40"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:40"] = {rtwname: "<S60>/z_posPrev"};
+	this.rtwnameHashMap["<S60>/Enable"] = {sid: "BLDCmotorControl_R2017b:2531:41"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:41"] = {rtwname: "<S60>/Enable"};
+	this.rtwnameHashMap["<S60>/Constant20"] = {sid: "BLDCmotorControl_R2017b:2531:42"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:42"] = {rtwname: "<S60>/Constant20"};
+	this.rtwnameHashMap["<S60>/Constant23"] = {sid: "BLDCmotorControl_R2017b:2531:43"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:43"] = {rtwname: "<S60>/Constant23"};
+	this.rtwnameHashMap["<S60>/Constant24"] = {sid: "BLDCmotorControl_R2017b:2531:44"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:44"] = {rtwname: "<S60>/Constant24"};
+	this.rtwnameHashMap["<S60>/Constant8"] = {sid: "BLDCmotorControl_R2017b:2531:45"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:45"] = {rtwname: "<S60>/Constant8"};
+	this.rtwnameHashMap["<S60>/Data Type Conversion1"] = {sid: "BLDCmotorControl_R2017b:2531:46"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:46"] = {rtwname: "<S60>/Data Type Conversion1"};
+	this.rtwnameHashMap["<S60>/Data Type Conversion10"] = {sid: "BLDCmotorControl_R2017b:2531:47"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:47"] = {rtwname: "<S60>/Data Type Conversion10"};
+	this.rtwnameHashMap["<S60>/Logical Operator3"] = {sid: "BLDCmotorControl_R2017b:2531:48"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:48"] = {rtwname: "<S60>/Logical Operator3"};
+	this.rtwnameHashMap["<S60>/Relational Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:49"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:49"] = {rtwname: "<S60>/Relational Operator1"};
+	this.rtwnameHashMap["<S60>/Relational Operator6"] = {sid: "BLDCmotorControl_R2017b:2531:50"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:50"] = {rtwname: "<S60>/Relational Operator6"};
+	this.rtwnameHashMap["<S60>/Sum2"] = {sid: "BLDCmotorControl_R2017b:2531:51"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:51"] = {rtwname: "<S60>/Sum2"};
+	this.rtwnameHashMap["<S60>/Switch2"] = {sid: "BLDCmotorControl_R2017b:2531:52"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:52"] = {rtwname: "<S60>/Switch2"};
+	this.rtwnameHashMap["<S60>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2531:53"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:53"] = {rtwname: "<S60>/UnitDelay1"};
+	this.rtwnameHashMap["<S60>/signal_log6"] = {sid: "BLDCmotorControl_R2017b:2531:54"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:54"] = {rtwname: "<S60>/signal_log6"};
+	this.rtwnameHashMap["<S60>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2531:57"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:57"] = {rtwname: "<S60>/z_dir"};
+	this.rtwnameHashMap["<S60>/z_dirPrev"] = {sid: "BLDCmotorControl_R2017b:2531:58"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:58"] = {rtwname: "<S60>/z_dirPrev"};
+	this.rtwnameHashMap["<S61>/b_edge"] = {sid: "BLDCmotorControl_R2017b:2531:60"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:60"] = {rtwname: "<S61>/b_edge"};
+	this.rtwnameHashMap["<S61>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2531:61"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:61"] = {rtwname: "<S61>/z_dir"};
+	this.rtwnameHashMap["<S61>/z_dirPrev"] = {sid: "BLDCmotorControl_R2017b:2531:62"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:62"] = {rtwname: "<S61>/z_dirPrev"};
+	this.rtwnameHashMap["<S61>/Constant6"] = {sid: "BLDCmotorControl_R2017b:2531:64"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:64"] = {rtwname: "<S61>/Constant6"};
+	this.rtwnameHashMap["<S61>/Edge_counter"] = {sid: "BLDCmotorControl_R2017b:2531:65"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:65"] = {rtwname: "<S61>/Edge_counter"};
+	this.rtwnameHashMap["<S61>/From"] = {sid: "BLDCmotorControl_R2017b:2531:80"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:80"] = {rtwname: "<S61>/From"};
+	this.rtwnameHashMap["<S61>/From1"] = {sid: "BLDCmotorControl_R2017b:2531:81"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:81"] = {rtwname: "<S61>/From1"};
+	this.rtwnameHashMap["<S61>/From10"] = {sid: "BLDCmotorControl_R2017b:2531:660"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:660"] = {rtwname: "<S61>/From10"};
+	this.rtwnameHashMap["<S61>/From11"] = {sid: "BLDCmotorControl_R2017b:2531:83"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:83"] = {rtwname: "<S61>/From11"};
+	this.rtwnameHashMap["<S61>/From12"] = {sid: "BLDCmotorControl_R2017b:2531:84"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:84"] = {rtwname: "<S61>/From12"};
+	this.rtwnameHashMap["<S61>/From15"] = {sid: "BLDCmotorControl_R2017b:2531:645"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:645"] = {rtwname: "<S61>/From15"};
+	this.rtwnameHashMap["<S61>/From16"] = {sid: "BLDCmotorControl_R2017b:2531:86"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:86"] = {rtwname: "<S61>/From16"};
+	this.rtwnameHashMap["<S61>/From18"] = {sid: "BLDCmotorControl_R2017b:2531:97"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:97"] = {rtwname: "<S61>/From18"};
+	this.rtwnameHashMap["<S61>/From19"] = {sid: "BLDCmotorControl_R2017b:2531:98"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:98"] = {rtwname: "<S61>/From19"};
+	this.rtwnameHashMap["<S61>/From2"] = {sid: "BLDCmotorControl_R2017b:2531:719"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:719"] = {rtwname: "<S61>/From2"};
+	this.rtwnameHashMap["<S61>/From21"] = {sid: "BLDCmotorControl_R2017b:2531:697"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:697"] = {rtwname: "<S61>/From21"};
+	this.rtwnameHashMap["<S61>/From22"] = {sid: "BLDCmotorControl_R2017b:2531:698"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:698"] = {rtwname: "<S61>/From22"};
+	this.rtwnameHashMap["<S61>/From33"] = {sid: "BLDCmotorControl_R2017b:2531:89"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:89"] = {rtwname: "<S61>/From33"};
+	this.rtwnameHashMap["<S61>/From35"] = {sid: "BLDCmotorControl_R2017b:2531:91"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:91"] = {rtwname: "<S61>/From35"};
+	this.rtwnameHashMap["<S61>/From4"] = {sid: "BLDCmotorControl_R2017b:2531:92"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:92"] = {rtwname: "<S61>/From4"};
+	this.rtwnameHashMap["<S61>/From42"] = {sid: "BLDCmotorControl_R2017b:2531:93"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:93"] = {rtwname: "<S61>/From42"};
+	this.rtwnameHashMap["<S61>/From44"] = {sid: "BLDCmotorControl_R2017b:2531:94"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:94"] = {rtwname: "<S61>/From44"};
+	this.rtwnameHashMap["<S61>/From5"] = {sid: "BLDCmotorControl_R2017b:2531:95"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:95"] = {rtwname: "<S61>/From5"};
+	this.rtwnameHashMap["<S61>/From6"] = {sid: "BLDCmotorControl_R2017b:2531:96"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:96"] = {rtwname: "<S61>/From6"};
+	this.rtwnameHashMap["<S61>/From7"] = {sid: "BLDCmotorControl_R2017b:2531:725"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:725"] = {rtwname: "<S61>/From7"};
+	this.rtwnameHashMap["<S61>/Goto"] = {sid: "BLDCmotorControl_R2017b:2531:99"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:99"] = {rtwname: "<S61>/Goto"};
+	this.rtwnameHashMap["<S61>/Goto1"] = {sid: "BLDCmotorControl_R2017b:2531:100"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:100"] = {rtwname: "<S61>/Goto1"};
+	this.rtwnameHashMap["<S61>/Goto15"] = {sid: "BLDCmotorControl_R2017b:2531:101"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:101"] = {rtwname: "<S61>/Goto15"};
+	this.rtwnameHashMap["<S61>/Goto19"] = {sid: "BLDCmotorControl_R2017b:2531:104"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:104"] = {rtwname: "<S61>/Goto19"};
+	this.rtwnameHashMap["<S61>/Goto2"] = {sid: "BLDCmotorControl_R2017b:2531:105"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:105"] = {rtwname: "<S61>/Goto2"};
+	this.rtwnameHashMap["<S61>/Goto22"] = {sid: "BLDCmotorControl_R2017b:2531:106"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:106"] = {rtwname: "<S61>/Goto22"};
+	this.rtwnameHashMap["<S61>/Goto3"] = {sid: "BLDCmotorControl_R2017b:2531:723"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:723"] = {rtwname: "<S61>/Goto3"};
+	this.rtwnameHashMap["<S61>/Goto4"] = {sid: "BLDCmotorControl_R2017b:2531:615"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:615"] = {rtwname: "<S61>/Goto4"};
+	this.rtwnameHashMap["<S61>/Goto8"] = {sid: "BLDCmotorControl_R2017b:2531:108"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:108"] = {rtwname: "<S61>/Goto8"};
+	this.rtwnameHashMap["<S61>/Logical Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:109"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:109"] = {rtwname: "<S61>/Logical Operator1"};
+	this.rtwnameHashMap["<S61>/Logical Operator2"] = {sid: "BLDCmotorControl_R2017b:2531:110"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:110"] = {rtwname: "<S61>/Logical Operator2"};
+	this.rtwnameHashMap["<S61>/Logical Operator3"] = {sid: "BLDCmotorControl_R2017b:2531:111"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:111"] = {rtwname: "<S61>/Logical Operator3"};
+	this.rtwnameHashMap["<S61>/Logical Operator5"] = {sid: "BLDCmotorControl_R2017b:2531:722"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:722"] = {rtwname: "<S61>/Logical Operator5"};
+	this.rtwnameHashMap["<S61>/Motor_Speed_Calculation"] = {sid: "BLDCmotorControl_R2017b:2531:124"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:124"] = {rtwname: "<S61>/Motor_Speed_Calculation"};
+	this.rtwnameHashMap["<S61>/Mux"] = {sid: "BLDCmotorControl_R2017b:2531:644"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:644"] = {rtwname: "<S61>/Mux"};
+	this.rtwnameHashMap["<S61>/Mux1"] = {sid: "BLDCmotorControl_R2017b:2531:659"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:659"] = {rtwname: "<S61>/Mux1"};
+	this.rtwnameHashMap["<S61>/Relational Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:136"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:136"] = {rtwname: "<S61>/Relational Operator1"};
+	this.rtwnameHashMap["<S61>/Relational Operator3"] = {sid: "BLDCmotorControl_R2017b:2531:696"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:696"] = {rtwname: "<S61>/Relational Operator3"};
+	this.rtwnameHashMap["<S61>/Relational Operator5"] = {sid: "BLDCmotorControl_R2017b:2531:138"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:138"] = {rtwname: "<S61>/Relational Operator5"};
+	this.rtwnameHashMap["<S61>/Relational Operator6"] = {sid: "BLDCmotorControl_R2017b:2531:720"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:720"] = {rtwname: "<S61>/Relational Operator6"};
+	this.rtwnameHashMap["<S61>/S-R Flip-Flop"] = {sid: "BLDCmotorControl_R2017b:2531:140"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:140"] = {rtwname: "<S61>/S-R Flip-Flop"};
+	this.rtwnameHashMap["<S61>/Scope2"] = {sid: "BLDCmotorControl_R2017b:2531:141"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:141"] = {rtwname: "<S61>/Scope2"};
+	this.rtwnameHashMap["<S61>/Sum1"] = {sid: "BLDCmotorControl_R2017b:2531:142"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:142"] = {rtwname: "<S61>/Sum1"};
+	this.rtwnameHashMap["<S61>/Switch"] = {sid: "BLDCmotorControl_R2017b:2531:143"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:143"] = {rtwname: "<S61>/Switch"};
+	this.rtwnameHashMap["<S61>/Switch1"] = {sid: "BLDCmotorControl_R2017b:2531:714"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:714"] = {rtwname: "<S61>/Switch1"};
+	this.rtwnameHashMap["<S61>/Terminator"] = {sid: "BLDCmotorControl_R2017b:2531:144"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:144"] = {rtwname: "<S61>/Terminator"};
+	this.rtwnameHashMap["<S61>/UnitDelay8"] = {sid: "BLDCmotorControl_R2017b:2531:146"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:146"] = {rtwname: "<S61>/UnitDelay8"};
+	this.rtwnameHashMap["<S61>/falling_edge2"] = {sid: "BLDCmotorControl_R2017b:2531:733"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:733"] = {rtwname: "<S61>/falling_edge2"};
+	this.rtwnameHashMap["<S61>/rising_edge"] = {sid: "BLDCmotorControl_R2017b:2531:588"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:588"] = {rtwname: "<S61>/rising_edge"};
+	this.rtwnameHashMap["<S61>/rst_Delay"] = {sid: "BLDCmotorControl_R2017b:2531:479"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:479"] = {rtwname: "<S61>/rst_Delay"};
+	this.rtwnameHashMap["<S61>/signal_log1"] = {sid: "BLDCmotorControl_R2017b:2531:154"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:154"] = {rtwname: "<S61>/signal_log1"};
+	this.rtwnameHashMap["<S61>/signal_log3"] = {sid: "BLDCmotorControl_R2017b:2531:160"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:160"] = {rtwname: "<S61>/signal_log3"};
+	this.rtwnameHashMap["<S61>/signal_log4"] = {sid: "BLDCmotorControl_R2017b:2531:163"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:163"] = {rtwname: "<S61>/signal_log4"};
+	this.rtwnameHashMap["<S61>/signal_log5"] = {sid: "BLDCmotorControl_R2017b:2531:616"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:616"] = {rtwname: "<S61>/signal_log5"};
+	this.rtwnameHashMap["<S61>/z_counter2"] = {sid: "BLDCmotorControl_R2017b:2531:169"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:169"] = {rtwname: "<S61>/z_counter2"};
+	this.rtwnameHashMap["<S61>/z_counterRawPrev"] = {sid: "BLDCmotorControl_R2017b:2531:170"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:170"] = {rtwname: "<S61>/z_counterRawPrev"};
+	this.rtwnameHashMap["<S61>/z_maxCntRst"] = {sid: "BLDCmotorControl_R2017b:2531:171"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:171"] = {rtwname: "<S61>/z_maxCntRst"};
+	this.rtwnameHashMap["<S61>/z_maxCntRst1"] = {sid: "BLDCmotorControl_R2017b:2531:726"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:726"] = {rtwname: "<S61>/z_maxCntRst1"};
+	this.rtwnameHashMap["<S61>/z_maxCntRst2"] = {sid: "BLDCmotorControl_R2017b:2531:721"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:721"] = {rtwname: "<S61>/z_maxCntRst2"};
+	this.rtwnameHashMap["<S61>/z_nrEdgeSpdAcv"] = {sid: "BLDCmotorControl_R2017b:2531:172"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:172"] = {rtwname: "<S61>/z_nrEdgeSpdAcv"};
+	this.rtwnameHashMap["<S61>/n_mot"] = {sid: "BLDCmotorControl_R2017b:2531:173"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:173"] = {rtwname: "<S61>/n_mot"};
+	this.rtwnameHashMap["<S61>/z_counter"] = {sid: "BLDCmotorControl_R2017b:2531:174"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:174"] = {rtwname: "<S61>/z_counter"};
+	this.rtwnameHashMap["<S61>/z_counterRaw"] = {sid: "BLDCmotorControl_R2017b:2531:175"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:175"] = {rtwname: "<S61>/z_counterRaw"};
+	this.rtwnameHashMap["<S62>/b_edge"] = {sid: "BLDCmotorControl_R2017b:2531:35"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:35"] = {rtwname: "<S62>/b_edge"};
+	this.rtwnameHashMap["<S62>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:36"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:36"] = {rtwname: "<S62>/Terminator_1"};
+	this.rtwnameHashMap["<S63>/z_pos"] = {sid: "BLDCmotorControl_R2017b:2531:20"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:20"] = {rtwname: "<S63>/z_pos"};
+	this.rtwnameHashMap["<S63>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:21"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:21"] = {rtwname: "<S63>/Terminator_1"};
+	this.rtwnameHashMap["<S64>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2531:55"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:55"] = {rtwname: "<S64>/z_dir"};
+	this.rtwnameHashMap["<S64>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:56"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:56"] = {rtwname: "<S64>/Terminator_1"};
+	this.rtwnameHashMap["<S65>/b_edge"] = {sid: "BLDCmotorControl_R2017b:2531:66"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:66"] = {rtwname: "<S65>/b_edge"};
+	this.rtwnameHashMap["<S65>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2531:67"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:67"] = {rtwname: "<S65>/z_dir"};
+	this.rtwnameHashMap["<S65>/z_dirPrev"] = {sid: "BLDCmotorControl_R2017b:2531:68"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:68"] = {rtwname: "<S65>/z_dirPrev"};
+	this.rtwnameHashMap["<S65>/Enable"] = {sid: "BLDCmotorControl_R2017b:2531:69"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:69"] = {rtwname: "<S65>/Enable"};
+	this.rtwnameHashMap["<S65>/Constant23"] = {sid: "BLDCmotorControl_R2017b:2531:70"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:70"] = {rtwname: "<S65>/Constant23"};
+	this.rtwnameHashMap["<S65>/Constant24"] = {sid: "BLDCmotorControl_R2017b:2531:71"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:71"] = {rtwname: "<S65>/Constant24"};
+	this.rtwnameHashMap["<S65>/Logical Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:72"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:72"] = {rtwname: "<S65>/Logical Operator1"};
+	this.rtwnameHashMap["<S65>/Logical Operator2"] = {sid: "BLDCmotorControl_R2017b:2531:73"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:73"] = {rtwname: "<S65>/Logical Operator2"};
+	this.rtwnameHashMap["<S65>/Relational Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:74"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:74"] = {rtwname: "<S65>/Relational Operator1"};
+	this.rtwnameHashMap["<S65>/Sum2"] = {sid: "BLDCmotorControl_R2017b:2531:76"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:76"] = {rtwname: "<S65>/Sum2"};
+	this.rtwnameHashMap["<S65>/Switch2"] = {sid: "BLDCmotorControl_R2017b:2531:77"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:77"] = {rtwname: "<S65>/Switch2"};
+	this.rtwnameHashMap["<S65>/rst_Delay"] = {sid: "BLDCmotorControl_R2017b:2531:480"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:480"] = {rtwname: "<S65>/rst_Delay"};
+	this.rtwnameHashMap["<S65>/cnt"] = {sid: "BLDCmotorControl_R2017b:2531:78"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:78"] = {rtwname: "<S65>/cnt"};
+	this.rtwnameHashMap["<S66>/z_counter"] = {sid: "BLDCmotorControl_R2017b:2531:125"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:125"] = {rtwname: "<S66>/z_counter"};
+	this.rtwnameHashMap["<S66>/z_dir"] = {sid: "BLDCmotorControl_R2017b:2531:126"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:126"] = {rtwname: "<S66>/z_dir"};
+	this.rtwnameHashMap["<S66>/Trigger"] = {sid: "BLDCmotorControl_R2017b:2531:650"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:650"] = {rtwname: "<S66>/Trigger"};
+	this.rtwnameHashMap["<S66>/Constant1"] = {sid: "BLDCmotorControl_R2017b:2531:127"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:127"] = {rtwname: "<S66>/Constant1"};
+	this.rtwnameHashMap["<S66>/Constant2"] = {sid: "BLDCmotorControl_R2017b:2531:748"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:748"] = {rtwname: "<S66>/Constant2"};
+	this.rtwnameHashMap["<S66>/Divide1"] = {sid: "BLDCmotorControl_R2017b:2531:749"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:749"] = {rtwname: "<S66>/Divide1"};
+	this.rtwnameHashMap["<S66>/Divide4"] = {sid: "BLDCmotorControl_R2017b:2531:128"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:128"] = {rtwname: "<S66>/Divide4"};
+	this.rtwnameHashMap["<S66>/From"] = {sid: "BLDCmotorControl_R2017b:2531:750"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:750"] = {rtwname: "<S66>/From"};
+	this.rtwnameHashMap["<S66>/Goto22"] = {sid: "BLDCmotorControl_R2017b:2531:756"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:756"] = {rtwname: "<S66>/Goto22"};
+	this.rtwnameHashMap["<S66>/Product2"] = {sid: "BLDCmotorControl_R2017b:2531:129"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:129"] = {rtwname: "<S66>/Product2"};
+	this.rtwnameHashMap["<S66>/Relational Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:130"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:130"] = {rtwname: "<S66>/Relational Operator1"};
+	this.rtwnameHashMap["<S66>/Sum2"] = {sid: "BLDCmotorControl_R2017b:2531:751"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:751"] = {rtwname: "<S66>/Sum2"};
+	this.rtwnameHashMap["<S66>/Switch"] = {sid: "BLDCmotorControl_R2017b:2531:131"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:131"] = {rtwname: "<S66>/Switch"};
+	this.rtwnameHashMap["<S66>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2531:752"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:752"] = {rtwname: "<S66>/UnitDelay1"};
+	this.rtwnameHashMap["<S66>/UnitDelay5"] = {sid: "BLDCmotorControl_R2017b:2531:753"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:753"] = {rtwname: "<S66>/UnitDelay5"};
+	this.rtwnameHashMap["<S66>/cf_spdCoef"] = {sid: "BLDCmotorControl_R2017b:2531:132"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:132"] = {rtwname: "<S66>/cf_spdCoef"};
+	this.rtwnameHashMap["<S66>/z_maxCntRst"] = {sid: "BLDCmotorControl_R2017b:2531:133"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:133"] = {rtwname: "<S66>/z_maxCntRst"};
+	this.rtwnameHashMap["<S66>/n_mot"] = {sid: "BLDCmotorControl_R2017b:2531:605"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:605"] = {rtwname: "<S66>/n_mot"};
+	this.rtwnameHashMap["<S67>/S"] = {sid: "BLDCmotorControl_R2017b:2531:140:132"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:132"] = {rtwname: "<S67>/S"};
+	this.rtwnameHashMap["<S67>/R"] = {sid: "BLDCmotorControl_R2017b:2531:140:133"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:133"] = {rtwname: "<S67>/R"};
+	this.rtwnameHashMap["<S67>/Demux"] = {sid: "BLDCmotorControl_R2017b:2531:140:134"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:134"] = {rtwname: "<S67>/Demux"};
+	this.rtwnameHashMap["<S67>/Logic"] = {sid: "BLDCmotorControl_R2017b:2531:140:135"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:135"] = {rtwname: "<S67>/Logic"};
+	this.rtwnameHashMap["<S67>/Memory"] = {sid: "BLDCmotorControl_R2017b:2531:140:136"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:136"] = {rtwname: "<S67>/Memory"};
+	this.rtwnameHashMap["<S67>/Mux"] = {sid: "BLDCmotorControl_R2017b:2531:140:137"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:137"] = {rtwname: "<S67>/Mux"};
+	this.rtwnameHashMap["<S67>/Q"] = {sid: "BLDCmotorControl_R2017b:2531:140:138"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:138"] = {rtwname: "<S67>/Q"};
+	this.rtwnameHashMap["<S67>/!Q"] = {sid: "BLDCmotorControl_R2017b:2531:140:139"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:140:139"] = {rtwname: "<S67>/!Q"};
+	this.rtwnameHashMap["<S68>/Signal"] = {sid: "BLDCmotorControl_R2017b:2531:733:728"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:733:728"] = {rtwname: "<S68>/Signal"};
+	this.rtwnameHashMap["<S68>/Logical Operator"] = {sid: "BLDCmotorControl_R2017b:2531:733:729"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:733:729"] = {rtwname: "<S68>/Logical Operator"};
+	this.rtwnameHashMap["<S68>/Logical Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:733:730"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:733:730"] = {rtwname: "<S68>/Logical Operator1"};
+	this.rtwnameHashMap["<S68>/UnitDelay"] = {sid: "BLDCmotorControl_R2017b:2531:733:731"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:733:731"] = {rtwname: "<S68>/UnitDelay"};
+	this.rtwnameHashMap["<S68>/Out"] = {sid: "BLDCmotorControl_R2017b:2531:733:732"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:733:732"] = {rtwname: "<S68>/Out"};
+	this.rtwnameHashMap["<S69>/Signal"] = {sid: "BLDCmotorControl_R2017b:2531:588:583"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:588:583"] = {rtwname: "<S69>/Signal"};
+	this.rtwnameHashMap["<S69>/Logical Operator"] = {sid: "BLDCmotorControl_R2017b:2531:588:584"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:588:584"] = {rtwname: "<S69>/Logical Operator"};
+	this.rtwnameHashMap["<S69>/Logical Operator1"] = {sid: "BLDCmotorControl_R2017b:2531:588:585"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:588:585"] = {rtwname: "<S69>/Logical Operator1"};
+	this.rtwnameHashMap["<S69>/UnitDelay"] = {sid: "BLDCmotorControl_R2017b:2531:588:586"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:588:586"] = {rtwname: "<S69>/UnitDelay"};
+	this.rtwnameHashMap["<S69>/Out"] = {sid: "BLDCmotorControl_R2017b:2531:588:587"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:588:587"] = {rtwname: "<S69>/Out"};
+	this.rtwnameHashMap["<S70>/u"] = {sid: "BLDCmotorControl_R2017b:2531:479:473"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:479:473"] = {rtwname: "<S70>/u"};
+	this.rtwnameHashMap["<S70>/rst"] = {sid: "BLDCmotorControl_R2017b:2531:479:474"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:479:474"] = {rtwname: "<S70>/rst"};
+	this.rtwnameHashMap["<S70>/Constant23"] = {sid: "BLDCmotorControl_R2017b:2531:479:475"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:479:475"] = {rtwname: "<S70>/Constant23"};
+	this.rtwnameHashMap["<S70>/Switch1"] = {sid: "BLDCmotorControl_R2017b:2531:479:476"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:479:476"] = {rtwname: "<S70>/Switch1"};
+	this.rtwnameHashMap["<S70>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2531:479:477"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:479:477"] = {rtwname: "<S70>/UnitDelay1"};
+	this.rtwnameHashMap["<S70>/y"] = {sid: "BLDCmotorControl_R2017b:2531:479:478"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:479:478"] = {rtwname: "<S70>/y"};
+	this.rtwnameHashMap["<S71>/n_mot"] = {sid: "BLDCmotorControl_R2017b:2531:155"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:155"] = {rtwname: "<S71>/n_mot"};
+	this.rtwnameHashMap["<S71>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:156"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:156"] = {rtwname: "<S71>/Terminator_1"};
+	this.rtwnameHashMap["<S72>/b_cntEna"] = {sid: "BLDCmotorControl_R2017b:2531:161"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:161"] = {rtwname: "<S72>/b_cntEna"};
+	this.rtwnameHashMap["<S72>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:162"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:162"] = {rtwname: "<S72>/Terminator_1"};
+	this.rtwnameHashMap["<S73>/z_counterRaw"] = {sid: "BLDCmotorControl_R2017b:2531:164"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:164"] = {rtwname: "<S73>/z_counterRaw"};
+	this.rtwnameHashMap["<S73>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:165"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:165"] = {rtwname: "<S73>/Terminator_1"};
+	this.rtwnameHashMap["<S74>/z_counter"] = {sid: "BLDCmotorControl_R2017b:2531:617"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:617"] = {rtwname: "<S74>/z_counter"};
+	this.rtwnameHashMap["<S74>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:618"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:618"] = {rtwname: "<S74>/Terminator_1"};
+	this.rtwnameHashMap["<S75>/u"] = {sid: "BLDCmotorControl_R2017b:2531:480:473"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:480:473"] = {rtwname: "<S75>/u"};
+	this.rtwnameHashMap["<S75>/rst"] = {sid: "BLDCmotorControl_R2017b:2531:480:474"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:480:474"] = {rtwname: "<S75>/rst"};
+	this.rtwnameHashMap["<S75>/Constant23"] = {sid: "BLDCmotorControl_R2017b:2531:480:475"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:480:475"] = {rtwname: "<S75>/Constant23"};
+	this.rtwnameHashMap["<S75>/Switch1"] = {sid: "BLDCmotorControl_R2017b:2531:480:476"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:480:476"] = {rtwname: "<S75>/Switch1"};
+	this.rtwnameHashMap["<S75>/UnitDelay1"] = {sid: "BLDCmotorControl_R2017b:2531:480:477"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:480:477"] = {rtwname: "<S75>/UnitDelay1"};
+	this.rtwnameHashMap["<S75>/y"] = {sid: "BLDCmotorControl_R2017b:2531:480:478"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:480:478"] = {rtwname: "<S75>/y"};
+	this.rtwnameHashMap["<S76>/a_phaAdv_M1"] = {sid: "BLDCmotorControl_R2017b:2531:580"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:580"] = {rtwname: "<S76>/a_phaAdv_M1"};
+	this.rtwnameHashMap["<S76>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:581"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:581"] = {rtwname: "<S76>/Terminator_1"};
+	this.rtwnameHashMap["<S77>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2531:273"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:273"] = {rtwname: "<S77>/a_elecAngleAdv"};
+	this.rtwnameHashMap["<S77>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:274"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:274"] = {rtwname: "<S77>/Terminator_1"};
+	this.rtwnameHashMap["<S78>/a_elecAngle"] = {sid: "BLDCmotorControl_R2017b:2531:276"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:276"] = {rtwname: "<S78>/a_elecAngle"};
+	this.rtwnameHashMap["<S78>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:277"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:277"] = {rtwname: "<S78>/Terminator_1"};
+	this.rtwnameHashMap["<S79>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2531:286"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:286"] = {rtwname: "<S79>/a_elecAngleAdv"};
+	this.rtwnameHashMap["<S79>/Action Port"] = {sid: "BLDCmotorControl_R2017b:2531:287"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:287"] = {rtwname: "<S79>/Action Port"};
+	this.rtwnameHashMap["<S79>/a_trapElecAngle_XA"] = {sid: "BLDCmotorControl_R2017b:2531:288"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:288"] = {rtwname: "<S79>/a_trapElecAngle_XA"};
+	this.rtwnameHashMap["<S79>/r_trapPhaA_M1"] = {sid: "BLDCmotorControl_R2017b:2531:289"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:289"] = {rtwname: "<S79>/r_trapPhaA_M1"};
+	this.rtwnameHashMap["<S79>/r_trapPhaB_M1"] = {sid: "BLDCmotorControl_R2017b:2531:290"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:290"] = {rtwname: "<S79>/r_trapPhaB_M1"};
+	this.rtwnameHashMap["<S79>/r_trapPhaC_M1"] = {sid: "BLDCmotorControl_R2017b:2531:291"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:291"] = {rtwname: "<S79>/r_trapPhaC_M1"};
+	this.rtwnameHashMap["<S79>/r_phaA_Trap"] = {sid: "BLDCmotorControl_R2017b:2531:292"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:292"] = {rtwname: "<S79>/r_phaA_Trap"};
+	this.rtwnameHashMap["<S79>/r_phaB_Trap"] = {sid: "BLDCmotorControl_R2017b:2531:293"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:293"] = {rtwname: "<S79>/r_phaB_Trap"};
+	this.rtwnameHashMap["<S79>/r_phaC_Trap"] = {sid: "BLDCmotorControl_R2017b:2531:294"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:294"] = {rtwname: "<S79>/r_phaC_Trap"};
+	this.rtwnameHashMap["<S80>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2531:296"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:296"] = {rtwname: "<S80>/a_elecAngleAdv"};
+	this.rtwnameHashMap["<S80>/Action Port"] = {sid: "BLDCmotorControl_R2017b:2531:297"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:297"] = {rtwname: "<S80>/Action Port"};
+	this.rtwnameHashMap["<S80>/a_sinElecAngle_XA"] = {sid: "BLDCmotorControl_R2017b:2531:298"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:298"] = {rtwname: "<S80>/a_sinElecAngle_XA"};
+	this.rtwnameHashMap["<S80>/r_sin3PhaA_M1"] = {sid: "BLDCmotorControl_R2017b:2531:299"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:299"] = {rtwname: "<S80>/r_sin3PhaA_M1"};
+	this.rtwnameHashMap["<S80>/r_sin3PhaB_M1"] = {sid: "BLDCmotorControl_R2017b:2531:300"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:300"] = {rtwname: "<S80>/r_sin3PhaB_M1"};
+	this.rtwnameHashMap["<S80>/r_sin3PhaC_M1"] = {sid: "BLDCmotorControl_R2017b:2531:301"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:301"] = {rtwname: "<S80>/r_sin3PhaC_M1"};
+	this.rtwnameHashMap["<S80>/r_phaA_Sin3"] = {sid: "BLDCmotorControl_R2017b:2531:302"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:302"] = {rtwname: "<S80>/r_phaA_Sin3"};
+	this.rtwnameHashMap["<S80>/r_phaB_Sin3"] = {sid: "BLDCmotorControl_R2017b:2531:303"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:303"] = {rtwname: "<S80>/r_phaB_Sin3"};
+	this.rtwnameHashMap["<S80>/r_phaC_Sin3"] = {sid: "BLDCmotorControl_R2017b:2531:304"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:304"] = {rtwname: "<S80>/r_phaC_Sin3"};
+	this.rtwnameHashMap["<S81>/a_elecAngleAdv"] = {sid: "BLDCmotorControl_R2017b:2531:306"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:306"] = {rtwname: "<S81>/a_elecAngleAdv"};
+	this.rtwnameHashMap["<S81>/Action Port"] = {sid: "BLDCmotorControl_R2017b:2531:307"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:307"] = {rtwname: "<S81>/Action Port"};
+	this.rtwnameHashMap["<S81>/a_sinElecAngle_XA"] = {sid: "BLDCmotorControl_R2017b:2531:308"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:308"] = {rtwname: "<S81>/a_sinElecAngle_XA"};
+	this.rtwnameHashMap["<S81>/r_sinPhaA_M1"] = {sid: "BLDCmotorControl_R2017b:2531:309"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:309"] = {rtwname: "<S81>/r_sinPhaA_M1"};
+	this.rtwnameHashMap["<S81>/r_sinPhaB_M1"] = {sid: "BLDCmotorControl_R2017b:2531:310"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:310"] = {rtwname: "<S81>/r_sinPhaB_M1"};
+	this.rtwnameHashMap["<S81>/r_sinPhaC_M1"] = {sid: "BLDCmotorControl_R2017b:2531:311"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:311"] = {rtwname: "<S81>/r_sinPhaC_M1"};
+	this.rtwnameHashMap["<S81>/r_phaA_Sin"] = {sid: "BLDCmotorControl_R2017b:2531:312"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:312"] = {rtwname: "<S81>/r_phaA_Sin"};
+	this.rtwnameHashMap["<S81>/r_phaB_Sin"] = {sid: "BLDCmotorControl_R2017b:2531:313"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:313"] = {rtwname: "<S81>/r_phaB_Sin"};
+	this.rtwnameHashMap["<S81>/r_phaC_Sin"] = {sid: "BLDCmotorControl_R2017b:2531:314"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:314"] = {rtwname: "<S81>/r_phaC_Sin"};
+	this.rtwnameHashMap["<S82>/r_phaB"] = {sid: "BLDCmotorControl_R2017b:2531:350"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:350"] = {rtwname: "<S82>/r_phaB"};
+	this.rtwnameHashMap["<S82>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:351"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:351"] = {rtwname: "<S82>/Terminator_1"};
+	this.rtwnameHashMap["<S83>/r_phaC"] = {sid: "BLDCmotorControl_R2017b:2531:353"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:353"] = {rtwname: "<S83>/r_phaC"};
+	this.rtwnameHashMap["<S83>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:354"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:354"] = {rtwname: "<S83>/Terminator_1"};
+	this.rtwnameHashMap["<S84>/r_phaA"] = {sid: "BLDCmotorControl_R2017b:2531:356"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:356"] = {rtwname: "<S84>/r_phaA"};
+	this.rtwnameHashMap["<S84>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:357"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:357"] = {rtwname: "<S84>/Terminator_1"};
+	this.rtwnameHashMap["<S85>/DC_phaB"] = {sid: "BLDCmotorControl_R2017b:2531:403"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:403"] = {rtwname: "<S85>/DC_phaB"};
+	this.rtwnameHashMap["<S85>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:404"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:404"] = {rtwname: "<S85>/Terminator_1"};
+	this.rtwnameHashMap["<S86>/DC_phaC"] = {sid: "BLDCmotorControl_R2017b:2531:406"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:406"] = {rtwname: "<S86>/DC_phaC"};
+	this.rtwnameHashMap["<S86>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:407"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:407"] = {rtwname: "<S86>/Terminator_1"};
+	this.rtwnameHashMap["<S87>/DC_phaA"] = {sid: "BLDCmotorControl_R2017b:2531:409"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:409"] = {rtwname: "<S87>/DC_phaA"};
+	this.rtwnameHashMap["<S87>/Terminator_1"] = {sid: "BLDCmotorControl_R2017b:2531:410"};
+	this.sidHashMap["BLDCmotorControl_R2017b:2531:410"] = {rtwname: "<S87>/Terminator_1"};
 	this.getSID = function(rtwname) { return this.rtwnameHashMap[rtwname];}
 	this.getRtwname = function(sid) { return this.sidHashMap[sid];}
 }

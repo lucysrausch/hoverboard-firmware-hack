@@ -88,7 +88,7 @@
 
 // NOTES Phase Advance / Field weakening:
 // 1. In BLDC_controller_data.c you can find the Phase advance Map as a function of Duty Cycle: MAP = a_phaAdv_M1, XAXIS = r_phaAdvDC_XA
-// 2. The default calibration was experimentaly obtained on the real motor based on the minimum noise and minimum torque ripple
+// 2. The default calibration was experimentally calibrated on the real motor based on the minimum noise and minimum torque ripple
 // 3. If you re-calibrate the Phase advance map please take all the safety measures! 
 // 4. I do not recommend more than 40 deg MAX Phase advance. The motors can spin VERY VERY FAST!!! Please use it with care!!
 

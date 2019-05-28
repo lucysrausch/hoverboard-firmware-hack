@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'BLDC_controller'. 
 ## 
 ## Makefile     : BLDC_controller.mk
-## Generated on : Fri May 24 22:25:17 2019
+## Generated on : Tue May 28 18:31:31 2019
 ## MATLAB Coder version: 3.4 (R2017b)
 ## 
 ## Build Info:
@@ -32,7 +32,7 @@ MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2017b
 MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2017b/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
 MASTER_ANCHOR_DIR         = 
-START_DIR                 = D:/Work_home/Projects_STM32/01_Motor_control
+START_DIR                 = D:/Work_home/01_Motor_control
 ARCH                      = win64
 SOLVER                    = 
 SOLVER_OBJ                = 

@@ -938,16 +938,16 @@
                 <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
               </linearGradient>
             </defs>
-            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-1423,603)">
+            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-1423,573)">
               <path d="M0,-12 L21.4844,-12 L21.4844,0 L0,0 L0,-12 z" fill-rule="evenodd" vector-effect="none"/>
             </g>
             <defs>
               <clipPath id="clip121">
-                <path d="M-359,-587 L1136.46,-587 L1136.46,70 L-359,70 L-359,-587 z"/>
+                <path d="M-359,-557 L1136.46,-557 L1136.46,100 L-359,100 L-359,-557 z"/>
               </clipPath>
             </defs>
-            <g clip-path="url(#clip121)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-1423,591)">
-              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="19.4844" x="1" xml:space="preserve" y="9">int32</text>
+            <g clip-path="url(#clip121)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-1423,561)">
+              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="19.4844" x="1" xml:space="preserve" y="9">int16</text>
             </g>
             <!--RAWSTRING-->
           </g>
@@ -959,16 +959,16 @@
                 <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
               </linearGradient>
             </defs>
-            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-1423,513)">
-              <path d="M0,-12 L16.4844,-12 L16.4844,0 L0,0 L0,-12 z" fill-rule="evenodd" vector-effect="none"/>
+            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-1423,453)">
+              <path d="M0,-12 L21.4844,-12 L21.4844,0 L0,0 L0,-12 z" fill-rule="evenodd" vector-effect="none"/>
             </g>
             <defs>
               <clipPath id="clip122">
-                <path d="M-359,-497 L1136.46,-497 L1136.46,160 L-359,160 L-359,-497 z"/>
+                <path d="M-359,-437 L1136.46,-437 L1136.46,220 L-359,220 L-359,-437 z"/>
               </clipPath>
             </defs>
-            <g clip-path="url(#clip122)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-1423,501)">
-              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="14.4844" x="1" xml:space="preserve" y="9">int8</text>
+            <g clip-path="url(#clip122)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-1423,441)">
+              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="19.4844" x="1" xml:space="preserve" y="9">uint8</text>
             </g>
             <!--RAWSTRING-->
           </g>
@@ -980,16 +980,16 @@
                 <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
               </linearGradient>
             </defs>
-            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-1423,573)">
+            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-1423,603)">
               <path d="M0,-12 L21.4844,-12 L21.4844,0 L0,0 L0,-12 z" fill-rule="evenodd" vector-effect="none"/>
             </g>
             <defs>
               <clipPath id="clip123">
-                <path d="M-359,-557 L1136.46,-557 L1136.46,100 L-359,100 L-359,-557 z"/>
+                <path d="M-359,-587 L1136.46,-587 L1136.46,70 L-359,70 L-359,-587 z"/>
               </clipPath>
             </defs>
-            <g clip-path="url(#clip123)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-1423,561)">
-              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="19.4844" x="1" xml:space="preserve" y="9">int16</text>
+            <g clip-path="url(#clip123)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-1423,591)">
+              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="19.4844" x="1" xml:space="preserve" y="9">int32</text>
             </g>
             <!--RAWSTRING-->
           </g>
@@ -1022,15 +1022,15 @@
                 <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
               </linearGradient>
             </defs>
-            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-1423,453)">
+            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-1423,483)">
               <path d="M0,-12 L21.4844,-12 L21.4844,0 L0,0 L0,-12 z" fill-rule="evenodd" vector-effect="none"/>
             </g>
             <defs>
               <clipPath id="clip125">
-                <path d="M-359,-437 L1136.46,-437 L1136.46,220 L-359,220 L-359,-437 z"/>
+                <path d="M-359,-467 L1136.46,-467 L1136.46,190 L-359,190 L-359,-467 z"/>
               </clipPath>
             </defs>
-            <g clip-path="url(#clip125)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-1423,441)">
+            <g clip-path="url(#clip125)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-1423,471)">
               <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="19.4844" x="1" xml:space="preserve" y="9">uint8</text>
             </g>
             <!--RAWSTRING-->
@@ -1043,16 +1043,16 @@
                 <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
               </linearGradient>
             </defs>
-            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-1423,483)">
-              <path d="M0,-12 L21.4844,-12 L21.4844,0 L0,0 L0,-12 z" fill-rule="evenodd" vector-effect="none"/>
+            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-1423,513)">
+              <path d="M0,-12 L16.4844,-12 L16.4844,0 L0,0 L0,-12 z" fill-rule="evenodd" vector-effect="none"/>
             </g>
             <defs>
               <clipPath id="clip126">
-                <path d="M-359,-467 L1136.46,-467 L1136.46,190 L-359,190 L-359,-467 z"/>
+                <path d="M-359,-497 L1136.46,-497 L1136.46,160 L-359,160 L-359,-497 z"/>
               </clipPath>
             </defs>
-            <g clip-path="url(#clip126)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-1423,471)">
-              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="19.4844" x="1" xml:space="preserve" y="9">uint8</text>
+            <g clip-path="url(#clip126)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-1423,501)">
+              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="14.4844" x="1" xml:space="preserve" y="9">int8</text>
             </g>
             <!--RAWSTRING-->
           </g>
@@ -1312,15 +1312,15 @@
                 <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
               </linearGradient>
             </defs>
-            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-773,448)">
+            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-773,483)">
               <path d="M0,-12 L21.4844,-12 L21.4844,0 L0,0 L0,-12 z" fill-rule="evenodd" vector-effect="none"/>
             </g>
             <defs>
               <clipPath id="clip143">
-                <path d="M-1009,-432 L486.461,-432 L486.461,225 L-1009,225 L-1009,-432 z"/>
+                <path d="M-1009,-467 L486.461,-467 L486.461,190 L-1009,190 L-1009,-467 z"/>
               </clipPath>
             </defs>
-            <g clip-path="url(#clip143)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-773,436)">
+            <g clip-path="url(#clip143)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-773,471)">
               <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="19.4844" x="1" xml:space="preserve" y="9">int16</text>
             </g>
             <!--RAWSTRING-->
@@ -1333,15 +1333,15 @@
                 <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
               </linearGradient>
             </defs>
-            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-773,413)">
+            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-773,448)">
               <path d="M0,-12 L21.4844,-12 L21.4844,0 L0,0 L0,-12 z" fill-rule="evenodd" vector-effect="none"/>
             </g>
             <defs>
               <clipPath id="clip144">
-                <path d="M-1009,-397 L486.461,-397 L486.461,260 L-1009,260 L-1009,-397 z"/>
+                <path d="M-1009,-432 L486.461,-432 L486.461,225 L-1009,225 L-1009,-432 z"/>
               </clipPath>
             </defs>
-            <g clip-path="url(#clip144)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-773,401)">
+            <g clip-path="url(#clip144)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-773,436)">
               <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="19.4844" x="1" xml:space="preserve" y="9">int16</text>
             </g>
             <!--RAWSTRING-->
@@ -1354,15 +1354,15 @@
                 <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
               </linearGradient>
             </defs>
-            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-773,483)">
+            <g clip-path="none" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-773,413)">
               <path d="M0,-12 L21.4844,-12 L21.4844,0 L0,0 L0,-12 z" fill-rule="evenodd" vector-effect="none"/>
             </g>
             <defs>
               <clipPath id="clip145">
-                <path d="M-1009,-467 L486.461,-467 L486.461,190 L-1009,190 L-1009,-467 z"/>
+                <path d="M-1009,-397 L486.461,-397 L486.461,260 L-1009,260 L-1009,-397 z"/>
               </clipPath>
             </defs>
-            <g clip-path="url(#clip145)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-773,471)">
+            <g clip-path="url(#clip145)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-773,401)">
               <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="19.4844" x="1" xml:space="preserve" y="9">int16</text>
             </g>
             <!--RAWSTRING-->
@@ -2846,7 +2846,7 @@
               </clipPath>
             </defs>
             <g clip-path="url(#clip236)" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-1441,49)">
-              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="12" font-style="normal" font-weight="700" stroke="none" textLength="80.6562" x="0" xml:space="preserve" y="4">Version: 1.800</text>
+              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="12" font-style="normal" font-weight="700" stroke="none" textLength="80.6562" x="0" xml:space="preserve" y="4">Version: 1.817</text>
             </g>
             <defs>
               <clipPath id="clip237">
@@ -3201,10 +3201,10 @@
           </g>
           <!--RAWSTRING-->
         </g>
-        <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-1403,415)">
+        <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-1016,380)">
           <path d="M2.5,0 C2.5,1.38071 1.38071,2.5 0,2.5 C-1.38071,2.5 -2.5,1.38071 -2.5,0 C-2.5,-1.38071 -1.38071,-2.5 0,-2.5 C1.38071,-2.5 2.5,-1.38071 2.5,0 z" fill-rule="evenodd" vector-effect="none"/>
         </g>
-        <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-1016,380)">
+        <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-1403,415)">
           <path d="M2.5,0 C2.5,1.38071 1.38071,2.5 0,2.5 C-1.38071,2.5 -2.5,1.38071 -2.5,0 C-2.5,-1.38071 -1.38071,-2.5 0,-2.5 C1.38071,-2.5 2.5,-1.38071 2.5,0 z" fill-rule="evenodd" vector-effect="none"/>
         </g>
         <!--RAWSTRING-->
@@ -3494,5 +3494,5 @@
       <!--RAWSTRING-->
     </g>
   </g>
-  <!--generated on windows @ 2019-05-25 21:42:59 W. Europe Daylight Time-->
+  <!--generated on windows @ 2019-05-28 19:55:52 W. Europe Daylight Time-->
 </svg>

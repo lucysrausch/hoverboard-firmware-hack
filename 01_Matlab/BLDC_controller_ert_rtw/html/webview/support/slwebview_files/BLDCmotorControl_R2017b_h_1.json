@@ -20,15 +20,15 @@
   "parent":1,
   "children":[
    3,
-   46,
+   44,
+   85,
+   86,
+   87,
+   88,
    89,
    90,
    91,
-   92,
-   93,
-   94,
-   95,
-   96
+   92
   ],
   "name":"BLDC_controller",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller",
@@ -148,15 +148,15 @@
   "parent":2,
   "children":[
    4,
-   24,
-   29,
-   36,
+   23,
+   27,
+   34,
+   38,
+   39,
    40,
    41,
    42,
-   43,
-   44,
-   45
+   43
   ],
   "name":"BLDC_controller_Left",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Left",
@@ -540,8 +540,7 @@
    19,
    20,
    21,
-   22,
-   23
+   22
   ],
   "name":"F01_04_Speed_Calculation",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Left/F01_Preliminary_Calculations/F01_04_Speed_Calculation",
@@ -560,16 +559,12 @@
    ":2530:108",
    ":2530:83",
    ":2530:84",
-   ":2530:85",
    ":2530:86",
    ":2530:143",
-   ":2530:102",
    ":2530:80",
    ":2530:101",
    ":2530:170",
    ":2530:109",
-   ":2530:123",
-   ":2530:103",
    ":2530:89",
    ":2530:93",
    ":2530:106",
@@ -582,8 +577,6 @@
    ":2530:99",
    ":2530:173",
    ":2530:81",
-   ":2530:87",
-   ":2530:88",
    ":2530:92",
    ":2530:174",
    ":2530:95",
@@ -591,21 +584,11 @@
    ":2530:96",
    ":2530:61",
    ":2530:100",
-   ":2530:166",
    ":2530:154",
-   ":2530:157",
    ":2530:163",
-   ":2530:112",
    ":2530:62",
    ":2530:105",
-   ":2530:107",
-   ":2530:82",
    ":2530:479",
-   ":2530:484",
-   ":2530:90",
-   ":2530:137",
-   ":2530:147",
-   ":2530:63",
    ":2530:91",
    ":2530:65",
    ":2530:138",
@@ -613,61 +596,81 @@
    ":2530:146",
    ":2530:110",
    ":2530:104",
-   ":2530:145",
    ":2530:160",
    ":2530:140",
-   ":2530:588",
+   ":2530:726",
+   ":2530:714",
+   ":2530:696",
+   ":2530:721",
+   ":2530:644",
+   ":2530:659",
+   ":2530:615",
+   ":2530:616",
+   ":2530:725",
+   ":2530:733",
    ":2530:144",
+   ":2530:588",
+   ":2530:719",
    ":2530:98",
    ":2530:97",
-   ":2530:87#out:1",
-   ":2530:112#out:1",
+   ":2530:697",
+   ":2530:645",
+   ":2530:660",
+   ":2530:698",
+   ":2530:720",
+   ":2530:723",
+   ":2530:722",
+   ":2530:92#out:1",
+   ":2530:143#out:1",
+   ":2530:124#out:1",
    ":2530:65#out:1",
    ":2530:91#out:1",
    ":2530:588#out:1",
-   ":2530:137#out:1",
    ":2530:146#out:1",
-   ":2530:63#out:1",
-   ":2530:90#out:1",
-   ":2530:147#out:1",
    ":2530:110#out:1",
    ":2530:140#out:1",
    ":2530:172#out:1",
    ":2530:138#out:1",
-   ":2530:145#out:1",
    ":2530:97#out:1",
    ":2530:98#out:1",
    ":2530:140#out:2",
    ":2530:479#out:1",
    ":2530:62#out:1",
-   ":2530:82#out:1",
    ":2530:61#out:1",
    ":2530:96#out:1",
    ":2530:95#out:1",
-   ":2530:92#out:1",
-   ":2530:88#out:1",
-   ":2530:124#out:1",
    ":2530:81#out:1",
    ":2530:60#out:1",
    ":2530:142#out:1",
    ":2530:64#out:1",
-   ":2530:80#out:1",
    ":2530:171#out:1",
    ":2530:84#out:1",
-   ":2530:109#out:1",
+   ":2530:111#out:1",
    ":2530:89#out:1",
    ":2530:93#out:1",
    ":2530:170#out:1",
-   ":2530:85#out:1",
    ":2530:169#out:1",
-   ":2530:86#out:1",
-   ":2530:143#out:1",
    ":2530:94#out:1",
-   ":2530:83#out:1",
-   ":2530:123#out:1",
-   ":2530:111#out:1",
    ":2530:136#out:1",
-   ":2530:484#out:1"
+   ":2530:644#out:1",
+   ":2530:86#out:1",
+   ":2530:645#out:1",
+   ":2530:660#out:1",
+   ":2530:80#out:1",
+   ":2530:659#out:1",
+   ":2530:733#out:1",
+   ":2530:698#out:1",
+   ":2530:697#out:1",
+   ":2530:726#out:1",
+   ":2530:714#out:1",
+   ":2530:109#out:1",
+   ":2530:83#out:1",
+   ":2530:719#out:1",
+   ":2530:721#out:1",
+   ":2530:696#out:1",
+   ":2530:720#out:1",
+   ":2530:722#out:1",
+   ":2530:725#out:1"
   ],
   "sameAsElement":true
  },
@@ -746,54 +749,22 @@
  },
  {
   "hid":14,
-  "sid":"BLDCmotorControl_R2017b:2530:112",
-  "esid":"BLDCmotorControl_R2017b:2530:112",
-  "parent":11,
-  "children":[
-  ],
-  "name":"Moving_Average_Filter",
-  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Left/F01_Preliminary_Calculations/F01_04_Speed_Calculation/Moving_Average_Filter",
-  "label":"Moving_Average_Filter",
-  "icon":"WebViewIcon1",
-  "svg":"support/slwebview_files/BLDCmotorControl_R2017b_2530_112_d.svg",
-  "thumbnail":"support/slwebview_files/BLDCmotorControl_R2017b_2530_112_d.png",
-  "backingUrl":"support/slwebview_files/BLDCmotorControl_R2017b_2530_112_d.json",
-  "elements":[
-   ":2530:113",
-   ":2530:122",
-   ":2530:114",
-   ":2530:117",
-   ":2530:118",
-   ":2530:121",
-   ":2530:115",
-   ":2530:116",
-   ":2530:113#out:1",
-   ":2530:118#out:1",
-   ":2530:121#out:1",
-   ":2530:117#out:1",
-   ":2530:116#out:1",
-   ":2530:115#out:1"
-  ],
-  "sameAsElement":true
- },
- {
-  "hid":15,
   "sid":"BLDCmotorControl_R2017b:2530:124",
   "esid":"BLDCmotorControl_R2017b:2530:124",
   "parent":11,
   "children":[
   ],
-  "name":"Raw_ Speed_calculation",
-  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Left/F01_Preliminary_Calculations/F01_04_Speed_Calculation/Raw_ Speed_calculation",
-  "label":"Raw_ Speed_calculation",
+  "name":"Motor_Speed_Calculation",
+  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Left/F01_Preliminary_Calculations/F01_04_Speed_Calculation/Motor_Speed_Calculation",
+  "label":"Motor_Speed_Calculation",
   "icon":"WebViewIcon1",
   "svg":"support/slwebview_files/BLDCmotorControl_R2017b_2530_124_d.svg",
   "thumbnail":"support/slwebview_files/BLDCmotorControl_R2017b_2530_124_d.png",
   "backingUrl":"support/slwebview_files/BLDCmotorControl_R2017b_2530_124_d.json",
   "elements":[
    ":2530:135",
+   ":2530:755",
    ":2530:125",
-   ":2530:134",
    ":2530:132",
    ":2530:131",
    ":2530:127",
@@ -802,21 +773,35 @@
    ":2530:130",
    ":2530:133",
    ":2530:128",
-   ":2530:483",
+   ":2530:605",
+   ":2530:650",
+   ":2530:751",
+   ":2530:752",
+   ":2530:753",
+   ":2530:748",
+   ":2530:749",
+   ":2530:750",
+   ":2530:756",
+   ":2530:749#out:1",
+   ":2530:753#out:1",
+   ":2530:748#out:1",
+   ":2530:750#out:1",
+   ":2530:751#out:1",
+   ":2530:752#out:1",
    ":2530:133#out:1",
    ":2530:129#out:1",
    ":2530:126#out:1",
-   ":2530:131#out:1",
-   ":2530:130#out:1",
    ":2530:127#out:1",
    ":2530:128#out:1",
    ":2530:132#out:1",
-   ":2530:125#out:1"
+   ":2530:125#out:1",
+   ":2530:130#out:1",
+   ":2530:131#out:1"
   ],
   "sameAsElement":true
  },
  {
-  "hid":16,
+  "hid":15,
   "sid":"BLDCmotorControl_R2017b:2530:140",
   "esid":"BLDCmotorControl_R2017b:2530:140",
   "parent":11,
@@ -838,13 +823,40 @@
    ":2530:140:134",
    ":2530:140:133",
    ":2530:140:132",
-   ":2530:140:136#out:1",
-   ":2530:140:137#out:1",
-   ":2530:140:135#out:1",
-   ":2530:140:134#out:2",
-   ":2530:140:134#out:1",
+   ":2530:140:133#out:1",
    ":2530:140:132#out:1",
-   ":2530:140:133#out:1"
+   ":2530:140:134#out:1",
+   ":2530:140:134#out:2",
+   ":2530:140:135#out:1",
+   ":2530:140:137#out:1",
+   ":2530:140:136#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":16,
+  "sid":"BLDCmotorControl_R2017b:2530:733",
+  "esid":"BLDCmotorControl_R2017b:2530:733",
+  "parent":11,
+  "children":[
+  ],
+  "name":"falling_edge2",
+  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Left/F01_Preliminary_Calculations/F01_04_Speed_Calculation/falling_edge2",
+  "label":"falling_edge2",
+  "icon":"WebViewIcon6",
+  "svg":"support/slwebview_files/BLDCmotorControl_R2017b_2530_733_d.svg",
+  "thumbnail":"support/slwebview_files/BLDCmotorControl_R2017b_2530_733_d.png",
+  "backingUrl":"support/slwebview_files/BLDCmotorControl_R2017b_2530_733_d.json",
+  "elements":[
+   ":2530:733:732",
+   ":2530:733:731",
+   ":2530:733:730",
+   ":2530:733:729",
+   ":2530:733:728",
+   ":2530:733:729#out:1",
+   ":2530:733:728#out:1",
+   ":2530:733:730#out:1",
+   ":2530:733:731#out:1"
   ],
   "sameAsElement":true
  },
@@ -927,27 +939,6 @@
  },
  {
   "hid":20,
-  "sid":"BLDCmotorControl_R2017b:2530:157",
-  "esid":"BLDCmotorControl_R2017b:2530:157",
-  "parent":11,
-  "children":[
-  ],
-  "name":"signal_log2",
-  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Left/F01_Preliminary_Calculations/F01_04_Speed_Calculation/signal_log2",
-  "label":"signal_log2",
-  "icon":"WebViewIcon1",
-  "svg":"support/slwebview_files/BLDCmotorControl_R2017b_2530_157_d.svg",
-  "thumbnail":"support/slwebview_files/BLDCmotorControl_R2017b_2530_157_d.png",
-  "backingUrl":"support/slwebview_files/BLDCmotorControl_R2017b_2530_157_d.json",
-  "elements":[
-   ":2530:159",
-   ":2530:158",
-   ":2530:158#out:1"
-  ],
-  "sameAsElement":true
- },
- {
-  "hid":21,
   "sid":"BLDCmotorControl_R2017b:2530:160",
   "esid":"BLDCmotorControl_R2017b:2530:160",
   "parent":11,
@@ -968,7 +959,7 @@
   "sameAsElement":true
  },
  {
-  "hid":22,
+  "hid":21,
   "sid":"BLDCmotorControl_R2017b:2530:163",
   "esid":"BLDCmotorControl_R2017b:2530:163",
   "parent":11,
@@ -989,36 +980,35 @@
   "sameAsElement":true
  },
  {
-  "hid":23,
-  "sid":"BLDCmotorControl_R2017b:2530:166",
-  "esid":"BLDCmotorControl_R2017b:2530:166",
+  "hid":22,
+  "sid":"BLDCmotorControl_R2017b:2530:616",
+  "esid":"BLDCmotorControl_R2017b:2530:616",
   "parent":11,
   "children":[
   ],
-  "name":"signal_log6",
-  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Left/F01_Preliminary_Calculations/F01_04_Speed_Calculation/signal_log6",
-  "label":"signal_log6",
+  "name":"signal_log5",
+  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Left/F01_Preliminary_Calculations/F01_04_Speed_Calculation/signal_log5",
+  "label":"signal_log5",
   "icon":"WebViewIcon1",
-  "svg":"support/slwebview_files/BLDCmotorControl_R2017b_2530_166_d.svg",
-  "thumbnail":"support/slwebview_files/BLDCmotorControl_R2017b_2530_166_d.png",
-  "backingUrl":"support/slwebview_files/BLDCmotorControl_R2017b_2530_166_d.json",
+  "svg":"support/slwebview_files/BLDCmotorControl_R2017b_2530_616_d.svg",
+  "thumbnail":"support/slwebview_files/BLDCmotorControl_R2017b_2530_616_d.png",
+  "backingUrl":"support/slwebview_files/BLDCmotorControl_R2017b_2530_616_d.json",
   "elements":[
-   ":2530:168",
-   ":2530:167",
-   ":2530:167#out:1"
+   ":2530:618",
+   ":2530:617",
+   ":2530:617#out:1"
   ],
   "sameAsElement":true
  },
  {
-  "hid":24,
+  "hid":23,
   "sid":"BLDCmotorControl_R2017b:2530:215",
   "esid":"BLDCmotorControl_R2017b:2530:215",
   "parent":3,
   "children":[
+   24,
    25,
-   26,
-   27,
-   28
+   26
   ],
   "name":"F02_Electrical_Angle_Calculation",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Left/F02_Electrical_Angle_Calculation",
@@ -1081,16 +1071,16 @@
    ":2530:542",
    ":2530:545",
    ":2530:543",
-   ":2530:577",
    ":2530:578",
    ":2530:579",
    ":2530:595",
+   ":2530:623",
+   ":2530:546#out:1",
+   ":2530:623#out:1",
+   ":2530:547#out:1",
    ":2530:595#out:1",
-   ":2530:577#out:1",
    ":2530:518#out:1",
    ":2530:521#out:1",
-   ":2530:546#out:1",
-   ":2530:547#out:1",
    ":2530:542#out:1",
    ":2530:545#out:1",
    ":2530:543#out:1",
@@ -1129,40 +1119,10 @@
   "sameAsElement":true
  },
  {
-  "hid":25,
-  "sid":"BLDCmotorControl_R2017b:2530:577",
-  "esid":"BLDCmotorControl_R2017b:2530:577",
-  "parent":24,
-  "children":[
-  ],
-  "name":"Modulo_Calculation",
-  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Left/F02_Electrical_Angle_Calculation/Modulo_Calculation",
-  "label":"Modulo_Calculation",
-  "icon":"WebViewIcon3",
-  "svg":"support/slwebview_files/BLDCmotorControl_R2017b_2530_577_d.svg",
-  "thumbnail":"support/slwebview_files/BLDCmotorControl_R2017b_2530_577_d.png",
-  "backingUrl":"support/slwebview_files/BLDCmotorControl_R2017b_2530_577_d.json",
-  "elements":[
-   ":2530:577:576",
-   ":2530:577:572",
-   ":2530:577:574",
-   ":2530:577:573",
-   ":2530:577:570",
-   ":2530:577:571",
-   ":2530:577:575",
-   ":2530:577:572#out:1",
-   ":2530:577:571#out:1",
-   ":2530:577:573#out:1",
-   ":2530:577:574#out:1",
-   ":2530:577:570#out:1"
-  ],
-  "sameAsElement":true
- },
- {
-  "hid":26,
+  "hid":24,
   "sid":"BLDCmotorControl_R2017b:2530:579",
   "esid":"BLDCmotorControl_R2017b:2530:579",
-  "parent":24,
+  "parent":23,
   "children":[
   ],
   "name":"signal_log1",
@@ -1180,10 +1140,10 @@
   "sameAsElement":true
  },
  {
-  "hid":27,
+  "hid":25,
   "sid":"BLDCmotorControl_R2017b:2530:272",
   "esid":"BLDCmotorControl_R2017b:2530:272",
-  "parent":24,
+  "parent":23,
   "children":[
   ],
   "name":"signal_log2",
@@ -1201,10 +1161,10 @@
   "sameAsElement":true
  },
  {
-  "hid":28,
+  "hid":26,
   "sid":"BLDCmotorControl_R2017b:2530:275",
   "esid":"BLDCmotorControl_R2017b:2530:275",
-  "parent":24,
+  "parent":23,
   "children":[
   ],
   "name":"signal_log6",
@@ -1222,17 +1182,17 @@
   "sameAsElement":true
  },
  {
-  "hid":29,
+  "hid":27,
   "sid":"BLDCmotorControl_R2017b:2530:282",
   "esid":"BLDCmotorControl_R2017b:2530:282",
   "parent":3,
   "children":[
+   28,
+   29,
    30,
    31,
    32,
-   33,
-   34,
-   35
+   33
   ],
   "name":"F03_Control_Method_Selection",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Left/F03_Control_Method_Selection",
@@ -1324,10 +1284,10 @@
   "sameAsElement":true
  },
  {
-  "hid":30,
+  "hid":28,
   "sid":"BLDCmotorControl_R2017b:2530:285",
   "esid":"BLDCmotorControl_R2017b:2530:285",
-  "parent":29,
+  "parent":27,
   "children":[
   ],
   "name":"F03_01_Pure_Trapezoidal_Method",
@@ -1357,10 +1317,10 @@
   "sameAsElement":true
  },
  {
-  "hid":31,
+  "hid":29,
   "sid":"BLDCmotorControl_R2017b:2530:295",
   "esid":"BLDCmotorControl_R2017b:2530:295",
-  "parent":29,
+  "parent":27,
   "children":[
   ],
   "name":"F03_02_Sinusoidal3rd_Method",
@@ -1390,10 +1350,10 @@
   "sameAsElement":true
  },
  {
-  "hid":32,
+  "hid":30,
   "sid":"BLDCmotorControl_R2017b:2530:305",
   "esid":"BLDCmotorControl_R2017b:2530:305",
-  "parent":29,
+  "parent":27,
   "children":[
   ],
   "name":"F03_02_Sinusoidal_Method",
@@ -1423,10 +1383,10 @@
   "sameAsElement":true
  },
  {
-  "hid":33,
+  "hid":31,
   "sid":"BLDCmotorControl_R2017b:2530:349",
   "esid":"BLDCmotorControl_R2017b:2530:349",
-  "parent":29,
+  "parent":27,
   "children":[
   ],
   "name":"signal_log1",
@@ -1444,10 +1404,10 @@
   "sameAsElement":true
  },
  {
-  "hid":34,
+  "hid":32,
   "sid":"BLDCmotorControl_R2017b:2530:352",
   "esid":"BLDCmotorControl_R2017b:2530:352",
-  "parent":29,
+  "parent":27,
   "children":[
   ],
   "name":"signal_log2",
@@ -1465,10 +1425,10 @@
   "sameAsElement":true
  },
  {
-  "hid":35,
+  "hid":33,
   "sid":"BLDCmotorControl_R2017b:2530:355",
   "esid":"BLDCmotorControl_R2017b:2530:355",
-  "parent":29,
+  "parent":27,
   "children":[
   ],
   "name":"signal_log6",
@@ -1486,14 +1446,14 @@
   "sameAsElement":true
  },
  {
-  "hid":36,
+  "hid":34,
   "sid":"BLDCmotorControl_R2017b:2530:361",
   "esid":"BLDCmotorControl_R2017b:2530:361",
   "parent":3,
   "children":[
-   37,
-   38,
-   39
+   35,
+   36,
+   37
   ],
   "name":"F04_Control_Type_Management",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Left/F04_Control_Type_Management",
@@ -1596,10 +1556,10 @@
   "sameAsElement":true
  },
  {
-  "hid":37,
+  "hid":35,
   "sid":"BLDCmotorControl_R2017b:2530:402",
   "esid":"BLDCmotorControl_R2017b:2530:402",
-  "parent":36,
+  "parent":34,
   "children":[
   ],
   "name":"signal_log1",
@@ -1617,10 +1577,10 @@
   "sameAsElement":true
  },
  {
-  "hid":38,
+  "hid":36,
   "sid":"BLDCmotorControl_R2017b:2530:405",
   "esid":"BLDCmotorControl_R2017b:2530:405",
-  "parent":36,
+  "parent":34,
   "children":[
   ],
   "name":"signal_log2",
@@ -1638,10 +1598,10 @@
   "sameAsElement":true
  },
  {
-  "hid":39,
+  "hid":37,
   "sid":"BLDCmotorControl_R2017b:2530:408",
   "esid":"BLDCmotorControl_R2017b:2530:408",
-  "parent":36,
+  "parent":34,
   "children":[
   ],
   "name":"signal_log6",
@@ -1659,7 +1619,7 @@
   "sameAsElement":true
  },
  {
-  "hid":40,
+  "hid":38,
   "sid":"BLDCmotorControl_R2017b:2530:457",
   "esid":"BLDCmotorControl_R2017b:2530:457",
   "parent":3,
@@ -1677,7 +1637,7 @@
   "sameAsElement":true
  },
  {
-  "hid":41,
+  "hid":39,
   "sid":"BLDCmotorControl_R2017b:2530:589",
   "esid":"BLDCmotorControl_R2017b:2530:589",
   "parent":3,
@@ -1695,7 +1655,7 @@
   "sameAsElement":true
  },
  {
-  "hid":42,
+  "hid":40,
   "sid":"BLDCmotorControl_R2017b:2530:435",
   "esid":"BLDCmotorControl_R2017b:2530:435",
   "parent":3,
@@ -1716,7 +1676,7 @@
   "sameAsElement":true
  },
  {
-  "hid":43,
+  "hid":41,
   "sid":"BLDCmotorControl_R2017b:2530:438",
   "esid":"BLDCmotorControl_R2017b:2530:438",
   "parent":3,
@@ -1737,7 +1697,7 @@
   "sameAsElement":true
  },
  {
-  "hid":44,
+  "hid":42,
   "sid":"BLDCmotorControl_R2017b:2530:441",
   "esid":"BLDCmotorControl_R2017b:2530:441",
   "parent":3,
@@ -1758,7 +1718,7 @@
   "sameAsElement":true
  },
  {
-  "hid":45,
+  "hid":43,
   "sid":"BLDCmotorControl_R2017b:2530:444",
   "esid":"BLDCmotorControl_R2017b:2530:444",
   "parent":3,
@@ -1779,21 +1739,21 @@
   "sameAsElement":true
  },
  {
-  "hid":46,
+  "hid":44,
   "sid":"BLDCmotorControl_R2017b:2531",
   "esid":"BLDCmotorControl_R2017b:2531",
   "parent":2,
   "children":[
-   47,
-   67,
-   72,
+   45,
+   64,
+   68,
+   75,
    79,
+   80,
+   81,
+   82,
    83,
-   84,
-   85,
-   86,
-   87,
-   88
+   84
   ],
   "name":"BLDC_controller_Right",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right",
@@ -1877,15 +1837,15 @@
   "sameAsElement":true
  },
  {
-  "hid":47,
+  "hid":45,
   "sid":"BLDCmotorControl_R2017b:2531:6",
   "esid":"BLDCmotorControl_R2017b:2531:6",
-  "parent":46,
+  "parent":44,
   "children":[
+   46,
    48,
    50,
-   52,
-   54
+   52
   ],
   "name":"F01_Preliminary_Calculations",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F01_Preliminary_Calculations",
@@ -1973,12 +1933,12 @@
   "sameAsElement":true
  },
  {
-  "hid":48,
+  "hid":46,
   "sid":"BLDCmotorControl_R2017b:2531:26",
   "esid":"BLDCmotorControl_R2017b:2531:26",
-  "parent":47,
+  "parent":45,
   "children":[
-   49
+   47
   ],
   "name":"F01_01_Edge_Detector",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F01_Preliminary_Calculations/F01_01_Edge_Detector",
@@ -2008,10 +1968,10 @@
   "sameAsElement":true
  },
  {
-  "hid":49,
+  "hid":47,
   "sid":"BLDCmotorControl_R2017b:2531:34",
   "esid":"BLDCmotorControl_R2017b:2531:34",
-  "parent":48,
+  "parent":46,
   "children":[
   ],
   "name":"signal_log6",
@@ -2029,12 +1989,12 @@
   "sameAsElement":true
  },
  {
-  "hid":50,
+  "hid":48,
   "sid":"BLDCmotorControl_R2017b:2531:10",
   "esid":"BLDCmotorControl_R2017b:2531:10",
-  "parent":47,
+  "parent":45,
   "children":[
-   51
+   49
   ],
   "name":"F01_02_Position_Calculation",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F01_Preliminary_Calculations/F01_02_Position_Calculation",
@@ -2070,10 +2030,10 @@
   "sameAsElement":true
  },
  {
-  "hid":51,
+  "hid":49,
   "sid":"BLDCmotorControl_R2017b:2531:19",
   "esid":"BLDCmotorControl_R2017b:2531:19",
-  "parent":50,
+  "parent":48,
   "children":[
   ],
   "name":"signal_log6",
@@ -2091,12 +2051,12 @@
   "sameAsElement":true
  },
  {
-  "hid":52,
+  "hid":50,
   "sid":"BLDCmotorControl_R2017b:2531:38",
   "esid":"BLDCmotorControl_R2017b:2531:38",
-  "parent":47,
+  "parent":45,
   "children":[
-   53
+   51
   ],
   "name":"F01_03_Direction_Detection",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F01_Preliminary_Calculations/F01_03_Direction_Detection",
@@ -2142,10 +2102,10 @@
   "sameAsElement":true
  },
  {
-  "hid":53,
+  "hid":51,
   "sid":"BLDCmotorControl_R2017b:2531:54",
   "esid":"BLDCmotorControl_R2017b:2531:54",
-  "parent":52,
+  "parent":50,
   "children":[
   ],
   "name":"signal_log6",
@@ -2163,22 +2123,21 @@
   "sameAsElement":true
  },
  {
-  "hid":54,
+  "hid":52,
   "sid":"BLDCmotorControl_R2017b:2531:59",
   "esid":"BLDCmotorControl_R2017b:2531:59",
-  "parent":47,
+  "parent":45,
   "children":[
+   53,
    55,
+   56,
    57,
    58,
    59,
    60,
    61,
    62,
-   63,
-   64,
-   65,
-   66
+   63
   ],
   "name":"F01_04_Speed_Calculation",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F01_Preliminary_Calculations/F01_04_Speed_Calculation",
@@ -2197,16 +2156,12 @@
    ":2531:108",
    ":2531:83",
    ":2531:84",
-   ":2531:85",
    ":2531:86",
    ":2531:143",
-   ":2531:102",
    ":2531:80",
    ":2531:101",
    ":2531:170",
    ":2531:109",
-   ":2531:123",
-   ":2531:103",
    ":2531:89",
    ":2531:93",
    ":2531:106",
@@ -2219,8 +2174,6 @@
    ":2531:99",
    ":2531:173",
    ":2531:81",
-   ":2531:87",
-   ":2531:88",
    ":2531:92",
    ":2531:174",
    ":2531:95",
@@ -2228,21 +2181,11 @@
    ":2531:96",
    ":2531:61",
    ":2531:100",
-   ":2531:166",
    ":2531:154",
-   ":2531:157",
    ":2531:163",
-   ":2531:112",
    ":2531:62",
    ":2531:105",
-   ":2531:107",
-   ":2531:82",
    ":2531:479",
-   ":2531:484",
-   ":2531:90",
-   ":2531:137",
-   ":2531:147",
-   ":2531:63",
    ":2531:91",
    ":2531:65",
    ":2531:138",
@@ -2250,71 +2193,91 @@
    ":2531:146",
    ":2531:110",
    ":2531:104",
-   ":2531:145",
    ":2531:160",
    ":2531:140",
+   ":2531:721",
+   ":2531:616",
    ":2531:588",
-   ":2531:97",
+   ":2531:714",
+   ":2531:720",
+   ":2531:733",
    ":2531:144",
+   ":2531:726",
+   ":2531:615",
+   ":2531:659",
+   ":2531:698",
+   ":2531:696",
+   ":2531:697",
+   ":2531:719",
+   ":2531:723",
+   ":2531:645",
    ":2531:98",
-   ":2531:87#out:1",
-   ":2531:112#out:1",
+   ":2531:660",
+   ":2531:725",
+   ":2531:97",
+   ":2531:644",
+   ":2531:722",
+   ":2531:92#out:1",
+   ":2531:143#out:1",
+   ":2531:124#out:1",
    ":2531:65#out:1",
    ":2531:91#out:1",
    ":2531:588#out:1",
-   ":2531:137#out:1",
    ":2531:146#out:1",
-   ":2531:63#out:1",
-   ":2531:90#out:1",
-   ":2531:147#out:1",
    ":2531:110#out:1",
    ":2531:140#out:1",
    ":2531:172#out:1",
    ":2531:138#out:1",
-   ":2531:145#out:1",
    ":2531:97#out:1",
    ":2531:98#out:1",
    ":2531:140#out:2",
    ":2531:479#out:1",
    ":2531:62#out:1",
-   ":2531:82#out:1",
    ":2531:61#out:1",
    ":2531:96#out:1",
    ":2531:95#out:1",
-   ":2531:92#out:1",
-   ":2531:88#out:1",
-   ":2531:124#out:1",
    ":2531:81#out:1",
    ":2531:60#out:1",
    ":2531:142#out:1",
    ":2531:64#out:1",
-   ":2531:80#out:1",
    ":2531:171#out:1",
    ":2531:84#out:1",
-   ":2531:109#out:1",
+   ":2531:111#out:1",
    ":2531:89#out:1",
    ":2531:93#out:1",
    ":2531:170#out:1",
-   ":2531:85#out:1",
    ":2531:169#out:1",
-   ":2531:86#out:1",
-   ":2531:143#out:1",
    ":2531:94#out:1",
-   ":2531:83#out:1",
-   ":2531:123#out:1",
-   ":2531:111#out:1",
    ":2531:136#out:1",
-   ":2531:484#out:1"
+   ":2531:644#out:1",
+   ":2531:86#out:1",
+   ":2531:645#out:1",
+   ":2531:660#out:1",
+   ":2531:80#out:1",
+   ":2531:659#out:1",
+   ":2531:733#out:1",
+   ":2531:698#out:1",
+   ":2531:697#out:1",
+   ":2531:726#out:1",
+   ":2531:714#out:1",
+   ":2531:109#out:1",
+   ":2531:83#out:1",
+   ":2531:719#out:1",
+   ":2531:721#out:1",
+   ":2531:696#out:1",
+   ":2531:720#out:1",
+   ":2531:722#out:1",
+   ":2531:725#out:1"
   ],
   "sameAsElement":true
  },
  {
-  "hid":55,
+  "hid":53,
   "sid":"BLDCmotorControl_R2017b:2531:65",
   "esid":"BLDCmotorControl_R2017b:2531:65",
-  "parent":54,
+  "parent":52,
   "children":[
-   56
+   54
   ],
   "name":"Edge_counter",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F01_Preliminary_Calculations/F01_04_Speed_Calculation/Edge_counter",
@@ -2353,10 +2316,10 @@
   "sameAsElement":true
  },
  {
-  "hid":56,
+  "hid":54,
   "sid":"BLDCmotorControl_R2017b:2531:480",
   "esid":"BLDCmotorControl_R2017b:2531:480",
-  "parent":55,
+  "parent":53,
   "children":[
   ],
   "name":"rst_Delay",
@@ -2382,55 +2345,23 @@
   "sameAsElement":true
  },
  {
-  "hid":57,
-  "sid":"BLDCmotorControl_R2017b:2531:112",
-  "esid":"BLDCmotorControl_R2017b:2531:112",
-  "parent":54,
-  "children":[
-  ],
-  "name":"Moving_Average_Filter",
-  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F01_Preliminary_Calculations/F01_04_Speed_Calculation/Moving_Average_Filter",
-  "label":"Moving_Average_Filter",
-  "icon":"WebViewIcon1",
-  "svg":"support/slwebview_files/BLDCmotorControl_R2017b_2531_112_d.svg",
-  "thumbnail":"support/slwebview_files/BLDCmotorControl_R2017b_2531_112_d.png",
-  "backingUrl":"support/slwebview_files/BLDCmotorControl_R2017b_2531_112_d.json",
-  "elements":[
-   ":2531:113",
-   ":2531:122",
-   ":2531:114",
-   ":2531:117",
-   ":2531:118",
-   ":2531:121",
-   ":2531:115",
-   ":2531:116",
-   ":2531:113#out:1",
-   ":2531:118#out:1",
-   ":2531:121#out:1",
-   ":2531:117#out:1",
-   ":2531:116#out:1",
-   ":2531:115#out:1"
-  ],
-  "sameAsElement":true
- },
- {
-  "hid":58,
+  "hid":55,
   "sid":"BLDCmotorControl_R2017b:2531:124",
   "esid":"BLDCmotorControl_R2017b:2531:124",
-  "parent":54,
+  "parent":52,
   "children":[
   ],
-  "name":"Raw_ Speed_calculation",
-  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F01_Preliminary_Calculations/F01_04_Speed_Calculation/Raw_ Speed_calculation",
-  "label":"Raw_ Speed_calculation",
+  "name":"Motor_Speed_Calculation",
+  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F01_Preliminary_Calculations/F01_04_Speed_Calculation/Motor_Speed_Calculation",
+  "label":"Motor_Speed_Calculation",
   "icon":"WebViewIcon1",
   "svg":"support/slwebview_files/BLDCmotorControl_R2017b_2531_124_d.svg",
   "thumbnail":"support/slwebview_files/BLDCmotorControl_R2017b_2531_124_d.png",
   "backingUrl":"support/slwebview_files/BLDCmotorControl_R2017b_2531_124_d.json",
   "elements":[
    ":2531:135",
+   ":2531:755",
    ":2531:125",
-   ":2531:134",
    ":2531:132",
    ":2531:131",
    ":2531:127",
@@ -2439,24 +2370,38 @@
    ":2531:130",
    ":2531:133",
    ":2531:128",
-   ":2531:483",
+   ":2531:605",
+   ":2531:650",
+   ":2531:751",
+   ":2531:752",
+   ":2531:753",
+   ":2531:748",
+   ":2531:749",
+   ":2531:750",
+   ":2531:756",
+   ":2531:749#out:1",
+   ":2531:753#out:1",
+   ":2531:748#out:1",
+   ":2531:750#out:1",
+   ":2531:751#out:1",
+   ":2531:752#out:1",
    ":2531:133#out:1",
    ":2531:129#out:1",
    ":2531:126#out:1",
-   ":2531:131#out:1",
-   ":2531:130#out:1",
    ":2531:127#out:1",
    ":2531:128#out:1",
    ":2531:132#out:1",
-   ":2531:125#out:1"
+   ":2531:125#out:1",
+   ":2531:130#out:1",
+   ":2531:131#out:1"
   ],
   "sameAsElement":true
  },
  {
-  "hid":59,
+  "hid":56,
   "sid":"BLDCmotorControl_R2017b:2531:140",
   "esid":"BLDCmotorControl_R2017b:2531:140",
-  "parent":54,
+  "parent":52,
   "children":[
   ],
   "name":"S-R Flip-Flop",
@@ -2475,21 +2420,48 @@
    ":2531:140:134",
    ":2531:140:133",
    ":2531:140:132",
-   ":2531:140:136#out:1",
-   ":2531:140:137#out:1",
-   ":2531:140:135#out:1",
-   ":2531:140:134#out:2",
-   ":2531:140:134#out:1",
+   ":2531:140:133#out:1",
    ":2531:140:132#out:1",
-   ":2531:140:133#out:1"
+   ":2531:140:134#out:1",
+   ":2531:140:134#out:2",
+   ":2531:140:135#out:1",
+   ":2531:140:137#out:1",
+   ":2531:140:136#out:1"
   ],
   "sameAsElement":true
  },
  {
-  "hid":60,
+  "hid":57,
+  "sid":"BLDCmotorControl_R2017b:2531:733",
+  "esid":"BLDCmotorControl_R2017b:2531:733",
+  "parent":52,
+  "children":[
+  ],
+  "name":"falling_edge2",
+  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F01_Preliminary_Calculations/F01_04_Speed_Calculation/falling_edge2",
+  "label":"falling_edge2",
+  "icon":"WebViewIcon6",
+  "svg":"support/slwebview_files/BLDCmotorControl_R2017b_2531_733_d.svg",
+  "thumbnail":"support/slwebview_files/BLDCmotorControl_R2017b_2531_733_d.png",
+  "backingUrl":"support/slwebview_files/BLDCmotorControl_R2017b_2531_733_d.json",
+  "elements":[
+   ":2531:733:732",
+   ":2531:733:731",
+   ":2531:733:730",
+   ":2531:733:729",
+   ":2531:733:728",
+   ":2531:733:729#out:1",
+   ":2531:733:728#out:1",
+   ":2531:733:730#out:1",
+   ":2531:733:731#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":58,
   "sid":"BLDCmotorControl_R2017b:2531:588",
   "esid":"BLDCmotorControl_R2017b:2531:588",
-  "parent":54,
+  "parent":52,
   "children":[
   ],
   "name":"rising_edge",
@@ -2513,10 +2485,10 @@
   "sameAsElement":true
  },
  {
-  "hid":61,
+  "hid":59,
   "sid":"BLDCmotorControl_R2017b:2531:479",
   "esid":"BLDCmotorControl_R2017b:2531:479",
-  "parent":54,
+  "parent":52,
   "children":[
   ],
   "name":"rst_Delay",
@@ -2542,10 +2514,10 @@
   "sameAsElement":true
  },
  {
-  "hid":62,
+  "hid":60,
   "sid":"BLDCmotorControl_R2017b:2531:154",
   "esid":"BLDCmotorControl_R2017b:2531:154",
-  "parent":54,
+  "parent":52,
   "children":[
   ],
   "name":"signal_log1",
@@ -2563,31 +2535,10 @@
   "sameAsElement":true
  },
  {
-  "hid":63,
-  "sid":"BLDCmotorControl_R2017b:2531:157",
-  "esid":"BLDCmotorControl_R2017b:2531:157",
-  "parent":54,
-  "children":[
-  ],
-  "name":"signal_log2",
-  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F01_Preliminary_Calculations/F01_04_Speed_Calculation/signal_log2",
-  "label":"signal_log2",
-  "icon":"WebViewIcon1",
-  "svg":"support/slwebview_files/BLDCmotorControl_R2017b_2531_157_d.svg",
-  "thumbnail":"support/slwebview_files/BLDCmotorControl_R2017b_2531_157_d.png",
-  "backingUrl":"support/slwebview_files/BLDCmotorControl_R2017b_2531_157_d.json",
-  "elements":[
-   ":2531:159",
-   ":2531:158",
-   ":2531:158#out:1"
-  ],
-  "sameAsElement":true
- },
- {
-  "hid":64,
+  "hid":61,
   "sid":"BLDCmotorControl_R2017b:2531:160",
   "esid":"BLDCmotorControl_R2017b:2531:160",
-  "parent":54,
+  "parent":52,
   "children":[
   ],
   "name":"signal_log3",
@@ -2605,10 +2556,10 @@
   "sameAsElement":true
  },
  {
-  "hid":65,
+  "hid":62,
   "sid":"BLDCmotorControl_R2017b:2531:163",
   "esid":"BLDCmotorControl_R2017b:2531:163",
-  "parent":54,
+  "parent":52,
   "children":[
   ],
   "name":"signal_log4",
@@ -2626,36 +2577,35 @@
   "sameAsElement":true
  },
  {
-  "hid":66,
-  "sid":"BLDCmotorControl_R2017b:2531:166",
-  "esid":"BLDCmotorControl_R2017b:2531:166",
-  "parent":54,
+  "hid":63,
+  "sid":"BLDCmotorControl_R2017b:2531:616",
+  "esid":"BLDCmotorControl_R2017b:2531:616",
+  "parent":52,
   "children":[
   ],
-  "name":"signal_log6",
-  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F01_Preliminary_Calculations/F01_04_Speed_Calculation/signal_log6",
-  "label":"signal_log6",
+  "name":"signal_log5",
+  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F01_Preliminary_Calculations/F01_04_Speed_Calculation/signal_log5",
+  "label":"signal_log5",
   "icon":"WebViewIcon1",
-  "svg":"support/slwebview_files/BLDCmotorControl_R2017b_2531_166_d.svg",
-  "thumbnail":"support/slwebview_files/BLDCmotorControl_R2017b_2531_166_d.png",
-  "backingUrl":"support/slwebview_files/BLDCmotorControl_R2017b_2531_166_d.json",
+  "svg":"support/slwebview_files/BLDCmotorControl_R2017b_2531_616_d.svg",
+  "thumbnail":"support/slwebview_files/BLDCmotorControl_R2017b_2531_616_d.png",
+  "backingUrl":"support/slwebview_files/BLDCmotorControl_R2017b_2531_616_d.json",
   "elements":[
-   ":2531:168",
-   ":2531:167",
-   ":2531:167#out:1"
+   ":2531:618",
+   ":2531:617",
+   ":2531:617#out:1"
   ],
   "sameAsElement":true
  },
  {
-  "hid":67,
+  "hid":64,
   "sid":"BLDCmotorControl_R2017b:2531:215",
   "esid":"BLDCmotorControl_R2017b:2531:215",
-  "parent":46,
+  "parent":44,
   "children":[
-   68,
-   69,
-   70,
-   71
+   65,
+   66,
+   67
   ],
   "name":"F02_Electrical_Angle_Calculation",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F02_Electrical_Angle_Calculation",
@@ -2718,16 +2668,16 @@
    ":2531:542",
    ":2531:545",
    ":2531:543",
-   ":2531:577",
    ":2531:578",
    ":2531:579",
    ":2531:595",
+   ":2531:623",
+   ":2531:546#out:1",
+   ":2531:623#out:1",
+   ":2531:547#out:1",
    ":2531:595#out:1",
-   ":2531:577#out:1",
    ":2531:518#out:1",
    ":2531:521#out:1",
-   ":2531:546#out:1",
-   ":2531:547#out:1",
    ":2531:542#out:1",
    ":2531:545#out:1",
    ":2531:543#out:1",
@@ -2766,40 +2716,10 @@
   "sameAsElement":true
  },
  {
-  "hid":68,
-  "sid":"BLDCmotorControl_R2017b:2531:577",
-  "esid":"BLDCmotorControl_R2017b:2531:577",
-  "parent":67,
-  "children":[
-  ],
-  "name":"Modulo_Calculation",
-  "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F02_Electrical_Angle_Calculation/Modulo_Calculation",
-  "label":"Modulo_Calculation",
-  "icon":"WebViewIcon3",
-  "svg":"support/slwebview_files/BLDCmotorControl_R2017b_2531_577_d.svg",
-  "thumbnail":"support/slwebview_files/BLDCmotorControl_R2017b_2531_577_d.png",
-  "backingUrl":"support/slwebview_files/BLDCmotorControl_R2017b_2531_577_d.json",
-  "elements":[
-   ":2531:577:576",
-   ":2531:577:572",
-   ":2531:577:574",
-   ":2531:577:573",
-   ":2531:577:570",
-   ":2531:577:571",
-   ":2531:577:575",
-   ":2531:577:572#out:1",
-   ":2531:577:571#out:1",
-   ":2531:577:573#out:1",
-   ":2531:577:574#out:1",
-   ":2531:577:570#out:1"
-  ],
-  "sameAsElement":true
- },
- {
-  "hid":69,
+  "hid":65,
   "sid":"BLDCmotorControl_R2017b:2531:579",
   "esid":"BLDCmotorControl_R2017b:2531:579",
-  "parent":67,
+  "parent":64,
   "children":[
   ],
   "name":"signal_log1",
@@ -2817,10 +2737,10 @@
   "sameAsElement":true
  },
  {
-  "hid":70,
+  "hid":66,
   "sid":"BLDCmotorControl_R2017b:2531:272",
   "esid":"BLDCmotorControl_R2017b:2531:272",
-  "parent":67,
+  "parent":64,
   "children":[
   ],
   "name":"signal_log2",
@@ -2838,10 +2758,10 @@
   "sameAsElement":true
  },
  {
-  "hid":71,
+  "hid":67,
   "sid":"BLDCmotorControl_R2017b:2531:275",
   "esid":"BLDCmotorControl_R2017b:2531:275",
-  "parent":67,
+  "parent":64,
   "children":[
   ],
   "name":"signal_log6",
@@ -2859,17 +2779,17 @@
   "sameAsElement":true
  },
  {
-  "hid":72,
+  "hid":68,
   "sid":"BLDCmotorControl_R2017b:2531:282",
   "esid":"BLDCmotorControl_R2017b:2531:282",
-  "parent":46,
+  "parent":44,
   "children":[
+   69,
+   70,
+   71,
+   72,
    73,
-   74,
-   75,
-   76,
-   77,
-   78
+   74
   ],
   "name":"F03_Control_Method_Selection",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F03_Control_Method_Selection",
@@ -2961,10 +2881,10 @@
   "sameAsElement":true
  },
  {
-  "hid":73,
+  "hid":69,
   "sid":"BLDCmotorControl_R2017b:2531:285",
   "esid":"BLDCmotorControl_R2017b:2531:285",
-  "parent":72,
+  "parent":68,
   "children":[
   ],
   "name":"F03_01_Pure_Trapezoidal_Method",
@@ -2994,10 +2914,10 @@
   "sameAsElement":true
  },
  {
-  "hid":74,
+  "hid":70,
   "sid":"BLDCmotorControl_R2017b:2531:295",
   "esid":"BLDCmotorControl_R2017b:2531:295",
-  "parent":72,
+  "parent":68,
   "children":[
   ],
   "name":"F03_02_Sinusoidal3rd_Method",
@@ -3027,10 +2947,10 @@
   "sameAsElement":true
  },
  {
-  "hid":75,
+  "hid":71,
   "sid":"BLDCmotorControl_R2017b:2531:305",
   "esid":"BLDCmotorControl_R2017b:2531:305",
-  "parent":72,
+  "parent":68,
   "children":[
   ],
   "name":"F03_02_Sinusoidal_Method",
@@ -3060,10 +2980,10 @@
   "sameAsElement":true
  },
  {
-  "hid":76,
+  "hid":72,
   "sid":"BLDCmotorControl_R2017b:2531:349",
   "esid":"BLDCmotorControl_R2017b:2531:349",
-  "parent":72,
+  "parent":68,
   "children":[
   ],
   "name":"signal_log1",
@@ -3081,10 +3001,10 @@
   "sameAsElement":true
  },
  {
-  "hid":77,
+  "hid":73,
   "sid":"BLDCmotorControl_R2017b:2531:352",
   "esid":"BLDCmotorControl_R2017b:2531:352",
-  "parent":72,
+  "parent":68,
   "children":[
   ],
   "name":"signal_log2",
@@ -3102,10 +3022,10 @@
   "sameAsElement":true
  },
  {
-  "hid":78,
+  "hid":74,
   "sid":"BLDCmotorControl_R2017b:2531:355",
   "esid":"BLDCmotorControl_R2017b:2531:355",
-  "parent":72,
+  "parent":68,
   "children":[
   ],
   "name":"signal_log6",
@@ -3123,14 +3043,14 @@
   "sameAsElement":true
  },
  {
-  "hid":79,
+  "hid":75,
   "sid":"BLDCmotorControl_R2017b:2531:361",
   "esid":"BLDCmotorControl_R2017b:2531:361",
-  "parent":46,
+  "parent":44,
   "children":[
-   80,
-   81,
-   82
+   76,
+   77,
+   78
   ],
   "name":"F04_Control_Type_Management",
   "fullname":"BLDCmotorControl_R2017b/BLDC_controller/BLDC_controller_Right/F04_Control_Type_Management",
@@ -3233,10 +3153,10 @@
   "sameAsElement":true
  },
  {
-  "hid":80,
+  "hid":76,
   "sid":"BLDCmotorControl_R2017b:2531:402",
   "esid":"BLDCmotorControl_R2017b:2531:402",
-  "parent":79,
+  "parent":75,
   "children":[
   ],
   "name":"signal_log1",
@@ -3254,10 +3174,10 @@
   "sameAsElement":true
  },
  {
-  "hid":81,
+  "hid":77,
   "sid":"BLDCmotorControl_R2017b:2531:405",
   "esid":"BLDCmotorControl_R2017b:2531:405",
-  "parent":79,
+  "parent":75,
   "children":[
   ],
   "name":"signal_log2",
@@ -3275,10 +3195,10 @@
   "sameAsElement":true
  },
  {
-  "hid":82,
+  "hid":78,
   "sid":"BLDCmotorControl_R2017b:2531:408",
   "esid":"BLDCmotorControl_R2017b:2531:408",
-  "parent":79,
+  "parent":75,
   "children":[
   ],
   "name":"signal_log6",
@@ -3296,10 +3216,10 @@
   "sameAsElement":true
  },
  {
-  "hid":83,
+  "hid":79,
   "sid":"BLDCmotorControl_R2017b:2531:457",
   "esid":"BLDCmotorControl_R2017b:2531:457",
-  "parent":46,
+  "parent":44,
   "children":[
   ],
   "name":"Implemented_control_methods",
@@ -3314,10 +3234,10 @@
   "sameAsElement":true
  },
  {
-  "hid":84,
+  "hid":80,
   "sid":"BLDCmotorControl_R2017b:2531:589",
   "esid":"BLDCmotorControl_R2017b:2531:589",
-  "parent":46,
+  "parent":44,
   "children":[
   ],
   "name":"Model_Info",
@@ -3332,10 +3252,10 @@
   "sameAsElement":true
  },
  {
-  "hid":85,
+  "hid":81,
   "sid":"BLDCmotorControl_R2017b:2531:435",
   "esid":"BLDCmotorControl_R2017b:2531:435",
-  "parent":46,
+  "parent":44,
   "children":[
   ],
   "name":"signal_log1",
@@ -3353,10 +3273,10 @@
   "sameAsElement":true
  },
  {
-  "hid":86,
+  "hid":82,
   "sid":"BLDCmotorControl_R2017b:2531:438",
   "esid":"BLDCmotorControl_R2017b:2531:438",
-  "parent":46,
+  "parent":44,
   "children":[
   ],
   "name":"signal_log2",
@@ -3374,10 +3294,10 @@
   "sameAsElement":true
  },
  {
-  "hid":87,
+  "hid":83,
   "sid":"BLDCmotorControl_R2017b:2531:441",
   "esid":"BLDCmotorControl_R2017b:2531:441",
-  "parent":46,
+  "parent":44,
   "children":[
   ],
   "name":"signal_log3",
@@ -3395,10 +3315,10 @@
   "sameAsElement":true
  },
  {
-  "hid":88,
+  "hid":84,
   "sid":"BLDCmotorControl_R2017b:2531:444",
   "esid":"BLDCmotorControl_R2017b:2531:444",
-  "parent":46,
+  "parent":44,
   "children":[
   ],
   "name":"signal_log6",
@@ -3416,7 +3336,7 @@
   "sameAsElement":true
  },
  {
-  "hid":89,
+  "hid":85,
   "sid":"BLDCmotorControl_R2017b:1831",
   "esid":"BLDCmotorControl_R2017b:1831",
   "parent":2,
@@ -3437,7 +3357,7 @@
   "sameAsElement":true
  },
  {
-  "hid":90,
+  "hid":86,
   "sid":"BLDCmotorControl_R2017b:1834",
   "esid":"BLDCmotorControl_R2017b:1834",
   "parent":2,
@@ -3458,7 +3378,7 @@
   "sameAsElement":true
  },
  {
-  "hid":91,
+  "hid":87,
   "sid":"BLDCmotorControl_R2017b:1837",
   "esid":"BLDCmotorControl_R2017b:1837",
   "parent":2,
@@ -3479,7 +3399,7 @@
   "sameAsElement":true
  },
  {
-  "hid":92,
+  "hid":88,
   "sid":"BLDCmotorControl_R2017b:2550",
   "esid":"BLDCmotorControl_R2017b:2550",
   "parent":2,
@@ -3500,7 +3420,7 @@
   "sameAsElement":true
  },
  {
-  "hid":93,
+  "hid":89,
   "sid":"BLDCmotorControl_R2017b:2553",
   "esid":"BLDCmotorControl_R2017b:2553",
   "parent":2,
@@ -3521,7 +3441,7 @@
   "sameAsElement":true
  },
  {
-  "hid":94,
+  "hid":90,
   "sid":"BLDCmotorControl_R2017b:1828",
   "esid":"BLDCmotorControl_R2017b:1828",
   "parent":2,
@@ -3542,7 +3462,7 @@
   "sameAsElement":true
  },
  {
-  "hid":95,
+  "hid":91,
   "sid":"BLDCmotorControl_R2017b:2556",
   "esid":"BLDCmotorControl_R2017b:2556",
   "parent":2,
@@ -3563,7 +3483,7 @@
   "sameAsElement":true
  },
  {
-  "hid":96,
+  "hid":92,
   "sid":"BLDCmotorControl_R2017b:2559",
   "esid":"BLDCmotorControl_R2017b:2559",
   "parent":2,

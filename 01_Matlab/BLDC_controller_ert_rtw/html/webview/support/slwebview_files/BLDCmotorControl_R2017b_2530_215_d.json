@@ -101,8 +101,8 @@
   "sid":"BLDCmotorControl_R2017b:2530:524",
   "className":"Simulink.Annotation",
   "icon":"WebViewIcon5",
-  "name":"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"> <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\"> p, li { white-space: pre-wrap; } </style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\"> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Phase Advance is a function of the Duty Cycle.</span></p></body></html>",
-  "label":"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"> <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\"> p, li { white-space: pre-wrap; } </style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\"> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Phase Advance is a function of the Duty Cycle.</span></p></body></html>",
+  "name":"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"> <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\"> p, li { white-space: pre-wrap; } </style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\"> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Phase Advance map as a function of the Duty Cycle.</span></p></body></html>",
+  "label":"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\"> <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\"> p, li { white-space: pre-wrap; } </style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\"> <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Phase Advance map as a function of the Duty Cycle.</span></p></body></html>",
   "parent":"BLDCmotorControl_R2017b:2530:215",
   "inspector":{
    "params":[
@@ -120,7 +120,7 @@
     "ClickFcn"
    ],
    "values":[
-    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Phase Advance is a function of the Duty Cycle.</span></p></body></html>",
+    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10px; color:#ff0000;\">Phase Advance map as a function of the Duty Cycle.</span></p></body></html>",
     "off",
     "rich",
     "auto",
@@ -668,7 +668,7 @@
     "SaturateOnIntegerOverflow"
    ],
    "values":[
-    "Inherit: Inherit via internal rule",
+    "int32",
     "1",
     "All dimensions",
     "off",
@@ -751,7 +751,7 @@
    ],
    "values":[
     "a_elecAngle",
-    "Inherit: Inherit via back propagation",
+    "int32",
     "inf",
     "off",
     "[]",
@@ -803,7 +803,7 @@
     "SaturateOnIntegerOverflow"
    ],
    "values":[
-    "Inherit: Inherit via internal rule",
+    "int32",
     "1",
     "All dimensions",
     "off",
@@ -2531,103 +2531,6 @@
   }
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2530:577",
-  "className":"Simulink.SubSystem",
-  "icon":"WebViewIcon3",
-  "name":"Modulo_Calculation",
-  "label":"Modulo_Calculation",
-  "parent":"BLDCmotorControl_R2017b:2530:215",
-  "inspector":{
-   "params":[
-    "ShowPortLabels",
-    "Permissions",
-    "ErrorFcn",
-    "PermitHierarchicalResolution",
-    "TreatAsAtomicUnit",
-    "TreatAsGroupedWhenPropagatingVariantConditions",
-    "ActiveVariant",
-    "ActiveVariantBlock",
-    "AllowZeroVariantControls",
-    "BlockChoice",
-    "FunctionInterfaceSpec",
-    "FunctionWithSeparateData",
-    "GeneratePreprocessorConditionals",
-    "IsSubsystemVirtual",
-    "MemberBlocks",
-    "MinAlgLoopOccurrences",
-    "OverrideUsingVariant",
-    "PropExecContextOutsideSubsystem",
-    "PropagateVariantConditions",
-    "RTWFcnName",
-    "RTWFcnNameOpts",
-    "RTWFileName",
-    "RTWFileNameOpts",
-    "RTWMemSecDataConstants",
-    "RTWMemSecDataInternal",
-    "RTWMemSecDataParameters",
-    "RTWMemSecFuncExecute",
-    "RTWMemSecFuncInitTerm",
-    "RTWSystemCode",
-    "SystemSampleTime",
-    "TemplateBlock",
-    "Variant",
-    "VariantControl"
-   ],
-   "values":[
-    "FromPortIcon",
-    "ReadWrite",
-    "",
-    "All",
-    "off",
-    "on",
-    "",
-    "",
-    "off",
-    "",
-    "void_void",
-    "off",
-    "off",
-    "on",
-    "",
-    "off",
-    "",
-    "off",
-    "off",
-    "",
-    "Auto",
-    "",
-    "Auto",
-    "Inherit from model",
-    "Inherit from model",
-    "Inherit from model",
-    "Inherit from model",
-    "Inherit from model",
-    "Auto",
-    "-1",
-    "",
-    "off",
-    ""
-   ],
-   "tabs":[
-    "Main",
-    "-Other"
-   ],
-   "tabs_idx":[
-    0,
-    6
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ContainerHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"SubSystem",
-   "masktype":""
-  }
- },
- {
   "sid":"BLDCmotorControl_R2017b:2530:578",
   "className":"Simulink.Goto",
   "icon":"WebViewIcon2",
@@ -2805,7 +2708,62 @@
   }
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2530:595#out:1",
+  "sid":"BLDCmotorControl_R2017b:2530:623",
+  "className":"Simulink.Math",
+  "icon":"WebViewIcon2",
+  "name":"Math Function",
+  "label":"Math Function",
+  "parent":"BLDCmotorControl_R2017b:2530:215",
+  "inspector":{
+   "params":[
+    "OutDataTypeStr",
+    "AlgorithmType",
+    "IntermediateResultsDataTypeStr",
+    "Iterations",
+    "LockScale",
+    "Operator",
+    "OutMax",
+    "OutMin",
+    "OutputSignalType",
+    "RndMeth",
+    "SampleTime",
+    "SaturateOnIntegerOverflow"
+   ],
+   "values":[
+    "Inherit: Same as first input",
+    "Newton-Raphson",
+    "Inherit: Inherit via internal rule",
+    "3",
+    "off",
+    "mod",
+    "[]",
+    "[]",
+    "auto",
+    "Floor",
+    "-1",
+    "on"
+   ],
+   "tabs":[
+    "Signal Attributes",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    1
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"Math",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2530:546#out:1",
   "className":"Simulink.Line",
   "icon":"WebViewIcon4",
   "name":"",
@@ -2856,7 +2814,109 @@
   ]
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2530:577#out:1",
+  "sid":"BLDCmotorControl_R2017b:2530:623#out:1",
+  "className":"Simulink.Line",
+  "icon":"WebViewIcon4",
+  "name":"",
+  "label":"",
+  "parent":"BLDCmotorControl_R2017b:2530:215",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2530:547#out:1",
+  "className":"Simulink.Line",
+  "icon":"WebViewIcon4",
+  "name":"",
+  "label":"",
+  "parent":"BLDCmotorControl_R2017b:2530:215",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2530:595#out:1",
   "className":"Simulink.Line",
   "icon":"WebViewIcon4",
   "name":"",
@@ -2959,108 +3019,6 @@
  },
  {
   "sid":"BLDCmotorControl_R2017b:2530:521#out:1",
-  "className":"Simulink.Line",
-  "icon":"WebViewIcon4",
-  "name":"",
-  "label":"",
-  "parent":"BLDCmotorControl_R2017b:2530:215",
-  "inspector":{
-   "params":[
-    "SignalNameFromLabel",
-    "MustResolveToSignal",
-    "ShowPropagatedSignal",
-    "DataLogging",
-    "TestPoint",
-    "SignalObjectPackage",
-    "StorageClass",
-    "Description",
-    "documentLink"
-   ],
-   "values":[
-    "",
-    "off",
-    "off",
-    "off",
-    "off",
-    "Simulink",
-    "Auto",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes",
-    "Logging and Accessibility",
-    "Code Generation",
-    "Documentation"
-   ],
-   "tabs_idx":[
-    0,
-    3,
-    5,
-    7
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2530:546#out:1",
-  "className":"Simulink.Line",
-  "icon":"WebViewIcon4",
-  "name":"",
-  "label":"",
-  "parent":"BLDCmotorControl_R2017b:2530:215",
-  "inspector":{
-   "params":[
-    "SignalNameFromLabel",
-    "MustResolveToSignal",
-    "ShowPropagatedSignal",
-    "DataLogging",
-    "TestPoint",
-    "SignalObjectPackage",
-    "StorageClass",
-    "Description",
-    "documentLink"
-   ],
-   "values":[
-    "",
-    "off",
-    "off",
-    "off",
-    "off",
-    "Simulink",
-    "Auto",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes",
-    "Logging and Accessibility",
-    "Code Generation",
-    "Documentation"
-   ],
-   "tabs_idx":[
-    0,
-    3,
-    5,
-    7
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2530:547#out:1",
   "className":"Simulink.Line",
   "icon":"WebViewIcon4",
   "name":"",

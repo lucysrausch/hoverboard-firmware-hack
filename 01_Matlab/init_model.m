@@ -4,10 +4,10 @@
 % Compared to previouse commutation method, this project offers
 % 3 more additional control method for BLDC motors.
 % The new control methods offers superior performanace 
-% compared to previous method. The new methods features:
-% ? reduced noise and vibrations
-% ? smooth torque output
-% ? improved motor efficiency -> lower energy consumption
+% compared to previous method featuring:
+% >> reduced noise and vibrations
+% >> smooth torque output
+% >> improved motor efficiency -> lower energy consumption
 % 
 % Author: Emanuel FERU
 % Copyright © 2019 Emanuel FERU <aerdronix@gmail.com>
@@ -53,32 +53,30 @@ a_mechAngle     = a_elecAngle / n_polePairs;    % [deg] Mechanical angle
 %% F01_Preliminary_Calculations
 
 % Position Calculation Parameters
-% Hall = 4*hA + 2*hB + hC
-% Hall =          [0 1 2 3 4 5 6 7]
+% Hall          = 4*hA + 2*hB + hC
+% Hall          = [0 1 2 3 4 5 6 7]
 vec_hallToPos   = [0 5 3 4 1 0 2 0];  % [-] Mapping Hall signal to position
 
 % Speed Calculation Parameters
-z_nrEdgeSpdAcv  = 5;            % [-] Number of edge detections to activate speed calculation
-n_thresSpdDeacv = 5;            % [rpm] Threshold to deactivate speed calculation
+z_nrEdgeSpdAcv  = 3;            % [-] Number of edge detections to activate speed calculation
 z_maxCntRst     = 2000;         % [-] Maximum counter value for reset (works also as time-out to detect standing still)
 f_ctrl          = 1/Ts_ctrl;    % [Hz] Controller frequency = 1/Ts_ctrl
-cf_spdCoef      = round(f_ctrl * a_mechAngle * (pi/180) * (30/pi));     % [-] Speed calculation coefficient (factors are due to conversions rpm <-> rad/s)
+cf_speedCoef    = round(f_ctrl * a_mechAngle * (pi/180) * (30/pi));     % [-] Speed calculation coefficient (factors are due to conversions rpm <-> rad/s)
 
 %% F02_Electrical_Angle_Calculation
-b_phaAdvEna         = 1;    % [-] Phase advance enable parameter: 0 = disable, 1 = enable
-% The map below was experimentaly calibrated on the real motor. Objectives minimum noise and torque ripple
-a_phaAdv_M1         = [0   0   7   2   2   2   4   5   9  16   25];     % [deg] Phase advance angle
-r_phaAdvDC_XA       = [0 100 200 300 400 500 600 700 800 900 1000];     % [-] Phase advance Duty Cycle grid
+b_phaAdvEna     = 1;    % [-] Phase advance enable parameter: 0 = disable, 1 = enable
 
+% The map below was experimentaly calibrated on the real motor. Objectives: minimum noise and minimum torque ripple
+a_phaAdv_M1     = [0   0   7   2   2   2   4   5   9  16   25];     % [deg] Phase advance angle
+r_phaAdvDC_XA   = [0 100 200 300 400 500 600 700 800 900 1000];     % [-] Phase advance Duty Cycle grid
 % plot(r_phaAdvDC_XA, a_phaAdv_M1);
 
 %% F03_Speed_Control
-
-sca_factor      = 1000;     % [-] scalling factor (to avoid truncation approximations)
-
 n_commDeacvHi   = 180;      % [rpm] Commutation method deactivation speed high
 n_commAcvLo     = 100;      % [rpm] Commutation method activation speed low
 r_commDCDeacv   = 70;       % [-] Commutation method deactivation Duty Cycle threshold (arbitrary small number)
+
+sca_factor      = 1000;     % [-] scalling factor (to avoid truncation approximations on integer data type)
 
 % Commutation method
 z_commutMap_M1  = sca_factor*[ 1  1  0 -1 -1  0;    % Phase A
