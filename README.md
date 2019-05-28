@@ -24,6 +24,7 @@ A short video showing the noise performance of the Commutation method vs Sinusoi
 [►Video: Commutation method vs Sinusoidal 3rd harmonic](https://drive.google.com/file/d/1vC_kEkp2LE2lAaMCJcmK4z2m3jrPUoBD/view)
 ** A more detailed and better movie will come soon... so stay tuned ;)
 ![Hoverboard wheel](https://github.com/EmanuelFeru/hoverboard-firmware-hack/blob/master/docs/pictures/hoverboard_wheel.JPG | width=640)
+
 ---
 GENERAL NOTES:
  - All the calibratable motor parameters can be found in the 'BLDC_controller_data.c'. I provided you with an already calibrated controller, but if you feel like fine tuning it feel free to do so.
