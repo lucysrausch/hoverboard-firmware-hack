@@ -8,7 +8,7 @@ This repository improves significantly the performance of the previous BLDC moto
  - improved motor efficiency. Thus, lower energy consumption
  - automatic phase advance / field weakening
 
-![Schematic representation of the control methods](https://raw.githubusercontent.com/EmanuelFeru/hoverboard-firmware-hack/master/01_Matlab/02_Figures/control_methods.png =2x)
+![Schematic representation of the control methods](https://raw.githubusercontent.com/EmanuelFeru/hoverboard-firmware-hack/master/01_Matlab/02_Figures/control_methods.png)
 
 A classification of the BLDC control methods in terms of performance is as follows:
 
