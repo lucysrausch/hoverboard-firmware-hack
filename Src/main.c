@@ -67,6 +67,9 @@ extern volatile uint32_t timeout; // global variable for timeout
 extern float batteryVoltage; // global variable for battery voltage
 
 uint32_t inactivity_timeout_counter;
+uint32_t main_loop_counter;
+
+int32_t motor_test_direction = 1;
 
 extern uint8_t nunchuck_data[6];
 #ifdef CONTROL_PPM
@@ -77,7 +80,9 @@ int milli_vel_error_sum = 0;
 
 
 void poweroff() {
+    #ifndef CONTROL_MOTOR_TEST
     if (abs(speed) < 20) {
+    #endif
         buzzerPattern = 0;
         enable = 0;
         for (int i = 0; i < 8; i++) {
@@ -86,7 +91,9 @@ void poweroff() {
         }
         HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0);
         while(1) {}
+    #ifndef CONTROL_MOTOR_TEST
     }
+    #endif
 }
 
 
@@ -218,6 +225,14 @@ int main(void) {
       timeout = 0;
     #endif
 
+    #ifdef CONTROL_MOTOR_TEST
+      // if (main_loop_counter % 2 == 0) {
+        if (motor_test_direction == 1) cmd2 += 1;
+        else cmd2 -= 1;
+        if (abs(cmd2) > CONTROL_MOTOR_TEST_MAX_SPEED) motor_test_direction = -motor_test_direction;
+      // }
+      timeout = 0;
+    #endif
 
     // ####### LOW-PASS FILTER #######
     steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
@@ -252,7 +267,7 @@ int main(void) {
     lastSpeedR = speedR;
 
 
-    if (inactivity_timeout_counter % 25 == 0) {
+    if (main_loop_counter % 25 == 0) {
       // ####### CALC BOARD TEMPERATURE #######
       board_temp_adc_filtered = board_temp_adc_filtered * 0.99 + (float)adc_buffer.temp * 0.01;
       board_temp_deg_c = ((float)TEMP_CAL_HIGH_DEG_C - (float)TEMP_CAL_LOW_DEG_C) / ((float)TEMP_CAL_HIGH_ADC - (float)TEMP_CAL_LOW_ADC) * (board_temp_adc_filtered - (float)TEMP_CAL_LOW_ADC) + (float)TEMP_CAL_LOW_DEG_C;
@@ -310,6 +325,8 @@ int main(void) {
     if (inactivity_timeout_counter > (INACTIVITY_TIMEOUT * 60 * 1000) / (DELAY_IN_MAIN_LOOP + 1)) {  // rest of main loop needs maybe 1ms
       poweroff();
     }
+    
+    main_loop_counter += 1;
   }
 }
 
