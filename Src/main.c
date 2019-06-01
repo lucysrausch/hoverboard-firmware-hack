@@ -226,11 +226,10 @@ int main(void) {
     #endif
 
     #ifdef CONTROL_MOTOR_TEST
-      // if (main_loop_counter % 2 == 0) {
-        if (motor_test_direction == 1) cmd2 += 1;
-        else cmd2 -= 1;
-        if (abs(cmd2) > CONTROL_MOTOR_TEST_MAX_SPEED) motor_test_direction = -motor_test_direction;
-      // }
+      if (motor_test_direction == 1) cmd2 += 1;
+      else cmd2 -= 1;
+      if (abs(cmd2) > CONTROL_MOTOR_TEST_MAX_SPEED) motor_test_direction = -motor_test_direction;
+
       timeout = 0;
     #endif
 
@@ -327,6 +326,7 @@ int main(void) {
     }
     
     main_loop_counter += 1;
+    timeout++;
   }
 }
 
