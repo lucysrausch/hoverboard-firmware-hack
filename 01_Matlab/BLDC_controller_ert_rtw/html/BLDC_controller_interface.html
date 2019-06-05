@@ -63,7 +63,7 @@ Prototype
 </td>
 <td width="75%" align="left" valign="top">
 <b>
-void BLDC_controller_initialize(void)
+void BLDC_controller_initialize(RT_MODEL&nbsp;*const&nbsp;rtM)
 </b>
 
 </td>
@@ -92,7 +92,52 @@ Must be called exactly once
 Arguments
 </td>
 <td width="75%" align="left" valign="top">
-None
+<table class="AltRow FirstColumn" cellspacing="0">
+<tr class="heading">
+<th align="left" valign="top">
+<b>
+#
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+Name
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+Data Type
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+Description
+</b>
+
+</th>
+
+</tr>
+<tr class="even">
+<td align="right" valign="top">
+1
+</td>
+<td align="left" valign="top">
+rtM
+</td>
+<td align="left" valign="top">
+RT_MODEL&nbsp;*const
+</td>
+<td align="left" valign="top">
+RTModel
+</td>
+
+</tr>
+
+</table>
+
 </td>
 
 </tr>
@@ -126,7 +171,7 @@ Prototype
 </td>
 <td width="75%" align="left" valign="top">
 <b>
-void BLDC_controller_step(void)
+void BLDC_controller_step(RT_MODEL&nbsp;*const&nbsp;rtM)
 </b>
 
 </td>
@@ -146,7 +191,7 @@ Output entry point of generated code
 Timing
 </td>
 <td width="75%" align="left" valign="top">
-Must be called periodically, every 1e-05 seconds
+Must be called periodically, every 6e-05 seconds
 </td>
 
 </tr>
@@ -155,7 +200,52 @@ Must be called periodically, every 1e-05 seconds
 Arguments
 </td>
 <td width="75%" align="left" valign="top">
-None
+<table class="AltRow FirstColumn" cellspacing="0">
+<tr class="heading">
+<th align="left" valign="top">
+<b>
+#
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+Name
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+Data Type
+</b>
+
+</th>
+<th align="left" valign="top">
+<b>
+Description
+</b>
+
+</th>
+
+</tr>
+<tr class="even">
+<td align="right" valign="top">
+1
+</td>
+<td align="left" valign="top">
+rtM
+</td>
+<td align="left" valign="top">
+RT_MODEL&nbsp;*const
+</td>
+<td align="left" valign="top">
+RTModel
+</td>
+
+</tr>
+
+</table>
+
 </td>
 
 </tr>
@@ -215,10 +305,13 @@ Dimension
 </tr>
 <tr class="even">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:365')" name="code2model" class="code2model">&lt;S1&gt;/b_hallALeft </a>
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:365')" name="code2model" class="code2model">&lt;S1&gt;/b_hallA </a>
 </td>
 <td width="26%" align="left" valign="top">
-rtU.b_hallALeft
+<i>
+Defined externally
+</i>
+
 </td>
 <td width="21%" align="left" valign="top">
 uint8_T
@@ -230,10 +323,13 @@ uint8_T
 </tr>
 <tr class="odd">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:1277')" name="code2model" class="code2model">&lt;S1&gt;/b_hallBLeft</a>
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:1277')" name="code2model" class="code2model">&lt;S1&gt;/b_hallB</a>
 </td>
 <td width="26%" align="left" valign="top">
-rtU.b_hallBLeft
+<i>
+Defined externally
+</i>
+
 </td>
 <td width="21%" align="left" valign="top">
 uint8_T
@@ -245,10 +341,13 @@ uint8_T
 </tr>
 <tr class="even">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:1278')" name="code2model" class="code2model">&lt;S1&gt;/b_hallCLeft</a>
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:1278')" name="code2model" class="code2model">&lt;S1&gt;/b_hallC</a>
 </td>
 <td width="26%" align="left" valign="top">
-rtU.b_hallCLeft
+<i>
+Defined externally
+</i>
+
 </td>
 <td width="21%" align="left" valign="top">
 uint8_T
@@ -260,70 +359,13 @@ uint8_T
 </tr>
 <tr class="odd">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:1766')" name="code2model" class="code2model">&lt;S1&gt;/r_DCLeft</a>
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:1766')" name="code2model" class="code2model">&lt;S1&gt;/r_DC</a>
 </td>
 <td width="26%" align="left" valign="top">
-rtU.r_DCLeft
-</td>
-<td width="21%" align="left" valign="top">
-int32_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
+<i>
+Defined externally
+</i>
 
-</tr>
-<tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2542')" name="code2model" class="code2model">&lt;S1&gt;/b_hallARight</a>
-</td>
-<td width="26%" align="left" valign="top">
-rtU.b_hallARight
-</td>
-<td width="21%" align="left" valign="top">
-uint8_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
-
-</tr>
-<tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2543')" name="code2model" class="code2model">&lt;S1&gt;/b_hallBRight</a>
-</td>
-<td width="26%" align="left" valign="top">
-rtU.b_hallBRight
-</td>
-<td width="21%" align="left" valign="top">
-uint8_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
-
-</tr>
-<tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2544')" name="code2model" class="code2model">&lt;S1&gt;/b_hallCRight</a>
-</td>
-<td width="26%" align="left" valign="top">
-rtU.b_hallCRight
-</td>
-<td width="21%" align="left" valign="top">
-uint8_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
-
-</tr>
-<tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2545')" name="code2model" class="code2model">&lt;S1&gt;/r_DCRight</a>
-</td>
-<td width="26%" align="left" valign="top">
-rtU.r_DCRight
 </td>
 <td width="21%" align="left" valign="top">
 int32_T
@@ -371,10 +413,13 @@ Dimension
 </tr>
 <tr class="even">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:39')" name="code2model" class="code2model">&lt;S1&gt;/DC_phaALeft</a>
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:39')" name="code2model" class="code2model">&lt;S1&gt;/DC_phaA</a>
 </td>
 <td width="26%" align="left" valign="top">
-rtY.DC_phaALeft
+<i>
+Defined externally
+</i>
+
 </td>
 <td width="21%" align="left" valign="top">
 int32_T
@@ -386,10 +431,13 @@ int32_T
 </tr>
 <tr class="odd">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:1762')" name="code2model" class="code2model">&lt;S1&gt;/DC_phaBLeft</a>
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:1762')" name="code2model" class="code2model">&lt;S1&gt;/DC_phaB</a>
 </td>
 <td width="26%" align="left" valign="top">
-rtY.DC_phaBLeft
+<i>
+Defined externally
+</i>
+
 </td>
 <td width="21%" align="left" valign="top">
 int32_T
@@ -401,10 +449,13 @@ int32_T
 </tr>
 <tr class="even">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:1764')" name="code2model" class="code2model">&lt;S1&gt;/DC_phaCLeft</a>
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:1764')" name="code2model" class="code2model">&lt;S1&gt;/DC_phaC</a>
 </td>
 <td width="26%" align="left" valign="top">
-rtY.DC_phaCLeft
+<i>
+Defined externally
+</i>
+
 </td>
 <td width="21%" align="left" valign="top">
 int32_T
@@ -416,10 +467,13 @@ int32_T
 </tr>
 <tr class="odd">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:628')" name="code2model" class="code2model">&lt;S1&gt;/n_motLeft</a>
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:628')" name="code2model" class="code2model">&lt;S1&gt;/n_mot</a>
 </td>
 <td width="26%" align="left" valign="top">
-rtY.n_motLeft
+<i>
+Defined externally
+</i>
+
 </td>
 <td width="21%" align="left" valign="top">
 int32_T
@@ -431,85 +485,13 @@ int32_T
 </tr>
 <tr class="even">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2463')" name="code2model" class="code2model">&lt;S1&gt;/a_elecAngleLeft</a>
+<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2463')" name="code2model" class="code2model">&lt;S1&gt;/a_elecAngle</a>
 </td>
 <td width="26%" align="left" valign="top">
-rtY.a_elecAngleLeft
-</td>
-<td width="21%" align="left" valign="top">
-int32_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
+<i>
+Defined externally
+</i>
 
-</tr>
-<tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2537')" name="code2model" class="code2model">&lt;S1&gt;/DC_phaARight</a>
-</td>
-<td width="26%" align="left" valign="top">
-rtY.DC_phaARight
-</td>
-<td width="21%" align="left" valign="top">
-int32_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
-
-</tr>
-<tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2538')" name="code2model" class="code2model">&lt;S1&gt;/DC_phaBRight</a>
-</td>
-<td width="26%" align="left" valign="top">
-rtY.DC_phaBRight
-</td>
-<td width="21%" align="left" valign="top">
-int32_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
-
-</tr>
-<tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2539')" name="code2model" class="code2model">&lt;S1&gt;/DC_phaCRight</a>
-</td>
-<td width="26%" align="left" valign="top">
-rtY.DC_phaCRight
-</td>
-<td width="21%" align="left" valign="top">
-int32_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
-
-</tr>
-<tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2540')" name="code2model" class="code2model">&lt;S1&gt;/n_motRight</a>
-</td>
-<td width="26%" align="left" valign="top">
-rtY.n_motRight
-</td>
-<td width="21%" align="left" valign="top">
-int32_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
-
-</tr>
-<tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2541')" name="code2model" class="code2model">&lt;S1&gt;/a_elecAngleRight</a>
-</td>
-<td width="26%" align="left" valign="top">
-rtY.a_elecAngleRight
 </td>
 <td width="21%" align="left" valign="top">
 int32_T
@@ -560,7 +542,10 @@ Dimension
 cf_speedCoef
 </td>
 <td width="26%" align="left" valign="top">
-rtP.cf_speedCoef
+<i>
+Defined externally
+</i>
+
 </td>
 <td width="21%" align="left" valign="top">
 int32_T
@@ -571,26 +556,32 @@ int32_T
 
 </tr>
 <tr class="odd">
+<td width="42%" align="left" valign="top">
+cf_speedFilt
+</td>
+<td width="26%" align="left" valign="top">
+<i>
+Defined externally
+</i>
+
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
 <td width="42%" align="left" valign="top">
 n_commAcvLo
 </td>
 <td width="26%" align="left" valign="top">
-rtP.n_commAcvLo
-</td>
-<td width="21%" align="left" valign="top">
-int32_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
+<i>
+Defined externally
+</i>
 
-</tr>
-<tr class="even">
-<td width="42%" align="left" valign="top">
-n_commDeacvHi
-</td>
-<td width="26%" align="left" valign="top">
-rtP.n_commDeacvHi
 </td>
 <td width="21%" align="left" valign="top">
 int32_T
@@ -602,10 +593,13 @@ int32_T
 </tr>
 <tr class="odd">
 <td width="42%" align="left" valign="top">
-r_commDCDeacv
+n_commDeacvHi
 </td>
 <td width="26%" align="left" valign="top">
-rtP.r_commDCDeacv
+<i>
+Defined externally
+</i>
+
 </td>
 <td width="21%" align="left" valign="top">
 int32_T
@@ -617,10 +611,31 @@ int32_T
 </tr>
 <tr class="even">
 <td width="42%" align="left" valign="top">
+r_commDCDeacv
+</td>
+<td width="26%" align="left" valign="top">
+<i>
+Defined externally
+</i>
+
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
 r_phaAdvDC_XA
 </td>
 <td width="26%" align="left" valign="top">
-rtP.r_phaAdvDC_XA
+<i>
+Defined externally
+</i>
+
 </td>
 <td width="21%" align="left" valign="top">
 int32_T
@@ -630,12 +645,15 @@ int32_T
 </td>
 
 </tr>
-<tr class="odd">
+<tr class="even">
 <td width="42%" align="left" valign="top">
 a_phaAdv_M1
 </td>
 <td width="26%" align="left" valign="top">
-rtP.a_phaAdv_M1
+<i>
+Defined externally
+</i>
+
 </td>
 <td width="21%" align="left" valign="top">
 int16_T
@@ -645,12 +663,33 @@ int16_T
 </td>
 
 </tr>
-<tr class="even">
+<tr class="odd">
 <td width="42%" align="left" valign="top">
-z_maxCntRst
+dz_counterHi
 </td>
 <td width="26%" align="left" valign="top">
-rtP.z_maxCntRst
+<i>
+Defined externally
+</i>
+
+</td>
+<td width="21%" align="left" valign="top">
+int16_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+dz_counterLo
+</td>
+<td width="26%" align="left" valign="top">
+<i>
+Defined externally
+</i>
+
 </td>
 <td width="21%" align="left" valign="top">
 int16_T
@@ -665,7 +704,10 @@ int16_T
 z_ctrlTypSel
 </td>
 <td width="26%" align="left" valign="top">
-rtP.z_ctrlTypSel
+<i>
+Defined externally
+</i>
+
 </td>
 <td width="21%" align="left" valign="top">
 uint8_T
@@ -677,25 +719,13 @@ uint8_T
 </tr>
 <tr class="even">
 <td width="42%" align="left" valign="top">
-z_nrEdgeSpdAcv
-</td>
-<td width="26%" align="left" valign="top">
-rtP.z_nrEdgeSpdAcv
-</td>
-<td width="21%" align="left" valign="top">
-uint8_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
-
-</tr>
-<tr class="odd">
-<td width="42%" align="left" valign="top">
 b_phaAdvEna
 </td>
 <td width="26%" align="left" valign="top">
-rtP.b_phaAdvEna
+<i>
+Defined externally
+</i>
+
 </td>
 <td width="21%" align="left" valign="top">
 boolean_T

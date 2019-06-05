@@ -26,9 +26,26 @@
 #include <stdlib.h>
 //#include "hd44780.h"
 
-// Matlab includes - from auto-code generation
-#include "BLDC_controller.h"           /* Model's header file */
+// Matlab includes and defines - from auto-code generation
+// ###############################################################################
+#include "BLDC_controller.h"            /* Model's header file */
 #include "rtwtypes.h"
+
+static RT_MODEL rtM_Left_;    /* Real-time model */
+static RT_MODEL rtM_Right_;   /* Real-time model */
+RT_MODEL *const rtM_Left = &rtM_Left_;
+RT_MODEL *const rtM_Right = &rtM_Right_;
+
+P rtP;                           /* Block parameters (auto storage) */
+
+DW rtDW_Left;                    /* Observable states */
+ExtU rtU_Left;                   /* External inputs */
+ExtY rtY_Left;                   /* External outputs */
+
+DW rtDW_Right;                   /* Observable states */
+ExtU rtU_Right;                  /* External inputs */
+ExtY rtY_Right;                  /* External outputs */
+// ###############################################################################
 
 void SystemClock_Config(void);
 
@@ -130,18 +147,30 @@ int main(void) {
   HAL_ADC_Start(&hadc1);
   HAL_ADC_Start(&hadc2);
 
-//////////////////////////////////////
+// Matlab Init
+// ###############################################################################
   
-  /* Set BLDC controller parameters */
+  /* Set BLDC controller parameters */  
   rtP.z_ctrlTypSel        = CTRL_TYP_SEL;
-  rtP.b_phaAdvEna         = PHASE_ADV_ENA;
-  rtP.n_commDeacvHi       = COMM_DEACV_HI;
-  rtP.n_commAcvLo         = COMM_ACV_LO;
+  rtP.b_phaAdvEna         = PHASE_ADV_ENA;  
+  
+  /* Pack LEFT motor data into RTM */
+  rtM_Left->defaultParam  = &rtP;
+  rtM_Left->dwork         = &rtDW_Left;
+  rtM_Left->inputs        = &rtU_Left;
+  rtM_Left->outputs       = &rtY_Left;
 
-/* Initialize BLDC controller */
-  BLDC_controller_initialize();
+  /* Pack RIGHT motor data into RTM */
+  rtM_Right->defaultParam = &rtP;
+  rtM_Right->dwork        = &rtDW_Right;
+  rtM_Right->inputs       = &rtU_Right;
+  rtM_Right->outputs      = &rtY_Right;
 
-/////////////////////////////////////
+  /* Initialize BLDC controllers */
+  BLDC_controller_initialize(rtM_Left);
+  BLDC_controller_initialize(rtM_Right);
+
+// ###############################################################################
 
   for (int i = 8; i >= 0; i--) {
     buzzerFreq = i;
@@ -235,9 +264,10 @@ int main(void) {
     #endif
 
     // ####### LOW-PASS FILTER #######
+    cmd2 = cmd2-500;
+    cmd1 = 0;
     steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
     speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
-
 
     // ####### MIXER #######
     speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
@@ -279,8 +309,8 @@ int main(void) {
       #endif
       setScopeChannel(0, (int)speedR);                    // 1: output command: [-1000, 1000]
       setScopeChannel(1, (int)speedL);                    // 2: output command: [-1000, 1000]
-      setScopeChannel(2, (int)rtY.n_motRight);            // 3: Real motor speed [rpm]
-      setScopeChannel(3, (int)rtY.n_motLeft);             // 4: Real motor speed [rpm]
+      setScopeChannel(2, (int)rtY_Right.n_mot);           // 3: Real motor speed [rpm]
+      setScopeChannel(3, (int)rtY_Left.n_mot);            // 4: Real motor speed [rpm]
       setScopeChannel(4, (int)adc_buffer.batt1);          // 5: for battery voltage calibration
       setScopeChannel(5, (int)(batteryVoltage * 100.0f)); // 6: for verifying battery voltage calibration
       setScopeChannel(6, (int)board_temp_adc_filtered);   // 7: for board temperature calibration

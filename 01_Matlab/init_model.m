@@ -34,7 +34,8 @@ clc
 % Load model parameters
 load BLDCmotorControl_data;
 Ts      = 5e-6;         % [s] Model samplind time (200 kHz)
-Ts_ctrl = 1e-5;         % [s] Controller samplid time (100 kHz)
+Ts_ctrl = 6e-5;         % [s] Controller samplid time (~16 kHz)
+% Ts_ctrl = 12e-5;        % [s] Controller samplid time (~8 kHz)
 
 % BLDC control parameters
 CTRL_COMM       = 0;    % Commutation
@@ -58,24 +59,25 @@ a_mechAngle     = a_elecAngle / n_polePairs;    % [deg] Mechanical angle
 vec_hallToPos   = [0 5 3 4 1 0 2 0];  % [-] Mapping Hall signal to position
 
 % Speed Calculation Parameters
-z_nrEdgeSpdAcv  = 3;            % [-] Number of edge detections to activate speed calculation
-z_maxCntRst     = 2000;         % [-] Maximum counter value for reset (works also as time-out to detect standing still)
 f_ctrl          = 1/Ts_ctrl;    % [Hz] Controller frequency = 1/Ts_ctrl
 cf_speedCoef    = round(f_ctrl * a_mechAngle * (pi/180) * (30/pi));     % [-] Speed calculation coefficient (factors are due to conversions rpm <-> rad/s)
+cf_speedFilt    = 10;       % [%] Speed filter in percent [1, 100]. Lower values mean softer filter
+z_maxCntRst     = 1500;     % [-] Maximum counter value for reset (works also as time-out to detect standing still)
+r_commDCDeacv   = 70;       % [-] Commutation method deactivation Duty Cycle threshold (arbitrary small number)
+n_commDeacvHi   = 30;       % [rpm] Commutation method deactivation speed high
+n_commAcvLo     = 15;       % [rpm] Commutation method activation speed low
+dz_counterHi    = 50;       % [-] Counter gradient High. Above this value the control resets to Commudation method (to deal with the high dynamics)
+dz_counterLo    = 20;       % [-] Counter gradient Low. Below this value the control authorizes the Advance method (high dynamics have passed)
 
 %% F02_Electrical_Angle_Calculation
 b_phaAdvEna     = 1;    % [-] Phase advance enable parameter: 0 = disable, 1 = enable
 
 % The map below was experimentaly calibrated on the real motor. Objectives: minimum noise and minimum torque ripple
-a_phaAdv_M1     = [0   0   7   2   2   2   4   5   9  16   25];     % [deg] Phase advance angle
+a_phaAdv_M1     = [0   0   0   0   0   2   3   5   9  16   25];     % [deg] Phase advance angle
 r_phaAdvDC_XA   = [0 100 200 300 400 500 600 700 800 900 1000];     % [-] Phase advance Duty Cycle grid
 % plot(r_phaAdvDC_XA, a_phaAdv_M1);
 
 %% F03_Speed_Control
-n_commDeacvHi   = 180;      % [rpm] Commutation method deactivation speed high
-n_commAcvLo     = 100;      % [rpm] Commutation method activation speed low
-r_commDCDeacv   = 70;       % [-] Commutation method deactivation Duty Cycle threshold (arbitrary small number)
-
 sca_factor      = 1000;     % [-] scalling factor (to avoid truncation approximations on integer data type)
 
 % Commutation method

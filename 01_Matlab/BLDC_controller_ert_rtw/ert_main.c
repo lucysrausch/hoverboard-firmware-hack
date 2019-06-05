@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'BLDC_controller'.
  *
- * Model version                  : 1.817
+ * Model version                  : 1.877
  * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017
- * C/C++ source code generated on : Tue May 28 19:55:33 2019
+ * C/C++ source code generated on : Wed Jun  5 22:29:28 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -25,7 +25,69 @@
 #include <stdio.h>                     /* This ert_main.c example uses printf/fflush */
 #include "BLDC_controller.h"           /* Model's header file */
 #include "rtwtypes.h"
-#include "zero_crossing_types.h"
+
+static RT_MODEL rtM_;
+static RT_MODEL *const rtMPtr = &rtM_; /* Real-time model */
+static P rtP = {
+  /* Variable: cf_speedCoef
+   * Referenced by: '<S16>/cf_spdCoef'
+   */
+  11111,
+
+  /* Variable: cf_speedFilt
+   * Referenced by: '<S16>/cf_speedFilt'
+   */
+  10,
+
+  /* Variable: n_commAcvLo
+   * Referenced by: '<S14>/n_commDeacv'
+   */
+  15,
+
+  /* Variable: n_commDeacvHi
+   * Referenced by: '<S14>/n_commDeacv'
+   */
+  30,
+
+  /* Variable: r_commDCDeacv
+   * Referenced by: '<S14>/r_commDCDeacv'
+   */
+  70,
+
+  /* Variable: r_phaAdvDC_XA
+   * Referenced by: '<S8>/r_phaAdvDC_XA'
+   */
+  { 0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 },
+
+  /* Variable: a_phaAdv_M1
+   * Referenced by: '<S8>/a_phaAdv_M2'
+   */
+  { 0, 0, 0, 0, 0, 2, 3, 5, 9, 16, 25 },
+
+  /* Variable: dz_counterHi
+   * Referenced by: '<S14>/dz_counter'
+   */
+  50,
+
+  /* Variable: dz_counterLo
+   * Referenced by: '<S14>/dz_counter'
+   */
+  20,
+
+  /* Variable: z_ctrlTypSel
+   * Referenced by: '<S7>/z_ctrlTypSel1'
+   */
+  3U,
+
+  /* Variable: b_phaAdvEna
+   * Referenced by: '<S8>/a_elecPeriod1'
+   */
+  1
+};                                     /* Modifiable parameters */
+
+static DW rtDW;                        /* Observable states */
+static ExtU rtU;                       /* External inputs */
+static ExtY rtY;                       /* External outputs */
 
 /*
  * Associating rt_OneStep with a real-time clock or interrupt service routine
@@ -38,8 +100,8 @@
  * your application needs.  This example simply sets an error status in the
  * real-time model and returns from rt_OneStep.
  */
-void rt_OneStep(void);
-void rt_OneStep(void)
+void rt_OneStep(RT_MODEL *const rtM);
+void rt_OneStep(RT_MODEL *const rtM)
 {
   static boolean_T OverrunFlag = false;
 
@@ -57,7 +119,7 @@ void rt_OneStep(void)
   /* Set model inputs here */
 
   /* Step the model */
-  BLDC_controller_step();
+  BLDC_controller_step(rtM);
 
   /* Get model outputs here */
 
@@ -77,18 +139,26 @@ void rt_OneStep(void)
  */
 int_T main(int_T argc, const char *argv[])
 {
+  RT_MODEL *const rtM = rtMPtr;
+
   /* Unused arguments */
   (void)(argc);
   (void)(argv);
 
+  /* Pack model data into RTM */
+  rtM->defaultParam = &rtP;
+  rtM->dwork = &rtDW;
+  rtM->inputs = &rtU;
+  rtM->outputs = &rtY;
+
   /* Initialize model */
-  BLDC_controller_initialize();
+  BLDC_controller_initialize(rtM);
 
   /* Attach rt_OneStep to a timer or interrupt service routine with
-   * period 1.0E-5 seconds (the model's base sample time) here.  The
+   * period 6.0E-5 seconds (the model's base sample time) here.  The
    * call syntax for rt_OneStep is
    *
-   *  rt_OneStep();
+   *  rt_OneStep(rtM);
    */
   printf("Warning: The simulation will run forever. "
          "Generated ERT main won't simulate model step behavior. "

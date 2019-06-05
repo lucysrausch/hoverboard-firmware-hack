@@ -30,8 +30,8 @@
   "sid":"BLDCmotorControl_R2017b:1829",
   "className":"Simulink.Inport",
   "icon":"WebViewIcon2",
-  "name":"b_hallALeft",
-  "label":"b_hallALeft",
+  "name":"b_hallA",
+  "label":"b_hallA",
   "parent":"BLDCmotorControl_R2017b:1828",
   "inspector":{
    "params":[
@@ -97,8 +97,8 @@
   "sid":"BLDCmotorControl_R2017b:1829#out:1",
   "className":"Simulink.Line",
   "icon":"WebViewIcon4",
-  "name":"b_hallALeft",
-  "label":"b_hallALeft",
+  "name":"b_hallA",
+  "label":"b_hallA",
   "parent":"BLDCmotorControl_R2017b:1828",
   "inspector":{
    "params":[
@@ -113,7 +113,7 @@
     "documentLink"
    ],
    "values":[
-    "b_hallALeft",
+    "b_hallA",
     "off",
     "off",
     "on",

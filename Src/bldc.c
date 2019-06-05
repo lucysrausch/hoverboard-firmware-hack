@@ -27,14 +27,26 @@
 #include "setup.h"
 #include "config.h"
 
-// Matlab includes
+// Matlab includes and defines - from auto-code generation
+// ###############################################################################
 #include "BLDC_controller.h"           /* Model's header file */
 #include "rtwtypes.h"
 
+extern RT_MODEL *const rtM_Left;
+extern RT_MODEL *const rtM_Right;
+
+extern DW rtDW_Left;                    /* Observable states */
+extern ExtU rtU_Left;                   /* External inputs */
+extern ExtY rtY_Left;                   /* External outputs */
+
+extern DW rtDW_Right;                   /* Observable states */
+extern ExtU rtU_Right;                  /* External inputs */
+extern ExtY rtY_Right;                  /* External outputs */
+// ###############################################################################
+
+
 volatile int pwml = 0;
 volatile int pwmr = 0;
-
-extern volatile int speed;
 
 extern volatile adc_buf_t adc_buffer;
 
@@ -65,6 +77,7 @@ void DMA1_Channel1_IRQHandler() {
 
   DMA1->IFCR = DMA_IFCR_CTCIF1;
   // HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
+  // HAL_GPIO_TogglePin(LED_PORT, LED_PIN);
 
   if(offsetcount < 1000) {  // calibrate ADC offsets
     offsetcount++;
@@ -107,17 +120,6 @@ void DMA1_Channel1_IRQHandler() {
   }
 
   // ############################### MOTOR CONTROL ###############################
-  int ul, vl, wl;
-  int ur, vr, wr;
-
-  // Get hall sensors values
-  uint8_t hall_ul = !(LEFT_HALL_U_PORT->IDR & LEFT_HALL_U_PIN);
-  uint8_t hall_vl = !(LEFT_HALL_V_PORT->IDR & LEFT_HALL_V_PIN);
-  uint8_t hall_wl = !(LEFT_HALL_W_PORT->IDR & LEFT_HALL_W_PIN);
-
-  uint8_t hall_ur = !(RIGHT_HALL_U_PORT->IDR & RIGHT_HALL_U_PIN);
-  uint8_t hall_vr = !(RIGHT_HALL_V_PORT->IDR & RIGHT_HALL_V_PIN);
-  uint8_t hall_wr = !(RIGHT_HALL_W_PORT->IDR & RIGHT_HALL_W_PIN);
 
   static boolean_T OverrunFlag = false;
   /* Check for overrun */
@@ -126,44 +128,68 @@ void DMA1_Channel1_IRQHandler() {
   }
   OverrunFlag = true;
  
+  int ul, vl, wl;
+  int ur, vr, wr;
+  // ========================= LEFT MOTOR ============================ 
+    // Get hall sensors values
+    uint8_t hall_ul = !(LEFT_HALL_U_PORT->IDR & LEFT_HALL_U_PIN);
+    uint8_t hall_vl = !(LEFT_HALL_V_PORT->IDR & LEFT_HALL_V_PIN);
+    uint8_t hall_wl = !(LEFT_HALL_W_PORT->IDR & LEFT_HALL_W_PIN);
+
     /* Set motor inputs here */
-    rtU.b_hallALeft   = hall_ul;
-    rtU.b_hallBLeft   = hall_vl;
-    rtU.b_hallCLeft   = hall_wl;
-    rtU.r_DCLeft      = pwml;
-
-    rtU.b_hallARight  = hall_ur;
-    rtU.b_hallBRight  = hall_vr;
-    rtU.b_hallCRight  = hall_wr;
-    rtU.r_DCRight     = pwmr;
-
+    rtU_Left.b_hallA   = hall_ul;
+    rtU_Left.b_hallB   = hall_vl;
+    rtU_Left.b_hallC   = hall_wl;
+    rtU_Left.r_DC      = pwml;
+    
     /* Step the controller */
-    BLDC_controller_step();
+    BLDC_controller_step(rtM_Left);
 
     /* Get motor outputs here */
-    ul            = rtY.DC_phaALeft;
-    vl            = rtY.DC_phaBLeft;
-    wl            = rtY.DC_phaCLeft;
-  // motSpeedLeft = rtY.n_motLeft;
-  // motAngleLeft = rtY.a_elecAngleLeft;
+    ul            = rtY_Left.DC_phaA;
+    vl            = rtY_Left.DC_phaB;
+    wl            = rtY_Left.DC_phaC;
+  // motSpeedLeft = rtY_Left.n_mot;
+  // motAngleLeft = rtY_Left.a_elecAngle;
 
-    ur            = rtY.DC_phaARight;
-    vr            = rtY.DC_phaBRight;
-    wr            = rtY.DC_phaCRight;
- // motSpeedRight = rtY.n_motRight;
- // motAngleRight = rtY.a_elecAngleRight;
+    /* Apply commands */
+    LEFT_TIM->LEFT_TIM_U    = CLAMP(ul + pwm_res / 2, 10, pwm_res-10);
+    LEFT_TIM->LEFT_TIM_V    = CLAMP(vl + pwm_res / 2, 10, pwm_res-10);
+    LEFT_TIM->LEFT_TIM_W    = CLAMP(wl + pwm_res / 2, 10, pwm_res-10);
+  // =================================================================
+  
+
+  // ========================= RIGHT MOTOR ===========================  
+    // Get hall sensors values
+    uint8_t hall_ur = !(RIGHT_HALL_U_PORT->IDR & RIGHT_HALL_U_PIN);
+    uint8_t hall_vr = !(RIGHT_HALL_V_PORT->IDR & RIGHT_HALL_V_PIN);
+    uint8_t hall_wr = !(RIGHT_HALL_W_PORT->IDR & RIGHT_HALL_W_PIN);
+
+    /* Set motor inputs here */
+    rtU_Right.b_hallA  = hall_ur;
+    rtU_Right.b_hallB  = hall_vr;
+    rtU_Right.b_hallC  = hall_wr;
+    rtU_Right.r_DC     = pwmr;
+
+    /* Step the controller */
+    BLDC_controller_step(rtM_Right);
+
+    /* Get motor outputs here */
+    ur            = rtY_Right.DC_phaA;
+    vr            = rtY_Right.DC_phaB;
+    wr            = rtY_Right.DC_phaC;
+ // motSpeedRight = rtY_Right.n_mot;
+ // motAngleRight = rtY_Right.a_elecAngle;
+
+    /* Apply commands */
+    RIGHT_TIM->RIGHT_TIM_U  = CLAMP(ur + pwm_res / 2, 10, pwm_res-10);
+    RIGHT_TIM->RIGHT_TIM_V  = CLAMP(vr + pwm_res / 2, 10, pwm_res-10);
+    RIGHT_TIM->RIGHT_TIM_W  = CLAMP(wr + pwm_res / 2, 10, pwm_res-10);
+  // =================================================================
 
   /* Indicate task complete */
   OverrunFlag = false;
-  // ###############################################################################
-
-  LEFT_TIM->LEFT_TIM_U    = CLAMP(ul + pwm_res / 2, 10, pwm_res-10);
-  LEFT_TIM->LEFT_TIM_V    = CLAMP(vl + pwm_res / 2, 10, pwm_res-10);
-  LEFT_TIM->LEFT_TIM_W    = CLAMP(wl + pwm_res / 2, 10, pwm_res-10);
-
-  RIGHT_TIM->RIGHT_TIM_U  = CLAMP(ur + pwm_res / 2, 10, pwm_res-10);
-  RIGHT_TIM->RIGHT_TIM_V  = CLAMP(vr + pwm_res / 2, 10, pwm_res-10);
-  RIGHT_TIM->RIGHT_TIM_W  = CLAMP(wr + pwm_res / 2, 10, pwm_res-10);
-
+ 
+ // ###############################################################################
 
 }

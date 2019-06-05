@@ -21,9 +21,9 @@
 </span><span><a class="LN" name="7">    7   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="8">    8   </a><span class="CT"> * Code generated for Simulink model 'BLDC_controller'.</span>
 </span><span><a class="LN" name="9">    9   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model version                  : 1.817</span>
+</span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model version                  : 1.877</span>
 </span><span><a class="LN" name="11">   11   </a><span class="CT"> * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017</span>
-</span><span><a class="LN" name="12">   12   </a><span class="CT"> * C/C++ source code generated on : Tue May 28 19:55:33 2019</span>
+</span><span><a class="LN" name="12">   12   </a><span class="CT"> * C/C++ source code generated on : Wed Jun  5 22:29:28 2019</span>
 </span><span><a class="LN" name="13">   13   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="14">   14   </a><span class="CT"> * Target selection: ert.tlc</span>
 </span><span><a class="LN" name="15">   15   </a><span class="CT"> * Embedded hardware selection: ARM Compatible-&gt;ARM Cortex</span>
@@ -37,193 +37,83 @@
 </span><span><a class="LN" name="23">   23   </a>
 </span><span><a class="LN" name="24">   24   </a><font color="#992211">#</font><span class="PP">include</span> <font color="#992211">&quot;BLDC_controller.h&quot;</font>
 </span><span><a class="LN" name="25">   25   </a>
-</span><span><a class="LN" name="26">   26   </a><span class="CT">/* Block parameters (auto storage) */</span>
-</span><span><a class="LN" name="27">   27   </a><a href="BLDC_controller_h.html#type_P" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_P');" target="_self"><font color="#1122aa">P</font></a> <a name="var_rtP">rtP</a> = <b>{</b>
-</span><span><a class="LN" name="28">   28   </a>  <span class="CT">/* Variable: cf_speedCoef</span>
-</span><span><a class="LN" name="29">   29   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="30">   30   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:132')" name="code2model"><font color="#117755"><i>&lt;S28&gt;/cf_spdCoef</i></font></a>'</span>
-</span><span><a class="LN" name="31">   31   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:132')" name="code2model"><font color="#117755"><i>&lt;S66&gt;/cf_spdCoef</i></font></a>'</span>
-</span><span><a class="LN" name="32">   32   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="33">   33   </a>  66667,
-</span><span><a class="LN" name="34">   34   </a>
-</span><span><a class="LN" name="35">   35   </a>  <span class="CT">/* Variable: n_commAcvLo</span>
-</span><span><a class="LN" name="36">   36   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="37">   37   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:400')" name="code2model"><font color="#117755"><i>&lt;S15&gt;/Relay</i></font></a>'</span>
-</span><span><a class="LN" name="38">   38   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:400')" name="code2model"><font color="#117755"><i>&lt;S53&gt;/Relay</i></font></a>'</span>
-</span><span><a class="LN" name="39">   39   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="40">   40   </a>  100,
-</span><span><a class="LN" name="41">   41   </a>
-</span><span><a class="LN" name="42">   42   </a>  <span class="CT">/* Variable: n_commDeacvHi</span>
-</span><span><a class="LN" name="43">   43   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="44">   44   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:400')" name="code2model"><font color="#117755"><i>&lt;S15&gt;/Relay</i></font></a>'</span>
-</span><span><a class="LN" name="45">   45   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:400')" name="code2model"><font color="#117755"><i>&lt;S53&gt;/Relay</i></font></a>'</span>
-</span><span><a class="LN" name="46">   46   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="47">   47   </a>  180,
-</span><span><a class="LN" name="48">   48   </a>
-</span><span><a class="LN" name="49">   49   </a>  <span class="CT">/* Variable: r_commDCDeacv</span>
-</span><span><a class="LN" name="50">   50   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="51">   51   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:593')" name="code2model"><font color="#117755"><i>&lt;S15&gt;/r_commDCDeacv</i></font></a>'</span>
-</span><span><a class="LN" name="52">   52   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:593')" name="code2model"><font color="#117755"><i>&lt;S53&gt;/r_commDCDeacv</i></font></a>'</span>
-</span><span><a class="LN" name="53">   53   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="54">   54   </a>  70,
-</span><span><a class="LN" name="55">   55   </a>
-</span><span><a class="LN" name="56">   56   </a>  <span class="CT">/* Variable: r_phaAdvDC_XA</span>
-</span><span><a class="LN" name="57">   57   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="58">   58   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:522')" name="code2model"><font color="#117755"><i>&lt;S13&gt;/r_phaAdvDC_XA</i></font></a>'</span>
-</span><span><a class="LN" name="59">   59   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:522')" name="code2model"><font color="#117755"><i>&lt;S51&gt;/r_phaAdvDC_XA</i></font></a>'</span>
-</span><span><a class="LN" name="60">   60   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="61">   61   </a>  <b>{</b> 0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 <b>}</b>,
-</span><span><a class="LN" name="62">   62   </a>
-</span><span><a class="LN" name="63">   63   </a>  <span class="CT">/* Variable: a_phaAdv_M1</span>
-</span><span><a class="LN" name="64">   64   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="65">   65   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:521')" name="code2model"><font color="#117755"><i>&lt;S13&gt;/a_phaAdv_M2</i></font></a>'</span>
-</span><span><a class="LN" name="66">   66   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:521')" name="code2model"><font color="#117755"><i>&lt;S51&gt;/a_phaAdv_M2</i></font></a>'</span>
-</span><span><a class="LN" name="67">   67   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="68">   68   </a>  <b>{</b> 0, 0, 7, 2, 2, 2, 4, 5, 9, 16, 25 <b>}</b>,
-</span><span><a class="LN" name="69">   69   </a>
-</span><span><a class="LN" name="70">   70   </a>  <span class="CT">/* Variable: z_maxCntRst</span>
-</span><span><a class="LN" name="71">   71   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="72">   72   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:171')" name="code2model"><font color="#117755"><i>&lt;S23&gt;/z_maxCntRst</i></font></a>'</span>
-</span><span><a class="LN" name="73">   73   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:726')" name="code2model"><font color="#117755"><i>&lt;S23&gt;/z_maxCntRst1</i></font></a>'</span>
-</span><span><a class="LN" name="74">   74   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:721')" name="code2model"><font color="#117755"><i>&lt;S23&gt;/z_maxCntRst2</i></font></a>'</span>
-</span><span><a class="LN" name="75">   75   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:169')" name="code2model"><font color="#117755"><i>&lt;S23&gt;/z_counter2</i></font></a>'</span>
-</span><span><a class="LN" name="76">   76   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:171')" name="code2model"><font color="#117755"><i>&lt;S61&gt;/z_maxCntRst</i></font></a>'</span>
-</span><span><a class="LN" name="77">   77   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:726')" name="code2model"><font color="#117755"><i>&lt;S61&gt;/z_maxCntRst1</i></font></a>'</span>
-</span><span><a class="LN" name="78">   78   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:721')" name="code2model"><font color="#117755"><i>&lt;S61&gt;/z_maxCntRst2</i></font></a>'</span>
-</span><span><a class="LN" name="79">   79   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:169')" name="code2model"><font color="#117755"><i>&lt;S61&gt;/z_counter2</i></font></a>'</span>
-</span><span><a class="LN" name="80">   80   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:133')" name="code2model"><font color="#117755"><i>&lt;S28&gt;/z_maxCntRst</i></font></a>'</span>
-</span><span><a class="LN" name="81">   81   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:133')" name="code2model"><font color="#117755"><i>&lt;S66&gt;/z_maxCntRst</i></font></a>'</span>
-</span><span><a class="LN" name="82">   82   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="83">   83   </a>  2000,
+</span><span><a class="LN" name="26">   26   </a><span class="CT">/* Constant parameters (auto storage) */</span>
+</span><span><a class="LN" name="27">   27   </a><span class="DT">const</span> <a href="BLDC_controller_h.html#type_ConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_ConstP');" target="_self"><font color="#1122aa">ConstP</font></a> <a name="var_rtConstP">rtConstP</a> = <b>{</b>
+</span><span><a class="LN" name="28">   28   </a>  <span class="CT">/* Computed Parameter: r_trapPhaA_M1_Table</span>
+</span><span><a class="LN" name="29">   29   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:289')" name="code2model"><font color="#117755"><i>&lt;S18&gt;/r_trapPhaA_M1</i></font></a>'</span>
+</span><span><a class="LN" name="30">   30   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="31">   31   </a>  <b>{</b> 1000, 1000, 1000, -1000, -1000, -1000, 1000 <b>}</b>,
+</span><span><a class="LN" name="32">   32   </a>
+</span><span><a class="LN" name="33">   33   </a>  <span class="CT">/* Computed Parameter: r_trapPhaB_M1_Table</span>
+</span><span><a class="LN" name="34">   34   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:290')" name="code2model"><font color="#117755"><i>&lt;S18&gt;/r_trapPhaB_M1</i></font></a>'</span>
+</span><span><a class="LN" name="35">   35   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="36">   36   </a>  <b>{</b> -1000, -1000, 1000, 1000, 1000, -1000, -1000 <b>}</b>,
+</span><span><a class="LN" name="37">   37   </a>
+</span><span><a class="LN" name="38">   38   </a>  <span class="CT">/* Computed Parameter: r_trapPhaC_M1_Table</span>
+</span><span><a class="LN" name="39">   39   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:291')" name="code2model"><font color="#117755"><i>&lt;S18&gt;/r_trapPhaC_M1</i></font></a>'</span>
+</span><span><a class="LN" name="40">   40   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="41">   41   </a>  <b>{</b> 1000, -1000, -1000, -1000, 1000, 1000, 1000 <b>}</b>,
+</span><span><a class="LN" name="42">   42   </a>
+</span><span><a class="LN" name="43">   43   </a>  <span class="CT">/* Computed Parameter: r_sinPhaA_M1_Table</span>
+</span><span><a class="LN" name="44">   44   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:309')" name="code2model"><font color="#117755"><i>&lt;S19&gt;/r_sinPhaA_M1</i></font></a>'</span>
+</span><span><a class="LN" name="45">   45   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="46">   46   </a>  <b>{</b> 500, 643, 766, 866, 940, 985, 1000, 985, 940, 866, 766, 643, 500, 342, 174,
+</span><span><a class="LN" name="47">   47   </a>    0, -174, -342, -500, -643, -766, -866, -940, -985, -1000, -985, -940, -866,
+</span><span><a class="LN" name="48">   48   </a>    -766, -643, -500, -342, -174, 0, 174, 342, 500 <b>}</b>,
+</span><span><a class="LN" name="49">   49   </a>
+</span><span><a class="LN" name="50">   50   </a>  <span class="CT">/* Computed Parameter: r_sinPhaB_M1_Table</span>
+</span><span><a class="LN" name="51">   51   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:310')" name="code2model"><font color="#117755"><i>&lt;S19&gt;/r_sinPhaB_M1</i></font></a>'</span>
+</span><span><a class="LN" name="52">   52   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="53">   53   </a>  <b>{</b> -1000, -985, -940, -866, -766, -643, -500, -342, -174, 0, 174, 342, 500, 643,
+</span><span><a class="LN" name="54">   54   </a>    766, 866, 940, 985, 1000, 985, 940, 866, 766, 643, 500, 342, 174, 0, -174,
+</span><span><a class="LN" name="55">   55   </a>    -342, -500, -643, -766, -866, -940, -985, -1000 <b>}</b>,
+</span><span><a class="LN" name="56">   56   </a>
+</span><span><a class="LN" name="57">   57   </a>  <span class="CT">/* Computed Parameter: r_sinPhaC_M1_Table</span>
+</span><span><a class="LN" name="58">   58   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:311')" name="code2model"><font color="#117755"><i>&lt;S19&gt;/r_sinPhaC_M1</i></font></a>'</span>
+</span><span><a class="LN" name="59">   59   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="60">   60   </a>  <b>{</b> 500, 342, 174, 0, -174, -342, -500, -643, -766, -866, -940, -985, -1000,
+</span><span><a class="LN" name="61">   61   </a>    -985, -940, -866, -766, -643, -500, -342, -174, 0, 174, 342, 500, 643, 766,
+</span><span><a class="LN" name="62">   62   </a>    866, 940, 985, 1000, 985, 940, 866, 766, 643, 500 <b>}</b>,
+</span><span><a class="LN" name="63">   63   </a>
+</span><span><a class="LN" name="64">   64   </a>  <span class="CT">/* Computed Parameter: r_sin3PhaA_M1_Table</span>
+</span><span><a class="LN" name="65">   65   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:299')" name="code2model"><font color="#117755"><i>&lt;S20&gt;/r_sin3PhaA_M1</i></font></a>'</span>
+</span><span><a class="LN" name="66">   66   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="67">   67   </a>  <b>{</b> 795, 930, 991, 996, 971, 942, 930, 942, 971, 996, 991, 930, 795, 584, 310, 0,
+</span><span><a class="LN" name="68">   68   </a>    -310, -584, -795, -930, -991, -996, -971, -942, -930, -942, -971, -996, -991,
+</span><span><a class="LN" name="69">   69   </a>    -930, -795, -584, -310, 0, 310, 584, 795 <b>}</b>,
+</span><span><a class="LN" name="70">   70   </a>
+</span><span><a class="LN" name="71">   71   </a>  <span class="CT">/* Computed Parameter: r_sin3PhaB_M1_Table</span>
+</span><span><a class="LN" name="72">   72   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:300')" name="code2model"><font color="#117755"><i>&lt;S20&gt;/r_sin3PhaB_M1</i></font></a>'</span>
+</span><span><a class="LN" name="73">   73   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="74">   74   </a>  <b>{</b> -930, -942, -971, -996, -991, -930, -795, -584, -310, 0, 310, 584, 795, 930,
+</span><span><a class="LN" name="75">   75   </a>    991, 996, 971, 942, 930, 942, 971, 996, 991, 930, 795, 584, 310, 0, -310,
+</span><span><a class="LN" name="76">   76   </a>    -584, -795, -930, -991, -996, -971, -942, -930 <b>}</b>,
+</span><span><a class="LN" name="77">   77   </a>
+</span><span><a class="LN" name="78">   78   </a>  <span class="CT">/* Computed Parameter: r_sin3PhaC_M1_Table</span>
+</span><span><a class="LN" name="79">   79   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:301')" name="code2model"><font color="#117755"><i>&lt;S20&gt;/r_sin3PhaC_M1</i></font></a>'</span>
+</span><span><a class="LN" name="80">   80   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="81">   81   </a>  <b>{</b> 795, 584, 310, 0, -310, -584, -795, -930, -991, -996, -971, -942, -930, -942,
+</span><span><a class="LN" name="82">   82   </a>    -971, -996, -991, -930, -795, -584, -310, 0, 310, 584, 795, 930, 991, 996,
+</span><span><a class="LN" name="83">   83   </a>    971, 942, 930, 942, 971, 996, 991, 930, 795 <b>}</b>,
 </span><span><a class="LN" name="84">   84   </a>
-</span><span><a class="LN" name="85">   85   </a>  <span class="CT">/* Variable: z_ctrlTypSel</span>
-</span><span><a class="LN" name="86">   86   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="87">   87   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:208')" name="code2model"><font color="#117755"><i>&lt;S12&gt;/z_ctrlTypSel1</i></font></a>'</span>
-</span><span><a class="LN" name="88">   88   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:208')" name="code2model"><font color="#117755"><i>&lt;S50&gt;/z_ctrlTypSel1</i></font></a>'</span>
-</span><span><a class="LN" name="89">   89   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="90">   90   </a>  3U,
-</span><span><a class="LN" name="91">   91   </a>
-</span><span><a class="LN" name="92">   92   </a>  <span class="CT">/* Variable: z_nrEdgeSpdAcv</span>
-</span><span><a class="LN" name="93">   93   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="94">   94   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:172')" name="code2model"><font color="#117755"><i>&lt;S23&gt;/z_nrEdgeSpdAcv</i></font></a>'</span>
-</span><span><a class="LN" name="95">   95   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:172')" name="code2model"><font color="#117755"><i>&lt;S61&gt;/z_nrEdgeSpdAcv</i></font></a>'</span>
-</span><span><a class="LN" name="96">   96   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="97">   97   </a>  3U,
-</span><span><a class="LN" name="98">   98   </a>
-</span><span><a class="LN" name="99">   99   </a>  <span class="CT">/* Variable: b_phaAdvEna</span>
-</span><span><a class="LN" name="100">  100   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="101">  101   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:512')" name="code2model"><font color="#117755"><i>&lt;S13&gt;/a_elecPeriod1</i></font></a>'</span>
-</span><span><a class="LN" name="102">  102   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:512')" name="code2model"><font color="#117755"><i>&lt;S51&gt;/a_elecPeriod1</i></font></a>'</span>
-</span><span><a class="LN" name="103">  103   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="104">  104   </a>  1
-</span><span><a class="LN" name="105">  105   </a><b>}</b>;
-</span><span><a class="LN" name="106">  106   </a>
-</span><span><a class="LN" name="107">  107   </a><span class="CT">/* Constant parameters (auto storage) */</span>
-</span><span><a class="LN" name="108">  108   </a><span class="DT">const</span> <a href="BLDC_controller_h.html#type_ConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_ConstP');" target="_self"><font color="#1122aa">ConstP</font></a> <a name="var_rtConstP">rtConstP</a> = <b>{</b>
-</span><span><a class="LN" name="109">  109   </a>  <span class="CT">/* Pooled Parameter (Expression: r_trapPhaA_M1)</span>
-</span><span><a class="LN" name="110">  110   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="111">  111   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:289')" name="code2model"><font color="#117755"><i>&lt;S41&gt;/r_trapPhaA_M1</i></font></a>'</span>
-</span><span><a class="LN" name="112">  112   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:289')" name="code2model"><font color="#117755"><i>&lt;S79&gt;/r_trapPhaA_M1</i></font></a>'</span>
-</span><span><a class="LN" name="113">  113   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="114">  114   </a>  <b>{</b> 1000, 1000, 1000, -1000, -1000, -1000, 1000 <b>}</b>,
-</span><span><a class="LN" name="115">  115   </a>
-</span><span><a class="LN" name="116">  116   </a>  <span class="CT">/* Pooled Parameter (Expression: r_trapPhaB_M1)</span>
-</span><span><a class="LN" name="117">  117   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="118">  118   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:290')" name="code2model"><font color="#117755"><i>&lt;S41&gt;/r_trapPhaB_M1</i></font></a>'</span>
-</span><span><a class="LN" name="119">  119   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:290')" name="code2model"><font color="#117755"><i>&lt;S79&gt;/r_trapPhaB_M1</i></font></a>'</span>
-</span><span><a class="LN" name="120">  120   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="121">  121   </a>  <b>{</b> -1000, -1000, 1000, 1000, 1000, -1000, -1000 <b>}</b>,
-</span><span><a class="LN" name="122">  122   </a>
-</span><span><a class="LN" name="123">  123   </a>  <span class="CT">/* Pooled Parameter (Expression: r_trapPhaC_M1)</span>
-</span><span><a class="LN" name="124">  124   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="125">  125   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:291')" name="code2model"><font color="#117755"><i>&lt;S41&gt;/r_trapPhaC_M1</i></font></a>'</span>
-</span><span><a class="LN" name="126">  126   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:291')" name="code2model"><font color="#117755"><i>&lt;S79&gt;/r_trapPhaC_M1</i></font></a>'</span>
-</span><span><a class="LN" name="127">  127   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="128">  128   </a>  <b>{</b> 1000, -1000, -1000, -1000, 1000, 1000, 1000 <b>}</b>,
-</span><span><a class="LN" name="129">  129   </a>
-</span><span><a class="LN" name="130">  130   </a>  <span class="CT">/* Pooled Parameter (Expression: r_sinPhaA_M1)</span>
-</span><span><a class="LN" name="131">  131   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="132">  132   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:309')" name="code2model"><font color="#117755"><i>&lt;S43&gt;/r_sinPhaA_M1</i></font></a>'</span>
-</span><span><a class="LN" name="133">  133   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:309')" name="code2model"><font color="#117755"><i>&lt;S81&gt;/r_sinPhaA_M1</i></font></a>'</span>
-</span><span><a class="LN" name="134">  134   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="135">  135   </a>  <b>{</b> 500, 643, 766, 866, 940, 985, 1000, 985, 940, 866, 766, 643, 500, 342, 174,
-</span><span><a class="LN" name="136">  136   </a>    0, -174, -342, -500, -643, -766, -866, -940, -985, -1000, -985, -940, -866,
-</span><span><a class="LN" name="137">  137   </a>    -766, -643, -500, -342, -174, 0, 174, 342, 500 <b>}</b>,
-</span><span><a class="LN" name="138">  138   </a>
-</span><span><a class="LN" name="139">  139   </a>  <span class="CT">/* Pooled Parameter (Expression: r_sinPhaB_M1)</span>
-</span><span><a class="LN" name="140">  140   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="141">  141   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:310')" name="code2model"><font color="#117755"><i>&lt;S43&gt;/r_sinPhaB_M1</i></font></a>'</span>
-</span><span><a class="LN" name="142">  142   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:310')" name="code2model"><font color="#117755"><i>&lt;S81&gt;/r_sinPhaB_M1</i></font></a>'</span>
-</span><span><a class="LN" name="143">  143   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="144">  144   </a>  <b>{</b> -1000, -985, -940, -866, -766, -643, -500, -342, -174, 0, 174, 342, 500, 643,
-</span><span><a class="LN" name="145">  145   </a>    766, 866, 940, 985, 1000, 985, 940, 866, 766, 643, 500, 342, 174, 0, -174,
-</span><span><a class="LN" name="146">  146   </a>    -342, -500, -643, -766, -866, -940, -985, -1000 <b>}</b>,
-</span><span><a class="LN" name="147">  147   </a>
-</span><span><a class="LN" name="148">  148   </a>  <span class="CT">/* Pooled Parameter (Expression: r_sinPhaC_M1)</span>
-</span><span><a class="LN" name="149">  149   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="150">  150   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:311')" name="code2model"><font color="#117755"><i>&lt;S43&gt;/r_sinPhaC_M1</i></font></a>'</span>
-</span><span><a class="LN" name="151">  151   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:311')" name="code2model"><font color="#117755"><i>&lt;S81&gt;/r_sinPhaC_M1</i></font></a>'</span>
-</span><span><a class="LN" name="152">  152   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="153">  153   </a>  <b>{</b> 500, 342, 174, 0, -174, -342, -500, -643, -766, -866, -940, -985, -1000,
-</span><span><a class="LN" name="154">  154   </a>    -985, -940, -866, -766, -643, -500, -342, -174, 0, 174, 342, 500, 643, 766,
-</span><span><a class="LN" name="155">  155   </a>    866, 940, 985, 1000, 985, 940, 866, 766, 643, 500 <b>}</b>,
-</span><span><a class="LN" name="156">  156   </a>
-</span><span><a class="LN" name="157">  157   </a>  <span class="CT">/* Pooled Parameter (Expression: r_sin3PhaA_M1)</span>
-</span><span><a class="LN" name="158">  158   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="159">  159   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:299')" name="code2model"><font color="#117755"><i>&lt;S42&gt;/r_sin3PhaA_M1</i></font></a>'</span>
-</span><span><a class="LN" name="160">  160   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:299')" name="code2model"><font color="#117755"><i>&lt;S80&gt;/r_sin3PhaA_M1</i></font></a>'</span>
-</span><span><a class="LN" name="161">  161   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="162">  162   </a>  <b>{</b> 795, 930, 991, 996, 971, 942, 930, 942, 971, 996, 991, 930, 795, 584, 310, 0,
-</span><span><a class="LN" name="163">  163   </a>    -310, -584, -795, -930, -991, -996, -971, -942, -930, -942, -971, -996, -991,
-</span><span><a class="LN" name="164">  164   </a>    -930, -795, -584, -310, 0, 310, 584, 795 <b>}</b>,
-</span><span><a class="LN" name="165">  165   </a>
-</span><span><a class="LN" name="166">  166   </a>  <span class="CT">/* Pooled Parameter (Expression: r_sin3PhaB_M1)</span>
-</span><span><a class="LN" name="167">  167   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="168">  168   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:300')" name="code2model"><font color="#117755"><i>&lt;S42&gt;/r_sin3PhaB_M1</i></font></a>'</span>
-</span><span><a class="LN" name="169">  169   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:300')" name="code2model"><font color="#117755"><i>&lt;S80&gt;/r_sin3PhaB_M1</i></font></a>'</span>
-</span><span><a class="LN" name="170">  170   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="171">  171   </a>  <b>{</b> -930, -942, -971, -996, -991, -930, -795, -584, -310, 0, 310, 584, 795, 930,
-</span><span><a class="LN" name="172">  172   </a>    991, 996, 971, 942, 930, 942, 971, 996, 991, 930, 795, 584, 310, 0, -310,
-</span><span><a class="LN" name="173">  173   </a>    -584, -795, -930, -991, -996, -971, -942, -930 <b>}</b>,
-</span><span><a class="LN" name="174">  174   </a>
-</span><span><a class="LN" name="175">  175   </a>  <span class="CT">/* Pooled Parameter (Expression: r_sin3PhaC_M1)</span>
-</span><span><a class="LN" name="176">  176   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="177">  177   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:301')" name="code2model"><font color="#117755"><i>&lt;S42&gt;/r_sin3PhaC_M1</i></font></a>'</span>
-</span><span><a class="LN" name="178">  178   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:301')" name="code2model"><font color="#117755"><i>&lt;S80&gt;/r_sin3PhaC_M1</i></font></a>'</span>
-</span><span><a class="LN" name="179">  179   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="180">  180   </a>  <b>{</b> 795, 584, 310, 0, -310, -584, -795, -930, -991, -996, -971, -942, -930, -942,
-</span><span><a class="LN" name="181">  181   </a>    -971, -996, -991, -930, -795, -584, -310, 0, 310, 584, 795, 930, 991, 996,
-</span><span><a class="LN" name="182">  182   </a>    971, 942, 930, 942, 971, 996, 991, 930, 795 <b>}</b>,
-</span><span><a class="LN" name="183">  183   </a>
-</span><span><a class="LN" name="184">  184   </a>  <span class="CT">/* Pooled Parameter (Expression: z_commutMap_M1)</span>
-</span><span><a class="LN" name="185">  185   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="186">  186   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:411')" name="code2model"><font color="#117755"><i>&lt;S15&gt;/z_commutMap_M1</i></font></a>'</span>
-</span><span><a class="LN" name="187">  187   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:411')" name="code2model"><font color="#117755"><i>&lt;S53&gt;/z_commutMap_M1</i></font></a>'</span>
-</span><span><a class="LN" name="188">  188   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="189">  189   </a>  <b>{</b> 1000, -1000, 0, 1000, 0, -1000, 0, 1000, -1000, -1000, 1000, 0, -1000, 0,
-</span><span><a class="LN" name="190">  190   </a>    1000, 0, -1000, 1000 <b>}</b>,
-</span><span><a class="LN" name="191">  191   </a>
-</span><span><a class="LN" name="192">  192   </a>  <span class="CT">/* Pooled Parameter (Expression: vec_hallToPos)</span>
-</span><span><a class="LN" name="193">  193   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="194">  194   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:22')" name="code2model"><font color="#117755"><i>&lt;S21&gt;/vec_hallToPos</i></font></a>'</span>
-</span><span><a class="LN" name="195">  195   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:22')" name="code2model"><font color="#117755"><i>&lt;S59&gt;/vec_hallToPos</i></font></a>'</span>
-</span><span><a class="LN" name="196">  196   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="197">  197   </a>  <b>{</b> 0U, 5U, 3U, 4U, 1U, 0U, 2U, 0U <b>}</b>,
-</span><span><a class="LN" name="198">  198   </a>
-</span><span><a class="LN" name="199">  199   </a>  <span class="CT">/* Pooled Parameter (Expression: [0 1;1 0;0 1;0 1;1 0;1 0;0 0;0 0])</span>
-</span><span><a class="LN" name="200">  200   </a><span class="CT">   * Referenced by:</span>
-</span><span><a class="LN" name="201">  201   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2530:140:135')" name="code2model"><font color="#117755"><i>&lt;S29&gt;/Logic</i></font></a>'</span>
-</span><span><a class="LN" name="202">  202   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2531:140:135')" name="code2model"><font color="#117755"><i>&lt;S67&gt;/Logic</i></font></a>'</span>
-</span><span><a class="LN" name="203">  203   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="204">  204   </a>  <b>{</b> 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0 <b>}</b>
-</span><span><a class="LN" name="205">  205   </a><b>}</b>;
-</span><span><a class="LN" name="206">  206   </a>
-</span><span><a class="LN" name="207">  207   </a><span class="CT">/*</span>
-</span><span><a class="LN" name="208">  208   </a><span class="CT"> * File trailer for generated code.</span>
-</span><span><a class="LN" name="209">  209   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="210">  210   </a><span class="CT"> * [EOF]</span>
-</span><span><a class="LN" name="211">  211   </a><span class="CT"> */</span>
-</span><span><a class="LN" name="212">  212   </a>
+</span><span><a class="LN" name="85">   85   </a>  <span class="CT">/* Computed Parameter: z_commutMap_M1_table</span>
+</span><span><a class="LN" name="86">   86   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>'</span>
+</span><span><a class="LN" name="87">   87   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="88">   88   </a>  <b>{</b> 1000, -1000, 0, 1000, 0, -1000, 0, 1000, -1000, -1000, 1000, 0, -1000, 0,
+</span><span><a class="LN" name="89">   89   </a>    1000, 0, -1000, 1000 <b>}</b>,
+</span><span><a class="LN" name="90">   90   </a>
+</span><span><a class="LN" name="91">   91   </a>  <span class="CT">/* Computed Parameter: vec_hallToPos_Value</span>
+</span><span><a class="LN" name="92">   92   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:22')" name="code2model"><font color="#117755"><i>&lt;S12&gt;/vec_hallToPos</i></font></a>'</span>
+</span><span><a class="LN" name="93">   93   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="94">   94   </a>  <b>{</b> 0, 5, 3, 4, 1, 0, 2, 0 <b>}</b>
+</span><span><a class="LN" name="95">   95   </a><b>}</b>;
+</span><span><a class="LN" name="96">   96   </a>
+</span><span><a class="LN" name="97">   97   </a><span class="CT">/*</span>
+</span><span><a class="LN" name="98">   98   </a><span class="CT"> * File trailer for generated code.</span>
+</span><span><a class="LN" name="99">   99   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="100">  100   </a><span class="CT"> * [EOF]</span>
+</span><span><a class="LN" name="101">  101   </a><span class="CT"> */</span>
+</span><span><a class="LN" name="102">  102   </a>
 </span></pre>
 </td></tr></table>
 </p>

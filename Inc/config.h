@@ -78,8 +78,6 @@
 // ############################### MOTOR CONTROL (overwrite) #########################
 #define CTRL_TYP_SEL            3   // [-] Control method selection: 0 = Commutation , 1 = Pure Trapezoidal , 2 = Sinusoidal, 3 = Sinusoidal 3rd armonic (default)
 #define PHASE_ADV_ENA           1   // [-] Phase advance enable parameter: 0 = disabled, 1 = enabled (default)
-#define COMM_DEACV_HI         180   // [rpm] Commutation method deactivation speed high (above this value the control switches from Commutation method to Selected method above)
-#define COMM_ACV_LO           100   // [rpm] Commutation method activation speed low
 
 // GENERAL NOTES:
 // 1. All the available motor parameters can be found in the BLDC_controller_data.c

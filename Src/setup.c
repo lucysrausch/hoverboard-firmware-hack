@@ -549,7 +549,15 @@ void MX_ADC1_Init(void) {
   multimode.Mode = ADC_DUALMODE_REGSIMULT;
   HAL_ADCEx_MultiModeConfigChannel(&hadc1, &multimode);
 
+  // sConfig.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
   sConfig.SamplingTime = ADC_SAMPLETIME_7CYCLES_5;
+  // sConfig.SamplingTime = ADC_SAMPLETIME_13CYCLES_5;
+  // sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES_5;
+  // sConfig.SamplingTime = ADC_SAMPLETIME_41CYCLES_5;
+  // sConfig.SamplingTime = ADC_SAMPLETIME_55CYCLES_5;
+  // sConfig.SamplingTime = ADC_SAMPLETIME_71CYCLES_5;
+  // sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
+
 
   sConfig.Channel = ADC_CHANNEL_14;  // pc4 left b
   sConfig.Rank    = 1;
@@ -612,7 +620,15 @@ void MX_ADC2_Init(void) {
   hadc2.Init.NbrOfConversion       = 5;
   HAL_ADC_Init(&hadc2);
 
+ 
+  // sConfig.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
   sConfig.SamplingTime = ADC_SAMPLETIME_7CYCLES_5;
+  // sConfig.SamplingTime = ADC_SAMPLETIME_13CYCLES_5;
+  // sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES_5;
+  // sConfig.SamplingTime = ADC_SAMPLETIME_41CYCLES_5;
+  // sConfig.SamplingTime = ADC_SAMPLETIME_55CYCLES_5;
+  // sConfig.SamplingTime = ADC_SAMPLETIME_71CYCLES_5;
+  // sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
 
   sConfig.Channel = ADC_CHANNEL_15;  // pc5 left c
   sConfig.Rank    = 1;
