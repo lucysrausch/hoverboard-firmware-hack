@@ -160,54 +160,6 @@
   }
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2687:169",
-  "className":"Simulink.UnitDelay",
-  "icon":"WebViewIcon2",
-  "name":"z_counter2",
-  "label":"z_counter2",
-  "parent":"BLDCmotorControl_R2017b:2687:1340",
-  "inspector":{
-   "params":[
-    "InitialCondition",
-    "InputProcessing",
-    "SampleTime",
-    "CodeGenStateStorageTypeQualifier",
-    "StateMustResolveToSignalObject",
-    "StateName",
-    "StateSignalObject",
-    "StateStorageClass"
-   ],
-   "values":[
-    "z_maxCntRst",
-    "Elements as channels (sample based)",
-    "-1",
-    "",
-    "off",
-    "",
-    [
-    ],
-    "Auto"
-   ],
-   "tabs":[
-    "Main",
-    "-Other"
-   ],
-   "tabs_idx":[
-    0,
-    3
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"UnitDelay",
-   "masktype":""
-  }
- },
- {
   "sid":"BLDCmotorControl_R2017b:2687:1454",
   "className":"Simulink.Sum",
   "icon":"WebViewIcon2",
@@ -261,6 +213,54 @@
   ],
   "finder":{
    "blocktype":"Sum",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:169",
+  "className":"Simulink.UnitDelay",
+  "icon":"WebViewIcon2",
+  "name":"z_counter2",
+  "label":"z_counter2",
+  "parent":"BLDCmotorControl_R2017b:2687:1340",
+  "inspector":{
+   "params":[
+    "InitialCondition",
+    "InputProcessing",
+    "SampleTime",
+    "CodeGenStateStorageTypeQualifier",
+    "StateMustResolveToSignalObject",
+    "StateName",
+    "StateSignalObject",
+    "StateStorageClass"
+   ],
+   "values":[
+    "z_maxCntRst",
+    "Elements as channels (sample based)",
+    "-1",
+    "",
+    "off",
+    "",
+    [
+    ],
+    "Auto"
+   ],
+   "tabs":[
+    "Main",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    3
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"UnitDelay",
    "masktype":""
   }
  },

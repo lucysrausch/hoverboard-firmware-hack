@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'BLDC_controller'.
  *
- * Model version                  : 1.877
+ * Model version                  : 1.879
  * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017
- * C/C++ source code generated on : Wed Jun  5 22:29:28 2019
+ * C/C++ source code generated on : Thu Jun  6 17:49:29 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex

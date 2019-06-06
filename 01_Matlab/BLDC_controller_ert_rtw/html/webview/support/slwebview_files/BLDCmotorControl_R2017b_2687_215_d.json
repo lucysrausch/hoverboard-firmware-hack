@@ -1019,7 +1019,7 @@
     "IconDisplay"
    ],
    "values":[
-    "r_DC",
+    "r_DCabs",
     "Tag"
    ],
    "tabs":[
@@ -1072,8 +1072,8 @@
   "sid":"BLDCmotorControl_R2017b:2687:535",
   "className":"Simulink.Inport",
   "icon":"WebViewIcon2",
-  "name":"r_DC",
-  "label":"r_DC",
+  "name":"r_DCabs",
+  "label":"r_DCabs",
   "parent":"BLDCmotorControl_R2017b:2687:215",
   "inspector":{
    "params":[
@@ -1149,7 +1149,7 @@
     "IconDisplay"
    ],
    "values":[
-    "r_DC",
+    "r_DCabs",
     "local",
     "Tag"
    ],
@@ -1454,53 +1454,6 @@
   ],
   "finder":{
    "blocktype":"Goto",
-   "masktype":""
-  }
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2687:595",
-  "className":"Simulink.Abs",
-  "icon":"WebViewIcon2",
-  "name":"Abs2",
-  "label":"Abs2",
-  "parent":"BLDCmotorControl_R2017b:2687:215",
-  "inspector":{
-   "params":[
-    "OutDataTypeStr",
-    "LockScale",
-    "OutMax",
-    "OutMin",
-    "RndMeth",
-    "SampleTime",
-    "SaturateOnIntegerOverflow",
-    "ZeroCross"
-   ],
-   "values":[
-    "Inherit: Inherit via back propagation",
-    "off",
-    "[]",
-    "[]",
-    "Simplest",
-    "-1",
-    "off",
-    "off"
-   ],
-   "tabs":[
-    "Signal Attributes",
-    "-Other"
-   ],
-   "tabs_idx":[
-    0,
-    1
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"Abs",
    "masktype":""
   }
  },
@@ -3391,57 +3344,6 @@
  },
  {
   "sid":"BLDCmotorControl_R2017b:2687:518#out:1",
-  "className":"Simulink.Line",
-  "icon":"WebViewIcon4",
-  "name":"",
-  "label":"",
-  "parent":"BLDCmotorControl_R2017b:2687:215",
-  "inspector":{
-   "params":[
-    "SignalNameFromLabel",
-    "MustResolveToSignal",
-    "ShowPropagatedSignal",
-    "DataLogging",
-    "TestPoint",
-    "SignalObjectPackage",
-    "StorageClass",
-    "Description",
-    "documentLink"
-   ],
-   "values":[
-    "",
-    "off",
-    "off",
-    "off",
-    "off",
-    "Simulink",
-    "Auto",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes",
-    "Logging and Accessibility",
-    "Code Generation",
-    "Documentation"
-   ],
-   "tabs_idx":[
-    0,
-    3,
-    5,
-    7
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2687:595#out:1",
   "className":"Simulink.Line",
   "icon":"WebViewIcon4",
   "name":"",

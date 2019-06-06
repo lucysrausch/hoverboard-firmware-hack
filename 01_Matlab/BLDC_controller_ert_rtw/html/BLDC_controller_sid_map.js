@@ -36,6 +36,7 @@ function RTW_SidParentMap() {
     this.sidParentMap["BLDCmotorControl_R2017b:2687:3"] = "BLDCmotorControl_R2017b:2687";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:4"] = "BLDCmotorControl_R2017b:2687";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:5"] = "BLDCmotorControl_R2017b:2687";
+    this.sidParentMap["BLDCmotorControl_R2017b:2687:1660"] = "BLDCmotorControl_R2017b:2687";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:6"] = "BLDCmotorControl_R2017b:2687";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:215"] = "BLDCmotorControl_R2017b:2687";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:282"] = "BLDCmotorControl_R2017b:2687";
@@ -43,6 +44,7 @@ function RTW_SidParentMap() {
     this.sidParentMap["BLDCmotorControl_R2017b:2687:416"] = "BLDCmotorControl_R2017b:2687";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:417"] = "BLDCmotorControl_R2017b:2687";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1379"] = "BLDCmotorControl_R2017b:2687";
+    this.sidParentMap["BLDCmotorControl_R2017b:2687:1667"] = "BLDCmotorControl_R2017b:2687";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:418"] = "BLDCmotorControl_R2017b:2687";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:419"] = "BLDCmotorControl_R2017b:2687";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:420"] = "BLDCmotorControl_R2017b:2687";
@@ -60,6 +62,7 @@ function RTW_SidParentMap() {
     this.sidParentMap["BLDCmotorControl_R2017b:2687:431"] = "BLDCmotorControl_R2017b:2687";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:432"] = "BLDCmotorControl_R2017b:2687";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:433"] = "BLDCmotorControl_R2017b:2687";
+    this.sidParentMap["BLDCmotorControl_R2017b:2687:1659"] = "BLDCmotorControl_R2017b:2687";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:434"] = "BLDCmotorControl_R2017b:2687";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:457"] = "BLDCmotorControl_R2017b:2687";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:589"] = "BLDCmotorControl_R2017b:2687";
@@ -80,6 +83,7 @@ function RTW_SidParentMap() {
     this.sidParentMap["BLDCmotorControl_R2017b:2687:8"] = "BLDCmotorControl_R2017b:2687:6";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:9"] = "BLDCmotorControl_R2017b:2687:6";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1375"] = "BLDCmotorControl_R2017b:2687:6";
+    this.sidParentMap["BLDCmotorControl_R2017b:2687:1661"] = "BLDCmotorControl_R2017b:2687:6";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:26"] = "BLDCmotorControl_R2017b:2687:6";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:10"] = "BLDCmotorControl_R2017b:2687:6";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:38"] = "BLDCmotorControl_R2017b:2687:6";
@@ -93,6 +97,7 @@ function RTW_SidParentMap() {
     this.sidParentMap["BLDCmotorControl_R2017b:2687:184"] = "BLDCmotorControl_R2017b:2687:6";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1633"] = "BLDCmotorControl_R2017b:2687:6";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1482"] = "BLDCmotorControl_R2017b:2687:6";
+    this.sidParentMap["BLDCmotorControl_R2017b:2687:1666"] = "BLDCmotorControl_R2017b:2687:6";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1382"] = "BLDCmotorControl_R2017b:2687:6";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:186"] = "BLDCmotorControl_R2017b:2687:6";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:187"] = "BLDCmotorControl_R2017b:2687:6";
@@ -106,6 +111,7 @@ function RTW_SidParentMap() {
     this.sidParentMap["BLDCmotorControl_R2017b:2687:195"] = "BLDCmotorControl_R2017b:2687:6";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:196"] = "BLDCmotorControl_R2017b:2687:6";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:197"] = "BLDCmotorControl_R2017b:2687:6";
+    this.sidParentMap["BLDCmotorControl_R2017b:2687:1662"] = "BLDCmotorControl_R2017b:2687:6";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:198"] = "BLDCmotorControl_R2017b:2687:6";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1376"] = "BLDCmotorControl_R2017b:2687:6";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:199"] = "BLDCmotorControl_R2017b:2687:6";
@@ -132,7 +138,6 @@ function RTW_SidParentMap() {
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1460"] = "BLDCmotorControl_R2017b:2687:215";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1461"] = "BLDCmotorControl_R2017b:2687:215";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:221"] = "BLDCmotorControl_R2017b:2687:215";
-    this.sidParentMap["BLDCmotorControl_R2017b:2687:595"] = "BLDCmotorControl_R2017b:2687:215";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1464"] = "BLDCmotorControl_R2017b:2687:215";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1465"] = "BLDCmotorControl_R2017b:2687:215";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1466"] = "BLDCmotorControl_R2017b:2687:215";
@@ -291,11 +296,11 @@ function RTW_SidParentMap() {
     this.sidParentMap["BLDCmotorControl_R2017b:2687:57"] = "BLDCmotorControl_R2017b:2687:38";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1632"] = "BLDCmotorControl_R2017b:2687:38";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1373"] = "BLDCmotorControl_R2017b:2687:59";
+    this.sidParentMap["BLDCmotorControl_R2017b:2687:1663"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1370"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:60"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:61"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1629"] = "BLDCmotorControl_R2017b:2687:59";
-    this.sidParentMap["BLDCmotorControl_R2017b:2687:1319"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1366"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1320"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1321"] = "BLDCmotorControl_R2017b:2687:59";
@@ -310,10 +315,10 @@ function RTW_SidParentMap() {
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1641"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1642"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:86"] = "BLDCmotorControl_R2017b:2687:59";
+    this.sidParentMap["BLDCmotorControl_R2017b:2687:1665"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1380"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1455"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1361"] = "BLDCmotorControl_R2017b:2687:59";
-    this.sidParentMap["BLDCmotorControl_R2017b:2687:1322"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1323"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1517"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1324"] = "BLDCmotorControl_R2017b:2687:59";
@@ -326,6 +331,7 @@ function RTW_SidParentMap() {
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1533"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:99"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:100"] = "BLDCmotorControl_R2017b:2687:59";
+    this.sidParentMap["BLDCmotorControl_R2017b:2687:1664"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1398"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1371"] = "BLDCmotorControl_R2017b:2687:59";
     this.sidParentMap["BLDCmotorControl_R2017b:2687:1372"] = "BLDCmotorControl_R2017b:2687:59";

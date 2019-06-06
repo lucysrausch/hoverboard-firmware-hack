@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'BLDC_controller'.
  *
- * Model version                  : 1.877
+ * Model version                  : 1.879
  * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017
- * C/C++ source code generated on : Wed Jun  5 22:29:28 2019
+ * C/C++ source code generated on : Thu Jun  6 17:49:29 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -25,6 +25,8 @@
 #ifndef UCHAR_MAX
 #include <limits.h>
 #endif
+
+#define static static inline 
 
 #if ( UCHAR_MAX != (0xFFU) ) || ( SCHAR_MAX != (0x7F) )
 #error Code was generated for compiler with different sized uchar/char. \
@@ -154,15 +156,15 @@ void BLDC_controller_step(RT_MODEL *const rtM)
   ExtU *rtU = (ExtU *) rtM->inputs;
   ExtY *rtY = (ExtY *) rtM->outputs;
   uint8_T rtb_Sum;
-  int32_T rtb_Sum2;
+  int32_T rtb_Abs1;
   uint8_T rtb_BitwiseOperator;
+  int32_T rtb_Sum2;
   int16_T rtb_Abs2;
   int16_T rtb_Sum1_a;
   int32_T rtb_Abs5;
   int8_T rtAction;
   int8_T rtb_Sum2_h;
   uint32_T rtb_r_phaAdvDC_XA_o2;
-  int32_T rtb_Switch1_idx_0;
   int32_T rtb_Switch1_idx_1;
 
   /* Outputs for Atomic SubSystem: '<Root>/BLDC_controller' */
@@ -175,6 +177,17 @@ void BLDC_controller_step(RT_MODEL *const rtM)
    */
   rtb_Sum = (uint8_T)((uint32_T)(uint8_T)((uint32_T)(uint8_T)(rtU->b_hallA << 2)
     + (uint8_T)(rtU->b_hallB << 1)) + rtU->b_hallC);
+
+  /* Abs: '<S2>/Abs1' incorporates:
+   *  Inport: '<Root>/r_DC'
+   */
+  if (rtU->r_DC < 0) {
+    rtb_Abs1 = -rtU->r_DC;
+  } else {
+    rtb_Abs1 = rtU->r_DC;
+  }
+
+  /* End of Abs: '<S2>/Abs1' */
 
   /* S-Function (sfix_bitop): '<S11>/Bitwise Operator' incorporates:
    *  Inport: '<Root>/b_hallA '
@@ -411,19 +424,8 @@ void BLDC_controller_step(RT_MODEL *const rtM)
      *  Outport: '<Root>/a_elecAngle'
      */
     if (rtP->b_phaAdvEna) {
-      /* Abs: '<S8>/Abs2' incorporates:
-       *  Inport: '<Root>/r_DC'
-       */
-      if (rtU->r_DC < 0) {
-        rtb_Switch1_idx_0 = -rtU->r_DC;
-      } else {
-        rtb_Switch1_idx_0 = rtU->r_DC;
-      }
-
-      /* End of Abs: '<S8>/Abs2' */
-
       /* PreLookup: '<S8>/r_phaAdvDC_XA' */
-      rtb_BitwiseOperator = plook_u8s32u32n31_evenc_s(rtb_Switch1_idx_0,
+      rtb_BitwiseOperator = plook_u8s32u32n31_evenc_s(rtb_Abs1,
         rtP->r_phaAdvDC_XA[0], (uint32_T)rtP->r_phaAdvDC_XA[1] -
         rtP->r_phaAdvDC_XA[0], 10U, &rtb_r_phaAdvDC_XA_o2);
 
@@ -435,11 +437,10 @@ void BLDC_controller_step(RT_MODEL *const rtM)
        *  Outport: '<Root>/a_elecAngle'
        *  Product: '<S8>/Product2'
        */
-      rtb_Switch1_idx_0 = (int16_T)(rtb_Abs2 * rtDW->Switch2) + rtY->a_elecAngle;
+      rtb_Abs5 = (int16_T)(rtb_Abs2 * rtDW->Switch2) + rtY->a_elecAngle;
 
       /* Math: '<S8>/Math Function' */
-      rtDW->Switch_PhaAdv = rtb_Switch1_idx_0 - div_nde_s32_floor
-        (rtb_Switch1_idx_0, 360) * 360;
+      rtDW->Switch_PhaAdv = rtb_Abs5 - div_nde_s32_floor(rtb_Abs5, 360) * 360;
     } else {
       rtDW->Switch_PhaAdv = rtY->a_elecAngle;
     }
@@ -526,20 +527,6 @@ void BLDC_controller_step(RT_MODEL *const rtM)
 
   /* End of SwitchCase: '<S9>/Switch Case' */
 
-  /* Abs: '<S14>/Abs1' incorporates:
-   *  Inport: '<Root>/r_DC'
-   *  Signum: '<S14>/Sign1'
-   */
-  if (rtU->r_DC < 0) {
-    rtb_Switch1_idx_0 = -rtU->r_DC;
-    rtb_Switch1_idx_1 = -1;
-  } else {
-    rtb_Switch1_idx_0 = rtU->r_DC;
-    rtb_Switch1_idx_1 = (rtU->r_DC > 0);
-  }
-
-  /* End of Abs: '<S14>/Abs1' */
-
   /* Signum: '<S14>/Sign' */
   if (rtDW->Switch2 < 0) {
     rtb_Sum2_h = -1;
@@ -548,6 +535,17 @@ void BLDC_controller_step(RT_MODEL *const rtM)
   }
 
   /* End of Signum: '<S14>/Sign' */
+
+  /* Signum: '<S14>/Sign1' incorporates:
+   *  Inport: '<Root>/r_DC'
+   */
+  if (rtU->r_DC < 0) {
+    rtb_Abs5 = -1;
+  } else {
+    rtb_Abs5 = (rtU->r_DC > 0);
+  }
+
+  /* End of Signum: '<S14>/Sign1' */
 
   /* Switch: '<S10>/Switch1' incorporates:
    *  Constant: '<S12>/vec_hallToPos'
@@ -569,12 +567,11 @@ void BLDC_controller_step(RT_MODEL *const rtM)
    * About '<S10>/z_commutMap_M1':
    *  2-dimensional Direct Look-Up returning a Column
    */
-  if ((rtP->z_ctrlTypSel != 0) && (rtb_Switch1_idx_0 > rtP->r_commDCDeacv) &&
-      (rtb_Sum2_h == rtb_Switch1_idx_1) && rtDW->n_commDeacv_Mode &&
-      (!rtDW->dz_counter_Mode)) {
-    rtb_Switch1_idx_0 = rtU->r_DC * rtDW->Merge;
+  if ((rtP->z_ctrlTypSel != 0) && (rtb_Abs1 > rtP->r_commDCDeacv) && (rtb_Sum2_h
+       == rtb_Abs5) && rtDW->n_commDeacv_Mode && (!rtDW->dz_counter_Mode)) {
+    rtb_Abs5 = rtU->r_DC * rtDW->Merge;
     rtb_Switch1_idx_1 = rtU->r_DC * rtDW->Merge1;
-    rtb_Abs5 = rtU->r_DC * rtDW->Merge2;
+    rtb_Abs1 = rtU->r_DC * rtDW->Merge2;
   } else {
     if (rtConstP.vec_hallToPos_Value[rtb_Sum] > 5) {
       /* LookupNDDirect: '<S10>/z_commutMap_M1'
@@ -608,10 +605,10 @@ void BLDC_controller_step(RT_MODEL *const rtM)
      * About '<S10>/z_commutMap_M1':
      *  2-dimensional Direct Look-Up returning a Column
      */
-    rtb_Abs5 = rtb_Sum2_h * 3;
-    rtb_Switch1_idx_0 = rtU->r_DC * rtConstP.z_commutMap_M1_table[rtb_Abs5];
-    rtb_Switch1_idx_1 = rtConstP.z_commutMap_M1_table[1 + rtb_Abs5] * rtU->r_DC;
-    rtb_Abs5 = rtConstP.z_commutMap_M1_table[2 + rtb_Abs5] * rtU->r_DC;
+    rtb_Abs1 = rtb_Sum2_h * 3;
+    rtb_Abs5 = rtU->r_DC * rtConstP.z_commutMap_M1_table[rtb_Abs1];
+    rtb_Switch1_idx_1 = rtConstP.z_commutMap_M1_table[1 + rtb_Abs1] * rtU->r_DC;
+    rtb_Abs1 = rtConstP.z_commutMap_M1_table[2 + rtb_Abs1] * rtU->r_DC;
   }
 
   /* End of Switch: '<S10>/Switch1' */
@@ -620,7 +617,7 @@ void BLDC_controller_step(RT_MODEL *const rtM)
    *  Constant: '<S10>/Constant1'
    *  Product: '<S10>/Divide1'
    */
-  rtY->DC_phaA = rtb_Switch1_idx_0 / 1000;
+  rtY->DC_phaA = rtb_Abs5 / 1000;
 
   /* Outport: '<Root>/DC_phaB' incorporates:
    *  Constant: '<S10>/Constant1'
@@ -656,7 +653,7 @@ void BLDC_controller_step(RT_MODEL *const rtM)
    *  Constant: '<S10>/Constant1'
    *  Product: '<S10>/Divide1'
    */
-  rtY->DC_phaC = rtb_Abs5 / 1000;
+  rtY->DC_phaC = rtb_Abs1 / 1000;
 
   /* End of Outputs for SubSystem: '<Root>/BLDC_controller' */
 

@@ -23,7 +23,6 @@
 #include "defines.h"
 #include "setup.h"
 #include "config.h"
-#include <stdlib.h>
 //#include "hd44780.h"
 
 // Matlab includes and defines - from auto-code generation
@@ -31,8 +30,8 @@
 #include "BLDC_controller.h"            /* Model's header file */
 #include "rtwtypes.h"
 
-static RT_MODEL rtM_Left_;    /* Real-time model */
-static RT_MODEL rtM_Right_;   /* Real-time model */
+RT_MODEL rtM_Left_;    /* Real-time model */
+RT_MODEL rtM_Right_;   /* Real-time model */
 RT_MODEL *const rtM_Left = &rtM_Left_;
 RT_MODEL *const rtM_Right = &rtM_Right_;
 
@@ -263,9 +262,11 @@ int main(void) {
       timeout = 0;
     #endif
 
+    // Bypass - only for testing purposes
+    // cmd2 = cmd2-500;
+    // cmd1 = 0;
+
     // ####### LOW-PASS FILTER #######
-    cmd2 = cmd2-500;
-    cmd1 = 0;
     steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
     speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
 
