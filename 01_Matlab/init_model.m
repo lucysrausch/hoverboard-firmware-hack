@@ -101,7 +101,7 @@ r_sinPhaC_M1        = sin(omega + 120*(pi/180) + pha_adv*(pi/180));
 
 % Sinusoidal 3rd armonic method
 A                   = 1.15;     % Sine amplitude (tunable to get the Saddle sin maximum to value 1000)
-sin3Arm             = 0.22*sin(3*(omega + pha_adv*(pi/180)));     % 3rd armonic
+sin3Arm             = 0.238*sin(3*(omega + pha_adv*(pi/180)));     % 3rd armonic
 r_sin3PhaA_M1       = sin3Arm + A*r_sinPhaA_M1;
 r_sin3PhaB_M1       = sin3Arm + A*r_sinPhaB_M1;
 r_sin3PhaC_M1       = sin3Arm + A*r_sinPhaC_M1;

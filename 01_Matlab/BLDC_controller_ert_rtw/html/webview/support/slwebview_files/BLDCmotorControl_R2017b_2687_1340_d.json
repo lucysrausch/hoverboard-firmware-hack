@@ -160,63 +160,6 @@
   }
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2687:1454",
-  "className":"Simulink.Sum",
-  "icon":"WebViewIcon2",
-  "name":"Sum4",
-  "label":"Sum4",
-  "parent":"BLDCmotorControl_R2017b:2687:1340",
-  "inspector":{
-   "params":[
-    "AccumDataTypeStr",
-    "OutDataTypeStr",
-    "CollapseDim",
-    "CollapseMode",
-    "IconShape",
-    "InputSameDT",
-    "Inputs",
-    "LockScale",
-    "OutMax",
-    "OutMin",
-    "RndMeth",
-    "SampleTime",
-    "SaturateOnIntegerOverflow"
-   ],
-   "values":[
-    "Inherit: Same as first input",
-    "Inherit: Same as first input",
-    "1",
-    "All dimensions",
-    "rectangular",
-    "on",
-    "+-",
-    "off",
-    "[]",
-    "[]",
-    "Simplest",
-    "-1",
-    "off"
-   ],
-   "tabs":[
-    "Signal Attributes",
-    "-Other"
-   ],
-   "tabs_idx":[
-    0,
-    2
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"Sum",
-   "masktype":""
-  }
- },
- {
   "sid":"BLDCmotorControl_R2017b:2687:169",
   "className":"Simulink.UnitDelay",
   "icon":"WebViewIcon2",
@@ -359,6 +302,63 @@
   ],
   "finder":{
    "blocktype":"Inport",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:1454",
+  "className":"Simulink.Sum",
+  "icon":"WebViewIcon2",
+  "name":"Sum4",
+  "label":"Sum4",
+  "parent":"BLDCmotorControl_R2017b:2687:1340",
+  "inspector":{
+   "params":[
+    "AccumDataTypeStr",
+    "OutDataTypeStr",
+    "CollapseDim",
+    "CollapseMode",
+    "IconShape",
+    "InputSameDT",
+    "Inputs",
+    "LockScale",
+    "OutMax",
+    "OutMin",
+    "RndMeth",
+    "SampleTime",
+    "SaturateOnIntegerOverflow"
+   ],
+   "values":[
+    "Inherit: Same as first input",
+    "Inherit: Same as first input",
+    "1",
+    "All dimensions",
+    "rectangular",
+    "on",
+    "+-",
+    "off",
+    "[]",
+    "[]",
+    "Simplest",
+    "-1",
+    "off"
+   ],
+   "tabs":[
+    "Signal Attributes",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    2
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"Sum",
    "masktype":""
   }
  },
