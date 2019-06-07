@@ -1,6 +1,6 @@
 # hoverboard-firmware-hack
 ## With Sinusoidal BLDC control and Phase Advance
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+[![Build Status](https://travis-ci.com/EmanuelFeru/hoverboard-firmware-hack.svg?branch=master)](https://travis-ci.com/EmanuelFeru/hoverboard-firmware-hack)
 
 This repository improves significantly the performance of the previous BLDC motor control for hoverboards developed by [NiklasFauth](https://github.com/NiklasFauth/hoverboard-firmware-hack). Compared to previous commutation method, this project implements 3 more additional control methods. The new control methods offers superior performance featuring:
  - reduced noise and vibrations 	
