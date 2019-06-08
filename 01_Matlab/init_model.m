@@ -50,6 +50,7 @@ n_polePairs     = 15;   % [-] Number of pole pairs
 a_elecPeriod    = 360;  % [deg] Electrical angle period
 a_elecAngle     = 60;   % [deg] Electrical angle between two Hall sensor changing events
 a_mechAngle     = a_elecAngle / n_polePairs;    % [deg] Mechanical angle
+r_whl           = 6.5 * 2.54 * 1e-2 / 2;        % [m] Wheel radius. Diameter = 6.5 inch (1 inch = 2.54 cm)
 
 %% F01_Preliminary_Calculations
 
