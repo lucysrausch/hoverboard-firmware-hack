@@ -53,7 +53,7 @@ volatile adc_buf_t adc_buffer;
 #ifdef CONTROL_SERIAL_USART2
 
 
-void UART_Control_Init() {
+void UART_Control_Init(void) {
   GPIO_InitTypeDef GPIO_InitStruct;
   __HAL_RCC_USART2_CLK_ENABLE();
   /* DMA1_Channel6_IRQn interrupt configuration */
@@ -123,7 +123,7 @@ HAL_DMA_Init(&hdma_usart2_tx);
 #endif
 
 #ifdef DEBUG_SERIAL_USART3
-void UART_Init() {
+void UART_Init(void) {
   __HAL_RCC_USART3_CLK_ENABLE();
   __HAL_RCC_DMA1_CLK_ENABLE();
 
@@ -156,7 +156,7 @@ void UART_Init() {
 #endif
 
 #ifdef DEBUG_SERIAL_USART2
-void UART_Init() {
+void UART_Init(void) {
   __HAL_RCC_USART2_CLK_ENABLE();
   __HAL_RCC_DMA1_CLK_ENABLE();
 
@@ -188,8 +188,8 @@ void UART_Init() {
 }
 #endif
 
-/*
-void UART_Init() {
+#if 0
+void UART_Init(void) {
   __HAL_RCC_USART2_CLK_ENABLE();
   __HAL_RCC_DMA1_CLK_ENABLE();
 
@@ -219,12 +219,12 @@ void UART_Init() {
   DMA1_Channel7->CCR   = DMA_CCR_MINC | DMA_CCR_DIR;
   DMA1->IFCR           = DMA_IFCR_CTCIF7 | DMA_IFCR_CHTIF7 | DMA_IFCR_CGIF7;
 }
-*/
+#endif
 
 DMA_HandleTypeDef hdma_i2c2_rx;
 DMA_HandleTypeDef hdma_i2c2_tx;
 
-void I2C_Init()
+void I2C_Init(void)
 {
 
   __HAL_RCC_I2C2_CLK_ENABLE();

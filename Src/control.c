@@ -1,10 +1,9 @@
-
+#include <stdbool.h>
+#include <string.h>
 #include "stm32f1xx_hal.h"
 #include "defines.h"
 #include "setup.h"
 #include "config.h"
-#include <stdbool.h>
-#include <string.h>
 
 TIM_HandleTypeDef TimHandle;
 uint8_t ppm_count = 0;
@@ -14,8 +13,8 @@ uint8_t nunchuck_data[6] = {0};
 uint8_t i2cBuffer[2];
 
 extern I2C_HandleTypeDef hi2c2;
-DMA_HandleTypeDef hdma_i2c2_rx;
-DMA_HandleTypeDef hdma_i2c2_tx;
+extern DMA_HandleTypeDef hdma_i2c2_rx;
+extern DMA_HandleTypeDef hdma_i2c2_tx;
 
 #ifdef CONTROL_PPM
 uint16_t ppm_captured_value[PPM_NUM_CHANNELS + 1] = {500, 500};
@@ -26,7 +25,7 @@ bool ppm_valid = true;
 
 #define IN_RANGE(x, low, up) (((x) >= (low)) && ((x) <= (up)))
 
-void PPM_ISR_Callback() {
+void PPM_ISR_Callback(void) {
   // Dummy loop with 16 bit count wrap around
   uint16_t rc_delay = TIM2->CNT;
   TIM2->CNT = 0;
@@ -48,7 +47,7 @@ void PPM_ISR_Callback() {
 }
 
 // SysTick executes once each ms
-void PPM_SysTick_Callback() {
+void PPM_SysTick_Callback(void) {
   ppm_timeout++;
   // Stop after 500 ms without PPM signal
   if(ppm_timeout > 500) {
@@ -60,7 +59,7 @@ void PPM_SysTick_Callback() {
   }
 }
 
-void PPM_Init() {
+void PPM_Init(void) {
   GPIO_InitTypeDef GPIO_InitStruct;
   /*Configure GPIO pin : PA3 */
   GPIO_InitStruct.Pin = GPIO_PIN_3;
@@ -84,7 +83,7 @@ void PPM_Init() {
 }
 #endif
 
-void Nunchuck_Init() {
+void Nunchuck_Init(void) {
     //-- START -- init WiiNunchuck
   i2cBuffer[0] = 0xF0;
   i2cBuffer[1] = 0x55;
@@ -99,7 +98,7 @@ void Nunchuck_Init() {
   HAL_Delay(10);
 }
 
-void Nunchuck_Read() {
+void Nunchuck_Read(void) {
   i2cBuffer[0] = 0x00;
   HAL_I2C_Master_Transmit(&hi2c2,0xA4,(uint8_t*)i2cBuffer, 1, 100);
   HAL_Delay(5);

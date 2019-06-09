@@ -19,13 +19,16 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <stdlib.h> // for abs()
 #include "stm32f1xx_hal.h"
 #include "defines.h"
 #include "setup.h"
 #include "config.h"
+#include "comms.h"
 //#include "hd44780.h"
 
 void SystemClock_Config(void);
+void poweroff(void);
 
 extern TIM_HandleTypeDef htim_left;
 extern TIM_HandleTypeDef htim_right;
@@ -36,9 +39,9 @@ extern volatile adc_buf_t adc_buffer;
 extern I2C_HandleTypeDef hi2c2;
 extern UART_HandleTypeDef huart2;
 
-int cmd1;  // normalized input values. -1000 to 1000
-int cmd2;
-int cmd3;
+static int cmd1;  // normalized input values. -1000 to 1000
+static int cmd2;
+static int cmd3;
 
 typedef struct{
    int16_t steer;
@@ -46,12 +49,12 @@ typedef struct{
    //uint32_t crc;
 } Serialcommand;
 
-volatile Serialcommand command;
+static volatile Serialcommand command;
 
-uint8_t button1, button2;
+static uint8_t button1, button2;
 
-int steer; // global variable for steering. -1000 to 1000
-int speed; // global variable for speed. -1000 to 1000
+static int steer; // global variable for steering. -1000 to 1000
+static int speed; // global variable for speed. -1000 to 1000
 
 extern volatile int pwml;  // global variable for pwm left. -1000 to 1000
 extern volatile int pwmr;  // global variable for pwm right. -1000 to 1000
@@ -66,30 +69,30 @@ extern uint8_t enable; // global variable for motor enable
 extern volatile uint32_t timeout; // global variable for timeout
 extern float batteryVoltage; // global variable for battery voltage
 
-uint32_t inactivity_timeout_counter;
-uint32_t main_loop_counter;
+static uint32_t inactivity_timeout_counter;
+static uint32_t main_loop_counter;
 
-int32_t motor_test_direction = 1;
+static int32_t motor_test_direction = 1;
 
 extern uint8_t nunchuck_data[6];
 #ifdef CONTROL_PPM
 extern volatile uint16_t ppm_captured_value[PPM_NUM_CHANNELS+1];
 #endif
 
-int milli_vel_error_sum = 0;
+static int milli_vel_error_sum = 0;
 
 
-void poweroff() {
+void poweroff(void) {
     #ifndef CONTROL_MOTOR_TEST
     if (abs(speed) < 20) {
     #endif
         buzzerPattern = 0;
         enable = 0;
         for (int i = 0; i < 8; i++) {
-            buzzerFreq = i;
+            buzzerFreq = (uint8_t)i;
             HAL_Delay(100);
         }
-        HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 0);
+        HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, GPIO_PIN_RESET);
         while(1) {}
     #ifndef CONTROL_MOTOR_TEST
     }
@@ -129,22 +132,21 @@ int main(void) {
     UART_Init();
   #endif
 
-  HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 1);
+  HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, GPIO_PIN_SET);
 
   HAL_ADC_Start(&hadc1);
   HAL_ADC_Start(&hadc2);
 
   for (int i = 8; i >= 0; i--) {
-    buzzerFreq = i;
+    buzzerFreq = (uint8_t)i;
     HAL_Delay(100);
   }
   buzzerFreq = 0;
 
-  HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
+  HAL_GPIO_WritePin(LED_PORT, LED_PIN, GPIO_PIN_SET);
 
   int lastSpeedL = 0, lastSpeedR = 0;
   int speedL = 0, speedR = 0;
-  float direction = 1;
 
   #ifdef CONTROL_PPM
     PPM_Init();
@@ -234,13 +236,13 @@ int main(void) {
     #endif
 
     // ####### LOW-PASS FILTER #######
-    steer = steer * (1.0 - FILTER) + cmd1 * FILTER;
-    speed = speed * (1.0 - FILTER) + cmd2 * FILTER;
+    steer = (int)(steer * (1.0f - FILTER) + cmd1 * FILTER);
+    speed = (int)(speed * (1.0f - FILTER) + cmd2 * FILTER);
 
 
     // ####### MIXER #######
-    speedR = CLAMP(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT, -1000, 1000);
-    speedL = CLAMP(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT, -1000, 1000);
+    speedR = CLAMP((int)(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT), -1000, 1000);
+    speedL = CLAMP((int)(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT), -1000, 1000);
 
 
     #ifdef ADDITIONAL_CODE
@@ -268,7 +270,7 @@ int main(void) {
 
     if (main_loop_counter % 25 == 0) {
       // ####### CALC BOARD TEMPERATURE #######
-      board_temp_adc_filtered = board_temp_adc_filtered * 0.99 + (float)adc_buffer.temp * 0.01;
+      board_temp_adc_filtered = board_temp_adc_filtered * 0.99f + (float)adc_buffer.temp * 0.01f;
       board_temp_deg_c = ((float)TEMP_CAL_HIGH_DEG_C - (float)TEMP_CAL_LOW_DEG_C) / ((float)TEMP_CAL_HIGH_ADC - (float)TEMP_CAL_LOW_ADC) * (board_temp_adc_filtered - (float)TEMP_CAL_LOW_ADC) + (float)TEMP_CAL_LOW_DEG_C;
       
       // ####### DEBUG SERIAL OUT #######
@@ -276,12 +278,12 @@ int main(void) {
         setScopeChannel(0, (int)adc_buffer.l_tx2);  // 1: ADC1
         setScopeChannel(1, (int)adc_buffer.l_rx2);  // 2: ADC2
       #endif
-      setScopeChannel(2, (int)speedR);  // 3: output speed: 0-1000
-      setScopeChannel(3, (int)speedL);  // 4: output speed: 0-1000
-      setScopeChannel(4, (int)adc_buffer.batt1);  // 5: for battery voltage calibration
-      setScopeChannel(5, (int)(batteryVoltage * 100.0f));  // 6: for verifying battery voltage calibration
-      setScopeChannel(6, (int)board_temp_adc_filtered);  // 7: for board temperature calibration
-      setScopeChannel(7, (int)board_temp_deg_c);  // 8: for verifying board temperature calibration
+      setScopeChannel(2, (int16_t)speedR);  // 3: output speed: 0-1000
+      setScopeChannel(3, (int16_t)speedL);  // 4: output speed: 0-1000
+      setScopeChannel(4, (int16_t)adc_buffer.batt1);  // 5: for battery voltage calibration
+      setScopeChannel(5, (int16_t)(batteryVoltage * 100.0f));  // 6: for verifying battery voltage calibration
+      setScopeChannel(6, (int16_t)board_temp_adc_filtered);  // 7: for board temperature calibration
+      setScopeChannel(7, (int16_t)board_temp_deg_c);  // 8: for verifying board temperature calibration
       consoleScope();
     }
 
