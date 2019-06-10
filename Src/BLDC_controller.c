@@ -26,8 +26,6 @@
 #include <limits.h>
 #endif
 
-#define static static inline 
-
 #if ( UCHAR_MAX != (0xFFU) ) || ( SCHAR_MAX != (0x7F) )
 #error Code was generated for compiler with different sized uchar/char. \
 Consider adjusting Test hardware word size settings on the \
