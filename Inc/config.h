@@ -15,23 +15,23 @@
 // How to calibrate: connect GND and RX of a 3.3v uart-usb adapter to the right sensor board cable (be careful not to use the red wire of the cable. 15v will destroye verything.). if you are using nunchuck, disable it temporarily. enable DEBUG_SERIAL_USART3 and DEBUG_SERIAL_ASCII use asearial terminal.
 
 // Battery voltage calibration: connect power source. see <How to calibrate>. write value nr 5 to BAT_CALIB_ADC. make and flash firmware. then you can verify voltage on value 6 (devide it by 100.0 to get calibrated voltage).
-#define BAT_CALIB_REAL_VOLTAGE        43.0       // input voltage measured by multimeter
+#define BAT_CALIB_REAL_VOLTAGE        43.0f      // input voltage measured by multimeter
 #define BAT_CALIB_ADC                 1704       // adc-value measured by mainboard (value nr 5 on UART debug output)
 
 #define BAT_NUMBER_OF_CELLS     10        // normal Hoverboard battery: 10s
 #define BAT_LOW_LVL1_ENABLE     0         // to beep or not to beep, 1 or 0
-#define BAT_LOW_LVL1            3.6       // gently beeps at this voltage level. [V/cell]
+#define BAT_LOW_LVL1            3.6f      // gently beeps at this voltage level. [V/cell]
 #define BAT_LOW_LVL2_ENABLE     1         // to beep or not to beep, 1 or 0
-#define BAT_LOW_LVL2            3.5       // your battery is almost empty. Charge now! [V/cell]
-#define BAT_LOW_DEAD            3.37      // undervoltage poweroff. (while not driving) [V/cell]
+#define BAT_LOW_LVL2            3.5f      // your battery is almost empty. Charge now! [V/cell]
+#define BAT_LOW_DEAD            3.37f     // undervoltage poweroff. (while not driving) [V/cell]
 
 #define DC_CUR_LIMIT     15         // DC current limit in amps per motor. so 15 means it will draw 30A out of your battery. it does not disable motors, it is a soft current limit.
 
 // Board overheat detection: the sensor is inside the STM/GD chip. it is very inaccurate without calibration (up to 45°C). so only enable this funcion after calibration! let your board cool down. see <How to calibrate>. get the real temp of the chip by thermo cam or another temp-sensor taped on top of the chip and write it to TEMP_CAL_LOW_DEG_C. write debug value 8 to TEMP_CAL_LOW_ADC. drive around to warm up the board. it should be at least 20°C warmer. repeat it for the HIGH-values. enable warning and/or poweroff and make and flash firmware.
 #define TEMP_CAL_LOW_ADC        1655      // temperature 1: ADC value
-#define TEMP_CAL_LOW_DEG_C      35.8      // temperature 1: measured temperature [°C]
+#define TEMP_CAL_LOW_DEG_C      35.8f     // temperature 1: measured temperature [°C]
 #define TEMP_CAL_HIGH_ADC       1588      // temperature 2: ADC value
-#define TEMP_CAL_HIGH_DEG_C     48.9      // temperature 2: measured temperature [°C]
+#define TEMP_CAL_HIGH_DEG_C     48.9f     // temperature 2: measured temperature [°C]
 #define TEMP_WARNING_ENABLE     0         // to beep or not to beep, 1 or 0, DO NOT ACTIVITE WITHOUT CALIBRATION!
 #define TEMP_WARNING            60        // annoying fast beeps [°C]
 #define TEMP_POWEROFF_ENABLE    0         // to poweroff or not to poweroff, 1 or 0, DO NOT ACTIVITE WITHOUT CALIBRATION!
@@ -100,23 +100,23 @@
 // outputs:
 // - speedR and speedL: normal driving -1000 to 1000
 
-#define FILTER              0.1  // lower value == softer filter. do not use values <0.01, you will get float precision issues.
-#define SPEED_COEFFICIENT   1.0 //0.5  // higher value == stronger. 0.0 to ~2.0?
-#define STEER_COEFFICIENT   0.5//0.5  // higher value == stronger. if you do not want any steering, set it to 0.0; 0.0 to 1.0
+#define FILTER              0.1f // lower value == softer filter. do not use values <0.01, you will get float precision issues.
+#define SPEED_COEFFICIENT   1.0f // higher value == stronger. 0.0 to ~2.0?
+#define STEER_COEFFICIENT   0.5f // higher value == stronger. if you do not want any steering, set it to 0.0; 0.0 to 1.0
 #define INVERT_R_DIRECTION
 #define INVERT_L_DIRECTION
 #define BEEPS_BACKWARD 0    // 0 or 1
 
 // ###### SIMPLE BOBBYCAR ######
 // for better bobbycar code see: https://github.com/larsmm/hoverboard-firmware-hack-bbcar
-// #define FILTER              0.1
-// #define SPEED_COEFFICIENT   -1
-// #define STEER_COEFFICIENT   0
+// #define FILTER              0.1f
+// #define SPEED_COEFFICIENT   -1f
+// #define STEER_COEFFICIENT   0f
 
 // ###### ARMCHAIR ######
-// #define FILTER              0.05
-// #define SPEED_COEFFICIENT   0.5
-// #define STEER_COEFFICIENT  -0.2
+// #define FILTER              0.05f
+// #define SPEED_COEFFICIENT   0.5f
+// #define STEER_COEFFICIENT  -0.2f
 
 // ############################### VALIDATE SETTINGS ###############################
 

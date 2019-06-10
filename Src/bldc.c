@@ -52,28 +52,28 @@ extern volatile adc_buf_t adc_buffer;
 
 extern volatile uint32_t timeout;
 
-uint32_t buzzerFreq     = 0;
-uint32_t buzzerPattern  = 0;
-uint32_t buzzerTimer    = 0;
+uint8_t buzzerFreq          = 0;
+uint8_t buzzerPattern       = 0;
+static uint32_t buzzerTimer = 0;
 
 uint8_t enable          = 0;
 
-const int pwm_res       = 64000000 / 2 / PWM_FREQ; // = 2000
+static const uint16_t pwm_res       = 64000000 / 2 / PWM_FREQ; // = 2000
 
-int offsetcount = 0;
-int offsetrl1   = 2000;
-int offsetrl2   = 2000;
-int offsetrr1   = 2000;
-int offsetrr2   = 2000;
-int offsetdcl   = 2000;
-int offsetdcr   = 2000;
+static int offsetcount = 0;
+static int offsetrl1   = 2000;
+static int offsetrl2   = 2000;
+static int offsetrr1   = 2000;
+static int offsetrr2   = 2000;
+static int offsetdcl   = 2000;
+static int offsetdcr   = 2000;
 
 float batteryVoltage = BAT_NUMBER_OF_CELLS * 4.0;
 
 //scan 8 channels with 2ADCs @ 20 clk cycles per sample
 //meaning ~80 ADC clock cycles @ 8MHz until new DMA interrupt =~ 100KHz
 //=640 cpu cycles
-void DMA1_Channel1_IRQHandler() {
+void DMA1_Channel1_IRQHandler(void) {
 
   DMA1->IFCR = DMA_IFCR_CTCIF1;
   // HAL_GPIO_WritePin(LED_PORT, LED_PIN, 1);
@@ -91,7 +91,7 @@ void DMA1_Channel1_IRQHandler() {
   }
 
   if (buzzerTimer % 1000 == 0) {  // because you get float rounding errors if it would run every time
-    batteryVoltage = batteryVoltage * 0.99 + ((float)adc_buffer.batt1 * ((float)BAT_CALIB_REAL_VOLTAGE / (float)BAT_CALIB_ADC)) * 0.01;
+    batteryVoltage = batteryVoltage * 0.99f + ((float)adc_buffer.batt1 * ((float)BAT_CALIB_REAL_VOLTAGE / (float)BAT_CALIB_ADC)) * 0.01f;
   }
 
   //disable PWM when current limit is reached (current chopping)
@@ -153,9 +153,9 @@ void DMA1_Channel1_IRQHandler() {
   // motAngleLeft = rtY_Left.a_elecAngle;
 
     /* Apply commands */
-    LEFT_TIM->LEFT_TIM_U    = CLAMP(ul + pwm_res / 2, 10, pwm_res-10);
-    LEFT_TIM->LEFT_TIM_V    = CLAMP(vl + pwm_res / 2, 10, pwm_res-10);
-    LEFT_TIM->LEFT_TIM_W    = CLAMP(wl + pwm_res / 2, 10, pwm_res-10);
+    LEFT_TIM->LEFT_TIM_U    = (uint16_t)CLAMP(ul + pwm_res / 2, 10, pwm_res-10);
+    LEFT_TIM->LEFT_TIM_V    = (uint16_t)CLAMP(vl + pwm_res / 2, 10, pwm_res-10);
+    LEFT_TIM->LEFT_TIM_W    = (uint16_t)CLAMP(wl + pwm_res / 2, 10, pwm_res-10);
   // =================================================================
   
 
@@ -182,9 +182,9 @@ void DMA1_Channel1_IRQHandler() {
  // motAngleRight = rtY_Right.a_elecAngle;
 
     /* Apply commands */
-    RIGHT_TIM->RIGHT_TIM_U  = CLAMP(ur + pwm_res / 2, 10, pwm_res-10);
-    RIGHT_TIM->RIGHT_TIM_V  = CLAMP(vr + pwm_res / 2, 10, pwm_res-10);
-    RIGHT_TIM->RIGHT_TIM_W  = CLAMP(wr + pwm_res / 2, 10, pwm_res-10);
+    RIGHT_TIM->RIGHT_TIM_U  = (uint16_t)CLAMP(ur + pwm_res / 2, 10, pwm_res-10);
+    RIGHT_TIM->RIGHT_TIM_V  = (uint16_t)CLAMP(vr + pwm_res / 2, 10, pwm_res-10);
+    RIGHT_TIM->RIGHT_TIM_W  = (uint16_t)CLAMP(wr + pwm_res / 2, 10, pwm_res-10);
   // =================================================================
 
   /* Indicate task complete */
