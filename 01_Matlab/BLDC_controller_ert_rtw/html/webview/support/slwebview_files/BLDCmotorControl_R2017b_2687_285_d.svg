@@ -971,10 +971,10 @@
           </g>
           <!--RAWSTRING-->
         </g>
-        <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,331,275)">
+        <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,331,155)">
           <path d="M2.5,0 C2.5,1.38071 1.38071,2.5 0,2.5 C-1.38071,2.5 -2.5,1.38071 -2.5,0 C-2.5,-1.38071 -1.38071,-2.5 0,-2.5 C1.38071,-2.5 2.5,-1.38071 2.5,0 z" fill-rule="evenodd" vector-effect="none"/>
         </g>
-        <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,331,155)">
+        <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,331,275)">
           <path d="M2.5,0 C2.5,1.38071 1.38071,2.5 0,2.5 C-1.38071,2.5 -2.5,1.38071 -2.5,0 C-2.5,-1.38071 -1.38071,-2.5 0,-2.5 C1.38071,-2.5 2.5,-1.38071 2.5,0 z" fill-rule="evenodd" vector-effect="none"/>
         </g>
         <!--RAWSTRING-->
@@ -1092,5 +1092,5 @@
       <!--RAWSTRING-->
     </g>
   </g>
-  <!--generated on windows @ 2019-06-06 22:50:42 W. Europe Daylight Time-->
+  <!--generated on windows @ 2019-06-11 21:15:16 W. Europe Daylight Time-->
 </svg>

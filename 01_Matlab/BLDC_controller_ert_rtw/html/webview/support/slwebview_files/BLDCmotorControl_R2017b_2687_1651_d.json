@@ -421,6 +421,49 @@
   }
  },
  {
+  "sid":"BLDCmotorControl_R2017b:2687:1651:1618",
+  "className":"Simulink.RelationalOperator",
+  "icon":"WebViewIcon2",
+  "name":"Relational Operator1",
+  "label":"Relational Operator1",
+  "parent":"BLDCmotorControl_R2017b:2687:1651",
+  "inspector":{
+   "params":[
+    "OutDataTypeStr",
+    "InputSameDT",
+    "Operator",
+    "RndMeth",
+    "SampleTime",
+    "ZeroCross"
+   ],
+   "values":[
+    "boolean",
+    "off",
+    "<",
+    "Simplest",
+    "-1",
+    "on"
+   ],
+   "tabs":[
+    "Data Type",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    1
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"RelationalOperator",
+   "masktype":""
+  }
+ },
+ {
   "sid":"BLDCmotorControl_R2017b:2687:1651:1616",
   "className":"Simulink.Constant",
   "icon":"WebViewIcon2",
@@ -466,49 +509,6 @@
   ],
   "finder":{
    "blocktype":"Constant",
-   "masktype":""
-  }
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2687:1651:1618",
-  "className":"Simulink.RelationalOperator",
-  "icon":"WebViewIcon2",
-  "name":"Relational Operator1",
-  "label":"Relational Operator1",
-  "parent":"BLDCmotorControl_R2017b:2687:1651",
-  "inspector":{
-   "params":[
-    "OutDataTypeStr",
-    "InputSameDT",
-    "Operator",
-    "RndMeth",
-    "SampleTime",
-    "ZeroCross"
-   ],
-   "values":[
-    "boolean",
-    "off",
-    "<",
-    "Simplest",
-    "-1",
-    "on"
-   ],
-   "tabs":[
-    "Data Type",
-    "-Other"
-   ],
-   "tabs_idx":[
-    0,
-    1
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"RelationalOperator",
    "masktype":""
   }
  },

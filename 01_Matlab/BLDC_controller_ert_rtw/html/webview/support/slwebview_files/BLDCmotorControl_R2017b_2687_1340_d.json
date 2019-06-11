@@ -80,6 +80,142 @@
   }
  },
  {
+  "sid":"BLDCmotorControl_R2017b:2687:169",
+  "className":"Simulink.UnitDelay",
+  "icon":"WebViewIcon2",
+  "name":"z_counter2",
+  "label":"z_counter2",
+  "parent":"BLDCmotorControl_R2017b:2687:1340",
+  "inspector":{
+   "params":[
+    "InitialCondition",
+    "InputProcessing",
+    "SampleTime",
+    "CodeGenStateStorageTypeQualifier",
+    "StateMustResolveToSignalObject",
+    "StateName",
+    "StateSignalObject",
+    "StateStorageClass"
+   ],
+   "values":[
+    "z_maxCntRst",
+    "Elements as channels (sample based)",
+    "-1",
+    "",
+    "off",
+    "",
+    [
+    ],
+    "Auto"
+   ],
+   "tabs":[
+    "Main",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    3
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"UnitDelay",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:1454",
+  "className":"Simulink.Sum",
+  "icon":"WebViewIcon2",
+  "name":"Sum4",
+  "label":"Sum4",
+  "parent":"BLDCmotorControl_R2017b:2687:1340",
+  "inspector":{
+   "params":[
+    "AccumDataTypeStr",
+    "OutDataTypeStr",
+    "CollapseDim",
+    "CollapseMode",
+    "IconShape",
+    "InputSameDT",
+    "Inputs",
+    "LockScale",
+    "OutMax",
+    "OutMin",
+    "RndMeth",
+    "SampleTime",
+    "SaturateOnIntegerOverflow"
+   ],
+   "values":[
+    "Inherit: Same as first input",
+    "Inherit: Same as first input",
+    "1",
+    "All dimensions",
+    "rectangular",
+    "on",
+    "+-",
+    "off",
+    "[]",
+    "[]",
+    "Simplest",
+    "-1",
+    "off"
+   ],
+   "tabs":[
+    "Signal Attributes",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    2
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"Sum",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:1344",
+  "className":"Simulink.ActionPort",
+  "icon":"WebViewIcon2",
+  "name":"Action Port",
+  "label":"Action Port",
+  "parent":"BLDCmotorControl_R2017b:2687:1340",
+  "inspector":{
+   "params":[
+    "InitializeStates",
+    "PropagateVarSize"
+   ],
+   "values":[
+    "held",
+    "Only when execution is resumed"
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"ActionPort",
+   "masktype":""
+  }
+ },
+ {
   "sid":"BLDCmotorControl_R2017b:2687:1358",
   "className":"Simulink.Outport",
   "icon":"WebViewIcon2",
@@ -160,85 +296,6 @@
   }
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2687:169",
-  "className":"Simulink.UnitDelay",
-  "icon":"WebViewIcon2",
-  "name":"z_counter2",
-  "label":"z_counter2",
-  "parent":"BLDCmotorControl_R2017b:2687:1340",
-  "inspector":{
-   "params":[
-    "InitialCondition",
-    "InputProcessing",
-    "SampleTime",
-    "CodeGenStateStorageTypeQualifier",
-    "StateMustResolveToSignalObject",
-    "StateName",
-    "StateSignalObject",
-    "StateStorageClass"
-   ],
-   "values":[
-    "z_maxCntRst",
-    "Elements as channels (sample based)",
-    "-1",
-    "",
-    "off",
-    "",
-    [
-    ],
-    "Auto"
-   ],
-   "tabs":[
-    "Main",
-    "-Other"
-   ],
-   "tabs_idx":[
-    0,
-    3
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"UnitDelay",
-   "masktype":""
-  }
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2687:1344",
-  "className":"Simulink.ActionPort",
-  "icon":"WebViewIcon2",
-  "name":"Action Port",
-  "label":"Action Port",
-  "parent":"BLDCmotorControl_R2017b:2687:1340",
-  "inspector":{
-   "params":[
-    "InitializeStates",
-    "PropagateVarSize"
-   ],
-   "values":[
-    "held",
-    "Only when execution is resumed"
-   ],
-   "tabs":[
-    "Parameter Attributes"
-   ],
-   "tabs_idx":0
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"ActionPort",
-   "masktype":""
-  }
- },
- {
   "sid":"BLDCmotorControl_R2017b:2687:1341",
   "className":"Simulink.Inport",
   "icon":"WebViewIcon2",
@@ -302,63 +359,6 @@
   ],
   "finder":{
    "blocktype":"Inport",
-   "masktype":""
-  }
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2687:1454",
-  "className":"Simulink.Sum",
-  "icon":"WebViewIcon2",
-  "name":"Sum4",
-  "label":"Sum4",
-  "parent":"BLDCmotorControl_R2017b:2687:1340",
-  "inspector":{
-   "params":[
-    "AccumDataTypeStr",
-    "OutDataTypeStr",
-    "CollapseDim",
-    "CollapseMode",
-    "IconShape",
-    "InputSameDT",
-    "Inputs",
-    "LockScale",
-    "OutMax",
-    "OutMin",
-    "RndMeth",
-    "SampleTime",
-    "SaturateOnIntegerOverflow"
-   ],
-   "values":[
-    "Inherit: Same as first input",
-    "Inherit: Same as first input",
-    "1",
-    "All dimensions",
-    "rectangular",
-    "on",
-    "+-",
-    "off",
-    "[]",
-    "[]",
-    "Simplest",
-    "-1",
-    "off"
-   ],
-   "tabs":[
-    "Signal Attributes",
-    "-Other"
-   ],
-   "tabs_idx":[
-    0,
-    2
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"Sum",
    "masktype":""
   }
  },

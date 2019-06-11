@@ -72,6 +72,7 @@ dz_counterLo    = 20;       % [-] Counter gradient Low. Below this value the con
 
 %% F02_Electrical_Angle_Calculation
 b_phaAdvEna     = 1;    % [-] Phase advance enable parameter: 0 = disable, 1 = enable
+n_motPhaAdvEna  = 400;  % [rpm] Phase advance enable motor speed threshold 
 
 % The map below was experimentaly calibrated on the real motor. Objectives: minimum noise and minimum torque ripple
 a_phaAdv_M1     = [0   0   0   0   0   2   3   5   9  16   25];     % [deg] Phase advance angle

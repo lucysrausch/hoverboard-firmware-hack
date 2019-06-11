@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'BLDC_controller'.
  *
- * Model version                  : 1.879
+ * Model version                  : 1.883
  * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017
- * C/C++ source code generated on : Thu Jun  6 22:50:24 2019
+ * C/C++ source code generated on : Tue Jun 11 21:14:57 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -273,7 +273,7 @@ void BLDC_controller_step(RT_MODEL *const rtM)
 
     /* End of Outputs for SubSystem: '<S14>/Counter_Hold_and_Error_Calculation' */
   } else {
-    if (rtDW->UnitDelay1_DSTATE < 1500) {
+    if (rtDW->UnitDelay1_DSTATE < rtP->z_maxCntRst) {
       /* Switch: '<S17>/Switch2' incorporates:
        *  UnitDelay: '<S17>/UnitDelay1'
        */
@@ -282,7 +282,7 @@ void BLDC_controller_step(RT_MODEL *const rtM)
       /* Switch: '<S17>/Switch2' incorporates:
        *  Constant: '<S17>/Constant1'
        */
-      rtb_Abs2 = 1500;
+      rtb_Abs2 = rtP->z_maxCntRst;
     }
 
     rtb_Abs2++;
@@ -303,7 +303,7 @@ void BLDC_controller_step(RT_MODEL *const rtM)
    *  RelationalOperator: '<S16>/Relational Operator5'
    *  Sum: '<S14>/Sum1'
    */
-  if ((rtb_Abs2 > 1500) || (rtDW->Switch2 != rtDW->UnitDelay1)) {
+  if ((rtb_Abs2 > rtP->z_maxCntRst) || (rtDW->Switch2 != rtDW->UnitDelay1)) {
     rtb_Sum2 = 0;
   } else {
     rtb_Sum2 = rtP->cf_speedCoef * rtDW->Switch2 / rtDW->z_counterRawPrev;
@@ -324,14 +324,14 @@ void BLDC_controller_step(RT_MODEL *const rtM)
   rtb_Sum2 = ((100 - rtP->cf_speedFilt) * rtDW->UnitDelay2_DSTATE + rtb_Sum2 *
               rtP->cf_speedFilt) / 100;
 
-  /* Abs: '<S14>/Abs5' */
+  /* Abs: '<S16>/Abs5' */
   if (rtb_Sum2 < 0) {
     rtb_Abs5 = -rtb_Sum2;
   } else {
     rtb_Abs5 = rtb_Sum2;
   }
 
-  /* End of Abs: '<S14>/Abs5' */
+  /* End of Abs: '<S16>/Abs5' */
 
   /* Relay: '<S14>/n_commDeacv' */
   if (rtb_Abs5 >= rtP->n_commDeacvHi) {
@@ -419,9 +419,12 @@ void BLDC_controller_step(RT_MODEL *const rtM)
 
     /* Switch: '<S8>/Switch_PhaAdv' incorporates:
      *  Constant: '<S8>/a_elecPeriod1'
+     *  Constant: '<S8>/n_motPhaAdvEna'
+     *  Logic: '<S8>/Logical Operator2'
      *  Outport: '<Root>/a_elecAngle'
+     *  RelationalOperator: '<S8>/Relational Operator4'
      */
-    if (rtP->b_phaAdvEna) {
+    if (rtP->b_phaAdvEna && (rtb_Abs5 > rtP->n_motPhaAdvEna)) {
       /* PreLookup: '<S8>/r_phaAdvDC_XA' */
       rtb_BitwiseOperator = plook_u8s32u32n31_evenc_s(rtb_Abs1,
         rtP->r_phaAdvDC_XA[0], (uint32_T)rtP->r_phaAdvDC_XA[1] -
@@ -662,6 +665,7 @@ void BLDC_controller_step(RT_MODEL *const rtM)
 /* Model initialize function */
 void BLDC_controller_initialize(RT_MODEL *const rtM)
 {
+  P *rtP = ((P *) rtM->defaultParam);
   DW *rtDW = ((DW *) rtM->dwork);
 
   /* Start for Atomic SubSystem: '<Root>/BLDC_controller' */
@@ -672,14 +676,14 @@ void BLDC_controller_initialize(RT_MODEL *const rtM)
 
   /* SystemInitialize for Atomic SubSystem: '<Root>/BLDC_controller' */
   /* InitializeConditions for UnitDelay: '<S17>/UnitDelay1' */
-  rtDW->UnitDelay1_DSTATE = 1500;
+  rtDW->UnitDelay1_DSTATE = rtP->z_maxCntRst;
 
   /* SystemInitialize for IfAction SubSystem: '<S14>/Counter_Hold_and_Error_Calculation' */
   /* InitializeConditions for UnitDelay: '<S15>/z_counter2' */
-  rtDW->z_counter2_DSTATE = 1500;
+  rtDW->z_counter2_DSTATE = rtP->z_maxCntRst;
 
   /* SystemInitialize for Outport: '<S15>/z_counter' */
-  rtDW->z_counterRawPrev = 1500;
+  rtDW->z_counterRawPrev = rtP->z_maxCntRst;
 
   /* End of SystemInitialize for SubSystem: '<S14>/Counter_Hold_and_Error_Calculation' */
   /* End of SystemInitialize for SubSystem: '<Root>/BLDC_controller' */

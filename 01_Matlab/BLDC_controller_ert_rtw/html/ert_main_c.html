@@ -21,9 +21,9 @@
 </span><span><a class="LN" name="7">    7   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="8">    8   </a><span class="CT"> * Code generated for Simulink model 'BLDC_controller'.</span>
 </span><span><a class="LN" name="9">    9   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model version                  : 1.879</span>
+</span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model version                  : 1.883</span>
 </span><span><a class="LN" name="11">   11   </a><span class="CT"> * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017</span>
-</span><span><a class="LN" name="12">   12   </a><span class="CT"> * C/C++ source code generated on : Thu Jun  6 22:50:24 2019</span>
+</span><span><a class="LN" name="12">   12   </a><span class="CT"> * C/C++ source code generated on : Tue Jun 11 21:14:57 2019</span>
 </span><span><a class="LN" name="13">   13   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="14">   14   </a><span class="CT"> * Target selection: ert.tlc</span>
 </span><span><a class="LN" name="15">   15   </a><span class="CT"> * Embedded hardware selection: ARM Compatible-&gt;ARM Cortex</span>
@@ -63,142 +63,157 @@
 </span><span><a class="LN" name="49">   49   </a><span class="CT">   */</span>
 </span><span><a class="LN" name="50">   50   </a>  30,
 </span><span><a class="LN" name="51">   51   </a>
-</span><span><a class="LN" name="52">   52   </a>  <span class="CT">/* Variable: r_commDCDeacv</span>
-</span><span><a class="LN" name="53">   53   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1329')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/r_commDCDeacv</i></font></a>'</span>
+</span><span><a class="LN" name="52">   52   </a>  <span class="CT">/* Variable: n_motPhaAdvEna</span>
+</span><span><a class="LN" name="53">   53   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1671')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/n_motPhaAdvEna</i></font></a>'</span>
 </span><span><a class="LN" name="54">   54   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="55">   55   </a>  70,
+</span><span><a class="LN" name="55">   55   </a>  400,
 </span><span><a class="LN" name="56">   56   </a>
-</span><span><a class="LN" name="57">   57   </a>  <span class="CT">/* Variable: r_phaAdvDC_XA</span>
-</span><span><a class="LN" name="58">   58   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:522')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/r_phaAdvDC_XA</i></font></a>'</span>
+</span><span><a class="LN" name="57">   57   </a>  <span class="CT">/* Variable: r_commDCDeacv</span>
+</span><span><a class="LN" name="58">   58   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1329')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/r_commDCDeacv</i></font></a>'</span>
 </span><span><a class="LN" name="59">   59   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="60">   60   </a>  <b>{</b> 0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 <b>}</b>,
+</span><span><a class="LN" name="60">   60   </a>  70,
 </span><span><a class="LN" name="61">   61   </a>
-</span><span><a class="LN" name="62">   62   </a>  <span class="CT">/* Variable: a_phaAdv_M1</span>
-</span><span><a class="LN" name="63">   63   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:521')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/a_phaAdv_M2</i></font></a>'</span>
+</span><span><a class="LN" name="62">   62   </a>  <span class="CT">/* Variable: r_phaAdvDC_XA</span>
+</span><span><a class="LN" name="63">   63   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:522')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/r_phaAdvDC_XA</i></font></a>'</span>
 </span><span><a class="LN" name="64">   64   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="65">   65   </a>  <b>{</b> 0, 0, 0, 0, 0, 2, 3, 5, 9, 16, 25 <b>}</b>,
+</span><span><a class="LN" name="65">   65   </a>  <b>{</b> 0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 <b>}</b>,
 </span><span><a class="LN" name="66">   66   </a>
-</span><span><a class="LN" name="67">   67   </a>  <span class="CT">/* Variable: dz_counterHi</span>
-</span><span><a class="LN" name="68">   68   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1518')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/dz_counter</i></font></a>'</span>
+</span><span><a class="LN" name="67">   67   </a>  <span class="CT">/* Variable: a_phaAdv_M1</span>
+</span><span><a class="LN" name="68">   68   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:521')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/a_phaAdv_M2</i></font></a>'</span>
 </span><span><a class="LN" name="69">   69   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="70">   70   </a>  50,
+</span><span><a class="LN" name="70">   70   </a>  <b>{</b> 0, 0, 0, 0, 0, 2, 3, 5, 9, 16, 25 <b>}</b>,
 </span><span><a class="LN" name="71">   71   </a>
-</span><span><a class="LN" name="72">   72   </a>  <span class="CT">/* Variable: dz_counterLo</span>
+</span><span><a class="LN" name="72">   72   </a>  <span class="CT">/* Variable: dz_counterHi</span>
 </span><span><a class="LN" name="73">   73   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1518')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/dz_counter</i></font></a>'</span>
 </span><span><a class="LN" name="74">   74   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="75">   75   </a>  20,
+</span><span><a class="LN" name="75">   75   </a>  50,
 </span><span><a class="LN" name="76">   76   </a>
-</span><span><a class="LN" name="77">   77   </a>  <span class="CT">/* Variable: z_ctrlTypSel</span>
-</span><span><a class="LN" name="78">   78   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:208')" name="code2model"><font color="#117755"><i>&lt;S7&gt;/z_ctrlTypSel1</i></font></a>'</span>
+</span><span><a class="LN" name="77">   77   </a>  <span class="CT">/* Variable: dz_counterLo</span>
+</span><span><a class="LN" name="78">   78   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1518')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/dz_counter</i></font></a>'</span>
 </span><span><a class="LN" name="79">   79   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="80">   80   </a>  3U,
+</span><span><a class="LN" name="80">   80   </a>  20,
 </span><span><a class="LN" name="81">   81   </a>
-</span><span><a class="LN" name="82">   82   </a>  <span class="CT">/* Variable: b_phaAdvEna</span>
-</span><span><a class="LN" name="83">   83   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:512')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/a_elecPeriod1</i></font></a>'</span>
-</span><span><a class="LN" name="84">   84   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="85">   85   </a>  1
-</span><span><a class="LN" name="86">   86   </a><b>}</b>;                                     <span class="CT">/* Modifiable parameters */</span>
-</span><span><a class="LN" name="87">   87   </a>
-</span><span><a class="LN" name="88">   88   </a><span class="DT">static</span> <a href="BLDC_controller_h.html#type_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_DW');" target="_self"><font color="#1122aa">DW</font></a> <a name="var_rtDW">rtDW</a>;                        <span class="CT">/* Observable states */</span>
-</span><span><a class="LN" name="89">   89   </a><span class="DT">static</span> <a href="BLDC_controller_h.html#type_ExtU" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_ExtU');" target="_self"><font color="#1122aa">ExtU</font></a> <a name="var_rtU">rtU</a>;                       <span class="CT">/* External inputs */</span>
-</span><span><a class="LN" name="90">   90   </a><span class="DT">static</span> <a href="BLDC_controller_h.html#type_ExtY" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_ExtY');" target="_self"><font color="#1122aa">ExtY</font></a> <a name="var_rtY">rtY</a>;                       <span class="CT">/* External outputs */</span>
+</span><span><a class="LN" name="82">   82   </a>  <span class="CT">/* Variable: z_maxCntRst</span>
+</span><span><a class="LN" name="83">   83   </a><span class="CT">   * Referenced by:</span>
+</span><span><a class="LN" name="84">   84   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1358')" name="code2model"><font color="#117755"><i>&lt;S15&gt;/z_counter</i></font></a>'</span>
+</span><span><a class="LN" name="85">   85   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:169')" name="code2model"><font color="#117755"><i>&lt;S15&gt;/z_counter2</i></font></a>'</span>
+</span><span><a class="LN" name="86">   86   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1625')" name="code2model"><font color="#117755"><i>&lt;S16&gt;/z_maxCntRst</i></font></a>'</span>
+</span><span><a class="LN" name="87">   87   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1651:1616')" name="code2model"><font color="#117755"><i>&lt;S17&gt;/Constant1</i></font></a>'</span>
+</span><span><a class="LN" name="88">   88   </a><span class="CT">   *   '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1651:1621')" name="code2model"><font color="#117755"><i>&lt;S17&gt;/UnitDelay1</i></font></a>'</span>
+</span><span><a class="LN" name="89">   89   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="90">   90   </a>  1500,
 </span><span><a class="LN" name="91">   91   </a>
-</span><span><a class="LN" name="92">   92   </a><span class="CT">/*</span>
-</span><span><a class="LN" name="93">   93   </a><span class="CT"> * Associating rt_OneStep with a real-time clock or interrupt service routine</span>
-</span><span><a class="LN" name="94">   94   </a><span class="CT"> * is what makes the generated code "real-time".  The function rt_OneStep is</span>
-</span><span><a class="LN" name="95">   95   </a><span class="CT"> * always associated with the base rate of the model.  Subrates are managed</span>
-</span><span><a class="LN" name="96">   96   </a><span class="CT"> * by the base rate from inside the generated code.  Enabling/disabling</span>
-</span><span><a class="LN" name="97">   97   </a><span class="CT"> * interrupts and floating point context switches are target specific.  This</span>
-</span><span><a class="LN" name="98">   98   </a><span class="CT"> * example code indicates where these should take place relative to executing</span>
-</span><span><a class="LN" name="99">   99   </a><span class="CT"> * the generated code step function.  Overrun behavior should be tailored to</span>
-</span><span><a class="LN" name="100">  100   </a><span class="CT"> * your application needs.  This example simply sets an error status in the</span>
-</span><span><a class="LN" name="101">  101   </a><span class="CT"> * real-time model and returns from rt_OneStep.</span>
-</span><span><a class="LN" name="102">  102   </a><span class="CT"> */</span>
-</span><span><a class="LN" name="103">  103   </a><span class="DT">void</span> <a href="#fcn_rt_OneStep" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_OneStep');" target="_self"><font color="#1122aa">rt_OneStep</font></a>(<a href="BLDC_controller_h.html#type_RT_MODEL" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_RT_MODEL');" target="_self"><font color="#1122aa">RT_MODEL</font></a> *<span class="DT">const</span> rtM);
-</span><span><a class="LN" name="104">  104   </a><span class="DT">void</span> <a name="fcn_rt_OneStep">rt_OneStep</a>(<a href="BLDC_controller_h.html#type_RT_MODEL" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_RT_MODEL');" target="_self"><font color="#1122aa">RT_MODEL</font></a> *<span class="DT">const</span> rtM)
-</span><span><a class="LN" name="105">  105   </a><b>{</b>
-</span><span><a class="LN" name="106">  106   </a>  <span class="DT">static</span> <a href="rtwtypes_h.html#type_boolean_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_boolean_T');" target="_self"><font color="#1122aa">boolean_T</font></a> OverrunFlag = false;
-</span><span><a class="LN" name="107">  107   </a>
-</span><span><a class="LN" name="108">  108   </a>  <span class="CT">/* Disable interrupts here */</span>
-</span><span><a class="LN" name="109">  109   </a>
-</span><span><a class="LN" name="110">  110   </a>  <span class="CT">/* Check for overrun */</span>
-</span><span><a class="LN" name="111">  111   </a>  <span class="KW">if</span> (OverrunFlag) <b>{</b>
-</span><span><a class="LN" name="112">  112   </a>    <span class="KW">return</span>;
-</span><span><a class="LN" name="113">  113   </a>  <b>}</b>
-</span><span><a class="LN" name="114">  114   </a>
-</span><span><a class="LN" name="115">  115   </a>  OverrunFlag = true;
-</span><span><a class="LN" name="116">  116   </a>
-</span><span><a class="LN" name="117">  117   </a>  <span class="CT">/* Save FPU context here (if necessary) */</span>
-</span><span><a class="LN" name="118">  118   </a>  <span class="CT">/* Re-enable timer or interrupt here */</span>
-</span><span><a class="LN" name="119">  119   </a>  <span class="CT">/* Set model inputs here */</span>
-</span><span><a class="LN" name="120">  120   </a>
-</span><span><a class="LN" name="121">  121   </a>  <span class="CT">/* Step the model */</span>
-</span><span><a class="LN" name="122">  122   </a>  <a href="BLDC_controller_c.html#fcn_BLDC_controller_step" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_BLDC_controller_step');" target="_self"><font color="#1122aa">BLDC_controller_step</font></a>(rtM);
-</span><span><a class="LN" name="123">  123   </a>
-</span><span><a class="LN" name="124">  124   </a>  <span class="CT">/* Get model outputs here */</span>
-</span><span><a class="LN" name="125">  125   </a>
-</span><span><a class="LN" name="126">  126   </a>  <span class="CT">/* Indicate task complete */</span>
-</span><span><a class="LN" name="127">  127   </a>  OverrunFlag = false;
-</span><span><a class="LN" name="128">  128   </a>
-</span><span><a class="LN" name="129">  129   </a>  <span class="CT">/* Disable interrupts here */</span>
-</span><span><a class="LN" name="130">  130   </a>  <span class="CT">/* Restore FPU context here (if necessary) */</span>
-</span><span><a class="LN" name="131">  131   </a>  <span class="CT">/* Enable interrupts here */</span>
-</span><span><a class="LN" name="132">  132   </a><b>}</b>
-</span><span><a class="LN" name="133">  133   </a>
-</span><span><a class="LN" name="134">  134   </a><span class="CT">/*</span>
-</span><span><a class="LN" name="135">  135   </a><span class="CT"> * The example "main" function illustrates what is required by your</span>
-</span><span><a class="LN" name="136">  136   </a><span class="CT"> * application code to initialize, execute, and terminate the generated code.</span>
-</span><span><a class="LN" name="137">  137   </a><span class="CT"> * Attaching rt_OneStep to a real-time clock is target specific.  This example</span>
-</span><span><a class="LN" name="138">  138   </a><span class="CT"> * illustrates how you do this relative to initializing the model.</span>
-</span><span><a class="LN" name="139">  139   </a><span class="CT"> */</span>
-</span><span><a class="LN" name="140">  140   </a><a href="rtwtypes_h.html#type_int_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int_T');" target="_self"><font color="#1122aa">int_T</font></a> <a name="fcn_main">main</a>(<a href="rtwtypes_h.html#type_int_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int_T');" target="_self"><font color="#1122aa">int_T</font></a> argc, <span class="DT">const</span> <span class="DT">char</span> *argv[])
-</span><span><a class="LN" name="141">  141   </a><b>{</b>
-</span><span><a class="LN" name="142">  142   </a>  <a href="BLDC_controller_h.html#type_RT_MODEL" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_RT_MODEL');" target="_self"><font color="#1122aa">RT_MODEL</font></a> *<span class="DT">const</span> rtM = <a href="#var_rtMPtr" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtMPtr');" target="_self"><font color="#1122aa">rtMPtr</font></a>;
+</span><span><a class="LN" name="92">   92   </a>  <span class="CT">/* Variable: z_ctrlTypSel</span>
+</span><span><a class="LN" name="93">   93   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:208')" name="code2model"><font color="#117755"><i>&lt;S7&gt;/z_ctrlTypSel1</i></font></a>'</span>
+</span><span><a class="LN" name="94">   94   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="95">   95   </a>  3U,
+</span><span><a class="LN" name="96">   96   </a>
+</span><span><a class="LN" name="97">   97   </a>  <span class="CT">/* Variable: b_phaAdvEna</span>
+</span><span><a class="LN" name="98">   98   </a><span class="CT">   * Referenced by: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:512')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/a_elecPeriod1</i></font></a>'</span>
+</span><span><a class="LN" name="99">   99   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="100">  100   </a>  1
+</span><span><a class="LN" name="101">  101   </a><b>}</b>;                                     <span class="CT">/* Modifiable parameters */</span>
+</span><span><a class="LN" name="102">  102   </a>
+</span><span><a class="LN" name="103">  103   </a><span class="DT">static</span> <a href="BLDC_controller_h.html#type_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_DW');" target="_self"><font color="#1122aa">DW</font></a> <a name="var_rtDW">rtDW</a>;                        <span class="CT">/* Observable states */</span>
+</span><span><a class="LN" name="104">  104   </a><span class="DT">static</span> <a href="BLDC_controller_h.html#type_ExtU" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_ExtU');" target="_self"><font color="#1122aa">ExtU</font></a> <a name="var_rtU">rtU</a>;                       <span class="CT">/* External inputs */</span>
+</span><span><a class="LN" name="105">  105   </a><span class="DT">static</span> <a href="BLDC_controller_h.html#type_ExtY" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_ExtY');" target="_self"><font color="#1122aa">ExtY</font></a> <a name="var_rtY">rtY</a>;                       <span class="CT">/* External outputs */</span>
+</span><span><a class="LN" name="106">  106   </a>
+</span><span><a class="LN" name="107">  107   </a><span class="CT">/*</span>
+</span><span><a class="LN" name="108">  108   </a><span class="CT"> * Associating rt_OneStep with a real-time clock or interrupt service routine</span>
+</span><span><a class="LN" name="109">  109   </a><span class="CT"> * is what makes the generated code "real-time".  The function rt_OneStep is</span>
+</span><span><a class="LN" name="110">  110   </a><span class="CT"> * always associated with the base rate of the model.  Subrates are managed</span>
+</span><span><a class="LN" name="111">  111   </a><span class="CT"> * by the base rate from inside the generated code.  Enabling/disabling</span>
+</span><span><a class="LN" name="112">  112   </a><span class="CT"> * interrupts and floating point context switches are target specific.  This</span>
+</span><span><a class="LN" name="113">  113   </a><span class="CT"> * example code indicates where these should take place relative to executing</span>
+</span><span><a class="LN" name="114">  114   </a><span class="CT"> * the generated code step function.  Overrun behavior should be tailored to</span>
+</span><span><a class="LN" name="115">  115   </a><span class="CT"> * your application needs.  This example simply sets an error status in the</span>
+</span><span><a class="LN" name="116">  116   </a><span class="CT"> * real-time model and returns from rt_OneStep.</span>
+</span><span><a class="LN" name="117">  117   </a><span class="CT"> */</span>
+</span><span><a class="LN" name="118">  118   </a><span class="DT">void</span> <a href="#fcn_rt_OneStep" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_OneStep');" target="_self"><font color="#1122aa">rt_OneStep</font></a>(<a href="BLDC_controller_h.html#type_RT_MODEL" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_RT_MODEL');" target="_self"><font color="#1122aa">RT_MODEL</font></a> *<span class="DT">const</span> rtM);
+</span><span><a class="LN" name="119">  119   </a><span class="DT">void</span> <a name="fcn_rt_OneStep">rt_OneStep</a>(<a href="BLDC_controller_h.html#type_RT_MODEL" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_RT_MODEL');" target="_self"><font color="#1122aa">RT_MODEL</font></a> *<span class="DT">const</span> rtM)
+</span><span><a class="LN" name="120">  120   </a><b>{</b>
+</span><span><a class="LN" name="121">  121   </a>  <span class="DT">static</span> <a href="rtwtypes_h.html#type_boolean_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_boolean_T');" target="_self"><font color="#1122aa">boolean_T</font></a> OverrunFlag = false;
+</span><span><a class="LN" name="122">  122   </a>
+</span><span><a class="LN" name="123">  123   </a>  <span class="CT">/* Disable interrupts here */</span>
+</span><span><a class="LN" name="124">  124   </a>
+</span><span><a class="LN" name="125">  125   </a>  <span class="CT">/* Check for overrun */</span>
+</span><span><a class="LN" name="126">  126   </a>  <span class="KW">if</span> (OverrunFlag) <b>{</b>
+</span><span><a class="LN" name="127">  127   </a>    <span class="KW">return</span>;
+</span><span><a class="LN" name="128">  128   </a>  <b>}</b>
+</span><span><a class="LN" name="129">  129   </a>
+</span><span><a class="LN" name="130">  130   </a>  OverrunFlag = true;
+</span><span><a class="LN" name="131">  131   </a>
+</span><span><a class="LN" name="132">  132   </a>  <span class="CT">/* Save FPU context here (if necessary) */</span>
+</span><span><a class="LN" name="133">  133   </a>  <span class="CT">/* Re-enable timer or interrupt here */</span>
+</span><span><a class="LN" name="134">  134   </a>  <span class="CT">/* Set model inputs here */</span>
+</span><span><a class="LN" name="135">  135   </a>
+</span><span><a class="LN" name="136">  136   </a>  <span class="CT">/* Step the model */</span>
+</span><span><a class="LN" name="137">  137   </a>  <a href="BLDC_controller_c.html#fcn_BLDC_controller_step" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_BLDC_controller_step');" target="_self"><font color="#1122aa">BLDC_controller_step</font></a>(rtM);
+</span><span><a class="LN" name="138">  138   </a>
+</span><span><a class="LN" name="139">  139   </a>  <span class="CT">/* Get model outputs here */</span>
+</span><span><a class="LN" name="140">  140   </a>
+</span><span><a class="LN" name="141">  141   </a>  <span class="CT">/* Indicate task complete */</span>
+</span><span><a class="LN" name="142">  142   </a>  OverrunFlag = false;
 </span><span><a class="LN" name="143">  143   </a>
-</span><span><a class="LN" name="144">  144   </a>  <span class="CT">/* Unused arguments */</span>
-</span><span><a class="LN" name="145">  145   </a>  (<span class="DT">void</span>)(argc);
-</span><span><a class="LN" name="146">  146   </a>  (<span class="DT">void</span>)(argv);
-</span><span><a class="LN" name="147">  147   </a>
-</span><span><a class="LN" name="148">  148   </a>  <span class="CT">/* Pack model data into RTM */</span>
-</span><span><a class="LN" name="149">  149   </a>  rtM-&gt;defaultParam = &amp;<a href="#var_rtP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtP');" target="_self"><font color="#1122aa">rtP</font></a>;
-</span><span><a class="LN" name="150">  150   </a>  rtM-&gt;dwork = &amp;<a href="#var_rtDW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtDW');" target="_self"><font color="#1122aa">rtDW</font></a>;
-</span><span><a class="LN" name="151">  151   </a>  rtM-&gt;inputs = &amp;<a href="#var_rtU" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtU');" target="_self"><font color="#1122aa">rtU</font></a>;
-</span><span><a class="LN" name="152">  152   </a>  rtM-&gt;outputs = &amp;<a href="#var_rtY" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtY');" target="_self"><font color="#1122aa">rtY</font></a>;
-</span><span><a class="LN" name="153">  153   </a>
-</span><span><a class="LN" name="154">  154   </a>  <span class="CT">/* Initialize model */</span>
-</span><span><a class="LN" name="155">  155   </a>  <a href="BLDC_controller_c.html#fcn_BLDC_controller_initialize" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_BLDC_controller_initialize');" target="_self"><font color="#1122aa">BLDC_controller_initialize</font></a>(rtM);
-</span><span><a class="LN" name="156">  156   </a>
-</span><span><a class="LN" name="157">  157   </a>  <span class="CT">/* Attach rt_OneStep to a timer or interrupt service routine with</span>
-</span><span><a class="LN" name="158">  158   </a><span class="CT">   * period 6.0E-5 seconds (the model's base sample time) here.  The</span>
-</span><span><a class="LN" name="159">  159   </a><span class="CT">   * call syntax for rt_OneStep is</span>
-</span><span><a class="LN" name="160">  160   </a><span class="CT">   *</span>
-</span><span><a class="LN" name="161">  161   </a><span class="CT">   *  rt_OneStep(rtM);</span>
-</span><span><a class="LN" name="162">  162   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="163">  163   </a>  printf(<font color="#1122ff">&quot;Warning: The simulation will run forever. &quot;</font>
-</span><span><a class="LN" name="164">  164   </a>         <font color="#1122ff">&quot;Generated ERT main won't simulate model step behavior. &quot;</font>
-</span><span><a class="LN" name="165">  165   </a>         <font color="#1122ff">&quot;To change this behavior select the 'MAT-file logging' option.\n&quot;</font>);
-</span><span><a class="LN" name="166">  166   </a>  fflush((NULL));
-</span><span><a class="LN" name="167">  167   </a>  <span class="KW">while</span> (1) <b>{</b>
-</span><span><a class="LN" name="168">  168   </a>    <span class="CT">/*  Perform other application tasks here */</span>
-</span><span><a class="LN" name="169">  169   </a>  <b>}</b>
-</span><span><a class="LN" name="170">  170   </a>
-</span><span><a class="LN" name="171">  171   </a>  <span class="CT">/* The option 'Remove error status field in real-time model data structure'</span>
-</span><span><a class="LN" name="172">  172   </a><span class="CT">   * is selected, therefore the following code does not need to execute.</span>
-</span><span><a class="LN" name="173">  173   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="174">  174   </a><font color="#992211">#</font><span class="PP">if</span> 0
-</span><span><a class="LN" name="175">  175   </a>
-</span><span><a class="LN" name="176">  176   </a>  <span class="CT">/* Disable rt_OneStep() here */</span>
-</span><span><a class="LN" name="177">  177   </a><font color="#992211">#</font><span class="PP">endif</span>
-</span><span><a class="LN" name="178">  178   </a>
-</span><span><a class="LN" name="179">  179   </a>  <span class="KW">return</span> 0;
-</span><span><a class="LN" name="180">  180   </a><b>}</b>
-</span><span><a class="LN" name="181">  181   </a>
-</span><span><a class="LN" name="182">  182   </a><span class="CT">/*</span>
-</span><span><a class="LN" name="183">  183   </a><span class="CT"> * File trailer for generated code.</span>
-</span><span><a class="LN" name="184">  184   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="185">  185   </a><span class="CT"> * [EOF]</span>
-</span><span><a class="LN" name="186">  186   </a><span class="CT"> */</span>
-</span><span><a class="LN" name="187">  187   </a>
+</span><span><a class="LN" name="144">  144   </a>  <span class="CT">/* Disable interrupts here */</span>
+</span><span><a class="LN" name="145">  145   </a>  <span class="CT">/* Restore FPU context here (if necessary) */</span>
+</span><span><a class="LN" name="146">  146   </a>  <span class="CT">/* Enable interrupts here */</span>
+</span><span><a class="LN" name="147">  147   </a><b>}</b>
+</span><span><a class="LN" name="148">  148   </a>
+</span><span><a class="LN" name="149">  149   </a><span class="CT">/*</span>
+</span><span><a class="LN" name="150">  150   </a><span class="CT"> * The example "main" function illustrates what is required by your</span>
+</span><span><a class="LN" name="151">  151   </a><span class="CT"> * application code to initialize, execute, and terminate the generated code.</span>
+</span><span><a class="LN" name="152">  152   </a><span class="CT"> * Attaching rt_OneStep to a real-time clock is target specific.  This example</span>
+</span><span><a class="LN" name="153">  153   </a><span class="CT"> * illustrates how you do this relative to initializing the model.</span>
+</span><span><a class="LN" name="154">  154   </a><span class="CT"> */</span>
+</span><span><a class="LN" name="155">  155   </a><a href="rtwtypes_h.html#type_int_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int_T');" target="_self"><font color="#1122aa">int_T</font></a> <a name="fcn_main">main</a>(<a href="rtwtypes_h.html#type_int_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int_T');" target="_self"><font color="#1122aa">int_T</font></a> argc, <span class="DT">const</span> <span class="DT">char</span> *argv[])
+</span><span><a class="LN" name="156">  156   </a><b>{</b>
+</span><span><a class="LN" name="157">  157   </a>  <a href="BLDC_controller_h.html#type_RT_MODEL" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_RT_MODEL');" target="_self"><font color="#1122aa">RT_MODEL</font></a> *<span class="DT">const</span> rtM = <a href="#var_rtMPtr" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtMPtr');" target="_self"><font color="#1122aa">rtMPtr</font></a>;
+</span><span><a class="LN" name="158">  158   </a>
+</span><span><a class="LN" name="159">  159   </a>  <span class="CT">/* Unused arguments */</span>
+</span><span><a class="LN" name="160">  160   </a>  (<span class="DT">void</span>)(argc);
+</span><span><a class="LN" name="161">  161   </a>  (<span class="DT">void</span>)(argv);
+</span><span><a class="LN" name="162">  162   </a>
+</span><span><a class="LN" name="163">  163   </a>  <span class="CT">/* Pack model data into RTM */</span>
+</span><span><a class="LN" name="164">  164   </a>  rtM-&gt;defaultParam = &amp;<a href="#var_rtP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtP');" target="_self"><font color="#1122aa">rtP</font></a>;
+</span><span><a class="LN" name="165">  165   </a>  rtM-&gt;dwork = &amp;<a href="#var_rtDW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtDW');" target="_self"><font color="#1122aa">rtDW</font></a>;
+</span><span><a class="LN" name="166">  166   </a>  rtM-&gt;inputs = &amp;<a href="#var_rtU" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtU');" target="_self"><font color="#1122aa">rtU</font></a>;
+</span><span><a class="LN" name="167">  167   </a>  rtM-&gt;outputs = &amp;<a href="#var_rtY" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtY');" target="_self"><font color="#1122aa">rtY</font></a>;
+</span><span><a class="LN" name="168">  168   </a>
+</span><span><a class="LN" name="169">  169   </a>  <span class="CT">/* Initialize model */</span>
+</span><span><a class="LN" name="170">  170   </a>  <a href="BLDC_controller_c.html#fcn_BLDC_controller_initialize" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_BLDC_controller_initialize');" target="_self"><font color="#1122aa">BLDC_controller_initialize</font></a>(rtM);
+</span><span><a class="LN" name="171">  171   </a>
+</span><span><a class="LN" name="172">  172   </a>  <span class="CT">/* Attach rt_OneStep to a timer or interrupt service routine with</span>
+</span><span><a class="LN" name="173">  173   </a><span class="CT">   * period 6.0E-5 seconds (the model's base sample time) here.  The</span>
+</span><span><a class="LN" name="174">  174   </a><span class="CT">   * call syntax for rt_OneStep is</span>
+</span><span><a class="LN" name="175">  175   </a><span class="CT">   *</span>
+</span><span><a class="LN" name="176">  176   </a><span class="CT">   *  rt_OneStep(rtM);</span>
+</span><span><a class="LN" name="177">  177   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="178">  178   </a>  printf(<font color="#1122ff">&quot;Warning: The simulation will run forever. &quot;</font>
+</span><span><a class="LN" name="179">  179   </a>         <font color="#1122ff">&quot;Generated ERT main won't simulate model step behavior. &quot;</font>
+</span><span><a class="LN" name="180">  180   </a>         <font color="#1122ff">&quot;To change this behavior select the 'MAT-file logging' option.\n&quot;</font>);
+</span><span><a class="LN" name="181">  181   </a>  fflush((NULL));
+</span><span><a class="LN" name="182">  182   </a>  <span class="KW">while</span> (1) <b>{</b>
+</span><span><a class="LN" name="183">  183   </a>    <span class="CT">/*  Perform other application tasks here */</span>
+</span><span><a class="LN" name="184">  184   </a>  <b>}</b>
+</span><span><a class="LN" name="185">  185   </a>
+</span><span><a class="LN" name="186">  186   </a>  <span class="CT">/* The option 'Remove error status field in real-time model data structure'</span>
+</span><span><a class="LN" name="187">  187   </a><span class="CT">   * is selected, therefore the following code does not need to execute.</span>
+</span><span><a class="LN" name="188">  188   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="189">  189   </a><font color="#992211">#</font><span class="PP">if</span> 0
+</span><span><a class="LN" name="190">  190   </a>
+</span><span><a class="LN" name="191">  191   </a>  <span class="CT">/* Disable rt_OneStep() here */</span>
+</span><span><a class="LN" name="192">  192   </a><font color="#992211">#</font><span class="PP">endif</span>
+</span><span><a class="LN" name="193">  193   </a>
+</span><span><a class="LN" name="194">  194   </a>  <span class="KW">return</span> 0;
+</span><span><a class="LN" name="195">  195   </a><b>}</b>
+</span><span><a class="LN" name="196">  196   </a>
+</span><span><a class="LN" name="197">  197   </a><span class="CT">/*</span>
+</span><span><a class="LN" name="198">  198   </a><span class="CT"> * File trailer for generated code.</span>
+</span><span><a class="LN" name="199">  199   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="200">  200   </a><span class="CT"> * [EOF]</span>
+</span><span><a class="LN" name="201">  201   </a><span class="CT"> */</span>
+</span><span><a class="LN" name="202">  202   </a>
 </span></pre>
 </td></tr></table>
 </p>

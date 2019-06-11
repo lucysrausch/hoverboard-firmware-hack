@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'BLDC_controller'.
  *
- * Model version                  : 1.879
+ * Model version                  : 1.883
  * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017
- * C/C++ source code generated on : Thu Jun  6 17:49:29 2019
+ * C/C++ source code generated on : Tue Jun 11 21:14:57 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -115,6 +115,11 @@ P rtP = {
    */
   30,
 
+  /* Variable: n_motPhaAdvEna
+   * Referenced by: '<S8>/n_motPhaAdvEna'
+   */
+  400,
+
   /* Variable: r_commDCDeacv
    * Referenced by: '<S14>/r_commDCDeacv'
    */
@@ -139,6 +144,16 @@ P rtP = {
    * Referenced by: '<S14>/dz_counter'
    */
   20,
+
+  /* Variable: z_maxCntRst
+   * Referenced by:
+   *   '<S15>/z_counter'
+   *   '<S15>/z_counter2'
+   *   '<S16>/z_maxCntRst'
+   *   '<S17>/Constant1'
+   *   '<S17>/UnitDelay1'
+   */
+  1500,
 
   /* Variable: z_ctrlTypSel
    * Referenced by: '<S7>/z_ctrlTypSel1'

@@ -2642,7 +2642,7 @@
   ]
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2687:6#out:7",
+  "sid":"BLDCmotorControl_R2017b:2687:6#out:8",
   "className":"Simulink.Line",
   "icon":"WebViewIcon4",
   "name":"",
@@ -3560,7 +3560,7 @@
   ]
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2687:6#out:6",
+  "sid":"BLDCmotorControl_R2017b:2687:6#out:7",
   "className":"Simulink.Line",
   "icon":"WebViewIcon4",
   "name":"",
@@ -3765,6 +3765,57 @@
  },
  {
   "sid":"BLDCmotorControl_R2017b:2687:1667#out:1",
+  "className":"Simulink.Line",
+  "icon":"WebViewIcon4",
+  "name":"",
+  "label":"",
+  "parent":"BLDCmotorControl_R2017b:2687",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:6#out:6",
   "className":"Simulink.Line",
   "icon":"WebViewIcon4",
   "name":"",

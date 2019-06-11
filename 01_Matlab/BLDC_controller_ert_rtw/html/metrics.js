@@ -3,8 +3,8 @@ function CodeMetrics() {
 	 this.metricsArray.var = new Array();
 	 this.metricsArray.fcn = new Array();
 	 this.metricsArray.fcn["BLDC_controller_initialize"] = {file: "D:\\git\\hoverboard-firmware-hack\\01_Matlab\\BLDC_controller_ert_rtw\\BLDC_controller.c",
-	stack: 8,
-	stackTotal: 8};
+	stack: 16,
+	stackTotal: 16};
 	 this.metricsArray.fcn["BLDC_controller_step"] = {file: "D:\\git\\hoverboard-firmware-hack\\01_Matlab\\BLDC_controller_ert_rtw\\BLDC_controller.c",
 	stack: 60,
 	stackTotal: 69};

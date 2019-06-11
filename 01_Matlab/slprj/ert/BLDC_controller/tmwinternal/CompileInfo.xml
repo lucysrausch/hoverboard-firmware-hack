@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MF0 version="1.1">
+    <ModelRefInfoRepo.ModelRefInfoRoot type="ModelRefInfoRepo.ModelRefInfoRoot" uuid="13f00875-1656-4366-80c1-e1da781e66fd">
+        <dataDictionary/>
+        <dataTransferInfos>AAFJTQAAAAAOAAAAOAAAAAYAAAAIAAAAAgAAAAAAAAAFAAAACAAAAAAAAAABAAAAAQAAAAAAAAAFAAQAAQAAAAEAAAAAAAAA</dataTransferInfos>
+        <hasInlineVariantBlock>false</hasInlineVariantBlock>
+        <hasMachineDataAccess>false</hasMachineDataAccess>
+        <hasSigObjWithICDrivingRootOutport>false</hasSigObjWithICDrivingRootOutport>
+        <inports type="ModelRefInfoRepo.InportInformation" uuid="1b555c71-0911-46eb-a0c4-ec73a4482010">
+            <EMVCE/>
+            <originalPortNumber>0</originalPortNumber>
+        </inports>
+        <inports type="ModelRefInfoRepo.InportInformation" uuid="86405712-8067-42db-9e20-c326f8877915">
+            <EMVCE/>
+            <originalPortNumber>1</originalPortNumber>
+        </inports>
+        <inports type="ModelRefInfoRepo.InportInformation" uuid="0e032927-2093-4bd2-9050-76bafb35bbf3">
+            <EMVCE/>
+            <originalPortNumber>2</originalPortNumber>
+        </inports>
+        <inports type="ModelRefInfoRepo.InportInformation" uuid="df4c4678-df48-4dd4-b2ed-d50fe558e639">
+            <EMVCE/>
+            <originalPortNumber>3</originalPortNumber>
+        </inports>
+        <isOrigInportVirtualBus>false</isOrigInportVirtualBus>
+        <isOrigInportVirtualBus>false</isOrigInportVirtualBus>
+        <isOrigInportVirtualBus>false</isOrigInportVirtualBus>
+        <isOrigInportVirtualBus>false</isOrigInportVirtualBus>
+        <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
+        <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
+        <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
+        <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
+        <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
+        <needElapsedTime>false</needElapsedTime>
+        <outports type="ModelRefInfoRepo.OutportInformation" uuid="84e696e3-e3c0-4f8f-8cda-054861227df5">
+            <EMVCE/>
+            <originalPortNumber>0</originalPortNumber>
+        </outports>
+        <outports type="ModelRefInfoRepo.OutportInformation" uuid="b9941c3c-ec37-4418-a88f-738cd597b060">
+            <EMVCE/>
+            <originalPortNumber>1</originalPortNumber>
+        </outports>
+        <outports type="ModelRefInfoRepo.OutportInformation" uuid="91c767eb-ef7e-4786-adf1-63231f380474">
+            <EMVCE/>
+            <originalPortNumber>2</originalPortNumber>
+        </outports>
+        <outports type="ModelRefInfoRepo.OutportInformation" uuid="91edb516-62f0-4fab-8620-774a3fc1c36c">
+            <EMVCE/>
+            <originalPortNumber>3</originalPortNumber>
+        </outports>
+        <outports type="ModelRefInfoRepo.OutportInformation" uuid="1f56d124-89bd-48ca-b981-389f542e3f3c">
+            <EMVCE/>
+            <originalPortNumber>4</originalPortNumber>
+        </outports>
+        <userSpecifiedFixedStepSize>0</userSpecifiedFixedStepSize>
+        <zeroInternalMemoryAtStartupUnchecked>true</zeroInternalMemoryAtStartupUnchecked>
+        <FMUBlockMap type="ModelRefInfoRepo.FMUBlockInfo" uuid="3cfd301c-79e6-4ae5-b03b-5df61126172e"/>
+        <periodicEventPortUnsupportedBlockInfo type="ModelRefInfoRepo.PeriodicEventPortUnsupportedBlockInfo" uuid="94120217-8ebc-40d3-9b8b-10bcf8c341c5">
+            <hasHiddenDeterministicRTB>false</hasHiddenDeterministicRTB>
+        </periodicEventPortUnsupportedBlockInfo>
+        <simulinkFunctions type="ModelRefInfoRepo.SimulinkFunctions" uuid="88e14f15-b682-48d6-bc17-934cce247a43">
+            <compSimulinkFunctionCatalog>AAFJTQAAAAAOAAAAgAAAAAYAAAAIAAAAAgAAAAAAAAAFAAAACAAAAAEAAAABAAAAAQAAAAAAAAAFAAQADgAAAAEAAAAOAAAAQ29tcEZ1bmN0aW9ucwAAAA4AAAAwAAAABgAAAAgAAAAGAAAAAAAAAAUAAAAIAAAAAAAAAAAAAAABAAAAAAAAAAkAAAAAAAAA</compSimulinkFunctionCatalog>
+            <postPropHasAnyExportedFunction>false</postPropHasAnyExportedFunction>
+            <postPropHasAnyVariantExportedFunction>false</postPropHasAnyVariantExportedFunction>
+        </simulinkFunctions>
+    </ModelRefInfoRepo.ModelRefInfoRoot>
+</MF0>

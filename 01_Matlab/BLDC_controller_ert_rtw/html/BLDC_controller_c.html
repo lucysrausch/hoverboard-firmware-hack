@@ -21,9 +21,9 @@
 </span><span><a class="LN" name="7">    7   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="8">    8   </a><span class="CT"> * Code generated for Simulink model 'BLDC_controller'.</span>
 </span><span><a class="LN" name="9">    9   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model version                  : 1.879</span>
+</span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model version                  : 1.883</span>
 </span><span><a class="LN" name="11">   11   </a><span class="CT"> * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017</span>
-</span><span><a class="LN" name="12">   12   </a><span class="CT"> * C/C++ source code generated on : Thu Jun  6 22:50:24 2019</span>
+</span><span><a class="LN" name="12">   12   </a><span class="CT"> * C/C++ source code generated on : Tue Jun 11 21:14:57 2019</span>
 </span><span><a class="LN" name="13">   13   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="14">   14   </a><span class="CT"> * Target selection: ert.tlc</span>
 </span><span><a class="LN" name="15">   15   </a><span class="CT"> * Embedded hardware selection: ARM Compatible-&gt;ARM Cortex</span>
@@ -287,7 +287,7 @@
 </span><span><a class="LN" name="273">  273   </a>
 </span><span><a class="LN" name="274">  274   </a>    <span class="CT">/* End of Outputs for SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1340')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Counter_Hold_and_Error_Calculation</i></font></a>' */</span>
 </span><span><a class="LN" name="275">  275   </a>  <b>}</b> <span class="KW">else</span> <b>{</b>
-</span><span><a class="LN" name="276">  276   </a>    <span class="KW">if</span> (rtDW-&gt;UnitDelay1_DSTATE &lt; 1500) <b>{</b>
+</span><span><a class="LN" name="276">  276   </a>    <span class="KW">if</span> (rtDW-&gt;UnitDelay1_DSTATE &lt; rtP-&gt;z_maxCntRst) <b>{</b>
 </span><span><a class="LN" name="277">  277   </a>      <span class="CT">/* Switch: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1651:1620')" name="code2model"><font color="#117755"><i>&lt;S17&gt;/Switch2</i></font></a>' incorporates:</span>
 </span><span><a class="LN" name="278">  278   </a><span class="CT">       *  UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1651:1621')" name="code2model"><font color="#117755"><i>&lt;S17&gt;/UnitDelay1</i></font></a>'</span>
 </span><span><a class="LN" name="279">  279   </a><span class="CT">       */</span>
@@ -296,7 +296,7 @@
 </span><span><a class="LN" name="282">  282   </a>      <span class="CT">/* Switch: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1651:1620')" name="code2model"><font color="#117755"><i>&lt;S17&gt;/Switch2</i></font></a>' incorporates:</span>
 </span><span><a class="LN" name="283">  283   </a><span class="CT">       *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1651:1616')" name="code2model"><font color="#117755"><i>&lt;S17&gt;/Constant1</i></font></a>'</span>
 </span><span><a class="LN" name="284">  284   </a><span class="CT">       */</span>
-</span><span><a class="LN" name="285">  285   </a>      rtb_Abs2 = 1500;
+</span><span><a class="LN" name="285">  285   </a>      rtb_Abs2 = rtP-&gt;z_maxCntRst;
 </span><span><a class="LN" name="286">  286   </a>    <b>}</b>
 </span><span><a class="LN" name="287">  287   </a>
 </span><span><a class="LN" name="288">  288   </a>    rtb_Abs2++;
@@ -317,7 +317,7 @@
 </span><span><a class="LN" name="303">  303   </a><span class="CT">   *  RelationalOperator: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1628')" name="code2model"><font color="#117755"><i>&lt;S16&gt;/Relational Operator5</i></font></a>'</span>
 </span><span><a class="LN" name="304">  304   </a><span class="CT">   *  Sum: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:142')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Sum1</i></font></a>'</span>
 </span><span><a class="LN" name="305">  305   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="306">  306   </a>  <span class="KW">if</span> ((rtb_Abs2 &gt; 1500) || (rtDW-&gt;Switch2 != rtDW-&gt;UnitDelay1)) <b>{</b>
+</span><span><a class="LN" name="306">  306   </a>  <span class="KW">if</span> ((rtb_Abs2 &gt; rtP-&gt;z_maxCntRst) || (rtDW-&gt;Switch2 != rtDW-&gt;UnitDelay1)) <b>{</b>
 </span><span><a class="LN" name="307">  307   </a>    rtb_Sum2 = 0;
 </span><span><a class="LN" name="308">  308   </a>  <b>}</b> <span class="KW">else</span> <b>{</b>
 </span><span><a class="LN" name="309">  309   </a>    rtb_Sum2 = rtP-&gt;cf_speedCoef * rtDW-&gt;Switch2 / rtDW-&gt;z_counterRawPrev;
@@ -338,14 +338,14 @@
 </span><span><a class="LN" name="324">  324   </a>  rtb_Sum2 = ((100 - rtP-&gt;cf_speedFilt) * rtDW-&gt;UnitDelay2_DSTATE + rtb_Sum2 *
 </span><span><a class="LN" name="325">  325   </a>              rtP-&gt;cf_speedFilt) / 100;
 </span><span><a class="LN" name="326">  326   </a>
-</span><span><a class="LN" name="327">  327   </a>  <span class="CT">/* Abs: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1320')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Abs5</i></font></a>' */</span>
+</span><span><a class="LN" name="327">  327   </a>  <span class="CT">/* Abs: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1672')" name="code2model"><font color="#117755"><i>&lt;S16&gt;/Abs5</i></font></a>' */</span>
 </span><span><a class="LN" name="328">  328   </a>  <span class="KW">if</span> (rtb_Sum2 &lt; 0) <b>{</b>
 </span><span><a class="LN" name="329">  329   </a>    rtb_Abs5 = -rtb_Sum2;
 </span><span><a class="LN" name="330">  330   </a>  <b>}</b> <span class="KW">else</span> <b>{</b>
 </span><span><a class="LN" name="331">  331   </a>    rtb_Abs5 = rtb_Sum2;
 </span><span><a class="LN" name="332">  332   </a>  <b>}</b>
 </span><span><a class="LN" name="333">  333   </a>
-</span><span><a class="LN" name="334">  334   </a>  <span class="CT">/* End of Abs: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1320')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Abs5</i></font></a>' */</span>
+</span><span><a class="LN" name="334">  334   </a>  <span class="CT">/* End of Abs: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1672')" name="code2model"><font color="#117755"><i>&lt;S16&gt;/Abs5</i></font></a>' */</span>
 </span><span><a class="LN" name="335">  335   </a>
 </span><span><a class="LN" name="336">  336   </a>  <span class="CT">/* Relay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1328')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/n_commDeacv</i></font></a>' */</span>
 </span><span><a class="LN" name="337">  337   </a>  <span class="KW">if</span> (rtb_Abs5 &gt;= rtP-&gt;n_commDeacvHi) <b>{</b>
@@ -433,278 +433,282 @@
 </span><span><a class="LN" name="419">  419   </a>
 </span><span><a class="LN" name="420">  420   </a>    <span class="CT">/* Switch: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:514')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/Switch_PhaAdv</i></font></a>' incorporates:</span>
 </span><span><a class="LN" name="421">  421   </a><span class="CT">     *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:512')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/a_elecPeriod1</i></font></a>'</span>
-</span><span><a class="LN" name="422">  422   </a><span class="CT">     *  Outport: '&lt;Root&gt;/a_elecAngle'</span>
-</span><span><a class="LN" name="423">  423   </a><span class="CT">     */</span>
-</span><span><a class="LN" name="424">  424   </a>    <span class="KW">if</span> (rtP-&gt;b_phaAdvEna) <b>{</b>
-</span><span><a class="LN" name="425">  425   </a>      <span class="CT">/* PreLookup: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:522')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/r_phaAdvDC_XA</i></font></a>' */</span>
-</span><span><a class="LN" name="426">  426   </a>      rtb_BitwiseOperator = <a href="#fcn_plook_u8s32u32n31_evenc_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_plook_u8s32u32n31_evenc_s');" target="_self"><font color="#1122aa">plook_u8s32u32n31_evenc_s</font></a>(rtb_Abs1,
-</span><span><a class="LN" name="427">  427   </a>        rtP-&gt;r_phaAdvDC_XA[0], (<a href="rtwtypes_h.html#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a>)rtP-&gt;r_phaAdvDC_XA[1] -
-</span><span><a class="LN" name="428">  428   </a>        rtP-&gt;r_phaAdvDC_XA[0], 10U, &amp;rtb_r_phaAdvDC_XA_o2);
-</span><span><a class="LN" name="429">  429   </a>
-</span><span><a class="LN" name="430">  430   </a>      <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:521')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/a_phaAdv_M2</i></font></a>' */</span>
-</span><span><a class="LN" name="431">  431   </a>      rtb_Abs2 = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
-</span><span><a class="LN" name="432">  432   </a>        rtb_r_phaAdvDC_XA_o2, rtP-&gt;a_phaAdv_M1);
-</span><span><a class="LN" name="433">  433   </a>
-</span><span><a class="LN" name="434">  434   </a>      <span class="CT">/* Sum: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:546')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/Sum3</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="435">  435   </a><span class="CT">       *  Outport: '&lt;Root&gt;/a_elecAngle'</span>
-</span><span><a class="LN" name="436">  436   </a><span class="CT">       *  Product: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:545')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/Product2</i></font></a>'</span>
-</span><span><a class="LN" name="437">  437   </a><span class="CT">       */</span>
-</span><span><a class="LN" name="438">  438   </a>      rtb_Abs5 = (<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)(rtb_Abs2 * rtDW-&gt;Switch2) + rtY-&gt;a_elecAngle;
-</span><span><a class="LN" name="439">  439   </a>
-</span><span><a class="LN" name="440">  440   </a>      <span class="CT">/* Math: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:623')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/Math Function</i></font></a>' */</span>
-</span><span><a class="LN" name="441">  441   </a>      rtDW-&gt;Switch_PhaAdv = rtb_Abs5 - <a href="#fcn_div_nde_s32_floor" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_div_nde_s32_floor');" target="_self"><font color="#1122aa">div_nde_s32_floor</font></a>(rtb_Abs5, 360) * 360;
-</span><span><a class="LN" name="442">  442   </a>    <b>}</b> <span class="KW">else</span> <b>{</b>
-</span><span><a class="LN" name="443">  443   </a>      rtDW-&gt;Switch_PhaAdv = rtY-&gt;a_elecAngle;
-</span><span><a class="LN" name="444">  444   </a>    <b>}</b>
-</span><span><a class="LN" name="445">  445   </a>
-</span><span><a class="LN" name="446">  446   </a>    <span class="CT">/* End of Switch: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:514')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/Switch_PhaAdv</i></font></a>' */</span>
-</span><span><a class="LN" name="447">  447   </a>    <span class="CT">/* End of Outputs for SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:215')" name="code2model"><font color="#117755"><i>&lt;S2&gt;/F02_Electrical_Angle_Calculation</i></font></a>' */</span>
-</span><span><a class="LN" name="448">  448   </a>  <b>}</b>
-</span><span><a class="LN" name="449">  449   </a>
-</span><span><a class="LN" name="450">  450   </a>  <span class="CT">/* End of If: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:434')" name="code2model"><font color="#117755"><i>&lt;S2&gt;/If1</i></font></a>' */</span>
-</span><span><a class="LN" name="451">  451   </a>
-</span><span><a class="LN" name="452">  452   </a>  <span class="CT">/* SwitchCase: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:348')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/Switch Case</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="453">  453   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:208')" name="code2model"><font color="#117755"><i>&lt;S7&gt;/z_ctrlTypSel1</i></font></a>'</span>
-</span><span><a class="LN" name="454">  454   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="455">  455   </a>  <span class="KW">switch</span> (rtP-&gt;z_ctrlTypSel) <b>{</b>
-</span><span><a class="LN" name="456">  456   </a>   <span class="KW">case</span> 1:
-</span><span><a class="LN" name="457">  457   </a>    <span class="CT">/* Outputs for IfAction SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:285')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/F03_01_Pure_Trapezoidal_Method</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="458">  458   </a><span class="CT">     *  ActionPort: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:287')" name="code2model"><font color="#117755"><i>&lt;S18&gt;/Action Port</i></font></a>'</span>
-</span><span><a class="LN" name="459">  459   </a><span class="CT">     */</span>
-</span><span><a class="LN" name="460">  460   </a>    <span class="CT">/* PreLookup: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:288')" name="code2model"><font color="#117755"><i>&lt;S18&gt;/a_trapElecAngle_XA</i></font></a>' */</span>
-</span><span><a class="LN" name="461">  461   </a>    rtb_BitwiseOperator = <a href="#fcn_plook_u8s32u32n31_evenc_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_plook_u8s32u32n31_evenc_s');" target="_self"><font color="#1122aa">plook_u8s32u32n31_evenc_s</font></a>(rtDW-&gt;Switch_PhaAdv, 0, 60U,
-</span><span><a class="LN" name="462">  462   </a>      6U, &amp;rtb_r_phaAdvDC_XA_o2);
-</span><span><a class="LN" name="463">  463   </a>
-</span><span><a class="LN" name="464">  464   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:289')" name="code2model"><font color="#117755"><i>&lt;S18&gt;/r_trapPhaA_M1</i></font></a>' */</span>
-</span><span><a class="LN" name="465">  465   </a>    rtDW-&gt;Merge = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
-</span><span><a class="LN" name="466">  466   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_trapPhaA_M1_Table);
-</span><span><a class="LN" name="467">  467   </a>
-</span><span><a class="LN" name="468">  468   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:290')" name="code2model"><font color="#117755"><i>&lt;S18&gt;/r_trapPhaB_M1</i></font></a>' */</span>
-</span><span><a class="LN" name="469">  469   </a>    rtDW-&gt;Merge1 = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
-</span><span><a class="LN" name="470">  470   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_trapPhaB_M1_Table);
-</span><span><a class="LN" name="471">  471   </a>
-</span><span><a class="LN" name="472">  472   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:291')" name="code2model"><font color="#117755"><i>&lt;S18&gt;/r_trapPhaC_M1</i></font></a>' */</span>
-</span><span><a class="LN" name="473">  473   </a>    rtDW-&gt;Merge2 = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
-</span><span><a class="LN" name="474">  474   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_trapPhaC_M1_Table);
-</span><span><a class="LN" name="475">  475   </a>
-</span><span><a class="LN" name="476">  476   </a>    <span class="CT">/* End of Outputs for SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:285')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/F03_01_Pure_Trapezoidal_Method</i></font></a>' */</span>
-</span><span><a class="LN" name="477">  477   </a>    <span class="KW">break</span>;
+</span><span><a class="LN" name="422">  422   </a><span class="CT">     *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1671')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/n_motPhaAdvEna</i></font></a>'</span>
+</span><span><a class="LN" name="423">  423   </a><span class="CT">     *  Logic: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1668')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/Logical Operator2</i></font></a>'</span>
+</span><span><a class="LN" name="424">  424   </a><span class="CT">     *  Outport: '&lt;Root&gt;/a_elecAngle'</span>
+</span><span><a class="LN" name="425">  425   </a><span class="CT">     *  RelationalOperator: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1670')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/Relational Operator4</i></font></a>'</span>
+</span><span><a class="LN" name="426">  426   </a><span class="CT">     */</span>
+</span><span><a class="LN" name="427">  427   </a>    <span class="KW">if</span> (rtP-&gt;b_phaAdvEna &amp;&amp; (rtb_Abs5 &gt; rtP-&gt;n_motPhaAdvEna)) <b>{</b>
+</span><span><a class="LN" name="428">  428   </a>      <span class="CT">/* PreLookup: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:522')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/r_phaAdvDC_XA</i></font></a>' */</span>
+</span><span><a class="LN" name="429">  429   </a>      rtb_BitwiseOperator = <a href="#fcn_plook_u8s32u32n31_evenc_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_plook_u8s32u32n31_evenc_s');" target="_self"><font color="#1122aa">plook_u8s32u32n31_evenc_s</font></a>(rtb_Abs1,
+</span><span><a class="LN" name="430">  430   </a>        rtP-&gt;r_phaAdvDC_XA[0], (<a href="rtwtypes_h.html#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a>)rtP-&gt;r_phaAdvDC_XA[1] -
+</span><span><a class="LN" name="431">  431   </a>        rtP-&gt;r_phaAdvDC_XA[0], 10U, &amp;rtb_r_phaAdvDC_XA_o2);
+</span><span><a class="LN" name="432">  432   </a>
+</span><span><a class="LN" name="433">  433   </a>      <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:521')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/a_phaAdv_M2</i></font></a>' */</span>
+</span><span><a class="LN" name="434">  434   </a>      rtb_Abs2 = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
+</span><span><a class="LN" name="435">  435   </a>        rtb_r_phaAdvDC_XA_o2, rtP-&gt;a_phaAdv_M1);
+</span><span><a class="LN" name="436">  436   </a>
+</span><span><a class="LN" name="437">  437   </a>      <span class="CT">/* Sum: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:546')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/Sum3</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="438">  438   </a><span class="CT">       *  Outport: '&lt;Root&gt;/a_elecAngle'</span>
+</span><span><a class="LN" name="439">  439   </a><span class="CT">       *  Product: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:545')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/Product2</i></font></a>'</span>
+</span><span><a class="LN" name="440">  440   </a><span class="CT">       */</span>
+</span><span><a class="LN" name="441">  441   </a>      rtb_Abs5 = (<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)(rtb_Abs2 * rtDW-&gt;Switch2) + rtY-&gt;a_elecAngle;
+</span><span><a class="LN" name="442">  442   </a>
+</span><span><a class="LN" name="443">  443   </a>      <span class="CT">/* Math: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:623')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/Math Function</i></font></a>' */</span>
+</span><span><a class="LN" name="444">  444   </a>      rtDW-&gt;Switch_PhaAdv = rtb_Abs5 - <a href="#fcn_div_nde_s32_floor" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_div_nde_s32_floor');" target="_self"><font color="#1122aa">div_nde_s32_floor</font></a>(rtb_Abs5, 360) * 360;
+</span><span><a class="LN" name="445">  445   </a>    <b>}</b> <span class="KW">else</span> <b>{</b>
+</span><span><a class="LN" name="446">  446   </a>      rtDW-&gt;Switch_PhaAdv = rtY-&gt;a_elecAngle;
+</span><span><a class="LN" name="447">  447   </a>    <b>}</b>
+</span><span><a class="LN" name="448">  448   </a>
+</span><span><a class="LN" name="449">  449   </a>    <span class="CT">/* End of Switch: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:514')" name="code2model"><font color="#117755"><i>&lt;S8&gt;/Switch_PhaAdv</i></font></a>' */</span>
+</span><span><a class="LN" name="450">  450   </a>    <span class="CT">/* End of Outputs for SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:215')" name="code2model"><font color="#117755"><i>&lt;S2&gt;/F02_Electrical_Angle_Calculation</i></font></a>' */</span>
+</span><span><a class="LN" name="451">  451   </a>  <b>}</b>
+</span><span><a class="LN" name="452">  452   </a>
+</span><span><a class="LN" name="453">  453   </a>  <span class="CT">/* End of If: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:434')" name="code2model"><font color="#117755"><i>&lt;S2&gt;/If1</i></font></a>' */</span>
+</span><span><a class="LN" name="454">  454   </a>
+</span><span><a class="LN" name="455">  455   </a>  <span class="CT">/* SwitchCase: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:348')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/Switch Case</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="456">  456   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:208')" name="code2model"><font color="#117755"><i>&lt;S7&gt;/z_ctrlTypSel1</i></font></a>'</span>
+</span><span><a class="LN" name="457">  457   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="458">  458   </a>  <span class="KW">switch</span> (rtP-&gt;z_ctrlTypSel) <b>{</b>
+</span><span><a class="LN" name="459">  459   </a>   <span class="KW">case</span> 1:
+</span><span><a class="LN" name="460">  460   </a>    <span class="CT">/* Outputs for IfAction SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:285')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/F03_01_Pure_Trapezoidal_Method</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="461">  461   </a><span class="CT">     *  ActionPort: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:287')" name="code2model"><font color="#117755"><i>&lt;S18&gt;/Action Port</i></font></a>'</span>
+</span><span><a class="LN" name="462">  462   </a><span class="CT">     */</span>
+</span><span><a class="LN" name="463">  463   </a>    <span class="CT">/* PreLookup: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:288')" name="code2model"><font color="#117755"><i>&lt;S18&gt;/a_trapElecAngle_XA</i></font></a>' */</span>
+</span><span><a class="LN" name="464">  464   </a>    rtb_BitwiseOperator = <a href="#fcn_plook_u8s32u32n31_evenc_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_plook_u8s32u32n31_evenc_s');" target="_self"><font color="#1122aa">plook_u8s32u32n31_evenc_s</font></a>(rtDW-&gt;Switch_PhaAdv, 0, 60U,
+</span><span><a class="LN" name="465">  465   </a>      6U, &amp;rtb_r_phaAdvDC_XA_o2);
+</span><span><a class="LN" name="466">  466   </a>
+</span><span><a class="LN" name="467">  467   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:289')" name="code2model"><font color="#117755"><i>&lt;S18&gt;/r_trapPhaA_M1</i></font></a>' */</span>
+</span><span><a class="LN" name="468">  468   </a>    rtDW-&gt;Merge = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
+</span><span><a class="LN" name="469">  469   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_trapPhaA_M1_Table);
+</span><span><a class="LN" name="470">  470   </a>
+</span><span><a class="LN" name="471">  471   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:290')" name="code2model"><font color="#117755"><i>&lt;S18&gt;/r_trapPhaB_M1</i></font></a>' */</span>
+</span><span><a class="LN" name="472">  472   </a>    rtDW-&gt;Merge1 = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
+</span><span><a class="LN" name="473">  473   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_trapPhaB_M1_Table);
+</span><span><a class="LN" name="474">  474   </a>
+</span><span><a class="LN" name="475">  475   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:291')" name="code2model"><font color="#117755"><i>&lt;S18&gt;/r_trapPhaC_M1</i></font></a>' */</span>
+</span><span><a class="LN" name="476">  476   </a>    rtDW-&gt;Merge2 = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
+</span><span><a class="LN" name="477">  477   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_trapPhaC_M1_Table);
 </span><span><a class="LN" name="478">  478   </a>
-</span><span><a class="LN" name="479">  479   </a>   <span class="KW">case</span> 2:
-</span><span><a class="LN" name="480">  480   </a>    <span class="CT">/* Outputs for IfAction SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:305')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/F03_02_Sinusoidal_Method</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="481">  481   </a><span class="CT">     *  ActionPort: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:307')" name="code2model"><font color="#117755"><i>&lt;S19&gt;/Action Port</i></font></a>'</span>
-</span><span><a class="LN" name="482">  482   </a><span class="CT">     */</span>
-</span><span><a class="LN" name="483">  483   </a>    <span class="CT">/* PreLookup: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:308')" name="code2model"><font color="#117755"><i>&lt;S19&gt;/a_sinElecAngle_XA</i></font></a>' */</span>
-</span><span><a class="LN" name="484">  484   </a>    rtb_BitwiseOperator = <a href="#fcn_plook_u8s32u32n31_evenc_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_plook_u8s32u32n31_evenc_s');" target="_self"><font color="#1122aa">plook_u8s32u32n31_evenc_s</font></a>(rtDW-&gt;Switch_PhaAdv, 0, 10U,
-</span><span><a class="LN" name="485">  485   </a>      36U, &amp;rtb_r_phaAdvDC_XA_o2);
-</span><span><a class="LN" name="486">  486   </a>
-</span><span><a class="LN" name="487">  487   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:309')" name="code2model"><font color="#117755"><i>&lt;S19&gt;/r_sinPhaA_M1</i></font></a>' */</span>
-</span><span><a class="LN" name="488">  488   </a>    rtDW-&gt;Merge = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
-</span><span><a class="LN" name="489">  489   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_sinPhaA_M1_Table);
-</span><span><a class="LN" name="490">  490   </a>
-</span><span><a class="LN" name="491">  491   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:310')" name="code2model"><font color="#117755"><i>&lt;S19&gt;/r_sinPhaB_M1</i></font></a>' */</span>
-</span><span><a class="LN" name="492">  492   </a>    rtDW-&gt;Merge1 = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
-</span><span><a class="LN" name="493">  493   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_sinPhaB_M1_Table);
-</span><span><a class="LN" name="494">  494   </a>
-</span><span><a class="LN" name="495">  495   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:311')" name="code2model"><font color="#117755"><i>&lt;S19&gt;/r_sinPhaC_M1</i></font></a>' */</span>
-</span><span><a class="LN" name="496">  496   </a>    rtDW-&gt;Merge2 = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
-</span><span><a class="LN" name="497">  497   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_sinPhaC_M1_Table);
-</span><span><a class="LN" name="498">  498   </a>
-</span><span><a class="LN" name="499">  499   </a>    <span class="CT">/* End of Outputs for SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:305')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/F03_02_Sinusoidal_Method</i></font></a>' */</span>
-</span><span><a class="LN" name="500">  500   </a>    <span class="KW">break</span>;
+</span><span><a class="LN" name="479">  479   </a>    <span class="CT">/* End of Outputs for SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:285')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/F03_01_Pure_Trapezoidal_Method</i></font></a>' */</span>
+</span><span><a class="LN" name="480">  480   </a>    <span class="KW">break</span>;
+</span><span><a class="LN" name="481">  481   </a>
+</span><span><a class="LN" name="482">  482   </a>   <span class="KW">case</span> 2:
+</span><span><a class="LN" name="483">  483   </a>    <span class="CT">/* Outputs for IfAction SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:305')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/F03_02_Sinusoidal_Method</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="484">  484   </a><span class="CT">     *  ActionPort: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:307')" name="code2model"><font color="#117755"><i>&lt;S19&gt;/Action Port</i></font></a>'</span>
+</span><span><a class="LN" name="485">  485   </a><span class="CT">     */</span>
+</span><span><a class="LN" name="486">  486   </a>    <span class="CT">/* PreLookup: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:308')" name="code2model"><font color="#117755"><i>&lt;S19&gt;/a_sinElecAngle_XA</i></font></a>' */</span>
+</span><span><a class="LN" name="487">  487   </a>    rtb_BitwiseOperator = <a href="#fcn_plook_u8s32u32n31_evenc_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_plook_u8s32u32n31_evenc_s');" target="_self"><font color="#1122aa">plook_u8s32u32n31_evenc_s</font></a>(rtDW-&gt;Switch_PhaAdv, 0, 10U,
+</span><span><a class="LN" name="488">  488   </a>      36U, &amp;rtb_r_phaAdvDC_XA_o2);
+</span><span><a class="LN" name="489">  489   </a>
+</span><span><a class="LN" name="490">  490   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:309')" name="code2model"><font color="#117755"><i>&lt;S19&gt;/r_sinPhaA_M1</i></font></a>' */</span>
+</span><span><a class="LN" name="491">  491   </a>    rtDW-&gt;Merge = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
+</span><span><a class="LN" name="492">  492   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_sinPhaA_M1_Table);
+</span><span><a class="LN" name="493">  493   </a>
+</span><span><a class="LN" name="494">  494   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:310')" name="code2model"><font color="#117755"><i>&lt;S19&gt;/r_sinPhaB_M1</i></font></a>' */</span>
+</span><span><a class="LN" name="495">  495   </a>    rtDW-&gt;Merge1 = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
+</span><span><a class="LN" name="496">  496   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_sinPhaB_M1_Table);
+</span><span><a class="LN" name="497">  497   </a>
+</span><span><a class="LN" name="498">  498   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:311')" name="code2model"><font color="#117755"><i>&lt;S19&gt;/r_sinPhaC_M1</i></font></a>' */</span>
+</span><span><a class="LN" name="499">  499   </a>    rtDW-&gt;Merge2 = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
+</span><span><a class="LN" name="500">  500   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_sinPhaC_M1_Table);
 </span><span><a class="LN" name="501">  501   </a>
-</span><span><a class="LN" name="502">  502   </a>   <span class="KW">case</span> 3:
-</span><span><a class="LN" name="503">  503   </a>    <span class="CT">/* Outputs for IfAction SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:295')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/F03_03_Sinusoidal3rd_Method</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="504">  504   </a><span class="CT">     *  ActionPort: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:297')" name="code2model"><font color="#117755"><i>&lt;S20&gt;/Action Port</i></font></a>'</span>
-</span><span><a class="LN" name="505">  505   </a><span class="CT">     */</span>
-</span><span><a class="LN" name="506">  506   </a>    <span class="CT">/* PreLookup: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:298')" name="code2model"><font color="#117755"><i>&lt;S20&gt;/a_sinElecAngle_XA</i></font></a>' */</span>
-</span><span><a class="LN" name="507">  507   </a>    rtb_BitwiseOperator = <a href="#fcn_plook_u8s32u32n31_evenc_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_plook_u8s32u32n31_evenc_s');" target="_self"><font color="#1122aa">plook_u8s32u32n31_evenc_s</font></a>(rtDW-&gt;Switch_PhaAdv, 0, 10U,
-</span><span><a class="LN" name="508">  508   </a>      36U, &amp;rtb_r_phaAdvDC_XA_o2);
-</span><span><a class="LN" name="509">  509   </a>
-</span><span><a class="LN" name="510">  510   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:299')" name="code2model"><font color="#117755"><i>&lt;S20&gt;/r_sin3PhaA_M1</i></font></a>' */</span>
-</span><span><a class="LN" name="511">  511   </a>    rtDW-&gt;Merge = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
-</span><span><a class="LN" name="512">  512   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_sin3PhaA_M1_Table);
-</span><span><a class="LN" name="513">  513   </a>
-</span><span><a class="LN" name="514">  514   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:300')" name="code2model"><font color="#117755"><i>&lt;S20&gt;/r_sin3PhaB_M1</i></font></a>' */</span>
-</span><span><a class="LN" name="515">  515   </a>    rtDW-&gt;Merge1 = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
-</span><span><a class="LN" name="516">  516   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_sin3PhaB_M1_Table);
-</span><span><a class="LN" name="517">  517   </a>
-</span><span><a class="LN" name="518">  518   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:301')" name="code2model"><font color="#117755"><i>&lt;S20&gt;/r_sin3PhaC_M1</i></font></a>' */</span>
-</span><span><a class="LN" name="519">  519   </a>    rtDW-&gt;Merge2 = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
-</span><span><a class="LN" name="520">  520   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_sin3PhaC_M1_Table);
-</span><span><a class="LN" name="521">  521   </a>
-</span><span><a class="LN" name="522">  522   </a>    <span class="CT">/* End of Outputs for SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:295')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/F03_03_Sinusoidal3rd_Method</i></font></a>' */</span>
-</span><span><a class="LN" name="523">  523   </a>    <span class="KW">break</span>;
-</span><span><a class="LN" name="524">  524   </a>  <b>}</b>
-</span><span><a class="LN" name="525">  525   </a>
-</span><span><a class="LN" name="526">  526   </a>  <span class="CT">/* End of SwitchCase: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:348')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/Switch Case</i></font></a>' */</span>
-</span><span><a class="LN" name="527">  527   </a>
-</span><span><a class="LN" name="528">  528   </a>  <span class="CT">/* Signum: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1525')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Sign</i></font></a>' */</span>
-</span><span><a class="LN" name="529">  529   </a>  <span class="KW">if</span> (rtDW-&gt;Switch2 &lt; 0) <b>{</b>
-</span><span><a class="LN" name="530">  530   </a>    rtb_Sum2_h = -1;
-</span><span><a class="LN" name="531">  531   </a>  <b>}</b> <span class="KW">else</span> <b>{</b>
-</span><span><a class="LN" name="532">  532   </a>    rtb_Sum2_h = (<a href="rtwtypes_h.html#type_int8_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int8_T');" target="_self"><font color="#1122aa">int8_T</font></a>)(rtDW-&gt;Switch2 &gt; 0);
-</span><span><a class="LN" name="533">  533   </a>  <b>}</b>
-</span><span><a class="LN" name="534">  534   </a>
-</span><span><a class="LN" name="535">  535   </a>  <span class="CT">/* End of Signum: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1525')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Sign</i></font></a>' */</span>
-</span><span><a class="LN" name="536">  536   </a>
-</span><span><a class="LN" name="537">  537   </a>  <span class="CT">/* Signum: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1526')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Sign1</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="538">  538   </a><span class="CT">   *  Inport: '&lt;Root&gt;/r_DC'</span>
-</span><span><a class="LN" name="539">  539   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="540">  540   </a>  <span class="KW">if</span> (rtU-&gt;r_DC &lt; 0) <b>{</b>
-</span><span><a class="LN" name="541">  541   </a>    rtb_Abs5 = -1;
-</span><span><a class="LN" name="542">  542   </a>  <b>}</b> <span class="KW">else</span> <b>{</b>
-</span><span><a class="LN" name="543">  543   </a>    rtb_Abs5 = (rtU-&gt;r_DC &gt; 0);
-</span><span><a class="LN" name="544">  544   </a>  <b>}</b>
-</span><span><a class="LN" name="545">  545   </a>
-</span><span><a class="LN" name="546">  546   </a>  <span class="CT">/* End of Signum: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1526')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Sign1</i></font></a>' */</span>
-</span><span><a class="LN" name="547">  547   </a>
-</span><span><a class="LN" name="548">  548   </a>  <span class="CT">/* Switch: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:401')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Switch1</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="549">  549   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:22')" name="code2model"><font color="#117755"><i>&lt;S12&gt;/vec_hallToPos</i></font></a>'</span>
-</span><span><a class="LN" name="550">  550   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1321')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/CTRL_COMM</i></font></a>'</span>
-</span><span><a class="LN" name="551">  551   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1329')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/r_commDCDeacv</i></font></a>'</span>
-</span><span><a class="LN" name="552">  552   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:208')" name="code2model"><font color="#117755"><i>&lt;S7&gt;/z_ctrlTypSel1</i></font></a>'</span>
-</span><span><a class="LN" name="553">  553   </a><span class="CT">   *  Inport: '&lt;Root&gt;/r_DC'</span>
-</span><span><a class="LN" name="554">  554   </a><span class="CT">   *  Logic: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1325')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Logical Operator2</i></font></a>'</span>
-</span><span><a class="LN" name="555">  555   </a><span class="CT">   *  LookupNDDirect: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>'</span>
-</span><span><a class="LN" name="556">  556   </a><span class="CT">   *  Product: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:374')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Divide2</i></font></a>'</span>
-</span><span><a class="LN" name="557">  557   </a><span class="CT">   *  Product: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:375')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Divide4</i></font></a>'</span>
-</span><span><a class="LN" name="558">  558   </a><span class="CT">   *  RelationalOperator: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1524')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Relational Operator1</i></font></a>'</span>
-</span><span><a class="LN" name="559">  559   </a><span class="CT">   *  RelationalOperator: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1326')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Relational Operator3</i></font></a>'</span>
-</span><span><a class="LN" name="560">  560   </a><span class="CT">   *  RelationalOperator: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1327')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Relational Operator4</i></font></a>'</span>
-</span><span><a class="LN" name="561">  561   </a><span class="CT">   *  Relay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1518')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/dz_counter</i></font></a>'</span>
-</span><span><a class="LN" name="562">  562   </a><span class="CT">   *  Relay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1328')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/n_commDeacv</i></font></a>'</span>
-</span><span><a class="LN" name="563">  563   </a><span class="CT">   *  Selector: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:14')" name="code2model"><font color="#117755"><i>&lt;S12&gt;/Selector</i></font></a>'</span>
-</span><span><a class="LN" name="564">  564   </a><span class="CT">   *</span>
-</span><span><a class="LN" name="565">  565   </a><span class="CT">   * About '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>':</span>
-</span><span><a class="LN" name="566">  566   </a><span class="CT">   *  2-dimensional Direct Look-Up returning a Column</span>
-</span><span><a class="LN" name="567">  567   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="568">  568   </a>  <span class="KW">if</span> ((rtP-&gt;z_ctrlTypSel != 0) &amp;&amp; (rtb_Abs1 &gt; rtP-&gt;r_commDCDeacv) &amp;&amp; (rtb_Sum2_h
-</span><span><a class="LN" name="569">  569   </a>       == rtb_Abs5) &amp;&amp; rtDW-&gt;n_commDeacv_Mode &amp;&amp; (!rtDW-&gt;dz_counter_Mode)) <b>{</b>
-</span><span><a class="LN" name="570">  570   </a>    rtb_Abs5 = rtU-&gt;r_DC * rtDW-&gt;Merge;
-</span><span><a class="LN" name="571">  571   </a>    rtb_Switch1_idx_1 = rtU-&gt;r_DC * rtDW-&gt;Merge1;
-</span><span><a class="LN" name="572">  572   </a>    rtb_Abs1 = rtU-&gt;r_DC * rtDW-&gt;Merge2;
-</span><span><a class="LN" name="573">  573   </a>  <b>}</b> <span class="KW">else</span> <b>{</b>
-</span><span><a class="LN" name="574">  574   </a>    <span class="KW">if</span> (<a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.vec_hallToPos_Value[rtb_Sum] &gt; 5) <b>{</b>
-</span><span><a class="LN" name="575">  575   </a>      <span class="CT">/* LookupNDDirect: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>'</span>
-</span><span><a class="LN" name="576">  576   </a><span class="CT">       *</span>
-</span><span><a class="LN" name="577">  577   </a><span class="CT">       * About '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>':</span>
-</span><span><a class="LN" name="578">  578   </a><span class="CT">       *  2-dimensional Direct Look-Up returning a Column</span>
-</span><span><a class="LN" name="579">  579   </a><span class="CT">       */</span>
-</span><span><a class="LN" name="580">  580   </a>      rtb_Sum2_h = 5;
-</span><span><a class="LN" name="581">  581   </a>    <b>}</b> <span class="KW">else</span> <span class="KW">if</span> (<a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.vec_hallToPos_Value[rtb_Sum] &lt; 0) <b>{</b>
-</span><span><a class="LN" name="582">  582   </a>      <span class="CT">/* LookupNDDirect: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>'</span>
-</span><span><a class="LN" name="583">  583   </a><span class="CT">       *</span>
-</span><span><a class="LN" name="584">  584   </a><span class="CT">       * About '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>':</span>
-</span><span><a class="LN" name="585">  585   </a><span class="CT">       *  2-dimensional Direct Look-Up returning a Column</span>
-</span><span><a class="LN" name="586">  586   </a><span class="CT">       */</span>
-</span><span><a class="LN" name="587">  587   </a>      rtb_Sum2_h = 0;
-</span><span><a class="LN" name="588">  588   </a>    <b>}</b> <span class="KW">else</span> <b>{</b>
-</span><span><a class="LN" name="589">  589   </a>      <span class="CT">/* LookupNDDirect: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="590">  590   </a><span class="CT">       *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:22')" name="code2model"><font color="#117755"><i>&lt;S12&gt;/vec_hallToPos</i></font></a>'</span>
-</span><span><a class="LN" name="591">  591   </a><span class="CT">       *  Selector: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:14')" name="code2model"><font color="#117755"><i>&lt;S12&gt;/Selector</i></font></a>'</span>
-</span><span><a class="LN" name="592">  592   </a><span class="CT">       *</span>
-</span><span><a class="LN" name="593">  593   </a><span class="CT">       * About '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>':</span>
-</span><span><a class="LN" name="594">  594   </a><span class="CT">       *  2-dimensional Direct Look-Up returning a Column</span>
-</span><span><a class="LN" name="595">  595   </a><span class="CT">       */</span>
-</span><span><a class="LN" name="596">  596   </a>      rtb_Sum2_h = <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.vec_hallToPos_Value[rtb_Sum];
-</span><span><a class="LN" name="597">  597   </a>    <b>}</b>
-</span><span><a class="LN" name="598">  598   </a>
-</span><span><a class="LN" name="599">  599   </a>    <span class="CT">/* LookupNDDirect: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="600">  600   </a><span class="CT">     *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:22')" name="code2model"><font color="#117755"><i>&lt;S12&gt;/vec_hallToPos</i></font></a>'</span>
-</span><span><a class="LN" name="601">  601   </a><span class="CT">     *  Selector: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:14')" name="code2model"><font color="#117755"><i>&lt;S12&gt;/Selector</i></font></a>'</span>
-</span><span><a class="LN" name="602">  602   </a><span class="CT">     *</span>
-</span><span><a class="LN" name="603">  603   </a><span class="CT">     * About '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>':</span>
-</span><span><a class="LN" name="604">  604   </a><span class="CT">     *  2-dimensional Direct Look-Up returning a Column</span>
-</span><span><a class="LN" name="605">  605   </a><span class="CT">     */</span>
-</span><span><a class="LN" name="606">  606   </a>    rtb_Abs1 = rtb_Sum2_h * 3;
-</span><span><a class="LN" name="607">  607   </a>    rtb_Abs5 = rtU-&gt;r_DC * <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.z_commutMap_M1_table[rtb_Abs1];
-</span><span><a class="LN" name="608">  608   </a>    rtb_Switch1_idx_1 = <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.z_commutMap_M1_table[1 + rtb_Abs1] * rtU-&gt;r_DC;
-</span><span><a class="LN" name="609">  609   </a>    rtb_Abs1 = <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.z_commutMap_M1_table[2 + rtb_Abs1] * rtU-&gt;r_DC;
-</span><span><a class="LN" name="610">  610   </a>  <b>}</b>
-</span><span><a class="LN" name="611">  611   </a>
-</span><span><a class="LN" name="612">  612   </a>  <span class="CT">/* End of Switch: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:401')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Switch1</i></font></a>' */</span>
-</span><span><a class="LN" name="613">  613   </a>
-</span><span><a class="LN" name="614">  614   </a>  <span class="CT">/* Outport: '&lt;Root&gt;/DC_phaA' incorporates:</span>
-</span><span><a class="LN" name="615">  615   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:370')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Constant1</i></font></a>'</span>
-</span><span><a class="LN" name="616">  616   </a><span class="CT">   *  Product: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:373')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Divide1</i></font></a>'</span>
-</span><span><a class="LN" name="617">  617   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="618">  618   </a>  rtY-&gt;DC_phaA = rtb_Abs5 / 1000;
-</span><span><a class="LN" name="619">  619   </a>
-</span><span><a class="LN" name="620">  620   </a>  <span class="CT">/* Outport: '&lt;Root&gt;/DC_phaB' incorporates:</span>
-</span><span><a class="LN" name="621">  621   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:370')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Constant1</i></font></a>'</span>
-</span><span><a class="LN" name="622">  622   </a><span class="CT">   *  Product: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:373')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Divide1</i></font></a>'</span>
-</span><span><a class="LN" name="623">  623   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="624">  624   </a>  rtY-&gt;DC_phaB = rtb_Switch1_idx_1 / 1000;
-</span><span><a class="LN" name="625">  625   </a>
-</span><span><a class="LN" name="626">  626   </a>  <span class="CT">/* Update for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:31')" name="code2model"><font color="#117755"><i>&lt;S11&gt;/UnitDelay</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="627">  627   </a><span class="CT">   *  Inport: '&lt;Root&gt;/b_hallA '</span>
-</span><span><a class="LN" name="628">  628   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="629">  629   </a>  rtDW-&gt;UnitDelay_DSTATE = rtU-&gt;b_hallA;
-</span><span><a class="LN" name="630">  630   </a>
-</span><span><a class="LN" name="631">  631   </a>  <span class="CT">/* Update for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:32')" name="code2model"><font color="#117755"><i>&lt;S11&gt;/UnitDelay1</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="632">  632   </a><span class="CT">   *  Inport: '&lt;Root&gt;/b_hallB'</span>
-</span><span><a class="LN" name="633">  633   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="634">  634   </a>  rtDW-&gt;UnitDelay1_DSTATE_i = rtU-&gt;b_hallB;
-</span><span><a class="LN" name="635">  635   </a>
-</span><span><a class="LN" name="636">  636   </a>  <span class="CT">/* Update for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:33')" name="code2model"><font color="#117755"><i>&lt;S11&gt;/UnitDelay2</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="637">  637   </a><span class="CT">   *  Inport: '&lt;Root&gt;/b_hallC'</span>
-</span><span><a class="LN" name="638">  638   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="639">  639   </a>  rtDW-&gt;UnitDelay2_DSTATE_h = rtU-&gt;b_hallC;
-</span><span><a class="LN" name="640">  640   </a>
-</span><span><a class="LN" name="641">  641   </a>  <span class="CT">/* Update for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1651:1621')" name="code2model"><font color="#117755"><i>&lt;S17&gt;/UnitDelay1</i></font></a>' */</span>
-</span><span><a class="LN" name="642">  642   </a>  rtDW-&gt;UnitDelay1_DSTATE = rtb_Sum1_a;
+</span><span><a class="LN" name="502">  502   </a>    <span class="CT">/* End of Outputs for SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:305')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/F03_02_Sinusoidal_Method</i></font></a>' */</span>
+</span><span><a class="LN" name="503">  503   </a>    <span class="KW">break</span>;
+</span><span><a class="LN" name="504">  504   </a>
+</span><span><a class="LN" name="505">  505   </a>   <span class="KW">case</span> 3:
+</span><span><a class="LN" name="506">  506   </a>    <span class="CT">/* Outputs for IfAction SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:295')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/F03_03_Sinusoidal3rd_Method</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="507">  507   </a><span class="CT">     *  ActionPort: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:297')" name="code2model"><font color="#117755"><i>&lt;S20&gt;/Action Port</i></font></a>'</span>
+</span><span><a class="LN" name="508">  508   </a><span class="CT">     */</span>
+</span><span><a class="LN" name="509">  509   </a>    <span class="CT">/* PreLookup: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:298')" name="code2model"><font color="#117755"><i>&lt;S20&gt;/a_sinElecAngle_XA</i></font></a>' */</span>
+</span><span><a class="LN" name="510">  510   </a>    rtb_BitwiseOperator = <a href="#fcn_plook_u8s32u32n31_evenc_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_plook_u8s32u32n31_evenc_s');" target="_self"><font color="#1122aa">plook_u8s32u32n31_evenc_s</font></a>(rtDW-&gt;Switch_PhaAdv, 0, 10U,
+</span><span><a class="LN" name="511">  511   </a>      36U, &amp;rtb_r_phaAdvDC_XA_o2);
+</span><span><a class="LN" name="512">  512   </a>
+</span><span><a class="LN" name="513">  513   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:299')" name="code2model"><font color="#117755"><i>&lt;S20&gt;/r_sin3PhaA_M1</i></font></a>' */</span>
+</span><span><a class="LN" name="514">  514   </a>    rtDW-&gt;Merge = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
+</span><span><a class="LN" name="515">  515   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_sin3PhaA_M1_Table);
+</span><span><a class="LN" name="516">  516   </a>
+</span><span><a class="LN" name="517">  517   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:300')" name="code2model"><font color="#117755"><i>&lt;S20&gt;/r_sin3PhaB_M1</i></font></a>' */</span>
+</span><span><a class="LN" name="518">  518   </a>    rtDW-&gt;Merge1 = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
+</span><span><a class="LN" name="519">  519   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_sin3PhaB_M1_Table);
+</span><span><a class="LN" name="520">  520   </a>
+</span><span><a class="LN" name="521">  521   </a>    <span class="CT">/* Interpolation_n-D: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:301')" name="code2model"><font color="#117755"><i>&lt;S20&gt;/r_sin3PhaC_M1</i></font></a>' */</span>
+</span><span><a class="LN" name="522">  522   </a>    rtDW-&gt;Merge2 = <a href="#fcn_intrp1d_s16s32s32u8u32n31l_s" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_intrp1d_s16s32s32u8u32n31l_s');" target="_self"><font color="#1122aa">intrp1d_s16s32s32u8u32n31l_s</font></a>(rtb_BitwiseOperator,
+</span><span><a class="LN" name="523">  523   </a>      rtb_r_phaAdvDC_XA_o2, <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.r_sin3PhaC_M1_Table);
+</span><span><a class="LN" name="524">  524   </a>
+</span><span><a class="LN" name="525">  525   </a>    <span class="CT">/* End of Outputs for SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:295')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/F03_03_Sinusoidal3rd_Method</i></font></a>' */</span>
+</span><span><a class="LN" name="526">  526   </a>    <span class="KW">break</span>;
+</span><span><a class="LN" name="527">  527   </a>  <b>}</b>
+</span><span><a class="LN" name="528">  528   </a>
+</span><span><a class="LN" name="529">  529   </a>  <span class="CT">/* End of SwitchCase: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:348')" name="code2model"><font color="#117755"><i>&lt;S9&gt;/Switch Case</i></font></a>' */</span>
+</span><span><a class="LN" name="530">  530   </a>
+</span><span><a class="LN" name="531">  531   </a>  <span class="CT">/* Signum: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1525')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Sign</i></font></a>' */</span>
+</span><span><a class="LN" name="532">  532   </a>  <span class="KW">if</span> (rtDW-&gt;Switch2 &lt; 0) <b>{</b>
+</span><span><a class="LN" name="533">  533   </a>    rtb_Sum2_h = -1;
+</span><span><a class="LN" name="534">  534   </a>  <b>}</b> <span class="KW">else</span> <b>{</b>
+</span><span><a class="LN" name="535">  535   </a>    rtb_Sum2_h = (<a href="rtwtypes_h.html#type_int8_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int8_T');" target="_self"><font color="#1122aa">int8_T</font></a>)(rtDW-&gt;Switch2 &gt; 0);
+</span><span><a class="LN" name="536">  536   </a>  <b>}</b>
+</span><span><a class="LN" name="537">  537   </a>
+</span><span><a class="LN" name="538">  538   </a>  <span class="CT">/* End of Signum: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1525')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Sign</i></font></a>' */</span>
+</span><span><a class="LN" name="539">  539   </a>
+</span><span><a class="LN" name="540">  540   </a>  <span class="CT">/* Signum: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1526')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Sign1</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="541">  541   </a><span class="CT">   *  Inport: '&lt;Root&gt;/r_DC'</span>
+</span><span><a class="LN" name="542">  542   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="543">  543   </a>  <span class="KW">if</span> (rtU-&gt;r_DC &lt; 0) <b>{</b>
+</span><span><a class="LN" name="544">  544   </a>    rtb_Abs5 = -1;
+</span><span><a class="LN" name="545">  545   </a>  <b>}</b> <span class="KW">else</span> <b>{</b>
+</span><span><a class="LN" name="546">  546   </a>    rtb_Abs5 = (rtU-&gt;r_DC &gt; 0);
+</span><span><a class="LN" name="547">  547   </a>  <b>}</b>
+</span><span><a class="LN" name="548">  548   </a>
+</span><span><a class="LN" name="549">  549   </a>  <span class="CT">/* End of Signum: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1526')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Sign1</i></font></a>' */</span>
+</span><span><a class="LN" name="550">  550   </a>
+</span><span><a class="LN" name="551">  551   </a>  <span class="CT">/* Switch: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:401')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Switch1</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="552">  552   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:22')" name="code2model"><font color="#117755"><i>&lt;S12&gt;/vec_hallToPos</i></font></a>'</span>
+</span><span><a class="LN" name="553">  553   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1321')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/CTRL_COMM</i></font></a>'</span>
+</span><span><a class="LN" name="554">  554   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1329')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/r_commDCDeacv</i></font></a>'</span>
+</span><span><a class="LN" name="555">  555   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:208')" name="code2model"><font color="#117755"><i>&lt;S7&gt;/z_ctrlTypSel1</i></font></a>'</span>
+</span><span><a class="LN" name="556">  556   </a><span class="CT">   *  Inport: '&lt;Root&gt;/r_DC'</span>
+</span><span><a class="LN" name="557">  557   </a><span class="CT">   *  Logic: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1325')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Logical Operator2</i></font></a>'</span>
+</span><span><a class="LN" name="558">  558   </a><span class="CT">   *  LookupNDDirect: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>'</span>
+</span><span><a class="LN" name="559">  559   </a><span class="CT">   *  Product: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:374')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Divide2</i></font></a>'</span>
+</span><span><a class="LN" name="560">  560   </a><span class="CT">   *  Product: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:375')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Divide4</i></font></a>'</span>
+</span><span><a class="LN" name="561">  561   </a><span class="CT">   *  RelationalOperator: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1524')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Relational Operator1</i></font></a>'</span>
+</span><span><a class="LN" name="562">  562   </a><span class="CT">   *  RelationalOperator: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1326')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Relational Operator3</i></font></a>'</span>
+</span><span><a class="LN" name="563">  563   </a><span class="CT">   *  RelationalOperator: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1327')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Relational Operator4</i></font></a>'</span>
+</span><span><a class="LN" name="564">  564   </a><span class="CT">   *  Relay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1518')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/dz_counter</i></font></a>'</span>
+</span><span><a class="LN" name="565">  565   </a><span class="CT">   *  Relay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1328')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/n_commDeacv</i></font></a>'</span>
+</span><span><a class="LN" name="566">  566   </a><span class="CT">   *  Selector: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:14')" name="code2model"><font color="#117755"><i>&lt;S12&gt;/Selector</i></font></a>'</span>
+</span><span><a class="LN" name="567">  567   </a><span class="CT">   *</span>
+</span><span><a class="LN" name="568">  568   </a><span class="CT">   * About '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>':</span>
+</span><span><a class="LN" name="569">  569   </a><span class="CT">   *  2-dimensional Direct Look-Up returning a Column</span>
+</span><span><a class="LN" name="570">  570   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="571">  571   </a>  <span class="KW">if</span> ((rtP-&gt;z_ctrlTypSel != 0) &amp;&amp; (rtb_Abs1 &gt; rtP-&gt;r_commDCDeacv) &amp;&amp; (rtb_Sum2_h
+</span><span><a class="LN" name="572">  572   </a>       == rtb_Abs5) &amp;&amp; rtDW-&gt;n_commDeacv_Mode &amp;&amp; (!rtDW-&gt;dz_counter_Mode)) <b>{</b>
+</span><span><a class="LN" name="573">  573   </a>    rtb_Abs5 = rtU-&gt;r_DC * rtDW-&gt;Merge;
+</span><span><a class="LN" name="574">  574   </a>    rtb_Switch1_idx_1 = rtU-&gt;r_DC * rtDW-&gt;Merge1;
+</span><span><a class="LN" name="575">  575   </a>    rtb_Abs1 = rtU-&gt;r_DC * rtDW-&gt;Merge2;
+</span><span><a class="LN" name="576">  576   </a>  <b>}</b> <span class="KW">else</span> <b>{</b>
+</span><span><a class="LN" name="577">  577   </a>    <span class="KW">if</span> (<a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.vec_hallToPos_Value[rtb_Sum] &gt; 5) <b>{</b>
+</span><span><a class="LN" name="578">  578   </a>      <span class="CT">/* LookupNDDirect: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>'</span>
+</span><span><a class="LN" name="579">  579   </a><span class="CT">       *</span>
+</span><span><a class="LN" name="580">  580   </a><span class="CT">       * About '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>':</span>
+</span><span><a class="LN" name="581">  581   </a><span class="CT">       *  2-dimensional Direct Look-Up returning a Column</span>
+</span><span><a class="LN" name="582">  582   </a><span class="CT">       */</span>
+</span><span><a class="LN" name="583">  583   </a>      rtb_Sum2_h = 5;
+</span><span><a class="LN" name="584">  584   </a>    <b>}</b> <span class="KW">else</span> <span class="KW">if</span> (<a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.vec_hallToPos_Value[rtb_Sum] &lt; 0) <b>{</b>
+</span><span><a class="LN" name="585">  585   </a>      <span class="CT">/* LookupNDDirect: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>'</span>
+</span><span><a class="LN" name="586">  586   </a><span class="CT">       *</span>
+</span><span><a class="LN" name="587">  587   </a><span class="CT">       * About '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>':</span>
+</span><span><a class="LN" name="588">  588   </a><span class="CT">       *  2-dimensional Direct Look-Up returning a Column</span>
+</span><span><a class="LN" name="589">  589   </a><span class="CT">       */</span>
+</span><span><a class="LN" name="590">  590   </a>      rtb_Sum2_h = 0;
+</span><span><a class="LN" name="591">  591   </a>    <b>}</b> <span class="KW">else</span> <b>{</b>
+</span><span><a class="LN" name="592">  592   </a>      <span class="CT">/* LookupNDDirect: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="593">  593   </a><span class="CT">       *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:22')" name="code2model"><font color="#117755"><i>&lt;S12&gt;/vec_hallToPos</i></font></a>'</span>
+</span><span><a class="LN" name="594">  594   </a><span class="CT">       *  Selector: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:14')" name="code2model"><font color="#117755"><i>&lt;S12&gt;/Selector</i></font></a>'</span>
+</span><span><a class="LN" name="595">  595   </a><span class="CT">       *</span>
+</span><span><a class="LN" name="596">  596   </a><span class="CT">       * About '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>':</span>
+</span><span><a class="LN" name="597">  597   </a><span class="CT">       *  2-dimensional Direct Look-Up returning a Column</span>
+</span><span><a class="LN" name="598">  598   </a><span class="CT">       */</span>
+</span><span><a class="LN" name="599">  599   </a>      rtb_Sum2_h = <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.vec_hallToPos_Value[rtb_Sum];
+</span><span><a class="LN" name="600">  600   </a>    <b>}</b>
+</span><span><a class="LN" name="601">  601   </a>
+</span><span><a class="LN" name="602">  602   </a>    <span class="CT">/* LookupNDDirect: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="603">  603   </a><span class="CT">     *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:22')" name="code2model"><font color="#117755"><i>&lt;S12&gt;/vec_hallToPos</i></font></a>'</span>
+</span><span><a class="LN" name="604">  604   </a><span class="CT">     *  Selector: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:14')" name="code2model"><font color="#117755"><i>&lt;S12&gt;/Selector</i></font></a>'</span>
+</span><span><a class="LN" name="605">  605   </a><span class="CT">     *</span>
+</span><span><a class="LN" name="606">  606   </a><span class="CT">     * About '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:411')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/z_commutMap_M1</i></font></a>':</span>
+</span><span><a class="LN" name="607">  607   </a><span class="CT">     *  2-dimensional Direct Look-Up returning a Column</span>
+</span><span><a class="LN" name="608">  608   </a><span class="CT">     */</span>
+</span><span><a class="LN" name="609">  609   </a>    rtb_Abs1 = rtb_Sum2_h * 3;
+</span><span><a class="LN" name="610">  610   </a>    rtb_Abs5 = rtU-&gt;r_DC * <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.z_commutMap_M1_table[rtb_Abs1];
+</span><span><a class="LN" name="611">  611   </a>    rtb_Switch1_idx_1 = <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.z_commutMap_M1_table[1 + rtb_Abs1] * rtU-&gt;r_DC;
+</span><span><a class="LN" name="612">  612   </a>    rtb_Abs1 = <a href="BLDC_controller_data_c.html#var_rtConstP" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtConstP');" target="_self"><font color="#1122aa">rtConstP</font></a>.z_commutMap_M1_table[2 + rtb_Abs1] * rtU-&gt;r_DC;
+</span><span><a class="LN" name="613">  613   </a>  <b>}</b>
+</span><span><a class="LN" name="614">  614   </a>
+</span><span><a class="LN" name="615">  615   </a>  <span class="CT">/* End of Switch: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:401')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Switch1</i></font></a>' */</span>
+</span><span><a class="LN" name="616">  616   </a>
+</span><span><a class="LN" name="617">  617   </a>  <span class="CT">/* Outport: '&lt;Root&gt;/DC_phaA' incorporates:</span>
+</span><span><a class="LN" name="618">  618   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:370')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Constant1</i></font></a>'</span>
+</span><span><a class="LN" name="619">  619   </a><span class="CT">   *  Product: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:373')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Divide1</i></font></a>'</span>
+</span><span><a class="LN" name="620">  620   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="621">  621   </a>  rtY-&gt;DC_phaA = rtb_Abs5 / 1000;
+</span><span><a class="LN" name="622">  622   </a>
+</span><span><a class="LN" name="623">  623   </a>  <span class="CT">/* Outport: '&lt;Root&gt;/DC_phaB' incorporates:</span>
+</span><span><a class="LN" name="624">  624   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:370')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Constant1</i></font></a>'</span>
+</span><span><a class="LN" name="625">  625   </a><span class="CT">   *  Product: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:373')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Divide1</i></font></a>'</span>
+</span><span><a class="LN" name="626">  626   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="627">  627   </a>  rtY-&gt;DC_phaB = rtb_Switch1_idx_1 / 1000;
+</span><span><a class="LN" name="628">  628   </a>
+</span><span><a class="LN" name="629">  629   </a>  <span class="CT">/* Update for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:31')" name="code2model"><font color="#117755"><i>&lt;S11&gt;/UnitDelay</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="630">  630   </a><span class="CT">   *  Inport: '&lt;Root&gt;/b_hallA '</span>
+</span><span><a class="LN" name="631">  631   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="632">  632   </a>  rtDW-&gt;UnitDelay_DSTATE = rtU-&gt;b_hallA;
+</span><span><a class="LN" name="633">  633   </a>
+</span><span><a class="LN" name="634">  634   </a>  <span class="CT">/* Update for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:32')" name="code2model"><font color="#117755"><i>&lt;S11&gt;/UnitDelay1</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="635">  635   </a><span class="CT">   *  Inport: '&lt;Root&gt;/b_hallB'</span>
+</span><span><a class="LN" name="636">  636   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="637">  637   </a>  rtDW-&gt;UnitDelay1_DSTATE_i = rtU-&gt;b_hallB;
+</span><span><a class="LN" name="638">  638   </a>
+</span><span><a class="LN" name="639">  639   </a>  <span class="CT">/* Update for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:33')" name="code2model"><font color="#117755"><i>&lt;S11&gt;/UnitDelay2</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="640">  640   </a><span class="CT">   *  Inport: '&lt;Root&gt;/b_hallC'</span>
+</span><span><a class="LN" name="641">  641   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="642">  642   </a>  rtDW-&gt;UnitDelay2_DSTATE_h = rtU-&gt;b_hallC;
 </span><span><a class="LN" name="643">  643   </a>
-</span><span><a class="LN" name="644">  644   </a>  <span class="CT">/* Update for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1507')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/UnitDelay1</i></font></a>' */</span>
-</span><span><a class="LN" name="645">  645   </a>  rtDW-&gt;UnitDelay1_DSTATE_c = rtb_Sum1_a;
+</span><span><a class="LN" name="644">  644   </a>  <span class="CT">/* Update for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1651:1621')" name="code2model"><font color="#117755"><i>&lt;S17&gt;/UnitDelay1</i></font></a>' */</span>
+</span><span><a class="LN" name="645">  645   </a>  rtDW-&gt;UnitDelay1_DSTATE = rtb_Sum1_a;
 </span><span><a class="LN" name="646">  646   </a>
-</span><span><a class="LN" name="647">  647   </a>  <span class="CT">/* Update for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1446')" name="code2model"><font color="#117755"><i>&lt;S16&gt;/UnitDelay2</i></font></a>' */</span>
-</span><span><a class="LN" name="648">  648   </a>  rtDW-&gt;UnitDelay2_DSTATE = rtb_Sum2;
+</span><span><a class="LN" name="647">  647   </a>  <span class="CT">/* Update for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1507')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/UnitDelay1</i></font></a>' */</span>
+</span><span><a class="LN" name="648">  648   </a>  rtDW-&gt;UnitDelay1_DSTATE_c = rtb_Sum1_a;
 </span><span><a class="LN" name="649">  649   </a>
-</span><span><a class="LN" name="650">  650   </a>  <span class="CT">/* Outport: '&lt;Root&gt;/DC_phaC' incorporates:</span>
-</span><span><a class="LN" name="651">  651   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:370')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Constant1</i></font></a>'</span>
-</span><span><a class="LN" name="652">  652   </a><span class="CT">   *  Product: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:373')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Divide1</i></font></a>'</span>
-</span><span><a class="LN" name="653">  653   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="654">  654   </a>  rtY-&gt;DC_phaC = rtb_Abs1 / 1000;
-</span><span><a class="LN" name="655">  655   </a>
-</span><span><a class="LN" name="656">  656   </a>  <span class="CT">/* End of Outputs for SubSystem: '&lt;Root&gt;/BLDC_controller' */</span>
-</span><span><a class="LN" name="657">  657   </a>
-</span><span><a class="LN" name="658">  658   </a>  <span class="CT">/* Outport: '&lt;Root&gt;/n_mot' */</span>
-</span><span><a class="LN" name="659">  659   </a>  rtY-&gt;n_mot = rtb_Sum2;
-</span><span><a class="LN" name="660">  660   </a><b>}</b>
-</span><span><a class="LN" name="661">  661   </a>
-</span><span><a class="LN" name="662">  662   </a><span class="CT">/* Model initialize function */</span>
-</span><span><a class="LN" name="663">  663   </a><span class="DT">void</span> <a name="fcn_BLDC_controller_initialize">BLDC_controller_initialize</a>(<a href="BLDC_controller_h.html#type_RT_MODEL" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_RT_MODEL');" target="_self"><font color="#1122aa">RT_MODEL</font></a> *<span class="DT">const</span> rtM)
-</span><span><a class="LN" name="664">  664   </a><b>{</b>
-</span><span><a class="LN" name="665">  665   </a>  <a href="BLDC_controller_h.html#type_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_DW');" target="_self"><font color="#1122aa">DW</font></a> *rtDW = ((<a href="BLDC_controller_h.html#type_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_DW');" target="_self"><font color="#1122aa">DW</font></a> *) rtM-&gt;dwork);
-</span><span><a class="LN" name="666">  666   </a>
-</span><span><a class="LN" name="667">  667   </a>  <span class="CT">/* Start for Atomic SubSystem: '&lt;Root&gt;/BLDC_controller' */</span>
-</span><span><a class="LN" name="668">  668   </a>  <span class="CT">/* Start for If: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:434')" name="code2model"><font color="#117755"><i>&lt;S2&gt;/If1</i></font></a>' */</span>
-</span><span><a class="LN" name="669">  669   </a>  rtDW-&gt;If1_ActiveSubsystem = -1;
+</span><span><a class="LN" name="650">  650   </a>  <span class="CT">/* Update for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1446')" name="code2model"><font color="#117755"><i>&lt;S16&gt;/UnitDelay2</i></font></a>' */</span>
+</span><span><a class="LN" name="651">  651   </a>  rtDW-&gt;UnitDelay2_DSTATE = rtb_Sum2;
+</span><span><a class="LN" name="652">  652   </a>
+</span><span><a class="LN" name="653">  653   </a>  <span class="CT">/* Outport: '&lt;Root&gt;/DC_phaC' incorporates:</span>
+</span><span><a class="LN" name="654">  654   </a><span class="CT">   *  Constant: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:370')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Constant1</i></font></a>'</span>
+</span><span><a class="LN" name="655">  655   </a><span class="CT">   *  Product: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:373')" name="code2model"><font color="#117755"><i>&lt;S10&gt;/Divide1</i></font></a>'</span>
+</span><span><a class="LN" name="656">  656   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="657">  657   </a>  rtY-&gt;DC_phaC = rtb_Abs1 / 1000;
+</span><span><a class="LN" name="658">  658   </a>
+</span><span><a class="LN" name="659">  659   </a>  <span class="CT">/* End of Outputs for SubSystem: '&lt;Root&gt;/BLDC_controller' */</span>
+</span><span><a class="LN" name="660">  660   </a>
+</span><span><a class="LN" name="661">  661   </a>  <span class="CT">/* Outport: '&lt;Root&gt;/n_mot' */</span>
+</span><span><a class="LN" name="662">  662   </a>  rtY-&gt;n_mot = rtb_Sum2;
+</span><span><a class="LN" name="663">  663   </a><b>}</b>
+</span><span><a class="LN" name="664">  664   </a>
+</span><span><a class="LN" name="665">  665   </a><span class="CT">/* Model initialize function */</span>
+</span><span><a class="LN" name="666">  666   </a><span class="DT">void</span> <a name="fcn_BLDC_controller_initialize">BLDC_controller_initialize</a>(<a href="BLDC_controller_h.html#type_RT_MODEL" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_RT_MODEL');" target="_self"><font color="#1122aa">RT_MODEL</font></a> *<span class="DT">const</span> rtM)
+</span><span><a class="LN" name="667">  667   </a><b>{</b>
+</span><span><a class="LN" name="668">  668   </a>  <a href="BLDC_controller_h.html#type_P" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_P');" target="_self"><font color="#1122aa">P</font></a> *rtP = ((<a href="BLDC_controller_h.html#type_P" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_P');" target="_self"><font color="#1122aa">P</font></a> *) rtM-&gt;defaultParam);
+</span><span><a class="LN" name="669">  669   </a>  <a href="BLDC_controller_h.html#type_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_DW');" target="_self"><font color="#1122aa">DW</font></a> *rtDW = ((<a href="BLDC_controller_h.html#type_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_DW');" target="_self"><font color="#1122aa">DW</font></a> *) rtM-&gt;dwork);
 </span><span><a class="LN" name="670">  670   </a>
-</span><span><a class="LN" name="671">  671   </a>  <span class="CT">/* End of Start for SubSystem: '&lt;Root&gt;/BLDC_controller' */</span>
-</span><span><a class="LN" name="672">  672   </a>
-</span><span><a class="LN" name="673">  673   </a>  <span class="CT">/* SystemInitialize for Atomic SubSystem: '&lt;Root&gt;/BLDC_controller' */</span>
-</span><span><a class="LN" name="674">  674   </a>  <span class="CT">/* InitializeConditions for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1651:1621')" name="code2model"><font color="#117755"><i>&lt;S17&gt;/UnitDelay1</i></font></a>' */</span>
-</span><span><a class="LN" name="675">  675   </a>  rtDW-&gt;UnitDelay1_DSTATE = 1500;
+</span><span><a class="LN" name="671">  671   </a>  <span class="CT">/* Start for Atomic SubSystem: '&lt;Root&gt;/BLDC_controller' */</span>
+</span><span><a class="LN" name="672">  672   </a>  <span class="CT">/* Start for If: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:434')" name="code2model"><font color="#117755"><i>&lt;S2&gt;/If1</i></font></a>' */</span>
+</span><span><a class="LN" name="673">  673   </a>  rtDW-&gt;If1_ActiveSubsystem = -1;
+</span><span><a class="LN" name="674">  674   </a>
+</span><span><a class="LN" name="675">  675   </a>  <span class="CT">/* End of Start for SubSystem: '&lt;Root&gt;/BLDC_controller' */</span>
 </span><span><a class="LN" name="676">  676   </a>
-</span><span><a class="LN" name="677">  677   </a>  <span class="CT">/* SystemInitialize for IfAction SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1340')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Counter_Hold_and_Error_Calculation</i></font></a>' */</span>
-</span><span><a class="LN" name="678">  678   </a>  <span class="CT">/* InitializeConditions for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:169')" name="code2model"><font color="#117755"><i>&lt;S15&gt;/z_counter2</i></font></a>' */</span>
-</span><span><a class="LN" name="679">  679   </a>  rtDW-&gt;z_counter2_DSTATE = 1500;
+</span><span><a class="LN" name="677">  677   </a>  <span class="CT">/* SystemInitialize for Atomic SubSystem: '&lt;Root&gt;/BLDC_controller' */</span>
+</span><span><a class="LN" name="678">  678   </a>  <span class="CT">/* InitializeConditions for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1651:1621')" name="code2model"><font color="#117755"><i>&lt;S17&gt;/UnitDelay1</i></font></a>' */</span>
+</span><span><a class="LN" name="679">  679   </a>  rtDW-&gt;UnitDelay1_DSTATE = rtP-&gt;z_maxCntRst;
 </span><span><a class="LN" name="680">  680   </a>
-</span><span><a class="LN" name="681">  681   </a>  <span class="CT">/* SystemInitialize for Outport: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1358')" name="code2model"><font color="#117755"><i>&lt;S15&gt;/z_counter</i></font></a>' */</span>
-</span><span><a class="LN" name="682">  682   </a>  rtDW-&gt;z_counterRawPrev = 1500;
-</span><span><a class="LN" name="683">  683   </a>
-</span><span><a class="LN" name="684">  684   </a>  <span class="CT">/* End of SystemInitialize for SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1340')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Counter_Hold_and_Error_Calculation</i></font></a>' */</span>
-</span><span><a class="LN" name="685">  685   </a>  <span class="CT">/* End of SystemInitialize for SubSystem: '&lt;Root&gt;/BLDC_controller' */</span>
-</span><span><a class="LN" name="686">  686   </a><b>}</b>
+</span><span><a class="LN" name="681">  681   </a>  <span class="CT">/* SystemInitialize for IfAction SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1340')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Counter_Hold_and_Error_Calculation</i></font></a>' */</span>
+</span><span><a class="LN" name="682">  682   </a>  <span class="CT">/* InitializeConditions for UnitDelay: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:169')" name="code2model"><font color="#117755"><i>&lt;S15&gt;/z_counter2</i></font></a>' */</span>
+</span><span><a class="LN" name="683">  683   </a>  rtDW-&gt;z_counter2_DSTATE = rtP-&gt;z_maxCntRst;
+</span><span><a class="LN" name="684">  684   </a>
+</span><span><a class="LN" name="685">  685   </a>  <span class="CT">/* SystemInitialize for Outport: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1358')" name="code2model"><font color="#117755"><i>&lt;S15&gt;/z_counter</i></font></a>' */</span>
+</span><span><a class="LN" name="686">  686   </a>  rtDW-&gt;z_counterRawPrev = rtP-&gt;z_maxCntRst;
 </span><span><a class="LN" name="687">  687   </a>
-</span><span><a class="LN" name="688">  688   </a><span class="CT">/*</span>
-</span><span><a class="LN" name="689">  689   </a><span class="CT"> * File trailer for generated code.</span>
-</span><span><a class="LN" name="690">  690   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="691">  691   </a><span class="CT"> * [EOF]</span>
-</span><span><a class="LN" name="692">  692   </a><span class="CT"> */</span>
-</span><span><a class="LN" name="693">  693   </a>
+</span><span><a class="LN" name="688">  688   </a>  <span class="CT">/* End of SystemInitialize for SubSystem: '<a href="matlab:coder.internal.code2model('BLDCmotorControl_R2017b:2687:1340')" name="code2model"><font color="#117755"><i>&lt;S14&gt;/Counter_Hold_and_Error_Calculation</i></font></a>' */</span>
+</span><span><a class="LN" name="689">  689   </a>  <span class="CT">/* End of SystemInitialize for SubSystem: '&lt;Root&gt;/BLDC_controller' */</span>
+</span><span><a class="LN" name="690">  690   </a><b>}</b>
+</span><span><a class="LN" name="691">  691   </a>
+</span><span><a class="LN" name="692">  692   </a><span class="CT">/*</span>
+</span><span><a class="LN" name="693">  693   </a><span class="CT"> * File trailer for generated code.</span>
+</span><span><a class="LN" name="694">  694   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="695">  695   </a><span class="CT"> * [EOF]</span>
+</span><span><a class="LN" name="696">  696   </a><span class="CT"> */</span>
+</span><span><a class="LN" name="697">  697   </a>
 </span></pre>
 </td></tr></table>
 </p>

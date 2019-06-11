@@ -234,7 +234,7 @@
     "VectorParamsAs1DForOutWhenUnconnected"
    ],
    "values":[
-    "7",
+    "8",
     "Port number",
     "[]",
     "[]",
@@ -1656,130 +1656,11 @@
   }
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2687:1383",
-  "className":"Simulink.Outport",
-  "icon":"WebViewIcon2",
-  "name":"b_advCtrlEna",
-  "label":"b_advCtrlEna",
-  "parent":"BLDCmotorControl_R2017b:2687:6",
-  "inspector":{
-   "params":[
-    "Port",
-    "IconDisplay",
-    "OutMin",
-    "OutMax",
-    "OutDataTypeStr",
-    "LockScale",
-    "Unit",
-    "PortDimensions",
-    "VarSizeSig",
-    "SampleTime",
-    "SignalType",
-    "BusOutputAsStruct",
-    "EnsureOutportIsVirtual",
-    "InitialOutput",
-    "MustResolveToSignalObject",
-    "OutputWhenDisabled",
-    "OutputWhenUnConnected",
-    "OutputWhenUnconnectedValue",
-    "SignalName",
-    "SignalObject",
-    "SourceOfInitialOutputValue",
-    "StorageClass",
-    "VectorParamsAs1DForOutWhenUnconnected"
-   ],
-   "values":[
-    "6",
-    "Port number",
-    "[]",
-    "[]",
-    "Inherit: auto",
-    "off",
-    "inherit",
-    "-1",
-    "Inherit",
-    "-1",
-    "auto",
-    "off",
-    "off",
-    "[]",
-    "off",
-    "held",
-    "off",
-    "0",
-    "",
-    [
-    ],
-    "Dialog",
-    "Auto",
-    "off"
-   ],
-   "tabs":[
-    "Main",
-    "Signal Attributes",
-    "-Other"
-   ],
-   "tabs_idx":[
-    0,
-    2,
-    11
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"Outport",
-   "masktype":""
-  }
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2687:1313",
-  "className":"Simulink.If",
-  "icon":"WebViewIcon2",
-  "name":"If2",
-  "label":"If2",
-  "parent":"BLDCmotorControl_R2017b:2687:6",
-  "inspector":{
-   "params":[
-    "NumInputs",
-    "IfExpression",
-    "ElseIfExpressions",
-    "ShowElse",
-    "ZeroCross",
-    "SampleTime"
-   ],
-   "values":[
-    "1",
-    "u1 ~= 0",
-    "",
-    "off",
-    "on",
-    "-1"
-   ],
-   "tabs":[
-    "Parameter Attributes"
-   ],
-   "tabs_idx":0
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"If",
-   "masktype":""
-  }
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2687:1384",
+  "sid":"BLDCmotorControl_R2017b:2687:1490",
   "className":"Simulink.Goto",
   "icon":"WebViewIcon2",
-  "name":"Goto3",
-  "label":"Goto3",
+  "name":"Goto6",
+  "label":"Goto6",
   "parent":"BLDCmotorControl_R2017b:2687:6",
   "inspector":{
    "params":[
@@ -1788,7 +1669,7 @@
     "IconDisplay"
    ],
    "values":[
-    "b_advCtrlEna",
+    "z_counterRaw",
     "local",
     "Tag"
    ],
@@ -1808,11 +1689,11 @@
   }
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2687:1490",
+  "sid":"BLDCmotorControl_R2017b:2687:1376",
   "className":"Simulink.Goto",
   "icon":"WebViewIcon2",
-  "name":"Goto6",
-  "label":"Goto6",
+  "name":"Goto18",
+  "label":"Goto18",
   "parent":"BLDCmotorControl_R2017b:2687:6",
   "inspector":{
    "params":[
@@ -1821,7 +1702,40 @@
     "IconDisplay"
    ],
    "values":[
-    "z_counterRaw",
+    "r_DC",
+    "local",
+    "Tag"
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"Goto",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:1677",
+  "className":"Simulink.Goto",
+  "icon":"WebViewIcon2",
+  "name":"Goto11",
+  "label":"Goto11",
+  "parent":"BLDCmotorControl_R2017b:2687:6",
+  "inspector":{
+   "params":[
+    "GotoTag",
+    "TagVisibility",
+    "IconDisplay"
+   ],
+   "values":[
+    "n_motAbs",
     "local",
     "Tag"
    ],
@@ -1874,39 +1788,6 @@
   }
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2687:1489",
-  "className":"Simulink.Goto",
-  "icon":"WebViewIcon2",
-  "name":"Goto5",
-  "label":"Goto5",
-  "parent":"BLDCmotorControl_R2017b:2687:6",
-  "inspector":{
-   "params":[
-    "GotoTag",
-    "TagVisibility",
-    "IconDisplay"
-   ],
-   "values":[
-    "z_counter",
-    "local",
-    "Tag"
-   ],
-   "tabs":[
-    "Parameter Attributes"
-   ],
-   "tabs_idx":0
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"Goto",
-   "masktype":""
-  }
- },
- {
   "sid":"BLDCmotorControl_R2017b:2687:1666",
   "className":"Simulink.From",
   "icon":"WebViewIcon2",
@@ -1920,6 +1801,179 @@
    ],
    "values":[
     "r_DCabs",
+    "Tag"
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"From",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:1633",
+  "className":"Simulink.From",
+  "icon":"WebViewIcon2",
+  "name":"From15",
+  "label":"From15",
+  "parent":"BLDCmotorControl_R2017b:2687:6",
+  "inspector":{
+   "params":[
+    "GotoTag",
+    "IconDisplay"
+   ],
+   "values":[
+    "z_dirPrev",
+    "Tag"
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"From",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:1382",
+  "className":"Simulink.From",
+  "icon":"WebViewIcon2",
+  "name":"From18",
+  "label":"From18",
+  "parent":"BLDCmotorControl_R2017b:2687:6",
+  "inspector":{
+   "params":[
+    "GotoTag",
+    "IconDisplay"
+   ],
+   "values":[
+    "b_advCtrlEna",
+    "Tag"
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"From",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:1383",
+  "className":"Simulink.Outport",
+  "icon":"WebViewIcon2",
+  "name":"b_advCtrlEna",
+  "label":"b_advCtrlEna",
+  "parent":"BLDCmotorControl_R2017b:2687:6",
+  "inspector":{
+   "params":[
+    "Port",
+    "IconDisplay",
+    "OutMin",
+    "OutMax",
+    "OutDataTypeStr",
+    "LockScale",
+    "Unit",
+    "PortDimensions",
+    "VarSizeSig",
+    "SampleTime",
+    "SignalType",
+    "BusOutputAsStruct",
+    "EnsureOutportIsVirtual",
+    "InitialOutput",
+    "MustResolveToSignalObject",
+    "OutputWhenDisabled",
+    "OutputWhenUnConnected",
+    "OutputWhenUnconnectedValue",
+    "SignalName",
+    "SignalObject",
+    "SourceOfInitialOutputValue",
+    "StorageClass",
+    "VectorParamsAs1DForOutWhenUnconnected"
+   ],
+   "values":[
+    "7",
+    "Port number",
+    "[]",
+    "[]",
+    "Inherit: auto",
+    "off",
+    "inherit",
+    "-1",
+    "Inherit",
+    "-1",
+    "auto",
+    "off",
+    "off",
+    "[]",
+    "off",
+    "held",
+    "off",
+    "0",
+    "",
+    [
+    ],
+    "Dialog",
+    "Auto",
+    "off"
+   ],
+   "tabs":[
+    "Main",
+    "Signal Attributes",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    2,
+    11
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"Outport",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:1377",
+  "className":"Simulink.From",
+  "icon":"WebViewIcon2",
+  "name":"From",
+  "label":"From",
+  "parent":"BLDCmotorControl_R2017b:2687:6",
+  "inspector":{
+   "params":[
+    "GotoTag",
+    "IconDisplay"
+   ],
+   "values":[
+    "z_ctrlTypSel",
     "Tag"
    ],
    "tabs":[
@@ -1969,184 +2023,11 @@
   }
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2687:1481",
-  "className":"Simulink.From",
-  "icon":"WebViewIcon2",
-  "name":"From12",
-  "label":"From12",
-  "parent":"BLDCmotorControl_R2017b:2687:6",
-  "inspector":{
-   "params":[
-    "GotoTag",
-    "IconDisplay"
-   ],
-   "values":[
-    "z_counterRaw",
-    "Tag"
-   ],
-   "tabs":[
-    "Parameter Attributes"
-   ],
-   "tabs_idx":0
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"From",
-   "masktype":""
-  }
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2687:1484",
-  "className":"Simulink.Outport",
-  "icon":"WebViewIcon2",
-  "name":"z_counterRaw",
-  "label":"z_counterRaw",
-  "parent":"BLDCmotorControl_R2017b:2687:6",
-  "inspector":{
-   "params":[
-    "Port",
-    "IconDisplay",
-    "OutMin",
-    "OutMax",
-    "OutDataTypeStr",
-    "LockScale",
-    "Unit",
-    "PortDimensions",
-    "VarSizeSig",
-    "SampleTime",
-    "SignalType",
-    "BusOutputAsStruct",
-    "EnsureOutportIsVirtual",
-    "InitialOutput",
-    "MustResolveToSignalObject",
-    "OutputWhenDisabled",
-    "OutputWhenUnConnected",
-    "OutputWhenUnconnectedValue",
-    "SignalName",
-    "SignalObject",
-    "SourceOfInitialOutputValue",
-    "StorageClass",
-    "VectorParamsAs1DForOutWhenUnconnected"
-   ],
-   "values":[
-    "5",
-    "Port number",
-    "[]",
-    "[]",
-    "Inherit: auto",
-    "off",
-    "inherit",
-    "-1",
-    "Inherit",
-    "-1",
-    "auto",
-    "off",
-    "off",
-    "0",
-    "off",
-    "reset",
-    "off",
-    "0",
-    "",
-    [
-    ],
-    "Dialog",
-    "Auto",
-    "off"
-   ],
-   "tabs":[
-    "Main",
-    "Signal Attributes",
-    "-Other"
-   ],
-   "tabs_idx":[
-    0,
-    2,
-    11
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"Outport",
-   "masktype":""
-  }
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2687:1382",
-  "className":"Simulink.From",
-  "icon":"WebViewIcon2",
-  "name":"From18",
-  "label":"From18",
-  "parent":"BLDCmotorControl_R2017b:2687:6",
-  "inspector":{
-   "params":[
-    "GotoTag",
-    "IconDisplay"
-   ],
-   "values":[
-    "b_advCtrlEna",
-    "Tag"
-   ],
-   "tabs":[
-    "Parameter Attributes"
-   ],
-   "tabs_idx":0
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"From",
-   "masktype":""
-  }
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2687:1377",
-  "className":"Simulink.From",
-  "icon":"WebViewIcon2",
-  "name":"From",
-  "label":"From",
-  "parent":"BLDCmotorControl_R2017b:2687:6",
-  "inspector":{
-   "params":[
-    "GotoTag",
-    "IconDisplay"
-   ],
-   "values":[
-    "z_ctrlTypSel",
-    "Tag"
-   ],
-   "tabs":[
-    "Parameter Attributes"
-   ],
-   "tabs_idx":0
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"From",
-   "masktype":""
-  }
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2687:1634",
+  "sid":"BLDCmotorControl_R2017b:2687:1384",
   "className":"Simulink.Goto",
   "icon":"WebViewIcon2",
-  "name":"Goto9",
-  "label":"Goto9",
+  "name":"Goto3",
+  "label":"Goto3",
   "parent":"BLDCmotorControl_R2017b:2687:6",
   "inspector":{
    "params":[
@@ -2155,7 +2036,7 @@
     "IconDisplay"
    ],
    "values":[
-    "z_dirPrev",
+    "b_advCtrlEna",
     "local",
     "Tag"
    ],
@@ -2255,11 +2136,91 @@
   }
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2687:1378",
+  "sid":"BLDCmotorControl_R2017b:2687:1484",
+  "className":"Simulink.Outport",
+  "icon":"WebViewIcon2",
+  "name":"z_counterRaw",
+  "label":"z_counterRaw",
+  "parent":"BLDCmotorControl_R2017b:2687:6",
+  "inspector":{
+   "params":[
+    "Port",
+    "IconDisplay",
+    "OutMin",
+    "OutMax",
+    "OutDataTypeStr",
+    "LockScale",
+    "Unit",
+    "PortDimensions",
+    "VarSizeSig",
+    "SampleTime",
+    "SignalType",
+    "BusOutputAsStruct",
+    "EnsureOutportIsVirtual",
+    "InitialOutput",
+    "MustResolveToSignalObject",
+    "OutputWhenDisabled",
+    "OutputWhenUnConnected",
+    "OutputWhenUnconnectedValue",
+    "SignalName",
+    "SignalObject",
+    "SourceOfInitialOutputValue",
+    "StorageClass",
+    "VectorParamsAs1DForOutWhenUnconnected"
+   ],
+   "values":[
+    "5",
+    "Port number",
+    "[]",
+    "[]",
+    "Inherit: auto",
+    "off",
+    "inherit",
+    "-1",
+    "Inherit",
+    "-1",
+    "auto",
+    "off",
+    "off",
+    "0",
+    "off",
+    "reset",
+    "off",
+    "0",
+    "",
+    [
+    ],
+    "Dialog",
+    "Auto",
+    "off"
+   ],
+   "tabs":[
+    "Main",
+    "Signal Attributes",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    2,
+    11
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"Outport",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:1678",
   "className":"Simulink.From",
   "icon":"WebViewIcon2",
-  "name":"From11",
-  "label":"From11",
+  "name":"From19",
+  "label":"From19",
   "parent":"BLDCmotorControl_R2017b:2687:6",
   "inspector":{
    "params":[
@@ -2267,7 +2228,7 @@
     "IconDisplay"
    ],
    "values":[
-    "r_DC",
+    "n_motAbs",
     "Tag"
    ],
    "tabs":[
@@ -2282,39 +2243,6 @@
   ],
   "finder":{
    "blocktype":"From",
-   "masktype":""
-  }
- },
- {
-  "sid":"BLDCmotorControl_R2017b:2687:1376",
-  "className":"Simulink.Goto",
-  "icon":"WebViewIcon2",
-  "name":"Goto18",
-  "label":"Goto18",
-  "parent":"BLDCmotorControl_R2017b:2687:6",
-  "inspector":{
-   "params":[
-    "GotoTag",
-    "TagVisibility",
-    "IconDisplay"
-   ],
-   "values":[
-    "r_DC",
-    "local",
-    "Tag"
-   ],
-   "tabs":[
-    "Parameter Attributes"
-   ],
-   "tabs_idx":0
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"Goto",
    "masktype":""
   }
  },
@@ -2386,6 +2314,86 @@
   }
  },
  {
+  "sid":"BLDCmotorControl_R2017b:2687:1679",
+  "className":"Simulink.Outport",
+  "icon":"WebViewIcon2",
+  "name":"n_motAbs",
+  "label":"n_motAbs",
+  "parent":"BLDCmotorControl_R2017b:2687:6",
+  "inspector":{
+   "params":[
+    "Port",
+    "IconDisplay",
+    "OutMin",
+    "OutMax",
+    "OutDataTypeStr",
+    "LockScale",
+    "Unit",
+    "PortDimensions",
+    "VarSizeSig",
+    "SampleTime",
+    "SignalType",
+    "BusOutputAsStruct",
+    "EnsureOutportIsVirtual",
+    "InitialOutput",
+    "MustResolveToSignalObject",
+    "OutputWhenDisabled",
+    "OutputWhenUnConnected",
+    "OutputWhenUnconnectedValue",
+    "SignalName",
+    "SignalObject",
+    "SourceOfInitialOutputValue",
+    "StorageClass",
+    "VectorParamsAs1DForOutWhenUnconnected"
+   ],
+   "values":[
+    "6",
+    "Port number",
+    "[]",
+    "[]",
+    "Inherit: auto",
+    "off",
+    "inherit",
+    "-1",
+    "Inherit",
+    "-1",
+    "auto",
+    "off",
+    "off",
+    "0",
+    "off",
+    "reset",
+    "off",
+    "0",
+    "",
+    [
+    ],
+    "Dialog",
+    "Auto",
+    "off"
+   ],
+   "tabs":[
+    "Main",
+    "Signal Attributes",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    2,
+    11
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"Outport",
+   "masktype":""
+  }
+ },
+ {
   "sid":"BLDCmotorControl_R2017b:2687:1375",
   "className":"Simulink.Inport",
   "icon":"WebViewIcon2",
@@ -2453,11 +2461,11 @@
   }
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2687:1633",
+  "sid":"BLDCmotorControl_R2017b:2687:1378",
   "className":"Simulink.From",
   "icon":"WebViewIcon2",
-  "name":"From15",
-  "label":"From15",
+  "name":"From11",
+  "label":"From11",
   "parent":"BLDCmotorControl_R2017b:2687:6",
   "inspector":{
    "params":[
@@ -2465,7 +2473,7 @@
     "IconDisplay"
    ],
    "values":[
-    "z_dirPrev",
+    "r_DC",
     "Tag"
    ],
    "tabs":[
@@ -2480,6 +2488,142 @@
   ],
   "finder":{
    "blocktype":"From",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:1489",
+  "className":"Simulink.Goto",
+  "icon":"WebViewIcon2",
+  "name":"Goto5",
+  "label":"Goto5",
+  "parent":"BLDCmotorControl_R2017b:2687:6",
+  "inspector":{
+   "params":[
+    "GotoTag",
+    "TagVisibility",
+    "IconDisplay"
+   ],
+   "values":[
+    "z_counter",
+    "local",
+    "Tag"
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"Goto",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:1481",
+  "className":"Simulink.From",
+  "icon":"WebViewIcon2",
+  "name":"From12",
+  "label":"From12",
+  "parent":"BLDCmotorControl_R2017b:2687:6",
+  "inspector":{
+   "params":[
+    "GotoTag",
+    "IconDisplay"
+   ],
+   "values":[
+    "z_counterRaw",
+    "Tag"
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"From",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:1634",
+  "className":"Simulink.Goto",
+  "icon":"WebViewIcon2",
+  "name":"Goto9",
+  "label":"Goto9",
+  "parent":"BLDCmotorControl_R2017b:2687:6",
+  "inspector":{
+   "params":[
+    "GotoTag",
+    "TagVisibility",
+    "IconDisplay"
+   ],
+   "values":[
+    "z_dirPrev",
+    "local",
+    "Tag"
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"Goto",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:1313",
+  "className":"Simulink.If",
+  "icon":"WebViewIcon2",
+  "name":"If2",
+  "label":"If2",
+  "parent":"BLDCmotorControl_R2017b:2687:6",
+  "inspector":{
+   "params":[
+    "NumInputs",
+    "IfExpression",
+    "ElseIfExpressions",
+    "ShowElse",
+    "ZeroCross",
+    "SampleTime"
+   ],
+   "values":[
+    "1",
+    "u1 ~= 0",
+    "",
+    "off",
+    "on",
+    "-1"
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"If",
    "masktype":""
   }
  },
@@ -3861,7 +4005,7 @@
   ]
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2687:59#out:2",
+  "sid":"BLDCmotorControl_R2017b:2687:59#out:3",
   "className":"Simulink.Line",
   "icon":"WebViewIcon4",
   "name":"",
@@ -4014,7 +4158,7 @@
   ]
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2687:59#out:3",
+  "sid":"BLDCmotorControl_R2017b:2687:59#out:4",
   "className":"Simulink.Line",
   "icon":"WebViewIcon4",
   "name":"",
@@ -4065,7 +4209,7 @@
   ]
  },
  {
-  "sid":"BLDCmotorControl_R2017b:2687:59#out:4",
+  "sid":"BLDCmotorControl_R2017b:2687:59#out:5",
   "className":"Simulink.Line",
   "icon":"WebViewIcon4",
   "name":"",
@@ -4270,6 +4414,108 @@
  },
  {
   "sid":"BLDCmotorControl_R2017b:2687:1666#out:1",
+  "className":"Simulink.Line",
+  "icon":"WebViewIcon4",
+  "name":"",
+  "label":"",
+  "parent":"BLDCmotorControl_R2017b:2687:6",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:59#out:2",
+  "className":"Simulink.Line",
+  "icon":"WebViewIcon4",
+  "name":"",
+  "label":"",
+  "parent":"BLDCmotorControl_R2017b:2687:6",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"BLDCmotorControl_R2017b:2687:1678#out:1",
   "className":"Simulink.Line",
   "icon":"WebViewIcon4",
   "name":"",
