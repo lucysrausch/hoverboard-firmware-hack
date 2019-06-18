@@ -263,14 +263,14 @@ int main(void) {
       timeout = 0;
     #endif
 
+    // Bypass - only for testing purposes
+    // cmd1 = cmd1-500;
+    // cmd2 = cmd2-500;
+
     // ####### MOTOR ENABLING: Only if the initial input is very small (SAFETY) #######
     if (enable == 0 && (cmd1 > -50 && cmd1 < 50) && (cmd2 > -50 && cmd2 < 50)){
       enable = 1;   // enable motors
     }
-
-    // Bypass - only for testing purposes
-    // cmd2 = cmd2-500;
-    // cmd1 = 0;
 
     // ####### LOW-PASS FILTER #######
     steer = (int)(steer * (1.0f - FILTER) + cmd1 * FILTER);
