@@ -222,7 +222,7 @@ int main(void) {
   float board_temp_adc_filtered = (float)adc_buffer.temp;
   float board_temp_deg_c;
 
-  enable = 1;  // enable motors
+  enable = 0;  // initially motors are disabled for SAFETY
 
 
   while(1) {
@@ -263,6 +263,11 @@ int main(void) {
       timeout = 0;
     #endif
 
+    // ####### MOTOR ENABLING: Only if the initial input is very small (SAFETY) #######
+    if (enable == 0 && (cmd1 > -50 && cmd1 < 50) && (cmd2 > -50 && cmd2 < 50)){
+      enable = 1;   // enable motors
+    }
+
     // Bypass - only for testing purposes
     // cmd2 = cmd2-500;
     // cmd1 = 0;
@@ -282,7 +287,7 @@ int main(void) {
 
 
     // ####### SET OUTPUTS (if the target change less than +/- 50) #######
-    if ((speedL < lastSpeedL + 50 && speedL > lastSpeedL - 50) && (speedR < lastSpeedR + 50 && speedR > lastSpeedR - 50) && timeout < TIMEOUT) {
+    if ((speedL > lastSpeedL-50 && speedL < lastSpeedL+50) && (speedR > lastSpeedR-50 && speedR < lastSpeedR+50) && timeout < TIMEOUT) {
     #ifdef INVERT_R_DIRECTION
       pwmr = speedR;
     #else
