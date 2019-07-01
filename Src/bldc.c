@@ -142,9 +142,11 @@ void DMA1_Channel1_IRQHandler(void) {
     rtU_Left.b_hallC   = hall_wl;
     rtU_Left.r_DC      = pwml;
     
-    /* Step the controller */
-    BLDC_controller_step(rtM_Left);
-
+    /* Step the controller if motor is enabled*/
+    if (enable) {
+		BLDC_controller_step(rtM_Left);
+	}
+		
     /* Get motor outputs here */
     ul            = rtY_Left.DC_phaA;
     vl            = rtY_Left.DC_phaB;
@@ -171,8 +173,10 @@ void DMA1_Channel1_IRQHandler(void) {
     rtU_Right.b_hallC  = hall_wr;
     rtU_Right.r_DC     = pwmr;
 
-    /* Step the controller */
-    BLDC_controller_step(rtM_Right);
+    /* Step the controller if motor is enabled*/
+    if (enable) {
+		BLDC_controller_step(rtM_Right);
+	}
 
     /* Get motor outputs here */
     ur            = rtY_Right.DC_phaA;
