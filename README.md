@@ -1,3 +1,9 @@
+# NOTE: This project has moved to
+
+[BiPropellant Repos](https://github.com/bipropellant).
+
+All features from this repo are or will be merged to bipropellant. This branch here will not be updated anymore.
+
 # Deviations to [main repo](https://github.com/NiklasFauth/hoverboard-firmware-hack)
 * Build Environment is platform.io. Old Makefile based system should work too, but not tested.
 * UART Control can be configured to Connect to USART2 or USART3
