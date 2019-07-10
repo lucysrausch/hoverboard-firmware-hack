@@ -60,8 +60,11 @@ Additionally, you can also flash using the method described below in the Flashin
 The original Hardware supports two 4-pin cables that originally were connected to the two sensor boards. They break out GND, 12/15V and USART2&3 of the Hoverboard mainboard.
 Both USART2 & 3 can be used for UART and I2C, PA2&3 can be used as 12bit ADCs.
 
-The reverse-engineered schematics of the mainboard can be found here:
+The mainboard reverse-engineered schematics (PCB Markings: 679393 20150722):
 http://vocke.tv/lib/exe/fetch.php?media=20150722_hoverboard_sch.pdf
+
+The mainboard reverse-engineered schematics (PCB Markings: YST-DXT-J20 V4):
+http://vocke.tv/lib/exe/fetch.php?media=20190620_at32_hover_sch.pdf
 
 ---
 
