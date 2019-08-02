@@ -91,7 +91,7 @@ If you need additional features like a boost button, have a look at the while(1)
 
 ### Online Compiler
 
-* [RoboDurdens awesome Online compiler:](https://github.com/RoboDurden) [https://pionierland.de/hoverhack/](https://pionierland.de/hoverhack/) 
+* [RoboDurdens awesome](https://github.com/RoboDurden) online compiler: [https://pionierland.de/hoverhack/](https://pionierland.de/hoverhack/) 
 
 ### Additional Hardware
 
