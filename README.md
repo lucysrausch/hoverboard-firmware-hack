@@ -89,11 +89,16 @@ https://github.com/p-h-a-i-l/hoverboard-firmware-hack
 
 If you need additional features like a boost button, have a look at the while(1) loop in the main.c
 
+### Online Compiler
+
+* [RoboDurdens awesome Online compiler:](https://github.com/RoboDurden) [https://pionierland.de/hoverhack/](https://pionierland.de/hoverhack/) 
+
 ### Additional Hardware
 
 * [breakout/interconnect boards](https://github.com/Jan--Henrik/hoverboard-breakout)  Breakout/Interconnection boards for hoverboard hacking.
 
 ### Projects based on it
+* [Bidirectional UART communication](https://github.com/RoboDurden/hoverboard-firmware-hack) with Arduino example code
 * [bobbycar-optimized firmware](https://github.com/larsmm/hoverboard-firmware-hack-bbcar)  based on this one with driving modes, acceleration ramps and some other features
 * [wheel chair](https://github.com/Lahorde/steer_speed_ctrl) controlled with a joystick or using a CC2650 sensortag to control it over  bluetooth with pitch/roll.
 * [TranspOtterNG](https://github.com/Jan--Henrik/transpOtterNG) TranspOtter is an open source semi self driving transportation platform based on hoverboard hardware
