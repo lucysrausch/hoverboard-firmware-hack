@@ -80,7 +80,7 @@ Most robust way for input is to use the ADC and potis. It works well even on 1m 
 ---
 
 
-## Examples
+## Examples and links
 
 Have a look at the config.h in the Inc directory. That's where you configure to firmware to match your project.
 Currently supported: Wii Nunchuck, analog potentiometer and PPM-Sum signal from a RC remote.
