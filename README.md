@@ -89,6 +89,10 @@ https://github.com/p-h-a-i-l/hoverboard-firmware-hack
 
 If you need additional features like a boost button, have a look at the while(1) loop in the main.c
 
+### Hoverboardhack for AT32F403RCT6 based mainboards
+
+* [https://github.com/cloidnerux/hoverboard-firmware-hack](https://github.com/cloidnerux/hoverboard-firmware-hack)
+
 ### Online Compiler
 
 * [RoboDurdens awesome](https://github.com/RoboDurden) online compiler: [https://pionierland.de/hoverhack/](https://pionierland.de/hoverhack/) 
