@@ -116,13 +116,13 @@ void BUTTONS_RIGHT_Init() {
 #endif
 
 #ifdef CONTROL_PWM
-//uint16_t pwm_captured_ch1_value = 500;
+uint16_t pwm_captured_ch1_value = 500;
 uint16_t pwm_captured_ch2_value = 500;
 uint32_t pwm_timeout = 0;
 
 #define IN_RANGE(x, low, up) (((x) >= (low)) && ((x) <= (up)))
 
-int PWM_Signal_Correct(x, max, min) {
+int PWM_Signal_Correct(int x, int max, int min) {
   int outVal = 0;
   if(x > -PWM_DEADBAND && x < PWM_DEADBAND) {
     outVal = 0;
@@ -134,11 +134,11 @@ int PWM_Signal_Correct(x, max, min) {
   return outVal;
 }
 
-/*
+
 void PWM_ISR_CH1_Callback() {
   // Dummy loop with 16 bit count wrap around
-  uint16_t rc_signal = TIM3->CNT;
-  TIM3->CNT = 0;
+  uint16_t rc_signal = TIM2->CNT;
+  TIM2->CNT = 0;
 
   if (IN_RANGE(rc_signal, 900, 2100)){
     timeout = 0;
@@ -146,7 +146,7 @@ void PWM_ISR_CH1_Callback() {
     pwm_captured_ch1_value = CLAMP(rc_signal, 1000, 2000) - 1000;
   }
 }
-*/
+
 
 void PWM_ISR_CH2_Callback() {
   // Dummy loop with 16 bit count wrap around
@@ -172,8 +172,17 @@ void PWM_SysTick_Callback() {
 }
 
 void PWM_Init() {
+  // PWM Timer (TIM2)
+  __HAL_RCC_TIM2_CLK_ENABLE();
+  TimHandle.Instance = TIM2;
+  TimHandle.Init.Period = UINT16_MAX;
+  TimHandle.Init.Prescaler = (SystemCoreClock/DELAY_TIM_FREQUENCY_US)-1;;
+  TimHandle.Init.ClockDivision = 0;
+  TimHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
+  HAL_TIM_Base_Init(&TimHandle);
+  
+  
   // Channel 1 (steering)
-  /*
   GPIO_InitTypeDef GPIO_InitStruct2;
   // Configure GPIO pin : PA2
   GPIO_InitStruct2.Pin = GPIO_PIN_2;
@@ -182,22 +191,12 @@ void PWM_Init() {
   GPIO_InitStruct2.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct2);
 
-  __HAL_RCC_TIM3_CLK_ENABLE();
-  TimHandle2.Instance = TIM3;
-  TimHandle2.Init.Period = UINT16_MAX;
-  TimHandle2.Init.Prescaler = (SystemCoreClock/DELAY_TIM_FREQUENCY_US)-1;;
-  TimHandle2.Init.ClockDivision = 0;
-  TimHandle2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  HAL_TIM_Base_Init(&TimHandle2);
-
   // EXTI interrupt init
   HAL_NVIC_SetPriority(EXTI2_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI2_IRQn);
-  HAL_TIM_Base_Start(&TimHandle2);
-*/
+
 
   // Channel 2 (speed)
-
   GPIO_InitTypeDef GPIO_InitStruct;
   /*Configure GPIO pin : PA3 */
   GPIO_InitStruct.Pin = GPIO_PIN_3;
@@ -206,17 +205,11 @@ void PWM_Init() {
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  __HAL_RCC_TIM2_CLK_ENABLE();
-  TimHandle.Instance = TIM2;
-  TimHandle.Init.Period = UINT16_MAX;
-  TimHandle.Init.Prescaler = (SystemCoreClock/DELAY_TIM_FREQUENCY_US)-1;;
-  TimHandle.Init.ClockDivision = 0;
-  TimHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
-  HAL_TIM_Base_Init(&TimHandle);
-
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI3_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI3_IRQn);
+
+  // Start timer
   HAL_TIM_Base_Start(&TimHandle);
 }
 #endif

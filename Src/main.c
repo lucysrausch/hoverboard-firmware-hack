@@ -77,7 +77,7 @@ extern volatile uint16_t ppm_captured_value[PPM_NUM_CHANNELS+1];
 #endif
 
 #ifdef CONTROL_PWM
-//extern volatile uint16_t pwm_captured_ch1_value;
+extern volatile uint16_t pwm_captured_ch1_value;
 extern volatile uint16_t pwm_captured_ch2_value;
 #endif
 
@@ -244,7 +244,7 @@ int main(void) {
     #endif
 
     #ifdef CONTROL_PWM
-      cmd1 = 0; // CLAMP(PWM_Signal_Correct((pwm_captured_ch1_value - 500) * 2, PWM_CH1_MAX, PWM_CH1_MIN), -1000, 1000);
+      cmd1 = CLAMP(PWM_Signal_Correct((pwm_captured_ch1_value - 500) * 2, PWM_CH1_MAX, PWM_CH1_MIN), -1000, 1000);
       cmd2 = CLAMP(PWM_Signal_Correct((pwm_captured_ch2_value - 500) * 2, PWM_CH2_MAX, PWM_CH2_MIN), -1000, 1000);
       button1 = 0;
     #endif
@@ -326,7 +326,7 @@ int main(void) {
         setScopeChannel(1, (int)adc_buffer.l_rx2);  // 2: ADC2
       #endif
       #ifdef CONTROL_PWM
-        setScopeChannel(0, 0);//pwm_captured_ch1_value);  // 1: CH1
+        setScopeChannel(0, pwm_captured_ch1_value);  // 1: CH1
         setScopeChannel(1, pwm_captured_ch2_value);  // 2: CH2
       #endif
       setScopeChannel(2, (int)speedR);  // 3: output speed: 0-1000
