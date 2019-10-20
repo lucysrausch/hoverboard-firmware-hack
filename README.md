@@ -7,6 +7,9 @@ This repository improves significantly the performance of the previous BLDC moto
  - smooth torque output 	
  - improved motor efficiency. Thus, lower energy consumption
  - automatic phase advance / field weakening
+ 
+ ### For more features check-out my [new firmware based on FOC motor control](https://github.com/EmanuelFeru/hoverboard-firmware-hack-FOC)
+ 
 
 ![Schematic representation of the control methods](https://raw.githubusercontent.com/EmanuelFeru/hoverboard-firmware-hack/master/01_Matlab/02_Figures/control_methods.png)
 
@@ -41,10 +44,6 @@ NOTES Phase Advance / Field weakening:
  - The default map was experimentally calibrated on the real motor based on the minimum noise and minimum torque ripple
  - If you re-calibrate the Phase advance map please take all the safety measures! The motors can spin VERY VERY FAST! Please use it with care!
  - I do not recommend more than 40 deg MAX Phase advance. 
-
-### Future work
- - we will try to fit this new controller into the hoverboard main functionality of [bipropellant](https://github.com/bipropellant/bipropellant-hoverboard-firmware) I still need to ask if he would like to take this up :)
- - use it for other robotic applications
 
 ---
 ## Building 
