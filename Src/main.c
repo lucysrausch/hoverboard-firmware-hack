@@ -41,9 +41,10 @@ int cmd2;
 int cmd3;
 
 typedef struct{
-   int16_t steer;
-   int16_t speed;
-   //uint32_t crc;
+	uint16_t start_of_frame;
+	int16_t  steer;
+	int16_t  speed;
+	uint16_t checksum;
 } Serialcommand;
 
 volatile Serialcommand command;
@@ -157,7 +158,7 @@ int main(void) {
 
   #ifdef CONTROL_SERIAL_USART2
     UART_Control_Init();
-    HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, 4);
+    HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, sizeof(command));
   #endif
 
   #ifdef DEBUG_I2C_LCD
@@ -218,12 +219,20 @@ int main(void) {
       timeout = 0;
     #endif
 
-    #ifdef CONTROL_SERIAL_USART2
-      cmd1 = CLAMP((int16_t)command.steer, -1000, 1000);
-      cmd2 = CLAMP((int16_t)command.speed, -1000, 1000);
-
-      timeout = 0;
-    #endif
+#ifdef CONTROL_SERIAL_USART2
+	  if (command.start_of_frame == START_FRAME && 
+			  command.checksum ==(uint16_t)(START_FRAME ^ command.steer ^ command.speed)) {
+		  cmd1 = CLAMP((int16_t)command.steer, -1000, 1000);
+		  cmd2 = CLAMP((int16_t)command.speed, -1000, 1000);
+	  } else {                                  // restart DMA to hopefully get back in sync
+		  // Try a periodic reset
+		  if (main_loop_counter % 25 == 0) {
+			  HAL_UART_DMAStop(&huart2);
+			  HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, sizeof(command));
+		  }
+	  }
+	  timeout = 0;
+#endif
 
     #ifdef CONTROL_MOTOR_TEST
       if (motor_test_direction == 1) cmd2 += 1;
