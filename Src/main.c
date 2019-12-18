@@ -220,8 +220,8 @@ int main(void) {
     #endif
 
 #ifdef CONTROL_SERIAL_USART2
-	  if (command.start_of_frame == START_FRAME && command.checksum == 
-			  (command.start_of_frame ^ command.steer ^ command.speed)) {
+	  if (command.start_of_frame == START_FRAME && 
+			  command.checksum ==(uint16_t)(START_FRAME ^ command.steer ^ command.speed)) {
 		  cmd1 = CLAMP((int16_t)command.steer, -1000, 1000);
 		  cmd2 = CLAMP((int16_t)command.speed, -1000, 1000);
 	  } else {                                  // restart DMA to hopefully get back in sync
