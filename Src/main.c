@@ -225,8 +225,11 @@ int main(void) {
 		  cmd1 = CLAMP((int16_t)command.steer, -1000, 1000);
 		  cmd2 = CLAMP((int16_t)command.speed, -1000, 1000);
 	  } else {                                  // restart DMA to hopefully get back in sync
-		  HAL_UART_DMAStop(&huart2);
-		  HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, sizeof(command));
+		  // Try a periodic reset
+		  if (main_loop_counter % 25 == 0) {
+			  HAL_UART_DMAStop(&huart2);
+			  HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, sizeof(command));
+		  }
 	  }
 	  timeout = 0;
 #endif
