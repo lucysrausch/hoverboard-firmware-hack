@@ -93,6 +93,10 @@ If you need additional features like a boost button, have a look at the while(1)
 
 * [https://github.com/cloidnerux/hoverboard-firmware-hack](https://github.com/cloidnerux/hoverboard-firmware-hack)
 
+### Hoverboardhack for split mainboards
+
+* [https://github.com/flo199213/Hoverboard-Firmware-Hack-Gen2](https://github.com/flo199213/Hoverboard-Firmware-Hack-Gen2)
+
 ### Online Compiler
 
 * [RoboDurdens awesome](https://github.com/RoboDurden) online compiler: [https://pionierland.de/hoverhack/](https://pionierland.de/hoverhack/) 
