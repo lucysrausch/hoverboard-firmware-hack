@@ -5,16 +5,8 @@
 #include "stdio.h"
 #include "string.h"
 
-UART_HandleTypeDef huart2;
-
-#ifdef DEBUG_SERIAL_USART3
-#define UART_DMA_CHANNEL DMA1_Channel2
-#endif
-
-#ifdef DEBUG_SERIAL_USART2
-#define UART_DMA_CHANNEL DMA1_Channel7
-#endif
-
+extern UART_HandleTypeDef huart2;
+extern UART_HandleTypeDef huart3;
 
 volatile uint8_t uart_buf[100];
 volatile int16_t ch_buf[8];
@@ -37,28 +29,49 @@ void consoleScope() {
     uart_buf[8] = CLAMP(ch_buf[7]+127, 0, 255);
     uart_buf[9] = '\n';
 
-    if(UART_DMA_CHANNEL->CNDTR == 0) {
-      UART_DMA_CHANNEL->CCR &= ~DMA_CCR_EN;
-      UART_DMA_CHANNEL->CNDTR = 10;
-      UART_DMA_CHANNEL->CMAR  = (uint32_t)uart_buf;
-      UART_DMA_CHANNEL->CCR |= DMA_CCR_EN;
+    #ifdef DEBUG_SERIAL_USART2
+    if(__HAL_DMA_GET_COUNTER(huart2.hdmatx) == 0) {
+      HAL_UART_Transmit_DMA(&huart2, (uint8_t *)uart_buf, strLength);	 
     }
+    #endif
+    #ifdef DEBUG_SERIAL_USART3
+    if(__HAL_DMA_GET_COUNTER(huart3.hdmatx) == 0) {
+      HAL_UART_Transmit_DMA(&huart3, (uint8_t *)uart_buf, strLength);	 
+    }
+    #endif
   #endif
 
   #if defined DEBUG_SERIAL_ASCII && (defined DEBUG_SERIAL_USART2 || defined DEBUG_SERIAL_USART3)
-    memset(uart_buf, 0, sizeof(uart_buf));
-    sprintf(uart_buf, "1:%i 2:%i 3:%i 4:%i 5:%i 6:%i 7:%i 8:%i\r\n", ch_buf[0], ch_buf[1], ch_buf[2], ch_buf[3], ch_buf[4], ch_buf[5], ch_buf[6], ch_buf[7]);
+    int strLength;
+    strLength = sprintf((char *)(uintptr_t)uart_buf,
+                "1:%i 2:%i 3:%i 4:%i 5:%i 6:%i 7:%i 8:%i\r\n",
+                ch_buf[0], ch_buf[1], ch_buf[2], ch_buf[3], ch_buf[4], ch_buf[5], ch_buf[6], ch_buf[7]);
 
-    if(UART_DMA_CHANNEL->CNDTR == 0) {
-      UART_DMA_CHANNEL->CCR &= ~DMA_CCR_EN;
-      UART_DMA_CHANNEL->CNDTR = strlen(uart_buf);
-      UART_DMA_CHANNEL->CMAR  = (uint32_t)uart_buf;
-      UART_DMA_CHANNEL->CCR |= DMA_CCR_EN;
+    #ifdef DEBUG_SERIAL_USART2
+    if(__HAL_DMA_GET_COUNTER(huart2.hdmatx) == 0) {
+      HAL_UART_Transmit_DMA(&huart2, (uint8_t *)uart_buf, strLength);	 
     }
+    #endif
+    #ifdef DEBUG_SERIAL_USART3
+    if(__HAL_DMA_GET_COUNTER(huart3.hdmatx) == 0) {
+      HAL_UART_Transmit_DMA(&huart3, (uint8_t *)uart_buf, strLength);	 
+    }
+    #endif
   #endif
 }
 
 void consoleLog(char *message)
 {
-    HAL_UART_Transmit_DMA(&huart2, (uint8_t *)message, strlen(message));
+  #if defined DEBUG_SERIAL_ASCII && (defined DEBUG_SERIAL_USART2 || defined DEBUG_SERIAL_USART3)
+    #ifdef DEBUG_SERIAL_USART2
+    if(__HAL_DMA_GET_COUNTER(huart2.hdmatx) == 0) {
+      HAL_UART_Transmit_DMA(&huart2, (uint8_t *)message, strlen((char *)(uintptr_t)message));	 
+    }
+    #endif
+    #ifdef DEBUG_SERIAL_USART3
+    if(__HAL_DMA_GET_COUNTER(huart3.hdmatx) == 0) {
+      HAL_UART_Transmit_DMA(&huart3, (uint8_t *)message, strlen((char *)(uintptr_t)message));	 
+    }
+    #endif
+  #endif
 }

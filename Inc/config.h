@@ -9,7 +9,9 @@
 #define DELAY_IN_MAIN_LOOP 5        // in ms. default 5. it is independent of all the timing critical stuff. do not touch if you do not know what you are doing.
 
 #define TIMEOUT          5          // number of wrong / missing input commands before emergency off
-#define START_FRAME      0xAAAA     // serial command start-of-frame magic word
+#define SERIAL_START_FRAME  0xABCD  // [-] Start frame definition for serial commands
+#define SERIAL_TIMEOUT      160     // [-] Serial timeout duration for the received data. 160 ~= 0.8 sec. Calculation: 0.8 sec / 0.005 sec
+#define SERIAL_BUFFER_SIZE  64      // [bytes] Size of Serial Rx buffer. Make sure it is always larger than the structure size
 
 // ############################### GENERAL ###############################
 
@@ -47,7 +49,11 @@
 // ############################### SERIAL DEBUG ###############################
 
 #define DEBUG_SERIAL_USART3         // right sensor board cable, disable if I2C (nunchuck or lcd) is used!
-#define DEBUG_BAUD       115200     // UART baud rate
+#if defined(DEBUG_SERIAL_USART2)
+  #define USART2_BAUD    115200     // UART baud rate
+#elif defined(DEBUG_SERIAL_USART3)
+  #define USART3_BAUD    115200     // UART baud rate
+#endif
 //#define DEBUG_SERIAL_SERVOTERM      // Software for plotting graphs: https://github.com/STMBL/Servoterm-app
 #define DEBUG_SERIAL_ASCII          // "1:345 2:1337 3:0 4:0 5:0 6:0 7:0 8:0\r\n"
 
@@ -55,7 +61,11 @@
 
 // ###### CONTROL VIA UART (serial) ######
 //#define CONTROL_SERIAL_USART2       // left sensor board cable, disable if ADC or PPM is used!
-#define CONTROL_BAUD       19200    // control via usart from eg an Arduino or raspberry
+#if defined(CONTROL_SERIAL_USART2)
+  #define USART2_BAUD    19200      // UART baud rate
+#elif defined(CONTROL_SERIAL_USART3)
+  #define USART3_BAUD    19200      // UART baud rate
+#endif
 // for Arduino, use void loop(void){ Serial.write((uint8_t *) &steer, sizeof(steer)); Serial.write((uint8_t *) &speed, sizeof(speed));delay(20); }
 
 // ###### CONTROL VIA RC REMOTE ######
@@ -155,7 +165,22 @@ else {\
   #error DEBUG_I2C_LCD and DEBUG_SERIAL_USART3 not allowed. it is on the same cable.
 #endif
 
+#if defined(CONTROL_SERIAL_USART2) && defined(CONTROL_SERIAL_USART3)
+  #error CONTROL_SERIAL_USART2 and CONTROL_SERIAL_USART3 not allowed, choose one.
+#endif
+
+#if defined(DEBUG_SERIAL_USART2) && defined(DEBUG_SERIAL_USART3)
+  #error DEBUG_SERIAL_USART2 and DEBUG_SERIAL_USART3 not allowed, choose one.
+#endif
+
 #ifdef CONTROL_SERIAL_USART2
+  #if defined CONTROL_DEFINED
+    #error select exactly 1 input method in config.h!
+  #endif
+  #define CONTROL_DEFINED
+#endif
+
+#ifdef CONTROL_SERIAL_USART3
   #if defined CONTROL_DEFINED
     #error select exactly 1 input method in config.h!
   #endif
