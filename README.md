@@ -1,4 +1,4 @@
-# hoverboard-firmware-hack
+# hoverboard-firmware-hack-SIN
 ## With Sinusoidal BLDC control and Phase Advance
 [![Build Status](https://travis-ci.com/EmanuelFeru/hoverboard-firmware-hack.svg?branch=master)](https://travis-ci.com/EmanuelFeru/hoverboard-firmware-hack)
 
@@ -8,7 +8,7 @@ This repository improves significantly the performance of the previous BLDC moto
  - improved motor efficiency. Thus, lower energy consumption
  - automatic phase advance / field weakening
  
- ### For more features check-out my [new firmware based on FOC motor control](https://github.com/EmanuelFeru/hoverboard-firmware-hack-FOC)
+ ### This repository is not supported any more! See my new [firmware based on FOC motor control](https://github.com/EmanuelFeru/hoverboard-firmware-hack-FOC) for latest updates. The new firmware still offers the posiblity to select Sinusoidal control.
  
 
 ![Schematic representation of the control methods](https://raw.githubusercontent.com/EmanuelFeru/hoverboard-firmware-hack/master/01_Matlab/02_Figures/control_methods.png)
