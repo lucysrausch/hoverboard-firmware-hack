@@ -23,7 +23,6 @@ extern UART_HandleTypeDef huart3;
 #if defined(DEBUG_SERIAL_USART2) || defined(CONTROL_SERIAL_USART2)
 extern uint8_t rx_buffer_L[SERIAL_BUFFER_SIZE];	    // USART Rx DMA circular buffer
 static uint32_t rx_buffer_L_len = ARRAY_LEN(rx_buffer_L);
-static uint32_t old_pos;
 #endif
 #if defined(CONTROL_SERIAL_USART2)
 extern uint16_t timeoutCntSerial_L;  		            // Timeout counter for Rx Serial command
@@ -32,7 +31,6 @@ extern uint16_t timeoutCntSerial_L;  		            // Timeout counter for Rx Ser
 #if defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_USART3)
 extern uint8_t rx_buffer_R[SERIAL_BUFFER_SIZE];	    // USART Rx DMA circular buffer
 static uint32_t rx_buffer_R_len = ARRAY_LEN(rx_buffer_R);
-static uint32_t old_pos;
 #endif
 #if defined(CONTROL_SERIAL_USART3)
 extern uint16_t timeoutCntSerial_R;  		            // Timeout counter for Rx Serial command
@@ -153,6 +151,7 @@ void Nunchuck_Read() {
 void usart2_rx_check(void)
 {
   #if defined(DEBUG_SERIAL_USART2) || defined(CONTROL_SERIAL_USART2)
+  static uint32_t old_pos;
   uint32_t pos;
   pos = rx_buffer_L_len - __HAL_DMA_GET_COUNTER(huart2.hdmarx);         // Calculate current position in buffer
   #endif
@@ -204,6 +203,7 @@ void usart2_rx_check(void)
 void usart3_rx_check(void)
 {
   #if defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_USART3)
+  static uint32_t old_pos;
   uint32_t pos;  
   pos = rx_buffer_R_len - __HAL_DMA_GET_COUNTER(huart3.hdmarx);         // Calculate current position in buffer
   #endif
@@ -290,46 +290,21 @@ void usart_process_command(SerialCommand *command_in, SerialCommand *command_out
 }
 #endif
 
-/*
- * UART User Error Callback
- * - According to the STM documentation, when a DMA transfer error occurs during a DMA read or a write access,
- *   the faulty channel is automatically disabled through a hardware clear of its EN bit
- * - For hoverboard applications, the UART communication can be unrealiable, disablind the DMA transfer
- * - therefore the DMA needs to be re-started
- */
-void HAL_UART_ErrorCallback(UART_HandleTypeDef *uartHandle) {
-  #if defined(DEBUG_SERIAL_USART2) || defined(CONTROL_SERIAL_USART2) || defined(SIDEBOARD_SERIAL_USART2)
-  if(uartHandle->Instance == USART2) {
-    HAL_DMA_Abort(uartHandle->hdmarx);
-    UART_EndRxTransfer(uartHandle);
-    HAL_UART_Receive_DMA(uartHandle, (uint8_t *)rx_buffer_L, sizeof(rx_buffer_L));
-    old_pos = 0;
-  }
-  #endif
-  #if defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_USART3) || defined(SIDEBOARD_SERIAL_USART3)
-  if(uartHandle->Instance == USART3) {
-    HAL_DMA_Abort(uartHandle->hdmarx);
-    UART_EndRxTransfer(uartHandle);
-    HAL_UART_Receive_DMA(uartHandle, (uint8_t *)rx_buffer_R, sizeof(rx_buffer_R));
-    old_pos = 0;
-  }
-  #endif
-}
-
-
 /**
-  * @brief  End ongoing Rx transfer on UART peripheral (following error detection or Reception completion).
+  * @brief  Disable Rx Errors detection interrupts on UART peripheral (since we do not want DMA to be stopped)
+  *         The incorrect data will be filtered based on the START_FRAME and checksum.
   * @param  huart: UART handle.
   * @retval None
   */
-void UART_EndRxTransfer(UART_HandleTypeDef *huart)
+#if defined(DEBUG_SERIAL_USART2) || defined(CONTROL_SERIAL_USART2) || \
+    defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_USART3)
+void UART_DisableRxErrors(UART_HandleTypeDef *huart)
 {
-  /* Disable RXNE (Interrupt Enable) and PE (Parity Error) interrupts */
-  CLEAR_BIT(huart->Instance->CR1, (USART_CR1_RXNEIE | USART_CR1_PEIE));
+  /* Disable PE (Parity Error) interrupts */
+  CLEAR_BIT(huart->Instance->CR1, USART_CR1_PEIE);
+
   /* Disable EIE (Frame error, noise error, overrun error) interrupts */
   CLEAR_BIT(huart->Instance->CR3, USART_CR3_EIE);
-
-  /* At end of Rx process, restore huart->RxState to Ready */
-  huart->RxState = HAL_UART_STATE_READY;
 }
+#endif
 

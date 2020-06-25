@@ -177,4 +177,4 @@ void usart_process_debug(uint8_t *userCommand, uint32_t len);
 #if defined(CONTROL_SERIAL_USART2) || defined(CONTROL_SERIAL_USART3)
 void usart_process_command(SerialCommand *command_in, SerialCommand *command_out, uint8_t usart_idx);
 #endif
-void UART_EndRxTransfer(UART_HandleTypeDef *huart);
+void UART_DisableRxErrors(UART_HandleTypeDef *huart);
