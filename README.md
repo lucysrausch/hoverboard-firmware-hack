@@ -17,12 +17,12 @@ https://media.ccc.de/v/gpn18-95-howto-moving-objects
 Here are detailed build instructions for some finished projects.
 If possible, a prebuild firmware release is available for these usecases, so you don't need to compile the firmware yourself
 
-TranspOtter: https://github.com/NiklasFauth/hoverboard-firmware-hack/wiki/Build-Instruction:-TranspOtter
+TranspOtter: https://github.com/lucysrausch/hoverboard-firmware-hack/wiki/Build-Instruction:-TranspOtter
 
 ---
 
 ## Hardware
-![otter](https://raw.githubusercontent.com/NiklasFauth/hoverboard-firmware-hack/master/pinout.png)
+![otter](https://raw.githubusercontent.com/lucysrausch/hoverboard-firmware-hack/master/pinout.png)
 
 The original Hardware supports two 4-pin cables that originally were connected to the two sensor boards. They break out GND, 12/15V and USART2&3 of the Hoverboard mainboard.
 Both USART2 & 3 can be used for UART and I2C, PA2&3 can be used as 12bit ADCs.
@@ -109,5 +109,5 @@ If you need additional features like a boost button, have a look at the while(1)
 * [Bidirectional UART communication](https://github.com/RoboDurden/hoverboard-firmware-hack) with Arduino example code
 * [bobbycar-optimized firmware](https://github.com/larsmm/hoverboard-firmware-hack-bbcar)  based on this one with driving modes, acceleration ramps and some other features
 * [wheel chair](https://github.com/Lahorde/steer_speed_ctrl) controlled with a joystick or using a CC2650 sensortag to control it over  bluetooth with pitch/roll.
-* [TranspOtterNG](https://github.com/Jan--Henrik/transpOtterNG) TranspOtter is an open source semi self driving transportation platform based on hoverboard hardware
+* [TranspOtterNG](https://github.com/Jana-Marie/transpOtterNG) TranspOtter is an open source semi self driving transportation platform based on hoverboard hardware
 * [BiPropellant](https://github.com/bipropellant) - fork which focusses on reliable machine control, but also retains HoverBoard functionality if desired.
