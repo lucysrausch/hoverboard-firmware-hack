@@ -21,6 +21,7 @@
 
 #pragma once
 #include "stm32f1xx_hal.h"
+#include "config.h"
 
 #define LEFT_HALL_U_PIN GPIO_PIN_5
 #define LEFT_HALL_V_PIN GPIO_PIN_6
@@ -141,10 +142,12 @@
 #define SIGN(a) (((a) < 0.0) ? (-1.0) : (((a) > 0.0) ? (1.0) : (0.0)))
 #define CLAMP(x, low, high) (((x) > (high)) ? (high) : (((x) < (low)) ? (low) : (x)))
 #define SCALE(value, high, max) MIN(MAX(((max) - (value)) / ((max) - (high)), 0.0), 1.0)
+#define IN_RANGE(x, low, up) (((x) >= (low)) && ((x) <= (up)))
 #define MIN(a, b) (((a) < (b)) ? (a) : (b))
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
 #define MIN3(a, b, c) MIN(a, MIN(b, c))
 #define MAX3(a, b, c) MAX(a, MAX(b, c))
+#define ARRAY_LEN(x) (uint32_t)(sizeof(x) / sizeof(*(x)))
 
 typedef struct {
   uint16_t rr1;
@@ -158,3 +161,20 @@ typedef struct {
   uint16_t temp;
   uint16_t l_rx2;
 } adc_buf_t;
+
+typedef struct{
+	uint16_t start;
+	int16_t  steer;
+	int16_t  speed;
+	uint16_t checksum;
+} SerialCommand;
+
+void usart2_rx_check(void);
+void usart3_rx_check(void);
+#if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+void usart_process_debug(uint8_t *userCommand, uint32_t len);
+#endif
+#if defined(CONTROL_SERIAL_USART2) || defined(CONTROL_SERIAL_USART3)
+void usart_process_command(SerialCommand *command_in, SerialCommand *command_out, uint8_t usart_idx);
+#endif
+void UART_DisableRxErrors(UART_HandleTypeDef *huart);

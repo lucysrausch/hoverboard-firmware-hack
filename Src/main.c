@@ -19,6 +19,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <string.h>
 #include "stm32f1xx_hal.h"
 #include "defines.h"
 #include "setup.h"
@@ -35,19 +36,11 @@ extern volatile adc_buf_t adc_buffer;
 //LCD_PCF8574_HandleTypeDef lcd;
 extern I2C_HandleTypeDef hi2c2;
 extern UART_HandleTypeDef huart2;
+extern UART_HandleTypeDef huart3;
 
 int cmd1;  // normalized input values. -1000 to 1000
 int cmd2;
 int cmd3;
-
-typedef struct{
-	uint16_t start_of_frame;
-	int16_t  steer;
-	int16_t  speed;
-	uint16_t checksum;
-} Serialcommand;
-
-volatile Serialcommand command;
 
 uint8_t button1, button2;
 
@@ -75,6 +68,25 @@ int32_t motor_test_direction = 1;
 extern uint8_t nunchuck_data[6];
 #ifdef CONTROL_PPM
 extern volatile uint16_t ppm_captured_value[PPM_NUM_CHANNELS+1];
+#endif
+
+#if defined(DEBUG_SERIAL_USART2) || defined(CONTROL_SERIAL_USART2)
+uint8_t rx_buffer_L[SERIAL_BUFFER_SIZE];	    // USART Rx DMA circular buffer
+#endif
+#if defined(CONTROL_SERIAL_USART2)
+uint16_t timeoutCntSerial_L  = 0;  		        // Timeout counter for Rx Serial command
+#endif
+
+#if defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_USART3)
+uint8_t rx_buffer_R[SERIAL_BUFFER_SIZE];	    // USART Rx DMA circular buffer
+#endif
+#if defined(CONTROL_SERIAL_USART3)
+uint16_t timeoutCntSerial_R  = 0;  		        // Timeout counter for Rx Serial command
+#endif
+
+#if defined(CONTROL_SERIAL_USART2) || defined(CONTROL_SERIAL_USART3)
+SerialCommand command;
+uint8_t timeoutFlagSerial = 0;  		          // Timeout Flag for Rx Serial command: 0 = OK, 1 = Problem detected (line disconnected or wrong Rx data)
 #endif
 
 int milli_vel_error_sum = 0;
@@ -126,8 +138,11 @@ int main(void) {
   MX_ADC1_Init();
   MX_ADC2_Init();
 
-  #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
-    UART_Init();
+  #if defined(DEBUG_SERIAL_USART2) || defined(CONTROL_SERIAL_USART2)
+    UART2_Init();
+  #endif
+  #if defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_USART3)
+    UART3_Init();
   #endif
 
   HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, 1);
@@ -156,9 +171,13 @@ int main(void) {
     Nunchuck_Init();
   #endif
 
-  #ifdef CONTROL_SERIAL_USART2
-    UART_Control_Init();
-    HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, sizeof(command));
+  #if defined(DEBUG_SERIAL_USART2) || defined(CONTROL_SERIAL_USART2)
+    HAL_UART_Receive_DMA(&huart2, (uint8_t *)rx_buffer_L, sizeof(rx_buffer_L));
+    UART_DisableRxErrors(&huart2);
+  #endif
+  #if defined(DEBUG_SERIAL_USART3) || defined(CONTROL_SERIAL_USART3)
+    HAL_UART_Receive_DMA(&huart3, (uint8_t *)rx_buffer_R, sizeof(rx_buffer_R));
+    UART_DisableRxErrors(&huart3);
   #endif
 
   #ifdef DEBUG_I2C_LCD
@@ -219,20 +238,30 @@ int main(void) {
       timeout = 0;
     #endif
 
-#ifdef CONTROL_SERIAL_USART2
-	  if (command.start_of_frame == START_FRAME && 
-			  command.checksum ==(uint16_t)(START_FRAME ^ command.steer ^ command.speed)) {
-		  cmd1 = CLAMP((int16_t)command.steer, -1000, 1000);
-		  cmd2 = CLAMP((int16_t)command.speed, -1000, 1000);
-	  } else {                                  // restart DMA to hopefully get back in sync
-		  // Try a periodic reset
-		  if (main_loop_counter % 25 == 0) {
-			  HAL_UART_DMAStop(&huart2);
-			  HAL_UART_Receive_DMA(&huart2, (uint8_t *)&command, sizeof(command));
-		  }
-	  }
-	  timeout = 0;
-#endif
+    #if defined(CONTROL_SERIAL_USART2) || defined(CONTROL_SERIAL_USART3)
+      if (IN_RANGE(command.steer, -1000, 1000) && IN_RANGE(command.speed, -1000, 1000)) {
+        cmd1 = command.steer;
+        cmd2 = command.speed;
+      }
+      #if defined(CONTROL_SERIAL_USART2)
+        if (timeoutCntSerial_L++ >= SERIAL_TIMEOUT) {     // Timeout qualification
+          timeoutFlagSerial = 1;                          // Timeout detected
+          timeoutCntSerial_L  = SERIAL_TIMEOUT;           // Limit timout counter value
+        }
+      #endif
+      #if defined(CONTROL_SERIAL_USART3)
+        if (timeoutCntSerial_R++ >= SERIAL_TIMEOUT) {     // Timeout qualification
+          timeoutFlagSerial = 1;                          // Timeout detected
+          timeoutCntSerial_R  = SERIAL_TIMEOUT;           // Limit timout counter value
+        }
+      #endif
+      if (timeoutFlagSerial) {                            // In case of timeout bring the system to a Safe State
+        cmd1 = 0;
+        cmd2 = 0;
+      }
+
+      timeout = 0;
+    #endif
 
     #ifdef CONTROL_MOTOR_TEST
       if (motor_test_direction == 1) cmd2 += 1;
